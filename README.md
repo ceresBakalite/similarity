@@ -16,14 +16,14 @@ Release Notes
     
   Ratcliff Obershelp
   
-      The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and John A. Obershelp 
-      in 1983 to address concerns about educational software (Ratcliff, 1988).
+      The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and 
+      John A. Obershelp in 1983 to address concerns about educational software (Ratcliff, 1988).
 
   Levenshtein Distance
   
-      The Levenshtein distance is a string metric for measuring the difference between two sequences. The 
-      Levenshtein distance between two words is the minimum number of single-character edits (i.e.insertions, 
-      deletions or substitutions) required to change one word into the other.
+      The Levenshtein distance is a string metric for measuring the difference between two sequences. 
+      The Levenshtein distance between two words is the minimum number of single-character edits 
+      (i.e.insertions, deletions or substitutions) required to change one word into the other.
       
   Hamming Distance
   
@@ -33,8 +33,8 @@ Release Notes
     
   Phonetic Pattern matching 
   
-    A phonetic algorithm is a method for comparing strings by sound, specifically as pronounced in English, where 
-    differences in spelling can be overlooked
+    A phonetic algorithm is a method for comparing strings by sound, specifically as pronounced in English, 
+    where differences in spelling can be overlooked
     
   AESThenHMAC Authentication
   
