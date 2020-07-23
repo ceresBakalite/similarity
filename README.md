@@ -49,6 +49,6 @@ Similarity estimates the similarities or dissimilarities between things. It comp
     
   AESThenHMAC Authentication
   
-   *Ref* @jbtule
+   *Ref* @https://gist.github.com/jbtule/4336842
   
   Trace monitoring
