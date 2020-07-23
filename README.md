@@ -52,3 +52,8 @@ Similarity estimates the similarities or dissimilarities between things. It comp
    **_Ref._** @https://gist.github.com/jbtule/4336842
   
   Trace monitoring
+  
+     Background debug trace markers have been added to the pre-production environment to monitor seek and process
+     time particularly on cloud servers. It was noted that timeout errors (specifically 258 and -2 SQL and .NET 
+     timeouts) occurred during specific periods during the day.  This in turn brought to attention the need to invoke 
+     some background processes at different intervals during initialisation.
