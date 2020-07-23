@@ -6,8 +6,6 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
   Pattern Matching attributes
   
-  http://github.com - automatic!  [GitHub](http://github.com)
-  
   Enable / Disable the following
     
       1. Treat whitespace characters as noise characters
@@ -29,7 +27,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
       The Levenshtein distance is a string metric for measuring the difference between two sequences. 
       The Levenshtein distance between two words is the minimum number of single-character edits 
       (i.e.insertions, deletions or substitutions) required to change one word into the other.
-      
+
       [The Levenshtein distance algorithm](https://www.educative.io/edpresso/the-levenshtein-distance-algorithm)
       
   Hamming Distance
