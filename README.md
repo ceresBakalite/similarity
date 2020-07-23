@@ -6,8 +6,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
   Pattern Matching attributes
   
-  http://github.com - automatic!
-  [GitHub](http://github.com)
+  http://github.com - automatic!  [GitHub](http://github.com)
   
   Enable / Disable the following
     
