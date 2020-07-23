@@ -4,7 +4,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 test [bakalite][]
 
- [bakalite]: https://ceresbakalite.github.io/similarity/ "bakalite"
+ [bakalite]: https://ceresbakalite.github.io/similarity/ "Read more"
 
 **Release Notes v1.2.5b**
 
