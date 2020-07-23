@@ -11,7 +11,7 @@ Release Notes
       2. Apply case insensitivity to each string
       3. Pad the smallest string to be of equal length to the largest
       4. Determine if one string is similar to the converse of the other
-      5. Apply a phonetic filter to determine similarity
+      5. Apply a phonetic filter to further determine similarity
       6. Weight distinct case insensitive whole words shared by both strings
     
   Ratcliff Obershelp
