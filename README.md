@@ -6,6 +6,9 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
   Pattern Matching attributes
   
+  http://github.com - automatic!
+  [GitHub](http://github.com)
+  
   Enable / Disable the following
     
       1. Treat whitespace characters as noise characters
