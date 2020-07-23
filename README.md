@@ -1,5 +1,4 @@
-# Similarity
-Pattern matching used to seek similarity between data strings
+# Similarity *Pattern matching used to seek similarity between data strings*
 
 ### Welcome to Similarity Pattern Matching
 
