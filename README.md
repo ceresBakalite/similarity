@@ -2,6 +2,10 @@
 ### *Pattern matching used to seek similarity between data strings*
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items. [Read more](https://ceresbakalite.github.io/similarity/)
 
+test [bakalite][]
+
+ [bakalite]: https://ceresbakalite.github.io/similarity/ "bakalite"
+
 **Release Notes v1.2.5b**
 
   Pattern Matching attributes
@@ -47,6 +51,6 @@ Similarity estimates the similarities or dissimilarities between things. It comp
     
   AESThenHMAC Authentication
   
-  https://gist.github.com/4336842
+  *Ref* https://gist.github.com/4336842
   
   Trace monitoring
