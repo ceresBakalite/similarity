@@ -1,7 +1,7 @@
 # Similarity
 Pattern matching used to seek similarity between data strings
 
-Release Notes
+Release Notes v1.2.5b
 
   Pattern Matching attribute control
   
