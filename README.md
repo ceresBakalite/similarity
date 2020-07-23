@@ -1,6 +1,5 @@
-# Similarity ######Pattern matching used to seek similarity between data strings
-
-### Welcome to Similarity Pattern Matching
+# Welcome to Similarity Pattern Matching
+Pattern matching used to seek similarity between data strings
 
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items.
 
