@@ -22,7 +22,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
       The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and 
       John A. Obershelp in 1983 to address concerns about educational software (Ratcliff, 1988).
 
-  *Ref* [The Gestalt Approach](https://en.wikipedia.org/wiki/Gestalt_Pattern_Matching)
+   *Ref* [The Gestalt Approach](https://en.wikipedia.org/wiki/Gestalt_Pattern_Matching)
       
   Levenshtein Distance
   
@@ -30,7 +30,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
       The Levenshtein distance between two words is the minimum number of single-character edits 
       (i.e.insertions, deletions or substitutions) required to change one word into the other.
 
-  *Ref* [The Levenshtein distance algorithm](https://www.educative.io/edpresso/the-levenshtein-distance-algorithm)
+   *Ref* [The Levenshtein distance algorithm](https://www.educative.io/edpresso/the-levenshtein-distance-algorithm)
       
   Hamming Distance
   
@@ -38,17 +38,17 @@ Similarity estimates the similarities or dissimilarities between things. It comp
     the other.The Hamming distance between two strings of equal length is the number of positions at which 
     the corresponding symbols are different.
     
-  *Ref* [Hamming Distance as a Concept in DNA Molecular Recognition](https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053)
+   *Ref* [Hamming Distance as a Concept in DNA Molecular Recognition](https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053)
     
   Phonetic Pattern matching 
   
     A phonetic algorithm is a method for comparing strings by sound, specifically as pronounced in English, 
     where differences in spelling can be overlooked
     
-  *Ref* [Journal of Biomedical Semantics](https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2)
+   *Ref* [Journal of Biomedical Semantics](https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2)
     
   AESThenHMAC Authentication
   
-  *Ref* https://gist.github.com/4336842
+   *Ref* https://gist.github.com/4336842
   
   Trace monitoring
