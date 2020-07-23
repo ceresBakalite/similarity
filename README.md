@@ -3,9 +3,9 @@ Pattern matching used to seek similarity between data strings
 
 Release Notes v1.2.5b
 
-  Pattern Matching attribute control
+  Pattern Matching attributes
   
-    Enable / Disable the following
+  Enable / Disable the following
     
       1. Treat whitespace characters as noise characters
       2. Apply case insensitivity to each string
@@ -19,11 +19,15 @@ Release Notes v1.2.5b
       The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and 
       John A. Obershelp in 1983 to address concerns about educational software (Ratcliff, 1988).
 
+      [The Gestalt Approach](https://en.wikipedia.org/wiki/Gestalt_Pattern_Matching)
+      
   Levenshtein Distance
   
       The Levenshtein distance is a string metric for measuring the difference between two sequences. 
       The Levenshtein distance between two words is the minimum number of single-character edits 
       (i.e.insertions, deletions or substitutions) required to change one word into the other.
+      
+      [The Levenshtein distance algorithm](https://www.educative.io/edpresso/the-levenshtein-distance-algorithm)
       
   Hamming Distance
   
@@ -31,10 +35,14 @@ Release Notes v1.2.5b
     the other.The Hamming distance between two strings of equal length is the number of positions at which 
     the corresponding symbols are different.
     
+    [Hamming Distance as a Concept in DNA Molecular Recognition](https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053)
+    
   Phonetic Pattern matching 
   
     A phonetic algorithm is a method for comparing strings by sound, specifically as pronounced in English, 
     where differences in spelling can be overlooked
+    
+    [Journal of Biomedical Semantics](https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2)
     
   AESThenHMAC Authentication
   
