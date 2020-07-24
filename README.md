@@ -45,7 +45,7 @@ Hamming Distance
 Phonetic Pattern matching 
   
      A phonetic algorithm is a method for comparing strings by sound, specifically as pronounced in English, 
-     where differences in spelling can be overlooked
+     where differences in spelling can be overlooked.
     
 **_Ref._** [Journal of Biomedical Semantics][]
 
@@ -54,7 +54,9 @@ Phonetic Pattern matching
 **Added encrypted pointer obfuscation referencing crytographic and authentication key pairs**
 
 AESThenHMAC Authentication
-  
+
+     You've gotta love a good cipher methodology.
+     
 **_Ref._** @https://gist.github.com/jbtule/4336842
 
 ***
