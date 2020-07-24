@@ -17,50 +17,6 @@ Simplified assigning user defined attributes on the following
 
 ***
 
-**User defined pattern matching algorithms enabled**
-
-Ratcliff Obershelp
-  
-      The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and 
-      John A. Obershelp in 1983 to address concerns about educational software (Ratcliff, 1988).
-
-_ref._ [The Gestalt Approach][]
-
-Levenshtein Distance
-  
-      The Levenshtein distance is a string metric for measuring the difference between two sequences. 
-      The Levenshtein distance between two words is the minimum number of single-character edits 
-      (i.e.insertions, deletions or substitutions) required to change one word into the other.
-
-_ref._ [The Levenshtein distance algorithm][]
-   
-Hamming Distance
-  
-      The Hamming Distance measures the minimum number of substitutions required to change one string into 
-      the other.The Hamming distance between two strings of equal length is the number of positions at which 
-      the corresponding symbols are different.
-    
-_ref._ [Hamming Distance as a Concept in DNA Molecular Recognition][]
-   
-Phonetic Pattern matching 
-  
-     A phonetic algorithm is a method for comparing strings by sound, specifically as pronounced in English, 
-     where differences in spelling can be overlooked.
-    
-_ref._ [Journal of Biomedical Semantics][]
-
-***
-
-**Added encrypted pointer obfuscation referencing crytographic and authentication key pairs**
-
-AESThenHMAC Authentication
-
-     You've gotta love a good cipher methodology.
-     
-_ref._ @https://gist.github.com/jbtule/4336842
-
-***
-
 **Added additional log, debug and trace monitoring**
 
 Trace monitoring
