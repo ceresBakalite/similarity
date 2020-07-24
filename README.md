@@ -80,14 +80,17 @@ Trace monitoring
 
 Runtime error logging
 
-     Enabled runtime error logging ([log4net][]) as a semi-permanent feature. It is now a user-defined option 
-     whose default is set to log to the cloud and works quietly in the background.  Logging to file and to the 
-     console remain, but are disabled in production.
+     Enabled runtime error logging as a semi-permanent feature. It is now a user-defined option whose default 
+     is set to log to the cloud and works quietly in the background.  Logging to file and to the console 
+     remain, but are disabled in production.
+
+**_Ref._** [The Apache log4net library][]
+
 
 [Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
 [The Levenshtein distance algorithm]: https://www.educative.io/edpresso/the-levenshtein-distance-algorithm
 [The Gestalt Approach]: https://en.wikipedia.org/wiki/Gestalt_Pattern_Matching
 [read more]: https://ceresbakalite.github.io/similarity/ 
-[log4net]: https://logging.apache.org/log4net/
+[The Apache log4net library]: https://logging.apache.org/log4net/
 
