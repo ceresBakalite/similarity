@@ -69,12 +69,12 @@ Trace monitoring
      and process time intervals, particularly related to cloud server activity. This code is ignored by the 
      compiler on release. 
      
-     It was noted that timeout errors (specifically 258 and -2 SQL and .NET timeouts) occurred during specific 
-     periods during the day.  This in turn brought to attention the need to invoke some background processes 
-     at different intervals during initialisation.
+     It was noted that timeout errors (commonly 258, 165, 298 and -2 et al SQL and .NET timeouts) occurred 
+     during specific periods during the day.  This in turn brought to attention the need to invoke some 
+     background processes at different intervals during initialisation.
      
-     In addition, the delays enabled us to accurately target retry attempts on stored procedures that did not 
-     experience a fatal error, which was a bonus.
+     In addition, these delays enabled us to accurately target retry attempts on stored procedures that we now 
+     knew did not experience a fatal error, which was a bonus.
 
 [Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
