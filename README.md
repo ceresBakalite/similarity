@@ -6,8 +6,8 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 Simplified assigning user defined attributes on the following
     
-      * Treat whitespace characters as noise characters
-      * Apply case insensitivity to each string
+1. Treat whitespace characters as noise characters
+1. Apply case insensitivity to each string
       * Pad the smallest string to be of equal length to the largest
       * Determine if one string is similar to the converse of the other
       * Apply a phonetic filter to further determine similarity
