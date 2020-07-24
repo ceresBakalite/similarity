@@ -13,6 +13,8 @@ Simplified assigning user defined attributes on the following
 * Apply a phonetic filter to further determine similarity
 * Weight distinct case insensitive whole words shared by both strings
 
+
+
 **User defined pattern matching algorithms enabled**
 
 Ratcliff Obershelp
@@ -45,11 +47,15 @@ Phonetic Pattern matching
     
    **_Ref._** [Journal of Biomedical Semantics][]
 
+
+
 **Added encrypted pointer obfuscation referencing crytographic and authentication key pairs**
 
 AESThenHMAC Authentication
   
    **_Ref._** @https://gist.github.com/jbtule/4336842
+
+
 
 **Added additional debug and trace monitoring**
 
