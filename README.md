@@ -4,9 +4,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 **Release Notes v1.2.5b**
 
-Pattern Matching attributes
-  
-Simplify user defined attributes on the following
+Simplify assigning user defined attributes on the following
     
       1. Treat whitespace characters as noise characters
       2. Apply case insensitivity to each string
@@ -14,7 +12,9 @@ Simplify user defined attributes on the following
       4. Determine if one string is similar to the converse of the other
       5. Apply a phonetic filter to further determine similarity
       6. Weight distinct case insensitive whole words shared by both strings
-  
+
+**Matching algorithms**
+
 Ratcliff Obershelp
   
       The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and 
@@ -44,11 +44,15 @@ Phonetic Pattern matching
      where differences in spelling can be overlooked
     
    **_Ref._** [Journal of Biomedical Semantics][]
-   
+
+**Added crytographic and authentication key obfuscation**
+
 AESThenHMAC Authentication
   
    **_Ref._** @https://gist.github.com/jbtule/4336842
-   
+
+**Enhanced debug monitoring**
+
 Trace monitoring
   
      Background debug trace markers have been added to the pre-production environment to monitor seek and
