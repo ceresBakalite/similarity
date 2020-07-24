@@ -7,11 +7,11 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 Simplified assigning user defined attributes on the following
     
       1. Treat whitespace characters as noise characters
-      2. Apply case insensitivity to each string
-      3. Pad the smallest string to be of equal length to the largest
-      4. Determine if one string is similar to the converse of the other
-      5. Apply a phonetic filter to further determine similarity
-      6. Weight distinct case insensitive whole words shared by both strings
+      1. Apply case insensitivity to each string
+      1. Pad the smallest string to be of equal length to the largest
+      1. Determine if one string is similar to the converse of the other
+      1. Apply a phonetic filter to further determine similarity
+      1. Weight distinct case insensitive whole words shared by both strings
 
 **User defined pattern matching algorithms enabled**
 
