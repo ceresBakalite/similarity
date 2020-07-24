@@ -13,7 +13,7 @@ Simplify assigning user defined attributes on the following
       5. Apply a phonetic filter to further determine similarity
       6. Weight distinct case insensitive whole words shared by both strings
 
-**Matching algorithms**
+**User defined pattern matching algorithms enabled**
 
 Ratcliff Obershelp
   
@@ -45,20 +45,20 @@ Phonetic Pattern matching
     
    **_Ref._** [Journal of Biomedical Semantics][]
 
-**Added crytographic and authentication key obfuscation**
+**Added encrypted pointer obfuscation referencing crytographic and authentication key pairs**
 
 AESThenHMAC Authentication
   
    **_Ref._** @https://gist.github.com/jbtule/4336842
 
-**Enhanced debug monitoring**
+**Added additional debug and trace monitoring**
 
 Trace monitoring
   
      Background debug trace markers have been added to the pre-production environment to monitor seek and
-     process time particularly on cloud servers. It was noted that timeout errors (specifically 258 and -2 SQL
-     and .NET timeouts) occurred during specific periods during the day.  This in turn brought to attention 
-     the need to invoke some background processes at different intervals during initialisation.
+     process time particularly related to cloud server activity. It was noted that timeout errors (specifically 
+     258 and -2 SQL and .NET timeouts) occurred during specific periods during the day.  This in turn brought 
+     to attention the need to invoke some background processes at different intervals during initialisation.
 
 [Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
