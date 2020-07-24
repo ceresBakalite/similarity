@@ -24,7 +24,7 @@ Ratcliff Obershelp
       The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and 
       John A. Obershelp in 1983 to address concerns about educational software (Ratcliff, 1988).
 
-**_Ref._** [The Gestalt Approach][]
+_ref._ [The Gestalt Approach][]
 
 Levenshtein Distance
   
@@ -32,7 +32,7 @@ Levenshtein Distance
       The Levenshtein distance between two words is the minimum number of single-character edits 
       (i.e.insertions, deletions or substitutions) required to change one word into the other.
 
-**_Ref._** [The Levenshtein distance algorithm][]
+_ref._ [The Levenshtein distance algorithm][]
    
 Hamming Distance
   
@@ -40,14 +40,14 @@ Hamming Distance
       the other.The Hamming distance between two strings of equal length is the number of positions at which 
       the corresponding symbols are different.
     
-**_Ref._** [Hamming Distance as a Concept in DNA Molecular Recognition][]
+_ref._ [Hamming Distance as a Concept in DNA Molecular Recognition][]
    
 Phonetic Pattern matching 
   
      A phonetic algorithm is a method for comparing strings by sound, specifically as pronounced in English, 
      where differences in spelling can be overlooked.
     
-**_Ref._** [Journal of Biomedical Semantics][]
+_ref._ [Journal of Biomedical Semantics][]
 
 ***
 
@@ -57,7 +57,7 @@ AESThenHMAC Authentication
 
      You've gotta love a good cipher methodology.
      
-**_Ref._** @https://gist.github.com/jbtule/4336842
+_ref._ @https://gist.github.com/jbtule/4336842
 
 ***
 
@@ -84,7 +84,7 @@ Runtime error logging
      is set to log to the cloud and works quietly in the background.  Logging to file and to the console 
      remain, but are disabled in production.
 
-**_Ref._** [The Apache log4net library][]
+_ref._ [The Apache log4net library][]
 
 ***
 
