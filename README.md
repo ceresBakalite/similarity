@@ -86,6 +86,7 @@ Runtime error logging
 
 **_Ref._** [The Apache log4net library][]
 
+***
 
 [Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
