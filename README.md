@@ -71,6 +71,8 @@ Trace monitoring
      periods during the day.  This in turn brought to attention the need to invoke some background processes 
      at different intervals during initialisation.
 
+.markdown-preview.markdown-preview { p, ul, ol {font-size: 1.2em;} }
+
 [Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
 [The Levenshtein distance algorithm]: https://www.educative.io/edpresso/the-levenshtein-distance-algorithm
