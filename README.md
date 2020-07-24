@@ -63,9 +63,11 @@ AESThenHMAC Authentication
 
 Trace monitoring
   
-     Background debug trace markers have been added to the pre-production environment to monitor seek and
-     process time particularly related to cloud server activity. This has enabled us to significantly reduce 
-     the time required for a typical application initialisation.
+     This has enabled us to significantly reduce the time required for a typical application initialisation.
+     
+     Background debug trace markers have been added to the pre-production and dev environment to monitor seek 
+     and process time intervals, particularly related to cloud server activity. This code is ignored by the 
+     assembler on release. 
      
      It was noted that timeout errors (specifically 258 and -2 SQL and .NET timeouts) occurred during specific 
      periods during the day.  This in turn brought to attention the need to invoke some background processes 
