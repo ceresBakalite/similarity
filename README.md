@@ -2,6 +2,8 @@
 ### *Pattern matching used to seek similarity between data strings*
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items. ([read more][])
 
+***
+
 **Release Notes v1.2.5b**
 
 Simplified assigning user defined attributes on the following
@@ -13,7 +15,7 @@ Simplified assigning user defined attributes on the following
 * Apply a phonetic filter to further determine similarity
 * Weight distinct case insensitive whole words shared by both strings
 
-
+***
 
 **User defined pattern matching algorithms enabled**
 
@@ -47,7 +49,7 @@ Phonetic Pattern matching
     
    **_Ref._** [Journal of Biomedical Semantics][]
 
-
+***
 
 **Added encrypted pointer obfuscation referencing crytographic and authentication key pairs**
 
@@ -55,7 +57,7 @@ AESThenHMAC Authentication
   
    **_Ref._** @https://gist.github.com/jbtule/4336842
 
-
+***
 
 **Added additional debug and trace monitoring**
 
