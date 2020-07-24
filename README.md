@@ -80,9 +80,9 @@ Trace monitoring
 
 Runtime error logging
 
-     Enabled runtime error logging (log4net) as a semi-permanent feature. It is now a user-defined option whose 
-     default is set to log to the cloud and works quietly in the background.  Logging to file and to the console 
-     remain, but are disabled in production.
+     Enabled runtime error logging (log4net) as a semi-permanent feature. It is now a user-defined option 
+     whose default is set to log to the cloud and works quietly in the background.  Logging to file and to the 
+     console remain, but are disabled in production.
 
 [Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
