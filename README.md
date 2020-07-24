@@ -4,7 +4,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 **Release Notes v1.2.5b**
 
-Simplify assigning user defined attributes on the following
+Simplified assigning user defined attributes on the following
     
       1. Treat whitespace characters as noise characters
       2. Apply case insensitivity to each string
@@ -56,9 +56,12 @@ AESThenHMAC Authentication
 Trace monitoring
   
      Background debug trace markers have been added to the pre-production environment to monitor seek and
-     process time particularly related to cloud server activity. It was noted that timeout errors (specifically 
-     258 and -2 SQL and .NET timeouts) occurred during specific periods during the day.  This in turn brought 
-     to attention the need to invoke some background processes at different intervals during initialisation.
+     process time particularly related to cloud server activity. This has enabled us to significantly reduce 
+     the time required for a typical application initialisation.
+     
+     It was noted that timeout errors (specifically 258 and -2 SQL and .NET timeouts) occurred during specific 
+     periods during the day.  This in turn brought to attention the need to invoke some background processes 
+     at different intervals during initialisation.
 
 [Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
