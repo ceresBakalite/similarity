@@ -4,16 +4,55 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 ***
 
-**Release Notes v1.2.5b**
+**Release Notes v1.2.8b**
 
-Simplified assigning user defined attributes on the following
-    
-* Treat whitespace characters as noise characters
-* Apply case insensitivity to each string
-* Pad the smallest string to be of equal length to the largest
-* Determine if one string is similar to the converse of the other
-* Apply a phonetic filter to further determine similarity
-* Weight distinct case insensitive whole words shared by both strings
+Applied predominately cosmetic changes
+
+	1. Smoothed display-text transition
+	2. Stopped unnecessary display catchup builds, eliminating flicker
+	3. Added a splash screen
+	4. Added a drag & drop presentation display
+	5. Removed a display threading bug that appeared only when an unusually large number of duplicates were present
+	6. Normalised method calls so that methods applying similar or cross over activities did not repeat tasks
+	7. Applied system diagnostic compilation directives to accurately reflect the run-time environment
+	8. Set pre-processor and conditional compiler directives to reflect the run-time environment
+	9. Applied debug directives to accurately time tasks
+	10. Reallocated and repositioned methods to create a smoother on load transition
+	11. Redesigned threading start-up tasks to create a smoother on load transition
+	12. Set threading tasks to perform only in the environment in which they are required
+	13. Applied a pull data request as a new default, permitting a user to optionally change from the now redundant 
+	    push data request when applying abbreviations to search criteria.  This greatly enhances performance on all 
+	    but the smallest data sets
+	14. Applied command-line usage to enable the application to be called from an external assembly.  
+	
+	The command-line takes zero, two or ten arguments. Zero arguments will launch the application, whereas any argument 
+        passed to the application will return an integer representing a percentage matching value
+	
+	For example:
+	
+	[location]\Similarity.exe "comparison string one"  "comparison string two"
+	
+	In addition the command line also supports the following eight arguments:
+	
+	MatchingAlgorithm (0,1,2)
+	
+	Where:
+	
+	   0 = the Ratcliff/Obershelp matching algorithm
+	   1 = the Levenshtein distance algorithm
+	   2 = the Hamming distance algorithm
+	
+	MakeCaseInsensitive (true or false)
+	PadToEqualLength (true or false)
+	RemoveWhitespace (true or false)
+	ReverseComparison (true or false)
+	MakeCaseInsensitive (true or false)
+	PhoneticFilter (true or false)
+	WholeWordComparison (true or false)
+	
+	For example:
+	
+	[location]\Similarity.exe "comparison string one"  "comparison string two" 2 true true true true true true true
 
 ***
 
