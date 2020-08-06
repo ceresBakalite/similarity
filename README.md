@@ -32,7 +32,7 @@ Applied predominately cosmetic changes
 	
 	For example:
 	
-	[location]\Similarity.exe "comparison string one"  "comparison string two"
+	[location]\Similarity.exe "comparison one"  "comparison two"
 	
 	In addition the command line also supports the following eight arguments:
 	
@@ -54,7 +54,7 @@ Applied predominately cosmetic changes
 	
 	For example:
 	
-	[location]\Similarity.exe "comparison string one"  "comparison string two" 2 true true true true true true true
+	[location]\Similarity.exe "comparison one"  "comparison two" 2 true true true true true true true
 
 ***
 
