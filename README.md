@@ -12,21 +12,23 @@ Applied predominately cosmetic changes
 	2. Stopped unnecessary display catchup builds, eliminating flicker
 	3. Added a splash screen
 	4. Added a drag & drop presentation display
-	5. Removed a display threading bug that appeared only when an unusually large number of duplicates were present
-	6. Normalised method calls so that methods applying similar or cross over activities did not repeat tasks
+	5. Removed a display threading bug that appeared only when an unusually large number of duplicates
+	   were present
+	6. Normalised method calls so that methods applying similar or cross over activities did not repeat 
+	   tasks
 	7. Applied system diagnostic compilation directives to accurately reflect the run-time environment
 	8. Set pre-processor and conditional compiler directives to reflect the run-time environment
 	9. Applied debug directives to accurately time tasks
 	10. Reallocated and repositioned methods to create a smoother on load transition
 	11. Redesigned threading start-up tasks to create a smoother on load transition
 	12. Set threading tasks to perform only in the environment in which they are required
-	13. Applied a pull data request as a new default, permitting a user to optionally change from the now redundant 
-	    push data request when applying abbreviations to search criteria.  This greatly enhances performance on all 
-	    but the smallest data sets
+	13. Applied a pull data request as a new default, permitting a user to optionally change from the 
+	    now redundant push data request when applying abbreviations to search criteria.  This greatly 
+	    enhances performance on all but the smallest data sets
 	14. Applied command-line usage to enable the application to be called from an external assembly.  
 	
-	The command-line takes zero, two or ten arguments. Zero arguments will launch the application, whereas any argument 
-        passed to the application will return an integer representing a percentage matching value
+	The command-line takes zero, two or ten arguments. Zero arguments will launch the application, whereas
+	any argument passed to the application will return an integer representing a percentage matching value
 	
 	For example:
 	
