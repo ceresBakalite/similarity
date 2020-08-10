@@ -8,12 +8,12 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 Applied predominately cosmetic changes
 
-[v1.2.8.3b notes][]
+[v1.2.8.3b notes][]:
 
 	1. Stopped further unnecessary display catch-up builds, eliminating flicker (deleting multiple rows 
 	   in the Result View now refreshes only once when all processing is complete).
 
-v1.2.8.2b notes:
+[v1.2.8.2b notes][]:
 
 	1. Smoothed display-text transition
 	2. Stopped unnecessary display catchup builds, eliminating flicker
