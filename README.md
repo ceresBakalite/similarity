@@ -142,6 +142,6 @@ _ref._ [The Apache log4net library][]
 [The Gestalt Approach]: https://en.wikipedia.org/wiki/Gestalt_Pattern_Matching
 [read more]: https://ceresbakalite.github.io/similarity/ 
 [The Apache log4net library]: https://logging.apache.org/log4net/
-[v1.2.8.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/1.2.8.3b
+[v1.2.8.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.3b
 [v1.2.8.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.2b
 
