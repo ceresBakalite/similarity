@@ -10,8 +10,6 @@ Applied predominately cosmetic changes
 
 v1.2.8.3b notes:
 
-Minor changes since release v1.2.8.2b
-
 	1. Stopped further unnecessary display catch-up builds, eliminating flicker (deleting multiple rows 
 	   in the Result View now refreshes only once when all processing is complete).
 
