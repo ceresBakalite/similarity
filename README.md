@@ -4,9 +4,13 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 ***
 
-**Release Notes v1.2.8b**
+**Release Notes v1.3.2b**
 
-Applied predominately cosmetic changes
+Minor changes since release v1.2.8.3b
+
+	1. Minor cumulative changes applied.  
+	2. Dependencies updated
+	3. Reverted to Semantic Versioning (SemVer - ie major.minor.patch) notation. 
 
 [v1.2.8.3b notes][]:
 
