@@ -4,7 +4,9 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 ***
 
-**Release Notes v1.3.2b**
+**Release Vesrion v1.3.2b**
+
+[v1.3.2b notes][]:
 
 Minor changes since release v1.2.8.3b
 
@@ -148,3 +150,4 @@ _ref._ [The Apache log4net library][]
 [The Apache log4net library]: https://logging.apache.org/log4net/
 [v1.2.8.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.3b
 [v1.2.8.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.2b
+[v1.3.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.2b
