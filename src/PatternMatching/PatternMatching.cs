@@ -342,20 +342,6 @@ namespace PatternMatching
                 return (result > wordComparison) ? result : wordComparison;
             }
 
-            public static int HDMatchPattern(string str1, string str2)
-            {
-                if (str1.Length == str2.Length)
-                {
-                    int distance = str1.ToCharArray()
-                        .Zip(str2.ToCharArray(), (c1, c2) => new { c1, c2 })
-                        .Count(m => m.c1 != m.c2);
-
-                    return distance;
-                }
-
-                return System.Math.Max(str1.Length, str2.Length);
-            }
-
             private static int HDCompareWords(string str1, string str2,
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 decimal iWeightPercentage = 15)     // arbitrarily reduces the result by the weight percentage specified
@@ -377,6 +363,20 @@ namespace PatternMatching
                 int result = HDCompare(StringMethods.SoundexWordsInString(str1), StringMethods.SoundexWordsInString(str2));
 
                 return System.Convert.ToInt32(result - (result * (iWeightPercentage / 100)));
+            }
+
+            public static int HDMatchPattern(string strLeft, string strRight)
+            {
+                if (strLeft.Length == strRight.Length)
+                {
+                    int distance = strLeft.ToCharArray()
+                        .Zip(strRight.ToCharArray(), (c1, c2) => new { c1, c2 })
+                        .Count(m => m.c1 != m.c2);
+
+                    return distance;
+                }
+
+                return System.Math.Max(strLeft.Length, strRight.Length);
             }
 
             #endregion
