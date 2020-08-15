@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using System.Linq;
 
 namespace NAVService
@@ -149,7 +149,7 @@ namespace NAVService
                 DataTable RebuildDataTable()
                 {
                     System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(RowDelimiter);
-                    string[] rows = regex.Split(ApplyAbbreviations());
+                    string[] rows = regex.Split(ApplyAbbreviationsThread());
 
                     regex = new System.Text.RegularExpressions.Regex(ColDelimiter);
 
@@ -172,7 +172,7 @@ namespace NAVService
                     return tableClone;
                 }
 
-                string ApplyAbbreviations() 
+                string ApplyAbbreviationsThread() 
                 {
                     return System.Threading.Tasks.Task.Run(() => {
 
@@ -401,9 +401,9 @@ namespace NAVService
         {
             if (ResultTable == null || ParentTable == null) return 0;
 
-            return System.Threading.Tasks.Task.Run(() => { return InvokeFlagDuplicates(); }).Result;
+            return System.Threading.Tasks.Task.Run(() => { return InvokeFlagDuplicatesThread(); }).Result;
 
-            int InvokeFlagDuplicates()
+            int InvokeFlagDuplicatesThread()
             {
                 ParentTable.AcceptChanges();
 
@@ -446,7 +446,7 @@ namespace NAVService
 
         }
 
-        public static int GetCumulativeThreshhold(DataTable ParentTable)
+        public static int GetCumulativeThreshholdThread(DataTable ParentTable)
         {
             if (ParentTable == null) return 0;
 
