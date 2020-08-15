@@ -178,4 +178,5 @@ namespace NAVService
         //protected internal static readonly bool LogErrorsToFile = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(DB_LOG_ERRORS_TO_FILE));
 
     }
+
 }
