@@ -535,14 +535,7 @@ namespace PatternMatching
 
         public static string PadStringsToEqualLength(string strPadString, string strTestString)
         {
-            return PadString(strPadString, strTestString.Length);
-        }
-
-        public static string PadString(string strPadString, int iPadStringLength = 0, bool bPadLeft = false, char delimiter = (char)32)
-        {
-            if (strPadString.Length >= iPadStringLength) return strPadString;
-
-            return bPadLeft ? strPadString.PadLeft(iPadStringLength, delimiter) : strPadString.PadRight(iPadStringLength, delimiter);
+            return strPadString.PadRight(strTestString.Length, (char)32);
         }
 
         #endregion
