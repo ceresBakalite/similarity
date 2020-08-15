@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 
 namespace PatternMatching
 {
@@ -257,34 +257,35 @@ namespace PatternMatching
             {
                 if (str2.Length == 0) return str1.Length;
 
-                int[] costs = new int[str2.Length];
+                int[] str2Array = new int[str2.Length];
 
-                for (int i = 0; i < costs.Length;) costs[i] = ++i;
+                for (int i = 0; i < str2Array.Length;) str2Array[i] = ++i;
 
-                for (int i = 0; i < str1.Length; i++)
+                for (int i = 0; i < str1.Length; i++) CalculateCost(i, str1[i]);
+
+                void CalculateCost(int PositionStr1, char Str1Char)
                 {
-                    int cost = i;
-                    int addationCost = i;
-                    char chr = str1[i];
+                    int PositionStr2 = PositionStr1;
 
                     for (int j = 0; j < str2.Length; j++)
                     {
-                        int insertionCost = cost;
-                        cost = addationCost;
-                        addationCost = costs[j];
+                        int k = PositionStr1;
+                        PositionStr1 = PositionStr2;
+                        PositionStr2 = str2Array[j];
 
-                        if (chr != str2[j])
+                        if (Str1Char != str2[j])
                         {
-                            if (insertionCost < cost) cost = insertionCost;
-                            if (addationCost < cost) cost = addationCost;
-                            ++cost;
+                            if (k < PositionStr1) PositionStr1 = k;
+                            if (PositionStr2 < PositionStr1) PositionStr1 = PositionStr2;
+                            ++PositionStr1;
                         }
 
-                        costs[j] = cost;
+                        str2Array[j] = PositionStr1;
                     }
+
                 }
 
-                return costs[costs.Length - 1];
+                return str2Array[str2Array.Length - 1];
             }
 
             #endregion
