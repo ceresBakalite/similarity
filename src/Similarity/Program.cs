@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 /// <summary>
 /// The main entry point for the application.
@@ -22,6 +22,7 @@ namespace NAVService
                 System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
 
                 SplashScreen SplashWindow = new SplashScreen();
+
                 System.Threading.Thread SplashThread = new System.Threading.Thread(new System.Threading.ThreadStart(() => System.Windows.Forms.Application.Run(SplashWindow)));
                 SplashThread.SetApartmentState(System.Threading.ApartmentState.MTA);
                 SplashThread.Start();
