@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace NAVService
@@ -771,11 +771,11 @@ namespace NAVService
 
                 bool bDisplayProgress = rows.Length > (Constants.ACTION_PROGRESS_ESTIMATE / 4);
 
-                System.Threading.Tasks.Task DeleteTask = System.Threading.Tasks.Task.Run(() => { DeleteDuplicates(); });
+                System.Threading.Tasks.Task DeleteTask = System.Threading.Tasks.Task.Run(() => { DeleteDuplicatesThread(); });
 
                 DeleteTask.Wait();
 
-                void DeleteDuplicates()
+                void DeleteDuplicatesThread()
                 {
                     ParentTable.AcceptChanges();
 
@@ -1110,7 +1110,7 @@ namespace NAVService
                 if (InitializeWorksheet())
                 {
                     ResultDisplayDisableAll(false);
-                    SetResultTable(System.Threading.Tasks.Task.Run(() => { return ParseWorksheet(); }).Result);
+                    SetResultTable(System.Threading.Tasks.Task.Run(() => { return ParseWorksheetThread(); }).Result);
                     RefreshWorkspace();
                 }
 
@@ -1228,7 +1228,7 @@ namespace NAVService
 
         }
 
-        private System.Data.DataTable ParseWorksheet()
+        private System.Data.DataTable ParseWorksheetThread()
         {
             bool bRefreshParentString = true;
             object ParentTableRowID = null;
@@ -1366,7 +1366,7 @@ namespace NAVService
 
                     decimal CumulativeThreshhold()
                     {
-                        int i = System.Threading.Tasks.Task.Run(() => { return WorkTables.GetCumulativeThreshhold(ParentTable); }).Result;
+                        int i = System.Threading.Tasks.Task.Run(() => { return WorkTables.GetCumulativeThreshholdThread(ParentTable); }).Result;
                         return (i > SheetDataGridViewRowCount) ? i++ : (DuplicateRowsCount > SheetDataGridViewRowCount) ? DuplicateRowsCount : SheetDataGridViewRowCount;
                     }
 
