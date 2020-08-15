@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 
 namespace ClassLibraryStandard
 {
@@ -565,9 +565,11 @@ namespace ClassLibraryStandard
             return new string(charArray);
         }
 
-        public static string PadString(string strPadString, string strTestString, char delimiter = (char)32, bool bPadLeft = false)
+        public static string PadString(string strPadString, int iPadStringLength = 0, char delimiter = (char)32, bool bPadLeft = false)
         {
-            return bPadLeft ? strPadString.PadLeft(strTestString.Length, delimiter) : strPadString.PadRight(strTestString.Length, delimiter);
+            if (strPadString.Length >= iPadStringLength) return strPadString;
+
+            return bPadLeft ? strPadString.PadLeft(iPadStringLength, delimiter) : strPadString.PadRight(iPadStringLength, delimiter);
         }
 
         public static string MakeCaseInsensitive(string str, bool bUpperCase = true)
