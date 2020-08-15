@@ -1,4 +1,4 @@
-﻿using Squirrel;
+using Squirrel;
 
 namespace NAVService
 {
@@ -49,7 +49,7 @@ namespace NAVService
                             return GetAttribute(System.Configuration.ConfigurationManager.ConnectionStrings[Constants.CONNECTION_CLOUD_UPDATE].ConnectionString);
 
                         default:
-                            return Constants.CONNECTION_UPD_DEFAULT;
+                            return Constants.CONNECTION_PREPROD_UPDATE_DEFAULT;
 
                     }
 
