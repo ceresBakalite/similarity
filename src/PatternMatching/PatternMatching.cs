@@ -85,8 +85,8 @@ namespace PatternMatching
                 str1 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str1) : str1;
                 str2 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str2) : str2;
 
-                str1 = bPadToEqualLength ? StringMethods.PadString(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadString(str2, str1) : str2;
+                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
+                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
 
                 int result = ROCompare(str1, str2);
 
@@ -106,8 +106,8 @@ namespace PatternMatching
                 str1 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str1))));
                 str2 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str2))));
 
-                str1 = bPadToEqualLength ? StringMethods.PadString(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadString(str2, str1) : str2;
+                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
+                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
 
                 int result = ROCompare(str1, str2);
 
@@ -216,8 +216,8 @@ namespace PatternMatching
                 str1 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str1) : str1;
                 str2 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str2) : str2;
 
-                str1 = bPadToEqualLength ? StringMethods.PadString(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadString(str2, str1) : str2;
+                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
+                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
 
                 int result = LSCompare(str1, str2);
 
@@ -237,8 +237,8 @@ namespace PatternMatching
                 str1 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str1))));
                 str2 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str2))));
 
-                str1 = bPadToEqualLength ? StringMethods.PadString(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadString(str2, str1) : str2;
+                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
+                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
 
                 int result = LSCompare(str1, str2);
 
@@ -328,8 +328,8 @@ namespace PatternMatching
                 str1 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str1) : str1;
                 str2 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str2) : str2;
 
-                str1 = StringMethods.PadString(str1, str2);
-                str2 = StringMethods.PadString(str2, str1);
+                str1 = StringMethods.PadStringsToEqualLength(str1, str2);
+                str2 = StringMethods.PadStringsToEqualLength(str2, str1);
 
                 int result = HDCompare(str1, str2);
 
@@ -349,8 +349,8 @@ namespace PatternMatching
                 str1 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str1))));
                 str2 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str2))));
 
-                str1 = bPadToEqualLength ? StringMethods.PadString(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadString(str2, str1) : str2;
+                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
+                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
 
                 int result = HDCompare(str1, str2);
 
@@ -528,14 +528,21 @@ namespace PatternMatching
             return new string(charArray);
         }
 
-        public static string PadString(string strPadString, string strTestString, char delimiter = (char)32, bool bPadLeft = false)
-        {
-            return bPadLeft ? strPadString.PadLeft(strTestString.Length, delimiter) : strPadString.PadRight(strTestString.Length, delimiter);
-        }
-
         public static string MakeCaseInsensitive(string str, bool bUpperCase = true)
         {
             return bUpperCase ? str.ToUpperInvariant() : str.ToLowerInvariant();
+        }
+
+        public static string PadStringsToEqualLength(string strPadString, string strTestString)
+        {
+            return PadString(strPadString, strTestString.Length);
+        }
+
+        public static string PadString(string strPadString, int iPadStringLength = 0, bool bPadLeft = false, char delimiter = (char)32)
+        {
+            if (strPadString.Length >= iPadStringLength) return strPadString;
+
+            return bPadLeft ? strPadString.PadLeft(iPadStringLength, delimiter) : strPadString.PadRight(iPadStringLength, delimiter);
         }
 
         #endregion
