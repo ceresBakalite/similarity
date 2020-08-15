@@ -28,8 +28,9 @@ namespace PatternMatching
                   The Compare method calls the MatchPattern method, which in turn calls itself until all patterns 
                   are matched and a percentage value is returned.
 
-                  The GetWeightedComparison can apply up to five weights (removeWhitespace, makeCaseInsensitve, padToEqualLength,
-                  reverseComparison, soundexComparison, and wholeWordComparison) before settling on a final comparison value.
+                  The GetWeightedComparison method can apply up to six weights (bRemoveWhitespace, bMakeCaseInsensitve, 
+                  bPadToEqualLength, bReverseComparison, bSoundexComparison, and bWholeWordComparison) before settling on a 
+                  final comparison value.
 
                   Notes:
 
