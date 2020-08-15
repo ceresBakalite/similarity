@@ -1,4 +1,4 @@
-﻿//#define ENABLE_ENCRYPTION_HELPER
+//#define ENABLE_ENCRYPTION_HELPER
 
 namespace NAVService
 {
@@ -49,7 +49,7 @@ namespace NAVService
 
                 default:
                     ProductionEnabled = false;
-                    return Constants.CONNECTION_DEV_DEFAULT;
+                    return Constants.CONNECTION_PREPROD_TARGET_DEFAULT;
 
             }
 
@@ -95,6 +95,7 @@ namespace NAVService
             EnableEncryptionHelper();
         }
 
+        // Force manual inclusion
         [System.Diagnostics.Conditional("ENABLE_ENCRYPTION_HELPER")]
         public static void EnableEncryptionHelper()
         {
