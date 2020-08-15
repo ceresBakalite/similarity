@@ -1,0 +1,1 @@
+SQL Server Management Studio v18.6 Enterprise edition
