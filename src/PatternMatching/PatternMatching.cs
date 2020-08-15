@@ -253,39 +253,39 @@ namespace PatternMatching
                 return System.Convert.ToInt32(result - (result * (iWeightPercentage / 100)));
             }
 
-            public static int LSMatchPattern(string str1, string str2)
+            public static int LSMatchPattern(string strLeft, string strRight)
             {
-                if (str2.Length == 0) return str1.Length;
+                if (strRight.Length == 0) return strLeft.Length;
 
-                int[] str2Array = new int[str2.Length];
+                int[] strRightArray = new int[strRight.Length];
 
-                for (int i = 0; i < str2Array.Length;) str2Array[i] = ++i;
+                for (int i = 0; i < strRightArray.Length;) strRightArray[i] = ++i;
 
-                for (int i = 0; i < str1.Length; i++) CalculateCost(i, str1[i]);
+                for (int i = 0; i < strLeft.Length; i++) CalculateCost(i, strLeft[i]);
 
-                void CalculateCost(int PositionStr1, char Str1Char)
+                void CalculateCost(int iStrLeftPosition, char strLeftChar)
                 {
-                    int PositionStr2 = PositionStr1;
+                    int iStrRightPosition = iStrLeftPosition;
 
-                    for (int j = 0; j < str2.Length; j++)
+                    for (int j = 0; j < strRight.Length; j++)
                     {
-                        int k = PositionStr1;
-                        PositionStr1 = PositionStr2;
-                        PositionStr2 = str2Array[j];
+                        int k = iStrLeftPosition;
+                        iStrLeftPosition = iStrRightPosition;
+                        iStrRightPosition = strRightArray[j];
 
-                        if (!Str1Char.Equals(str2[j]))
+                        if (!strLeftChar.Equals(strRight[j]))
                         {
-                            if (k < PositionStr1) PositionStr1 = k;
-                            if (PositionStr2 < PositionStr1) PositionStr1 = PositionStr2;
-                            ++PositionStr1;
+                            if (k < iStrLeftPosition) iStrLeftPosition = k;
+                            if (iStrRightPosition < iStrLeftPosition) iStrLeftPosition = iStrRightPosition;
+                            ++iStrLeftPosition;
                         }
 
-                        str2Array[j] = PositionStr1;
+                        strRightArray[j] = iStrLeftPosition;
                     }
 
                 }
 
-                return str2Array[str2Array.Length - 1];
+                return strRightArray[strRightArray.Length - 1];
             }
 
             #endregion
