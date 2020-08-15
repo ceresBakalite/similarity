@@ -273,7 +273,7 @@ namespace PatternMatching
                         PositionStr1 = PositionStr2;
                         PositionStr2 = str2Array[j];
 
-                        if (Str1Char != str2[j])
+                        if (!Str1Char.Equals(str2[j]))
                         {
                             if (k < PositionStr1) PositionStr1 = k;
                             if (PositionStr2 < PositionStr1) PositionStr1 = PositionStr2;
