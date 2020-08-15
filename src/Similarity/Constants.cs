@@ -1,4 +1,4 @@
-﻿namespace NAVService
+namespace NAVService
 {
     internal class Constants
     {
@@ -126,12 +126,20 @@
         protected internal const int CONNECTION_PROD_AWS = 260345997;
         protected internal const int CONNECTION_UPDATE_LOCAL = 638847585;
         protected internal const int CONNECTION_UPDATE_CLOUD = 133872841;
-        protected internal const string CONNECTION_UPD_DEFAULT = @"C:\NAVServices\Releases\";
-        protected internal const string CONNECTION_DEV_DEFAULT = "Server=.;Database=NAV;Trusted_Connection=True;";
         protected internal const string CONNECTION_LOCAL = "NAVDatabase";
         protected internal const string CONNECTION_CLOUD = "AWSDatabase";
         protected internal const string CONNECTION_LOCAL_UPDATE = "LocalUpdate";
         protected internal const string CONNECTION_CLOUD_UPDATE = "CloudUpdate";
+
+#if DEBUG
+        // ENABLE preprod update location and dev database connection string
+        protected internal const string CONNECTION_PREPROD_UPDATE_DEFAULT = @"C:\NAVServices\Releases\";
+        protected internal const string CONNECTION_PREPROD_TARGET_DEFAULT = "Server=.;Database=NAV;Trusted_Connection=True;";
+#else
+        // DISABLE preprod update location and dev database connection string
+        protected internal const string CONNECTION_PREPROD_UPDATE_DEFAULT = null;
+        protected internal const string CONNECTION_PREPROD_TARGET_DEFAULT = "Server=.;Database=NULL;";
+#endif
 
         // runtime constant readonly variables
         protected internal static readonly string KEY_COLUMN = ClassLibraryStandard.GenericHelperMethods.GetMilliseconds(true).ToString(UserHelper.culture);
