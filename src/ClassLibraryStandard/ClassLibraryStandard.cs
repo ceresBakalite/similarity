@@ -557,7 +557,7 @@ namespace ClassLibraryStandard
             return bPadLeft ? strPadString.PadLeft(iPadStringLength, delimiter) : strPadString.PadRight(iPadStringLength, delimiter);
         }
 
-        public static string EnumerateCharSpacer(int strLength, char delimiter = (char)32)
+        public static string CharacterPadding(int strLength, char delimiter = (char)32)
         {
             int j = 0;
 
