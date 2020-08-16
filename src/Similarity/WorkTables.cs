@@ -148,10 +148,9 @@ namespace NAVService
 
                 DataTable RebuildDataTable()
                 {
-                    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(RowDelimiter);
-                    string[] rows = regex.Split(ApplyAbbreviationsThread());
+                    string[] rows = System.Threading.Tasks.Task.Run(() => { return CleanStringThread(); }).Result;
 
-                    regex = new System.Text.RegularExpressions.Regex(ColDelimiter);
+                    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(ColDelimiter);
 
                     foreach (string row in rows)
                     {
@@ -172,45 +171,44 @@ namespace NAVService
                     return tableClone;
                 }
 
-                string ApplyAbbreviationsThread() 
+                string[] CleanStringThread() 
                 {
-                    return System.Threading.Tasks.Task.Run(() => {
+                    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(RowDelimiter);
 
-                        string DirtyString = ClassLibraryStandard.StringMethods.RemoveNoiseDelimiters(ClassLibraryStandard.DataTableMethods.ConcatenateColumns(datatable, RowDelimiter, ColDelimiter));
+                    string DirtyString = ClassLibraryStandard.StringMethods.RemoveNoiseDelimiters(ClassLibraryStandard.DataTableMethods.ConcatenateColumns(datatable, RowDelimiter, ColDelimiter));
 
-                        string PushSearchCriteria()
+                    string PushSearchCriteria()
+                    {
+                        DirtyString = DataAccess.GetStringAbbreviations(DirtyString);
+
+                        LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Parse abbreviations (push dataset) Time Elapsed: ");
+
+                        return DirtyString;
+                    }
+
+                    string PullSearchCriteria()
+                    {
+                        using (DataTable table = ClassLibraryStandard.DataTableMethods.GetDataTable(DataAccess.GetAbbreviationsByUserID()))
                         {
-                            DirtyString = DataAccess.GetStringAbbreviations(DirtyString);
+                            int i = 0;
 
-                            LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Parse abbreviations (push dataset) Time Elapsed: ");
+                            while (i < table.Rows.Count)
+                            {
+                                DataRow row = table.Rows[i];
+                                DirtyString = DirtyString.Replace((string)row["nvWord"], (string)row["nvAbbreviation"]);
+                                i++;
+                            }
+
+                            LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Parse abbreviations (pull dataset) Time Elapsed: ");
 
                             return DirtyString;
                         }
 
-                        string PullSearchCriteria()
-                        {
-                            using (DataTable table = ClassLibraryStandard.DataTableMethods.GetDataTable(DataAccess.GetAbbreviationsByUserID()))
-                            {
-                                int i = 0;
+                    }
 
-                                while (i < table.Rows.Count)
-                                {
-                                    DataRow row = table.Rows[i];
-                                    DirtyString = DirtyString.Replace((string)row["nvWord"], (string)row["nvAbbreviation"]);
-                                    i++;
-                                }
+                    string CleanString = UserHelper.GetPullAbbreviations() ? PullSearchCriteria() : PushSearchCriteria();
 
-                                LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Parse abbreviations (pull dataset) Time Elapsed: ");
-
-                                return DirtyString;
-                            }
-
-                        }
-
-                        return UserHelper.GetPullAbbreviations() ? PullSearchCriteria() : PushSearchCriteria(); 
-                    
-                    }).Result;
-
+                    return regex.Split(CleanString); 
                 }
 
             }
