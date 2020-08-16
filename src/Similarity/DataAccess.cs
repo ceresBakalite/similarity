@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Dapper;
 
 namespace NAVService
@@ -51,7 +51,7 @@ namespace NAVService
                 {
                     using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                     {
-                        string queryStr = $"pGetUserPreferencesByPreferenceType { UserHelper.UserPropertiesModel.iUserID }, '{ ClassLibraryStandard.GenericStringMethods.EscapeStringExpression(nvClientPreferenceType) }'";
+                        string queryStr = $@"pGetUserPreferencesByPreferenceType { UserHelper.UserPropertiesModel.iUserID }, '{ nvClientPreferenceType }'";
                         return Database.Query<NAVUserPreferencesModel>(queryStr).ToList();
                     }
 
@@ -79,7 +79,7 @@ namespace NAVService
 
                     using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                     {
-                        string queryStr = $"pGetUserPreferenceByPreferenceName { UserHelper.UserPropertiesModel.iUserID }, '{ ClassLibraryStandard.GenericStringMethods.EscapeStringExpression(nvClientPreferenceName) }'";
+                        string queryStr = $@"pGetUserPreferenceByPreferenceName { UserHelper.UserPropertiesModel.iUserID }, '{ nvClientPreferenceName }'";
 
                         NAVUserPreferencesModel UserPreferencesModel = Database.QuerySingle<NAVUserPreferencesModel>(queryStr);
                         return (UserPreferencesModel.bClientValueRequired == 1) ? $"{ UserPreferencesModel.nvUserPreferenceValue }" : $" { UserPreferencesModel.bUserPreference }";
@@ -110,7 +110,7 @@ namespace NAVService
                 {
                     using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                     {
-                        string queryStr = $"pSetStringAbbreviations { UserHelper.UserPropertiesModel.iUserID }, '{ ClassLibraryStandard.GenericStringMethods.EscapeStringExpression(nvInputString) }', { FlaggedWordsOnly }";
+                        string queryStr = $@"pSetStringAbbreviations { UserHelper.UserPropertiesModel.iUserID }, '{ nvInputString }', { FlaggedWordsOnly }";
 
                         NAVComparisonStringModel ComparisonStringModel = Database.QuerySingle<NAVComparisonStringModel>(queryStr, commandTimeout: 0);
                         return $"{ ComparisonStringModel.nvString }";
@@ -140,7 +140,7 @@ namespace NAVService
                 {
                     using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                     {
-                        string queryStr = $"pGetPhraseAbbreviationsByUserID { UserHelper.UserPropertiesModel.iUserID }, '{ ClassLibraryStandard.GenericStringMethods.EscapeStringExpression(nvInputString) }', { FlaggedWordsOnly }";
+                        string queryStr = $@"pGetPhraseAbbreviationsByUserID { UserHelper.UserPropertiesModel.iUserID }, '{ nvInputString }', { FlaggedWordsOnly }";
 
                         NAVComparisonStringModel ComparisonStringModel = Database.QuerySingle<NAVComparisonStringModel>(queryStr);
                         return $"{ ComparisonStringModel.nvString }";
@@ -468,7 +468,7 @@ namespace NAVService
                     string queryStr = $"pUserExists { iUserID }";
                     UserHelper.UserStateModel = Database.QuerySingle<NAVUserStateModel>(queryStr);
 
-                    LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Application dapper initialisation (first Dapper invocation). Time Elapsed: ");
+                    LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Dapper initialisation (first Dapper invocation). Time Elapsed: ");
 
                     if (UserHelper.UserStateModel != null)
                     {
@@ -476,7 +476,7 @@ namespace NAVService
                         {
                             LogHelper.ApplyLogAppenderConfiguration();
 
-                            LogHelper.TraceWriteLine("TRACE - Application default state initialisation");
+                            LogHelper.TraceWriteLine("TRACE - Default state initialisation");
 
                             queryStr = $"pGetUserProperties { iUserID }";
                             NAVUserPropertiesModel UserPropertiesModel = Database.QuerySingle<NAVUserPropertiesModel>(queryStr);
