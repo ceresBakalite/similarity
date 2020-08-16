@@ -457,12 +457,12 @@ namespace ClassLibraryStandard
 
         public static string RemovePunctuation(string str)
         {
-            return new string(str.Where(c => !char.IsPunctuation(c)).ToArray());
+            return new string(str.Where(x => !char.IsPunctuation(x)).ToArray());
         }
 
         public static string RemoveWhitespace(string str)
         {
-            return new string(str.Where(c => !char.IsWhiteSpace(c)).ToArray());
+            return new string(str.Where(x => !char.IsWhiteSpace(x)).ToArray());
         }
 
         public static string RemoveNoiseDelimiters(string str)
@@ -560,12 +560,9 @@ namespace ClassLibraryStandard
 
         public static bool InString(string str, string testStr, bool bCaseSensitive = true)
         {
-            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(testStr))
-            {
-                return false;
-            }
+            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(testStr)) return false;
 
-            return (bCaseSensitive) ? str.Contains(testStr) : str.Trim().ToUpper().Contains(testStr);
+            return (bCaseSensitive) ? str.Contains(testStr) : str.ToUpperInvariant().Contains(testStr.ToUpperInvariant());
         }
 
         public static string EscapeStringExpression(string str)
