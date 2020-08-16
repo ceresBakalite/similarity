@@ -182,7 +182,7 @@ namespace NAVService
                         {
                             DirtyString = DataAccess.GetStringAbbreviations(DirtyString);
 
-                            LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Application parse abbreviations (push dataset) Time Elapsed: ");
+                            LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Parse abbreviations (push dataset) Time Elapsed: ");
 
                             return DirtyString;
                         }
@@ -200,7 +200,7 @@ namespace NAVService
                                     i++;
                                 }
 
-                                LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Application parse abbreviations (pull dataset) Time Elapsed: ");
+                                LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Parse abbreviations (pull dataset) Time Elapsed: ");
 
                                 return DirtyString;
                             }
@@ -409,7 +409,7 @@ namespace NAVService
 
                 for (int index = 0; index < ParentTable.Rows.Count; index++)
                 {
-                    string expression = Constants.COLUMN_DATA + " = '" + ClassLibraryStandard.GenericStringMethods.EscapeStringExpression(ParentTable.Rows[index][Constants.COLUMN_DATA].ToString()) + "'";
+                    string expression = Constants.COLUMN_DATA + " = '" + System.Security.SecurityElement.Escape(ParentTable.Rows[index][Constants.COLUMN_DATA].ToString()) + "'";
 
                     DataRow[] rows = ParentTable.Select(expression);
 
