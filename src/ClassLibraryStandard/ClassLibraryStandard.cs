@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 
 namespace ClassLibraryStandard
 {
@@ -253,7 +253,7 @@ namespace ClassLibraryStandard
         #endregion 
     }
 
-    public static class GenericHelperMethods
+    public static class HelperMethods
     {
         #region Common generic methods
 
@@ -371,7 +371,7 @@ namespace ClassLibraryStandard
         #endregion
     }
 
-    public static class GenericStringMethods
+    public static class StringMethods
     {
         #region Common string methods
 
@@ -522,13 +522,8 @@ namespace ClassLibraryStandard
 
         public static string ReverseString(string str)
         {
-            char[] charArray = new char[str.Length];
-            int j = 0;
-
-            for (int i = str.Length - 1; i > -1; i--)
-            {
-                charArray[j++] = str[i];
-            }
+            char[] charArray = str.ToCharArray();
+            System.Array.Reverse(charArray);
 
             return new string(charArray);
         }
