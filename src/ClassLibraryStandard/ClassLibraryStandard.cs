@@ -267,21 +267,6 @@ namespace ClassLibraryStandard
             return (utc) ? System.DateTime.UtcNow.Ticks / System.TimeSpan.TicksPerMillisecond : System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
         }
 
-        public static string EnumerateChar(int strLength, char delimiter = (char)32)
-        {
-            int j = 0;
-
-            char[] charArray = new char[strLength];
-
-            for (int i = 0; i < strLength; ++i)
-            {
-                charArray[j] = delimiter;
-                ++j;
-            }
-
-            return new string(charArray);
-        }
-
         public static bool ToBoolean(object value)
         {
             if (value == null) return false;
@@ -570,6 +555,21 @@ namespace ClassLibraryStandard
             if (strPadString.Length >= iPadStringLength) return strPadString;
 
             return bPadLeft ? strPadString.PadLeft(iPadStringLength, delimiter) : strPadString.PadRight(iPadStringLength, delimiter);
+        }
+
+        public static string EnumerateCharSpacer(int strLength, char delimiter = (char)32)
+        {
+            int j = 0;
+
+            char[] charArray = new char[strLength];
+
+            for (int i = 0; i < strLength; ++i)
+            {
+                charArray[j] = delimiter;
+                ++j;
+            }
+
+            return new string(charArray);
         }
 
         public static string MakeCaseInsensitive(string str, bool bUpperCase = true)
