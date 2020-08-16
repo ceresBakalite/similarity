@@ -65,7 +65,7 @@ namespace PatternMatching
             }
 
             public static int GetWeightedComparison(string str1, string str2,
-                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters characters
+                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters
                 bool bMakeCaseInsensitve = true,    // apply case insensitivity to each string
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 bool bReverseComparison = true,     // determine if one string is similar to the converse of the other
@@ -196,7 +196,7 @@ namespace PatternMatching
             }
 
             public static int GetWeightedComparison(string str1, string str2,
-                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters characters
+                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters
                 bool bMakeCaseInsensitve = true,    // apply case insensitivity to each string
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 bool bReverseComparison = true,     // determine if one string is similar to the converse of the other
@@ -308,7 +308,7 @@ namespace PatternMatching
             }
 
             public static int GetWeightedComparison(string str1, string str2,
-                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters characters
+                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters
                 bool bMakeCaseInsensitve = true,    // apply case insensitivity to each string
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest (required)
                 bool bReverseComparison = true,     // determine if one string is similar to the converse of the other
