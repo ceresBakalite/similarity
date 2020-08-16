@@ -16,16 +16,7 @@ namespace NAVService
                     using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                     {
                         string queryStr = $"pGetUserPreferencesByUserID { UserHelper.UserPropertiesModel.iUserID }";
-                        System.Collections.Generic.List<NAVUserPreferencesModel> model = Database.Query<NAVUserPreferencesModel>(queryStr).ToList();
-                        
-                        if (ModelExists()) return model;
-
-                        bool ModelExists()
-                        {
-                            if (model == null) throw new System.NullReferenceException();
-                            return true;
-                        }
-
+                        return Database.Query<NAVUserPreferencesModel>(queryStr).ToList();
                     }
 
                 }
@@ -424,9 +415,7 @@ namespace NAVService
                             LogHelper.TraceWritePreviousState();
 
                             string queryStr = $"pGetLastUserStateLogEntry { UserHelper.UserPropertiesModel.iUserID }";
-
-                            NAVUserStateModel UserStateModel = Database.QuerySingle<NAVUserStateModel>(queryStr);
-                            return UserStateModel;
+                            return Database.QuerySingle<NAVUserStateModel>(queryStr);
                         }
 
                     }
@@ -475,13 +464,10 @@ namespace NAVService
                         if (UserHelper.UserStateModel.bConfirmed)
                         {
                             LogHelper.ApplyLogAppenderConfiguration();
-
                             LogHelper.TraceWriteLine("TRACE - Default state initialisation");
 
                             queryStr = $"pGetUserProperties { iUserID }";
-                            NAVUserPropertiesModel UserPropertiesModel = Database.QuerySingle<NAVUserPropertiesModel>(queryStr);
-
-                            return UserPropertiesModel;
+                            return Database.QuerySingle<NAVUserPropertiesModel>(queryStr);
                         }
 
                     }
