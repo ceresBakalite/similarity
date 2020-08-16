@@ -16,7 +16,7 @@ namespace NAVService
             string application = bIncludeVersion ? Properties.Resources.CAPTION_APPLICATION + " " + Constants.BUILD_VERSION : Properties.Resources.CAPTION_APPLICATION;
             string preproduction = GetProductionEnabled() ? null : " [DEV]";
 
-            return bIncludeUserName ? application + ClassLibraryStandard.GenericHelperMethods.EnumerateChar(8) + UserHelper.UserPropertiesModel.nvUserName + " is signed in" + preproduction : application + preproduction;
+            return bIncludeUserName ? application + UserHelper.UserPropertiesModel.nvUserName.PadLeft(22, (char)32)  + " is signed in" + preproduction : application + preproduction;
         }
 
         public static string AssemblyBuildVersion()
