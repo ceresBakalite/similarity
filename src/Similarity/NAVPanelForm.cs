@@ -15,12 +15,12 @@ namespace NAVService
         private bool SetEnablePreferenceChange(bool value) => EnablePreferenceChange = value;
         private bool GetEnablePreferenceChange() { return EnablePreferenceChange; }
 
-        private readonly bool HideAbbreviations = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_HIDE_ABBREVIATIONS));
-        private readonly bool HideExplorer = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_HIDE_EXPLORER));
-        private readonly bool MaintainTabState = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_OPEN_LAST_TAB));
-        private readonly bool AddNewAbbreviations = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_ADD_NEW_ABBREVIATIONS));
-        private readonly bool DeleteAbbreviations = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_DELETE_ABBREVIATIONS));
-        private readonly bool EditAbbreviations = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_EDIT_ABBREVIATIONS));
+        private readonly bool HideAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_HIDE_ABBREVIATIONS));
+        private readonly bool HideExplorer = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_HIDE_EXPLORER));
+        private readonly bool MaintainTabState = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_OPEN_LAST_TAB));
+        private readonly bool AddNewAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_ADD_NEW_ABBREVIATIONS));
+        private readonly bool DeleteAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_DELETE_ABBREVIATIONS));
+        private readonly bool EditAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_EDIT_ABBREVIATIONS));
 
         protected internal static bool SetNotifyPreferenceChange(bool value) => NotifyPreferenceChange = value;
         protected internal static DataGridView GetAbbreviationsDataGridView() { return AbbreviationsDataGridView; }
@@ -356,7 +356,7 @@ namespace NAVService
 
                 using (System.Data.DataTable table = ClassLibraryStandard.DataTableMethods.GetDataTable(DataAccess.GetAbbreviationsByType(objAbbreviationType.iAbbreviationTypeID)))
                 {
-                    LogHelper.TraceTimeElapsedWriteLine(DateTime.Now, logHelperStartTime, "TRACE - Application is gathering abbreviations (dataset). Time Elapsed: ");
+                    LogHelper.TraceTimeElapsedWriteLine(DateTime.Now, logHelperStartTime, "TRACE - Collecting abbreviations (dataset). Time Elapsed: ");
 
                     AbbreviationsDataGridView.DataSource = table;
 

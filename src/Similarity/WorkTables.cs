@@ -1,4 +1,4 @@
-using System.Data;
+﻿using System.Data;
 using System.Linq;
 
 namespace NAVService
@@ -141,8 +141,8 @@ namespace NAVService
             {
                 System.DateTime logHelperStartTime = System.DateTime.Now;
 
-                string RowDelimiter = ClassLibraryStandard.GenericHelperMethods.GetGUID("Row");
-                string ColDelimiter = ClassLibraryStandard.GenericHelperMethods.GetGUID("Col") + (char)32;
+                string RowDelimiter = ClassLibraryStandard.HelperMethods.GetGUID("Row");
+                string ColDelimiter = ClassLibraryStandard.HelperMethods.GetGUID("Col") + (char)32;
 
                 return RebuildDataTable();
 
@@ -176,7 +176,7 @@ namespace NAVService
                 {
                     return System.Threading.Tasks.Task.Run(() => {
 
-                        string DirtyString = ClassLibraryStandard.GenericStringMethods.RemoveNoiseDelimiters(ClassLibraryStandard.DataTableMethods.ConcatenateColumns(datatable, RowDelimiter, ColDelimiter));
+                        string DirtyString = ClassLibraryStandard.StringMethods.RemoveNoiseDelimiters(ClassLibraryStandard.DataTableMethods.ConcatenateColumns(datatable, RowDelimiter, ColDelimiter));
 
                         string PushSearchCriteria()
                         {
@@ -409,7 +409,7 @@ namespace NAVService
 
                 for (int index = 0; index < ParentTable.Rows.Count; index++)
                 {
-                    string expression = Constants.COLUMN_DATA + " = '" + ClassLibraryStandard.GenericStringMethods.EscapeStringExpression(ParentTable.Rows[index][Constants.COLUMN_DATA].ToString()) + "'";
+                    string expression = Constants.COLUMN_DATA + " = '" + ClassLibraryStandard.StringMethods.EscapeStringExpression(ParentTable.Rows[index][Constants.COLUMN_DATA].ToString()) + "'";
 
                     DataRow[] rows = ParentTable.Select(expression);
 

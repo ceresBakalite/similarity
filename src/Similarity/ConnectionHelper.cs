@@ -1,4 +1,4 @@
-//#define ENABLE_ENCRYPTION_HELPER
+﻿//#define ENABLE_ENCRYPTION_HELPER
 
 namespace NAVService
 {
@@ -55,8 +55,8 @@ namespace NAVService
 
             string GetAttribute(string cipher)
             {
-                byte[] byteCryptKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
-                byte[] byteAuthKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
+                byte[] byteCryptKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
+                byte[] byteAuthKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
 
                 return Encryption.AESThenHMAC.SimpleDecrypt(cipher, byteCryptKey, byteAuthKey);
             }
@@ -65,13 +65,13 @@ namespace NAVService
             {
                 GetCompilerDirectives(location);
 
-                return (!PreProdEnabled) ? GetTargetDatabasePointer() : ClassLibraryStandard.GenericHelperMethods.IsInteger(location) ? LocationPointer : 0;
+                return (!PreProdEnabled) ? GetTargetDatabasePointer() : ClassLibraryStandard.HelperMethods.IsInteger(location) ? LocationPointer : 0;
 
                 int GetTargetDatabasePointer()
                 {
-                    byte[] byteCryptKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
-                    byte[] byteAuthKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
-                    byte[] byteTarget = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.Target);
+                    byte[] byteCryptKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
+                    byte[] byteAuthKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
+                    byte[] byteTarget = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.Target);
 
                     return System.Convert.ToInt32(Encryption.AESThenHMAC.SimpleDecrypt(System.Text.Encoding.Default.GetString(byteTarget), byteCryptKey, byteAuthKey), UserHelper.culture);
                 }

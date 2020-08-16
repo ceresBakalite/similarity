@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Dapper;
 
 namespace NAVService
@@ -489,4 +489,4 @@ namespace NAVService
 
     }
 
-} 
+}

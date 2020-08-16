@@ -21,12 +21,12 @@ namespace NAVService
         private static int SetSheetColumnInitialTotal(int value) => SheetColumnInitialTotal = value;
         private static void SetSheetDataGridViewInitialTotal(int value) => SheetDataGridViewInitialTotal = value;
 
-        private readonly bool AdjustColumns = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_ORDER_COLUMNS));
-        private readonly bool CreateRows = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_CREATE_ROWS));
-        private readonly bool DeleteRows = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_DELETE_ROWS));
-        private readonly bool EditCells = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_EDIT_CELLS));
-        private readonly bool MaintainFileState = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_OPEN_LAST_FILE));
-        private readonly bool MaintainTableState = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_OPEN_LAST_WORKSHEET));
+        private readonly bool AdjustColumns = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_ORDER_COLUMNS));
+        private readonly bool CreateRows = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_CREATE_ROWS));
+        private readonly bool DeleteRows = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_DELETE_ROWS));
+        private readonly bool EditCells = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_EDIT_CELLS));
+        private readonly bool MaintainFileState = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_OPEN_LAST_FILE));
+        private readonly bool MaintainTableState = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_OPEN_LAST_WORKSHEET));
 
         protected internal static System.Data.DataTableCollection DataTableCollection { get; private set; }
         protected internal static DataGridView GetSheetDataGridView() { return SheetDataGridView; }

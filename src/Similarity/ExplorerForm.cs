@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 namespace NAVService
@@ -48,13 +48,13 @@ namespace NAVService
         private static int RecreateParentTable() { return CreateParentTable(); }
 
         private decimal PercentageInterest = decimal.Parse(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PERCENTAGE_INTEREST), UserHelper.culture);
-        private bool MakeCaseInsensitive = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_APPLY_CASE_INSENSITIVITY));
-        private bool PadToEqualLength = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PAD_TEXT));
-        private bool RemoveWhitespace = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REMOVE_NOISE_CHARACTERS));
-        private bool ReverseComparison = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REVERSE_COMPARE));
-        private bool MatchAbbreviations = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_MATCH_ABBREVIATIONS));
-        private bool PhoneticFilter = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PHONETIC_FILTER));
-        private bool WholeWordComparison = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_WHOLE_WORD_MATCH));
+        private bool MakeCaseInsensitive = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_APPLY_CASE_INSENSITIVITY));
+        private bool PadToEqualLength = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PAD_TEXT));
+        private bool RemoveWhitespace = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REMOVE_NOISE_CHARACTERS));
+        private bool ReverseComparison = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REVERSE_COMPARE));
+        private bool MatchAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_MATCH_ABBREVIATIONS));
+        private bool PhoneticFilter = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PHONETIC_FILTER));
+        private bool WholeWordComparison = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_WHOLE_WORD_MATCH));
 
         private int MatchingAlgorithm = SetComparisonType(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_MATCHING_ALGORITHM));
 
@@ -205,7 +205,7 @@ namespace NAVService
                     {
                         if (PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_TYPE].ToString() == Constants.DB_SEARCH_PREFERENCES)
                         {
-                            SetPreferenceAttribute(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_NAME].ToString(), GetUserPreferenceValue(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_VALUE], PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG], ClassLibraryStandard.GenericHelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString())));
+                            SetPreferenceAttribute(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_NAME].ToString(), GetUserPreferenceValue(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_VALUE], PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG], ClassLibraryStandard.HelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString())));
 
                             if (GroupHeaderRequired(rowIndex))
                             {
@@ -231,7 +231,7 @@ namespace NAVService
 
             string GetUserPreferenceValue(object nvUserPreferenceValue, object bUserPreference, bool bClientValueRequired)
             {
-                return (bClientValueRequired) ? (string.IsNullOrWhiteSpace(nvUserPreferenceValue.ToString().Trim()) ? null : nvUserPreferenceValue.ToString().Trim()) : (ClassLibraryStandard.GenericHelperMethods.ToBoolean(bUserPreference.ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
+                return (bClientValueRequired) ? (string.IsNullOrWhiteSpace(nvUserPreferenceValue.ToString().Trim()) ? null : nvUserPreferenceValue.ToString().Trim()) : (ClassLibraryStandard.HelperMethods.ToBoolean(bUserPreference.ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
             }
 
             bool GroupHeaderRequired(int rowIndex)
@@ -367,10 +367,10 @@ namespace NAVService
                 string controlName = "navValue" + PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
                 string nvClientPreferenceName = PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_NAME].ToString().Trim();
 
-                bool bClientOverride = ClassLibraryStandard.GenericHelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString());
-                bool bSystemOverride = ClassLibraryStandard.GenericHelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_SYSTEM_OVERRIDE_FLAG].ToString());
+                bool bClientOverride = ClassLibraryStandard.HelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString());
+                bool bSystemOverride = ClassLibraryStandard.HelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_SYSTEM_OVERRIDE_FLAG].ToString());
 
-                if (ClassLibraryStandard.GenericHelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString()))
+                if (ClassLibraryStandard.HelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString()))
                 {
                     switch (nvClientPreferenceName)
                     {
@@ -415,7 +415,7 @@ namespace NAVService
 
                         default:
                             ListValueComboBox.Items.AddRange(new object[] { Properties.Resources.FIELD_VALUE_YES, Properties.Resources.FIELD_VALUE_NO });
-                            ListValueComboBox.SelectedIndex = ListValueComboBox.Items.IndexOf(ClassLibraryStandard.GenericHelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG].ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
+                            ListValueComboBox.SelectedIndex = ListValueComboBox.Items.IndexOf(ClassLibraryStandard.HelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG].ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
                             break;
                     }
 
@@ -471,7 +471,7 @@ namespace NAVService
                     };
 
                     ValueComboBox.Items.AddRange(new object[] { Properties.Resources.FIELD_VALUE_YES, Properties.Resources.FIELD_VALUE_NO });
-                    ValueComboBox.SelectedIndex = ValueComboBox.Items.IndexOf(ClassLibraryStandard.GenericHelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG].ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
+                    ValueComboBox.SelectedIndex = ValueComboBox.Items.IndexOf(ClassLibraryStandard.HelperMethods.ToBoolean(PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG].ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
                     ValueComboBox.Enter += PreferenceDescriptionEnter;
                     if (bClientOverride || bSystemOverride) ValueComboBox.Enabled = false;
                     if (ValueComboBox.Enabled) ValueComboBox.TextChanged += UpdatePreferenceAttribute;
@@ -895,7 +895,7 @@ namespace NAVService
             
             if (DuplicateRowsCount == 0)
             {
-                ClassLibraryStandard.GenericHelperMethods.ProcessSleep(1000);
+                ClassLibraryStandard.HelperMethods.ProcessSleep(1000);
             }
             else
             {
@@ -948,11 +948,11 @@ namespace NAVService
 
                 case Keys.Right:
 
-                    if (ClassLibraryStandard.GenericStringMethods.InString(activeControl.Name, "navDivider"))
+                    if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, "navDivider"))
                     {
                         SendKeys.Send("{TAB}");
                     }
-                    else if (ClassLibraryStandard.GenericStringMethods.InString(activeControl.Name, "navPreference"))
+                    else if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, "navPreference"))
                     {
                         string[] controlName = activeControl.Name.Split(new string[] { "navPreference" }, System.StringSplitOptions.None);
                         int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
@@ -993,9 +993,9 @@ namespace NAVService
 
             if (control != null)
             {
-                if (ClassLibraryStandard.GenericStringMethods.InString(control.Name, "navValue"))
+                if (ClassLibraryStandard.StringMethods.InString(control.Name, "navValue"))
                 {
-                    bool bUserPreference = ClassLibraryStandard.GenericHelperMethods.ToBoolean(control.Text);
+                    bool bUserPreference = ClassLibraryStandard.HelperMethods.ToBoolean(control.Text);
                     string nvUserPreferenceValue = (string.IsNullOrWhiteSpace(control.Text)) ? null : control.Text.Trim();
 
                     if (control is TextBox)
@@ -1041,7 +1041,7 @@ namespace NAVService
 
         private void SetPreferenceAttribute(string PreferenceName, string PreferenceValue)
         {
-            bool bUserPreference = ClassLibraryStandard.GenericHelperMethods.ToBoolean(PreferenceValue);
+            bool bUserPreference = ClassLibraryStandard.HelperMethods.ToBoolean(PreferenceValue);
             string nvUserPreferenceValue = (string.IsNullOrWhiteSpace(PreferenceValue)) ? null : PreferenceValue.Trim();
 
             SetDuplicateRowsCount(0);
@@ -1124,7 +1124,7 @@ namespace NAVService
 
                 ParseDuplicateRows();
 
-                LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Application parse duplicate rows (internal .NET) Time Elapsed: ");
+                LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Parse duplicate rows (internal .NET) Time Elapsed: ");
 
                 if (DiscontinueComparison()) return false;
 
@@ -1311,7 +1311,7 @@ namespace NAVService
 
                     ChildTable.Dispose();
 
-                    LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Application similarity comparison (internal .NET) Time Elapsed: ");
+                    LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Comparison (internal .NET) Time Elapsed: ");
 
                     return iComparisonCount;
                 }

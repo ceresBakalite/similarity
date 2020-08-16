@@ -1,4 +1,4 @@
-namespace NAVService
+﻿namespace NAVService
 {
     internal class Constants
     {
@@ -142,7 +142,7 @@ namespace NAVService
 #endif
 
         // runtime constant readonly variables
-        protected internal static readonly string KEY_COLUMN = ClassLibraryStandard.GenericHelperMethods.GetMilliseconds(true).ToString(UserHelper.culture);
+        protected internal static readonly string KEY_COLUMN = ClassLibraryStandard.HelperMethods.GetMilliseconds(true).ToString(UserHelper.culture);
         protected internal static readonly string BUILD_VERSION = $"v" + ConnectionHelper.AssemblyBuildVersion() + "b";
 
         protected internal static readonly System.Drawing.Color COLOR_MATCH_ASSOCIATE = System.Drawing.SystemColors.InactiveBorder;

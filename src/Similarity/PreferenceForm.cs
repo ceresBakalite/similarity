@@ -59,7 +59,7 @@ namespace NAVService
                     {
                         case Constants.DB_PERCENTAGE_INTEREST:
 
-                            if (ClassLibraryStandard.GenericHelperMethods.IsInteger(nvUserPreferenceValue))
+                            if (ClassLibraryStandard.HelperMethods.IsInteger(nvUserPreferenceValue))
                             {
                                 int value = int.Parse(nvUserPreferenceValue, UserHelper.culture);
 
@@ -270,10 +270,10 @@ namespace NAVService
                 string controlName = "navValue" + UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
                 string nvClientPreferenceName = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_NAME].ToString().Trim();
 
-                bool bClientOverride = ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString());
-                bool bSystemOverride = ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_SYSTEM_OVERRIDE_FLAG].ToString());
+                bool bClientOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString());
+                bool bSystemOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_SYSTEM_OVERRIDE_FLAG].ToString());
 
-                if (ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString()))
+                if (ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString()))
                 {
                     switch (nvClientPreferenceName)
                     {
@@ -318,7 +318,7 @@ namespace NAVService
 
                         default:
                             ListValueComboBox.Items.AddRange(new object[] { Properties.Resources.FIELD_VALUE_YES, Properties.Resources.FIELD_VALUE_NO });
-                            ListValueComboBox.SelectedIndex = ListValueComboBox.Items.IndexOf(ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG].ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
+                            ListValueComboBox.SelectedIndex = ListValueComboBox.Items.IndexOf(ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG].ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
                             break;
                     }
 
@@ -374,7 +374,7 @@ namespace NAVService
                     };
 
                     ValueComboBox.Items.AddRange(new object[] { Properties.Resources.FIELD_VALUE_YES, Properties.Resources.FIELD_VALUE_NO });
-                    ValueComboBox.SelectedIndex = ValueComboBox.Items.IndexOf(ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG].ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
+                    ValueComboBox.SelectedIndex = ValueComboBox.Items.IndexOf(ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_FLAG].ToString()) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO);
                     ValueComboBox.Enter += PreferenceDescriptionEnter;
                     if (bClientOverride || bSystemOverride) ValueComboBox.Enabled = false;
                     if (ValueComboBox.Enabled) ValueComboBox.TextChanged += UpdatePreferenceAttribute;
@@ -409,13 +409,13 @@ namespace NAVService
             {
                 if (int.Parse(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim(), UserHelper.culture) == iUserPreferenceID)
                 {
-                    bool bClientPreference = ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_FLAG].ToString());
+                    bool bClientPreference = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_FLAG].ToString());
                     string bClientValueRequired = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString();
                     string nvClientPreferenceValue = string.IsNullOrWhiteSpace(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_VALUE].ToString().Trim()) ? null : UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_VALUE].ToString().Trim();
 
                     UpdatePreference(iUserPreferenceID, bClientPreference, nvClientPreferenceValue);
 
-                    return ClassLibraryStandard.GenericHelperMethods.ToBoolean(bClientValueRequired) ? nvClientPreferenceValue : bClientPreference.ToString(UserHelper.culture);
+                    return ClassLibraryStandard.HelperMethods.ToBoolean(bClientValueRequired) ? nvClientPreferenceValue : bClientPreference.ToString(UserHelper.culture);
                 }
             }
 
@@ -449,10 +449,10 @@ namespace NAVService
                                 nvClientPreferenceType = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_TYPE].ToString().Trim(),
                                 nvClientPreferenceName = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_NAME].ToString().Trim(),
                                 nvPreferenceValue = nvPreferenceValue,
-                                bPreference = ClassLibraryStandard.GenericHelperMethods.ToBoolean(bPreference.ToString(UserHelper.culture)),
-                                bClientValueRequired = ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString()),
-                                bClientOverride = ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString()),
-                                bSystemOverride = ClassLibraryStandard.GenericHelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_SYSTEM_OVERRIDE_FLAG].ToString())
+                                bPreference = ClassLibraryStandard.HelperMethods.ToBoolean(bPreference.ToString(UserHelper.culture)),
+                                bClientValueRequired = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString()),
+                                bClientOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString()),
+                                bSystemOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_SYSTEM_OVERRIDE_FLAG].ToString())
                             }
                             }
                         };
@@ -615,14 +615,14 @@ namespace NAVService
                         {
                             if ((control is TextBox) || (control is ComboBox))
                             {
-                                if (ClassLibraryStandard.GenericStringMethods.InString(control.Name, "navValue"))
+                                if (ClassLibraryStandard.StringMethods.InString(control.Name, "navValue"))
                                 {
                                     if (control.Enabled)
                                     {
                                         string[] controlName = control.Name.Split(new string[] { "navValue" }, StringSplitOptions.None);
                                         int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
 
-                                        control.Text = (control is ComboBox) ? (ClassLibraryStandard.GenericHelperMethods.ToBoolean(RestoreDefaults(iUserPreferenceID)) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO) : RestoreDefaults(iUserPreferenceID);
+                                        control.Text = (control is ComboBox) ? (ClassLibraryStandard.HelperMethods.ToBoolean(RestoreDefaults(iUserPreferenceID)) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO) : RestoreDefaults(iUserPreferenceID);
                                     }
                                 }
                             }
@@ -681,11 +681,11 @@ namespace NAVService
 
                 case Keys.Right:
 
-                    if (ClassLibraryStandard.GenericStringMethods.InString(activeControl.Name, "navDivider"))
+                    if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, "navDivider"))
                     {
                         SendKeys.Send("{TAB}");
                     }
-                    else if(ClassLibraryStandard.GenericStringMethods.InString(activeControl.Name, "navPreference"))
+                    else if(ClassLibraryStandard.StringMethods.InString(activeControl.Name, "navPreference"))
                     {
                         string[] controlName = activeControl.Name.Split(new string[] { "navPreference" }, StringSplitOptions.None);
                         int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
@@ -726,12 +726,12 @@ namespace NAVService
 
             if (control != null)
             {
-                if (ClassLibraryStandard.GenericStringMethods.InString(control.Name, "navValue"))
+                if (ClassLibraryStandard.StringMethods.InString(control.Name, "navValue"))
                 {
                     string[] controlName = control.Name.Split(new string[] { "navValue" }, StringSplitOptions.None);
 
                     int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
-                    bool bUserPreference = ClassLibraryStandard.GenericHelperMethods.ToBoolean(control.Text);
+                    bool bUserPreference = ClassLibraryStandard.HelperMethods.ToBoolean(control.Text);
                     string nvUserPreferenceValue = (string.IsNullOrWhiteSpace(control.Text)) ? null : control.Text.Trim();
 
                     if (control is TextBox)

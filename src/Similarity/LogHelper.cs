@@ -34,7 +34,7 @@ namespace NAVService
         {
             if (log4net.LogManager.GetRepository() is log4net.Repository.Hierarchy.Hierarchy hierarchy)
             {
-                TraceWriteLine("TRACE - Application log appender initialisation");
+                TraceWriteLine("TRACE - Log4net appender initialisation");
 
                 log4net.Appender.AdoNetAppender adoAppender = (log4net.Appender.AdoNetAppender)hierarchy.GetAppenders()
                     .Where(appender => appender.Name.Equals("AdoNetAppender", System.StringComparison.OrdinalIgnoreCase))
@@ -75,7 +75,7 @@ namespace NAVService
                 }
 
                 TraceRetryWriteLine(ex, iRetryAttempt, ex.Number);
-                ClassLibraryStandard.GenericHelperMethods.ProcessSleep(2000);
+                ClassLibraryStandard.HelperMethods.ProcessSleep(2000);
             }
 
             return true;
@@ -88,7 +88,7 @@ namespace NAVService
             if (ex != null)
             {
                 TraceRetryWriteLine(ex, iRetryAttempt, ex.HResult);
-                ClassLibraryStandard.GenericHelperMethods.ProcessSleep(2000);
+                ClassLibraryStandard.HelperMethods.ProcessSleep(2000);
             }
 
             return true;
@@ -117,14 +117,14 @@ namespace NAVService
         [System.Diagnostics.Conditional("TRACE")]
         public static void TraceWriteCurrentState()
         {
-            TraceWriteLine("TRACE - Application is gathering user preferences");
+            TraceWriteLine("TRACE - Collecting user preferences");
             DataAccess.TraceWrite = false;
         }
 
         [System.Diagnostics.Conditional("TRACE")]
         public static void TraceWritePreviousState()
         {
-            TraceWriteLine("TRACE - Application previous state initialisation");
+            TraceWriteLine("TRACE - Previous state initialisation");
             DataAccess.TraceWrite = true;
         }
 
@@ -140,9 +140,7 @@ namespace NAVService
         {
             System.Diagnostics.Trace.Indent();
             System.Diagnostics.Trace.WriteLine($"{trace}. DateTime: {System.DateTime.Now:MMMM dd, yyyy h:mm:ss tt}");
-
             TraceWriteException(ex);
-
             System.Diagnostics.Trace.Unindent();
         }
 
@@ -150,10 +148,8 @@ namespace NAVService
         public static void TraceRetryWriteLine(System.Exception ex = null, object iCount = null, object ExceptionNumber = null)
         {
             System.Diagnostics.Trace.Indent();
-            System.Diagnostics.Trace.WriteLine(ClassLibraryStandard.GenericHelperMethods.IsInteger(iCount) ? $"TRACE - Attempting to reconnect. Time: {System.DateTime.Now:h:mm:ss tt} Retry No.{iCount} - Exception No. {ExceptionNumber}" : $"TRACE - Attempting to reconnect. Time: {System.DateTime.Now:h:mm:ss tt}");
-
+            System.Diagnostics.Trace.WriteLine(ClassLibraryStandard.HelperMethods.IsInteger(iCount) ? $"TRACE - Attempting to reconnect. Time: {System.DateTime.Now:h:mm:ss tt} Retry No.{iCount} - Exception No. {ExceptionNumber}" : $"TRACE - Attempting to reconnect. Time: {System.DateTime.Now:h:mm:ss tt}");
             TraceWriteException(ex);
-
             System.Diagnostics.Trace.Unindent();
         }
 
@@ -186,14 +182,14 @@ namespace NAVService
             string ParentString = args[1];
             string ChildString = args[2];
 
-            int MatchingAlgorithm = ClassLibraryStandard.GenericHelperMethods.IsInteger(args[3]) ? int.Parse(args[3], UserHelper.culture) : ExplorerForm.SetComparisonType(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_MATCHING_ALGORITHM));
+            int MatchingAlgorithm = ClassLibraryStandard.HelperMethods.IsInteger(args[3]) ? int.Parse(args[3], UserHelper.culture) : ExplorerForm.SetComparisonType(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_MATCHING_ALGORITHM));
 
-            bool MakeCaseInsensitive = args[4] != null ? ClassLibraryStandard.GenericHelperMethods.ToBoolean(args[4]) : ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_APPLY_CASE_INSENSITIVITY));
-            bool PadToEqualLength = args[5] != null ? ClassLibraryStandard.GenericHelperMethods.ToBoolean(args[5]) : ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PAD_TEXT));
-            bool RemoveWhitespace = args[6] != null ? ClassLibraryStandard.GenericHelperMethods.ToBoolean(args[6]) : ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REMOVE_NOISE_CHARACTERS));
-            bool ReverseComparison = args[7] != null ? ClassLibraryStandard.GenericHelperMethods.ToBoolean(args[7]) : ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REVERSE_COMPARE));
-            bool PhoneticFilter = args[9] != null ? ClassLibraryStandard.GenericHelperMethods.ToBoolean(args[9]) : ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PHONETIC_FILTER));
-            bool WholeWordComparison = args[10] != null ? ClassLibraryStandard.GenericHelperMethods.ToBoolean(args[10]) : ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_WHOLE_WORD_MATCH));
+            bool MakeCaseInsensitive = args[4] != null ? ClassLibraryStandard.HelperMethods.ToBoolean(args[4]) : ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_APPLY_CASE_INSENSITIVITY));
+            bool PadToEqualLength = args[5] != null ? ClassLibraryStandard.HelperMethods.ToBoolean(args[5]) : ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PAD_TEXT));
+            bool RemoveWhitespace = args[6] != null ? ClassLibraryStandard.HelperMethods.ToBoolean(args[6]) : ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REMOVE_NOISE_CHARACTERS));
+            bool ReverseComparison = args[7] != null ? ClassLibraryStandard.HelperMethods.ToBoolean(args[7]) : ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REVERSE_COMPARE));
+            bool PhoneticFilter = args[9] != null ? ClassLibraryStandard.HelperMethods.ToBoolean(args[9]) : ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PHONETIC_FILTER));
+            bool WholeWordComparison = args[10] != null ? ClassLibraryStandard.HelperMethods.ToBoolean(args[10]) : ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_WHOLE_WORD_MATCH));
 
             if (bDisplayHelp || ((ParentString.ToLower(UserHelper.culture) == "help" || ParentString == "?") && ChildString == null))
             {

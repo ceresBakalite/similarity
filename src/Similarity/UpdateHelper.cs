@@ -1,4 +1,4 @@
-using Squirrel;
+﻿using Squirrel;
 
 namespace NAVService
 {
@@ -16,13 +16,13 @@ namespace NAVService
                 {
                     string UpdateLocation = TargetLocation();
 
-                    LogHelper.TraceWriteLine($"TRACE - Application update is enabled [{ UpdateLocation }]");
+                    LogHelper.TraceWriteLine($"TRACE - Async update is enabled [{ UpdateLocation }]");
 
                     _ = AsyncAwaitUpdateLookup();
 
                     async System.Threading.Tasks.Task AsyncAwaitUpdateLookup()
                     {
-                        // Note: To avoid an exception ensure the UpdateLocation() URI is populated with the latest release files
+                        // Note: To avoid an exception ensure the UpdateLocation() URI is populated with a valid set of release files
                         using (UpdateManager manager = new UpdateManager(UpdateLocation))
                         {
                             await manager.UpdateApp().ConfigureAwait(false);
@@ -55,8 +55,8 @@ namespace NAVService
 
                     string GetAttribute(string cipher)
                     {
-                        byte[] byteCryptKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
-                        byte[] byteAuthKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
+                        byte[] byteCryptKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
+                        byte[] byteAuthKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
 
                         return Encryption.AESThenHMAC.SimpleDecrypt(cipher, byteCryptKey, byteAuthKey);
                     }
@@ -69,9 +69,9 @@ namespace NAVService
 
                         int GetUpdateApplicationPointer()
                         {
-                            byte[] byteCryptKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
-                            byte[] byteAuthKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
-                            byte[] byteUpdate = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.Update);
+                            byte[] byteCryptKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
+                            byte[] byteAuthKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
+                            byte[] byteUpdate = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.Update);
 
                             return System.Convert.ToInt32(Encryption.AESThenHMAC.SimpleDecrypt(System.Text.Encoding.Default.GetString(byteUpdate), byteCryptKey, byteAuthKey), UserHelper.culture);
                         }

@@ -11,8 +11,8 @@ namespace NAVService
         private static string hexCryptKey = Properties.Settings.Default.HashKey.Substring(0, 64);
         private static string hexAuthKey = Properties.Settings.Default.HashKey.Substring(64, 64);
         private static string hashKey = hexCryptKey + hexAuthKey;
-        private static byte[] byteCryptKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(hexCryptKey);
-        private static byte[] byteAuthKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(hexAuthKey);
+        private static byte[] byteCryptKey = ClassLibraryFramework.StringMethods.GetStringToBytes(hexCryptKey);
+        private static byte[] byteAuthKey = ClassLibraryFramework.StringMethods.GetStringToBytes(hexAuthKey);
 
         private static bool bKeysCreated;
         private static bool bKeysSaved;
@@ -24,8 +24,8 @@ namespace NAVService
             byteCryptKey = Encryption.AESThenHMAC.NewKey();
             byteAuthKey = Encryption.AESThenHMAC.NewKey();
 
-            hexCryptKey = ClassLibraryFramework.GenericStringMethods.GetBytesToString(byteCryptKey);
-            hexAuthKey = ClassLibraryFramework.GenericStringMethods.GetBytesToString(byteAuthKey);
+            hexCryptKey = ClassLibraryFramework.StringMethods.GetBytesToString(byteCryptKey);
+            hexAuthKey = ClassLibraryFramework.StringMethods.GetBytesToString(byteAuthKey);
 
             hashKey = hexCryptKey + hexAuthKey;
 
@@ -72,7 +72,7 @@ namespace NAVService
 
             string encryptString = Encryption.AESThenHMAC.SimpleEncrypt(plainText, byteCryptKey, byteAuthKey);
             byte[] byteSignature = System.Text.Encoding.Default.GetBytes(encryptString);
-            string hexSignature = ClassLibraryFramework.GenericStringMethods.GetBytesToString(byteSignature);
+            string hexSignature = ClassLibraryFramework.StringMethods.GetBytesToString(byteSignature);
 
             string encryptedString = System.Text.Encoding.Default.GetString(byteSignature);
             string decryptedString = Encryption.AESThenHMAC.SimpleDecrypt(encryptString, byteCryptKey, byteAuthKey);
@@ -125,7 +125,7 @@ namespace NAVService
             display += "{0}" + hexCryptKey + "{0}" + hexAuthKey;
             display += "{0}{0}The hexidecimal hash key required in the Properties.Settings.Default.HashKey: {0}";
             display += bKeysSaved ? "This hash value has been SAVED to the \"Properties.Settings.Default.HashKey\"{0}{0}" + hashKey : "{0}" + hashKey;
-            display += "{0}{0}The decrypted cipher string: {0}{0}" + Encryption.AESThenHMAC.SimpleDecrypt(cipher, ClassLibraryFramework.GenericStringMethods.GetStringToBytes(hexCryptKey), ClassLibraryFramework.GenericStringMethods.GetStringToBytes(hexAuthKey)) + "{0}";
+            display += "{0}{0}The decrypted cipher string: {0}{0}" + Encryption.AESThenHMAC.SimpleDecrypt(cipher, ClassLibraryFramework.StringMethods.GetStringToBytes(hexCryptKey), ClassLibraryFramework.StringMethods.GetStringToBytes(hexAuthKey)) + "{0}";
 
             System.Diagnostics.Trace.WriteLine(string.Format(UserHelper.culture, display, System.Environment.NewLine));
         }

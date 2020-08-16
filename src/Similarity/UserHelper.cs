@@ -8,10 +8,10 @@
         public static readonly System.Globalization.CultureInfo culture = System.Globalization.CultureInfo.InvariantCulture;
         public static readonly NAVUserPropertiesModel UserPropertiesModel = DataAccess.InitialiseUserProperties(InitaliseEnvironment());
 
-        private static bool ReplaceAllWords = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REPLACE_WORDS));
-        private static bool ReplaceDefaultWordsOnly = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PERMIT_DEFAULTS));
-        private static bool PullAbbreviations = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PULL_ABBREVIATIONS));
-        private static bool LogErrors = ClassLibraryStandard.GenericHelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_LOG_ERRORS));
+        private static bool ReplaceAllWords = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REPLACE_WORDS));
+        private static bool ReplaceDefaultWordsOnly = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PERMIT_DEFAULTS));
+        private static bool PullAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PULL_ABBREVIATIONS));
+        private static bool LogErrors = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_LOG_ERRORS));
 
         public static void SetReplaceAllWords(bool value) => ReplaceAllWords = value;
         public static void SetReplaceDefaultWordsOnly(bool value) => ReplaceDefaultWordsOnly = value;
@@ -55,11 +55,11 @@
 
             int ConfigureRuntimeAttributes()
             {
-                LogHelper.TraceWriteLine("TRACE - Application account initialisation");
+                LogHelper.TraceWriteLine("TRACE - Account initialisation");
 
-                byte[] byteCryptKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
-                byte[] byteAuthKey = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
-                byte[] byteSignature = ClassLibraryFramework.GenericStringMethods.GetStringToBytes(Properties.Settings.Default.Signature);
+                byte[] byteCryptKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
+                byte[] byteAuthKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
+                byte[] byteSignature = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.Signature);
 
                 return System.Convert.ToInt32(Encryption.AESThenHMAC.SimpleDecrypt(System.Text.Encoding.Default.GetString(byteSignature), byteCryptKey, byteAuthKey), culture);
             }
