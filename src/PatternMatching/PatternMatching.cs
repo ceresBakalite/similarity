@@ -4,8 +4,6 @@ namespace PatternMatching
 {
     public class ComparisonMethods
     {
-        #region Various pattern matching methods
-
         public partial class RatcliffObershelp
         {
             #region
@@ -80,20 +78,20 @@ namespace PatternMatching
                 int soundexResult = bSoundexComparison ? ROSoundexWords(str1, str2) : 0;
                 int wordComparison = wholeWordResult > soundexResult ? wholeWordResult : soundexResult;
 
-                str1 = bRemoveWhitespace ? StringMethods.RemoveWhitespace(str1) : str1;
-                str2 = bRemoveWhitespace ? StringMethods.RemoveWhitespace(str2) : str2;
+                str1 = bRemoveWhitespace ? RemoveWhitespace(str1) : str1;
+                str2 = bRemoveWhitespace ? RemoveWhitespace(str2) : str2;
 
-                str1 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str1) : str1;
-                str2 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str2) : str2;
+                str1 = bMakeCaseInsensitve ? str1.ToUpperInvariant() : str1;
+                str2 = bMakeCaseInsensitve ? str2.ToUpperInvariant() : str2;
 
-                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
+                str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
+                str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
 
                 int result = ROCompare(str1, str2);
 
                 if (bReverseComparison)
                 {
-                    int reverseResult = ROCompare(str1, StringMethods.ReverseString(str2));
+                    int reverseResult = ROCompare(str1, ReverseString(str2));
                     result = (result > reverseResult) ? result : reverseResult;
                 }
 
@@ -104,11 +102,11 @@ namespace PatternMatching
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 decimal iWeightPercentage = 15)     // arbitrarily reduces the result by the weight percentage specified
             {
-                str1 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str1))));
-                str2 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str2))));
+                str1 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
+                str2 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
 
-                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
+                str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
+                str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
 
                 int result = ROCompare(str1, str2);
 
@@ -118,7 +116,7 @@ namespace PatternMatching
             private static int ROSoundexWords(string str1, string str2,
                 decimal iWeightPercentage = 10)         // arbitrarily reduces the result by the weight percentage specified
             {
-                int result = ROCompare(StringMethods.SoundexWordsInString(str1), StringMethods.SoundexWordsInString(str2));
+                int result = ROCompare(SoundexWordsInString(str1), SoundexWordsInString(str2));
 
                 return System.Convert.ToInt32(result - (result * (iWeightPercentage / 100)));
             }
@@ -211,20 +209,20 @@ namespace PatternMatching
                 int soundexResult = bSoundexComparison ? LSSoundexWords(str1, str2) : 0;
                 int wordComparison = wholeWordResult > soundexResult ? wholeWordResult : soundexResult;
 
-                str1 = bRemoveWhitespace ? StringMethods.RemoveWhitespace(str1) : str1;
-                str2 = bRemoveWhitespace ? StringMethods.RemoveWhitespace(str2) : str2;
+                str1 = bRemoveWhitespace ? RemoveWhitespace(str1) : str1;
+                str2 = bRemoveWhitespace ? RemoveWhitespace(str2) : str2;
 
-                str1 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str1) : str1;
-                str2 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str2) : str2;
+                str1 = bMakeCaseInsensitve ? str1.ToUpperInvariant() : str1;
+                str2 = bMakeCaseInsensitve ? str2.ToUpperInvariant() : str2;
 
-                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
+                str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
+                str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
 
                 int result = LSCompare(str1, str2);
 
                 if (bReverseComparison)
                 {
-                    int reverseResult = LSCompare(str1, StringMethods.ReverseString(str2));
+                    int reverseResult = LSCompare(str1, ReverseString(str2));
                     result = (result > reverseResult) ? result : reverseResult;
                 }
 
@@ -235,11 +233,11 @@ namespace PatternMatching
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 decimal iWeightPercentage = 15)     // arbitrarily reduces the result by the weight percentage specified
             {
-                str1 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str1))));
-                str2 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str2))));
+                str1 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
+                str2 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
 
-                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
+                str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
+                str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
 
                 int result = LSCompare(str1, str2);
 
@@ -249,7 +247,7 @@ namespace PatternMatching
             private static int LSSoundexWords(string str1, string str2,
                 decimal iWeightPercentage = 10)         // arbitrarily reduces the result by the weight percentage specified
             {
-                int result = LSCompare(StringMethods.SoundexWordsInString(str1), StringMethods.SoundexWordsInString(str2));
+                int result = LSCompare(SoundexWordsInString(str1), SoundexWordsInString(str2));
 
                 return System.Convert.ToInt32(result - (result * (iWeightPercentage / 100)));
             }
@@ -323,20 +321,20 @@ namespace PatternMatching
                 int soundexResult = bSoundexComparison ? HDSoundexWords(str1, str2) : 0;
                 int wordComparison = wholeWordResult > soundexResult ? wholeWordResult : soundexResult;
 
-                str1 = bRemoveWhitespace ? StringMethods.RemoveWhitespace(str1) : str1;
-                str2 = bRemoveWhitespace ? StringMethods.RemoveWhitespace(str2) : str2;
+                str1 = bRemoveWhitespace ? RemoveWhitespace(str1) : str1;
+                str2 = bRemoveWhitespace ? RemoveWhitespace(str2) : str2;
 
-                str1 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str1) : str1;
-                str2 = bMakeCaseInsensitve ? StringMethods.MakeCaseInsensitive(str2) : str2;
+                str1 = bMakeCaseInsensitve ? str1.ToUpperInvariant() : str1;
+                str2 = bMakeCaseInsensitve ? str2.ToUpperInvariant() : str2;
 
-                str1 = StringMethods.PadStringsToEqualLength(str1, str2);
-                str2 = StringMethods.PadStringsToEqualLength(str2, str1);
+                str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
+                str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
 
                 int result = HDCompare(str1, str2);
 
                 if (bReverseComparison)
                 {
-                    int reverseResult = HDCompare(str1, StringMethods.ReverseString(str2));
+                    int reverseResult = HDCompare(str1, ReverseString(str2));
                     result = (result > reverseResult) ? result : reverseResult;
                 }
 
@@ -347,11 +345,11 @@ namespace PatternMatching
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 decimal iWeightPercentage = 15)     // arbitrarily reduces the result by the weight percentage specified
             {
-                str1 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str1))));
-                str2 = StringMethods.RemoveWhitespace(StringMethods.SortWordsInString(StringMethods.MakeCaseInsensitive(StringMethods.RemoveDuplicateWords(str2))));
+                str1 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
+                str2 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
 
-                str1 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str1, str2) : str1;
-                str2 = bPadToEqualLength ? StringMethods.PadStringsToEqualLength(str2, str1) : str2;
+                str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
+                str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
 
                 int result = HDCompare(str1, str2);
 
@@ -361,7 +359,7 @@ namespace PatternMatching
             private static int HDSoundexWords(string str1, string str2,
                 decimal iWeightPercentage = 5)      // arbitrarily reduces the result by the weight percentage specified
             {
-                int result = HDCompare(StringMethods.SoundexWordsInString(str1), StringMethods.SoundexWordsInString(str2));
+                int result = HDCompare(SoundexWordsInString(str1), SoundexWordsInString(str2));
 
                 return System.Convert.ToInt32(result - (result * (iWeightPercentage / 100)));
             }
@@ -413,44 +411,45 @@ namespace PatternMatching
                 if (result.Length < 4) result.Append(new string('0', 4 - result.Length));
 
                 return result.ToString();
-            }
 
-            private static string EncodeChar(char c)
-            {
-                switch (char.ToLower(c))
+                string EncodeChar(char c)
                 {
-                    case 'b':
-                    case 'f':
-                    case 'p':
-                    case 'v':
-                        return "1";
+                    switch (char.ToLower(c))
+                    {
+                        case 'b':
+                        case 'f':
+                        case 'p':
+                        case 'v':
+                            return "1";
 
-                    case 'c':
-                    case 'g':
-                    case 'j':
-                    case 'k':
-                    case 'q':
-                    case 's':
-                    case 'x':
-                    case 'z':
-                        return "2";
+                        case 'c':
+                        case 'g':
+                        case 'j':
+                        case 'k':
+                        case 'q':
+                        case 's':
+                        case 'x':
+                        case 'z':
+                            return "2";
 
-                    case 'd':
-                    case 't':
-                        return "3";
+                        case 'd':
+                        case 't':
+                            return "3";
 
-                    case 'l':
-                        return "4";
+                        case 'l':
+                            return "4";
 
-                    case 'm':
-                    case 'n':
-                        return "5";
+                        case 'm':
+                        case 'n':
+                            return "5";
 
-                    case 'r':
-                        return "6";
+                        case 'r':
+                            return "6";
 
-                    default:
-                        return string.Empty;
+                        default:
+                            return string.Empty;
+                    }
+
                 }
 
             }
@@ -458,14 +457,7 @@ namespace PatternMatching
             #endregion
         }
 
-        #endregion 
-    }
-
-    public static class StringMethods
-    {
-        #region PatternMatching string methods
-
-        public static string SortWordsInString(string str, char delimiter = (char)32)
+        private static string SortWordsInString(string str, char delimiter = (char)32)
         {
             string[] wordArray = str.Split(delimiter);
             System.Array.Sort(wordArray);
@@ -473,19 +465,19 @@ namespace PatternMatching
             return string.Join(delimiter.ToString(), wordArray);
         }
 
-        public static string RemoveDuplicateWords(string str, char delimiter = (char)32)
+        private static string RemoveDuplicateWords(string str, char delimiter = (char)32)
         {
             return string.Join(delimiter.ToString(), str.Split(delimiter).Distinct(System.StringComparer.CurrentCultureIgnoreCase));
         }
 
-        public static string SoundexWordsInString(string str, char delimiter = (char)32)
+        private static string SoundexWordsInString(string str, char delimiter = (char)32)
         {
             string[] wordArray = str.Split(delimiter);
             string words = null;
 
             foreach (string word in wordArray)
             {
-                words = words + ComparisonMethods.PhoneticPatterns.Soundex(word) + delimiter;
+                words = words + PhoneticPatterns.Soundex(word) + delimiter;
             }
 
             string[] strArray = RemoveDuplicateWords(words.TrimEnd(delimiter)).Split(delimiter);
@@ -494,7 +486,7 @@ namespace PatternMatching
             return string.Join(delimiter.ToString(), strArray);
         }
 
-        public static string RemoveWhitespace(string str)
+        private static string RemoveWhitespace(string str)
         {
             int strLength = str.Length;
             int j = 0;
@@ -516,7 +508,7 @@ namespace PatternMatching
             return new string(charArray, 0, j);
         }
 
-        public static string ReverseString(string str)
+        private static string ReverseString(string str)
         {
             char[] charArray = new char[str.Length];
             int j = 0;
@@ -528,18 +520,7 @@ namespace PatternMatching
 
             return new string(charArray);
         }
-
-        public static string MakeCaseInsensitive(string str, bool bUpperCase = true)
-        {
-            return bUpperCase ? str.ToUpperInvariant() : str.ToLowerInvariant();
-        }
-
-        public static string PadStringsToEqualLength(string strPadString, string strTestString)
-        {
-            return strPadString.PadRight(strTestString.Length, (char)32);
-        }
-
-        #endregion
+ 
     }
 
 }
