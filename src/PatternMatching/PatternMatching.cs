@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 
 namespace PatternMatching
 {
@@ -503,13 +503,8 @@ namespace PatternMatching
 
         private static string ReverseString(string str)
         {
-            char[] charArray = new char[str.Length];
-            int j = 0;
-
-            for (int i = str.Length - 1; i > -1; i--)
-            {
-                charArray[j++] = str[i];
-            }
+            char[] charArray = str.ToCharArray();
+            System.Array.Reverse(charArray);
 
             return new string(charArray);
         }
