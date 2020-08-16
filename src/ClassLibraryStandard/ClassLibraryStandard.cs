@@ -450,41 +450,24 @@ namespace ClassLibraryStandard
             return string.Join(delimiter.ToString(), str.Split(delimiter).Distinct(System.StringComparer.CurrentCultureIgnoreCase));
         }
 
-        public static string RemoveNoiseDelimiters(string str)
+        public static string RemoveNoiseCharacters(string str)
         {
-            return new string(str.Where(x => char.IsWhiteSpace(x) || char.IsLetterOrDigit(x) || '@'.Equals(x) || '.'.Equals(x)).ToArray());
+            return string.IsNullOrWhiteSpace(str) ? str : RemovePunctuation(RemoveWhitespace(str));
         }
 
-        public static string RemoveNoiseCharacters(string str, string[] charArray)
+        public static string RemovePunctuation(string str)
         {
-            foreach (string chr in charArray)
-            {
-                str = str.Replace(chr, string.Empty);
-            }
-
-            return str;
+            return new string(str.Where(c => !char.IsPunctuation(c)).ToArray());
         }
 
         public static string RemoveWhitespace(string str)
         {
-            int strLength = str.Length;
-            int j = 0;
+            return new string(str.Where(c => !char.IsWhiteSpace(c)).ToArray());
+        }
 
-            char[] charArray = new char[strLength];
-
-            for (int i = 0; i < strLength; ++i)
-            {
-                char chr = str[i];
-
-                if (!char.IsWhiteSpace(chr))
-                {
-                    charArray[j] = chr;
-                    ++j;
-                }
-
-            }
-
-            return new string(charArray, 0, j);
+        public static string RemoveNoiseDelimiters(string str)
+        {
+            return new string(str.Where(x => char.IsWhiteSpace(x) || char.IsLetterOrDigit(x) || '@'.Equals(x) || '.'.Equals(x)).ToArray());
         }
 
         public static string GetRemoveWhitespace(string str)
@@ -552,12 +535,15 @@ namespace ClassLibraryStandard
 
         public static string PadString(string strPadString, int iPadStringLength = 0, char delimiter = (char)32, bool bPadLeft = false)
         {
-            if (strPadString.Length >= iPadStringLength) return strPadString;
+            if (strPadString.Length < iPadStringLength)
+            {
+                strPadString = bPadLeft? strPadString.PadLeft(iPadStringLength, delimiter) : strPadString.PadRight(iPadStringLength, delimiter);
+            }
 
-            return bPadLeft ? strPadString.PadLeft(iPadStringLength, delimiter) : strPadString.PadRight(iPadStringLength, delimiter);
+            return strPadString;
         }
 
-        public static string CharacterPadding(int strLength, char delimiter = (char)32)
+        public static string PadStringBuffer(int strLength, char delimiter = (char)32)
         {
             int j = 0;
 
