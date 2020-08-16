@@ -294,7 +294,7 @@
         #endregion
     }
 
-    public static class GenericStringMethods
+    public static class StringMethods
     {
         #region Common string methods
 
