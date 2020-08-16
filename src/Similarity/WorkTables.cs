@@ -409,7 +409,7 @@ namespace NAVService
 
                 for (int index = 0; index < ParentTable.Rows.Count; index++)
                 {
-                    string expression = Constants.COLUMN_DATA + " = '" + ParentTable.Rows[index][Constants.COLUMN_DATA].ToString().Replace("'", "''") + "'";
+                    string expression = Constants.COLUMN_DATA + " = '" + ClassLibraryStandard.GenericStringMethods.EscapeStringExpression(ParentTable.Rows[index][Constants.COLUMN_DATA].ToString()) + "'";
 
                     DataRow[] rows = ParentTable.Select(expression);
 
