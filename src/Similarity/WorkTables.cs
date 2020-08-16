@@ -176,6 +176,9 @@ namespace NAVService
                     System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(RowDelimiter);
 
                     string DirtyString = ClassLibraryStandard.StringMethods.RemoveNoiseDelimiters(ClassLibraryStandard.DataTableMethods.ConcatenateColumns(datatable, RowDelimiter, ColDelimiter));
+                    string CleanString = UserHelper.GetPullAbbreviations() ? PullSearchCriteria() : PushSearchCriteria();
+
+                    return regex.Split(CleanString);
 
                     string PushSearchCriteria()
                     {
@@ -195,7 +198,7 @@ namespace NAVService
                             while (i < table.Rows.Count)
                             {
                                 DataRow row = table.Rows[i];
-                                DirtyString = DirtyString.Replace((string)row["nvWord"], (string)row["nvAbbreviation"]);
+                                DirtyString = DirtyString.Replace((string)row[Constants.COLUMN_ABBREVIATION_WORD], (string)row[Constants.COLUMN_ABBREVIATION]);
                                 i++;
                             }
 
@@ -206,9 +209,6 @@ namespace NAVService
 
                     }
 
-                    string CleanString = UserHelper.GetPullAbbreviations() ? PullSearchCriteria() : PushSearchCriteria();
-
-                    return regex.Split(CleanString); 
                 }
 
             }
