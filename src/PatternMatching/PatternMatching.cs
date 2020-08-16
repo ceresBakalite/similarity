@@ -26,7 +26,7 @@ namespace PatternMatching
                   The Compare method calls the MatchPattern method, which in turn calls itself until all patterns 
                   are matched and a percentage value is returned.
 
-                  The GetWeightedComparison method can apply up to six weights (bRemoveWhitespace, bMakeCaseInsensitve, 
+                  The GetWeightedComparison method can apply up to six weights (bRemoveNoiseCharacters, bMakeCaseInsensitve, 
                   bPadToEqualLength, bReverseComparison, bSoundexComparison, and bWholeWordComparison) before settling on a 
                   final comparison value.
 
@@ -65,7 +65,7 @@ namespace PatternMatching
             }
 
             public static int GetWeightedComparison(string str1, string str2,
-                bool bRemoveWhitespace = true,      // treat whitespace characters as noise characters
+                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters characters
                 bool bMakeCaseInsensitve = true,    // apply case insensitivity to each string
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 bool bReverseComparison = true,     // determine if one string is similar to the converse of the other
@@ -78,8 +78,8 @@ namespace PatternMatching
                 int soundexResult = bSoundexComparison ? ROSoundexWords(str1, str2) : 0;
                 int wordComparison = wholeWordResult > soundexResult ? wholeWordResult : soundexResult;
 
-                str1 = bRemoveWhitespace ? RemoveWhitespace(str1) : str1;
-                str2 = bRemoveWhitespace ? RemoveWhitespace(str2) : str2;
+                str1 = bRemoveNoiseCharacters ? RemoveNoiseCharacters(str1) : str1;
+                str2 = bRemoveNoiseCharacters ? RemoveNoiseCharacters(str2) : str2;
 
                 str1 = bMakeCaseInsensitve ? str1.ToUpperInvariant() : str1;
                 str2 = bMakeCaseInsensitve ? str2.ToUpperInvariant() : str2;
@@ -102,8 +102,8 @@ namespace PatternMatching
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 decimal iWeightPercentage = 15)     // arbitrarily reduces the result by the weight percentage specified
             {
-                str1 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
-                str2 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
+                str1 = RemoveNoiseCharacters(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
+                str2 = RemoveNoiseCharacters(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
 
                 str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
                 str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
@@ -196,7 +196,7 @@ namespace PatternMatching
             }
 
             public static int GetWeightedComparison(string str1, string str2,
-                bool bRemoveWhitespace = true,      // treat whitespace characters as noise characters
+                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters characters
                 bool bMakeCaseInsensitve = true,    // apply case insensitivity to each string
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 bool bReverseComparison = true,     // determine if one string is similar to the converse of the other
@@ -209,8 +209,8 @@ namespace PatternMatching
                 int soundexResult = bSoundexComparison ? LSSoundexWords(str1, str2) : 0;
                 int wordComparison = wholeWordResult > soundexResult ? wholeWordResult : soundexResult;
 
-                str1 = bRemoveWhitespace ? RemoveWhitespace(str1) : str1;
-                str2 = bRemoveWhitespace ? RemoveWhitespace(str2) : str2;
+                str1 = bRemoveNoiseCharacters ? RemoveNoiseCharacters(str1) : str1;
+                str2 = bRemoveNoiseCharacters ? RemoveNoiseCharacters(str2) : str2;
 
                 str1 = bMakeCaseInsensitve ? str1.ToUpperInvariant() : str1;
                 str2 = bMakeCaseInsensitve ? str2.ToUpperInvariant() : str2;
@@ -233,8 +233,8 @@ namespace PatternMatching
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 decimal iWeightPercentage = 15)     // arbitrarily reduces the result by the weight percentage specified
             {
-                str1 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
-                str2 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
+                str1 = RemoveNoiseCharacters(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
+                str2 = RemoveNoiseCharacters(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
 
                 str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
                 str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
@@ -245,7 +245,7 @@ namespace PatternMatching
             }
 
             private static int LSSoundexWords(string str1, string str2,
-                decimal iWeightPercentage = 10)         // arbitrarily reduces the result by the weight percentage specified
+                decimal iWeightPercentage = 10)     // arbitrarily reduces the result by the weight percentage specified
             {
                 int result = LSCompare(SoundexWordsInString(str1), SoundexWordsInString(str2));
 
@@ -308,7 +308,7 @@ namespace PatternMatching
             }
 
             public static int GetWeightedComparison(string str1, string str2,
-                bool bRemoveWhitespace = true,      // treat whitespace characters as noise characters
+                bool bRemoveNoiseCharacters = true, // remove whitespace and punctuation characters characters
                 bool bMakeCaseInsensitve = true,    // apply case insensitivity to each string
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest (required)
                 bool bReverseComparison = true,     // determine if one string is similar to the converse of the other
@@ -321,8 +321,8 @@ namespace PatternMatching
                 int soundexResult = bSoundexComparison ? HDSoundexWords(str1, str2) : 0;
                 int wordComparison = wholeWordResult > soundexResult ? wholeWordResult : soundexResult;
 
-                str1 = bRemoveWhitespace ? RemoveWhitespace(str1) : str1;
-                str2 = bRemoveWhitespace ? RemoveWhitespace(str2) : str2;
+                str1 = bRemoveNoiseCharacters ? RemoveNoiseCharacters(str1) : str1;
+                str2 = bRemoveNoiseCharacters ? RemoveNoiseCharacters(str2) : str2;
 
                 str1 = bMakeCaseInsensitve ? str1.ToUpperInvariant() : str1;
                 str2 = bMakeCaseInsensitve ? str2.ToUpperInvariant() : str2;
@@ -345,8 +345,8 @@ namespace PatternMatching
                 bool bPadToEqualLength = true,      // pad the smallest string to be of equal length to the largest
                 decimal iWeightPercentage = 15)     // arbitrarily reduces the result by the weight percentage specified
             {
-                str1 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
-                str2 = RemoveWhitespace(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
+                str1 = RemoveNoiseCharacters(SortWordsInString(RemoveDuplicateWords(str1.ToUpperInvariant())));
+                str2 = RemoveNoiseCharacters(SortWordsInString(RemoveDuplicateWords(str2.ToUpperInvariant())));
 
                 str1 = bPadToEqualLength ? str1.PadRight(str2.Length, (char)32) : str1;
                 str2 = bPadToEqualLength ? str2.PadRight(str1.Length, (char)32) : str2;
@@ -486,26 +486,19 @@ namespace PatternMatching
             return string.Join(delimiter.ToString(), strArray);
         }
 
+        private static string RemoveNoiseCharacters(string str)
+        {
+            return string.IsNullOrWhiteSpace(str) ? str : RemovePunctuation(RemoveWhitespace(str));
+        }
+
+        private static string RemovePunctuation(string str)
+        {
+            return new string(str.Where(c => !char.IsPunctuation(c)).ToArray());
+        }
+
         private static string RemoveWhitespace(string str)
         {
-            int strLength = str.Length;
-            int j = 0;
-
-            char[] charArray = new char[strLength];
-
-            for (int i = 0; i < strLength; ++i)
-            {
-                char chr = str[i];
-
-                if (!char.IsWhiteSpace(chr))
-                {
-                    charArray[j] = chr;
-                    ++j;
-                }
-
-            }
-
-            return new string(charArray, 0, j);
+            return new string(str.Where(c => !char.IsWhiteSpace(c)).ToArray());
         }
 
         private static string ReverseString(string str)
