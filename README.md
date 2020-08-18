@@ -8,9 +8,9 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 [v1.3.3b notes][]:
 
-1. Minor cumulative additions
-2. Dependency updates.
-2. Separated .NET Framework and .NET Standard libraries to reflect their constituent components
+	1. Minor cumulative additions
+	2. Dependency updates.
+	2. Separated .NET Framework and .NET Standard libraries to reflect their constituent components
 
 [v1.3.2b notes][]:
 
