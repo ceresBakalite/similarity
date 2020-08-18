@@ -9,21 +9,21 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 [v1.3.3b notes][]:
 
 	1. Minor cumulative additions
-	2. Dependency updates.
+	2. Dependency updates
 	2. Separated .NET Framework and .NET Standard libraries to reflect their constituent components
 
 [v1.3.2b notes][]:
 
 Minor changes since release v1.2.8.3b
 
-	1. Minor cumulative changes applied.  
+	1. Minor cumulative changes applied
 	2. Dependencies updated
-	3. Reverted to Semantic Versioning (SemVer - ie major.minor.patch) notation. 
+	3. Reverted to Semantic Versioning (SemVer - ie major.minor.patch) notation
 
 [v1.2.8.3b notes][]:
 
 	1. Stopped further unnecessary display catch-up builds, further eliminating flicker (deleting 
-	   multiple rows in the Result View now refreshes only once when all processing is complete).
+	   multiple rows in the Result View now refreshes only once when all processing is complete)
 
 [v1.2.8.2b notes][]:
 
@@ -44,7 +44,7 @@ Minor changes since release v1.2.8.3b
 	13. Applied a pull data request as a new default, permitting a user to optionally change from the 
 	    now redundant push data request when applying abbreviations to search criteria.  This greatly 
 	    enhances performance on all but the smallest data sets
-	14. Applied command-line usage to enable the application to be called from an external assembly.  
+	14. Applied command-line usage to enable the application to be called from an external assembly
 	
 	The command-line takes zero, two or ten arguments. Zero arguments will launch the application, whereas
 	any argument passed to the application will return an integer representing a percentage matching value
