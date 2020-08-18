@@ -16,7 +16,7 @@ namespace NAVService
                 {
                     string UpdateLocation = TargetLocation();
 
-                    LogHelper.TraceWriteLine($"TRACE - Async update is enabled [{ UpdateLocation }]");
+                    LogHelper.TraceWriteLine($"TRACE - Async update is enabled [Targeting { UpdateLocation }]");
 
                     _ = AsyncAwaitUpdateLookup();
 

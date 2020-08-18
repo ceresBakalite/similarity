@@ -104,7 +104,7 @@ namespace NAVService
                         ClassLibraryStandard.DataTableMethods.DeleteColumn(ExportTable, Constants.KEY_COLUMN);
                     }
 
-                    return ExportToExcel.CreateExcelFile.ExportExcelDocument(ExportTableCollection, destination);
+                    return CreateExcelFile.CreateExcelFile.ExportExcelDocument(ExportTableCollection, destination);
                 }
 
             }
@@ -374,7 +374,11 @@ namespace NAVService
 
                 }
 
-                if (bContinue) WorbookOpen();
+                if (bContinue)
+                {
+                    System.Threading.Tasks.Task WorbookOpenThread = System.Threading.Tasks.Task.Run(() => { WorbookOpen(); });
+                    WorbookOpenThread.Wait();
+                }
 
                 void WorbookOpen()
                 {

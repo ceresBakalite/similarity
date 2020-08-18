@@ -108,7 +108,7 @@
   <PropertyGroup />
   <ItemGroup>
     <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
-      <HintPath>packages\AWSSDK.Core.3.3.107.38\lib\net45\AWSSDK.Core.dll</HintPath>
+      <HintPath>packages\AWSSDK.Core.3.3.107.39\lib\net45\AWSSDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="Costura, Version=4.1.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>packages\Costura.Fody.4.1.0\lib\net40\Costura.dll</HintPath>
@@ -379,24 +379,24 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibraryFramework\ClassLibraryFramework\ClassLibraryFramework.csproj">
+    <ProjectReference Include="..\ClassLibraryFramework\ClassLibraryFramework.csproj">
       <Project>{1b04242a-b4d1-40a0-9d07-3eb0a68fa427}</Project>
       <Name>ClassLibraryFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibraryStandard\ClassLibraryStandard\ClassLibraryStandard.csproj">
-      <Project>{c81f73f0-6fa0-4207-af1a-bfd9892ac4be}</Project>
+    <ProjectReference Include="..\ClassLibraryStandard\ClassLibraryStandard.csproj">
+      <Project>{1c003413-549d-47ea-bb15-f8731e665005}</Project>
       <Name>ClassLibraryStandard</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Encryption\Encryption\Encryption.csproj">
-      <Project>{c5088fee-a225-49e5-9f44-73800d637afd}</Project>
-      <Name>Encryption</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExportToExcel\ExportToExcel\CreateExcelFile.csproj">
+    <ProjectReference Include="..\CreateExcelFile\CreateExcelFile.csproj">
       <Project>{61430554-242e-4398-be3d-986f419040c0}</Project>
       <Name>CreateExcelFile</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PatternMatching\PatternMatching\PatternMatching.csproj">
-      <Project>{e53460bb-f42c-40e9-93bd-5be70ba5b3ef}</Project>
+    <ProjectReference Include="..\Encryption\Encryption.csproj">
+      <Project>{251c9bdf-03ec-489d-9168-392b4441d953}</Project>
+      <Name>Encryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatternMatching\PatternMatching.csproj">
+      <Project>{541ab474-b29f-4476-9426-99ee09f81936}</Project>
       <Name>PatternMatching</Name>
     </ProjectReference>
   </ItemGroup>

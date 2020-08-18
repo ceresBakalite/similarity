@@ -36,7 +36,7 @@ namespace NAVService
 
                 void NAVApplicationLoad(object sender, EventArgs e)
                 {
-                    if (SplashWindow != null && !SplashWindow.Disposing && !SplashWindow.IsDisposed) 
+                    if (SplashWindow != null && !SplashWindow.Disposing && !SplashWindow.IsDisposed)
                     {
                         SplashWindow.Invoke(new Action(() => SplashWindow.Close()));
                     }
@@ -51,12 +51,14 @@ namespace NAVService
             }
             catch (NullReferenceException ex)
             {
-                System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                //System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
+                System.Windows.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error, (System.Windows.MessageBoxResult)System.Windows.MessageBoxOptions.DefaultDesktopOnly);
                 if (log != null) log.Fatal(Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, ex);
 
                 LogHelper.ApplicationKill();
             }
-
+        
         }
 
     }

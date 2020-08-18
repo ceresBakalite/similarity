@@ -135,10 +135,10 @@ namespace NAVService
                 Button restoreDefaultsButton = new Button
                 {
                     Anchor = (AnchorStyles.Top | AnchorStyles.Right),
-                    Name = "RestoreDefaultsButton",
+                    Name = Constants.CONTROL_RESTOREBUTTON_SYMBOL,
                     Location = new System.Drawing.Point(351, axisY),
                     Size = new System.Drawing.Size(100, 23),
-                    Text = "Restore defaults",
+                    Text = Properties.Resources.CONTROL_RESTOREBUTTON_TEXT,
                     UseVisualStyleBackColor = true,
                     FlatStyle = FlatStyle.Flat,
                     TabIndex = 1000
@@ -157,8 +157,8 @@ namespace NAVService
             {
                 TextBox PreferenceDescriptionHeader = new TextBox
                 {
-                    Name = "preferenceDescriptionHeader",
-                    Text = "",
+                    Name = Constants.CONTROL_PREFERENCEHEADER_SYMBOL,
+                    Text = null,
                     Anchor = ((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right),
                     BackColor = Constants.COLOR_DEFAULT_BACKCOLOR,
                     BorderStyle = BorderStyle.None,
@@ -181,7 +181,7 @@ namespace NAVService
             {
                 TextBox PreferenceDescription = new TextBox
                 {
-                    Name = "preferenceDescription",
+                    Name = Constants.CONTROL_PREFERENCEDESCRIPTION_SYMBOL,
                     Text = null,
                     Anchor = ((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right),
                     BackColor = Constants.COLOR_DEFAULT_BACKCOLOR,
@@ -203,7 +203,7 @@ namespace NAVService
 
             void GroupHeaderInsert(int rowIndex, int axisY)
             {
-                string controlName = "navDivider" + UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
+                string controlName = Constants.CONTROL_DIVIDER_SYMBOL + UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
 
                 TextBox DividerTextBox = new TextBox
                 {
@@ -234,7 +234,7 @@ namespace NAVService
 
             void PreferenceNameInsert(int rowIndex, int axisY)
             {
-                string controlName = "navPreference" + UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
+                string controlName = Constants.CONTROL_PREFERENCE_SYMBOL + UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
 
                 TextBox PreferenceTextBox = new TextBox
                 {
@@ -267,7 +267,7 @@ namespace NAVService
 
             void PreferenceValueInsert(int rowIndex, int axisY)
             {
-                string controlName = "navValue" + UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
+                string controlName = Constants.CONTROL_VALUE_SYMBOL + UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
                 string nvClientPreferenceName = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_NAME].ToString().Trim();
 
                 bool bClientOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString());
@@ -615,11 +615,11 @@ namespace NAVService
                         {
                             if ((control is TextBox) || (control is ComboBox))
                             {
-                                if (ClassLibraryStandard.StringMethods.InString(control.Name, "navValue"))
+                                if (ClassLibraryStandard.StringMethods.InString(control.Name, Constants.CONTROL_VALUE_SYMBOL))
                                 {
                                     if (control.Enabled)
                                     {
-                                        string[] controlName = control.Name.Split(new string[] { "navValue" }, StringSplitOptions.None);
+                                        string[] controlName = control.Name.Split(new string[] { Constants.CONTROL_VALUE_SYMBOL }, StringSplitOptions.None);
                                         int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
 
                                         control.Text = (control is ComboBox) ? (ClassLibraryStandard.HelperMethods.ToBoolean(RestoreDefaults(iUserPreferenceID)) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO) : RestoreDefaults(iUserPreferenceID);
@@ -642,8 +642,8 @@ namespace NAVService
 
         private void InstantiatePreferenceDelegates()
         {
-            PreferenceHeader = Controls["preferenceDescriptionHeader"];
-            PreferenceDescription = Controls["preferenceDescription"];
+            PreferenceHeader = Controls[Constants.CONTROL_PREFERENCEHEADER_SYMBOL];
+            PreferenceDescription = Controls[Constants.CONTROL_PREFERENCEDESCRIPTION_SYMBOL];
         }
 
         private void PreferenceDescriptionLeave(object sender, EventArgs e)
@@ -681,20 +681,20 @@ namespace NAVService
 
                 case Keys.Right:
 
-                    if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, "navDivider"))
+                    if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, Constants.CONTROL_DIVIDER_SYMBOL))
                     {
                         SendKeys.Send("{TAB}");
                     }
-                    else if(ClassLibraryStandard.StringMethods.InString(activeControl.Name, "navPreference"))
+                    else if(ClassLibraryStandard.StringMethods.InString(activeControl.Name, Constants.CONTROL_PREFERENCE_SYMBOL))
                     {
-                        string[] controlName = activeControl.Name.Split(new string[] { "navPreference" }, StringSplitOptions.None);
+                        string[] controlName = activeControl.Name.Split(new string[] { Constants.CONTROL_PREFERENCE_SYMBOL }, StringSplitOptions.None);
                         int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
 
                         foreach (Control control in Controls)
                         {
                             if ((control is TextBox) || (control is ComboBox))
                             {
-                                if (control.Name == "navValue" + iUserPreferenceID && control.Enabled)
+                                if (control.Name == Constants.CONTROL_VALUE_SYMBOL + iUserPreferenceID && control.Enabled)
                                 {
                                     control.Focus();
                                     return;
@@ -726,9 +726,9 @@ namespace NAVService
 
             if (control != null)
             {
-                if (ClassLibraryStandard.StringMethods.InString(control.Name, "navValue"))
+                if (ClassLibraryStandard.StringMethods.InString(control.Name, Constants.CONTROL_VALUE_SYMBOL))
                 {
-                    string[] controlName = control.Name.Split(new string[] { "navValue" }, StringSplitOptions.None);
+                    string[] controlName = control.Name.Split(new string[] { Constants.CONTROL_VALUE_SYMBOL }, StringSplitOptions.None);
 
                     int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
                     bool bUserPreference = ClassLibraryStandard.HelperMethods.ToBoolean(control.Text);

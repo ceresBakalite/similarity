@@ -98,7 +98,9 @@ namespace NAVService
         {
             TraceWriteLine("FATAL NullReferenceException", ex);
 
-            System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            //System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
+            System.Windows.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error, (System.Windows.MessageBoxResult)System.Windows.MessageBoxOptions.DefaultDesktopOnly);
             if (log != null) log.Fatal(Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, ex);
 
             ApplicationKill();
@@ -108,7 +110,9 @@ namespace NAVService
         {
             TraceWriteLine("FATAL SQLException", ex);
 
-            System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLCONNECTION_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            //System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLCONNECTION_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
+            System.Windows.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLCONNECTION_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error, (System.Windows.MessageBoxResult)System.Windows.MessageBoxOptions.DefaultDesktopOnly);
             if (log != null) log.Fatal(Properties.Resources.NOTIFY_SQLCONNECTION_ERROR, ex);
 
             ApplicationKill();
@@ -171,6 +175,13 @@ namespace NAVService
                 System.Diagnostics.Trace.Unindent();
             }
 
+        }
+
+        [System.Diagnostics.Conditional("TRACE")]
+        public static void ConfirmTraceState()
+        {
+            TraceWriteLine("TRACE - System Diagnostics Conditional Trace is enabled");
+            ConnectionHelper.ConfirmDebugState();
         }
 
         private static void RunCommandLineArguments(string[] args)

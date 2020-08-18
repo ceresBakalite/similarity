@@ -153,10 +153,10 @@ namespace NAVService
 
             void InitialisePreferenceDelegates()
             {
-                ProgressHeader = Controls["preferenceDescriptionHeader"];
-                ProgressDescription = Controls["preferenceDescription"];
-                ParseRowsButton = Controls["parseButton"];
-                DeleteRowsButton = Controls["deleteButton"];
+                ProgressHeader = Controls[Constants.CONTROL_PREFERENCEHEADER_SYMBOL];
+                ProgressDescription = Controls[Constants.CONTROL_PREFERENCEDESCRIPTION_SYMBOL];
+                ParseRowsButton = Controls[Constants.CONTROL_PARSEBUTTON_SYMBOL];
+                DeleteRowsButton = Controls[Constants.CONTROL_DELETEBUTTON_SYMBOL];
             }
 
             void InitialiseAbbreviatedLabel()
@@ -256,10 +256,10 @@ namespace NAVService
                 Button ParseWorksheetRowsButton = new Button
                 {
                     Anchor = (AnchorStyles.Top | AnchorStyles.Right),
-                    Name = "parseButton",
+                    Name = Constants.CONTROL_PARSEBUTTON_SYMBOL,
                     Location = new System.Drawing.Point(340, axisY),
                     Size = new System.Drawing.Size(110, 23),
-                    Text = "Search Worksheet",
+                    Text = Properties.Resources.CONTROL_SEARCHBUTTON_TEXT,
                     UseVisualStyleBackColor = true,
                     FlatStyle = FlatStyle.Flat,
                     TabIndex = 100
@@ -279,10 +279,10 @@ namespace NAVService
                 Button DeleteWorksheetRowsButton = new Button
                 {
                     Anchor = (AnchorStyles.Top | AnchorStyles.Right),
-                    Name = "deletebutton",
+                    Name = Constants.CONTROL_DELETEBUTTON_SYMBOL,
                     Location = new System.Drawing.Point(225, axisY),
                     Size = new System.Drawing.Size(110, 23),
-                    Text = "Remove Rows",
+                    Text = Properties.Resources.CONTROL_REMOVEROWSBUTTON_TEXT,
                     UseVisualStyleBackColor = true,
                     Enabled = false,
                     FlatStyle = FlatStyle.Flat,
@@ -300,7 +300,7 @@ namespace NAVService
 
             void GroupHeaderInsert(int rowIndex, int axisY)
             {
-                string controlName = "navDivider" + PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
+                string controlName = Constants.CONTROL_DIVIDER_SYMBOL + PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
 
                 TextBox DividerTextBox = new TextBox
                 {
@@ -331,7 +331,7 @@ namespace NAVService
 
             void PreferenceNameInsert(int rowIndex, int axisY)
             {
-                string controlName = "navPreference" + PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
+                string controlName = Constants.CONTROL_PREFERENCE_SYMBOL + PreferencesForm.UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_USER_PREFERENCE_ID].ToString().Trim();
 
                 TextBox PreferenceTextBox = new TextBox
                 {
@@ -486,7 +486,7 @@ namespace NAVService
                 TextBox PreferenceDescription = new TextBox
                 {
                     Visible = true,
-                    Name = "preferenceDescription",
+                    Name = Constants.CONTROL_PREFERENCEDESCRIPTION_SYMBOL,
                     Text = null,
                     Anchor = ((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right),
                     BackColor = Constants.COLOR_DEFAULT_BACKCOLOR,
@@ -512,8 +512,8 @@ namespace NAVService
                 TextBox PreferenceDescriptionHeader = new TextBox
                 {
                     Visible = true,
-                    Name = "preferenceDescriptionHeader",
-                    Text = "",
+                    Name = Constants.CONTROL_PREFERENCEHEADER_SYMBOL,
+                    Text = null,
                     Anchor = ((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right),
                     BackColor = Constants.COLOR_DEFAULT_BACKCOLOR,
                     BorderStyle = BorderStyle.None,
@@ -771,11 +771,10 @@ namespace NAVService
 
                 bool bDisplayProgress = rows.Length > (Constants.ACTION_PROGRESS_ESTIMATE / 4);
 
-                System.Threading.Tasks.Task DeleteTask = System.Threading.Tasks.Task.Run(() => { DeleteDuplicatesThread(); });
+                System.Threading.Tasks.Task DeleteThread = System.Threading.Tasks.Task.Run(() => { DeleteDuplicates(); });
+                DeleteThread.Wait();
 
-                DeleteTask.Wait();
-
-                void DeleteDuplicatesThread()
+                void DeleteDuplicates()
                 {
                     ParentTable.AcceptChanges();
 
@@ -948,13 +947,13 @@ namespace NAVService
 
                 case Keys.Right:
 
-                    if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, "navDivider"))
+                    if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, Constants.CONTROL_DIVIDER_SYMBOL))
                     {
                         SendKeys.Send("{TAB}");
                     }
-                    else if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, "navPreference"))
+                    else if (ClassLibraryStandard.StringMethods.InString(activeControl.Name, Constants.CONTROL_PREFERENCE_SYMBOL))
                     {
-                        string[] controlName = activeControl.Name.Split(new string[] { "navPreference" }, System.StringSplitOptions.None);
+                        string[] controlName = activeControl.Name.Split(new string[] { Constants.CONTROL_PREFERENCE_SYMBOL }, System.StringSplitOptions.None);
                         int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
 
                         foreach (Control control in Controls)

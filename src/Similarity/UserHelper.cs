@@ -28,12 +28,13 @@
         // assign a user to their environment attributes and dispose of system sensitive data
         private static int InitaliseEnvironment()
         {
-            LogHelper.TraceWriteLine("TRACE - Confirming connection out");
+            LogHelper.ConfirmTraceState();
 
             if (ClassLibraryStandard.InternetInteropServices.InternetConnectedState())
             {
                 try
                 {
+                    LogHelper.TraceWriteLine("TRACE - Confirming connection out");
                     return ConfigureRuntimeAttributes();
                 }
                 catch (System.Exception ex)
@@ -55,7 +56,7 @@
 
             int ConfigureRuntimeAttributes()
             {
-                LogHelper.TraceWriteLine("TRACE - Account initialisation");
+                LogHelper.TraceWriteLine("TRACE - Begin account initialisation");
 
                 byte[] byteCryptKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(0, 64));
                 byte[] byteAuthKey = ClassLibraryFramework.StringMethods.GetStringToBytes(Properties.Settings.Default.HashKey.Substring(64, 64));
