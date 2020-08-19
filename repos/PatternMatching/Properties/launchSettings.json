@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PatternMatching": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
