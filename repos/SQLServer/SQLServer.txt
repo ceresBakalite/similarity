@@ -2,9 +2,8 @@ SQL Server Management Studio v18.6 Enterprise edition
 
 NOTES:
 
-Scripting parameters include
+Additional scripting parameters include
 
 SQL Server 2019
-Stand-alone instance
 Schema and data
 Script Triggers
