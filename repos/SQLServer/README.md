@@ -7,3 +7,4 @@
        a. SQL Server 2019
        b. Schema and data
        c. Script Triggers
+***
