@@ -282,7 +282,7 @@ namespace NAVService
                     DeleteButton.Enabled = DeleteAbbreviations;
                     NewButton.Enabled = AddNewAbbreviations;
 
-                    using (ClassLibraryFramework.DrawingInteropServices.PauseDrawing(NAVPanelFormTabControl))
+                    using (ClassLibraryFramework.DrawingInteropServices.PauseDrawing(AbbreviationsDataGridView))
                     {
                         if (HideAbbreviations)
                         {
