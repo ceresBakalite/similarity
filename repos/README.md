@@ -1,2 +1,1 @@
 ## Similarity source file repository
-***
