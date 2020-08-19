@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CAPTION_ABBREVIATIONS" xml:space="preserve">
+    <value>Abbreviations and Symbols</value>
+  </data>
+  <data name="CAPTION_APPLICATION" xml:space="preserve">
+    <value>Similarity</value>
+  </data>
+  <data name="CAPTION_COMPARE" xml:space="preserve">
+    <value>Similarity comparison</value>
+  </data>
+  <data name="CAPTION_COMPARE_RESULT" xml:space="preserve">
+    <value>Similarity comparison result</value>
+  </data>
+  <data name="CAPTION_DRAG_DROP" xml:space="preserve">
+    <value>Drag and Drop</value>
+  </data>
+  <data name="CAPTION_DUPLCATE" xml:space="preserve">
+    <value>Remove duplicates</value>
+  </data>
+  <data name="CAPTION_EXIT_APPLICATION" xml:space="preserve">
+    <value>Exit the application</value>
+  </data>
+  <data name="CAPTION_INITIALISATION_ERROR" xml:space="preserve">
+    <value>Initialisation Error</value>
+  </data>
+  <data name="CAPTION_OPEN_WORKBOOK" xml:space="preserve">
+    <value>Open Workbook</value>
+  </data>
+  <data name="CAPTION_PREFERENCES" xml:space="preserve">
+    <value>Preferences and Views</value>
+  </data>
+  <data name="CAPTION_PREFERENCES_ERROR" xml:space="preserve">
+    <value>Change Preference Error</value>
+  </data>
+  <data name="CAPTION_RESTART_APPLICATION" xml:space="preserve">
+    <value>Restart Application</value>
+  </data>
+  <data name="CAPTION_SAVE_WORKBOOK" xml:space="preserve">
+    <value>Save Workbook</value>
+  </data>
+  <data name="CAPTION_SIMILARITY" xml:space="preserve">
+    <value>Similarity Patterns</value>
+  </data>
+  <data name="CAPTION_TAB_ABBREVIATIONS" xml:space="preserve">
+    <value>Abbreviations</value>
+  </data>
+  <data name="CAPTION_TAB_EXPLORER" xml:space="preserve">
+    <value>Explorer</value>
+  </data>
+  <data name="CAPTION_TAB_PREFERENCES" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
+  <data name="CONTROL_DELETEBUTTON_TEXT" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="CONTROL_NEWBUTTON_TEXT" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="CONTROL_REMOVEROWSBUTTON_TEXT" xml:space="preserve">
+    <value>Remove Rows</value>
+  </data>
+  <data name="CONTROL_RESTOREBUTTON_TEXT" xml:space="preserve">
+    <value>Restore defaults</value>
+  </data>
+  <data name="CONTROL_SEARCHBUTTON_TEXT" xml:space="preserve">
+    <value>Search Worksheet</value>
+  </data>
+  <data name="ERROR_LOG_FILENAME" xml:space="preserve">
+    <value>SimilarityLogFile.txt</value>
+  </data>
+  <data name="FIELD_VALUE_NO" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="FIELD_VALUE_YES" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="FILE_OPENFILE_FILTER" xml:space="preserve">
+    <value>Excel Workbook (*.xlsx)|*.xlsx|Excel 97-2003 Workbook (*.xls)|*.xls|Comma Separated Value (*.csv)|*.csv</value>
+  </data>
+  <data name="FILE_SAVEFILE_FILTER" xml:space="preserve">
+    <value>Excel Workbook (*.xlsx)|*.xlsx</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATIONPROGRESS" xml:space="preserve">
+    <value>Initialising abbreviations. This may take a few moments...</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_BINDING" xml:space="preserve">
+    <value>An unrecoverable error occurred.  The abbreviations data binding failed on completion</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_CELL" xml:space="preserve">
+    <value>An error occurred while updating a cell in the Abbreviations view</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_DATAGRIDVIEW" xml:space="preserve">
+    <value>Error! The word or phrase "{0}" requires an abbreviation or symbol</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_EDIT" xml:space="preserve">
+    <value>An error occurred when attempting to edit this abbreviation pair. The update failed to complete successfully</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_FAIL" xml:space="preserve">
+    <value>An unexpected error occurred during startup. The abbreviations panel failed to initialise</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_FAILURE" xml:space="preserve">
+    <value>An unrecoverable error occurred while attempting to apply abbreviations to the search criteria.  The parse command failed.{0}{0}The application is shutting down</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_INSERT" xml:space="preserve">
+    <value>An error occurred while attempting to create a word abbreviation pair.  The insert failed</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_TYPE" xml:space="preserve">
+    <value>An error occurred while attempting to fetch the abbreviation type.  Unable to reach the database</value>
+  </data>
+  <data name="NOTIFY_ABBREVIATION_UPDATE" xml:space="preserve">
+    <value>You can already make adjustments to this {1} abbreviation pair.{0}{0}The {2} "{3}" associated with the abbreviation "{4}" already exists and can be found in the {5} category</value>
+  </data>
+  <data name="NOTIFY_APPLICATION_LICENCE" xml:space="preserve">
+    <value>GNU General Public License v3.0</value>
+  </data>
+  <data name="NOTIFY_APPLICATION_STARTING" xml:space="preserve">
+    <value>Starting...</value>
+  </data>
+  <data name="NOTIFY_COMMANDLINE_HELP" xml:space="preserve">
+    <value>{0}The commandline requires two arguments.{0}{0}{1} "comparison string one" "comparison string two"{0}{0}In addition the command line also supports the following arguments:{0}{0}MatchingAlgorithm (0,1,2){0}{0}Where:{0}   {5} = the {2} matching algorithm{0}   {6} = the {3} algorithm{0}   {7} = the {4} algorithm{0}{0}MakeCaseInsensitive (true or false){0}PadToEqualLength (true or false){0}RemoveWhitespace (true or false){0}ReverseComparison (true or false){0}PhoneticFilter (true or false){0}WholeWordComparison (true or false){0}{0}For example:{0}{0}{1} "comparison string one" "comparison string two" 2 true true true true true true true true{0}</value>
+  </data>
+  <data name="NOTIFY_COMPARISON_RESULT" xml:space="preserve">
+    <value>{1}{2} rows [{3}] excising {7} duplicates{0}Cumulative matching variations: c.{4}{0}{0}{5} matches found: {6}</value>
+  </data>
+  <data name="NOTIFY_CURRENT_TOTAL" xml:space="preserve">
+    <value>{0} Rows</value>
+  </data>
+  <data name="NOTIFY_DELETE_ABBREVIATION" xml:space="preserve">
+    <value>An error occurred when preparing to delete word abbreviation pairs</value>
+  </data>
+  <data name="NOTIFY_DELETE_ROW" xml:space="preserve">
+    <value>Are you sure you wish to delete this row?  This action cannot be undone</value>
+  </data>
+  <data name="NOTIFY_DELETE_ROWSCOUNT" xml:space="preserve">
+    <value>You are about to remove {1} rows from this workbook.{0}{0}Are you sure you wish to continue?  This action cannot be undone</value>
+  </data>
+  <data name="NOTIFY_DELETE_SELECTED_ROWS" xml:space="preserve">
+    <value>Are you sure you wish to delete the selected rows?  This action cannot be undone</value>
+  </data>
+  <data name="NOTIFY_DISPLAYPROGRESS_CANCEL" xml:space="preserve">
+    <value>{0} [Cancelling... ]</value>
+  </data>
+  <data name="NOTIFY_DISPLAYPROGRESS_PERCENTAGE" xml:space="preserve">
+    <value>Progress: {0}%  Processed {1} - {2} rows [{3}]</value>
+  </data>
+  <data name="NOTIFY_EXIT_APPLICATION" xml:space="preserve">
+    <value>Are you sure you wish to leave the application?</value>
+  </data>
+  <data name="NOTIFY_FIELD_ABBREVIATION_ERROR" xml:space="preserve">
+    <value>All fields on this form are required fields.{0}{0}Please enter an abbreviation or symbol associated with the parent word or phrase.</value>
+  </data>
+  <data name="NOTIFY_FIELD_DESCRIPTION_ERROR" xml:space="preserve">
+    <value>All fields on this form are required fields.{0}{0}Please enter a description of the word or phrase.</value>
+  </data>
+  <data name="NOTIFY_FIELD_ERROR" xml:space="preserve">
+    <value>All fields on this form are required fields.{0}{0}Please enter a word or a phrase.</value>
+  </data>
+  <data name="NOTIFY_FILEINUSE" xml:space="preserve">
+    <value>An error occurred when attempting to open {1}{0}{0}The file is being used by another process</value>
+  </data>
+  <data name="NOTIFY_FILEOPEN_FAILED" xml:space="preserve">
+    <value>An error occurred when attempting to open {1}{0}{0}The file could not be opened</value>
+  </data>
+  <data name="NOTIFY_FILESAVE_ERROR" xml:space="preserve">
+    <value>An error occurred when attempting to save {0}</value>
+  </data>
+  <data name="NOTIFY_FILE_UNSUPPORTED" xml:space="preserve">
+    <value>{1} is an unsupported file type.{0}{0}Supported file types are Excel Workbook(*.xlsx), Excel 97 - 2003 Workbook(*.xls) or Comma Separated Value(*.csv) files</value>
+  </data>
+  <data name="NOTIFY_FORM_ERROR" xml:space="preserve">
+    <value>Oops. An unexpected error has been encountered. This form will close</value>
+  </data>
+  <data name="NOTIFY_INITIALISE_DUPICATE_DISPLAY" xml:space="preserve">
+    <value>Progress 0% - Analysing rows [{0}]</value>
+  </data>
+  <data name="NOTIFY_INITIALISE_PROGRESS" xml:space="preserve">
+    <value>Progress: 0%</value>
+  </data>
+  <data name="NOTIFY_LARGEFILE_WARNING" xml:space="preserve">
+    <value>This is an unusually complex file to parse. Consider removing unnecessary columns or grouping data into smaller subsets.{0}{0}{1} rows{0}{2} columns{0}{3} duplicate rows{0}{0}Some data sets can take an inordinate length of time to process, particularly when they share few similarities{0}{0}</value>
+  </data>
+  <data name="NOTIFY_PARTIAL" xml:space="preserve">
+    <value>Partial</value>
+  </data>
+  <data name="NOTIFY_PERCENTAGE_VALIDATION" xml:space="preserve">
+    <value>Please enter an integer value.  This is a numeric field requiring an integer value between 0 and 100</value>
+  </data>
+  <data name="NOTIFY_POTENTIAL" xml:space="preserve">
+    <value>Potential</value>
+  </data>
+  <data name="NOTIFY_PREFERENCE_CELL" xml:space="preserve">
+    <value>An error occurred while updating a cell in the Preferences view</value>
+  </data>
+  <data name="NOTIFY_PREFERENCE_CHANGES" xml:space="preserve">
+    <value>Preference changes will take effect the next time the application is loaded.{0}{0}Would you like to restart the application now?</value>
+  </data>
+  <data name="NOTIFY_PREFERENCE_FIELDS" xml:space="preserve">
+    <value>All fields on this form are required fields.{0}{0}This field represents:{0}{0}</value>
+  </data>
+  <data name="NOTIFY_PROCESSED" xml:space="preserve">
+    <value>Processed: </value>
+  </data>
+  <data name="NOTIFY_PROGRESS_CANCELLED" xml:space="preserve">
+    <value>Operation cancelled</value>
+  </data>
+  <data name="NOTIFY_REMAINDER" xml:space="preserve">
+    <value>Remainder: </value>
+  </data>
+  <data name="NOTIFY_RESTORE_PREFERENCES" xml:space="preserve">
+    <value>Restore preferences to their defaults{0}{0}Are you sure you wish to continue?  This action cannot be undone</value>
+  </data>
+  <data name="NOTIFY_SAVEWORKBOOKCHANGES" xml:space="preserve">
+    <value>Do you wish to save changes to this Workbook?</value>
+  </data>
+  <data name="NOTIFY_SAVEWORKBOOKCHANGES_ON_EXIT" xml:space="preserve">
+    <value>The application is about to close. Do you wish to save changes to this Workbook before closing and restarting the application?</value>
+  </data>
+  <data name="NOTIFY_SELECT_ABBREVIATION" xml:space="preserve">
+    <value>You will need to select one or more rows if you wish to delete words and their abbreviations</value>
+  </data>
+  <data name="NOTIFY_SPLASHFORM_VERSION" xml:space="preserve">
+    <value>{0} Release Version {1}</value>
+  </data>
+  <data name="NOTIFY_SQLCONNECTION_ERROR" xml:space="preserve">
+    <value>An unrecoverable error has occurred during initialisation. The connection to the server has repeatedly timed out before a connection could be established.{0}{0}Unable to connect to the server. The application is shutting down</value>
+  </data>
+  <data name="NOTIFY_SQLINIITIALISATION_ERROR" xml:space="preserve">
+    <value>An unrecoverable error has occurred during initialisation. The application is shutting down...</value>
+  </data>
+  <data name="NOTIFY_SQLINIITIALISATION_LOGON_ERROR" xml:space="preserve">
+    <value>An unrecoverable error has occurred during initialisation. The error occurred when attempting to verify logon access.{0}{0}The application is shutting down</value>
+  </data>
+  <data name="NOTIFY_SQLNETWORK_UNAVAILABLE" xml:space="preserve">
+    <value>Network connectivity appears to be unavailable.  A connection to the internet could not be established. The application is shutting down...</value>
+  </data>
+  <data name="NOTIFY_SQLNULLREFERENCE_ERROR" xml:space="preserve">
+    <value>An unrecoverable error has occurred. The server returned an invalid NULL reference.{0}{0}The application is shutting down...</value>
+  </data>
+  <data name="NOTIFY_SQUIRREL_UPDATE_ERROR" xml:space="preserve">
+    <value>An exception occurred during the Squirrel.Windows update manager background process.{0}{0}The update manager has stopped.</value>
+  </data>
+  <data name="NOTIFY_UPDATE_PREFERENCE" xml:space="preserve">
+    <value>An error occurred while adjusting the "{0}" preference in the "{1}" category.  The category was not found</value>
+  </data>
+  <data name="NOTIFY_UPDATE_PREFERENCENAME" xml:space="preserve">
+    <value>An error occurred while adjusting the "{0}" preference.  The preference was not found</value>
+  </data>
+  <data name="TOOLTIP_ABBREVIATIONDESCRIPTIONTEXT" xml:space="preserve">
+    <value>The abbreviation definition</value>
+  </data>
+  <data name="TOOLTIP_ABBREVIATIONLABEL" xml:space="preserve">
+    <value>The comparison search has been parsed for abbreviations and symbols</value>
+  </data>
+  <data name="TOOLTIP_ABBREVIATIONTEXT" xml:space="preserve">
+    <value>The short hand abbreviation used to represent the parent word or phrase</value>
+  </data>
+  <data name="TOOLTIP_ADDFILEBUTTON" xml:space="preserve">
+    <value>Select an Excel Workbook (*.xlsx), Excel 97-2003 Workbook (*.xls) or Comma Separated Value (*.csv) file</value>
+  </data>
+  <data name="TOOLTIP_ALWAYSUSETEXT" xml:space="preserve">
+    <value>Use this abbreviation when matching a word or phrase</value>
+  </data>
+  <data name="TOOLTIP_CANCELPROGRESSBUTTON" xml:space="preserve">
+    <value>Abandon the comparison pattern matching process</value>
+  </data>
+  <data name="TOOLTIP_COMPAREVALUETEXT" xml:space="preserve">
+    <value>The percentage similarity returned when compared</value>
+  </data>
+  <data name="TOOLTIP_DELETEBUTTON" xml:space="preserve">
+    <value>Delete the selected rows</value>
+  </data>
+  <data name="TOOLTIP_DELETEROWFLAGTEXT" xml:space="preserve">
+    <value>Remove a row from the worksheet</value>
+  </data>
+  <data name="TOOLTIP_DELETEWORKSHEETROWSBUTTON" xml:space="preserve">
+    <value>Remove selected rows from the worksheet within the specified range</value>
+  </data>
+  <data name="TOOLTIP_EXITBUTTON" xml:space="preserve">
+    <value>Cancel all work and exit the application</value>
+  </data>
+  <data name="TOOLTIP_EXPLORERSTRINGTEXT" xml:space="preserve">
+    <value>The information compared when matching similar items in the worksheet</value>
+  </data>
+  <data name="TOOLTIP_MATCHTYPETEXT" xml:space="preserve">
+    <value>Denotes the Parent or Child relationship</value>
+  </data>
+  <data name="TOOLTIP_NEWBUTTON" xml:space="preserve">
+    <value>Create a new word abbreviation pair</value>
+  </data>
+  <data name="TOOLTIP_PANELSLIDERPICTUREBOX" xml:space="preserve">
+    <value>Configure the Explorer, Preference and Abbreviation properties</value>
+  </data>
+  <data name="TOOLTIP_PARSEWORKSHEETBUTTON" xml:space="preserve">
+    <value>Find similarities, duplicates and cleanse the worksheet within the specified range</value>
+  </data>
+  <data name="TOOLTIP_RESTOREDEFAULTSBUTTON" xml:space="preserve">
+    <value>Restore all preferences and views to their system defaults</value>
+  </data>
+  <data name="TOOLTIP_SAVEWORKBOOKBUTTON" xml:space="preserve">
+    <value>Save this file to an Excel Workbook (*.xlsx) file</value>
+  </data>
+  <data name="TOOLTIP_SHEETCOMBOBOX" xml:space="preserve">
+    <value>Select a Worksheet</value>
+  </data>
+  <data name="TOOLTIP_WORDTEXT" xml:space="preserve">
+    <value>The parent word or phrase</value>
+  </data>
+</root>

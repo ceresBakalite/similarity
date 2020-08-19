@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NAVService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Target" Type="System.String" Scope="User">
+      <Value Profile="(Default)">61756A2B4C54496B3175624D5933774D7235394B514F3352562B6841622F41484A68514D46724F6763356549793642713871556A4F37414B376A2B48624A453079714D505331502F5A34397246472B352F73713951513D3D</Value>
+    </Setting>
+    <Setting Name="HashKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ACBA2BBDC5B11D634F754F1E8B149B1CD6C6AE10408AC98C8DA182560B7089A52C9AB4FA7383F53FB88789A838B429879AB2BDF3C5F13805A9C3A436ACD34DC3</Value>
+    </Setting>
+    <Setting Name="Signature" Type="System.String" Scope="User">
+      <Value Profile="(Default)">384650384F587476376D344B5555712B38464234346C307175712B555363574F41474B314D614F597758487A6A6C346B3235495A505543476D62627A5A50466668545937646676713968726D487A497971514C6579673D3D</Value>
+    </Setting>
+    <Setting Name="Sync" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Update" Type="System.String" Scope="User">
+      <Value Profile="(Default)">6A41702B3577365A7367765A656955626F52562B566C41556444597A3473566F4F714455736431786D436173596C4B4876414B6B52776C4855654379647367702F726739714764473978717256316C4E7A3442474F413D3D</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
