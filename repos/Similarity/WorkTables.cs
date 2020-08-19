@@ -374,7 +374,7 @@ namespace NAVService
                                 {
                                     if (row[Constants.COLUMN_ROW_ID].Equals(key))
                                     {
-                                        ParentTable.Rows.RemoveAt(i);
+                                        ParentTable.Rows.RemoveAt(j);
                                         break;
                                     }
                                 }
