@@ -29,9 +29,6 @@ namespace NAVService
         {
             InitializeComponent();
             InitializePanels();
-
-            //NAVFormSplitContainer.Hide();
-
         }
 
         protected internal static void ApplyPreferenceChange(System.Collections.Generic.Dictionary<int, NAVChangePreferencesModel> map)
@@ -184,6 +181,8 @@ namespace NAVService
 
         private void InitializePanels()
         {
+            BackColor = Constants.COLOR_DEFAULT_BACKCOLOR;
+
             SetNotifyPreferenceChange(false);
             SetEnablePreferenceChange(true);
 
@@ -225,6 +224,7 @@ namespace NAVService
 
             void InitializeLeftPanelForm()
             {
+                NAVFormSplitContainer.BackColor = Constants.COLOR_DEFAULT_BACKCOLOR;
                 NAVFormSplitContainer.Panel2Collapsed = true;
 
                 NAVForm.Shown += new EventHandler(NAVFormShownEventHandler);
@@ -258,6 +258,7 @@ namespace NAVService
 
                     try
                     {
+                        AbbreviationTypeComboBox.BackColor = Constants.COLOR_DEFAULT_BACKCOLOR;
                         AbbreviationTypeComboBox.DataSource = DataAccess.GetAbbreviationTypes();
                         AbbreviationTypeComboBox.DisplayMember = Constants.COLUMN_ABBREVIATION_TYPE;
                         AbbreviationTypeComboBox.SelectedIndexChanged += (object sender, EventArgs e) => GetAbbreviationDataGridView();
@@ -281,29 +282,32 @@ namespace NAVService
                     DeleteButton.Enabled = DeleteAbbreviations;
                     NewButton.Enabled = AddNewAbbreviations;
 
-                    ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(AbbreviationsDataGridView);
-
-                    if (HideAbbreviations)
+                    using (ClassLibraryFramework.DrawingInteropServices.PauseDrawing(NAVPanelFormTabControl))
                     {
-                        if (NAVPanelFormTabControl.TabPages.Contains(TABAbbreviations))
+                        if (HideAbbreviations)
                         {
-                            NAVPanelFormTabControl.TabPages.Remove(TABAbbreviations);
-                        }
-                    }
-                    else
-                    {
-                        GetAbbreviationDataGridView();
-                    }
+                            if (NAVPanelFormTabControl.TabPages.Contains(TABAbbreviations))
+                            {
+                                NAVPanelFormTabControl.TabPages.Remove(TABAbbreviations);
+                            }
 
-                    if (HideExplorer)
-                    {
-                        if (NAVPanelFormTabControl.TabPages.Contains(TABExplorer))
+                        }
+                        else
                         {
-                            NAVPanelFormTabControl.TabPages.Remove(TABExplorer);
+                            GetAbbreviationDataGridView();
                         }
+
+                        if (HideExplorer)
+                        {
+                            if (NAVPanelFormTabControl.TabPages.Contains(TABExplorer))
+                            {
+                                NAVPanelFormTabControl.TabPages.Remove(TABExplorer);
+                            }
+
+                        }
+
                     }
 
-                    ClassLibraryFramework.DrawingInteropServices.ResumeDrawing(AbbreviationsDataGridView);
                 }
 
                 void InitializeExplorer()
@@ -315,7 +319,9 @@ namespace NAVService
                         Dock = DockStyle.Fill
                     };
 
+                    ExplorerFormPanel.BackColor = Constants.COLOR_DEFAULT_WINDOW;
                     ExplorerFormPanel.Controls.Add(explorerForm);
+
                     explorerForm.Show();
                 }
 
@@ -327,6 +333,8 @@ namespace NAVService
                         FormBorderStyle = FormBorderStyle.None,
                         Dock = DockStyle.Fill
                     };
+
+                    TABPreferences.BackColor = Constants.COLOR_DEFAULT_WINDOW;
 
                     PreferenceFormPanel.Controls.Add(preferencesForm);
                     preferencesForm.Show();

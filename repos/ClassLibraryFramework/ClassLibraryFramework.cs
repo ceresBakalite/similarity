@@ -71,7 +71,7 @@
 
     public static class DrawingInteropServices
     {
-        #region Windows Forms Suspend and Resume drawing extensions
+        #region Windows Forms Suspend, Resume and Dispose drawing extensions
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int SendMessage(System.IntPtr hWnd, int wMsg, bool wParam, int lParam);
@@ -88,6 +88,29 @@
         {
             _ = SendMessage(parent.Handle, WM_SETREDRAW, true, 0);
             parent.Refresh();
+        }
+
+        // variant syntax: using (PauseDrawing()) { //update GUI }
+        public static System.IDisposable PauseDrawing(System.Windows.Forms.Control parent)
+        {
+            return new HoldControl(parent);
+        }
+
+        private class HoldControl : System.IDisposable
+        {
+            private readonly System.Windows.Forms.Control control;
+
+            public HoldControl(System.Windows.Forms.Control parent)
+            {
+                control = parent;
+                SuspendDrawing(parent);
+            }
+            
+            public void Dispose()
+            {
+                ResumeDrawing(control);           
+            }
+
         }
 
         #endregion

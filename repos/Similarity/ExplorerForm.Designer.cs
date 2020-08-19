@@ -96,7 +96,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             ResultDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            ResultDataGridView.GridColor = System.Drawing.SystemColors.Control;
+            ResultDataGridView.GridColor = System.Drawing.Color.FromArgb(255, 255, 252); 
             ResultDataGridView.Location = new System.Drawing.Point(0, 327);
             ResultDataGridView.Name = "ResultDataGridView";
             ResultDataGridView.RowHeadersVisible = false;

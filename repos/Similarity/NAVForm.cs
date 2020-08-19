@@ -242,6 +242,7 @@ namespace NAVService
 
         private void InitializeNAVForm()
         {
+            InitialiseAppearance();
             InitialiseDragDrop();
             InitialiseSheetDataGridView();
             InitialiseSpreadsheet();
@@ -256,9 +257,16 @@ namespace NAVService
                 SetSpreadsheetChanges(false);
             }
 
+            void InitialiseAppearance()
+            {
+                BackColor = Constants.COLOR_DEFAULT_BACKCOLOR;
+                ClientSize = new System.Drawing.Size(839, 533);
+            }
+
             void InitialiseDragDrop()
             {
                 DropPreLoadPictureBox.AllowDrop = true;
+                DropPreLoadPictureBox.BackColor = Constants.COLOR_DEFAULT_BACKCOLOR;
                 DropPreLoadPictureBox.DragDrop += SheetDataGridViewDragDrop;
                 DropPreLoadPictureBox.DragEnter += SheetDataGridViewDragEnter;
                 SheetDataGridView.DragDrop += SheetDataGridViewDragDrop;
@@ -270,6 +278,8 @@ namespace NAVService
                 SheetDataGridView.CellValueChanged += SheetDataGridViewCellValueChanged;
                 SheetDataGridView.UserDeletingRow += UserDeletingRowEvent;
                 SheetDataGridView.MouseDown += SheetDataGridViewMouseDownEvent;
+
+                SheetDataGridView.BackgroundColor = Constants.COLOR_DEFAULT_BACKCOLOR;
                 SheetDataGridView.AllowUserToOrderColumns = AdjustColumns;
                 SheetDataGridView.AllowUserToAddRows = CreateRows;
                 SheetDataGridView.AllowUserToDeleteRows = DeleteRows;

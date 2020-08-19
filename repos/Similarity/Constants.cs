@@ -158,7 +158,7 @@
         protected internal static readonly System.Drawing.Color COLOR_MATCH_ASSOCIATE_DELETE = System.Drawing.Color.FromArgb(252, 249, 244);
         protected internal static readonly System.Drawing.Color COLOR_MATCH_PRINCIPLE = System.Drawing.Color.White;
         protected internal static readonly System.Drawing.Color COLOR_MATCH_PRINCIPLE_DELETE = System.Drawing.Color.FromArgb(252, 249, 244);
-        protected internal static readonly System.Drawing.Color COLOR_DEFAULT_BACKCOLOR = System.Drawing.Color.FromArgb(255, 255, 254);
+        protected internal static readonly System.Drawing.Color COLOR_DEFAULT_BACKCOLOR = System.Drawing.Color.FromArgb(255, 255, 252);
         protected internal static readonly System.Drawing.Color COLOR_DEFAULT_WINDOW = System.Drawing.SystemColors.Window;
         protected internal static readonly System.Drawing.Color COLOR_DEFAULT_TEXT = System.Drawing.SystemColors.WindowText;
         protected internal static readonly System.Drawing.Color COLOR_DEFAULT = System.Drawing.Color.White;

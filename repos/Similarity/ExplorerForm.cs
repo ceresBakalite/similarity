@@ -109,6 +109,7 @@ namespace NAVService
 
         private void InitializeExplorerForm()
         {
+            InitialiseAppearance();
             InitialiseDataGridViews();
             InitialiseAbbreviatedLabel();
             InitialiseProgressDelegates();
@@ -118,6 +119,12 @@ namespace NAVService
             initialiseToolTips();
 
             SetInitialiseDisplay(false);
+
+            void InitialiseAppearance()
+            {
+                BackColor = Constants.COLOR_DEFAULT_BACKCOLOR;
+                ProgressBarPanel.BackColor = Constants.COLOR_DEFAULT_BACKCOLOR;
+            }
 
             void InitialiseProgressForm()
             {
@@ -170,6 +177,7 @@ namespace NAVService
             {
                 NAVForm.GetSheetDataGridView().Sorted += (object sender, System.EventArgs e) => DrawControls.SetDataGridViewRowBackgroundColour();
 
+                ResultDataGridView.BackgroundColor = Constants.COLOR_DEFAULT_BACKCOLOR;
                 ResultDataGridView.Location = new System.Drawing.Point(0, 327);
                 ResultDataGridView.Size = new System.Drawing.Size(453, 50);
                 ResultDataGridView.Visible = false;
