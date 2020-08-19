@@ -401,7 +401,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
     <Folder Include="System\Windows\Forms\" />
   </ItemGroup>
   <ItemGroup>

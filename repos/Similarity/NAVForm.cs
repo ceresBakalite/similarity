@@ -204,7 +204,6 @@ namespace NAVService
 
                             }
 
-                            DropPreLoadPictureBox.Visible = false;
                             workbookdataset.Dispose();
                         }
 
@@ -215,6 +214,8 @@ namespace NAVService
 
                 void CatchupUIThread()
                 {
+                    DropPreLoadPictureBox.Visible = false;
+
                     FilenameTextBox.Text = fileName;
                     SheetComboBox.Items.Clear();
 
@@ -225,7 +226,6 @@ namespace NAVService
                     SheetComboBox.SelectedIndex = 0;
                     SheetComboBox.Enabled = true;
                     SaveWorkbookButton.Enabled = true;
-
                     SetSpreadsheetChanges(false);
                 }
 
