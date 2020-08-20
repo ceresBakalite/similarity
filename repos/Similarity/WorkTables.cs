@@ -215,7 +215,7 @@ namespace NAVService
 
         }
 
-        public static void GetDeleteTableRows(DataTable datatable)
+        public static void DeleteDuplicateRows(DataTable datatable)
         {
             if (NAVForm.GetSheetDataGridView().RowCount == 0 || datatable == null) return;
 
@@ -223,9 +223,9 @@ namespace NAVService
 
             object[] rows = SelectDuplicateRows();
 
-            if (rows.Any()) DeleteDuplicateRows();
+            if (rows.Any()) DeleteSelectedRows();
 
-            void DeleteDuplicateRows()
+            void DeleteSelectedRows()
             {
                 for (int i = rows.Length - 1; i > -1; i--)
                 {
@@ -268,14 +268,14 @@ namespace NAVService
 
             if (!keyArray.Count.Equals(0))
             {
-                if (GetDeleteDataGridViewRows())
+                if (DeleteDataGridViewRows())
                 {
-                    if (!ResultTable.Rows.Count.Equals(0)) DeleteRows();
+                    if (!ResultTable.Rows.Count.Equals(0)) DeleteResultTableRows();
                 }
 
             }
 
-            void DeleteRows()
+            void DeleteResultTableRows()
             {
                 int iOrphaned = 1;
 
@@ -286,7 +286,7 @@ namespace NAVService
                     DeleteMatchingRows(key);
                 }
 
-                DeleteOrpanedRows();
+                DeleteResultTableOrpanedRows();
 
                 void DeleteMatchingRows(object key)
                 {
@@ -307,7 +307,7 @@ namespace NAVService
                     ResultTable.AcceptChanges();
                 }
 
-                void DeleteOrpanedRows()
+                void DeleteResultTableOrpanedRows()
                 {
                     int j = 0;
 
@@ -330,7 +330,7 @@ namespace NAVService
 
             }
 
-            bool GetDeleteDataGridViewRows()
+            bool DeleteDataGridViewRows()
             {
                 bool bParseAbbreviations = ExplorerForm.ParseAbbreviations;
 
@@ -401,7 +401,7 @@ namespace NAVService
                     {
                         CommitChanges();
 
-                        return LastTable.Rows.Count.Equals(0) ? false : true;
+                        return !LastTable.Rows.Count.Equals(0);
                     }
 
                     void CommitChanges()
@@ -420,9 +420,9 @@ namespace NAVService
         {
             if (ResultTable == null || ParentTable == null) return 0;
 
-            return System.Threading.Tasks.Task.Run(() => { return InvokeFlagDuplicatesThread(); }).Result;
+            return System.Threading.Tasks.Task.Run(() => { return FlagDuplicatesThread(); }).Result;
 
-            int InvokeFlagDuplicatesThread()
+            int FlagDuplicatesThread()
             {
                 ParentTable.AcceptChanges();
 

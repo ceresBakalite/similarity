@@ -847,7 +847,7 @@ namespace NAVService
 
                         table.AcceptChanges();
                         NAVForm.SetSpreadsheetChanges(true);
-                        WorkTables.GetDeleteTableRows(ResultTable);
+                        WorkTables.DeleteDuplicateRows(ResultTable);
                     }
 
                 }
@@ -1248,7 +1248,7 @@ namespace NAVService
             SetParseAbbreviations(GetParseAbbreviations());
             SimilarityComparison();
 
-            if (ResultTable.Rows.Count > 0) WorkTables.GetDeleteTableRows(ResultTable);
+            if (ResultTable.Rows.Count > 0) WorkTables.DeleteDuplicateRows(ResultTable);
 
             return ResultTable;
 
