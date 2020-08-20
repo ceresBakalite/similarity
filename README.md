@@ -4,7 +4,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 ***
 
-**Release Vesrion v1.3.3b**
+**Release Version v1.3.3b**
 
 [v1.3.3b notes][]:
 
