@@ -58,13 +58,11 @@ namespace NAVService
 
         private int MatchingAlgorithm = SetComparisonType(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_MATCHING_ALGORITHM));
 
-        protected internal static DataGridView GetResultDataGridView() { return ResultDataGridView; }
-        protected internal static void SetDuplicateRowsCount(decimal value) => DuplicateRowsCount = value;
-        protected internal static void SetComparisonReset(bool value) => ParseComparison = value;
-        protected internal static void SuspendResultDataGridView() => ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(ResultDataGridView);
-        protected internal static void ResumeResultDataGridView() => ClassLibraryFramework.DrawingInteropServices.ResumeDrawing(ResultDataGridView);
-        protected internal static bool ParseAbbreviations { get; private set; }
-        protected internal static int GetComparisonType(string nvUserPreferenceValue) { return SetComparisonType(nvUserPreferenceValue); }
+        internal static DataGridView GetResultDataGridView() { return ResultDataGridView; }
+        internal static void SetComparisonReset(bool value) => ParseComparison = value;
+        internal static bool ParseAbbreviations { get; private set; }
+        internal static int GetComparisonType(string nvUserPreferenceValue) { return SetComparisonType(nvUserPreferenceValue); }
+        internal static void SetDuplicateRowsCount(decimal value) => DuplicateRowsCount = value;
 
         public ExplorerForm()
         {
@@ -72,7 +70,28 @@ namespace NAVService
             InitializeExplorerForm();
         }
 
-        protected internal static void DeleteSelectedRows(System.Collections.ArrayList keyArray = null)
+        internal static void SuspendResultDataGridView()
+        {
+            ResultDataGridView.SuspendLayout();
+            ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(ResultDataGridView);
+        }
+
+        internal static void ResumeResultDataGridView()
+        {
+            ResultDataGridView.ResumeLayout();
+            ClassLibraryFramework.DrawingInteropServices.ResumeDrawing(ResultDataGridView);
+        }
+
+        internal static void SheetDataGridViewCellValueChanged()
+        {
+            SetDuplicateRowsCount(0);
+            SetComparisonReset(true);
+            SetParseComplete(false);
+            ReworkTable.Reset();
+            ComparisonParametersReset();
+        }
+
+        internal static void DeleteSelectedRows(System.Collections.ArrayList keyArray = null)
         {
             System.Collections.ArrayList SelectedRows = keyArray ?? ClassLibraryFramework.DataGridViewMethods.GetSelectedColumnValue(NAVForm.GetSheetDataGridView(), Constants.KEY_COLUMN);
 
@@ -83,16 +102,7 @@ namespace NAVService
             SetResultDataGridViewFocus();
         }
 
-        protected internal static void SheetDataGridViewCellValueChanged()
-        {
-            SetDuplicateRowsCount(0);
-            SetComparisonReset(true);
-            SetParseComplete(false);
-            ReworkTable.Reset();
-            ComparisonParametersReset();
-        }
-
-        protected internal static void ResetExplorerForm()
+        internal static void ResetExplorerForm()
         {
             if (GetResultDataGridView() != null)
             {

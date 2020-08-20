@@ -4,26 +4,26 @@
     {
         private static readonly log4net.ILog log = LogHelper.GetLogger();
 
-        public static readonly System.DateTime ApplicationStartTime = System.DateTime.Now;
-        public static readonly System.Globalization.CultureInfo culture = System.Globalization.CultureInfo.InvariantCulture;
-        public static readonly NAVUserPropertiesModel UserPropertiesModel = DataAccess.InitialiseUserProperties(InitaliseEnvironment());
+        internal static readonly System.DateTime ApplicationStartTime = System.DateTime.Now;
+        internal static readonly System.Globalization.CultureInfo culture = System.Globalization.CultureInfo.InvariantCulture;
+        internal static readonly NAVUserPropertiesModel UserPropertiesModel = DataAccess.InitialiseUserProperties(InitaliseEnvironment());
+
+        internal static void SetReplaceAllWords(bool value) => ReplaceAllWords = value;
+        internal static void SetReplaceDefaultWordsOnly(bool value) => ReplaceDefaultWordsOnly = value;
+        internal static void SetPullAbbreviations(bool value) => PullAbbreviations = value;
+        internal static void SetLogErrors(bool value) => LogErrors = value;
+
+        internal static NAVUserStateModel UserStateModel { get; set; }
+
+        internal static bool GetReplaceAllWords() { return ReplaceAllWords; }
+        internal static bool GetReplaceDefaultWordsOnly() { return ReplaceDefaultWordsOnly; }
+        internal static bool GetPullAbbreviations() { return PullAbbreviations; }
+        internal static bool GetLogErrors() { return LogErrors; }
 
         private static bool ReplaceAllWords = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_REPLACE_WORDS));
         private static bool ReplaceDefaultWordsOnly = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PERMIT_DEFAULTS));
         private static bool PullAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PULL_ABBREVIATIONS));
         private static bool LogErrors = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_LOG_ERRORS));
-
-        public static void SetReplaceAllWords(bool value) => ReplaceAllWords = value;
-        public static void SetReplaceDefaultWordsOnly(bool value) => ReplaceDefaultWordsOnly = value;
-        public static void SetPullAbbreviations(bool value) => PullAbbreviations = value;
-        public static void SetLogErrors(bool value) => LogErrors = value;
-
-        public static bool GetReplaceAllWords() { return ReplaceAllWords; }
-        public static bool GetReplaceDefaultWordsOnly() { return ReplaceDefaultWordsOnly; }
-        public static bool GetPullAbbreviations() { return PullAbbreviations; }
-        public static bool GetLogErrors() { return LogErrors; }
-
-        public static NAVUserStateModel UserStateModel { get; set; }
 
         // assign a user to their environment attributes and dispose of system sensitive data
         private static int InitaliseEnvironment()

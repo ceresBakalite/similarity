@@ -5,10 +5,10 @@ namespace NAVService
     public static class LogHelper
     {
         private static readonly log4net.ILog log = GetLogger();
-        
-        public static void ApplicationKill() => System.Environment.Exit(0);
 
-        public static void GetLogState()
+        internal static void ApplicationKill() => System.Environment.Exit(0);
+
+        internal static void GetLogState()
         {
             string[] args = System.Environment.GetCommandLineArgs();
 
@@ -25,12 +25,12 @@ namespace NAVService
 
         }
 
-        public static log4net.ILog GetLogger([System.Runtime.CompilerServices.CallerFilePath]string filename = "") 
+        internal static log4net.ILog GetLogger([System.Runtime.CompilerServices.CallerFilePath]string filename = "") 
         {
             return UserHelper.GetLogErrors() ? log4net.LogManager.GetLogger(filename) : null;
         }
 
-        public static void ApplyLogAppenderConfiguration()
+        internal static void ApplyLogAppenderConfiguration()
         {
             if (log4net.LogManager.GetRepository() is log4net.Repository.Hierarchy.Hierarchy hierarchy)
             {
@@ -50,7 +50,7 @@ namespace NAVService
 
         }
 
-        public static bool RetrySQLException(System.Data.SqlClient.SqlException ex, int iRetryAttempt)
+        internal static bool RetrySQLException(System.Data.SqlClient.SqlException ex, int iRetryAttempt)
         {
             if (iRetryAttempt == Constants.CONNECTION_RETRY_LIMIT) FatalSqlException(ex);
 
@@ -81,7 +81,7 @@ namespace NAVService
             return true;
         }
 
-        public static bool RetryNullReferenceException(System.NullReferenceException ex, int iRetryAttempt)
+        internal static bool RetryNullReferenceException(System.NullReferenceException ex, int iRetryAttempt)
         {
             if (iRetryAttempt == Constants.CONNECTION_RETRY_LIMIT) FatalNullReferenceException(ex);
 
@@ -94,7 +94,7 @@ namespace NAVService
             return true;
         }
 
-        public static void FatalNullReferenceException(System.Exception ex)
+        internal static void FatalNullReferenceException(System.Exception ex)
         {
             TraceWriteLine("FATAL NullReferenceException", ex);
 
@@ -106,7 +106,7 @@ namespace NAVService
             ApplicationKill();
         }
 
-        public static void FatalSqlException(System.Exception ex)
+        internal static void FatalSqlException(System.Exception ex)
         {
             TraceWriteLine("FATAL SQLException", ex);
 
@@ -119,28 +119,28 @@ namespace NAVService
         }
 
         [System.Diagnostics.Conditional("TRACE")]
-        public static void TraceWriteCurrentState()
+        internal static void TraceWriteCurrentState()
         {
             TraceWriteLine("TRACE - Collecting user preferences");
             DataAccess.TraceWrite = false;
         }
 
         [System.Diagnostics.Conditional("TRACE")]
-        public static void TraceWritePreviousState()
+        internal static void TraceWritePreviousState()
         {
             TraceWriteLine("TRACE - Previous state initialisation");
             DataAccess.TraceWrite = true;
         }
 
         [System.Diagnostics.Conditional("TRACE")]
-        public static void TraceInitialisationComplete(string writeline = "TRACE - Application initialisation complete")
+        internal static void TraceInitialisationComplete(string writeline = "TRACE - Application initialisation complete")
         {
             TraceWriteLine(writeline);
             TraceTimeElapsedWriteLine(System.DateTime.Now, UserHelper.ApplicationStartTime);
         }
 
         [System.Diagnostics.Conditional("TRACE")]
-        public static void TraceWriteLine(string trace = "TRACE - ", System.Exception ex = null)
+        internal static void TraceWriteLine(string trace = "TRACE - ", System.Exception ex = null)
         {
             System.Diagnostics.Trace.Indent();
             System.Diagnostics.Trace.WriteLine($"{trace}. DateTime: {System.DateTime.Now:MMMM dd, yyyy h:mm:ss tt}");
@@ -149,7 +149,7 @@ namespace NAVService
         }
 
         [System.Diagnostics.Conditional("TRACE")]
-        public static void TraceRetryWriteLine(System.Exception ex = null, object iCount = null, object ExceptionNumber = null)
+        internal static void TraceRetryWriteLine(System.Exception ex = null, object iCount = null, object ExceptionNumber = null)
         {
             System.Diagnostics.Trace.Indent();
             System.Diagnostics.Trace.WriteLine(ClassLibraryStandard.HelperMethods.IsInteger(iCount) ? $"TRACE - Attempting to reconnect. Time: {System.DateTime.Now:h:mm:ss tt} Retry No.{iCount} - Exception No. {ExceptionNumber}" : $"TRACE - Attempting to reconnect. Time: {System.DateTime.Now:h:mm:ss tt}");
@@ -158,11 +158,18 @@ namespace NAVService
         }
 
         [System.Diagnostics.Conditional("TRACE")]
-        public static void TraceTimeElapsedWriteLine(System.DateTime fromThisTime, System.DateTime subtractThisTime, string trace = "TRACE - Time Elapsed: ")
+        internal static void TraceTimeElapsedWriteLine(System.DateTime fromThisTime, System.DateTime subtractThisTime, string trace = "TRACE - Time Elapsed: ")
         {
             System.Diagnostics.Trace.Indent();
             System.Diagnostics.Trace.WriteLine($"{ trace }{fromThisTime.Subtract(subtractThisTime).ToString("hh':'mm':'ss", UserHelper.culture)} seconds");
             System.Diagnostics.Trace.Unindent();
+        }
+
+        [System.Diagnostics.Conditional("TRACE")]
+        internal static void ConfirmTraceState()
+        {
+            TraceWriteLine("TRACE - System Diagnostics Conditional Trace is enabled");
+            ConnectionHelper.ConfirmDebugState();
         }
 
         [System.Diagnostics.Conditional("TRACE")]
@@ -175,13 +182,6 @@ namespace NAVService
                 System.Diagnostics.Trace.Unindent();
             }
 
-        }
-
-        [System.Diagnostics.Conditional("TRACE")]
-        public static void ConfirmTraceState()
-        {
-            TraceWriteLine("TRACE - System Diagnostics Conditional Trace is enabled");
-            ConnectionHelper.ConfirmDebugState();
         }
 
         private static void RunCommandLineArguments(string[] args)

@@ -6,10 +6,10 @@
 #pragma warning disable IDE1006 // for ease of maintenance the camelCase naming convention emulates their TSQL camelCase column name
 
         
-        protected internal string nvWord { get; private set; }
-        protected internal string nvAbbreviation { get; private set; }
-        protected internal string nvAbbreviationDescription { get; private set; }
-        protected internal int bAlwaysUse { get; private set; }
+        internal string nvWord { get; private set; }
+        internal string nvAbbreviation { get; private set; }
+        internal string nvAbbreviationDescription { get; private set; }
+        internal int bAlwaysUse { get; private set; }
 
 #pragma warning restore IDE1006 // for conformity the naming convention returns to C# PascalCase
 

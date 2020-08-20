@@ -10,7 +10,7 @@ namespace NAVService
         private static Control PreferenceHeader;
         private static Control PreferenceDescription;
 
-        protected internal static System.Data.DataTable UserPreferencesDataTable { get; private set; }
+        internal static System.Data.DataTable UserPreferencesDataTable { get; private set; }
 
         public PreferencesForm()
         {
@@ -18,7 +18,7 @@ namespace NAVService
             InitializePreferencesForm();
         }
 
-        protected internal static void TextBoxBackColorChange(object sender, EventArgs e)
+        internal static void TextBoxBackColorChange(object sender, EventArgs e)
         {
             Control control = (Control)sender;
 
@@ -30,7 +30,7 @@ namespace NAVService
 
         }
 
-        protected internal static bool ValidAttribute(Control control, bool bUserPreference, string nvUserPreferenceValue, string callerName)
+        internal static bool ValidAttribute(Control control, bool bUserPreference, string nvUserPreferenceValue, string callerName)
         {
             if (control != null)
             {

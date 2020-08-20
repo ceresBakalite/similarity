@@ -4,14 +4,14 @@ namespace NAVService
 {
     internal class ConnectionHelper
     {
-        protected internal static readonly string CONNECTION_LOCATION = GetConnectionLocation();
-        protected internal static bool GetProductionEnabled() { return ProductionEnabled; }
-        protected internal static bool ProductionEnabled { get; set; }
+        internal static readonly string CONNECTION_LOCATION = GetConnectionLocation();
+        internal static bool GetProductionEnabled() { return ProductionEnabled; }
+        internal static bool ProductionEnabled { get; set; }
 
         private static bool PreProdEnabled { get; set; }
         private static int LocationPointer { get; set; }
 
-        public static string ApplicationName(bool bIncludeVersion = true, bool bIncludeUserName = true)
+        internal static string ApplicationName(bool bIncludeVersion = true, bool bIncludeUserName = true)
         {
             string application = bIncludeVersion ? Properties.Resources.CAPTION_APPLICATION + " " + Constants.BUILD_VERSION : Properties.Resources.CAPTION_APPLICATION;
             string preproduction = GetProductionEnabled() ? null : " [DEV]";
@@ -19,12 +19,19 @@ namespace NAVService
             return bIncludeUserName ? application + UserHelper.UserPropertiesModel.nvUserName.PadLeft(22, (char)32)  + " is signed in" + preproduction : application + preproduction;
         }
 
-        public static string AssemblyBuildVersion()
+        internal static string AssemblyBuildVersion()
         {
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             System.Diagnostics.FileVersionInfo version = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
 
             return version.FileVersion;
+        }
+
+        [System.Diagnostics.Conditional("DEBUG")]
+        internal static void ConfirmDebugState()
+        {
+            LogHelper.TraceWriteLine("TRACE - System Diagnostics Conditional Debug is enabled [Targeting PREPROD]");
+            EnableEncryptionHelper();
         }
 
         private static string GetConnectionLocation(object location = null)
@@ -78,13 +85,6 @@ namespace NAVService
 
             }
 
-        }
-
-        [System.Diagnostics.Conditional("DEBUG")]
-        public static void ConfirmDebugState()
-        {
-            LogHelper.TraceWriteLine("TRACE - System Diagnostics Conditional Debug is enabled [Targeting PREPROD]");
-            EnableEncryptionHelper();
         }
 
         [System.Diagnostics.Conditional("DEBUG")]

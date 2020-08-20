@@ -6,7 +6,7 @@ namespace NAVService
     {
         private static readonly log4net.ILog log = LogHelper.GetLogger();
 
-        public static void CheckForUpdates() => AsyncUpdate();
+        internal static void CheckForUpdates() => AsyncUpdate();
 
         private static void AsyncUpdate()
         {

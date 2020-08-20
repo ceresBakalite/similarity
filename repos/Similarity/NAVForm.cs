@@ -28,13 +28,12 @@ namespace NAVService
         private readonly bool MaintainFileState = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_OPEN_LAST_FILE));
         private readonly bool MaintainTableState = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_OPEN_LAST_WORKSHEET));
 
-        protected internal static System.Data.DataTableCollection DataTableCollection { get; private set; }
-        protected internal static DataGridView GetSheetDataGridView() { return SheetDataGridView; }
-        protected internal static bool GetSpreadsheetChanges() { return SaveSpreadsheetChanges; }
-        protected internal static int GetSheetDataGridViewInitialTotal() { return SheetDataGridViewInitialTotal; }
-        protected internal static void SetSpreadsheetChanges(bool value) => SaveSpreadsheetChanges = value;
-        protected internal static void SetSheetCurrentTotal(string value) => SheetCurrentTotal.Text = value;
-        protected internal static void SuspendSheetDataGridView() => ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(SheetDataGridView);
+        internal static System.Data.DataTableCollection DataTableCollection { get; private set; }
+        internal static DataGridView GetSheetDataGridView() { return SheetDataGridView; }
+        internal static bool GetSpreadsheetChanges() { return SaveSpreadsheetChanges; }
+        internal static void SetSpreadsheetChanges(bool value) => SaveSpreadsheetChanges = value;
+        internal static int GetSheetDataGridViewInitialTotal() { return SheetDataGridViewInitialTotal; }
+        internal static void SetSheetCurrentTotal(string value) => SheetCurrentTotal.Text = value;
 
         public NAVForm()
         {
@@ -42,13 +41,19 @@ namespace NAVService
             InitializeNAVForm();
         }
 
-        protected internal static void ResumeSheetDataGridView()
+        public static void SuspendSheetDataGridView()
+        {
+            SheetDataGridView.SuspendLayout();
+            ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(SheetDataGridView);
+        }
+
+        public static void ResumeSheetDataGridView()
         {
             SheetDataGridView.ResumeLayout();
             ClassLibraryFramework.DrawingInteropServices.ResumeDrawing(SheetDataGridView);
         }
 
-        protected internal void SaveWorkbook()
+        internal void SaveWorkbook()
         {
             try
             {

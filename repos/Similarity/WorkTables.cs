@@ -5,7 +5,7 @@ namespace NAVService
 {
     public static class WorkTables
     {
-        public static DataTable BuildParentTable()
+        internal static DataTable BuildParentTable()
         {
             using (DataTable table = new DataTable())
             {
@@ -76,7 +76,7 @@ namespace NAVService
 
         }
 
-        public static DataTable BuildResultTable()
+        internal static DataTable BuildResultTable()
         {
             using (DataTable table = new DataTable())
             {
@@ -133,7 +133,7 @@ namespace NAVService
 
         }
 
-        public static DataTable AbbreviateTable(DataTable datatable)
+        internal static DataTable AbbreviateTable(DataTable datatable)
         {
             if (datatable == null) return datatable;
 
@@ -215,7 +215,7 @@ namespace NAVService
 
         }
 
-        public static void DeleteDuplicateRows(DataTable datatable)
+        internal static void DeleteDuplicateRows(DataTable datatable)
         {
             if (NAVForm.GetSheetDataGridView().RowCount == 0 || datatable == null) return;
 
@@ -262,7 +262,7 @@ namespace NAVService
 
         }
 
-        public static void DeleteDataTableRows(System.Collections.ArrayList keyArray, DataTable ResultTable, DataTable ParentTable)
+        internal static void DeleteDataTableRows(System.Collections.ArrayList keyArray, DataTable ResultTable, DataTable ParentTable)
         {
             if (keyArray == null || ResultTable == null || ParentTable == null) return;
 
@@ -416,7 +416,7 @@ namespace NAVService
 
         }
 
-        public static decimal FindParentTableDuplicates(DataTable ResultTable, DataTable ParentTable)
+        internal static decimal FindParentTableDuplicates(DataTable ResultTable, DataTable ParentTable)
         {
             if (ResultTable == null || ParentTable == null) return 0;
 
@@ -465,7 +465,7 @@ namespace NAVService
 
         }
 
-        public static int GetCumulativeThreshholdThread(DataTable ParentTable)
+        internal static int GetCumulativeThreshholdThread(DataTable ParentTable)
         {
             if (ParentTable == null) return 0;
 
@@ -490,13 +490,13 @@ namespace NAVService
 
         }
 
-        public static void SetSheetDataGridViewFocus()
+        internal static void SetSheetDataGridViewFocus()
         {
             NAVForm.GetSheetDataGridView().CurrentCell = NAVForm.GetSheetDataGridView().FirstDisplayedCell;
             NAVForm.GetSheetDataGridView().Focus();
         }
 
-        public static void AcceptDataGridViewChanges()
+        internal static void AcceptDataGridViewChanges()
         {
             foreach (DataTable table in NAVForm.DataTableCollection) table.AcceptChanges();
 
@@ -505,7 +505,7 @@ namespace NAVService
             SetSheetDataGridViewFocus();
         }
 
-        public static void DeleteRowsMenuItemClick()
+        internal static void DeleteRowsMenuItemClick()
         {
             System.Collections.ArrayList keyArray = new System.Collections.ArrayList();
 

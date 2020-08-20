@@ -21,23 +21,7 @@ namespace NAVService
         private static string cipher;
 
         [System.Diagnostics.Conditional("DEBUG")]
-        private static void CreateKeys(bool bSaveKeys = false)
-        {
-            byteCryptKey = Encryption.AESThenHMAC.NewKey();
-            byteAuthKey = Encryption.AESThenHMAC.NewKey();
-
-            hexCryptKey = ClassLibraryFramework.StringMethods.GetBytesToString(byteCryptKey);
-            hexAuthKey = ClassLibraryFramework.StringMethods.GetBytesToString(byteAuthKey);
-
-            hashKey = hexCryptKey + hexAuthKey;
-
-            if (bSaveKeys) SaveCipherKeys();
-
-            bKeysCreated = true;
-        }
-
-        [System.Diagnostics.Conditional("DEBUG")]
-        public static void SignatureKeyToConsole(object value)
+        internal static void SignatureKeyToConsole(object value)
         {
             if (value == null) return;
 
@@ -86,6 +70,16 @@ namespace NAVService
         }
 
         [System.Diagnostics.Conditional("DEBUG")]
+        internal static void EncryptionExamplesToConsole(string plainText = @"The example secret message reads: ""It was that cow that jumped over the //<>C:\#@! moon.""", bool bCreateKeys = false, bool bSaveKeys = false, bool bDisplayCipher = true)
+        {
+            if (bCreateKeys) CreateKeys(bSaveKeys);
+
+            cipher = Encryption.AESThenHMAC.SimpleEncrypt(plainText, byteCryptKey, byteAuthKey);
+
+            if (bDisplayCipher) DisplayCiphers(plainText);
+        }
+
+        [System.Diagnostics.Conditional("DEBUG")]
         private static void SaveCipherKeys()
         {
             switch (System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, "Save Cipher Keys{0}{0}This action will destroy the existing encryption and authentication key pair and cannot be undone.  All existing encrytped values held in the application will need to be recreated{0}{0}Are you sure you wish to continue?", System.Environment.NewLine), ConnectionHelper.ApplicationName(false, false), System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Information, System.Windows.Forms.MessageBoxDefaultButton.Button3))
@@ -107,13 +101,19 @@ namespace NAVService
         }
 
         [System.Diagnostics.Conditional("DEBUG")]
-        public static void EncryptionExamplesToConsole(string plainText = @"The example secret message reads: ""It was that cow that jumped over the //<>C:\#@! moon.""", bool bCreateKeys = false, bool bSaveKeys = false, bool bDisplayCipher = true)
+        private static void CreateKeys(bool bSaveKeys = false)
         {
-            if (bCreateKeys) CreateKeys(bSaveKeys);
+            byteCryptKey = Encryption.AESThenHMAC.NewKey();
+            byteAuthKey = Encryption.AESThenHMAC.NewKey();
 
-            cipher = Encryption.AESThenHMAC.SimpleEncrypt(plainText, byteCryptKey, byteAuthKey);
+            hexCryptKey = ClassLibraryFramework.StringMethods.GetBytesToString(byteCryptKey);
+            hexAuthKey = ClassLibraryFramework.StringMethods.GetBytesToString(byteAuthKey);
 
-            if (bDisplayCipher) DisplayCiphers(plainText);
+            hashKey = hexCryptKey + hexAuthKey;
+
+            if (bSaveKeys) SaveCipherKeys();
+
+            bKeysCreated = true;
         }
 
         [System.Diagnostics.Conditional("DEBUG")]

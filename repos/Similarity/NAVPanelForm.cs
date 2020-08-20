@@ -22,8 +22,9 @@ namespace NAVService
         private readonly bool DeleteAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_DELETE_ABBREVIATIONS));
         private readonly bool EditAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_EDIT_ABBREVIATIONS));
 
-        protected internal static bool SetNotifyPreferenceChange(bool value) => NotifyPreferenceChange = value;
-        protected internal static DataGridView GetAbbreviationsDataGridView() { return AbbreviationsDataGridView; }
+        internal static bool SetNotifyPreferenceChange(bool value) => NotifyPreferenceChange = value;
+
+        public static DataGridView GetAbbreviationsDataGridView() { return AbbreviationsDataGridView; }
 
         public NAVPanelForm()
         {
@@ -31,7 +32,7 @@ namespace NAVService
             InitializePanels();
         }
 
-        protected internal static void ApplyPreferenceChange(System.Collections.Generic.Dictionary<int, NAVChangePreferencesModel> map)
+        internal static void ApplyPreferenceChange(System.Collections.Generic.Dictionary<int, NAVChangePreferencesModel> map)
         {
             if (map != null)
             {
