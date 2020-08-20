@@ -34,6 +34,7 @@ namespace NAVService
         internal static void SetSpreadsheetChanges(bool value) => SaveSpreadsheetChanges = value;
         internal static int GetSheetDataGridViewInitialTotal() { return SheetDataGridViewInitialTotal; }
         internal static void SetSheetCurrentTotal(string value) => SheetCurrentTotal.Text = value;
+        internal static void SuspendSheetDataGridView() => ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(SheetDataGridView);
 
         public NAVForm()
         {
@@ -41,13 +42,7 @@ namespace NAVService
             InitializeNAVForm();
         }
 
-        public static void SuspendSheetDataGridView()
-        {
-            SheetDataGridView.SuspendLayout();
-            ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(SheetDataGridView);
-        }
-
-        public static void ResumeSheetDataGridView()
+        internal static void ResumeSheetDataGridView()
         {
             SheetDataGridView.ResumeLayout();
             ClassLibraryFramework.DrawingInteropServices.ResumeDrawing(SheetDataGridView);

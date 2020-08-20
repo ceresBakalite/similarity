@@ -64,22 +64,13 @@ namespace NAVService
         internal static int GetComparisonType(string nvUserPreferenceValue) { return SetComparisonType(nvUserPreferenceValue); }
         internal static void SetDuplicateRowsCount(decimal value) => DuplicateRowsCount = value;
 
+        internal static void SuspendResultDataGridView() => ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(ResultDataGridView);
+        internal static void ResumeResultDataGridView() => ClassLibraryFramework.DrawingInteropServices.ResumeDrawing(ResultDataGridView);
+
         public ExplorerForm()
         {
             InitializeComponent();
             InitializeExplorerForm();
-        }
-
-        internal static void SuspendResultDataGridView()
-        {
-            ResultDataGridView.SuspendLayout();
-            ClassLibraryFramework.DrawingInteropServices.SuspendDrawing(ResultDataGridView);
-        }
-
-        internal static void ResumeResultDataGridView()
-        {
-            ResultDataGridView.ResumeLayout();
-            ClassLibraryFramework.DrawingInteropServices.ResumeDrawing(ResultDataGridView);
         }
 
         internal static void SheetDataGridViewCellValueChanged()
@@ -553,7 +544,6 @@ namespace NAVService
             void DeleteWorksheetRowsButtonClick()
             {
                 RemoveWorksheetRowsButtonClick();
-                //RemoveRowsFlaggedForDeletion(true);
                 ResetOnCompletion(true);
             }
 
