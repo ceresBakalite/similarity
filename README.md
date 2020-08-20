@@ -4,13 +4,19 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 ***
 
-**Release Version v1.3.3b**
+**Release Version v1.3.4b**
+
+[v1.3.4b notes][]:
+
+	1. Minor cumulative additions
+	2. Placed open file methods in their own thread
+	3. Placed save file methods in their own thread
 
 [v1.3.3b notes][]:
 
 	1. Minor cumulative additions
 	2. Dependency updates
-	2. Separated .NET Framework and .NET Standard libraries to reflect their constituent components
+	3. Separated .NET Framework and .NET Standard libraries to reflect their constituent components
 
 [v1.3.2b notes][]:
 
@@ -158,3 +164,4 @@ _ref._ [The Apache log4net library][]
 [v1.2.8.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.2b
 [v1.3.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.2b
 [v1.3.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.3b
+[v1.3.4b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.4b
