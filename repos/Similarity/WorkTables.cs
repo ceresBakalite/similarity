@@ -336,25 +336,36 @@ namespace NAVService
 
                 if (bParseAbbreviations) ParentTable.AcceptChanges();
 
-                using (DataTable table = NAVForm.DataTableCollection[UserHelper.UserStateModel.nvLastTableFocus])
+                using (DataTable LastTable = NAVForm.DataTableCollection[UserHelper.UserStateModel.nvLastTableFocus])
                 {
-                    table.AcceptChanges();
+                    if (InitialiseRemoveRows())
+                    {
+                        foreach (object key in keyArray)
+                        {
+                            RemoveFromLastTable(key);
+                            if (bParseAbbreviations) RemoveFromParentTable(key);
+                        }
 
-                    if (table.Rows.Count.Equals(0)) return false;
+                        CommitChanges();
 
-                    foreach (object key in keyArray)
+                        return true;
+                    }
+
+                    return false;
+
+                    void RemoveFromLastTable(object key)
                     {
                         int i = 0;
 
-                        while (i < table.Rows.Count)
+                        while (i < LastTable.Rows.Count)
                         {
-                            DataRow row = table.Rows[i];
+                            DataRow row = LastTable.Rows[i];
 
                             if (row.HasVersion(DataRowVersion.Current))
                             {
                                 if (row[Constants.KEY_COLUMN].Equals(key))
                                 {
-                                    table.Rows.RemoveAt(i);
+                                    LastTable.Rows.RemoveAt(i);
                                     break;
                                 }
                             }
@@ -362,33 +373,43 @@ namespace NAVService
                             i++;
                         }
 
-                        if (bParseAbbreviations)
+                    }
+
+                    void RemoveFromParentTable(object key)
+                    {
+                        int j = 0;
+
+                        while (j < ParentTable.Rows.Count)
                         {
-                            int j = 0;
+                            DataRow row = ParentTable.Rows[j];
 
-                            while (j < ParentTable.Rows.Count)
+                            if (row.HasVersion(DataRowVersion.Current))
                             {
-                                DataRow row = ParentTable.Rows[j];
-
-                                if (row.HasVersion(DataRowVersion.Current))
+                                if (row[Constants.COLUMN_ROW_ID].Equals(key))
                                 {
-                                    if (row[Constants.COLUMN_ROW_ID].Equals(key))
-                                    {
-                                        ParentTable.Rows.RemoveAt(j);
-                                        break;
-                                    }
+                                    ParentTable.Rows.RemoveAt(j);
+                                    break;
                                 }
-
-                                j++;
                             }
 
+                            j++;
                         }
 
                     }
 
-                    table.AcceptChanges();
+                    bool InitialiseRemoveRows()
+                    {
+                        CommitChanges();
 
-                    return true;
+                        return LastTable.Rows.Count.Equals(0) ? false : true;
+                    }
+
+                    void CommitChanges()
+                    {
+                        LastTable.AcceptChanges();
+                        ParentTable.AcceptChanges();
+                    }
+
                 }
 
             }
