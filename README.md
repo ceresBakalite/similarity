@@ -52,7 +52,7 @@ Minor changes since release v1.2.8.3b
 	    enhances performance on all but the smallest data sets
 	14. Applied command-line usage to enable the application to be called from an external assembly
 	
-	The command-line takes zero, two or ten arguments. Zero arguments will launch the application, whereas
+	The command-line takes zero, two or nine arguments. Zero arguments will launch the application, whereas
 	any argument passed to the application will return an integer representing a percentage matching value
 	
 	For example:
@@ -73,7 +73,6 @@ Minor changes since release v1.2.8.3b
 	PadToEqualLength (true or false)
 	RemoveWhitespace (true or false)
 	ReverseComparison (true or false)
-	MakeCaseInsensitive (true or false)
 	PhoneticFilter (true or false)
 	WholeWordComparison (true or false)
 	
