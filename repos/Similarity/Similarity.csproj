@@ -88,7 +88,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>NAVSimplicityIcon.ico</ApplicationIcon>
+    <ApplicationIcon>NAVSimilarityIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -404,7 +404,8 @@
     <Folder Include="System\Windows\Forms\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NAVSimplicityIcon.ico" />
+    <Content Include="NAVSimilarityIcon.ico" />
+    <Content Include="NAVSimilarityIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.3.3.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
