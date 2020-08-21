@@ -77,7 +77,7 @@ Minor changes since release v1.2.8.3b
 	
 	For example:
 	
-	[location]\Similarity.exe "comparison one"  "comparison two" 2 true true true true true true true
+	[location]\Similarity.exe "comparison one"  "comparison two" 2 true true true true true true
 
 ***
 
