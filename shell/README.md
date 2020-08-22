@@ -1,12 +1,12 @@
 ## Command Line Usage
-### *Seeking patterns of similarity between data strings* <img align="right" src="./images/NAVSimilarityLogoSmall.png">
+### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
 The following notes summarise calling the application and applying arguments to invoke a variety of options available within the application.  There have been a number of 
 common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
 ***
 
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
-** *FAQ* **
+**FAQ**
 1. Why a shell?
 
   Oddly, the original premise for Similarity was just a commandline application.  This application would reside somewhere in the cloud and would be accessable from
