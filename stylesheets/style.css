@@ -1,8 +1,0 @@
----
----
-
-@import "{{ site.theme }}";
-
-.header-site{
-   background: url(images\GitHubSimilarityLogo.png);
-}
