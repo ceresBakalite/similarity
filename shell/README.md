@@ -21,7 +21,8 @@ common questions asked by users which deserve, and indeed have now found, a more
   it would throw away the overhead associated with a GUI.  Anyway, food for thought. 
   
   In the mean time, Similarity now enables command line usage, one comparison pair at a time. 
-  
+***
+
 **2. Why so many parameters? Do I really need to use them all?**
 
 No. To use the commandline you only need to use two parameters.  The two comparison strings.
@@ -33,11 +34,13 @@ If you really do wish to use the other parameters the only required argument oth
 shell will not know what you are trying to do. The boolean attributes need to be in order but you dont need to use them all.  If you wish to make, for example, the
 fourth boolean argument (ReverseComparison) true, then you will need to let Similarity know what the preceding boolean arguments are, otherwise it wont know which
 boolean attribute you are referring to.
+***
 
 **3. Can't I just send it a file and get a completed one back?**  
 
 The short answer is no, not yet. I would actually like to write this but it is entirely dependent on interest.  There are more than just a few businesses out there
 making a living doing what Similarity already does for free.  So, maybe.
+***
 
 **4. Lastly, the expanded command line usage definition**
 
@@ -75,16 +78,3 @@ making a living doing what Similarity already does for free.  So, maybe.
 	[location]\similarity.exe "comparison one"  "comparison two" 2 true true true true true true
 
 ***
-
-[Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
-[Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
-[The Levenshtein distance algorithm]: https://www.educative.io/edpresso/the-levenshtein-distance-algorithm
-[The Gestalt Approach]: https://en.wikipedia.org/wiki/Gestalt_Pattern_Matching
-[read more]: https://ceresbakalite.github.io/similarity/ 
-[The Apache log4net library]: https://logging.apache.org/log4net/
-[v1.2.8.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.3b
-[v1.2.8.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.2b
-[v1.3.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.2b
-[v1.3.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.3b
-[v1.3.4b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.4b
-
