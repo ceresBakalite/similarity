@@ -1,12 +1,10 @@
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="./images/NAVSimilarityLogoSmall.png">
-Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items. [read more][]
+The following notes summarise calling the application and applying arguments to invoke a variety of options available within the application.  There have been a number of 
+common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
 ***
 
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
-
-The following notes summarise calling the application and applying arguments to invoke a variety of options available within the application.  There have been a number of 
-common questions asked by users which deserve, and indeed have found, a more permanent placeholder here.
 
 ** *FAQ* **
 1. Why a shell?
