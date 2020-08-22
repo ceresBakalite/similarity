@@ -64,7 +64,7 @@ making a living doing what Similarity already does for free.  So, maybe.
 	   b) in absence of a user preference, the argument defaults to a predefined client administrator preference,
 	   c) in absence of a client administrator preference, the default system preference is used
 	
-	MatchingAlgorithm (0,1,2 - defaults to predefined preference)
+	MatchingAlgorithm (0,1,2 - defaults to preference)
 	
 	Where:
 	
@@ -76,8 +76,8 @@ making a living doing what Similarity already does for free.  So, maybe.
 	PadToEqualLength (true or false - defaults to predefined preference)
 	RemoveWhitespace (true or false - defaults to predefined preference)
 	ReverseComparison (true or false - defaults to predefined preference)
-	PhoneticFilter (true or false - defaults to predefined user preference)
-	WholeWordComparison (true or false - defaults to predefined user preference)
+	PhoneticFilter (true or false - defaults to predefined preference)
+	WholeWordComparison (true or false - defaults to predefined preference)
 	
 	For example:
 	
