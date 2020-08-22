@@ -18,7 +18,9 @@ common questions asked by users which deserve, and indeed have now found, a more
   
   In many ways establishing the application as a shell is still a better use of the software IMHO and I fully intend to create a C++ shell variant of the Similarity 
   application, should there be enough interest. A C++ variant would not just be small and fast, it would also need to take one, two, or many comparison sets and 
-  it would throw away the overhead associated with a GUI.  Anyway, food for thought. 
+  it would throw away the overhead associated with a GUI.  
+  
+  Although largely language independent already, language interoperability would be a fine thing.  As would culture and syntax parsing.  Anyway, food for thought. 
   
   In the mean time, Similarity enables command line usage, one comparison pair at a time. 
 ***
