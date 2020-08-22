@@ -9,7 +9,7 @@ common questions asked by users which deserve, and indeed have now found, a more
 ## Command Line FAQ
 **1. Why a shell?**
 
-  Oddly, a very early iteration of Similarity was just a commandline application.  The premise was that this application would reside somewhere in the cloud and
+  Oddly, a very early iteration of Similarity was just a command line application.  The premise was that this application would reside somewhere in the cloud and
   would be accessible from any assembly anywhere. This would enable a third party application to use all the functionality without the overhead. 
   
   For example, consider a postal service checking for valid address syntax targeting two countries. There is a FROM address and a TO address. Both these addresses 
@@ -28,7 +28,7 @@ common questions asked by users which deserve, and indeed have now found, a more
 
 **2. Why so many parameters? Do I really need to use them all?**
 
-No. To use the commandline you only need to use two parameters.  The two comparison strings.
+No. To use the command line you only need to use two parameters.  The two comparison strings.
 
 Ideally, you or your administrator will have setup predefined preferences for all of the parameters. In which case you can ignore them, or simply rely on the 
 system defaults.
@@ -47,7 +47,7 @@ making a living doing what Similarity already does for free.  So, maybe.
 
 **4. Lastly, the expanded command line usage definition**
 
-	The command-line can take zero, two or up to nine arguments. Zero arguments will launch the application, whereas
+	The command line can take zero, two or up to nine arguments. Zero arguments will launch the application, whereas
 	any argument passed to the application will return an integer representing a percentage matching value
 	
 	For example:
@@ -57,9 +57,9 @@ making a living doing what Similarity already does for free.  So, maybe.
 	In addition the command line also supports the following seven arguments:
 	
 	NOTE: when an attribute is not present, a predefined preference takes precedence stepping through the following rules
-		a) where in absence of an attribute an argument will default to a predefined user preference, 
-		b) where in absence of a user preference, defaults to a predefined client administrator preference,
-		c) where in absence of a client administrator preference, defaults to the predefined system administrator preference
+		a) when an attribute is not present the argument will default to a predefined user preference, 
+		b) when in absence of a user preference, the argument defaults to a predefined client administrator preference,
+		c) when in absence of a client administrator preference, the argument defaults to the predefined system administrator preference
 	
 	MatchingAlgorithm (0,1,2 - defaults to predefined preference)
 	
