@@ -6,7 +6,7 @@ common questions asked by users which deserve, and indeed have now found, a more
 
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
-## FAQ
+## Command Line FAQ
 **1. Why a shell?**
 
   Oddly, a very early iteration of Similarity was just a commandline application.  The premise was that this application would reside somewhere in the cloud and
