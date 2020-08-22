@@ -36,6 +36,9 @@ boolean attribute you are referring to.
 
 **3. Can't I just send it a file and get a completed one back?**  
 
+The short answer is no, not yet. I would actually like to write this but it is entirely dependent on interest.  There are more than just a few businesses out there
+making a living doing what Similarity already does for free.  So, maybe.
+
 Lastly, the expanded command line usage definition
 
 	The command-line takes zero, two or nine arguments. Zero arguments will launch the application, whereas
