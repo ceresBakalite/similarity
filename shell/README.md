@@ -56,7 +56,8 @@ making a living doing what Similarity already does for free.  So, maybe.
 	
 	In addition the command line also supports the following seven arguments:
 	
-	NOTE: when an attribute is not present, a predefined preference takes precedence stepping through the following rules
+	NOTE: when attributes are not found, a predefined preference takes precedence stepping through the following rules
+	
 	   a) when an attribute is not present the argument will default to a predefined user preference, 
 	   b) in absence of a user preference, the argument defaults to a predefined client administrator preference,
 	   c) in absence of a client administrator preference, it defaults to the predefined system administrator preference
