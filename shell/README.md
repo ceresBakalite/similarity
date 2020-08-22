@@ -66,7 +66,7 @@ making a living doing what Similarity already does for free.  So, maybe.
 	   1 = the Levenshtein distance algorithm
 	   2 = the Hamming distance algorithm
 	
-	MakeCaseInsensitive (true or false - default to predefined preference)
+	MakeCaseInsensitive (true or false - defaults to predefined preference)
 	PadToEqualLength (true or false - defaults to predefined preference)
 	RemoveWhitespace (true or false - defaults to predefined preference)
 	ReverseComparison (true or false - defaults to predefined preference)
