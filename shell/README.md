@@ -16,9 +16,11 @@ common questions asked by users which deserve, and indeed have now found, a more
   are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. 
   In other words, four seperate addresses, language, culture and syntax specific.
   
-  In many ways this is still a better usage of the software and I fully intend to create a C++ shell variant of the Similarity application, should 
-  there be enough interest. A C++ variant would not just be small and fast, it would also need to take one, two, or many comparison sets and it would throw 
-  away the overhead associated with a GUI.  Anyway, food for thought. 
+  In many ways establishing the application as a shell is still a better usage of the software and I fully intend to create a C++ shell variant of the Similarity 
+  application, should there be enough interest. A C++ variant would not just be small and fast, it would also need to take one, two, or many comparison sets and 
+  it would throw away the overhead associated with a GUI.  Anyway, food for thought. 
+  
+  In the mean time, Similarity now enables command line usage, one comparison pair at a time. 
   
 2. Why so many parameters? Do I really have to use them all?  
 
