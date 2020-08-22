@@ -9,8 +9,8 @@ common questions asked by users which deserve, and indeed have now found, a more
 ## FAQ
 **1. Why a shell?**
 
-  Oddly, the original premise for Similarity was just a commandline application.  This application would reside somewhere in the cloud and would be accessable from
-  any assembly anywhere. This would enable a third party application to use all the functionality without the overhead. 
+  Oddly, a very early iteration of Similarity was just a commandline application.  The premise was that this application would reside somewhere in the cloud and
+  would be accessable from any assembly anywhere. This would enable a third party application to use all the functionality without the overhead. 
   
   For example, consider a postal service checking for valid address syntax targetting two countries. There is a FROM address and a TO address. Both these addresses 
   are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. 
