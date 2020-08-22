@@ -16,13 +16,15 @@ common questions asked by users which deserve, and indeed have now found, a more
   are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. 
   In other words, four seperate addresses, language, culture and syntax specific.
   
-  In many ways establishing the application as a shell is still a better usage of the software and I fully intend to create a C++ shell variant of the Similarity 
+  In many ways establishing the application as a shell is still a better use of the software IMHO and I fully intend to create a C++ shell variant of the Similarity 
   application, should there be enough interest. A C++ variant would not just be small and fast, it would also need to take one, two, or many comparison sets and 
   it would throw away the overhead associated with a GUI.  Anyway, food for thought. 
   
   In the mean time, Similarity now enables command line usage, one comparison pair at a time. 
   
 2. Why so many parameters? Do I really have to use them all?  
+
+2. Can I just send it a file and get a completed one back?  
 
 	The command-line takes zero, two or nine arguments. Zero arguments will launch the application, whereas
 	any argument passed to the application will return an integer representing a percentage matching value
@@ -33,7 +35,12 @@ common questions asked by users which deserve, and indeed have now found, a more
 	
 	In addition the command line also supports the following seven arguments:
 	
-	MatchingAlgorithm (0,1,2)
+	NOTE: a predefined preference follows the following rules
+		a) where an absense of an attribute an argument defaults to a predefined user preference, 
+		b) where it does not exist defaults to a predefined client administrator preference,
+		c) where it does not exist defaults to the predefined system preference
+	
+	MatchingAlgorithm (0,1,2 - defaults to predefined preference)
 	
 	Where:
 	
@@ -41,12 +48,12 @@ common questions asked by users which deserve, and indeed have now found, a more
 	   1 = the Levenshtein distance algorithm
 	   2 = the Hamming distance algorithm
 	
-	MakeCaseInsensitive (true or false)
-	PadToEqualLength (true or false)
-	RemoveWhitespace (true or false)
-	ReverseComparison (true or false)
-	PhoneticFilter (true or false)
-	WholeWordComparison (true or false)
+	MakeCaseInsensitive (true or false - default to predefined preference)
+	PadToEqualLength (true or false - defaults to predefined preference)
+	RemoveWhitespace (true or false - defaults to predefined preference)
+	ReverseComparison (true or false - defaults to predefined preference)
+	PhoneticFilter (true or false - defaults to predefined user preference)
+	WholeWordComparison (true or false - defaults to predefined user preference)
 	
 	For example:
 	
