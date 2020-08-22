@@ -58,8 +58,8 @@ making a living doing what Similarity already does for free.  So, maybe.
 	
 	NOTE: when an attribute is not present, a predefined preference takes precedence stepping through the following rules
 	   a) when an attribute is not present the argument will default to a predefined user preference, 
-	   b) when in absence of a user preference, the argument defaults to a predefined client administrator preference,
-	   c) when in absence of a client administrator preference, the argument defaults to the predefined system administrator preference
+	   b) in absence of a user preference, the argument defaults to a predefined client administrator preference,
+	   c) in absence of a client administrator preference, it defaults to the predefined system administrator preference
 	
 	MatchingAlgorithm (0,1,2 - defaults to predefined preference)
 	
