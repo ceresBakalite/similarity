@@ -33,7 +33,7 @@ No. To use the command line you only need to use two parameters.  The two compar
 Ideally, you or your administrator will have setup predefined preferences for all of the parameters. In which case you can ignore them, or simply rely on the 
 system defaults.
 
-If you really do wish to use the other parameters the only required argument other than the comparison strings is the MatchingAlgorithm attribute, otherwise the 
+If you really do wish to use the boolean parameters the only required argument other than the comparison strings is the MatchingAlgorithm attribute, otherwise the 
 shell will not know what you are trying to do. The boolean attributes need to be in order but you don't need to use them all.  If you wish to make, for example, the
 fourth boolean argument (ReverseComparison) true, then you will need to let Similarity know what the preceding boolean arguments are, otherwise it won't know which
 boolean attribute you are referring to.
