@@ -22,9 +22,11 @@ common questions asked by users which deserve, and indeed have now found, a more
   
   In the mean time, Similarity now enables command line usage, one comparison pair at a time. 
   
-2. Why so many parameters? Do I really have to use them all?  
+2. Why so many parameters? Do I really need to use them all?  
 
 2. Can I just send it a file and get a completed one back?  
+
+Lastly, the expanded command line usage definition
 
 	The command-line takes zero, two or nine arguments. Zero arguments will launch the application, whereas
 	any argument passed to the application will return an integer representing a percentage matching value
