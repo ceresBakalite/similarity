@@ -56,7 +56,7 @@ Minor changes since release v1.2.8.3b
 	
 	For example:
 	
-	[location]\Similarity.exe "comparison one"  "comparison two"
+	[location]\similarity.exe "comparison one"  "comparison two"
 	
 	In addition the command line also supports the following seven arguments:
 	
