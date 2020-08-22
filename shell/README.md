@@ -24,7 +24,7 @@ common questions asked by users which deserve, and indeed have now found, a more
   
 **2. Why so many parameters? Do I really need to use them all?**
 
-No. To use the commandline you only need to use two parameters.  Two comparison strings.
+No. To use the commandline you only need to use two parameters.  The two comparison strings.
 
 If you wish to use the other parameters the only required argument is the MatchingAlgorithm attribute, otherwise the shell will not know what you are trying to do.
 The boolean attributes need to be in order but you dont need to use them all.  If you wish to make, for example, the third boolean argument (RemoveWhitespace) false then
