@@ -24,6 +24,14 @@ common questions asked by users which deserve, and indeed have now found, a more
   
 **2. Why so many parameters? Do I really need to use them all?**
 
+No. To use the commandline you only need to use two parameters.  Two comparison strings.
+
+If you wish to use the other parameters the only required argument is the MatchingAlgorithm attribute, otherwise the shell will not know what you are trying to do.
+The boolean attributes need to be in order but you dont need to use them all.  If you wish to make, for example, the third boolean argument (RemoveWhitespace) false then
+you will need to let Similarity know what the preceding boolean arguments are, otherwise it wont know which boolean attribute you a referring to.
+
+Ideally, you or your administrator will have setup predefined preferences for all of the parameters. In which case you can ignore them.
+
 **3. Can't I just send it a file and get a completed one back?**  
 
 Lastly, the expanded command line usage definition
