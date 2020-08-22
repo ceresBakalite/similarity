@@ -6,8 +6,8 @@ common questions asked by users which deserve, and indeed have now found, a more
 
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
-**FAQ**
-1. Why a shell?
+##FAQ##
+**1. Why a shell?**
 
   Oddly, the original premise for Similarity was just a commandline application.  This application would reside somewhere in the cloud and would be accessable from
   any assembly anywhere. This would enable a third party application to use all the functionality without the overhead. 
@@ -22,9 +22,9 @@ common questions asked by users which deserve, and indeed have now found, a more
   
   In the mean time, Similarity now enables command line usage, one comparison pair at a time. 
   
-2. Why so many parameters? Do I really need to use them all?  
+**2. Why so many parameters? Do I really need to use them all?**
 
-2. Can I just send it a file and get a completed one back?  
+**3. Can't I just send it a file and get a completed one back?**  
 
 Lastly, the expanded command line usage definition
 
@@ -37,10 +37,10 @@ Lastly, the expanded command line usage definition
 	
 	In addition the command line also supports the following seven arguments:
 	
-	NOTE: a predefined preference steps through the following rules
-		a) where in absense of an attribute an argument defaults to a predefined user preference, 
-		b) where a user preference does not exist, defaults to a predefined client administrator preference,
-		c) where a client administrator preference does not exist, defaults to the predefined system administrator preference
+	NOTE: when an attribute is not present, a predefined preference takes precedence stepping through the following rules
+		a) where in absense of an attribute an argument will default to a predefined user preference, 
+		b) where in absense of a user preference, defaults to a predefined client administrator preference,
+		c) where in absense of a client administrator preference, defaults to the predefined system administrator preference
 	
 	MatchingAlgorithm (0,1,2 - defaults to predefined preference)
 	
