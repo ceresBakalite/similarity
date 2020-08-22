@@ -37,7 +37,7 @@ Lastly, the expanded command line usage definition
 	
 	In addition the command line also supports the following seven arguments:
 	
-	NOTE: a predefined preference follows the following rules
+	NOTE: a predefined preference steps through the following rules
 		a) where an absense of an attribute an argument defaults to a predefined user preference, 
 		b) where it does not exist defaults to a predefined client administrator preference,
 		c) where it does not exist defaults to the predefined system preference
