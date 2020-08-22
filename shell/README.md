@@ -20,7 +20,8 @@ common questions asked by users which deserve, and indeed have now found, a more
   application, should there be enough interest. A C++ variant would not just be small and fast, it would also need to take one, two, or many comparison sets and 
   it would throw away the overhead associated with a GUI.  
   
-  Although largely language independent already, language interoperability would be a fine thing.  As would culture and syntax parsing.  Anyway, food for thought. 
+  Although largely language independent already, language interoperability would be a fine thing.  As would culture, syntax, and natural language parsing parsing.  
+  Anyway, food for thought. 
   
   In the mean time, Similarity enables command line usage, one comparison pair at a time. 
 ***
