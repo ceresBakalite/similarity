@@ -44,7 +44,7 @@ making a living doing what Similarity already does for free.  So, maybe.
 
 **4. Lastly, the expanded command line usage definition**
 
-	The command-line takes zero, two or nine arguments. Zero arguments will launch the application, whereas
+	The command-line can take zero, two or up to nine arguments. Zero arguments will launch the application, whereas
 	any argument passed to the application will return an integer representing a percentage matching value
 	
 	For example:
