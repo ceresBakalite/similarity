@@ -1,9 +1,9 @@
-*<link rel="stylesheet" type="text/css" href="pretagwordwrap.css" media="screen">
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
 The following notes summarise calling the application and applying arguments to invoke a variety of options available within the application.  There have been a number of
 common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
-***
+***<link rel="stylesheet" type="text/css" href="pretagwordwrap.css" media="screen">
+
  
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
