@@ -47,8 +47,9 @@ making a living doing what Similarity already does for free.  So, maybe.
 
 **4. Lastly, the expanded command line usage definition**
 
-	The command line can take zero, two or up to nine arguments. Zero arguments will launch the application, whereas
-	any argument passed to the application will return an integer representing a percentage matching value
+	The command line can take zero, two or up to nine arguments. Zero arguments will launch the
+  application, whereas any argument passed to the application will return an integer representing
+  a percentage matching value
 
 	For example:
 
@@ -56,13 +57,13 @@ making a living doing what Similarity already does for free.  So, maybe.
 
 	In addition the command line also supports the following seven arguments:
 
-	NOTE: when attributes are not found, a predefined preference takes precedence, stepping through the following rules
+	NOTE: when an attribute is not found a predefined preference takes precedence
 
 	Where:
 
 	   a) in absence of an attribute the argument will default to a predefined user preference,
-	   b) in absence of a user preference, the argument defaults to a predefined client administrator preference,
-	   c) in absence of a client administrator preference, the default system preference is used
+	   b) in absence of a user preference, the argument defaults to the client administrator preference,
+	   c) in absence of a client administrator preference, the system default preference is used
 
 	MatchingAlgorithm (0,1,2 - defaults to preference)
 
