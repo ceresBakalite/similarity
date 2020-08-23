@@ -44,6 +44,15 @@ boolean attribute you are referring to.
 The short answer is no, not yet. I would actually like to write this but it is entirely dependent on interest.  There are more than just a few businesses out there
 making a living doing what Similarity already does for free.  So, maybe.
 ***
+<style>.prewrap 
+ pre {
+     white-space: pre-wrap;       /* Since CSS 2.1 */
+     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap;      /* Opera 4-6 */
+     white-space: -o-pre-wrap;    /* Opera 7 */
+     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+ }
+</style>
 
 **4. Lastly, the expanded command line usage definition**
 
