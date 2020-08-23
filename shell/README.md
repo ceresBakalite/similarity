@@ -53,7 +53,7 @@ making a living doing what Similarity already does for free.  So, maybe.
   If you wish to use the boolean parameters the only required argument other than the comparison strings is the MatchingAlgorithm attribute, otherwise the
   shell will not know what you are trying to do. The boolean attributes need to be in order but you don't need to use them all.  If you wish to make, for example, the
   fourth boolean argument (ReverseComparison) true, then you will need to let Similarity know what the preceding boolean arguments are, otherwise it won't know which
-  boolean attribute you are referring to.
+  attribute you are referring to.
 
 	Additionally, the command line also supports the following seven boolean arguments:
 
