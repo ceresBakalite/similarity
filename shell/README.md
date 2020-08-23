@@ -1,4 +1,4 @@
- <link rel="stylesheet" type="text/css" href="stylesheets/pretagwordwrap.css" media="screen">
+ <link rel="stylesheet" type="text/css" href="pretagwordwrap.css" media="screen">
 
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
