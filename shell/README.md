@@ -1,21 +1,9 @@
- <style>.emoji 
- pre {
-     white-space: pre-wrap;       /* Since CSS 2.1 */
-     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-     white-space: -pre-wrap;      /* Opera 4-6 */
-     white-space: -o-pre-wrap;    /* Opera 7 */
-     word-wrap: break-word;       /* Internet Explorer 5.5+ */
- }
-</style>
-
-
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
 The following notes summarise calling the application and applying arguments to invoke a variety of options available within the application.  There have been a number of
 common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
 ***
 
- 
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
 ## Command Line FAQ
@@ -56,6 +44,15 @@ boolean attribute you are referring to.
 The short answer is no, not yet. I would actually like to write this but it is entirely dependent on interest.  There are more than just a few businesses out there
 making a living doing what Similarity already does for free.  So, maybe.
 ***
+<style>.prewrap 
+ pre {
+     white-space: pre-wrap;       /* Since CSS 2.1 */
+     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap;      /* Opera 4-6 */
+     white-space: -o-pre-wrap;    /* Opera 7 */
+     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+ }
+</style>
 
 **4. Lastly, the expanded command line usage definition**
 
