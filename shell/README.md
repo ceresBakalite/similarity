@@ -1,4 +1,4 @@
-*<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+*<link rel="stylesheet" type="text/css" href="stylesheets/pretagwordwrap.css" media="screen">
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
 The following notes summarise calling the application and applying arguments to invoke a variety of options available within the application.  There have been a number of
