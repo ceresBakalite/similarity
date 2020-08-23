@@ -32,11 +32,6 @@ No. To use the command line you only need to use two parameters.  The two compar
 
 Ideally, you or your administrator will have setup predefined preferences for all of the parameters. In which case you can ignore them, or simply rely on the
 system defaults.
-
-If you really do wish to use the boolean parameters the only required argument other than the comparison strings is the MatchingAlgorithm attribute, otherwise the
-shell will not know what you are trying to do. The boolean attributes need to be in order but you don't need to use them all.  If you wish to make, for example, the
-fourth boolean argument (ReverseComparison) true, then you will need to let Similarity know what the preceding boolean arguments are, otherwise it won't know which
-boolean attribute you are referring to.
 ***
 
 **3. Can't I just send it a file and get a completed one back?**  
@@ -55,7 +50,12 @@ making a living doing what Similarity already does for free.  So, maybe.
 
 	[location]\similarity.exe "comparison one"  "comparison two"
 
-	In addition the command line also supports the following seven arguments:
+  If you wish to use the boolean parameters the only required argument other than the comparison strings is the MatchingAlgorithm attribute, otherwise the
+  shell will not know what you are trying to do. The boolean attributes need to be in order but you don't need to use them all.  If you wish to make, for example, the
+  fourth boolean argument (ReverseComparison) true, then you will need to let Similarity know what the preceding boolean arguments are, otherwise it won't know which
+  boolean attribute you are referring to.
+
+	Additionally, the command line also supports the following seven boolean arguments:
 
 	NOTE: when an attribute is not found a predefined preference takes precedence
 
