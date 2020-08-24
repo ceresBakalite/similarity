@@ -3,81 +3,18 @@
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items. [read more][]
 ***
 
-**Release Version v1.3.4b**
+**Release Version v1.3.5b**
+
+[v1.3.5b notes][]:
+
+	1. Minor cumulative additions
+	2. Fatal null reference exception handling changes
 
 [v1.3.4b notes][]:
 
 	1. Minor cumulative additions
 	2. Placed open file methods in their own thread
 	3. Placed save file methods in their own thread
-
-[v1.3.3b notes][]:
-
-	1. Minor cumulative additions
-	2. Dependency updates
-	3. Separated .NET Framework and .NET Standard libraries to reflect their constituent components
-
-[v1.3.2b notes][]:
-
-Minor changes since release v1.2.8.3b
-
-	1. Minor cumulative changes applied
-	2. Dependencies updated
-	3. Reverted to Semantic Versioning (SemVer - ie major.minor.patch) notation
-
-[v1.2.8.3b notes][]:
-
-	1. Stopped further unnecessary display catch-up builds, further eliminating flicker (deleting 
-	   multiple rows in the Result View now refreshes only once when all processing is complete)
-
-[v1.2.8.2b notes][]:
-
-	1. Smoothed display-text transition
-	2. Stopped unnecessary display catchup builds, eliminating flicker
-	3. Added a splash screen
-	4. Added a drag & drop presentation display
-	5. Removed a display threading bug that appeared only when an unusually large number of duplicates
-	   were present
-	6. Normalised method calls so that methods applying similar or cross over activities did not repeat 
-	   tasks
-	7. Applied system diagnostic compilation directives to accurately reflect the run-time environment
-	8. Set pre-processor and conditional compiler directives to reflect the run-time environment
-	9. Applied debug directives to accurately time tasks
-	10. Reallocated and repositioned methods to create a smoother on load transition
-	11. Redesigned threading start-up tasks to create a smoother on load transition
-	12. Set threading tasks to perform only in the environment in which they are required
-	13. Applied a pull data request as a new default, permitting a user to optionally change from the 
-	    now redundant push data request when applying abbreviations to search criteria.  This greatly 
-	    enhances performance on all but the smallest data sets
-	14. Applied command-line usage to enable the application to be called from an external assembly
-	
-	The command-line takes zero, two or nine arguments. Zero arguments will launch the application, whereas
-	any argument passed to the application will return an integer representing a percentage matching value
-	
-	For example:
-	
-	[location]\similarity.exe "comparison one"  "comparison two"
-	
-	In addition the command line also supports the following seven arguments:
-	
-	MatchingAlgorithm (0,1,2)
-	
-	Where:
-	
-	   0 = the Ratcliff/Obershelp matching algorithm
-	   1 = the Levenshtein distance algorithm
-	   2 = the Hamming distance algorithm
-	
-	MakeCaseInsensitive (true or false)
-	PadToEqualLength (true or false)
-	RemoveWhitespace (true or false)
-	ReverseComparison (true or false)
-	PhoneticFilter (true or false)
-	WholeWordComparison (true or false)
-	
-	For example:
-	
-	[location]\similarity.exe "comparison one"  "comparison two" 2 true true true true true true
 
 ***
 
@@ -163,3 +100,4 @@ _ref._ [The Apache log4net library][]
 [v1.3.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.2b
 [v1.3.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.3b
 [v1.3.4b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.4b
+[v1.3.5b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.5b
