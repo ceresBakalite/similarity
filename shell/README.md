@@ -1,27 +1,20 @@
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
-The following notes summarise calling the application and applying arguments to invoke a variety of options available within the application.  There have been a number of
-common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
+The following notes summarise calling the GUI from the command line and applying arguments to invoke a variety of options available in the UI.  There have been a number of common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
 ***
 
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
 ## Command Line FAQ
-**1. Why a shell?**
+**1. Why add a command line shell?**
 
-  Oddly, a very early iteration of Similarity was just a command line application.  The premise was that this application would reside somewhere in the cloud and
-  would be accessible from any assembly anywhere. This would enable a third party application to use all the functionality without the overhead.
+  Oddly, a very early iteration of Similarity was just a command line application.  The premise was that this application would reside somewhere in the cloud and would be accessible from any assembly anywhere. This would enable a third party application to use all the functionality without the overhead.
 
-  For example, consider a postal service checking for valid address syntax targeting two countries. There is a FROM address and a TO address. Both these addresses
-  are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice.
-  In other words, four separate addresses, language, culture and syntax specific.
+  For example, consider a postal service checking for valid address syntax targeting two countries. There is a FROM address and a TO address. Both these addresses are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. In other words, four separate addresses, language, culture and syntax specific.
 
-  In many ways establishing the application as a shell is still a better use of the software IMHO and I fully intend to create a C++ shell variant of the Similarity
-  application, should there be enough interest. A C++ variant would not just be smaller and fast, it would also need to take one, two, or many comparison sets and
-  it would throw away the overhead associated with a GUI.  
+  In many ways establishing the application as a shell is still a better use of the software IMHO and I fully intend to create a C++ shell variant of the Similarity application, should there be enough interest. A C++ variant would not just be smaller and fast, it would also need to take one, two, or many comparison sets and it would throw away the overhead associated with a GUI.  
 
-  Although largely language independent already, language interoperability would be a fine thing.  As would culture, syntax, and natural language parsing.
-  Anyway, food for thought.
+  Although largely language independent already, language interoperability would be a fine thing.  As would culture, syntax, and natural language parsing. Anyway, food for thought.
 
   In the mean time, Similarity enables command line usage, one comparison pair at a time.
 ***
@@ -30,14 +23,12 @@ common questions asked by users which deserve, and indeed have now found, a more
 
 No. To use the command line you only need to use two parameters.  The two comparison strings.
 
-Ideally, you or your administrator will have setup predefined preferences for all of the parameters. In which case you can ignore them, or simply rely on the
-system defaults.
+Ideally, you or your administrator will have setup predefined preferences for all of the parameters. In which case you can ignore them, or simply rely on the system defaults.
 ***
 
 **3. Can't I just send it a file and get a completed one back?**  
 
-The short answer is no, not yet. I would actually like to write this but it is entirely dependent on interest.  There are more than just a few businesses out there
-making a living doing what Similarity already does for free. So, maybe.
+The short answer is no, not yet. I would actually like to write this but it is entirely dependent on interest.  There are more than just a few businesses out there making a living doing what Similarity already does for free. So, maybe.
 ***
 
 **4. Lastly, the expanded command line usage definition**
