@@ -16,6 +16,24 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 	2. Placed open file methods in their own thread
 	3. Placed save file methods in their own thread
 
+[v1.3.3b notes][]:
+
+	1. Minor cumulative additions
+	2. Dependency updates
+	3. Separated .NET Framework and .NET Standard libraries to reflect their constituent components
+
+[v1.3.2b notes][]:
+
+Minor changes since release v1.2.8.3b
+
+	1. Minor cumulative changes applied
+	2. Dependencies updated
+	3. Reverted to Semantic Versioning (SemVer - ie major.minor.patch) notation
+
+[v1.2.8.3b notes][]:
+
+[v1.2.8.2b notes][]:
+
 ***
 
 **User defined pattern matching algorithms enabled**
