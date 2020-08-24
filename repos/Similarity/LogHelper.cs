@@ -16,7 +16,7 @@ namespace NAVService
 
             try
             {
-                if (UserHelper.UserPropertiesModel != null) UserHelper.UserStateModel = DataAccess.GetLastUserStateLogEntry();
+                if (ClassLibraryStandard.HelperMethods.ObjectExists(UserHelper.UserPropertiesModel)) UserHelper.UserStateModel = DataAccess.GetLastUserStateLogEntry();
             }
             catch (System.NullReferenceException)
             {
@@ -94,26 +94,39 @@ namespace NAVService
             return true;
         }
 
-        internal static void FatalNullReferenceException(System.Exception ex)
+        internal static void FatalNullReferenceException(System.Exception ex = null)
         {
             TraceWriteLine("FATAL NullReferenceException", ex);
-
-            //System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-
-            System.Windows.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error, (System.Windows.MessageBoxResult)System.Windows.MessageBoxOptions.DefaultDesktopOnly);
-            if (log != null) log.Fatal(Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, ex);
-
-            ApplicationKill();
+            FatalException(Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, Properties.Resources.CAPTION_APPLICATION, ex);
         }
 
-        internal static void FatalSqlException(System.Exception ex)
+        internal static void FatalSqlException(System.Exception ex = null)
         {
             TraceWriteLine("FATAL SQLException", ex);
+            FatalException(Properties.Resources.NOTIFY_SQLCONNECTION_ERROR, Properties.Resources.CAPTION_APPLICATION, ex);
+        }
 
-            //System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLCONNECTION_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+        internal static void FatalInternetUnavailableException(System.Exception ex = null)
+        {
+            TraceWriteLine("FATAL InternetUnavailableException");
+            FatalException(Properties.Resources.NOTIFY_SQLNETWORK_UNAVAILABLE, Properties.Resources.CAPTION_INITIALISATION_ERROR, ex);
+        }
 
-            System.Windows.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLCONNECTION_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error, (System.Windows.MessageBoxResult)System.Windows.MessageBoxOptions.DefaultDesktopOnly);
-            if (log != null) log.Fatal(Properties.Resources.NOTIFY_SQLCONNECTION_ERROR, ex);
+        internal static void FatalUserVerificationException(System.Exception ex = null)
+        {
+            TraceWriteLine("FATAL UserVerificationException");
+            FatalException(string.Format(UserHelper.culture, Constants.INVALID_USER_ID + ": " + Properties.Resources.NOTIFY_SQLINIITIALISATION_LOGON_ERROR, System.Environment.NewLine), Properties.Resources.CAPTION_INITIALISATION_ERROR, ex);
+        }
+
+        internal static void FatalException(string ErrorNotification, string Caption, System.Exception ex = null)
+        {
+            using (System.Windows.Forms.Form form = new System.Windows.Forms.Form { TopMost = true })
+            {
+                string Notification = string.Format(UserHelper.culture, ErrorNotification, System.Environment.NewLine);
+
+                System.Windows.Forms.MessageBox.Show(form, Notification, Caption, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                if (log != null) log.Fatal(Notification, ex);
+            }
 
             ApplicationKill();
         }

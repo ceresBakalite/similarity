@@ -257,6 +257,8 @@ namespace ClassLibraryStandard
     {
         #region Common generic methods
 
+        public static bool ObjectExists(object ObjectModel) => ObjectModel != null;
+
         public static string GetGUID(string symbol = null, bool bLarge = false)
         {
             return symbol + (bLarge ? System.Guid.NewGuid().ToString("n") : System.Guid.NewGuid().ToString().GetHashCode().ToString("x").ToString());

@@ -8,8 +8,6 @@ namespace NAVService
 {
     static class Program
     {
-        private static readonly log4net.ILog log = LogHelper.GetLogger();
-
         [STAThread]
         static void Main()
         {
@@ -21,42 +19,45 @@ namespace NAVService
                 System.Windows.Forms.Application.EnableVisualStyles();
                 System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
 
-                SplashScreen SplashWindow = new SplashScreen();
+                InitialiseApplication();
 
-                System.Threading.Thread SplashThread = new System.Threading.Thread(new System.Threading.ThreadStart(() => System.Windows.Forms.Application.Run(SplashWindow)));
-                SplashThread.SetApartmentState(System.Threading.ApartmentState.MTA);
-                SplashThread.Start();
-
-                LogHelper.GetLogState();
-
-                NAVPanelForm NAVApplication = new NAVPanelForm();
-
-                NAVApplication.Load += NAVApplicationLoad;
-                System.Windows.Forms.Application.Run(NAVApplication);
-
-                void NAVApplicationLoad(object sender, EventArgs e)
+                void InitialiseApplication()
                 {
-                    if (SplashWindow != null && !SplashWindow.Disposing && !SplashWindow.IsDisposed)
+                    using (SplashScreen SplashWindow = new SplashScreen())
                     {
-                        SplashWindow.Invoke(new Action(() => SplashWindow.Close()));
+                        System.Threading.Thread SplashThread = new System.Threading.Thread(new System.Threading.ThreadStart(() => System.Windows.Forms.Application.Run(SplashWindow)));
+                        SplashThread.SetApartmentState(System.Threading.ApartmentState.MTA);
+                        SplashThread.Start();
+
+                        LogHelper.GetLogState();
+
+                        using (NAVPanelForm ApplicationWindow = new NAVPanelForm())
+                        {
+                            ApplicationWindow.Load += ApplicationWindowLoad;
+                            System.Windows.Forms.Application.Run(ApplicationWindow);
+
+                            void ApplicationWindowLoad(object sender, EventArgs e)
+                            {
+                                if (SplashWindow != null && !SplashWindow.Disposing && !SplashWindow.IsDisposed)
+                                {
+                                    SplashWindow.Invoke(new Action(() => SplashWindow.Close()));
+                                }
+
+                                ApplicationWindow.TopMost = true;
+                                ApplicationWindow.Activate();
+                                ApplicationWindow.TopMost = false;
+                            }
+
+                        }
+
                     }
 
-                    NAVApplication.TopMost = true;
-                    NAVApplication.Activate();
-                    NAVApplication.TopMost = false;
                 }
 
-                SplashWindow.Dispose();
-                NAVApplication.Dispose();
             }
             catch (NullReferenceException ex)
             {
-                //System.Windows.Forms.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-
-                System.Windows.MessageBox.Show(string.Format(UserHelper.culture, Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, Environment.NewLine), Properties.Resources.CAPTION_APPLICATION, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error, (System.Windows.MessageBoxResult)System.Windows.MessageBoxOptions.DefaultDesktopOnly);
-                if (log != null) log.Fatal(Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, ex);
-
-                LogHelper.ApplicationKill();
+                LogHelper.FatalException(Properties.Resources.NOTIFY_SQLNULLREFERENCE_ERROR, Properties.Resources.CAPTION_APPLICATION, ex);
             }
         
         }

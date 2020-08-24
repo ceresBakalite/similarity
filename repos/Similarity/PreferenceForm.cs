@@ -89,14 +89,7 @@ namespace NAVService
         {
             UserPreferencesDataTable = ClassLibraryStandard.DataTableMethods.GetDataTable(DataAccess.GetUserPreferences());
 
-            try
-            {
-                BuildFormControls();
-            }
-            catch (NullReferenceException ex)
-            {
-                LogHelper.FatalNullReferenceException(ex);
-            }
+            BuildFormControls();
 
             void BuildFormControls()
             {

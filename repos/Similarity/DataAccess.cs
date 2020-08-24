@@ -5,20 +5,29 @@ namespace NAVService
 {
     public static class DataAccess
     {
-        public static bool TraceWrite { get; set; } = true;
+        internal static bool TraceWrite { get; set; } = true;
+
+        private static object ObjectModel(object ObjectModel)
+        {
+            if (!ClassLibraryStandard.HelperMethods.ObjectExists(ObjectModel))
+            {
+                System.NullReferenceException ex = null;
+                LogHelper.FatalNullReferenceException(ex);
+
+                return null;
+            }
+
+            return ObjectModel;
+        }
 
         public static System.Collections.Generic.List<NAVUserPreferencesModel> GetUserPreferences(int iRetry = 0)
         {
             try
             {
-                if (UserHelper.UserPropertiesModel != null)
+                using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                 {
-                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                    {
-                        string queryStr = $"pGetUserPreferencesByUserID { UserHelper.UserPropertiesModel.iUserID }";
-                        return Database.Query<NAVUserPreferencesModel>(queryStr).ToList();
-                    }
-
+                    string queryStr = $"pGetUserPreferencesByUserID { UserHelper.UserPropertiesModel.iUserID }";
+                    return (System.Collections.Generic.List<NAVUserPreferencesModel>)ObjectModel(Database.Query<NAVUserPreferencesModel>(queryStr).ToList());
                 }
 
             }
@@ -38,15 +47,12 @@ namespace NAVService
         {
             try
             {
-                if (UserHelper.UserPropertiesModel != null)
+                using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                 {
-                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                    {
-                        string queryStr = $@"pGetUserPreferencesByPreferenceType { UserHelper.UserPropertiesModel.iUserID }, '{ nvClientPreferenceType }'";
-                        return Database.Query<NAVUserPreferencesModel>(queryStr).ToList();
-                    }
-
+                    string queryStr = $@"pGetUserPreferencesByPreferenceType { UserHelper.UserPropertiesModel.iUserID }, '{ nvClientPreferenceType }'";
+                    return (System.Collections.Generic.List<NAVUserPreferencesModel>)ObjectModel(Database.Query<NAVUserPreferencesModel>(queryStr).ToList());
                 }
+
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -64,18 +70,14 @@ namespace NAVService
         {
             try
             {
-                if (UserHelper.UserPropertiesModel != null)
+                if (TraceWrite) LogHelper.TraceWriteCurrentState();
+
+                using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                 {
-                    if (TraceWrite) LogHelper.TraceWriteCurrentState();
+                    string queryStr = $@"pGetUserPreferenceByPreferenceName { UserHelper.UserPropertiesModel.iUserID }, '{ nvClientPreferenceName }'";
 
-                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                    {
-                        string queryStr = $@"pGetUserPreferenceByPreferenceName { UserHelper.UserPropertiesModel.iUserID }, '{ nvClientPreferenceName }'";
-
-                        NAVUserPreferencesModel UserPreferencesModel = Database.QuerySingle<NAVUserPreferencesModel>(queryStr);
-                        return (UserPreferencesModel.bClientValueRequired == 1) ? $"{ UserPreferencesModel.nvUserPreferenceValue }" : $" { UserPreferencesModel.bUserPreference }";
-                    }
-
+                    NAVUserPreferencesModel UserPreferencesModel = Database.QuerySingle<NAVUserPreferencesModel>(queryStr);
+                    return (UserPreferencesModel.bClientValueRequired == 1) ? $"{ UserPreferencesModel.nvUserPreferenceValue }" : $" { UserPreferencesModel.bUserPreference }";
                 }
 
             }
@@ -97,17 +99,14 @@ namespace NAVService
             {
                 int FlaggedWordsOnly = UserHelper.GetReplaceDefaultWordsOnly() ? 1 : 0;
 
-                if (UserHelper.UserPropertiesModel != null)
+                using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                 {
-                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                    {
-                        string queryStr = $@"pSetStringAbbreviations { UserHelper.UserPropertiesModel.iUserID }, '{ nvInputString }', { FlaggedWordsOnly }";
+                    string queryStr = $@"pSetStringAbbreviations { UserHelper.UserPropertiesModel.iUserID }, '{ nvInputString }', { FlaggedWordsOnly }";
 
-                        NAVComparisonStringModel ComparisonStringModel = Database.QuerySingle<NAVComparisonStringModel>(queryStr, commandTimeout: 0);
-                        return $"{ ComparisonStringModel.nvString }";
-                    }
-
+                    NAVComparisonStringModel ComparisonStringModel = Database.QuerySingle<NAVComparisonStringModel>(queryStr, commandTimeout: 0);
+                    return $"{ ComparisonStringModel.nvString }";
                 }
+
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
@@ -127,16 +126,12 @@ namespace NAVService
             {
                 int FlaggedWordsOnly = UserHelper.GetReplaceDefaultWordsOnly() ? 1 : 0;
 
-                if (UserHelper.UserPropertiesModel != null)
+                using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                 {
-                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                    {
-                        string queryStr = $@"pGetPhraseAbbreviationsByUserID { UserHelper.UserPropertiesModel.iUserID }, '{ nvInputString }', { FlaggedWordsOnly }";
+                    string queryStr = $@"pGetPhraseAbbreviationsByUserID { UserHelper.UserPropertiesModel.iUserID }, '{ nvInputString }', { FlaggedWordsOnly }";
 
-                        NAVComparisonStringModel ComparisonStringModel = Database.QuerySingle<NAVComparisonStringModel>(queryStr);
-                        return $"{ ComparisonStringModel.nvString }";
-                    }
-
+                    NAVComparisonStringModel ComparisonStringModel = Database.QuerySingle<NAVComparisonStringModel>(queryStr);
+                    return $"{ ComparisonStringModel.nvString }";
                 }
 
             }
@@ -177,14 +172,12 @@ namespace NAVService
         {
             try
             {
-                if (UserHelper.UserPropertiesModel != null)
+                using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                 {
-                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                    {
-                        string queryStr = $"pGetAbbreviationTypeByLanguage { UserHelper.UserPropertiesModel.iLanguageID }";
-                        return Database.Query<NAVAbbreviationTypeModel>(queryStr).ToList();
-                    }
+                    string queryStr = $"pGetAbbreviationTypeByLanguage { UserHelper.UserPropertiesModel.iLanguageID }";
+                    System.Collections.Generic.List<NAVAbbreviationTypeModel> AbbreviationTypeModel = Database.Query<NAVAbbreviationTypeModel>(queryStr).ToList();
 
+                    return (System.Collections.Generic.List<NAVAbbreviationTypeModel>)ObjectModel(AbbreviationTypeModel);
                 }
 
             }
@@ -204,14 +197,10 @@ namespace NAVService
         {
             try
             {
-                if (UserHelper.UserPropertiesModel != null)
+                using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                 {
-                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                    {
-                        string queryStr = $"pGetWordAbbreviationsByLanguageByType { UserHelper.UserPropertiesModel.iLanguageID }, { iAbbreviationTypeID }";
-                        return Database.Query<NAVAbbreviationModel>(queryStr).ToList();
-                    }
-
+                    string queryStr = $"pGetWordAbbreviationsByLanguageByType { UserHelper.UserPropertiesModel.iLanguageID }, { iAbbreviationTypeID }";
+                    return (System.Collections.Generic.List<NAVAbbreviationModel>)ObjectModel(Database.Query<NAVAbbreviationModel>(queryStr).ToList());
                 }
 
             }
@@ -225,7 +214,6 @@ namespace NAVService
             }
 
             return null;
-
         }
 
         public static System.Collections.Generic.List<NAVAbbreviationsModel> GetAbbreviationsByUserID(int iRetry = 0)
@@ -234,14 +222,10 @@ namespace NAVService
             {
                 int FlaggedWordsOnly = UserHelper.GetReplaceDefaultWordsOnly() ? 1 : 0;
 
-                if (UserHelper.UserPropertiesModel != null)
+                using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                 {
-                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                    {
-                        string queryStr = $"pGetStringAbbreviations { UserHelper.UserPropertiesModel.iUserID }, { FlaggedWordsOnly }";
-                        return Database.Query<NAVAbbreviationsModel>(queryStr).ToList();
-                    }
-
+                    string queryStr = $"pGetStringAbbreviations { UserHelper.UserPropertiesModel.iUserID }, { FlaggedWordsOnly }";
+                    return (System.Collections.Generic.List<NAVAbbreviationsModel>)ObjectModel(Database.Query<NAVAbbreviationsModel>(queryStr).ToList());
                 }
 
             }
@@ -255,7 +239,6 @@ namespace NAVService
             }
 
             return null;
-
         }
 
         public static string GetAbbreviationType(int iAbbreviationTypeID, int iRetry = 0)
@@ -408,16 +391,12 @@ namespace NAVService
                 {
                     ApplyLogFileConfiguration();
 
-                    if (UserHelper.UserPropertiesModel != null)
+                    using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
                     {
-                        using (System.Data.IDbConnection Database = new System.Data.SqlClient.SqlConnection(ConnectionHelper.CONNECTION_LOCATION))
-                        {
-                            LogHelper.TraceWritePreviousState();
+                        LogHelper.TraceWritePreviousState();
 
-                            string queryStr = $"pGetLastUserStateLogEntry { UserHelper.UserPropertiesModel.iUserID }";
-                            return Database.QuerySingle<NAVUserStateModel>(queryStr);
-                        }
-
+                        string queryStr = $"pGetLastUserStateLogEntry { UserHelper.UserPropertiesModel.iUserID }";
+                        return (NAVUserStateModel)ObjectModel(Database.QuerySingle<NAVUserStateModel>(queryStr));
                     }
 
                 }
@@ -455,21 +434,21 @@ namespace NAVService
                     System.DateTime logHelperStartTime = System.DateTime.Now;
 
                     string queryStr = $"pUserExists { iUserID }";
-                    UserHelper.UserStateModel = Database.QuerySingle<NAVUserStateModel>(queryStr);
+                    UserHelper.UserStateModel = (NAVUserStateModel)ObjectModel(Database.QuerySingle<NAVUserStateModel>(queryStr));
 
                     LogHelper.TraceTimeElapsedWriteLine(System.DateTime.Now, logHelperStartTime, "TRACE - Dapper initialisation (first Dapper invocation). Time Elapsed: ");
 
-                    if (UserHelper.UserStateModel != null)
+                    if (UserHelper.UserStateModel.bConfirmed)
                     {
-                        if (UserHelper.UserStateModel.bConfirmed)
-                        {
-                            LogHelper.ApplyLogAppenderConfiguration();
-                            LogHelper.TraceWriteLine("TRACE - Default state initialisation");
+                        LogHelper.ApplyLogAppenderConfiguration();
+                        LogHelper.TraceWriteLine("TRACE - Default state initialisation");
 
-                            queryStr = $"pGetUserProperties { iUserID }";
-                            return Database.QuerySingle<NAVUserPropertiesModel>(queryStr);
-                        }
-
+                        queryStr = $"pGetUserProperties { iUserID }";
+                        return (NAVUserPropertiesModel)ObjectModel(Database.QuerySingle<NAVUserPropertiesModel>(queryStr));
+                    }
+                    else
+                    {
+                        LogHelper.FatalUserVerificationException();
                     }
 
                 }

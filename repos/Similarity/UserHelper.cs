@@ -2,8 +2,6 @@
 {
     public static class UserHelper
     {
-        private static readonly log4net.ILog log = LogHelper.GetLogger();
-
         internal static readonly System.DateTime ApplicationStartTime = System.DateTime.Now;
         internal static readonly System.Globalization.CultureInfo culture = System.Globalization.CultureInfo.InvariantCulture;
         internal static readonly NAVUserPropertiesModel UserPropertiesModel = DataAccess.InitialiseUserProperties(InitaliseEnvironment());
@@ -39,17 +37,14 @@
                 }
                 catch (System.Exception ex)
                 {
-                    if (log != null) log.Error(string.Format(culture, Constants.INVALID_USER_ID + ": " + Properties.Resources.NOTIFY_SQLINIITIALISATION_LOGON_ERROR, System.Environment.NewLine), ex);
-                    throw new System.ArgumentException(Constants.INVALID_USER_ID.ToString(culture), ex);
+                    LogHelper.FatalUserVerificationException(ex);
+                    throw;
                 }
 
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show(Properties.Resources.NOTIFY_SQLNETWORK_UNAVAILABLE, Properties.Resources.CAPTION_INITIALISATION_ERROR, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                if (log != null) log.Fatal(Properties.Resources.NOTIFY_SQLNETWORK_UNAVAILABLE);
-
-                LogHelper.ApplicationKill();
+                LogHelper.FatalInternetUnavailableException();
             }
 
             return Constants.NETWORK_UNAVAILABLE_ERROR;
