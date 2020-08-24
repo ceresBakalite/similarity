@@ -7,7 +7,7 @@ common questions asked by users which deserve, and indeed have now found, a more
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
 ## Command Line FAQ
-**1. Why a shell?**
+**1. Why add a command line shell?**
 
   Oddly, a very early iteration of Similarity was just a command line application.  The premise was that this application would reside somewhere in the cloud and
   would be accessible from any assembly anywhere. This would enable a third party application to use all the functionality without the overhead.
