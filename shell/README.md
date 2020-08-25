@@ -13,7 +13,7 @@ In computing, a shell is a user interface for access to an operating system's se
 
 Command-line shells require the user to be familiar with commands and their calling syntax, and to understand concepts about the shell-specific scripting language...
 
-<p style="font-size:80%"><i>ref.</i><a target="_blank" href="https://en.wikipedia.org/wiki/Shell_(computing)"> Shell (computing)</a> Wikipedia, the free encyclopedia</p>
+*ref.* [Shell (computing)][] Wikipedia, the free encyclopedia
 
 **1. Why add a command line shell?**
 
