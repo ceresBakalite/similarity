@@ -6,6 +6,15 @@ The following notes summarise calling the Similarity application from the comman
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
 ## Command Line FAQ
+
+#### Shell (computing)
+
+In computing, a shell is a user interface for access to an operating system's services. In general, operating system shells use either a command-line interface (CLI) or graphical user interface (GUI), depending on a computer's role and particular operation. It is named a shell because it is the outermost layer around the operating system.
+
+Command-line shells require the user to be familiar with commands and their calling syntax, and to understand concepts about the shell-specific scripting language...
+
+<font size="2">*ref.* [Shell (computing)][] Wikipedia, the free encyclopedia</font>
+
 **1. Why add a command line shell?**
 
   Oddly, a very early iteration of Similarity was just a command line application.  The premise was that this application would reside somewhere in the cloud and would be accessible from any assembly anywhere. This would enable a third party application to use all the functionality without the overhead.
@@ -73,3 +82,4 @@ The short answer is no, not yet. I would actually like to write this but it is e
 	[location]\similarity.exe "comparison one"  "comparison two" 2 true true true true true true
 
 ***
+[Shell (computing)]: https://en.wikipedia.org/wiki/Shell_(computing)
