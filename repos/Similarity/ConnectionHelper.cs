@@ -30,7 +30,7 @@ namespace NAVService
         [System.Diagnostics.Conditional("DEBUG")]
         internal static void ConfirmDebugState()
         {
-            LogHelper.TraceWriteLine("TRACE - System Diagnostics Conditional Debug is enabled [Targeting PREPROD]");
+            LogHelper.TraceWriteLine("TRACE - System Diagnostics Conditional DEBUG is enabled");
             EnableEncryptionHelper();
         }
 
@@ -39,22 +39,37 @@ namespace NAVService
             switch (GetTarget())
             {
                 case Constants.CONNECTION_DEV:
+
+                    LogHelper.TraceWriteLine("TRACE - Confirming connection DEV target");
+
                     ProductionEnabled = false;
                     return GetAttribute(System.Configuration.ConfigurationManager.ConnectionStrings[Constants.CONNECTION_LOCAL].ConnectionString);
 
                 case Constants.CONNECTION_PREPROD:
+
+                    LogHelper.TraceWriteLine("TRACE - Confirming connection PREPROD target");
+
                     ProductionEnabled = false;
                     return GetAttribute(System.Configuration.ConfigurationManager.ConnectionStrings[Constants.CONNECTION_LOCAL].ConnectionString);
 
                 case Constants.CONNECTION_PROD_NAV:
+
+                    LogHelper.TraceWriteLine("TRACE - Confirming connection PROD target");
+
                     ProductionEnabled = false;
                     return GetAttribute(System.Configuration.ConfigurationManager.ConnectionStrings[Constants.CONNECTION_LOCAL].ConnectionString);
 
                 case Constants.CONNECTION_PROD_AWS:
+
+                    LogHelper.TraceWriteLine("TRACE - Confirming connection AWS target");
+
                     ProductionEnabled = true;
                     return GetAttribute(System.Configuration.ConfigurationManager.ConnectionStrings[Constants.CONNECTION_CLOUD].ConnectionString);
 
                 default:
+
+                    LogHelper.TraceWriteLine("TRACE - Confirming connection PREPROD target default");
+
                     ProductionEnabled = false;
                     return Constants.CONNECTION_PREPROD_TARGET_DEFAULT;
 

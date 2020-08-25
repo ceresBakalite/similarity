@@ -6,7 +6,7 @@ namespace NAVService
     public partial class PreferencesForm : Form
     {
         private static readonly log4net.ILog log = LogHelper.GetLogger();
-        
+
         private static Control PreferenceHeader;
         private static Control PreferenceDescription;
 
@@ -69,6 +69,7 @@ namespace NAVService
                                     control.AccessibleDefaultActionDescription = control.Text;
                                     return true;
                                 }
+
                             }
 
                             MessageBox.Show(Properties.Resources.NOTIFY_PERCENTAGE_VALIDATION, (callerName == Properties.Resources.CAPTION_PREFERENCES) ? Properties.Resources.CAPTION_PREFERENCES : Properties.Resources.CAPTION_SIMILARITY, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -79,7 +80,9 @@ namespace NAVService
 
                             return true;
                     }
+
                 }
+
             }
 
             return true;
@@ -93,34 +96,34 @@ namespace NAVService
 
             void BuildFormControls()
             {
-                SuspendLayout();
-
-                int axisY = 0;
-
-                for (int rowIndex = 0; rowIndex < UserPreferencesDataTable.Rows.Count; rowIndex++)
+                using (ClassLibraryFramework.DrawingInteropServices.PauseDrawing(this))
                 {
-                    if (GroupHeaderRequired(rowIndex))
+                    int axisY = 0;
+
+                    for (int rowIndex = 0; rowIndex < UserPreferencesDataTable.Rows.Count; rowIndex++)
                     {
-                        GroupHeaderInsert(rowIndex, axisY);
+                        if (GroupHeaderRequired(rowIndex))
+                        {
+                            GroupHeaderInsert(rowIndex, axisY);
+                            axisY += 19;
+                        }
+
+                        PreferenceNameInsert(rowIndex, axisY);
+                        PreferenceValueInsert(rowIndex, axisY);
+
                         axisY += 19;
                     }
 
-                    PreferenceNameInsert(rowIndex, axisY);
-                    PreferenceValueInsert(rowIndex, axisY);
+                    RestoreDefaultsButton(axisY += 10);
 
-                    axisY += 19;
+                    axisY += 5;
+
+                    PreferenceDescriptionHeaderInsert(axisY += 19);
+                    PreferenceDescriptionInsert(axisY += 19);
+
+                    InstantiatePreferenceDelegates();
                 }
 
-                RestoreDefaultsButton(axisY += 10);
-
-                axisY += 5;
-
-                PreferenceDescriptionHeaderInsert(axisY += 19);
-                PreferenceDescriptionInsert(axisY += 19);
-
-                InstantiatePreferenceDelegates();
-
-                ResumeLayout();
             }
 
             void RestoreDefaultsButton(int axisY)
@@ -278,6 +281,7 @@ namespace NAVService
                             BuildValueTextBox();
                             break;
                     }
+
                 }
                 else
                 {
@@ -389,6 +393,7 @@ namespace NAVService
                     {
                         return UserPreferencesDataTable.Rows[rowIndex - 1][Constants.COLUMN_CLIENT_PREFERENCE_TYPE].ToString().Trim() != UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_TYPE].ToString().Trim();
                     }
+
                 }
 
                 return false;
@@ -410,6 +415,7 @@ namespace NAVService
 
                     return ClassLibraryStandard.HelperMethods.ToBoolean(bClientValueRequired) ? nvClientPreferenceValue : bClientPreference.ToString(UserHelper.culture);
                 }
+
             }
 
             return null;
@@ -436,17 +442,17 @@ namespace NAVService
                         System.Collections.Generic.Dictionary<int, NAVChangePreferencesModel> map = new System.Collections.Generic.Dictionary<int, NAVChangePreferencesModel>()
                         {
                             { 1, new NAVChangePreferencesModel
-                            {
-                                iPreferenceID = iUserPreferenceID,
-                                iClientPreferenceTypeID = int.Parse(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_TYPE_ID].ToString().Trim(), UserHelper.culture),
-                                nvClientPreferenceType = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_TYPE].ToString().Trim(),
-                                nvClientPreferenceName = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_NAME].ToString().Trim(),
-                                nvPreferenceValue = nvPreferenceValue,
-                                bPreference = ClassLibraryStandard.HelperMethods.ToBoolean(bPreference.ToString(UserHelper.culture)),
-                                bClientValueRequired = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString()),
-                                bClientOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString()),
-                                bSystemOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_SYSTEM_OVERRIDE_FLAG].ToString())
-                            }
+                                {
+                                    iPreferenceID = iUserPreferenceID,
+                                    iClientPreferenceTypeID = int.Parse(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_TYPE_ID].ToString().Trim(), UserHelper.culture),
+                                    nvClientPreferenceType = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_TYPE].ToString().Trim(),
+                                    nvClientPreferenceName = UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_PREFERENCE_NAME].ToString().Trim(),
+                                    nvPreferenceValue = nvPreferenceValue,
+                                    bPreference = ClassLibraryStandard.HelperMethods.ToBoolean(bPreference.ToString(UserHelper.culture)),
+                                    bClientValueRequired = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_VALUE_REQUIRED_FLAG].ToString()),
+                                    bClientOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_CLIENT_OVERRIDE_FLAG].ToString()),
+                                    bSystemOverride = ClassLibraryStandard.HelperMethods.ToBoolean(UserPreferencesDataTable.Rows[rowIndex][Constants.COLUMN_SYSTEM_OVERRIDE_FLAG].ToString())
+                                }
                             }
                         };
 
@@ -604,23 +610,7 @@ namespace NAVService
                 {
                     case DialogResult.Yes:
 
-                        foreach (Control control in Controls)
-                        {
-                            if ((control is TextBox) || (control is ComboBox))
-                            {
-                                if (ClassLibraryStandard.StringMethods.InString(control.Name, Constants.CONTROL_VALUE_SYMBOL))
-                                {
-                                    if (control.Enabled)
-                                    {
-                                        string[] controlName = control.Name.Split(new string[] { Constants.CONTROL_VALUE_SYMBOL }, StringSplitOptions.None);
-                                        int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
-
-                                        control.Text = (control is ComboBox) ? (ClassLibraryStandard.HelperMethods.ToBoolean(RestoreDefaults(iUserPreferenceID)) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO) : RestoreDefaults(iUserPreferenceID);
-                                    }
-                                }
-                            }
-                        }
-
+                        RestoreControls();
                         break;
 
                     default:
@@ -629,6 +619,30 @@ namespace NAVService
                 }
 
                 NAVPanelForm.SetNotifyPreferenceChange(false);
+            }
+
+            void RestoreControls()
+            {
+                foreach (Control control in Controls)
+                {
+                    if ((control is TextBox) || (control is ComboBox))
+                    {
+                        if (ClassLibraryStandard.StringMethods.InString(control.Name, Constants.CONTROL_VALUE_SYMBOL))
+                        {
+                            if (control.Enabled)
+                            {
+                                string[] controlName = control.Name.Split(new string[] { Constants.CONTROL_VALUE_SYMBOL }, StringSplitOptions.None);
+                                int iUserPreferenceID = int.Parse(controlName[1], UserHelper.culture);
+
+                                control.Text = (control is ComboBox) ? (ClassLibraryStandard.HelperMethods.ToBoolean(RestoreDefaults(iUserPreferenceID)) ? Properties.Resources.FIELD_VALUE_YES : Properties.Resources.FIELD_VALUE_NO) : RestoreDefaults(iUserPreferenceID);
+                            }
+
+                        }
+
+                    }
+
+                }
+
             }
 
         }
@@ -692,8 +706,11 @@ namespace NAVService
                                     control.Focus();
                                     return;
                                 }
+
                             }
+
                         }
+
                     }
 
                     break;
@@ -742,7 +759,9 @@ namespace NAVService
                                     control.Text = control.AccessibleDefaultActionDescription;
                                     control.Focus();
                                 }
+
                             }
+
                         }
                         else
                         {
@@ -751,6 +770,7 @@ namespace NAVService
                             control.Text = control.AccessibleDefaultActionDescription;
                             ActiveControl = control;
                         }
+
                     }
                     else
                     {

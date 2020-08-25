@@ -141,11 +141,11 @@
         internal const string CONNECTION_CLOUD_UPDATE = "CloudUpdate";
 
 #if DEBUG
-        // ENABLE preprod update location and dev database connection string
+        // ENABLE preprod update location and dev database connection strings
         internal const string CONNECTION_PREPROD_UPDATE_DEFAULT = @"C:\NAVServices\Releases\";
         internal const string CONNECTION_PREPROD_TARGET_DEFAULT = "Server=.;Database=NAV;Trusted_Connection=True;";
 #else
-        // DISABLE preprod update location and dev database connection string
+        // DISABLE preprod update location and dev database connection strings
         internal const string CONNECTION_PREPROD_UPDATE_DEFAULT = null;
         internal const string CONNECTION_PREPROD_TARGET_DEFAULT = "Server=.;Database=NULL;";
 #endif

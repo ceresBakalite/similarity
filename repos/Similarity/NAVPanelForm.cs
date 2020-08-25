@@ -313,16 +313,17 @@ namespace NAVService
 
                 void InitializeExplorer()
                 {
-                    ExplorerForm explorerForm = new ExplorerForm
+                    ExplorerForm explorerForm = new ExplorerForm()
                     {
                         TopLevel = false,
                         FormBorderStyle = FormBorderStyle.None,
                         Dock = DockStyle.Fill
+
                     };
 
                     ExplorerFormPanel.BackColor = Constants.COLOR_DEFAULT_WINDOW;
-                    ExplorerFormPanel.Controls.Add(explorerForm);
 
+                    ExplorerFormPanel.Controls.Add(explorerForm);
                     explorerForm.Show();
                 }
 

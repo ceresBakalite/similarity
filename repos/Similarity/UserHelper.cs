@@ -23,7 +23,6 @@
         private static bool PullAbbreviations = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_PULL_ABBREVIATIONS));
         private static bool LogErrors = ClassLibraryStandard.HelperMethods.ToBoolean(DataAccess.GetUserPreferenceByPreferenceName(Constants.DB_LOG_ERRORS));
 
-        // assign a user to their environment attributes and dispose of system sensitive data
         private static int InitaliseEnvironment()
         {
             LogHelper.ConfirmTraceState();

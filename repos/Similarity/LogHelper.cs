@@ -6,21 +6,27 @@ namespace NAVService
     {
         private static readonly log4net.ILog log = GetLogger();
 
-        internal static void ApplicationKill() => System.Environment.Exit(0);
+        private static void ApplicationKill() => System.Environment.Exit(0);
 
         internal static void GetLogState()
         {
             string[] args = System.Environment.GetCommandLineArgs();
 
-            if (args.Length > 1) RunCommandLineArguments(args);
+            if (args.Length == 1)
+            {
+                if (ClassLibraryStandard.HelperMethods.ObjectExists(UserHelper.UserPropertiesModel))
+                {
+                    UserHelper.UserStateModel = DataAccess.GetLastUserStateLogEntry();
+                }
+                else
+                {
+                    FatalUserVerificationException();
+                }
 
-            try
-            {
-                if (ClassLibraryStandard.HelperMethods.ObjectExists(UserHelper.UserPropertiesModel)) UserHelper.UserStateModel = DataAccess.GetLastUserStateLogEntry();
             }
-            catch (System.NullReferenceException)
+            else
             {
-                throw new System.ArgumentException(Constants.INVALID_USER_ID.ToString(UserHelper.culture));
+                RunCommandLineShell(args);
             }
 
         }
@@ -181,7 +187,7 @@ namespace NAVService
         [System.Diagnostics.Conditional("TRACE")]
         internal static void ConfirmTraceState()
         {
-            TraceWriteLine("TRACE - System Diagnostics Conditional Trace is enabled");
+            TraceWriteLine("TRACE - System Diagnostics Conditional TRACE is enabled");
             ConnectionHelper.ConfirmDebugState();
         }
 
@@ -197,7 +203,7 @@ namespace NAVService
 
         }
 
-        private static void RunCommandLineArguments(string[] args)
+        private static void RunCommandLineShell(string[] args)
         {
             bool bDisplayHelp = (args.Length > 3 && args.Length < 11);
 
