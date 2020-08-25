@@ -23,7 +23,7 @@
       </h3>
 
       <p>Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items.</p>
-      <p>The application itself is really a proof of concept exercise where the underlying premise is that no proprietary data ever leaves the confines of the local application.  This premise arose from a conversation discussing the complexities inherent in the EU data protection (GDPR 2016/679) requirements surrounding online privacy regulations. In particular it addresses the transfer of personal data outside the EU and EEA areas.</p>
+      <p>The application itself is, amoungst other things, a proof of concept exercise where the underlying premise is that no proprietary data ever leaves the confines of the local application. This premise arose from a conversation discussing the complexities inherent in the EU data protection (GDPR 2016/679) requirements surrounding online privacy regulations. In particular it addresses the transfer of personal data outside the EU and EEA areas.</p>
       <p>Similarity is largely language independent as it is as comfortable comparing hex, binary, and ascii variations as it is comparing DNA strings, or indeed address verification.</p>
 
       <h3>
@@ -50,8 +50,9 @@
         <img src="images/NAVCreate.png" style="vertical-align:bottom; float:left; margin: 0px 15px 0px 0px">Proof of Concept
       </h3>
 
-        <p>As a proof of concept exercise a principle focus has been utilizing both Amazon Web Services (AWS) as the SQL Server database server repository, and GitHub repositories as the application and client facing place holders.</p>
-        <p>Additionally, GitHub is also used as the automatic update repository housing each version release. Both industry standard repositories are outstanding, but this is not the forum to sing their virtues, as both already do so perfectly adequately on their own.</p>
+        <p>As a proof of concept exercise a principle focus has been utilizing both Amazon Web Services (AWS RDS) as the SQL Server database repository, and GitHub repositories as the application and client facing place holders.</p>
+        <p>Additionally, AWS EC2 is used as the automatic update repository housing the current version release, while GitHub holds all recent releases available for download. All three locations have proven to be outstanding placeholders.</p>
+        <p>In addition, and despite the means to place the application purely on a web browser while keeping client data local, we wished to see how well a client server application inextricably tied to many clients performed across these disparate data repositories. The short answer is that it has done so far better than we anticipated.</p>
 
       <h3>
         <img src="images/NAVLampHalf.png" style="vertical-align:bottom; float:left; margin: 0px 15px 0px 0px"><a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact
