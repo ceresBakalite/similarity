@@ -13,7 +13,7 @@ In computing, a shell is a user interface for access to an operating system's se
 
 Command-line shells require the user to be familiar with commands and their calling syntax, and to understand concepts about the shell-specific scripting language...
 
-*ref.* [Shell (computing)][] Wikipedia, the free encyclopedia
+<font size="2">*ref.* [Shell (computing)][] Wikipedia, the free encyclopedia</font>
 
 **1. Why add a command line shell?**
 
@@ -21,7 +21,7 @@ Oddly, a very early iteration of Similarity only used a command line interface. 
 
 In many ways establishing the application as a shell is still a better use of the software IMHO and I fully intend to create a C++ shell variant of the Similarity application, should there be enough interest. A C++ variant would not just be smaller and fast, it would also need to take one, two, or many comparison sets and it would throw away the overhead associated with a GUI.  
 
-For example, consider a postal service checking for valid address syntax targeting two countries. There is a FROM address and a TO address. Both these addresses are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. In other words, four separate addresses, language, culture and syntax specific. Its entirely conceivable that they do this simply by querying the CLI, at runtime. 
+For example, consider a postal service checking for valid address syntax targeting two countries. There is a FROM address and a TO address. Both these addresses are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. In other words, four separate addresses, language, culture and syntax specific. Its entirely conceivable that they do this simply by querying the CLI, at runtime.
 
 Although largely language independent already, language interoperability would be a fine thing.  As would culture, syntax, and natural language parsing. Anyway, food for thought.
 
