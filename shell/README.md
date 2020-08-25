@@ -17,15 +17,15 @@ Command-line shells require the user to be familiar with commands and their call
 
 **1. Why add a command line shell?**
 
-  Oddly, a very early iteration of Similarity was just a command line application.  The premise was that this application would reside somewhere in the cloud and would be accessible from any assembly anywhere. This would enable a third party application to use all the functionality without the overhead.
+Oddly, a very early iteration of Similarity only used a command line interface.  The premise was that this CLI would reside somewhere in the cloud and would be accessible from any assembly anywhere. This would enable a third party application to use all the functionality without the overhead.
 
-  For example, consider a postal service checking for valid address syntax targeting two countries. There is a FROM address and a TO address. Both these addresses are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. In other words, four separate addresses, language, culture and syntax specific.
+In many ways establishing the application as a shell is still a better use of the software IMHO and I fully intend to create a C++ shell variant of the Similarity application, should there be enough interest. A C++ variant would not just be smaller and fast, it would also need to take one, two, or many comparison sets and it would throw away the overhead associated with a GUI.  
 
-  In many ways establishing the application as a shell is still a better use of the software IMHO and I fully intend to create a C++ shell variant of the Similarity application, should there be enough interest. A C++ variant would not just be smaller and fast, it would also need to take one, two, or many comparison sets and it would throw away the overhead associated with a GUI.  
+For example, consider a postal service checking for valid address syntax targeting two countries. There is a FROM address and a TO address. Both these addresses are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. In other words, four separate addresses, language, culture and syntax specific. Its entirely conceivable that they do this simply by querying the CLI, at runtime. 
 
-  Although largely language independent already, language interoperability would be a fine thing.  As would culture, syntax, and natural language parsing. Anyway, food for thought.
+Although largely language independent already, language interoperability would be a fine thing.  As would culture, syntax, and natural language parsing. Anyway, food for thought.
 
-  In the mean time, Similarity enables command line usage, one comparison pair at a time.
+In the mean time, Similarity enables command line usage, one comparison pair at a time.
 ***
 
 **2. Why so many parameters? Do I really need to use them all?**
