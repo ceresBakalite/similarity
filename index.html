@@ -8,6 +8,17 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+    <style>
+      /* Edit your header styles here */
+      header { font-family: sans-serif; font-size: 20px; text-align: center; position: fixed; width: 100%; line-height: 42px; top: 0; left: 0; background-color: #424242; color: white; }
+      body { box-sizing: border-box; min-width: 200px; max-width: 980px; margin: 56px auto 0 auto; padding: 45px; }
+      @media (max-width: 767px) {
+        header { font-size: 15px; }
+        body { padding: 15px; }
+      }
+    </style>
   </head>
   <body>
     <section class="page-header" style="background: url(images/NAVBridgeViewHeaderBackground.png) no-repeat; background-size: 100% 100%; padding-right:45px;">
@@ -50,7 +61,7 @@
         <img src="images/NAVCreate.png" style="vertical-align:bottom; float:left; margin: 0px 15px 0px 0px">Proof of Concept
       </h3>
 
-        <p>As a proof of concept exercise a principle focus has been to utilize Amazon Web Services (AWS RDS) as the SQL Server database repository, AWS EC2 as the automated update repository housing the latest release, and GitHub repositories holding all releases as the primary application place holder.</p>
+        <p>As a proof of concept exercise a principle focus has been to utilize Amazon Web Services (AWS RDS) as the SQL Server database repository, AWS EC2 S3 as the automated update repository housing the latest release, and GitHub repositories holding all releases as the primary application place holder.</p>
 
       <h3>
         <img src="images/NAVLampHalf.png" style="vertical-align:bottom; float:left; margin: 0px 15px 0px 0px"><a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact
@@ -68,6 +79,7 @@
 
     </section>
 
+    <zero-md src="https://github.com/ceresBakalite/similarity/tree/master/shell/README.md"></zero-md>
 
   </body>
 </html>
