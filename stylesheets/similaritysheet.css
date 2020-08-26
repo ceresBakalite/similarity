@@ -1,0 +1,34 @@
+.pre-word-wrap {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.hr-line-paleblue {
+  height:2px;
+  border-width:0;
+  color:#f3f6fa;
+  background-color:#f3f6fa !important;
+}
+
+.footer-topborder {
+  border-top: 1px solid gray;
+}
+
+.h1-textcolor {
+  color: #ffffe8;
+}
+
+.img-pointer {
+  vertical-align:bottom;
+  float:left;
+  margin: 0px 15px 0px 0px;
+}
+
+.section-header-background {
+  background: url(../images/NAVBridgeViewHeaderBackground.png) no-repeat;
+  background-size: 100% 100%;
+  padding-right:45px;
+}
