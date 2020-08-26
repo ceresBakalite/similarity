@@ -1,4 +1,4 @@
-<style type="text/css">
+*<style type="text/css">
 
 .markdown-test {
 	span { font-size: 1.2em; }
