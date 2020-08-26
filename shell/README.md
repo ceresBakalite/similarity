@@ -24,8 +24,6 @@ In many ways establishing the application as a shell is still a better use of th
 For example, consider a postal service checking for valid address syntax targeting two countries. There is a FROM address and a TO address. Both these addresses are read (typically by software) in each country where both hope to see each address in their local syntax.  This requires the manipulation of each address twice. In other words, four separate addresses, language, culture and syntax specific. Its entirely conceivable that they do this simply by querying the CLI, at runtime.
 
 Although largely language independent already, language interoperability would be a fine thing.  As would culture, syntax, and natural language parsing. Anyway, food for thought.
-
-In the mean time, Similarity enables command line usage, one comparison pair at a time.
 ***
 
 **2. Why so many parameters? Do I really need to use them all?**
@@ -37,7 +35,11 @@ Ideally, you or your administrator will have setup predefined preferences for al
 
 **3. Can't I just send it a file and get a completed one back?**  
 
-The short answer is no, not yet. I would actually like to write this but it is entirely dependent on interest.  There are more than just a few businesses out there making a living doing what Similarity already does for free. So, maybe.
+The short answer is no, not yet. Obviously this is what the GUI does and, yes, I would really like to write this for the CLI as well, but it is entirely dependent on interest.  
+
+There are more than just a few businesses out there making a living doing what Similarity already does for free. So, maybe.
+
+In the mean time, Similarity enables command line usage, one comparison pair at a time.
 ***
 
 **4. Lastly, the expanded command line usage definition**
