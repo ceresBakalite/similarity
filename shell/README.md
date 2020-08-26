@@ -1,37 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="github-markdown.css">
-<style>
-	.markdown-test {
-		span { font-size: 1.2em; }
-	}
-
-	.markdown-preview.markdown-preview {
- 		&, h4, h5, h6, span { font-size: font-size; }
-
-  		h1 { font-size: font-size; }
-  		h2 { font-size: font-size; }
-  		h3 { font-size: font-size; }
-	}
-
-	.markdown-body {
-		box-sizing: border-box;
-		min-width: 200px;
-		max-width: 980px;
-		margin: 0 auto;
-		padding: 45px;
-	}
-
-	@media (max-width: 767px) {
-		.markdown-body {
-			padding: 15px;
-		}
-	}
-</style>
-<article class="markdown-body">
-	<h1>Unicorns</h1>
-	<p>All the things</p>
-</article>
-
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
 The following notes summarise calling the Similarity application from the command line and applying arguments to invoke a variety of options available in the GUI.  There have been a number of common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
