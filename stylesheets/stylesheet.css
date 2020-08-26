@@ -243,3 +243,13 @@ a {
 @media screen and (max-width: 42em) {
   .site-footer {
     font-size: 0.9rem; } }
+
+.markdown-preview.markdown-preview {
+ &, h4, h5, h6, span {
+   font-size: font-size;
+  }
+
+  h1 { font-size: font-size; }
+  h2 { font-size: font-size; }
+  h3 { font-size: font-size; }
+}
