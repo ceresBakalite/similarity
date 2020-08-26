@@ -69,7 +69,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 ***
 
-### Recent command line, monitoring, and minor encryption additions
+### Recent command line, monitoring, and encryption additions
 
 **Introduction of a command line (CLI) to Similarity**
 
