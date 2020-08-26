@@ -52,7 +52,7 @@ Minor changes since release v1.2.8.3b
       character edits (i.e. insertions, deletions or substitutions) required to change one
       word into the other.
 
-<span style="font-size: 80%">_ref._ [The Levenshtein distance algorithm][]</span>
+<sub>_ref._ [The Levenshtein distance algorithm][]</sub>
 
 **Hamming Distance**
 
@@ -60,19 +60,19 @@ Minor changes since release v1.2.8.3b
       one string into the other. The Hamming distance between two strings of equal length
       is the number of positions at which the corresponding symbols are different.
 
-<span style="font-size: 80%">_ref._ [Hamming Distance as a Concept in DNA Molecular Recognition][]</span>
+<sub>_ref._ [Hamming Distance as a Concept in DNA Molecular Recognition][]</sub>
 
 **Phonetic Pattern matching**
 
       A phonetic algorithm is a method for comparing strings by sound, specifically as
       pronounced in English, where differences in spelling can be overlooked.
 
-<span style="font-size: 80%">_ref._ [Journal of Biomedical Semantics][]</span>
+<sub>_ref._ [Journal of Biomedical Semantics][]</sub>
 
 ***
 
 #### Recent encryption, log, debug and trace monitoring additions
-<span style="font-size: 80%">(_ref._ [v1.2.8.2b notes][])</span>
+<sub>(_ref._ [v1.2.8.2b notes][])</sub>
 
 **Encrypted pointer obfuscation referencing cryptographic and authentication key pairs**
 
@@ -80,7 +80,7 @@ AESThenHMAC Authentication
 
      You've gotta love a good cipher methodology.
 
-<span style="font-size: 80%">_ref._ @https://gist.github.com/jbtule/4336842</span>
+<sub>_ref._ @https://gist.github.com/jbtule/4336842</sub>
 
 ***
 
@@ -109,7 +109,7 @@ Runtime error logging
       option whose default is set to log to the cloud and works quietly in the background.
       Logging to file and to the console remain, but are disabled in production.
 
-<span style="font-size: 80%">_ref._ [The Apache log4net library][]</span>
+<sub>_ref._ [The Apache log4net library][]</sub>
 
 ***
 
