@@ -26,7 +26,7 @@ For example, consider a postal service checking for valid address syntax targeti
 Although largely language independent already, language interoperability would be a fine thing.  As would culture, syntax, and natural language parsing. Anyway, food for thought.
 ***
 
-**2. Why so many parameters? Do I really need to use them all?**
+**2. So many parameters. Do I really need to use them all?**
 
 No. To use the command line you only need to use two parameters.  The two comparison strings.
 
