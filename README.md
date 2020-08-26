@@ -73,8 +73,8 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 **Introduction of a [Command Line][] (CLI) to Similarity**
 
-		A short summary of the syntax used to call the Similarity application from the command
-		line, providing a means to invoke a wide variety of options available in the GUI
+     A short summary of the syntax used to call the Similarity application from the
+     line, providing a means to invoke a wide variety of options available in the GUI
 
 **Introduced a method to obfuscate pointers to cryptographic and authentication key pairs**
 
