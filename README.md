@@ -5,24 +5,24 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 **Release Version v1.3.5b**
 
-[v1.3.5b notes][]:
+[v1.3.5b notes][]
 
 	1. Minor cumulative additions
 	2. Fatal null reference exception handling changes
 
-[v1.3.4b notes][]:
+[v1.3.4b notes][]
 
 	1. Minor cumulative additions
 	2. Placed open file methods in their own thread
 	3. Placed save file methods in their own thread
 
-[v1.3.3b notes][]:
+[v1.3.3b notes][]
 
 	1. Minor cumulative additions
 	2. Dependency updates
 	3. Separated .NET Framework and .NET Standard libraries to reflect their constituent components
 
-[v1.3.2b notes][]:
+[v1.3.2b notes][]
 
 Minor changes since release v1.2.8.3b
 
@@ -30,9 +30,9 @@ Minor changes since release v1.2.8.3b
 	2. Dependencies updated
 	3. Reverted to Semantic Versioning (SemVer - ie major.minor.patch) notation
 
-[v1.2.8.3b notes][]:
+[v1.2.8.3b notes][]
 
-[v1.2.8.2b notes][]:
+[v1.2.8.2b notes][]
 
 ***
 
@@ -71,16 +71,20 @@ Minor changes since release v1.2.8.3b
 
 ***
 
-#### Recent encryption, log, debug and trace monitoring additions
-<sub>(_ref._ [v1.2.8.2b notes][])</sub>
+#### Recent command line, monitoring, and minor encryption additions 
 
-**Encrypted pointer obfuscation referencing cryptographic and authentication key pairs**
+**Introduction of a command line (CLI) to Similarity**
+
+A short [Command Line Usage][] summary of the syntax used to call the Similarity application from the command line, providing a means to invoke a wide variety of options available in the GUI
+
+**Introduced a method to obfuscate pointers to cryptographic and authentication key pairs**
 
 AESThenHMAC Authentication
 
      You've gotta love a good cipher methodology.
 
 <sub>_ref._ @https://gist.github.com/jbtule/4336842</sub>
+<sub>_and_ [v1.2.8.2b notes][]</sub>
 
 ***
 
@@ -110,6 +114,7 @@ Runtime error logging
       Logging to file and to the console remain, but are disabled in production.
 
 <sub>_ref._ [The Apache log4net library][]</sub>
+<sub>_and_ [v1.2.8.2b notes][]</sub>
 
 ***
 
@@ -125,3 +130,4 @@ Runtime error logging
 [v1.3.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.3b
 [v1.3.4b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.4b
 [v1.3.5b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.5b
+[Command Line Usage]: https://github.com/ceresBakalite/similarity/tree/master/shell
