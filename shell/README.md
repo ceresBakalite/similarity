@@ -1,3 +1,19 @@
+<style type="text/css">
+
+.markdown-test {
+	span { font-size: 1.2em; }
+}
+
+.markdown-preview.markdown-preview {
+ &, h4, h5, h6, span { font-size: font-size; }
+
+  h1 { font-size: font-size; }
+  h2 { font-size: font-size; }
+  h3 { font-size: font-size; }
+}
+
+</style>
+
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
 The following notes summarise calling the Similarity application from the command line and applying arguments to invoke a variety of options available in the GUI.  There have been a number of common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
@@ -13,7 +29,7 @@ In computing, a shell is a user interface for access to an operating system's se
 
 Command-line shells require the user to be familiar with commands and their calling syntax, and to understand concepts about the shell-specific scripting language...
 
-<span style="font-size: 80%">*ref.* [Shell (computing)][] Wikipedia, the free encyclopedia</span>
+<span class="markdown-test">*ref.* [Shell (computing)][] Wikipedia, the free encyclopedia</span>
 
 **1. Why add a command line shell?**
 
