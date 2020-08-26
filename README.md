@@ -71,9 +71,10 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 ### Recent command line, monitoring, and encryption additions
 
-**Introduction of a command line (CLI) to Similarity**
+**Introduction of a [Command Line][] (CLI) to Similarity**
 
-A short [Command Line Usage][] summary of the syntax used to call the Similarity application from the command line, providing a means to invoke a wide variety of options available in the GUI
+		A short summary of the syntax used to call the Similarity application from the command
+		line, providing a means to invoke a wide variety of options available in the GUI
 
 **Introduced a method to obfuscate pointers to cryptographic and authentication key pairs**
 
@@ -128,4 +129,4 @@ Runtime error logging
 [v1.3.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.3b
 [v1.3.4b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.4b
 [v1.3.5b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.5b
-[Command Line Usage]: https://github.com/ceresBakalite/similarity/tree/master/shell
+[Command Line]: https://github.com/ceresBakalite/similarity/tree/master/shell
