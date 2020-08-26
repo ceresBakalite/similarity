@@ -24,8 +24,6 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 [v1.3.2b notes][]
 
-Minor changes since release v1.2.8.3b
-
 	1. Minor cumulative changes applied
 	2. Dependencies updated
 	3. Reverted to Semantic Versioning (SemVer - ie major.minor.patch) notation
@@ -71,7 +69,7 @@ Minor changes since release v1.2.8.3b
 
 ***
 
-#### Recent command line, monitoring, and minor encryption additions 
+#### Recent command line, monitoring, and minor encryption additions
 
 **Introduction of a command line (CLI) to Similarity**
 
