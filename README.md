@@ -43,7 +43,7 @@ Minor changes since release v1.2.8.3b
       The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and
       John A. Obershelp in 1983 to address concerns about educational software (Ratcliff, 1988).
 
-<span style="font-size: 80%">_ref._ [The Gestalt Approach][]</span>
+<sub>_ref._ [The Gestalt Approach][]</sub>
 
 **Levenshtein Distance**
 
