@@ -41,7 +41,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
       The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and
       John A. Obershelp in 1983 to address concerns about educational software (Ratcliff, 1988).
 
-<sub>_ref._ [The Gestalt Approach][]</sub>
+<sup>_ref._ [The Gestalt Approach][]</sup>
 
 **Levenshtein Distance**
 
@@ -50,7 +50,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
       character edits (i.e. insertions, deletions or substitutions) required to change one
       word into the other.
 
-<sub>_ref._ [The Levenshtein distance algorithm][]</sub>
+<sup>_ref._ [The Levenshtein distance algorithm][]</sup>
 
 **Hamming Distance**
 
@@ -58,14 +58,14 @@ Similarity estimates the similarities or dissimilarities between things. It comp
       one string into the other. The Hamming distance between two strings of equal length
       is the number of positions at which the corresponding symbols are different.
 
-<sub>_ref._ [Hamming Distance as a Concept in DNA Molecular Recognition][]</sub>
+<sup>_ref._ [Hamming Distance as a Concept in DNA Molecular Recognition][]</sup>
 
 **Phonetic Pattern matching**
 
       A phonetic algorithm is a method for comparing strings by sound, specifically as
       pronounced in English, where differences in spelling can be overlooked.
 
-<sub>_ref._ [Journal of Biomedical Semantics][]</sub>
+<sup>_ref._ [Journal of Biomedical Semantics][]</sup>
 
 ***
 
@@ -81,8 +81,8 @@ AESThenHMAC Authentication
 
      You've gotta love a good cipher methodology.
 
-<sub>_ref._ @https://gist.github.com/jbtule/4336842</sub>
-<sub>_and_ [v1.2.8.2b notes][]</sub>
+<sup>_ref._ @https://gist.github.com/jbtule/4336842</sup>
+<sup>_and_ [v1.2.8.2b notes][]</sup>
 
 ***
 
@@ -111,8 +111,8 @@ Runtime error logging
       option whose default is set to log to the cloud and works quietly in the background.
       Logging to file and to the console remain, but are disabled in production.
 
-<sub>_ref._ [The Apache log4net library][]</sub>
-<sub>_and_ [v1.2.8.2b notes][]</sub>
+<sup>_ref._ [The Apache log4net library][]</sup>
+<sup>_and_ [v1.2.8.2b notes][]</sup>
 
 ***
 
