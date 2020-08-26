@@ -43,7 +43,7 @@ Minor changes since release v1.2.8.3b
       The Ratcliff/Obershelp pattern-matching algorithm was developed by John W. Ratcliff and
       John A. Obershelp in 1983 to address concerns about educational software (Ratcliff, 1988).
 
-<font size="2">_ref._ [The Gestalt Approach][]</font>
+<span style="font-size: 80%">_ref._ [The Gestalt Approach][]</span>
 
 **Levenshtein Distance**
 
@@ -52,7 +52,7 @@ Minor changes since release v1.2.8.3b
       character edits (i.e. insertions, deletions or substitutions) required to change one
       word into the other.
 
-<font size="2">_ref._ [The Levenshtein distance algorithm][]</font>
+<span style="font-size: 80%">_ref._ [The Levenshtein distance algorithm][]</span>
 
 **Hamming Distance**
 
@@ -60,19 +60,19 @@ Minor changes since release v1.2.8.3b
       one string into the other. The Hamming distance between two strings of equal length
       is the number of positions at which the corresponding symbols are different.
 
-<font size="2">_ref._ [Hamming Distance as a Concept in DNA Molecular Recognition][]</font>
+<span style="font-size: 80%">_ref._ [Hamming Distance as a Concept in DNA Molecular Recognition][]</span>
 
 **Phonetic Pattern matching**
 
       A phonetic algorithm is a method for comparing strings by sound, specifically as
       pronounced in English, where differences in spelling can be overlooked.
 
-<font size="2">_ref._ [Journal of Biomedical Semantics][]</font>
+<span style="font-size: 80%">_ref._ [Journal of Biomedical Semantics][]</span>
 
 ***
 
 #### Recent encryption, log, debug and trace monitoring additions
-<font size="2">(_ref._ [v1.2.8.2b notes][])</font>
+<span style="font-size: 80%">(_ref._ [v1.2.8.2b notes][])</span>
 
 **Encrypted pointer obfuscation referencing cryptographic and authentication key pairs**
 
@@ -80,7 +80,7 @@ AESThenHMAC Authentication
 
      You've gotta love a good cipher methodology.
 
-<font size="2">_ref._ @https://gist.github.com/jbtule/4336842</font>
+<span style="font-size: 80%">_ref._ @https://gist.github.com/jbtule/4336842</span>
 
 ***
 
@@ -109,7 +109,7 @@ Runtime error logging
       option whose default is set to log to the cloud and works quietly in the background.
       Logging to file and to the console remain, but are disabled in production.
 
-<font size="2">_ref._ [The Apache log4net library][]</font>
+<span style="font-size: 80%">_ref._ [The Apache log4net library][]</span>
 
 ***
 
