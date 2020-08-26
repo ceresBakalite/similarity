@@ -9,8 +9,10 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/similaritysheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="bower_components/zero-md/zero-md.html">
+    <link rel="stylesheet" href="bower_components/zero-md/highlight-themes/default.css">
+    <link rel="stylesheet" href="bower_components/zero-md/markdown-themes/default.css">
   </head>
   <body>
     <section class="page-header section-header-background">
@@ -67,7 +69,10 @@
         <p>As such, online support and documentation are still gestating.  Please contact me <a href="https://github.com/ceresbakalite">@ceresbakalite</a> directly at GitHub.  Leave a comment, ask a question and I will respond.</p>
         <p>On that note. Updates are automatic, but if you do wish to download the product for the first time you can do so, but please get in touch as Similarity is still very much a beta release.</p>
 
-      <zero-md src="https://github.com/ceresBakalite/similarity/tree/master/shell/README.md"></zero-md>
+      <zero-md file="https://github.com/ceresBakalite/similarity/blob/master/shell/README.md">
+        <!-- Remember to pass in empty container of class="md-html". -->
+        <div class="md-html"></div>
+      </zero-md>
 
       <footer class="site-footer footer-similarity">
         <span class="site-footer-owner"><a href="https://github.com/ceresbakalite/similarity">Similarity</a> is maintained by <a href="https://github.com/ceresbakalite">Alexander Munro</a>.</span>
