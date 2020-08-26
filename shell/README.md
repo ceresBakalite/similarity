@@ -1,4 +1,3 @@
-```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="github-markdown.css">
 <style>
@@ -32,7 +31,7 @@
 	<h1>Unicorns</h1>
 	<p>All the things</p>
 </article>
-```
+
 ## Command Line Usage
 ### *Seeking patterns of similarity between data strings* <img align="right" src="../images/NAVSimilarityLogoSmall.png">
 The following notes summarise calling the Similarity application from the command line and applying arguments to invoke a variety of options available in the GUI.  There have been a number of common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
