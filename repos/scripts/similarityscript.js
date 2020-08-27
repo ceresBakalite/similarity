@@ -25,12 +25,12 @@ function refreshMarkdown_Shell()
 
 function refreshMarkdown_Repos()
 {
+  document.getElementsByTagName("img")[0].style.display = "none";
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
 }
 
 function waitForMarkdown()
 {
-  document.getElementsByTagName("img")[0].background.color: white);
   document.getElementById("site-footer-display").style.display = "block";
 }
 
@@ -42,4 +42,5 @@ function getRandomInteger(min, max)
 function refreshMarkdown_Logo()
 {
   document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoShell.png");
+  document.getElementsByTagName("img")[0].style.display = "block";
 }
