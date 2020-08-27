@@ -30,6 +30,7 @@ function refreshMarkdown_Repos()
 
 function waitForMarkdown()
 {
+  document.getElementsByTagName("img")[0].background.color: white);
   document.getElementById("site-footer-display").style.display = "block";
 }
 
