@@ -21,6 +21,8 @@ function markdowntarget_shell()
   var attribute = document.createAttribute("file");
   attribute.value = "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000);
   zero-md.setAttributeNode(attribute);
+
+  alert(attribute.value);
 }
 
 function getRandomInteger(min, max)
