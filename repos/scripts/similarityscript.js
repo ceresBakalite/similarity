@@ -13,9 +13,7 @@ function markdowntarget_shell()
 {
   var zeromd = document.getElementsByTagName("zero-md")[0];
   var attribute = document.createAttribute("file");
-
   attribute.value = "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000);
-
   zeromd.setAttributeNode(attribute);
 }
 
