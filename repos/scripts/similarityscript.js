@@ -12,14 +12,14 @@ function waitformarkdown()
 function markdowntarget_shell()
 {
   alert('hello');
-  var zeromd = document.getElementsByTagName("zero-md")[0];
-  var attribute = document.createAttribute("file");
+//  var zeromd = document.getElementsByTagName("zero-md")[0];
+//  var attribute = document.createAttribute("file");
 
-  attribute.value = "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000);
+//  attribute.value = "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000);
 
-alert(attribute.value);
+//alert(attribute.value);
 
-  zeromd.setAttributeNode(attribute);
+//  zeromd.setAttributeNode(attribute);
 }
 
 function getRandomInteger(min, max)
