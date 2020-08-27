@@ -7,7 +7,9 @@ function getMarkdown(ms, target)
       break;
 
     case 'repos':
+      refreshMarkdown_Logo();
       refreshMarkdown_Repos();
+
       break;
 
     default:
@@ -35,4 +37,9 @@ function waitForMarkdown()
 function getRandomInteger(min, max)
 {
   return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+function refreshMarkdown_Logo()
+{
+  document.getElementsById("NAVSimilarityLogoSmall").setAttribute("src", "https://ceresbakalite.github.io/similarity/iamges/NAVSimilarityLogoShell.png");
 }
