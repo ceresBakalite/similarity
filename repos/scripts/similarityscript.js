@@ -7,6 +7,7 @@ function getMarkdown(ms)
 function refreshMarkdown_Shell()
 {
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+  alert('hello');
 }
 
 function waitForMarkdown()
