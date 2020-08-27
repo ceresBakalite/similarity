@@ -1,22 +1,12 @@
-function getMarkdown(ms)
+function getMarkdown_Shell(ms)
 {
-  markdowntarget_shell();
+  document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
   var interval = setInterval(waitformarkdown, ms);
 }
 
 function waitformarkdown()
 {
   document.getElementById("site-footer-display").style.display = "block";
-}
-
-function markdowntarget_shell()
-{
-  var zeromd = document.getElementsByTagName("zero-md")[0];
-  var attribute = document.createAttribute("file");
-
-  attribute.value = "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000);
-
-  zeromd.setAttributeNode(attribute);
 }
 
 function getRandomInteger(min, max)
