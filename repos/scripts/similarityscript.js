@@ -1,7 +1,7 @@
 function getMarkdown(ms)
 {
   refreshMarkdown_Shell();
-  var interval = setInterval(waitformarkdown, ms);
+  var interval = setInterval(waitForMarkdown, ms);
 }
 
 function refreshMarkdown_Shell()
