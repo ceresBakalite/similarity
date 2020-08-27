@@ -1,10 +1,15 @@
 function getMarkdown_Shell(ms)
 {
-  document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+  refreshMarkdown();
   var interval = setInterval(waitformarkdown, ms);
 }
 
-function waitformarkdown()
+function refreshMarkdown()
+{
+  document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+}
+
+function waitForMarkdown()
 {
   document.getElementById("site-footer-display").style.display = "block";
 }
