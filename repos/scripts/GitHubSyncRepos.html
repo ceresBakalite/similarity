@@ -15,7 +15,7 @@
     <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/v0.7.15/webcomponents-lite.min.js"></script>
     <script src="https://ceresbakalite.github.io/similarity/repos/scripts/similarityscript.js"></script>
   </head>
-  <body onload="getMarkdown(500);" onunload="">
+  <body onload="getMarkdown(500, 'repos');" onunload="">
 
     <section class="page-header section-header-background">
 
@@ -27,14 +27,14 @@
     </section>
 
     <div class="btn-group">
-      <button class="button" title="Command Line usage">Shell Notes</button>
-      <button class="button">Button 2</button>
+      <button class="button" title="Command Line usage" onclick="window.location.href='https://ceresbakalite.github.io/similarity/repos/scripts/GitHubSyncShell.html'">Shell Notes</button>
+      <button class="button" title="Similarity version release notes">Release Notes</button>
       <button class="button">Button 3</button>
     </div>
 
     <section class="main-content">
 
-       <zero-md file="https://ceresbakalite.github.io/similarity/shell/README.md"><div class="md-html"></div></zero-md>
+       <zero-md file="https://ceresbakalite.github.io/similarity/README.md"><div class="md-html"></div></zero-md>
 
       <footer id="site-footer-display" style="display: none;" class="site-footer footer-similarity">
         <span class="site-footer-owner"><a href="https://github.com/ceresbakalite/similarity">Similarity</a> is maintained by <a href="https://github.com/ceresbakalite">Alexander Munro</a>.</span>
