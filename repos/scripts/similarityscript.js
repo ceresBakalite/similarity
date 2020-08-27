@@ -31,7 +31,6 @@ function refreshMarkdown_Repos()
 function waitForMarkdown()
 {
   document.getElementsByTagName("zero-md")[0].style.display = "block";
-  document.getElementById("md-logo").style.display = "block";
   document.getElementById("site-footer-display").style.display = "block";
 }
 
