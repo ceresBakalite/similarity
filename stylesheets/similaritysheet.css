@@ -33,3 +33,7 @@
   background-size: 100% 100%;
   padding-right:45px;
 }
+
+#display-md {
+  display: none;
+}
