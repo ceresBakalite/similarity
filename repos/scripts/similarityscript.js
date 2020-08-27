@@ -41,5 +41,4 @@ function getRandomInteger(min, max)
 function refreshMarkdown_Logo()
 {
   document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoShell.png");
-  alert('done');
 }
