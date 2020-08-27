@@ -11,6 +11,7 @@ function waitformarkdown()
 
 function markdowntarget_shell()
 {
+  alert('hello');
   var zeromd = document.getElementsByTagName("zero-md")[0];
   var attribute = document.createAttribute("file");
 
