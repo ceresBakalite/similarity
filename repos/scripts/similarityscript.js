@@ -26,6 +26,7 @@ function refreshMarkdown_Repos()
 {
   document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoShell.png");
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
+  document.getElementsByTagName("zero-md")[0].style.display = "block";
   document.getElementsByTagName("img")[0].style.display = "block";
 }
 
