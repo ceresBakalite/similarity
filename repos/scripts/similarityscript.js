@@ -1,7 +1,7 @@
 function getMarkdown(ms)
 {
-  var interval = setInterval(waitformarkdown, ms);
   markdowntarget_shell();
+  var interval = setInterval(waitformarkdown, ms);
 }
 
 function waitformarkdown()
