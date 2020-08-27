@@ -9,9 +9,18 @@ function waitformarkdown()
   document.getElementById("site-footer-display").style.display = "block";
 }
 
+
+//function markdowntarget_shell()
+//{
+//  document.getElementById("zero-md").setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+//}
+
 function markdowntarget_shell()
 {
-  document.getElementById("zero-md").setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+  var zero-md = document.getElementsById("zero-md");
+  var attribute = document.createAttribute("file");
+  attribute.value = "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000);
+  zero-md.setAttributeNode(attribute);
 }
 
 function getRandomInteger(min, max)
