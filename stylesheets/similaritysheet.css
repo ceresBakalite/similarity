@@ -61,6 +61,6 @@
   color: black;
 }
 
-#display-md {
-  display: none;
+html {
+  overflow-y: scroll;
 }
