@@ -41,6 +41,6 @@ function getRandomInteger(min, max)
 
 function refreshMarkdown_Logo()
 {
-  //document.getElementsById("NAVSimilarityLogoSmall").setAttribute("src", "https://ceresbakalite.github.io/similarity/iamges/NAVSimilarityLogoShell.png");
+  document.getElementsById("NAVSimilarityLogoSmall").setAttribute("src", "https://ceresbakalite.github.io/similarity/iamges/NAVSimilarityLogoShell.png");
   alert('done');
 }
