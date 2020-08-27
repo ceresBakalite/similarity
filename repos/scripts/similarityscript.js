@@ -9,7 +9,6 @@ function getMarkdown(ms, target)
     case 'repos':
       refreshMarkdown_Logo();
       refreshMarkdown_Repos();
-
       break;
 
     default:
@@ -41,6 +40,6 @@ function getRandomInteger(min, max)
 
 function refreshMarkdown_Logo()
 {
-  document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/iamges/NAVSimilarityLogoShell.png");
+  document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoShell.png");
   alert('done');
 }
