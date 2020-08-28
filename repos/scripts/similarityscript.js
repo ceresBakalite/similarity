@@ -21,7 +21,9 @@ function getMarkdown(ms, target, url)
 
 function refreshMarkdown_Shell()
 {
+  alert('resetMarkdown_Logo');
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+  alert('resetMarkdown_Logo complete');
 }
 
 function refreshMarkdown_Repos()
@@ -36,7 +38,7 @@ function resetMarkdown_Repos()
 
 function resetMarkdown_Logo(url)
 {
-  alert('hello');
+  alert('resetMarkdown_Logo');
   var src = (url.isEmpty()) ? "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png" : url;
   alert(src);
   //document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
@@ -44,6 +46,7 @@ function resetMarkdown_Logo(url)
 
 function waitForMarkdown()
 {
+  alert('waitForMarkdown');
   document.getElementById("site-footer-display").style.display = "block";
 }
 
@@ -54,7 +57,7 @@ function getRandomInteger(min, max)
 
 Object.prototype.isEmpty = function()
 {
-    for(var key in this)
+    for (var key in this)
     {
         if(this.hasOwnProperty(key)) return false;
     }
