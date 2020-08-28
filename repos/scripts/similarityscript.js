@@ -34,6 +34,14 @@ function resetMarkdown_Logo(url)
 {
   alert('url: ' + url);
   var src = (url == null) ? "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png" : url;
+
+  WebComponents.waitFor(() =>
+  {
+    let el = document.createElement('script');
+    el.src = 'https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js';
+    document.head.appendChild(el);
+  });
+
   //document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
   alert('src: ' + src);
 }
