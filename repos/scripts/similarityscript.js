@@ -32,15 +32,16 @@ function refreshMarkdown_Repos()
 
 function resetMarkdown_Logo(url)
 {
+  url = (url == null) ? "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png" : url;
+
   alert('url: ' + url);
-  var src = (url == null) ? "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png" : url;
 
   WebComponents.waitFor(() =>
   {
     let el = document.createElement('img');
     el.id = "logo-reset";
     el.align = "right";
-    el.src = src;
+    el.src = url;
     document.getElementById("logo-container").appendChild(el);
   });
 
