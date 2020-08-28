@@ -7,9 +7,8 @@ function getMarkdown(ms, target, url)
       break;
 
     case 'repos':
-      resetMarkdown_Logo(url);
       refreshMarkdown_Repos();
-      resetMarkdown_Repos();
+      resetMarkdown_Logo(url);
       break;
 
     default:
@@ -21,23 +20,12 @@ function getMarkdown(ms, target, url)
 
 function refreshMarkdown_Shell()
 {
-  alert('refreshMarkdown_Shell');
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
-  alert('refreshMarkdown_Shell complete');
 }
 
 function refreshMarkdown_Repos()
 {
-  alert('refreshMarkdown_Repos');
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
-  alert('refreshMarkdown_Repos complete');
-}
-
-function resetMarkdown_Repos()
-{
-  //alert('resetMarkdown_Repos');
-  //document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
-  //alert('resetMarkdown_Repos complete');
 }
 
 function resetMarkdown_Logo(url)
@@ -48,7 +36,6 @@ function resetMarkdown_Logo(url)
 
 function waitForMarkdown()
 {
-  alert('waitForMarkdown');
   document.getElementById("site-footer-display").style.display = "block";
 }
 
