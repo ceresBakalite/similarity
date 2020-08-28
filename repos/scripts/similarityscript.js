@@ -30,7 +30,7 @@ function refreshMarkdown_Repos()
 
 function resetMarkdown_Repos()
 {
-  document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+  document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
 }
 
 function waitForMarkdown()
