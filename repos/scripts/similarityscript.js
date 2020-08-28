@@ -35,9 +35,9 @@ function refreshMarkdown_Repos()
 
 function resetMarkdown_Repos()
 {
-  alert('resetMarkdown_Repos');
-  document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
-  alert('resetMarkdown_Repos complete');
+  //alert('resetMarkdown_Repos');
+  //document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+  //alert('resetMarkdown_Repos complete');
 }
 
 function resetMarkdown_Logo(url)
