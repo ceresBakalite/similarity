@@ -20,9 +20,7 @@ function getMarkdown(ms, target)
 
 function refreshMarkdown_Shell()
 {
-  alert('refreshMarkdown_Shell');
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
-  alert('refreshMarkdown_Shell complete');
 }
 
 function refreshMarkdown_Repos()
