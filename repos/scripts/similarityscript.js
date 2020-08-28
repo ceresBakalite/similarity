@@ -10,6 +10,7 @@ function getMarkdown(ms, target)
       alert('repose');
       refreshMarkdown_Repos();
       resetMarkdown_Logo("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+      document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
       alert('end repose');
       break;
 
