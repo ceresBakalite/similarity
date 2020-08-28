@@ -26,11 +26,8 @@ function refreshMarkdown_Shell()
 
 function refreshMarkdown_Repos()
 {
-  alert('repos 1');
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
-  alert('repos 2');
   document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
-  alert('repos 3');
 }
 
 function waitForMarkdown()
