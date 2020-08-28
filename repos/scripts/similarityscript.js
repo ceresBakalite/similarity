@@ -34,10 +34,12 @@ function resetMarkdown_Logo(url)
 {
   url = (url == null) ? "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png" : url;
 
-  alert('url: ' + url);
+  alert('try 1: ' + url);
 
   var el = getElementById("logo-default");
   el.setAttribute("src", url);
+
+  alert('try 2: ' + url);
 
   WebComponents.waitFor(() =>
   {
