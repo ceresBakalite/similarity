@@ -2,6 +2,10 @@ function getMarkdown(ms, target)
 {
   switch (target)
   {
+    case 'index':
+      refreshMarkdown_Index();
+      break;
+
     case 'shell':
       refreshMarkdown_Shell();
       break;
@@ -15,6 +19,11 @@ function getMarkdown(ms, target)
   }
 
   setInterval(waitForMarkdown, ms);
+}
+
+function refreshMarkdown_Index()
+{
+  document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/repos/scripts/index.md?" + getRandomInteger(10000,1000000));
 }
 
 function refreshMarkdown_Shell()
