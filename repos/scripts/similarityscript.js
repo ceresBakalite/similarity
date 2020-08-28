@@ -35,7 +35,6 @@ function refreshMarkdown_Repos()
 
 function waitForMarkdown()
 {
-  alert('wait 1');
   document.getElementById("site-footer-display").style.display = "block";
 }
 
