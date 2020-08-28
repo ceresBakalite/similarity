@@ -31,7 +31,7 @@ function refreshMarkdown_Repos()
 function resetMarkdown_Logo(url)
 {
   var src = (url == null) ? "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png" : url;
-  document.getElementById("logodefault").setAttribute("src", src);
+  document.getElementById("logo-default").setAttribute("src", src);
 }
 
 function waitForMarkdown()
