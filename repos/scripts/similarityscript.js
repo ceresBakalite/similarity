@@ -21,26 +21,28 @@ function getMarkdown(ms, target, url)
 
 function refreshMarkdown_Shell()
 {
-  alert('resetMarkdown_Logo');
+  alert('refreshMarkdown_Shell');
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
-  alert('resetMarkdown_Logo complete');
+  alert('refreshMarkdown_Shell complete');
 }
 
 function refreshMarkdown_Repos()
 {
+  alert('refreshMarkdown_Repos');
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
+  alert('refreshMarkdown_Repos complete');
 }
 
 function resetMarkdown_Repos()
 {
+  alert('resetMarkdown_Repos');
   document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+  alert('resetMarkdown_Repos complete');
 }
 
 function resetMarkdown_Logo(url)
 {
-  alert('resetMarkdown_Logo');
   var src = (url == null) ? "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png" : url;
-  alert(src);
   //document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
 }
 
