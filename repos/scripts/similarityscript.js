@@ -8,6 +8,7 @@ function getMarkdown(ms, target)
 
     case 'repos':
       refreshMarkdown_Repos();
+      resetMarkdown_Repos();
       break;
 
     default:
@@ -22,6 +23,11 @@ function refreshMarkdown_Shell()
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
 }
 
+function resetMarkdown_Repos()
+{
+  document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+}
+
 function refreshMarkdown_Repos()
 {
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
@@ -29,7 +35,6 @@ function refreshMarkdown_Repos()
 
 function waitForMarkdown()
 {
-  document.getElementsByTagName("img")[1].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
   document.getElementById("site-footer-display").style.display = "block";
 }
 
