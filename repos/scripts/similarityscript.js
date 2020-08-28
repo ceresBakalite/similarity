@@ -30,7 +30,7 @@ function refreshMarkdown_Repos()
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
 }
 
-function waitForMarkdown(url = null, resetlogo = false)
+function waitForMarkdown(url, resetlogo)
 {
   if (resetlogo) resetMarkdown_Logo(url);
   document.getElementById("site-footer-display").style.display = "block";
