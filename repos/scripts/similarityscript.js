@@ -42,7 +42,7 @@ function resetMarkdown_Logo(url)
     el.id = "logo-reset";
     el.align = "right";
     el.src = url;
-    document.getElementById("logo-container").appendChild(el);
+    //document.getElementById("logo-container").appendChild(el);
   });
 
   //document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
