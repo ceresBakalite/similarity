@@ -46,7 +46,7 @@ function resetMarkdown_Logo(url)
   });
 
   //document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
-  alert('src: ' + src);
+  alert('src: ' + el.src);
 }
 
 function waitForMarkdown()
