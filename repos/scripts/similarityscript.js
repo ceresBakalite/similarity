@@ -19,16 +19,18 @@ function getMarkdown(ms, target)
 
 function refreshMarkdown_Shell()
 {
+  alert('shell 1');
   document.getElementsById("shell")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+  alert('shell 2');
 }
 
 function refreshMarkdown_Repos()
 {
-  alert('1');
+  alert('repos 1');
   document.getElementsById("repos")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
-  alert('2');
+  alert('repos 2');
   document.getElementsById("logo")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
-  alert('3');
+  alert('repos 3');
 }
 
 function waitForMarkdown()
