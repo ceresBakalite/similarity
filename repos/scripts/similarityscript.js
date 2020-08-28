@@ -40,3 +40,8 @@ function getRandomInteger(min, max)
 {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
+
+function resetMarkdown_Logo(url)
+{
+  document.getElementsByTagName("img")[1].setAttribute("src", url);
+}
