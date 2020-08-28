@@ -1,4 +1,4 @@
-function getMarkdown(ms, target)
+function getMarkdown(ms, target, url)
 {
   switch (target)
   {
