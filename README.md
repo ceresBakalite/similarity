@@ -1,5 +1,5 @@
 ## Welcome to Similarity Pattern Matching
-### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-default" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoSmall.png"></div>
+### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-default" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png"></div>
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items. [read more][]
 ***
 
