@@ -19,18 +19,22 @@ function getMarkdown(ms, target)
 
 function refreshMarkdown_Shell()
 {
-  document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+  document.getElementsById("shell").setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
 }
 
 function refreshMarkdown_Repos()
 {
-  document.getElementByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
-  document.getElementByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+  alert('1');
+  document.getElementById("repos").setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
+  alert('2');
+  document.getElementById("logo").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+  alert('3');
 }
 
 function waitForMarkdown()
 {
-  document.getElementByTagName("zero-md")[0].style.display = "block";
+  document.getElementById("shell").style.display = "block";
+  document.getElementById("repos").style.display = "block";
   document.getElementById("site-footer-display").style.display = "block";
 }
 
