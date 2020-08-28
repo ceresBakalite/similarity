@@ -43,5 +43,7 @@ function getRandomInteger(min, max)
 
 function resetMarkdown_Logo(url)
 {
+  alert('resetMarkdown_Logo');
   document.getElementsByTagName("img")[1].setAttribute("src", url);
+  alert('end resetMarkdown_Logo');
 }
