@@ -4,13 +4,13 @@ function getMarkdown(ms, target)
   {
     case 'shell':
       refreshMarkdown_Shell();
-      setInterval(waitForMarkdown(null, false), ms);
+      var result = setInterval(waitForMarkdown(null, false), ms);
       break;
 
     case 'repos':
       alert('repose');
       refreshMarkdown_Repos();
-      setInterval(waitForMarkdown("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png", true), ms);
+      var result = setInterval(waitForMarkdown("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png", true), ms);
       alert('end repose');
       break;
 
