@@ -36,6 +36,9 @@ function resetMarkdown_Logo(url)
 
   alert('url: ' + url);
 
+  var el = getElementById("logo-default");
+  el.setAttribute("src", url);
+
   WebComponents.waitFor(() =>
   {
     var el = document.createElement("img");
