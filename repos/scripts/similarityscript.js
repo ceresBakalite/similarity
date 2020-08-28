@@ -20,16 +20,16 @@ function getMarkdown(ms, target)
 function refreshMarkdown_Shell()
 {
   alert('shell 1');
-  document.getElementById("shell").setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+  document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
   alert('shell 2');
 }
 
 function refreshMarkdown_Repos()
 {
   alert('repos 1');
-  document.getElementsById("repos")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
+  document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
   alert('repos 2');
-  document.getElementsById("logo")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+  document.getElementById("logo").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
   alert('repos 3');
 }
 
