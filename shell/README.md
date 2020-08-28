@@ -1,5 +1,5 @@
 ## Command Line Usage
-### *Seeking patterns of similarity between data strings* <img id="logo-shell" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoShell.png">
+### *Seeking patterns of similarity between data strings* <img id="logoshell" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoShell.png">
 The following notes summarise calling the Similarity application from the command line and applying arguments to invoke a variety of options available in the GUI. There have been a number of common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
 ***
 
