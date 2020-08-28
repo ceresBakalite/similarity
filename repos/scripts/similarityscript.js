@@ -30,6 +30,7 @@ function refreshMarkdown_Repos()
 
 function waitForMarkdown()
 {
+  document.getElementByTagName("zero-md").style.display = "block";
   document.getElementById("site-footer-display").style.display = "block";
 }
 
