@@ -23,14 +23,14 @@ function refreshMarkdown_Shell()
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
 }
 
-function resetMarkdown_Repos()
-{
-  document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
-}
-
 function refreshMarkdown_Repos()
 {
   document.getElementsByTagName("zero-md")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/README.md?" + getRandomInteger(10000,1000000));
+}
+
+function resetMarkdown_Repos()
+{
+  document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
 }
 
 function waitForMarkdown()
