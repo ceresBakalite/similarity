@@ -3,16 +3,16 @@ function getMarkdown(ms, target)
   switch (target)
   {
     case 'shell':
-      refreshMarkdown_Shell();
+      //refreshMarkdown_Shell();
       break;
 
     case 'repos':
-      refreshMarkdown_Repos();
-      resetMarkdown_Logo("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+      //refreshMarkdown_Repos();
+      //resetMarkdown_Logo("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
       break;
 
     default:
-      refreshMarkdown_Shell();
+      //refreshMarkdown_Shell();
   }
 
   var interval = setInterval(waitForMarkdown, ms);
