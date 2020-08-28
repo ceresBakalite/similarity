@@ -3,7 +3,7 @@ function getMarkdown(ms, target)
   switch (target)
   {
     case 'shell':
-      //refreshMarkdown_Shell();
+      refreshMarkdown_Shell();
       break;
 
     case 'repos':
