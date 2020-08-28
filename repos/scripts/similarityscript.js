@@ -20,7 +20,7 @@ function getMarkdown(ms, target)
 function refreshMarkdown_Shell()
 {
   alert('shell 1');
-  document.getElementsById("shell")[0].setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
+  document.getElementById("shell").setAttribute("file", "https://ceresbakalite.github.io/similarity/shell/README.md?" + getRandomInteger(10000,1000000));
   alert('shell 2');
 }
 
@@ -35,7 +35,7 @@ function refreshMarkdown_Repos()
 
 function waitForMarkdown()
 {
-  document.getElementsById("site-footer-display")[0].style.display = "block";
+  document.getElementById("site-footer-display").style.display = "block";
 }
 
 function getRandomInteger(min, max)
