@@ -8,7 +8,7 @@ function getMarkdown(ms, target)
 
     case 'repos':
       //refreshMarkdown_Repos();
-      //resetMarkdown_Logo("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+      resetMarkdown_Logo("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
       break;
 
     default:
@@ -31,7 +31,7 @@ function refreshMarkdown_Repos()
 function resetMarkdown_Logo(url)
 {
   var src = (url == null) ? "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png" : url;
-  //document.getElementById("logodefault").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+  document.getElementById("logodefault").setAttribute("src", src);
 }
 
 function waitForMarkdown()
