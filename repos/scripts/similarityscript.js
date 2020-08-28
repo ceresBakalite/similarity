@@ -3,16 +3,19 @@ function getMarkdown(ms, target, url)
   switch (target)
   {
     case 'shell':
+    alert('shell');
       refreshMarkdown_Shell();
       break;
 
     case 'repos':
+    alert('repos');
       resetMarkdown_Logo(url);
       refreshMarkdown_Repos();
       resetMarkdown_Repos();
       break;
 
     default:
+    alert('default');
       refreshMarkdown_Shell();
   }
 
