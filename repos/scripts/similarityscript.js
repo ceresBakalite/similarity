@@ -38,11 +38,10 @@ function resetMarkdown_Logo(url)
 
   WebComponents.waitFor(() =>
   {
-    let el = document.createElement('img');
-    el.id = "logo-reset";
-    el.align = "right";
-    el.src = url;
-    //document.getElementById("logo-container").appendChild(el);
+    var el = document.createElement("img");
+    el.setAttribute("src", url);
+    el.setAttribute("align", "right");
+    document.getElementById("logo-container").appendChild("el");
   });
 
   //document.getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
