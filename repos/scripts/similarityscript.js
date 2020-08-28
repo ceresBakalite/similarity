@@ -29,7 +29,7 @@ function refreshMarkdown_Repos()
 
 function waitForMarkdown()
 {
-  document.getElementsByTagName("img")[0].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+  document.getElementsByTagName("img")[1].setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
   document.getElementById("site-footer-display").style.display = "block";
 }
 
