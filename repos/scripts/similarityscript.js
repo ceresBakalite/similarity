@@ -9,7 +9,7 @@ function getMarkdown(ms, target)
     case 'repos':
       alert('repose');
       refreshMarkdown_Repos();
-      //resetMarkdown_Logo("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
+      resetMarkdown_Logo("https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
       alert('end repose');
       break;
 
@@ -41,9 +41,6 @@ function resetMarkdown_Logo(url)
 function waitForMarkdown()
 {
   document.getElementById("site-footer-display").style.display = "block";
-  alert('waitForMarkdown');
-  getElementById("logo-default").setAttribute("src", "https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoRepos.png");
-  alert('end waitForMarkdown');
 }
 
 function getRandomInteger(min, max)
