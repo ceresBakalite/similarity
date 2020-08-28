@@ -23,7 +23,11 @@ function getMarkdown(ms, target)
 
 function refreshMarkdown_Index()
 {
-  WebComponents.waitFor(() => { document.getElementsByTagName('zero-md')[0].setAttribute('file', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000)); });
+  WebComponents.waitFor(() =>
+  {
+      document.getElementsByTagName('zero-md')[0].setAttribute('file', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
+  });
+
 }
 
 function refreshMarkdown_Shell()
