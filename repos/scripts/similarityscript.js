@@ -3,9 +3,7 @@ function getMarkdown(ms, target)
   switch (target)
   {
     case 'shell':
-      alert('shell');
       refreshMarkdown_Shell();
-      alert('end shell');
       break;
 
     case 'repos':
