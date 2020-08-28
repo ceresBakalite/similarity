@@ -53,12 +53,7 @@ function refreshMarkdown_Repos()
 
 function waitForMarkdown()
 {
-  WebComponents.waitFor(() =>
-  {
-    let el = document.getElementById('site-footer-display');
-    el.style.display = 'block';
-  });
-
+   document.getElementById('site-footer-display').style.display = 'block';
 }
 
 function getRandomInteger(min, max)
