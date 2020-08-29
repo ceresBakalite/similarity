@@ -10,25 +10,26 @@ customElements.define('include-directive', class extends HTMLElement
 
 function getMarkdown(ms, location)
 {
-  let id = 'index-md';
-  let target = 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
-
   switch (location)
   {
     case 'index':
+      let id = 'index-md';
+      let target = 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
       break;
 
     case 'shell':
-      id = 'shell-md';
-      target = 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000);
+      let id = 'shell-md';
+      let target = 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000);
       break;
 
     case 'repos':
-      id = 'repos-md';
-      target = 'https://ceresbakalite.github.io/similarity/README.md?' + getRandomInteger(10000,1000000);
+      let id = 'repos-md';
+      let target = 'https://ceresbakalite.github.io/similarity/README.md?' + getRandomInteger(10000,1000000);
       break;
 
     default:
+      let id = 'index-md';
+      let target = 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
       break;
 
   }
