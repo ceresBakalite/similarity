@@ -86,11 +86,12 @@ var getURL = function (url, success, error) {
 getURL(
     'https://ceresbakalite.github.io/similarity/repos/scripts/CodeIncludeFooter.html',
     function (data) {
-      alert('here now');
         var el = document.createElement(el);
         el.innerHTML = data;
         var fetch = el.querySelector('#new-footer');
         var embed = document.querySelector('#footer');
+        alert('here now 2');
+
         if (!fetch || !embed) return;
         embed.innerHTML = fetch.innerHTML;
 
