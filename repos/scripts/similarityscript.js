@@ -33,10 +33,22 @@ function getMarkdown(ms, target)
 
 function refreshMarkdown_Index()
 {
-  WebComponents.waitFor(() =>
+  alert('-1');
+  async connectedCallback()
   {
-      document.getElementsByTagName('zero-md')[0].setAttribute('file', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
-  });
+    alert('1');
+    let el = document.getElementById('index-md');
+    let src = 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
+    el.src = await (await fetch(src)).text();
+    alert('2');
+  }
+
+  alert('+2');
+
+  //WebComponents.waitFor(() =>
+  //{
+  //    document.getElementsByTagName('zero-md')[0].setAttribute('src', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
+  //});
 
 }
 
@@ -44,7 +56,7 @@ function refreshMarkdown_Shell()
 {
   WebComponents.waitFor(() =>
   {
-      document.getElementsByTagName('zero-md')[0].setAttribute('file', 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000));
+      document.getElementsByTagName('zero-md')[0].setAttribute('src', 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000));
   });
 
 }
@@ -53,7 +65,7 @@ function refreshMarkdown_Repos()
 {
   WebComponents.waitFor(() =>
   {
-      document.getElementsByTagName('zero-md')[0].setAttribute('file', 'https://ceresbakalite.github.io/similarity/README.md?' + getRandomInteger(10000,1000000));
+      document.getElementsByTagName('zero-md')[0].setAttribute('src', 'https://ceresbakalite.github.io/similarity/README.md?' + getRandomInteger(10000,1000000));
   });
 
 }
