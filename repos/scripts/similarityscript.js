@@ -62,6 +62,13 @@ function getRandomInteger(min, max)
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
+customElements.define('ui-include', class extends HTMLElement {
+  async connectedCallback() {
+    let src = this.getAttribute('src');
+    this.innerHTML = await (await fetch(src)).text();;
+  }
+});
+
 var getURL = function (url, success, error) {
     if (!window.XMLHttpRequest) return;
     var request = new XMLHttpRequest();
