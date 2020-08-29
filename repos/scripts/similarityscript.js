@@ -36,7 +36,7 @@ function refreshMarkdown_Index()
   WebComponents.waitFor(() =>
   {
       let el = document.getElementById('index-md');
-      el.setAttribute('src', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
+      el.setAttribute('src', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
   });
 
 }
