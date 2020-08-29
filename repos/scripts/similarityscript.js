@@ -35,9 +35,12 @@ function refreshMarkdown_Index()
 {
   WebComponents.waitFor(() =>
   {
+alert('1');
       let el = document.getElementById('index-md');
       el.setAttribute('src', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
+      alert('2');
   });
+  alert('3');
 
 }
 
