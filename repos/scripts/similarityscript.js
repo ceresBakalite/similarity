@@ -33,11 +33,11 @@ function getMarkdown(ms, target)
   setInterval(waitForMarkdown, ms);
 }
 
-function refreshMarkdown(id, location)
+function refreshMarkdown(target, location)
 {
   WebComponents.waitFor(() =>
   {
-      let el = document.getElementById(id);
+      let el = document.getElementById(target);
       el.setAttribute('src', location);
   });
 
