@@ -85,6 +85,5 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 
 <sup>_ref._ [v1.2.8.2b notes][]</sup>
 
-
 [v1.2.8.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.2b
 [Shell (computing)]: https://en.wikipedia.org/wiki/Shell_(computing)
