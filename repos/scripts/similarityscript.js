@@ -91,9 +91,9 @@ getURL(
         var fetch = el.querySelector('#new-footer');
         var embed = document.querySelector('#footer');
         alert('here now 2');
-        if (!fetch) return;
-        alert('here now 3');
         if (!embed) return;
+        alert('here now 3');
+        if (!fetch) return;
         //if (!fetch || !embed) return;
         alert('here now 4');
         embed.innerHTML = fetch.innerHTML;
