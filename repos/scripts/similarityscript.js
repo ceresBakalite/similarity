@@ -61,3 +61,36 @@ function getRandomInteger(min, max)
 {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
+
+var getURL = function (url, success, error) {
+    if (!window.XMLHttpRequest) return;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status !== 200) {
+                if (error && typeof error === 'function') {
+                    error(request.responseText, request);
+                }
+                return;
+            }
+            if (success && typeof success === 'function') {
+                success(request.responseText, request);
+            }
+        }
+    };
+    request.open('GET', url);
+    request.send();
+};
+
+getURL(
+    'https://ceresbakalite.github.io/similarity/repos/scripts/CodeIncludeFooter.html',
+    function (data) {
+        var el = document.createElement(el);
+        el.innerHTML = data;
+        var fetch = el.querySelector('#new-footer');
+        var embed = document.querySelector('#footer');
+        if (!fetch || !embed) return;
+        embed.innerHTML = fetch.innerHTML;
+
+    }
+);
