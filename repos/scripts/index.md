@@ -1,3 +1,4 @@
+<style>.img-pointer { vertical-align:bottom; float:left; margin: 0px 15px 0px 0px; }</style>
 ## Welcome to Similarity Pattern Matching <img  style="vertical-align:bottom; float:left; margin: 0px 15px 0px 0px;" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampRing.png">
 
 ### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-default" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png"></div>
@@ -5,7 +6,7 @@ Similarity estimates the similarities or dissimilarities between things. It comp
 
 The application itself is, amoungst other things, a proof of concept exercise where the underlying premise is that no proprietary data ever leaves the confines of the local application. This premise arose from a conversation discussing the complexities inherent in the EU data protection (GDPR 2016/679) requirements surrounding online privacy regulations. In particular it addresses the transfer of personal data outside the EU and EEA areas.
 
-Similarity is largely language independent as it is as comfortable comparing hex, binary, and ascii variations as it is comparing DNA strings, or indeed address verification.<style>.img-pointer { vertical-align:bottom; float:left; margin: 0px 15px 0px 0px; }</style>
+Similarity is largely language independent as it is as comfortable comparing hex, binary, and ascii variations as it is comparing DNA strings, or indeed address verification.
 ***
 
 ### Data Repositories <img class="img-pointer" loading="lazy" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png">
