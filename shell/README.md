@@ -83,5 +83,6 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 
 	[location]\similarity.exe "comparison one"  "comparison two" 2 true true true true true true
 
+<p></p>
 
 [Shell (computing)]: https://en.wikipedia.org/wiki/Shell_(computing)
