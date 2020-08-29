@@ -1,5 +1,7 @@
 ## Welcome to Similarity Pattern Matching <img style="vertical-align:bottom; float:left; margin: 0px 15px 0px 0px;" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampRing.png">
-### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-default" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png"></div>
+
+### *Seeking patterns of similarity between data strings*<img id="logo-default" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png">
+
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items.
 
 The application itself is, amoungst other things, a proof of concept exercise where the underlying premise is that no proprietary data ever leaves the confines of the local application. This premise arose from a conversation discussing the complexities inherent in the EU data protection (GDPR 2016/679) requirements surrounding online privacy regulations. In particular it addresses the transfer of personal data outside the EU and EEA areas.
