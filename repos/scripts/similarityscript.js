@@ -33,22 +33,11 @@ function getMarkdown(ms, target)
 
 function refreshMarkdown_Index()
 {
-  alert('-1');
-  async connectedCallback()
+  WebComponents.waitFor(() =>
   {
-    alert('1');
-    let el = document.getElementById('index-md');
-    let src = 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
-    el.src = await (await fetch(src)).text();
-    alert('2');
-  }
-
-  alert('+2');
-
-  //WebComponents.waitFor(() =>
-  //{
-  //    document.getElementsByTagName('zero-md')[0].setAttribute('src', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
-  //});
+      let el = document.getElementById('index-md');
+      el.setAttribute('src', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
+  });
 
 }
 
