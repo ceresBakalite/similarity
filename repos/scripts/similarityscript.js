@@ -13,50 +13,38 @@ function getMarkdown(ms, target)
   switch (target)
   {
     case 'index':
-      refreshMarkdown_Index();
+      let id = 'index-md';
+      let target = 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000);
       break;
 
     case 'shell':
-      refreshMarkdown_Shell();
+      let id = 'shell-md';
+      let target = 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000);
       break;
 
     case 'repos':
-      refreshMarkdown_Repos();
+      let id = 'repos-md';
+      let target = 'https://ceresbakalite.github.io/similarity/README.md?' + getRandomInteger(10000,1000000);
       break;
 
     default:
-      refreshMarkdown_Shell();
+      let id = 'index-md';
+      let target = 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000);
+      break;
+
   }
 
+  refreshMarkdown(id, target);
   setInterval(waitForMarkdown, ms);
 }
 
-function refreshMarkdown_Index()
+function refreshMarkdown(id, target)
 {
+
   WebComponents.waitFor(() =>
   {
-      let el = document.getElementById('index-md');
-      el.setAttribute('src', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
-  });
-
-}
-
-function refreshMarkdown_Shell()
-{
-  WebComponents.waitFor(() =>
-  {
-      let el = document.getElementById('shell-md');
-      el.setAttribute('src', 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000));
-  });
-
-}
-
-function refreshMarkdown_Repos()
-{
-  WebComponents.waitFor(() =>
-  {
-      let el = document.getElementById('repos-md');
-      el.setAttribute('src', 'https://ceresbakalite.github.io/similarity/README.md?' + getRandomInteger(10000,1000000));
+      let el = document.getElementById(id);
+      el.setAttribute('src', target);
   });
 
 }
