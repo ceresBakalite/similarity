@@ -93,6 +93,7 @@ getURL(
         alert('here now 2');
 
         if (!fetch || !embed) return;
+        alert('here now 3');
         embed.innerHTML = fetch.innerHTML;
 
     }
