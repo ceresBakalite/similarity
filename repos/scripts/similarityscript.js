@@ -3,7 +3,7 @@ customElements.define('include-directive', class extends HTMLElement
   async connectedCallback()
   {
     let src = this.getAttribute('src');
-    this.innerHTML = await (await fetch(src)).text();;
+    this.innerHTML = await (await fetch(src)).text();
   }
 
 });
