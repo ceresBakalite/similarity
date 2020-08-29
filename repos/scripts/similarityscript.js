@@ -8,12 +8,12 @@ customElements.define('include-directive', class extends HTMLElement
 
 });
 
-function getMarkdown(ms, target)
+function getMarkdown(ms, location)
 {
   let id = 'index-md';
   let target = 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
 
-  switch (target)
+  switch (location)
   {
     case 'index':
       break;
