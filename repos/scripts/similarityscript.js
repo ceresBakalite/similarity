@@ -8,9 +8,9 @@ customElements.define('include-directive', class extends HTMLElement
 
 });
 
-function getMarkdown(ms, location)
+function getMarkdown(ms, target)
 {
-  switch (location)
+  switch (target)
   {
     case 'index':
       refreshMarkdown('index-md', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
@@ -33,12 +33,12 @@ function getMarkdown(ms, location)
   setInterval(waitForMarkdown, ms);
 }
 
-function refreshMarkdown(id, target)
+function refreshMarkdown(id, location)
 {
   WebComponents.waitFor(() =>
   {
       let el = document.getElementById(id);
-      el.setAttribute('src', target);
+      el.setAttribute('src', location);
   });
 
 }
