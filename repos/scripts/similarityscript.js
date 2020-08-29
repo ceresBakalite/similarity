@@ -13,34 +13,28 @@ function getMarkdown(ms, location)
   switch (location)
   {
     case 'index':
-      let id = 'index-md';
-      let target = 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
+      refreshMarkdown('index-md', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
       break;
 
     case 'shell':
-      let id = 'shell-md';
-      let target = 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000);
+      refreshMarkdown('shell-md', 'https://ceresbakalite.github.io/similarity/shell/README.md?' + getRandomInteger(10000,1000000));
       break;
 
     case 'repos':
-      let id = 'repos-md';
-      let target = 'https://ceresbakalite.github.io/similarity/README.md?' + getRandomInteger(10000,1000000);
+      refreshMarkdown('repos-md', 'https://ceresbakalite.github.io/similarity/README.md?' + getRandomInteger(10000,1000000));
       break;
 
     default:
-      let id = 'index-md';
-      let target = 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000);
+      refreshMarkdown('index-md', 'https://ceresbakalite.github.io/similarity/repos/scripts/index.md?' + getRandomInteger(10000,1000000));
       break;
 
   }
 
-  refreshMarkdown(id, target);
   setInterval(waitForMarkdown, ms);
 }
 
 function refreshMarkdown(id, target)
 {
-
   WebComponents.waitFor(() =>
   {
       let el = document.getElementById(id);
