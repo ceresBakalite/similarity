@@ -1,9 +1,14 @@
 <style>
+
   .img-pointer {
-  vertical-align:bottom;
-  float:left;
-  margin: 0px 15px 0px 0px;
+    vertical-align:bottom;
+    float:left;
+    margin: 0px 15px 0px 0px;
   }
+
+  h3 { color: #445f50; }
+  h2 { color: #445f50; }
+
 </style>
 
 ## Welcome to Similarity Pattern Matching <img  style="vertical-align:bottom; float:left; margin: 0px 15px 0px 0px;" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampRing.png">
@@ -18,7 +23,7 @@ Similarity is largely language independent as it is as comfortable comparing hex
 
 ### Data Repositories <img class="img-pointer" loading="lazy" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png">
 
-Weâ€™ve crafted extensive data repositories including common abbreviations, acronyms, business language and even jargon, that reside in the cloud. These libraries can be enhanced, either on a user, client or global basis to target specific types of data and can be used to facilitate accurate blending of otherwise disparate data sets. Your original data content is always preserved.
+We’ve crafted extensive data repositories including common abbreviations, acronyms, business language and even jargon, that reside in the cloud. These libraries can be enhanced, either on a user, client or global basis to target specific types of data and can be used to facilitate accurate blending of otherwise disparate data sets. Your original data content is always preserved.
 ***
 
 ### Creating Matching Patterns <img class="img-pointer" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampBulb.png">
@@ -32,7 +37,7 @@ Similarity is largely language independent as it is as comfortable comparing hex
 
 ### Data Repositories <img class="img-pointer" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png">
 
-Weâ€™ve crafted extensive data repositories including common abbreviations, acronyms, business language and even jargon, that reside in the cloud. These libraries can be enhanced, either on a user, client or global basis to target specific types of data and can be used to facilitate accurate blending of otherwise disparate data sets. Your original data content is always preserved.
+We’ve crafted extensive data repositories including common abbreviations, acronyms, business language and even jargon, that reside in the cloud. These libraries can be enhanced, either on a user, client or global basis to target specific types of data and can be used to facilitate accurate blending of otherwise disparate data sets. Your original data content is always preserved.
 ***
 
 ### Creating Matching Patterns <img class="img-pointer" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampBulb.png">
