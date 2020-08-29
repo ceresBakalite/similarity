@@ -52,6 +52,7 @@ function waitForMarkdown()
 {
   WebComponents.waitFor(() =>
   {
+      getURL();
       document.getElementById('site-footer-display').style.display = 'block';
   });
 
