@@ -84,6 +84,6 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 	[location]\similarity.exe "comparison one"  "comparison two" 2 true true true true true true
 
 <sup>_ref._ [v1.2.8.2b notes][]</sup>
-
+<br>
 [v1.2.8.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.2b
 [Shell (computing)]: https://en.wikipedia.org/wiki/Shell_(computing)

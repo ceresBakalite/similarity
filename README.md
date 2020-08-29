@@ -115,8 +115,7 @@ Runtime error logging
 
 <sup>_ref._ [The Apache log4net library][]</sup>
 <sup>_and_ [v1.2.8.2b notes][]</sup>
-
-
+<br>
 [Hamming Distance as a Concept in DNA Molecular Recognition]: https://pubs.acs.org/doi/full/10.1021/acsomega.7b00053
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
 [The Levenshtein distance algorithm]: https://www.educative.io/edpresso/the-levenshtein-distance-algorithm
