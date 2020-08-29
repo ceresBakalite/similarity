@@ -62,7 +62,7 @@ function getRandomInteger(min, max)
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-customElements.define('external', class extends HTMLElement
+customElements.define('include-directive', class extends HTMLElement
 {
   async connectedCallback()
   {
