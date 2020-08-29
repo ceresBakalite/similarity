@@ -13,7 +13,9 @@ function getMarkdown(ms, target)
   switch (target)
   {
     case 'index':
+    alert('aaa');
       refreshMarkdown_Index();
+      alert('bbb');
       break;
 
     case 'shell':
