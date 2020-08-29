@@ -4,6 +4,8 @@
     float:left;
     margin: 0px 15px 0px 0px;
   }
+  h3 { color: #445f50; }
+  h2 { color: #445f50; }
 </style>
 ## Welcome to Similarity Pattern Matching <img  style="vertical-align:bottom; float:left; margin: 0px 15px 0px 0px;" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampRing.png">
 
