@@ -15,7 +15,6 @@ The application itself is, amoungst other things, a proof of concept exercise wh
 
 Similarity is largely language independent as it is as comfortable comparing hex, binary, and ascii variations as it is comparing DNA strings, or indeed address verification.
 ***
-<p class="red">test</p>
 
 ### Data Repositories <img class="img-pointer" loading="lazy" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png">
 
