@@ -33,6 +33,7 @@ function getMarkdown(ms, target)
 
 function refreshMarkdown_Index()
 {
+  alert('-1');
   WebComponents.waitFor(() =>
   {
 alert('1');
