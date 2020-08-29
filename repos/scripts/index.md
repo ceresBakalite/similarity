@@ -53,7 +53,6 @@ As such, online support and documentation are still gestating.  Please contact m
 
 On that note. Updates are automatic, but if you do wish to download the product for the first time you can do so, but please get in touch as Similarity is still very much a beta release.
 
-<br>
 
 [read more]: https://github.com/jbtule
 [@jbtule]: https://ceresbakalite.github.io/similarity/
