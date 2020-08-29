@@ -1,10 +1,3 @@
-<style>
-.img-pointer {
-  vertical-align:bottom;
-  float:left;
-  margin: 0px 15px 0px 0px;
-}
-</style>
 ## Welcome to Similarity Pattern Matching <img class="img-pointer" src="https://ceresbakalite.github.io/similarity/images/NAVLampRing.png">
 
 ### *Seeking patterns of similarity between data strings*<div id="logo-container"><img id="logo-default" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png"></div>
@@ -66,3 +59,10 @@ On that note. Updates are automatic, but if you do wish to download the product 
 [read more]: https://github.com/jbtule
 [@jbtule]: https://ceresbakalite.github.io/similarity/
 [@ceresbakalite]: https://github.com/ceresbakalite
+<style>
+.img-pointer {
+  vertical-align:bottom;
+  float:left;
+  margin: 0px 15px 0px 0px;
+}
+</style>
