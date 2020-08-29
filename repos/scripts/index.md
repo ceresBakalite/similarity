@@ -4,7 +4,7 @@
 
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items.
 
-The application itself is, amoungst other things, a proof of concept exercise where the underlying premise is that no proprietary data ever leaves the confines of the local application. This premise arose from a conversation discussing the complexities inherent in the EU data protection (GDPR 2016/679) requirements surrounding online privacy regulations. In particular it addresses the transfer of personal data outside the EU and EEA areas.
+The application itself is, amongst other things, a proof of concept exercise where the underlying premise is that no proprietary data ever leaves the confines of the local application. This premise arose from a conversation discussing the complexities inherent in the EU data protection (GDPR 2016/679) requirements surrounding online privacy regulations. In particular it addresses the transfer of personal data outside the EU and EEA areas.
 
 Similarity is largely language independent as it is as comfortable comparing hex, binary, and ascii variations as it is comparing DNA strings, or indeed address verification.
 ***
