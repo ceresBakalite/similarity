@@ -81,8 +81,8 @@ function getMarkdownDocument(id, target)
 
 function waitForMarkdown(target)
 {
-    document.getElementById('footer-content').style.display = 'block';
     document.getElementById('site-footer-display').style.display = 'block';
+    document.getElementById('footer-content').style.display = 'block';
 
     refreshMarkdown(target);
 }
