@@ -1,5 +1,5 @@
 <div id="site-navigation-display" class="btn-group">
-  <button class="button" title="Command Line usage" onclick="window.location.href='https://ceresbakalite.github.io/similarity/repos/scripts/GitHubSyncShell.html'">Shell Notes</button>
-  <button class="button" title="Similarity version release notes" onclick="window.location.href='https://ceresbakalite.github.io/similarity/repos/scripts/GitHubSyncRepos.html'">Release Notes</button>
+  <button class="button" title="Command Line usage" onclick="javascript:selectMarkdownDocument('shell')">Shell Notes</button>
+  <button class="button" title="Similarity version release notes" onclick="javascript:selectMarkdownDocument('repos')">Release Notes</button>
   <button class="button" title="Similarity" onclick="javascript:selectMarkdownDocument('index')">Home</button>
 </div>
