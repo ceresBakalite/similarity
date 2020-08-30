@@ -69,7 +69,7 @@ function selectMarkdownDocument(md)
       break;
 
     default:
-      getMarkdownDocument('index', 'test01.html');
+      getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
       break;
 
   }
