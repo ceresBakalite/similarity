@@ -24,26 +24,51 @@ function addScrollEventListener()
 
 }
 
+function isValidSource()
+{
+  alert('hello');
+//  if (parent.document.getElementById('primary-container'))
+
+//let obj = window.parent.document.getElementsByTagName('section')[0];
+    let obj = parent.document.getElementById('primary-container');
+
+    if (obj)
+    {
+      alert(obj.getAttribute('class'));
+      return true;
+    } else {
+      alert('invalid');
+    }
+
+
+    return false;
+}
+
 
 function onloadComplete(ms, md)
 {
-  switch (md)
+  alert('test');
+  if (isValidSource())
   {
-    case 'index':
-      setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
-      break;
+    switch (md)
+    {
+      case 'index':
+        setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
+        break;
 
-    case 'shell':
-      setTimeout(function(){ waitForMarkdown('shell-md'); }, ms);
-      break;
+      case 'shell':
+        setTimeout(function(){ waitForMarkdown('shell-md'); }, ms);
+        break;
 
-    case 'repos':
-      setTimeout(function(){ waitForMarkdown('repos-md'); }, ms);
-      break;
+      case 'repos':
+        setTimeout(function(){ waitForMarkdown('repos-md'); }, ms);
+        break;
 
-    default:
-      setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
-      break;
+      default:
+        setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
+        break;
+
+    }
 
   }
 
@@ -55,6 +80,7 @@ function selectMarkdownDocument(md)
   {
     case 'index':
       getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
+      //getMarkdownDocument('index', 'C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\SyncIndex.html');
       break;
 
     case 'shell':
