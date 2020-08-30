@@ -11,19 +11,16 @@ customElements.define('include-directive', class extends HTMLElement
 function addScrollEventListener()
 {
   return;
-  alert('1');
-  let iframe = document.getElementsByTagName('frame-container')[0];
-  alert('2');
 
-if (iframe == null) alert('its null');
+  let iframe = document.getElementsByTagName('frame-container')[0];
+
+  if (iframe == null) alert('its null');
 
   iframe.contentDocument.body.innerHTML = 'a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>';
-  alert('3');
 
   iframe.contentDocument.addEventListener('scroll', function(event) {
     console.log(event);
   }, false);
-  alert('4');
 
 }
 
@@ -33,19 +30,19 @@ function onloadComplete(ms, md)
   switch (md)
   {
     case 'index':
-      setInterval(waitForMarkdown('index-md'), ms);
+      setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
       break;
 
     case 'shell':
-      setInterval(waitForMarkdown('shell-md'), ms);
+      setTimeout(function(){ waitForMarkdown('shell-md'); }, ms);
       break;
 
     case 'repos':
-      setInterval(waitForMarkdown('repos-md'), ms);
+      setTimeout(function(){ waitForMarkdown('repos-md'); }, ms);
       break;
 
     default:
-      setInterval(waitForMarkdown('index-md'), ms);
+      setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
       break;
 
   }
@@ -84,16 +81,10 @@ function getMarkdownDocument(id, target)
 
 function waitForMarkdown(target)
 {
-  WebComponents.waitFor(() =>  {
+    document.getElementById('footer-content').style.display = 'block';
+    document.getElementById('site-footer-display').style.display = 'block';
 
-    if (refreshMarkdown(target))
-    {
-      document.getElementById('footer-content').style.display = 'block';
-      document.getElementById('site-footer-display').style.display = 'block';
-    }
-
-  });
-
+    refreshMarkdown(target);
 }
 
 function refreshMarkdown(target)
