@@ -1,3 +1,20 @@
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hide browser scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide browser scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide <pre> scrollbar for Chrome, Safari and Opera */
 .pre-word-wrap {
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -13,9 +30,10 @@
   background-color:#f3f6fa !important;
 }
 
-.footer-similarity{
+.footer-similarity {
   border-top: 1px solid gray;
   font-size: 60%;
+  display: none;
 }
 
 .project-name-textcolor {
@@ -34,6 +52,32 @@
   background-color: #0e2b15;
   padding-right:45px;
 }
+
+.section-body-container {
+  display: table;
+  empty-cells: show;
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+}
+
+.section-frame-container {
+  display: table-row;
+  box-shadow: inset 0px 11px 8px -10px rgba(0,0,0,0.19);
+  height: 100%;
+}
+
+.section-frame-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.footer-content {
+  display: none;
+}
+
+
 
 .btn-group .button {
   background-color: #5c685a;
