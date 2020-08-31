@@ -9,9 +9,9 @@ customElements.define('include-directive', class extends HTMLElement
 
 });
 
-function redirectRequest() 
+function redirectRequest()
 {
-  let target = getURLArgs()[t];
+  let target = getURLArgs()['t'];
   if (target != null) alert(target);
 
 }
