@@ -12,9 +12,9 @@ customElements.define('include-directive', class extends HTMLElement
 function getQueryString()
 {
   const urlParams = new URLSearchParams(window.location.search);
-  const mdt = urlParams.get('mdt')
+  const mdd = urlParams.get('mdt')
 
-  if (mdt != null) selectMarkdownDocument(mdt);
+  if (mdd != null) selectMarkdownDocument(mdd);
 }
 
 function addScrollEventListener()
@@ -37,7 +37,7 @@ function isValidSource(md)
 {
     if (parent.document.getElementById('primary-container')) return true;
 
-    window.location.href = 'https://ceresbakalite.github.io/similarity/?mdt=' + md;
+    window.location.href = 'https://ceresbakalite.github.io/similarity/?mdd=' + md;
 
     return false;
 }
