@@ -17,19 +17,14 @@
     <script src="https://ceresbakalite.github.io/similarity/repos/scripts/similarityscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
-    <style>
-    .test {
-      background-color: yellow;
-    }
-    </style>
     <script>
     window.onscroll = function() {myFunction()};
 
     function myFunction() {
       if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("myP").className = "test";
+        alert('greater then 50px');
       } else {
-        document.getElementById("myP").className = "";
+        alert('less than 50px');
       }
     }
     </script>
