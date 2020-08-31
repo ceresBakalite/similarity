@@ -14,8 +14,6 @@ function getQueryString()
   const urlParams = new URLSearchParams(window.location.search);
   const mdt = urlParams.get('mdt')
 
-alert(mdt);
-
   if (mdt != null) selectMarkdownDocument(mdt);
 }
 
