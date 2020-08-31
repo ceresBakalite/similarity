@@ -17,6 +17,17 @@
     <script src="https://ceresbakalite.github.io/similarity/repos/scripts/similarityscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+    <script>
+    window.onscroll = function() {myFunction()};
+
+    function myFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("myP").className = "test";
+      } else {
+        document.getElementById("myP").className = "";
+      }
+    }
+    </script>
   </head>
   <body onload="javascript:onloadComplete(3000, 'index');" onunload="">
 
