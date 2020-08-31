@@ -9,7 +9,7 @@ customElements.define('include-directive', class extends HTMLElement
 
 });
 
-function redirectRequest()
+function queryRedirect()
 {
   let target = getURLArgs()['mdt'];
   if (target != null) alert(target);
