@@ -12,7 +12,7 @@ customElements.define('include-directive', class extends HTMLElement
 function getQueryString()
 {
   const urlParams = new URLSearchParams(window.location.search);
-  const mdd = urlParams.get('mdt')
+  const mdd = urlParams.get('mdd')
 
   if (mdd != null) selectMarkdownDocument(mdd);
 }
