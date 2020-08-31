@@ -18,13 +18,27 @@ function getQueryString()
 
 function onloadPrimary()
 {
-    getQueryString();
-    scrollEventListener();
+  getQueryString();
 }
 
 function scrollEventListener()
 {
-  window.onscroll = function(){ adjustHeaderDisplay() };
+  window.onscroll = function(){ adjustHeaderDisplay(); };
+}
+
+function adjustHeaderDisplay()
+{
+  alert('adjustHeaderDisplay');
+  //if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
+  //{
+  //  alert('site-header-slide');
+    // document.getElementById('site-header-display').className = 'site-header-slide';
+    //if (parent.document.getElementById('site-header-display').style.display == 'block') parent.document.getElementById('site-header-display').style.display = 'none';
+  //} else {
+  //  alert('NOT site-header-slide');
+    //if (parent.document.getElementById('site-header-display').style.display == 'none') parent.document.getElementById('site-header-display').style.display = 'block';
+  //}
+
 }
 
 function isValidSource(md)
@@ -36,10 +50,12 @@ function isValidSource(md)
     return false;
 }
 
-function onloadComplete(ms, md)
+function onloadFrameComplete(ms, md)
 {
   if (isValidSource(md))
   {
+    scrollEventListener();
+
     switch (md)
     {
       case 'index':
@@ -112,19 +128,6 @@ function refreshMarkdown(target)
 
     document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger(10000,1000000));
 
-  }
-
-}
-
-function adjustHeaderDisplay()
-{
-  if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
-  {
-    // alert('site-header-slide');
-    // document.getElementById('site-header-display').className = 'site-header-slide';
-    //if (parent.document.getElementById('site-header-display').style.display == 'block') parent.document.getElementById('site-header-display').style.display = 'none';
-  } else {
-    //if (parent.document.getElementById('site-header-display').style.display == 'none') parent.document.getElementById('site-header-display').style.display = 'block';
   }
 
 }
