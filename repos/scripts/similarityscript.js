@@ -30,15 +30,17 @@ function adjustHeaderDisplay()
 {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-    if (parent.document.getElementsByTagName('div')[0] == 'block') alert('say argh hello');
-    if (parent.document.getElementById('site-header-display') == 'block') alert('say hello');
-    alert('more argh');
+    //if (parent.document.getElementsByTagName('div')[0] == 'block') alert('say argh hello');
+    //if (parent.document.getElementById('site-header-display') == 'block') alert('say hello');
+    //alert('more argh');
     // document.getElementById('site-header-display').className = 'site-header-slide';
 
     if (parent.document.getElementById('site-header-display').style.display == 'block') parent.document.getElementById('site-header-display').style.display = 'none';
-  //} else {
-  //  alert('NOT site-header-slide');
+
+  } else {
+
     if (parent.document.getElementById('site-header-display').style.display == 'none') parent.document.getElementById('site-header-display').style.display = 'block';
+
   }
 
 }
