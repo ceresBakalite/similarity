@@ -30,16 +30,6 @@ function adjustHeaderDisplay()
 {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-    alert('sss22cccc');
-
-    if (parent.document.getElementById('site-header-display').style.display == 'block') alert('yay');
-
-    alert('3333222222cccc');
-
-    //if (parent.document.getElementById('site-header-display') == 'block') alert('say hello');
-    //if (parent.document.getElementsByTagName('div')[0] == 'block') alert('say argh hello');
-    //alert('more argh');
-    // document.getElementById('site-header-display').className = 'site-header-slide';
 
     if (parent.document.getElementById('site-header-display').style.display == 'block') parent.document.getElementById('site-header-display').style.display = 'none';
 
@@ -53,11 +43,8 @@ function adjustHeaderDisplay()
 
 function isValidSource(md)
 {
-  alert('zzz');
-      if (parent.document.getElementById('primary-container')) alert('yay');
-    alert('xxx');
-      if (parent.document.getElementById('primary-container')) return true;
-  alert('ccccadsfasdfafd');
+    if (parent.document.getElementById('primary-container')) return true;
+
     window.location.href = 'https://ceresbakalite.github.io/similarity/?mdd=' + md;
 
     return false;
@@ -65,11 +52,9 @@ function isValidSource(md)
 
 function onloadFrameComplete(ms, md)
 {
-  alert('cccc');
   if (isValidSource(md))
   {
     scrollEventListener();
-    alert('222222cccc');
 
     switch (md)
     {
