@@ -28,15 +28,15 @@ function scrollEventListener()
 
 function adjustHeaderDisplay()
 {
-  //if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
-  //{
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
+  {
   //  alert('site-header-slide');
     // document.getElementById('site-header-display').className = 'site-header-slide';
-    //if (parent.document.getElementById('site-header-display').style.display == 'block') parent.document.getElementById('site-header-display').style.display = 'none';
+    if (parent.document.getElementById('site-header-display').style.display == 'block') parent.document.getElementById('site-header-display').style.display = 'none';
   //} else {
   //  alert('NOT site-header-slide');
-    //if (parent.document.getElementById('site-header-display').style.display == 'none') parent.document.getElementById('site-header-display').style.display = 'block';
-  //}
+    if (parent.document.getElementById('site-header-display').style.display == 'none') parent.document.getElementById('site-header-display').style.display = 'block';
+  }
 
 }
 
