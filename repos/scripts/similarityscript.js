@@ -122,9 +122,9 @@ function adjustHeaderDisplay()
   {
     // alert('site-header-slide');
     // document.getElementById('site-header-display').className = 'site-header-slide';
-    if (window.top.document.getElementById('site-header-display').style.display == 'block') document.getElementById('site-header-display').style.display = 'none';
+    if (window.top.document.getElementById('site-header-display').style.display == 'block') window.top.document.document.getElementById('site-header-display').style.display = 'none';
   } else {
-    if (window.top.document.getElementById('site-header-display').style.display == 'none') document.getElementById('site-header-display').style.display = 'block';
+    if (window.top.document.getElementById('site-header-display').style.display == 'none') window.top.document.document.getElementById('site-header-display').style.display = 'block';
   }
 
 }
