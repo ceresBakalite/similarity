@@ -34,15 +34,17 @@ function adjustHeaderDisplay()
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
 
-    el.style.visibility = 'hidden';
-    el.style.display = 'none';
+    el.addEventListener('animationend', () => {
+      el.style.display = 'none';
+    });
 
   } else {
 
     el.classList.remove('animate__animated', 'animate__fadeOutUp');
 
-    el.style.visibility = 'visible';
-    el.style.display = 'block';
+    el.addEventListener('animationend', () => {
+      el.style.display = 'block';
+    });
 
   }
 
