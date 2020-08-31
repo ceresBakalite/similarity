@@ -30,12 +30,19 @@ function adjustHeaderDisplay()
 {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-
-    if (parent.document.getElementById('site-header-display').style.display == 'block') parent.document.getElementById('site-header-display').style.display = 'none';
+    if (parent.document.getElementById('site-header-display').style.display == 'block') 
+    {
+      alert('1');
+      parent.document.getElementById('site-header-display').style.display = 'none';
+    }
 
   } else {
 
-    if (parent.document.getElementById('site-header-display').style.display == 'none') parent.document.getElementById('site-header-display').style.display = 'block';
+    if (parent.document.getElementById('site-header-display').style.display == 'none')
+    {
+      alert('2');
+      parent.document.getElementById('site-header-display').style.display = 'block';
+    }
 
   }
 
