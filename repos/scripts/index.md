@@ -1,3 +1,5 @@
+<div onscroll="javascript: myScript();">
+
 ## Welcome to Similarity Pattern Matching <img class="img-pointer" src="https://ceresbakalite.github.io/similarity/images/NAVLampRing.png">
 
 ### *Seeking patterns of similarity between data strings*<div id="logo-container"><img id="logo-default" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png"></div>
@@ -53,3 +55,4 @@ On that note. Updates are automatic, but if you do wish to download the product 
   margin: 0px 15px 0px 0px;
 }
 </style>
+</div>
