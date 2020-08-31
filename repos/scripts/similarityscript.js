@@ -118,13 +118,14 @@ function refreshMarkdown(target)
 
 function adjustHeaderDisplay()
 {
+  alert(parent.document.getElementById('site-header-display').style.display);
   if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
   {
     // alert('site-header-slide');
     // document.getElementById('site-header-display').className = 'site-header-slide';
-    if (window.top.document.getElementById('site-header-display').style.display == 'block') window.top.document.getElementById('site-header-display').style.display = 'none';
+    if (parent.document.getElementById('site-header-display').style.display == 'block') parent.document.getElementById('site-header-display').style.display = 'none';
   } else {
-    if (window.top.document.getElementById('site-header-display').style.display == 'none') window.top.document.getElementById('site-header-display').style.display = 'block';
+    if (parent.document.getElementById('site-header-display').style.display == 'none') parent.document.getElementById('site-header-display').style.display = 'block';
   }
 
 }
