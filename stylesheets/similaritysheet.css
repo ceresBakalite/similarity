@@ -51,7 +51,20 @@ body {
   background-size: 100% 100%;
   background-color: #0e2b15;
   padding-right:45px;
-  transition: height 2s;
+}
+
+div#site-header-display {
+  display: block;
+  transition: .5s all linear;
+  opacity: 1;
+  overflow: hidden;
+  height: 100px;
+}
+
+#site-header-display.h-hide {
+  padding: 0;
+  opacity: .25;
+  height: 0;
 }
 
 .section-body-container {
