@@ -58,7 +58,7 @@ div#site-header-display {
   transition: .5s all linear;
   opacity: 1;
   overflow: hidden;
-  height: 100px;
+  height: 100%;
 }
 
 #site-header-display.h-hide {
