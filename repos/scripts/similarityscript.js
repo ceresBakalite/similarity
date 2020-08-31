@@ -25,7 +25,7 @@ function onloadPrimary()
 
 function scrollEventListener()
 {
-  window.onscroll = function() { adjustHeader() };
+  window.onscroll = function(){ adjustHeader() };
 }
 
 function adjustHeader()
@@ -111,7 +111,6 @@ function waitForMarkdown(target)
     document.getElementById('footer-content').style.display = 'block';
 
     refreshMarkdown(target);
-    scrollEventListener();
 }
 
 function refreshMarkdown(target)
