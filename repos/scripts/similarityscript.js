@@ -116,6 +116,18 @@ function waitForMarkdown(target)
     document.getElementById('footer-content').style.display = 'block';
 
     refreshMarkdown(target);
+
+    window.onscroll = function() { myFunction() };
+}
+
+function myFunction()
+{
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    alert('greater then 50px');
+  } else {
+    alert('less than 50px');
+  }
+
 }
 
 function refreshMarkdown(target)
