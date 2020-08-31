@@ -63,6 +63,7 @@ function onloadFrameComplete(ms, md)
   if (isValidSource(md))
   {
     scrollEventListener();
+    alert('222222cccc');
 
     switch (md)
     {
