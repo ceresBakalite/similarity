@@ -30,6 +30,8 @@ function adjustHeaderDisplay()
 {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
+    alert('argh');
+    if (parent.document.getElementsByTagName('div')[0].style.display) alert('say argh hello');
     if (parent.document.getElementById('site-header-display').style.display) alert('say hello');
     // document.getElementById('site-header-display').className = 'site-header-slide';
 
