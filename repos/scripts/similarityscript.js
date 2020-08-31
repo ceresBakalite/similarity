@@ -39,7 +39,7 @@ function adjustHeaderDisplay()
 
   } else {
 
-    obj.classList.remove('animate__animated', 'animate__fadeInDown');
+//    obj.classList.remove('animate__animated', 'animate__fadeInDown');
 //    obj.classList.add('animate__animated', 'animate__fadeOutUp');
     obj.style.display = 'block';
 
