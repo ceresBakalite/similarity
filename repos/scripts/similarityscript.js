@@ -1,7 +1,4 @@
 
-let target = getURLArgs()[t];
-if (target != null) alert(target);
-
 customElements.define('include-directive', class extends HTMLElement
 {
   async connectedCallback()
@@ -11,6 +8,13 @@ customElements.define('include-directive', class extends HTMLElement
   }
 
 });
+
+function redirectRequest() 
+{
+  let target = getURLArgs()[t];
+  if (target != null) alert(target);
+
+}
 
 function getUrlArgs()
 {
