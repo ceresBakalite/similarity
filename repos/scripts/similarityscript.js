@@ -28,13 +28,17 @@ function scrollEventListener()
 
 function adjustHeaderDisplay()
 {
+  const element = parent.document.querySelector('site-header-display');
+
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300)
   {
-    parent.document.getElementById('site-header-display').style.display = 'none';
+
+    element.classList.add('animate__animated', 'animate__fadeOutUp');
+    element.style.display = 'none';
 
   } else {
 
-    parent.document.getElementById('site-header-display').style.display = 'block';
+    element.style.display = 'block';
 
   }
 
