@@ -32,13 +32,13 @@ function adjustHeaderDisplay()
 
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-    //el.style.visibility = 'hidden';
-    el.style.display = 'none';
+    el.style.visibility = 'hidden';
+    //el.style.display = 'none';
 
   } else {
 
-    //el.style.visibility = 'visible';
-    el.style.display = 'block';
+    el.style.visibility = 'visible';
+    //el.style.display = 'block';
 
   }
 
