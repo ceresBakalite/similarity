@@ -25,20 +25,15 @@ function onloadPrimary()
 
 function scrollEventListener()
 {
-  return;
+  window.onscroll = function() { adjustHeader() };
+}
 
-  let iframe = document.getElementById('frame-container');
-
-  let placeholder = iframe.contentWindow || iframe.contentDocument;
-
-  if (placeholder.document)
+function adjustHeader()
+{
+  if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
   {
-
-    //placeholder.addEventListener('scroll', function(event))
-    //{
-    //  alert(event);
-    //});
-
+    alert('site-header-slide');
+    // document.getElementById('site-header-display').className = 'site-header-slide';
   }
 
 }
@@ -116,18 +111,7 @@ function waitForMarkdown(target)
     document.getElementById('footer-content').style.display = 'block';
 
     refreshMarkdown(target);
-
-    window.onscroll = function() { myFunction() };
-}
-
-function myFunction()
-{
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    alert('greater then 50px');
-  } else {
-    alert('less than 50px');
-  }
-
+    scrollEventListener();
 }
 
 function refreshMarkdown(target)
