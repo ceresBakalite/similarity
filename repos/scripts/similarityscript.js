@@ -30,7 +30,12 @@ function adjustHeaderDisplay()
 {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
+    alert('sss22cccc');
+
     if (parent.document.getElementById('site-header-display')) alert('yay');
+
+    alert('3333222222cccc');
+
     //if (parent.document.getElementById('site-header-display') == 'block') alert('say hello');
     //if (parent.document.getElementsByTagName('div')[0] == 'block') alert('say argh hello');
     //alert('more argh');
