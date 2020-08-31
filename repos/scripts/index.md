@@ -16,20 +16,6 @@ We’ve crafted extensive data repositories including common abbreviations, acro
 
 ### Creating Matching Patterns <img class="img-pointer" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampBulb.png">
 
-Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items.
-
-The application itself is, amongst other things, a proof of concept exercise where the underlying premise is that no proprietary data ever leaves the confines of the local application. This premise arose from a conversation discussing the complexities inherent in the EU data protection (GDPR 2016/679) requirements surrounding online privacy regulations. In particular it addresses the transfer of personal data outside the EU and EEA areas.
-
-Similarity is largely language independent as it is as comfortable comparing hex, binary, and ascii variations as it is comparing DNA strings, or indeed address verification.
-***
-
-### Data Repositories <img class="img-pointer" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png">
-
-We’ve crafted extensive data repositories including common abbreviations, acronyms, business language and even jargon, that reside in the cloud. These libraries can be enhanced, either on a user, client or global basis to target specific types of data and can be used to facilitate accurate blending of otherwise disparate data sets. Your original data content is always preserved.
-***
-
-### Creating Matching Patterns <img class="img-pointer" loading="lazy" src="https://ceresbakalite.github.io/similarity/images/NAVLampBulb.png">
-
 You can select and save from multiple preference types when defining search patterns.
 
 Phonetic matching alleviates sound pronunciation where spelling can be overlooked.  Words can be created, removed and normalized automatically, all without altering your original data content. The cutoff point is simply wherever the matching comparisons found are determined to be so numerous as to be of no interest.
