@@ -17,19 +17,29 @@ function getQueryString()
   if (mdd != null) selectMarkdownDocument(mdd);
 }
 
-function addScrollEventListener()
+function onloadPrimary()
+{
+    getQueryString();
+    scrollEventListener();
+}
+
+function scrollEventListener()
 {
   return;
 
-  let iframe = document.getElementsByTagName('frame-container')[0];
+  let iframe = document.getElementById('frame-container');
 
-  if (iframe == null) alert('its null');
+  let placeholder = iframe.contentWindow || iframe.contentDocument;
 
-  iframe.contentDocument.body.innerHTML = 'a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>';
+  if (placeholder.document)
+  {
 
-  iframe.contentDocument.addEventListener('scroll', function(event) {
-    console.log(event);
-  }, false);
+    //placeholder.addEventListener('scroll', function(event))
+    //{
+    //  alert(event);
+    //});
+
+  }
 
 }
 
