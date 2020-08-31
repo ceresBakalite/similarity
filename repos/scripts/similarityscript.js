@@ -28,13 +28,11 @@ function scrollEventListener()
 
 function adjustHeaderDisplay()
 {
-  alert(parent.document.getElementById('site-header-display').style.display);
-
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
+
     if (parent.document.getElementById('site-header-display').style.display == 'block')
     {
-      alert('1');
       parent.document.getElementById('site-header-display').style.display = 'none';
     }
 
@@ -42,7 +40,6 @@ function adjustHeaderDisplay()
 
     if (parent.document.getElementById('site-header-display').style.display == 'none')
     {
-      alert('2');
       parent.document.getElementById('site-header-display').style.display = 'block';
     }
 
