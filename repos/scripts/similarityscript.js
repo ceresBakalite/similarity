@@ -30,7 +30,7 @@ function adjustHeaderDisplay()
 {
   let el = parent.document.getElementById('site-header-display');
 
-  if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25)
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
     //el.style.visibility = 'hidden';
     el.style.display = 'none';
