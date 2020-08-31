@@ -26,20 +26,9 @@ function addScrollEventListener()
 
 function isValidSource()
 {
-  alert('hello');
-//  if (parent.document.getElementById('primary-container'))
+    if (parent.document.getElementById('primary-container')) return true;
 
-//let obj = window.parent.document.getElementsByTagName('section')[0];
-    let obj = parent.document.getElementById('primary-container');
-
-    if (obj)
-    {
-      alert(obj.getAttribute('class'));
-      return true;
-    } else {
-      alert('invalid');
-    }
-
+    location.href = 'https://ceresbakalite.github.io/similarity/';
 
     return false;
 }
@@ -47,7 +36,6 @@ function isValidSource()
 
 function onloadComplete(ms, md)
 {
-  alert('test');
   if (isValidSource())
   {
     switch (md)
