@@ -33,14 +33,14 @@ function adjustHeaderDisplay()
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
 
-    obj.classList.remove('animate__animated', 'animate__fadeOutUp');
-    obj.classList.add('animate__animated', 'animate__fadeInDown');
-    if (obj.height == 0) obj.style.display = 'none';
+//    obj.classList.remove('animate__animated', 'animate__fadeOutUp');
+//    obj.classList.add('animate__animated', 'animate__fadeInDown');
+    obj.style.display = 'none';
 
   } else {
 
     obj.classList.remove('animate__animated', 'animate__fadeInDown');
-    obj.classList.add('animate__animated', 'animate__fadeOutUp');
+//    obj.classList.add('animate__animated', 'animate__fadeOutUp');
     obj.style.display = 'block';
 
   }
