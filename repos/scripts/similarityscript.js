@@ -34,7 +34,7 @@ function adjustHeaderDisplay()
   {
 
     obj.classList.add('animate__animated', 'animate__fadeOutUp');
-    element.style.display = 'none';
+    obj.style.display = 'none';
 
   } else {
 
