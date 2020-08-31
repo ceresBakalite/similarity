@@ -32,7 +32,7 @@ function adjustHeader()
 {
   if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
   {
-    alert('site-header-slide');
+    // alert('site-header-slide');
     // document.getElementById('site-header-display').className = 'site-header-slide';
   }
 
