@@ -14,7 +14,7 @@ function getQueryString()
   const urlParams = new URLSearchParams(window.location.search);
   const mdt = urlParams.get('mdt')
 
-  if (mdt != null) onloadComplete(3000, mdt);
+  if (mdt != null) startSlowRefresh(3000, mdt);
 }
 
 function addScrollEventListener()
@@ -42,11 +42,13 @@ function isValidSource(md)
     return false;
 }
 
-
 function onloadComplete(ms, md)
 {
-  if (isValidSource(md))
-  {
+  if (isValidSource(md)) startSlowRefresh(ms, md);
+}
+
+function startSlowRefresh(ms, md)
+{
     switch (md)
     {
       case 'index':
@@ -67,8 +69,6 @@ function onloadComplete(ms, md)
 
     }
 
-  }
-
 }
 
 function selectMarkdownDocument(md)
@@ -77,7 +77,6 @@ function selectMarkdownDocument(md)
   {
     case 'index':
       getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
-      //getMarkdownDocument('index', 'C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\SyncIndex.html');
       break;
 
     case 'shell':
