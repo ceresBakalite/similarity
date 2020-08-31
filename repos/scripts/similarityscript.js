@@ -16,7 +16,7 @@ function getQueryString()
 
 alert(mdt);
 
-  if (mdt != null) startSlowRefresh(0, mdt);
+  if (mdt != null) selectMarkdownDocument(mdt);
 }
 
 function addScrollEventListener()
@@ -46,12 +46,8 @@ function isValidSource(md)
 
 function onloadComplete(ms, md)
 {
-  if (isValidSource(md)) startSlowRefresh(ms, md);
-}
-
-function startSlowRefresh(ms, md)
-{
-  alert(md);
+  if (isValidSource(md))
+  {
     switch (md)
     {
       case 'index':
@@ -71,6 +67,8 @@ function startSlowRefresh(ms, md)
         break;
 
     }
+
+  }
 
 }
 
