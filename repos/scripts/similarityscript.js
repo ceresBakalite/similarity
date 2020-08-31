@@ -11,7 +11,7 @@ customElements.define('include-directive', class extends HTMLElement
 
 function redirectRequest()
 {
-  let target = getURLArgs()['t'];
+  let target = getURLArgs()['mdt'];
   if (target != null) alert(target);
 
 }
@@ -19,7 +19,9 @@ function redirectRequest()
 function getUrlArgs()
 {
     let args = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value)
+    let href = decodeURI(window.location.href);
+
+    let parts = href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value)
     {
         args[key] = value;
     });
@@ -47,7 +49,7 @@ function isValidSource(md)
 {
     if (parent.document.getElementById('primary-container')) return true;
 
-    window.location.href = 'https://ceresbakalite.github.io/similarity/?t=' + md;
+    window.location.href = 'https://ceresbakalite.github.io/similarity/?mdt=' + md;
 
     return false;
 }
