@@ -28,7 +28,7 @@ function scrollEventListener()
 
 function adjustHeaderDisplay()
 {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+  if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
   {
 
     parent.document.getElementById('site-header-display').style.display = 'none';
