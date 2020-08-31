@@ -9,24 +9,12 @@ customElements.define('include-directive', class extends HTMLElement
 
 });
 
-function queryRedirect()
+function getQueryString()
 {
-  let target = getURLArgs()['mdt'];
-  if (target != null) alert(target);
+  const urlParams = new URLSearchParams(window.location.search);
+  const mdt = urlParams.get('mdt')
 
-}
-
-function getUrlArgs()
-{
-    let args = {};
-    let href = decodeURI(window.location.href);
-
-    let parts = href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value)
-    {
-        args[key] = value;
-    });
-
-    return args;
+  if (mdt != null) onloadComplete(3000, mdt);
 }
 
 function addScrollEventListener()
