@@ -47,8 +47,11 @@ function adjustHeaderDisplay()
 
 function isValidSource(md)
 {
-    if (parent.document.getElementById('primary-container')) return true;
-
+  alert('zzz');
+      if (parent.document.getElementById('primary-container')) alert('yay');
+    alert('xxx');
+      if (parent.document.getElementById('primary-container')) return true;
+  alert('ccccadsfasdfafd');
     window.location.href = 'https://ceresbakalite.github.io/similarity/?mdd=' + md;
 
     return false;
@@ -56,6 +59,7 @@ function isValidSource(md)
 
 function onloadFrameComplete(ms, md)
 {
+  alert('cccc');
   if (isValidSource(md))
   {
     scrollEventListener();
