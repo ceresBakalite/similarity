@@ -14,7 +14,9 @@ function getQueryString()
   const urlParams = new URLSearchParams(window.location.search);
   const mdt = urlParams.get('mdt')
 
-  if (mdt != null) startSlowRefresh(3000, mdt);
+alert(mdt);
+
+  if (mdt != null) startSlowRefresh(0, mdt);
 }
 
 function addScrollEventListener()
@@ -49,6 +51,7 @@ function onloadComplete(ms, md)
 
 function startSlowRefresh(ms, md)
 {
+  alert(md);
     switch (md)
     {
       case 'index':
