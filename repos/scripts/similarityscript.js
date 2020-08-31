@@ -1,3 +1,7 @@
+
+let target = getURLArgs()[t];
+if (target != null) alert(target);
+
 customElements.define('include-directive', class extends HTMLElement
 {
   async connectedCallback()
@@ -7,6 +11,17 @@ customElements.define('include-directive', class extends HTMLElement
   }
 
 });
+
+function getUrlArgs()
+{
+    let args = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value)
+    {
+        args[key] = value;
+    });
+
+    return args;
+}
 
 function addScrollEventListener()
 {
@@ -24,11 +39,11 @@ function addScrollEventListener()
 
 }
 
-function isValidSource()
+function isValidSource(md)
 {
     if (parent.document.getElementById('primary-container')) return true;
 
-    location.href = 'https://ceresbakalite.github.io/similarity/';
+    window.location.href = 'https://ceresbakalite.github.io/similarity/?t=' + md;
 
     return false;
 }
@@ -36,7 +51,7 @@ function isValidSource()
 
 function onloadComplete(ms, md)
 {
-  if (isValidSource())
+  if (isValidSource(md))
   {
     switch (md)
     {
