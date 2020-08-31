@@ -25,7 +25,7 @@ function onloadPrimary()
 
 function scrollEventListener()
 {
-  window.onscroll = function(){ adjustHeader() };
+  window.onscroll = function(){ adjustHeaderDisplay() };
 }
 
 function isValidSource(md)
@@ -117,12 +117,15 @@ function refreshMarkdown(target)
 
 }
 
-function adjustHeader()
+function adjustHeaderDisplay()
 {
   if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
   {
     // alert('site-header-slide');
     // document.getElementById('site-header-display').className = 'site-header-slide';
+    if (document.getElementById('site-header-display').style.display == 'block') document.getElementById('site-header-display').style.display = 'none';
+  } else {
+    if (document.getElementById('site-header-display').style.display == 'none') document.getElementById('site-header-display').style.display = 'block';
   }
 
 }
@@ -130,9 +133,4 @@ function adjustHeader()
 function getRandomInteger(min, max)
 {
   return Math.floor(Math.random() * (max - min) ) + min;
-}
-
-function adjustHeaderDisplay(attribute)
-{
-  document.getElementById('site-header-display').style.display = attribute;
 }
