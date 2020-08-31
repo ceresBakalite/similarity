@@ -28,7 +28,6 @@ function scrollEventListener()
 
 function adjustHeaderDisplay()
 {
-  alert('adjustHeaderDisplay');
   //if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   //{
   //  alert('site-header-slide');
