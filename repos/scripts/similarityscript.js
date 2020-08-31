@@ -30,7 +30,7 @@ function adjustHeaderDisplay()
 {
   const element = parent.document.querySelector('site-header-display');
 
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400)
   {
 
     element.classList.add('animate__animated', 'animate__fadeOutUp');
