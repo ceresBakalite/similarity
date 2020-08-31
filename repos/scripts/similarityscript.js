@@ -30,15 +30,18 @@ function adjustHeaderDisplay()
 {
   const obj = parent.document.getElementById('site-header-display');
 
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
 
-    obj.classList.add('animate__animated', 'animate__fadeOutUp');
     obj.style.display = 'none';
+    obj.classList.remove('animate__animated', 'animate__fadeOutUp');
+    obj.classList.add('animate__animated', 'animate__fadeInDown');
 
   } else {
 
     obj.style.display = 'block';
+    obj.classList.remove('animate__animated', 'animate__fadeInDown');
+    obj.classList.add('animate__animated', 'animate__fadeOutUp');
 
   }
 
