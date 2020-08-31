@@ -23,8 +23,6 @@ function onloadPrimary()
 
 function scrollEventListener()
 {
-  parent.document.getElementById('site-header-display').style.display = 'block';
-
   window.onscroll = function(){ adjustHeaderDisplay(); };
 }
 
@@ -33,17 +31,11 @@ function adjustHeaderDisplay()
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
 
-    if (parent.document.getElementById('site-header-display').style.display == 'block')
-    {
-      parent.document.getElementById('site-header-display').style.display = 'none';
-    }
+    parent.document.getElementById('site-header-display').style.display = 'none';
 
   } else {
 
-    if (parent.document.getElementById('site-header-display').style.display == 'none')
-    {
-      parent.document.getElementById('site-header-display').style.display = 'block';
-    }
+    parent.document.getElementById('site-header-display').style.display = 'block';
 
   }
 
