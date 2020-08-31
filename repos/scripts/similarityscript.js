@@ -28,16 +28,6 @@ function scrollEventListener()
   window.onscroll = function(){ adjustHeader() };
 }
 
-function adjustHeader()
-{
-  if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
-  {
-    // alert('site-header-slide');
-    // document.getElementById('site-header-display').className = 'site-header-slide';
-  }
-
-}
-
 function isValidSource(md)
 {
     if (parent.document.getElementById('primary-container')) return true;
@@ -120,14 +110,21 @@ function refreshMarkdown(target)
     document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger(10000,1000000));
 
   } else if (document.getElementsByTagName('zero-md')[0]) {
-    document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger(10000,1000000));
 
-  } else {
-    return false;
+    document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger(10000,1000000));
 
   }
 
-  return true;
+}
+
+function adjustHeader()
+{
+  if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
+  {
+    // alert('site-header-slide');
+    // document.getElementById('site-header-display').className = 'site-header-slide';
+  }
+
 }
 
 function getRandomInteger(min, max)
