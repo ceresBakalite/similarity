@@ -32,7 +32,7 @@ function adjustHeaderDisplay()
   {
     alert('sss22cccc');
 
-    if (parent.document.getElementById('site-header-display')) alert('yay');
+    if (parent.document.getElementById('site-header-display').style.display == 'block') alert('yay');
 
     alert('3333222222cccc');
 
