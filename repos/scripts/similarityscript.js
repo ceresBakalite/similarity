@@ -28,14 +28,14 @@ function scrollEventListener()
 
 function adjustHeaderDisplay()
 {
-  if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300)
   {
 
-    parent.document.getElementById('site-header-display').style.display = 'none';
+    //parent.document.getElementById('site-header-display').style.display = 'none';
 
   } else {
 
-    parent.document.getElementById('site-header-display').style.display = 'block';
+    //parent.document.getElementById('site-header-display').style.display = 'block';
 
   }
 
