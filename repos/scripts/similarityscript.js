@@ -23,6 +23,8 @@ function onloadPrimary()
 
 function scrollEventListener()
 {
+  parent.document.getElementById('site-header-display').style.display = 'block';
+
   window.onscroll = function(){ adjustHeaderDisplay(); };
 }
 
