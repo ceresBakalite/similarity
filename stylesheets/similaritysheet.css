@@ -51,7 +51,7 @@ body {
   background-size: 100% 100%;
   background-color: #0e2b15;
   padding-right:45px;
-  scroll-behavior: smooth;
+  transition: height 4s;
 }
 
 .section-body-container {
