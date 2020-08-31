@@ -28,18 +28,17 @@ function scrollEventListener()
 
 function adjustHeaderDisplay()
 {
-  const obj = parent.document.getElementById('site-header-display');
+  let el = parent.document.getElementById('site-header-display');
 
   if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25)
   {
-
-    obj.style.visibility = 'hidden';
-    //obj.style.display = 'none';
+    el.style.visibility = 'hidden';
+    //el.style.display = 'none';
 
   } else {
 
-    obj.style.visibility = 'visible';
-    //obj.style.display = 'block';
+    el.style.visibility = 'visible';
+    //el.style.display = 'block';
 
   }
 
