@@ -30,7 +30,7 @@ function adjustHeaderDisplay()
 {
   let el = parent.document.getElementById('site-header-display');
 
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300)
   {
     if (el.style.display != 'none') setTimeout(function(){ resetDisplay('none'); }, 100);
 
