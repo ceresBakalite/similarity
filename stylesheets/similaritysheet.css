@@ -78,7 +78,7 @@ body {
   display: table-row;
   box-shadow: inset 0px 11px 8px -10px rgba(0,0,0,0.19);
   position: relative;
-  z-index: 200;
+  z-index: 100;
 }
 
 .section-frame-container::after
