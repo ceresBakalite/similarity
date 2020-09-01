@@ -68,13 +68,15 @@ function onloadFrame(ms, md)
 
   function refreshMarkdown(target)
   {
+    let randomInteger = getRandomInteger());
+
     if (document.getElementById(target))
     {
-      document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger(10000,1000000));
+      document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + randomInteger);
 
     } else if (document.getElementsByTagName('zero-md')[0]) {
 
-      document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger(10000,1000000));
+      document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + randomInteger);
 
     }
 
@@ -139,7 +141,7 @@ function selectMarkdownDocument(md)
 
 }
 
-function getRandomInteger(min, max)
+function getRandomInteger(min = 10000, max = 1000000)
 {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
