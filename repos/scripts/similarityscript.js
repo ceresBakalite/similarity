@@ -54,8 +54,6 @@ function adjustHeaderDisplay()
 
     if ((datetimenow - datetime) > 2)
     {
-      if ((document.body.scrollTop > 350 || document.documentElement.scrollTop > 350) && attribute === 'block') return datetime;
-
       resetDisplay(attribute);
       return datetimenow;
     }
