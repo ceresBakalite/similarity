@@ -26,28 +26,28 @@ function scrollEventListener()
   window.onscroll = function(){ adjustHeaderDisplay(); };
 }
 
-const animateCSS = (element, animation) =>
-  // We create a Promise and return it
-  new Promise((resolve, reject) => {
-    const animationName = 'animate__' + animation;
-    const node = document.querySelector(element);
-
-    node.classList.add(`animate__animated`, animationName);
-
-    // When the animation ends, we clean the classes and resolve the Promise
-    function handleAnimationEnd() {
-      node.classList.remove(`animate__animated`, animationName);
-      node.removeEventListener('animationend', handleAnimationEnd);
-
-      resolve(element.style.display = 'block');
-    }
-
-    node.addEventListener('animationend', handleAnimationEnd);
-  });
-
 function adjustHeaderDisplay()
 {
   let el = parent.document.getElementById('site-header-display');
+
+  const animateCSS = (element, animation) =>
+    // We create a Promise and return it
+    new Promise((resolve, reject) => {
+      const animationName = 'animate__' + animation;
+      const node = document.querySelector(element);
+
+      node.classList.add(`animate__animated`, animationName);
+
+      // When the animation ends, we clean the classes and resolve the Promise
+      function handleAnimationEnd() {
+        node.classList.remove(`animate__animated`, animationName);
+        node.removeEventListener('animationend', handleAnimationEnd);
+
+        resolve(element.style.display = 'block');
+      }
+
+      node.addEventListener('animationend', handleAnimationEnd);
+    });
 
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
