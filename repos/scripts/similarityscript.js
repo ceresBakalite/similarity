@@ -37,8 +37,8 @@ function adjustHeaderDisplay()
   {
     if (el.style.display != 'none')
     {
-      let elapsed = datetime - datetimenow;
-      alert(elapsed);
+      let elapsed = datetimenow - datetime;
+
       datetime = new Date().getTime() / 1000;
 
       setTimeout(function(){ resetDisplay('none'); }, 100);
