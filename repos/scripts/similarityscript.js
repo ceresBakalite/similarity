@@ -41,6 +41,7 @@ function adjustHeaderDisplay()
   {
     el.style.display = attribute;
   }
+  
 }
 
 function isValidSource(md)
