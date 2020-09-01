@@ -53,7 +53,7 @@ function adjustHeaderDisplay()
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
 
-    animateCSS(el, 'fadeOutUp');
+    animateCSS('site-header-display', 'fadeOutUp');
 
     } else {
 
