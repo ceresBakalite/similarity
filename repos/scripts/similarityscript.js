@@ -68,16 +68,13 @@ function onloadFrame(ms, md)
 
   function refreshMarkdown(target)
   {
-    let randomInteger = getRandomInteger());
-
     if (document.getElementById(target))
     {
-      document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + randomInteger);
+      document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger());
 
     } else if (document.getElementsByTagName('zero-md')[0]) {
 
-      document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + randomInteger);
-
+      document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger());
     }
 
   }
