@@ -49,7 +49,7 @@ function handleFadeOutEnd(el) {
 
   el.classList.remove(`animate__animated`, 'animate__fadeOutUp');
   el.removeEventListener('animationend', handleFadeOutEnd);
-  el.style.display = 'none');
+  el.style.display = 'none';
 }
 
 function handleFadeInEnd(el) {
@@ -57,7 +57,7 @@ function handleFadeInEnd(el) {
 
   el.classList.remove(`animate__animated`, 'animate__fadeInDown');
   el.removeEventListener('animationend', handleFadeInEnd);
-  el.style.display = 'block');
+  el.style.display = 'block';
 }
 
 function isValidSource(md)
