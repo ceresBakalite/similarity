@@ -158,17 +158,21 @@ function setCookie(cn, cv, ex = 0)
 
 function getCookie(cn)
 {
-  let cp = cn + "=";
-  let dc = decodeURIComponent(document.cookie);
-  let ca = dc.split(';');
-
-  for(var i = 0; i < ca.length; i++)
+  if (cn != null)
   {
-     let chr = ca[i];
+    let cp = cn + "=";
+    let dc = decodeURIComponent(document.cookie);
+    let ca = dc.split(';');
 
-     while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
+    for(var i = 0; i < ca.length; i++)
+    {
+       let chr = ca[i];
 
-     if (chr != null) return chr.substring(cn.length, c.length);
+       while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
+
+       if (chr != null) return chr.substring(cn.length, c.length);
+    }
+
   }
 
   return null;
