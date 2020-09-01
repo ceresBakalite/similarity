@@ -46,6 +46,10 @@ body {
   margin: 0px 15px 0px 0px;
 }
 
+.img-logo {
+  z-index: -1;
+}
+
 .section-header-background {
   background: url(https://ceresbakalite.github.io/similarity/images/NAVBridgeViewHeaderBackground.png) no-repeat;
   background-size: 100% 100%;
