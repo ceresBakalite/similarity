@@ -23,53 +23,7 @@ function onloadPrimary()
   getQueryString();
 }
 
-function scrollEventListener()
-{
-  window.onscroll = function(){ adjustHeaderDisplay(); };
-
-  function adjustHeaderDisplay()
-  {
-    let el = parent.document.getElementById('site-header-display');
-
-    if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
-    {
-      if (el.style.display != 'none')
-      {
-        datetime = scrollDocument('none');
-      }
-
-    } else {
-
-      if (el.style.display === 'none')
-      {
-        datetime = scrollDocument('block');
-      }
-
-    }
-
-    function scrollDocument(attribute)
-    {
-      let datetimenow = new Date().getTime() / 1000;
-
-      if ((datetimenow - datetime) > 2)
-      {
-        resetDisplay(attribute);
-        return datetimenow;
-      }
-
-      return datetime;
-    }
-
-    function resetDisplay(attribute)
-    {
-      el.style.display = attribute;
-    }
-
-  }
-
-}
-
-function onloadFrameComplete(ms, md)
+function onloadFrame(ms, md)
 {
   if (isValidSource(md))
   {
@@ -104,6 +58,52 @@ function onloadFrameComplete(ms, md)
       window.location.href = 'https://ceresbakalite.github.io/similarity/?mdd=' + md;
 
       return false;
+  }
+
+  function scrollEventListener()
+  {
+    window.onscroll = function(){ adjustHeaderDisplay(); };
+
+    function adjustHeaderDisplay()
+    {
+      let el = parent.document.getElementById('site-header-display');
+
+      if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
+      {
+        if (el.style.display != 'none')
+        {
+          datetime = scrollDocument('none');
+        }
+
+      } else {
+
+        if (el.style.display === 'none')
+        {
+          datetime = scrollDocument('block');
+        }
+
+      }
+
+      function scrollDocument(attribute)
+      {
+        let datetimenow = new Date().getTime() / 1000;
+
+        if ((datetimenow - datetime) > 2)
+        {
+          resetDisplay(attribute);
+          return datetimenow;
+        }
+
+        return datetime;
+      }
+
+      function resetDisplay(attribute)
+      {
+        el.style.display = attribute;
+      }
+
+    }
+
   }
 
   function waitForMarkdown(target)
