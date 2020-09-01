@@ -31,23 +31,35 @@ function scrollEventListener()
 function adjustHeaderDisplay()
 {
   let el = parent.document.getElementById('site-header-display');
-  let datetimenow = new Date().getTime() / 1000;
 
   if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
   {
     if (el.style.display != 'none')
     {
-      let elapsed = datetimenow - datetime;
-
-      datetime = new Date().getTime() / 1000;
-
-      setTimeout(function(){ resetDisplay('none'); }, 100);
+      datetime = scrollDocument('none', 100);
     }
 
   } else {
 
-    if (el.style.display === 'none') setTimeout(function(){ resetDisplay('block'); }, 500);
+    if (el.style.display === 'none')
+    {
+      datetime = scrollDocument('block', 500);
+    }
 
+  }
+
+  function scrollDocument(attribute, ms)
+  {
+    let datetimenow = new Date().getTime() / 1000;
+    let elapsed = datetimenow - datetime;
+
+    if (elapsed > 2)
+    {
+      setTimeout(function(){ resetDisplay(attribute); }, ms);
+      return new Date().getTime() / 1000;
+    }
+
+    return datetime;
   }
 
   function resetDisplay(attribute)
