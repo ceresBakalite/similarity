@@ -22,7 +22,8 @@ function onloadPrimary()
 {
   getQueryString();
 
-  document.getElementsByTagName('meta')["refresh"].content = refreshrate * 60;
+  document.getElementsByTagName('meta')["refresh"].content = refreshrate * 600;
+  alert(document.getElementsByTagName('meta')["refresh"].content);
 }
 
 function onloadFrame(ms, md)
