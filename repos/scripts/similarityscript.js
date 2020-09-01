@@ -1,3 +1,5 @@
+const refreshrate = 10;
+
 customElements.define('include-directive', class extends HTMLElement
 {
   async connectedCallback()
@@ -19,6 +21,8 @@ function getQueryString()
 function onloadPrimary()
 {
   getQueryString();
+
+  document.getElementsByTagName('meta')["refresh"].content = refreshrate * 60;
 }
 
 function onloadFrame(ms, md)
@@ -141,7 +145,6 @@ function selectMarkdownDocument(md)
 function resetPinState()
 {
   let el = document.getElementById('pin-default');
-
   let state = (el.state == null) ? 'disabled' : el.state;
 
   if (state === 'disabled')
