@@ -88,7 +88,7 @@ function onloadFrame(ms, md)
     {
       let el = parent.document.getElementById('site-header-display');
 
-      if (window.scrollY < 350)
+      if (window.scrollY < 350 || el.style.display == null)
       {
         if (el.style.display !== 'block') resetDisplay('block');
 
