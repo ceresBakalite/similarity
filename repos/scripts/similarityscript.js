@@ -89,10 +89,14 @@ function onloadFrame(ms, md)
     function adjustHeaderDisplay()
     {
       let el = parent.document.getElementById('site-header-display');
+      let datetimenow = new Date().getTime() / 1000;
 
       if (window.scrollY < 350)
       {
         resetDisplay('block');
+        return datetimenow;
+      } else {
+        resetDisplay('none');
         return datetimenow;
       }
 
@@ -114,8 +118,6 @@ function onloadFrame(ms, md)
 
       function scrollDocument(attribute)
       {
-        let datetimenow = new Date().getTime() / 1000;
-
         if ((datetimenow - datetime) > 2)
         {
           resetDisplay(attribute);
