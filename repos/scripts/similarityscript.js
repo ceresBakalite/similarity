@@ -90,8 +90,11 @@ function onloadFrame(ms, md)
     {
       let el = parent.document.getElementById('site-header-display');
 
-//alert(window.scrollY);
-      //if (document.body.scrollTop === 0 || document.documentElement.scrollTop === 0)  datetime = scrollDocument('block');
+      if (window.scrollY < 350)
+      {
+        resetDisplay('block');
+        return datetimenow;
+      }
 
       if (window.scrollY > 350 || document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
       {
@@ -113,22 +116,11 @@ function onloadFrame(ms, md)
       {
         let datetimenow = new Date().getTime() / 1000;
 
-        if (window.scrollY < 350)
+        if ((datetimenow - datetime) > 2)
         {
-          resetDisplay('block');
+          resetDisplay(attribute);
           return datetimenow;
-
-        } else {
-
-          if ((datetimenow - datetime) > 2)
-          {
-            resetDisplay(attribute);
-            return datetimenow;
-          }
-
         }
-
-
 
         return datetime;
       }
