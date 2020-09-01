@@ -99,6 +99,7 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 }
 
 .img-logo {
+	position: relative;
   z-index: -1;
 }
 </style>
