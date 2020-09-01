@@ -81,7 +81,9 @@ function onloadFrame(ms, md)
 
   function invokeScrollEventListener()
   {
+    alert('pin1');
     let pin = parent.document.getElementById('pin-default');
+    alert('pin2');
 
 alert(pin);
     let state = (pin.state == null) ? 'disabled' : pin.state;
