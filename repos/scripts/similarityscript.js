@@ -145,12 +145,12 @@ function resetPinState()
 
   if (state === 'disabled')
   {
-      el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnable.png";
+      el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
       el.state = 'enabled';
   }
   else
   {
-      el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisable.png";
+      el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
       el.state = 'disabled';
   }
 
