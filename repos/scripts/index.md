@@ -1,6 +1,6 @@
 ## Welcome to Similarity Pattern Matching <img class="img-pointer" src="https://ceresbakalite.github.io/similarity/images/NAVLampRing.png">
 
-### *Seeking patterns of similarity between data strings*<div id="logo-container"><img id="logo-default" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png"></div>
+### *Seeking patterns of similarity between data strings*<div id="logo-container"><img id="logo-default" class="img-logo" align="right" src="https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png"></div>
 
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items.
 
@@ -51,5 +51,10 @@ On that note. Updates are automatic, but if you do wish to download the product 
   vertical-align:bottom;
   float:left;
   margin: 0px 15px 0px 0px;
+  z-index: -1;
+}
+
+.img-logo {
+  z-index: -1;
 }
 </style>
