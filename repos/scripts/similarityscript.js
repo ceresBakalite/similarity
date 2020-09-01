@@ -1,4 +1,4 @@
-const refreshrate = 10;
+const refreshMinuteRate = 10;
 
 customElements.define('include-directive', class extends HTMLElement
 {
@@ -21,9 +21,13 @@ function getQueryString()
 function onloadPrimary()
 {
   getQueryString();
+  resetMetaRefreshRate();
+}
 
-  document.getElementsByTagName('meta')["refresh"].content = refreshrate * 600;
-  alert(document.getElementsByTagName('meta')["refresh"].content);
+function resetMetaRefreshRate()
+{
+//  document.getElementsByTagName('meta')["refresh"].content = refreshMinuteRate * 60;
+//  alert(document.getElementsByTagName('meta')["refresh"].content);
 }
 
 function onloadFrame(ms, md)
@@ -31,6 +35,7 @@ function onloadFrame(ms, md)
   if (isValidSource(md))
   {
     invokeScrollEventListener();
+    resetMetaRefreshRate();
 
     switch (md)
     {
