@@ -32,11 +32,11 @@ function adjustHeaderDisplay()
 
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-    setTimeout(el.style.Display = 'none', 1000);
+    el.style.display = 'none';
 
   } else {
 
-    setTimeout(el.style.Display = 'block', 1000);
+    el.style.Display = 'block';
   }
 
 }
