@@ -166,7 +166,7 @@ function getCookie(cn)
   {
      let chr = ca[i];
 
-     while (chr.charAt(0) == ' ') chr = chr.substring(1);
+     while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
 
      if (chr != null) return chr.substring(cn.length, c.length);
   }
