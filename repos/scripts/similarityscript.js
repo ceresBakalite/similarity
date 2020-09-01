@@ -32,7 +32,6 @@ function adjustHeaderDisplay()
 
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-    el.removeEventListener('animationend');
     el.classList.add('animate__animated', 'animate__fadeOutUp');
 
     el.addEventListener('animationend', () => {
@@ -41,7 +40,6 @@ function adjustHeaderDisplay()
 
   } else {
 
-    el.removeEventListener('animationend');
     el.classList.add('animate__animated', 'animate__fadeInDown');
 
     el.addEventListener('animationend', () => {
