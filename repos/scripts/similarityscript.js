@@ -32,14 +32,15 @@ function adjustHeaderDisplay()
 
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-    setTimeout(el.style.display = 'none', 3000);
-
+    setTimeout(function(){ resetDisplay('none'); }, 3000);
   } else {
-
-    setTimeout(el.style.display = 'block', 3000);
-
+    setTimeout(function(){ resetDisplay('block'); }, 3000);
   }
 
+  function resetDisplay(attribute)
+  {
+    el.style.display = attribute;
+  }
 }
 
 function isValidSource(md)
