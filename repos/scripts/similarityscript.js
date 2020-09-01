@@ -142,3 +142,34 @@ function getRandomInteger(min = 10000, max = 1000000)
 {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
+
+function setCookie(cn, cv, ex = 0)
+{
+  if (cn != null && cv != null)
+  {
+      let dt = new Date();
+      dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
+      let expires = "expires=" + dt.toUTCString();
+
+      document.cookie = cn + "=" + cv + ";" + expires + ";path=/";
+  }
+
+}
+
+function getCookie(cn)
+{
+  let cp = cn + "=";
+  let dc = decodeURIComponent(document.cookie);
+  let ca = dc.split(';');
+
+  for(var i = 0; i < ca.length; i++)
+  {
+     let chr = ca[i];
+
+     while (chr.charAt(0) == ' ') chr = chr.substring(1);
+
+     if (chr != null) return chr.substring(cn.length, c.length);
+  }
+
+  return null;
+}
