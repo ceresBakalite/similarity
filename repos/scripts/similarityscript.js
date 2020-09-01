@@ -36,27 +36,26 @@ function adjustHeaderDisplay()
   {
     if (el.style.display != 'none')
     {
-      datetime = scrollDocument('none', 100);
+      datetime = scrollDocument('none');
     }
 
   } else {
 
     if (el.style.display === 'none')
     {
-      datetime = scrollDocument('block', 500);
+      datetime = scrollDocument('block');
     }
 
   }
 
-  function scrollDocument(attribute, ms)
+  function scrollDocument(attribute)
   {
     let datetimenow = new Date().getTime() / 1000;
-    let elapsed = datetimenow - datetime;
 
-    if (elapsed > 2)
+    if ((datetimenow - datetime) > 2)
     {
-      setTimeout(function(){ resetDisplay(attribute); }, ms);
-      return new Date().getTime() / 1000;
+      resetDisplay(attribute);
+      return datetimenow;
     }
 
     return datetime;
