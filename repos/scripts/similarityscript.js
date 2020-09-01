@@ -82,6 +82,8 @@ function onloadFrame(ms, md)
   function invokeScrollEventListener()
   {
     let pin = parent.document.getElementById('pin-default');
+
+alert(pin);
     let state = (pin.state == null) ? 'disabled' : pin.state;
 
     if (state === 'enabled')  window.onscroll = function(){ adjustHeaderDisplay(); };
