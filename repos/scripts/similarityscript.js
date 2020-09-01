@@ -32,10 +32,12 @@ function adjustHeaderDisplay()
 
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-    alert(el.style.display);
-    setTimeout(function(){ resetDisplay('none'); }, 10);
+    if (el.style.display != 'none') setTimeout(function(){ resetDisplay('none'); }, 10);
+
   } else {
-    setTimeout(function(){ resetDisplay('block'); }, 500);
+
+    if (el.style.display != 'block') setTimeout(function(){ resetDisplay('block'); }, 500);
+
   }
 
   function resetDisplay(attribute)
