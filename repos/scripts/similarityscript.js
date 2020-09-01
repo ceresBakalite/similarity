@@ -49,14 +49,14 @@ function adjustHeaderDisplay()
     test1 = true;
     el.classList.remove(`animate__animated`, 'animate__fadeOutUp');
     //el.removeEventListener('fadeoutend', handleFadeOutEnd);
-    el.style.display = 'none';
+    setTimeout(el.style.display = 'none', 1000);
   }
 
   function handleFadeInEnd() {
     test2 = true;
     el.classList.remove(`animate__animated`, 'animate__fadeInDown');
     //el.removeEventListener('fadeinend', handleFadeInEnd);
-    el.style.display = 'block';
+    setTimeout(el.style.display = 'block', 1000);
   }
 
 }
