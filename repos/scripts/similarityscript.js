@@ -34,13 +34,13 @@ function adjustHeaderDisplay()
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
     el.classList.remove('animate__animated', 'animate__fadeInDown');
-    el.style.Display = 'none';
+    setTimeout(el.style.Display = 'none', 3000);
 
   } else {
 
     el.classList.add('animate__animated', 'animate__fadeInDown');
     el.classList.reomove('animate__animated', 'animate__fadeOutUp');
-    el.style.Display = 'block';
+    setTimeout(el.style.Display = 'block', 3000);
   }
 
 }
