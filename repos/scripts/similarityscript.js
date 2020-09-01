@@ -140,21 +140,21 @@ function selectMarkdownDocument(md)
 
 function resetPinState()
 {
-  let el = document.getElementById("pin-default");
+  let el = document.getElementById('pin-default');
 
-  el.state = (el.state == null) "disabled" : el.state;
+  let state = (el.state == null) 'disabled' : el.state;
 
-  alert(el.state);
+  alert(state);
 
-  if (el.state === "disabled")
+  if (state === 'disabled')
   {
       el.src = "https://ceresbakalite.github.io/similarity/images/pinicon02.png";
-      el.state = "enabled";
+      el.state = 'enabled';
   }
   else
   {
       el.src = "https://ceresbakalite.github.io/similarity/images/pinicon01.png";
-      el.state = "disabled";
+      el.state = 'disabled';
   }
 
 }
