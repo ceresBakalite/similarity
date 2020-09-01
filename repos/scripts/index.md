@@ -56,6 +56,6 @@ On that note. Updates are automatic, but if you do wish to download the product 
 
 .img-logo {
   position: relative;
-  z-index: -1;
+  z-index: -100;
 }
 </style>
