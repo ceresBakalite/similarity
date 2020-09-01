@@ -35,6 +35,8 @@ function adjustHeaderDisplay()
     el.classList.add('animate__animated', 'animate__fadeOutUp');
     el.style.display = 'none';
 
+    el.classList.remove('animate__animated', 'animate__fadeInDown');
+    el.classList.remove('animate__animated', 'animate__fadeOutUp');
   } else {
 
     el.classList.add('animate__animated', 'animate__fadeInDown');
