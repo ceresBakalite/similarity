@@ -81,7 +81,10 @@ function onloadFrame(ms, md)
 
   function invokeScrollEventListener()
   {
-    window.onscroll = function(){ adjustHeaderDisplay(); };
+    var el = parent.document.getElementById('pin-default');
+    let state = (el.state == null) ? 'disabled' : el.state;
+
+    if (state === 'enabled')  window.onscroll = function(){ adjustHeaderDisplay(); };
 
     function adjustHeaderDisplay()
     {
