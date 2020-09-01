@@ -85,7 +85,7 @@ function onloadFrame(ms, md)
     let pin = parent.document.getElementById('pin-default');
     alert('pin2');
 
-alert(pin);
+alert(pin.state);
     let state = (pin.state == null) ? 'disabled' : pin.state;
 
     if (state === 'enabled')  window.onscroll = function(){ adjustHeaderDisplay(); };
