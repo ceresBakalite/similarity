@@ -1,5 +1,3 @@
-var datetime = new Date().getTime() / 1000;
-
 customElements.define('include-directive', class extends HTMLElement
 {
   async connectedCallback()
@@ -89,42 +87,15 @@ function onloadFrame(ms, md)
     function adjustHeaderDisplay()
     {
       let el = parent.document.getElementById('site-header-display');
-      let datetimenow = new Date().getTime() / 1000;
 
       if (window.scrollY < 350)
       {
-        resetDisplay('block');
-        return datetimenow;
-      } else {
-        resetDisplay('none');
-        return datetimenow;
-      }
-
-      if (window.scrollY > 350 || document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
-      {
-        if (el.style.display !== 'none')
-        {
-          datetime = scrollDocument('none');
-        }
+        if (el.style.display !== 'block') resetDisplay('block');
 
       } else {
 
-        if (el.style.display === 'none')
-        {
-          datetime = scrollDocument('block');
-        }
+        if (el.style.display !== 'none') resetDisplay('none');
 
-      }
-
-      function scrollDocument(attribute)
-      {
-        if ((datetimenow - datetime) > 2)
-        {
-          resetDisplay(attribute);
-          return datetimenow;
-        }
-
-        return datetime;
       }
 
       function resetDisplay(attribute)
