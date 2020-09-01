@@ -138,6 +138,25 @@ function selectMarkdownDocument(md)
 
 }
 
+function resetPinState()
+{
+  let el = document.getElementById("pin-default");
+
+  alert(el.state);
+
+  if (el.src == "https://ceresbakalite.github.io/similarity/images/pinicon01.png")
+  {
+      el.src = "https://ceresbakalite.github.io/similarity/images/pinicon02.png";
+      el.state = 2;
+  }
+  else
+  {
+      el.src = "https://ceresbakalite.github.io/similarity/images/pinicon01.png";
+      el.state = 1;
+  }
+
+}
+
 function getRandomInteger(min = 10000, max = 1000000)
 {
   return Math.floor(Math.random() * (max - min) ) + min;
