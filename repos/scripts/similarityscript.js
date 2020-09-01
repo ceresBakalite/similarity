@@ -33,27 +33,27 @@ function adjustHeaderDisplay()
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
-    el.addEventListener('animationend', handleFadeOutEnd);
+    el.addEventListener('animationend', handleFadeOutEnd(el));
 
     } else {
 
     el.classList.add('animate__animated', 'animate__fadeInDown');
-    el.addEventListener('animationend', handleFadeInEnd);
+    el.addEventListener('animationend', handleFadeInEnd(el));
 
   }
 
-  function handleFadeOutEnd() {
-    el.classList.remove(`animate__animated`, 'animate__fadeOutUp');
-    el.removeEventListener('animationend', handleFadeOutEnd);
-    el.style.display = 'none');
-  }
+}
 
-  function handleFadeInEnd() {
-    el.classList.remove(`animate__animated`, 'animate__fadeInDown');
-    el.removeEventListener('animationend', handleFadeInEnd);
-    el.style.display = 'block');
-  }
+function handleFadeOutEnd(el) {
+  el.classList.remove(`animate__animated`, 'animate__fadeOutUp');
+  el.removeEventListener('animationend', handleFadeOutEnd);
+  el.style.display = 'none');
+}
 
+function handleFadeInEnd(el) {
+  el.classList.remove(`animate__animated`, 'animate__fadeInDown');
+  el.removeEventListener('animationend', handleFadeInEnd);
+  el.style.display = 'block');
 }
 
 function isValidSource(md)
