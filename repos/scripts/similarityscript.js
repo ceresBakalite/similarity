@@ -53,9 +53,7 @@ function adjustHeaderDisplay()
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
 
-    animateCSS(el, 'fadeOutUp').then((message) => {
-      // Do something after the animation
-    });
+    animateCSS(el, 'fadeOutUp');
 
     } else {
 
