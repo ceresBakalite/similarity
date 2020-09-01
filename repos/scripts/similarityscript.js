@@ -1,5 +1,3 @@
-const refreshMinuteRate = 10;
-
 customElements.define('include-directive', class extends HTMLElement
 {
   async connectedCallback()
@@ -21,13 +19,6 @@ function getQueryString()
 function onloadPrimary()
 {
   getQueryString();
-  resetMetaRefreshRate();
-}
-
-function resetMetaRefreshRate()
-{
-//  document.getElementsByTagName('meta')["refresh"].content = refreshMinuteRate * 60;
-//  alert(document.getElementsByTagName('meta')["refresh"].content);
 }
 
 function onloadFrame(ms, md)
@@ -35,7 +26,6 @@ function onloadFrame(ms, md)
   if (isValidSource(md))
   {
     invokeScrollEventListener();
-    resetMetaRefreshRate();
 
     switch (md)
     {
@@ -155,12 +145,12 @@ function resetPinState()
 
   if (state === 'disabled')
   {
-      el.src = "https://ceresbakalite.github.io/similarity/images/pinicon02.png";
+      el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnable.png";
       el.state = 'enabled';
   }
   else
   {
-      el.src = "https://ceresbakalite.github.io/similarity/images/pinicon01.png";
+      el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisable.png";
       el.state = 'disabled';
   }
 
