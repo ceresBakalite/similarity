@@ -33,6 +33,7 @@ function adjustHeaderDisplay()
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
     el.classList.remove('animate__animated', 'animate__fadeInDown');
+    el.style.visibility = 'hidden';
     el.classList.add('animate__animated', 'animate__fadeOutUp');
     el.style.Display = 'none';
 
