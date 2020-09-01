@@ -142,6 +142,8 @@ function resetPinState()
 {
   let el = document.getElementById("pin-default");
 
+  el.state = (el.state == null) "disabled" : el.state;
+
   alert(el.state);
 
   if (el.state === "disabled")
