@@ -41,7 +41,7 @@ function adjustHeaderDisplay()
 
     el.classList.remove('animate__animated', 'animate__fadeOutUp');
     el.classList.add('animate__animated', 'animate__fadeInDown');
-    el.style.visibility = 'visible';
+    el.style.visibility = 'hidden';
   }
 
 }
