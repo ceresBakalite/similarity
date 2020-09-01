@@ -33,20 +33,24 @@ function adjustHeaderDisplay()
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
-    el.addEventListener('animationend', handleAnimationEnd);
+    el.addEventListener('animationend', handleFadeOutEnd);
 
     } else {
 
     el.classList.add('animate__animated', 'animate__fadeInDown');
+    el.addEventListener('animationend', handleFadeInEnd);
 
-
-    el.removeEventListener('animationend', ());
-    el.classList.remove('animate__animated', 'animate__fadeInDown');
   }
 
-  function handleAnimationEnd() {
+  function handleFadeOutEnd() {
     el.classList.remove(`animate__animated`, 'animate__fadeOutUp');
-    el.removeEventListener('animationend', handleAnimationEnd);
+    el.removeEventListener('animationend', handleFadeOutEnd);
+    el.style.display = 'none');
+  }
+
+  function handleFadeInEnd() {
+    el.classList.remove(`animate__animated`, 'animate__fadeInDown');
+    el.removeEventListener('animationend', handleFadeInEnd);
     el.style.display = 'block');
   }
 
