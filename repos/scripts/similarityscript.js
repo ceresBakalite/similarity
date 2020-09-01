@@ -144,15 +144,15 @@ function resetPinState()
 
   alert(el.state);
 
-  if (el.src == "https://ceresbakalite.github.io/similarity/images/pinicon01.png")
+  if (el.state === "disabled")
   {
       el.src = "https://ceresbakalite.github.io/similarity/images/pinicon02.png";
-      el.state = 2;
+      el.state = "enabled";
   }
   else
   {
       el.src = "https://ceresbakalite.github.io/similarity/images/pinicon01.png";
-      el.state = 1;
+      el.state = "disabled";
   }
 
 }
