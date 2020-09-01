@@ -30,33 +30,16 @@ function adjustHeaderDisplay()
 {
   let el = parent.document.getElementById('site-header-display');
 
-  var test1 = false;
-  var test2 = false;
-
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
-    if (!test1) el.addEventListener('fadeoutend', handleFadeOutEnd());
+    setTimeout(el.style.display = 'none', 1000);
 
     } else {
 
     el.classList.add('animate__animated', 'animate__fadeInDown');
-    if (!test2) el.addEventListener('fadeinend', handleFadeInEnd());
-
-  }
-
-  function handleFadeOutEnd() {
-    test1 = true;
-    el.classList.remove(`animate__animated`, 'animate__fadeOutUp');
-    //el.removeEventListener('fadeoutend', handleFadeOutEnd);
-    setTimeout(el.style.display = 'none', 1000);
-  }
-
-  function handleFadeInEnd() {
-    test2 = true;
-    el.classList.remove(`animate__animated`, 'animate__fadeInDown');
-    //el.removeEventListener('fadeinend', handleFadeInEnd);
     setTimeout(el.style.display = 'block', 1000);
+
   }
 
 }
