@@ -27,7 +27,7 @@ function onloadFrame(ms, md)
 {
   if (isValidSource(md))
   {
-    scrollEventListener();
+    invokeScrollEventListener();
 
     switch (md)
     {
@@ -60,13 +60,37 @@ function onloadFrame(ms, md)
       return false;
   }
 
-  function scrollEventListener()
+  function waitForMarkdown(target)
+  {
+      document.getElementById('site-footer-display').style.display = 'block';
+      document.getElementById('footer-content').style.display = 'block';
+
+      refreshMarkdown(target);
+  }
+
+  function refreshMarkdown(target)
+  {
+    if (document.getElementById(target))
+    {
+      document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger(10000,1000000));
+
+    } else if (document.getElementsByTagName('zero-md')[0]) {
+
+      document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger(10000,1000000));
+
+    }
+
+  }
+
+  function invokeScrollEventListener()
   {
     window.onscroll = function(){ adjustHeaderDisplay(); };
 
     function adjustHeaderDisplay()
     {
       let el = parent.document.getElementById('site-header-display');
+
+      if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0)  datetime = scrollDocument('block');
 
       if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
       {
@@ -101,28 +125,6 @@ function onloadFrame(ms, md)
       {
         el.style.display = attribute;
       }
-
-    }
-
-  }
-
-  function waitForMarkdown(target)
-  {
-      document.getElementById('site-footer-display').style.display = 'block';
-      document.getElementById('footer-content').style.display = 'block';
-
-      refreshMarkdown(target);
-  }
-
-  function refreshMarkdown(target)
-  {
-    if (document.getElementById(target))
-    {
-      document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger(10000,1000000));
-
-    } else if (document.getElementsByTagName('zero-md')[0]) {
-
-      document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger(10000,1000000));
 
     }
 
