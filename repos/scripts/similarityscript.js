@@ -90,7 +90,7 @@ function onloadFrame(ms, md)
     {
       let el = parent.document.getElementById('site-header-display');
 
-alert(window.scrollY);
+//alert(window.scrollY);
       //if (document.body.scrollTop === 0 || document.documentElement.scrollTop === 0)  datetime = scrollDocument('block');
 
       if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350)
