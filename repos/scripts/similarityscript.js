@@ -32,12 +32,12 @@ function adjustHeaderDisplay()
 
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
-    el.classList.add('animate__animated', 'animate__fadeOutUp');
+    el.classList.add('animate__animated', 'animate__fadeInDown');
     setTimeout(el.style.display = 'none', 3000);
 
-    } else {
+  } else {
 
-    el.classList.add('animate__animated', 'animate__fadeInDown');
+    el.classList.add('animate__animated', 'animate__fadeOutUp');
     setTimeout(el.style.display = 'block', 3000);
 
   }
