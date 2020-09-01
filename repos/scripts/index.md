@@ -55,7 +55,8 @@ On that note. Updates are automatic, but if you do wish to download the product 
 }
 
 .img-logo {
+  opacity: 0.999;
   position: relative;
-  z-index: -100;
+  z-index: -1;
 }
 </style>
