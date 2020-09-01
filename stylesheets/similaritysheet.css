@@ -47,6 +47,7 @@ body {
 }
 
 .img-logo {
+  position: relative;
   z-index: -1;
 }
 
