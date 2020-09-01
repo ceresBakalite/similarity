@@ -23,11 +23,6 @@ function onloadPrimary()
   getQueryString();
 }
 
-function scrollEventListener()
-{
-  window.onscroll = function(){ adjustHeaderDisplay(); };
-}
-
 function adjustHeaderDisplay()
 {
   let el = parent.document.getElementById('site-header-display');
@@ -68,15 +63,6 @@ function adjustHeaderDisplay()
 
 }
 
-function isValidSource(md)
-{
-    if (parent.document.getElementById('primary-container')) return true;
-
-    window.location.href = 'https://ceresbakalite.github.io/similarity/?mdd=' + md;
-
-    return false;
-}
-
 function onloadFrameComplete(ms, md)
 {
   if (isValidSource(md))
@@ -100,6 +86,50 @@ function onloadFrameComplete(ms, md)
       default:
         setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
         break;
+
+    }
+
+  }
+
+  function scrollEventListener()
+  {
+    window.onscroll = function(){ adjustHeaderDisplay(); };
+  }
+
+  function isValidSource(md)
+  {
+      if (parent.document.getElementById('primary-container')) return true;
+
+      window.location.href = 'https://ceresbakalite.github.io/similarity/?mdd=' + md;
+
+      return false;
+  }
+
+  function waitForMarkdown(target)
+  {
+      document.getElementById('site-footer-display').style.display = 'block';
+      document.getElementById('footer-content').style.display = 'block';
+
+      refreshMarkdown(target);
+  }
+
+  function refreshMarkdown(target)
+  {
+    const randomInteger = function getRandomInteger()
+    {
+      const min = 10000;
+      const max = 1000000;
+
+      return Math.floor(Math.random() * (max - min) ) + min;
+    }
+
+    if (document.getElementById(target))
+    {
+      document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + randomInteger;
+
+    } else if (document.getElementsByTagName('zero-md')[0]) {
+
+      document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + randomInteger;
 
     }
 
@@ -129,37 +159,10 @@ function selectMarkdownDocument(md)
 
   }
 
-}
-
-function getMarkdownDocument(id, target)
-{
-    document.getElementById('frame-container').setAttribute('src', target);
-    document.getElementById(id).blur();
-}
-
-function waitForMarkdown(target)
-{
-    document.getElementById('site-footer-display').style.display = 'block';
-    document.getElementById('footer-content').style.display = 'block';
-
-    refreshMarkdown(target);
-}
-
-function refreshMarkdown(target)
-{
-  if (document.getElementById(target))
+  function getMarkdownDocument(id, target)
   {
-    document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger(10000,1000000));
-
-  } else if (document.getElementsByTagName('zero-md')[0]) {
-
-    document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger(10000,1000000));
-
+      document.getElementById('frame-container').setAttribute('src', target);
+      document.getElementById(id).blur();
   }
 
-}
-
-function getRandomInteger(min, max)
-{
-  return Math.floor(Math.random() * (max - min) ) + min;
 }
