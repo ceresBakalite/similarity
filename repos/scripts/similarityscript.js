@@ -34,9 +34,10 @@ function adjustHeaderDisplay()
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
 
-    el.addEventListener('fadeup`', () => {
+    el.addEventListener('fadeup', () => {
       el.style.display = 'none';
-      el.removeEventListener("fadein", myFunction);
+      el.classList.remove('animate__animated', 'animate__fadeOutUp');
+      el.removeEventListener("fadeup");
     });
 
   } else {
@@ -46,6 +47,7 @@ function adjustHeaderDisplay()
     el.addEventListener('fadein', () => {
       el.style.display = 'block';
       el.classList.remove('animate__animated', 'animate__fadeInDown');
+      el.removeEventListener("fadein");
     });
 
   }
