@@ -51,9 +51,14 @@ body {
   background-size: 100% 100%;
   background-color: #0e2b15;
   padding-right:45px;
-  transition-delay: 4s;
+  transition-property: height;
+  transition-duration: 1s;
+  height: 210px;
 }
 
+.section-header-transition {
+  height: 70px;
+}
 .section-body-container {
   display: table;
   empty-cells: show;

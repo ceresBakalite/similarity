@@ -36,7 +36,7 @@ function adjustHeaderDisplay()
 
   } else {
 
-    if (el.style.display != 'block') setTimeout(function(){ resetDisplay('block'); }, 500);
+    if (el.style.display === 'none') setTimeout(function(){ resetDisplay('block'); }, 500);
 
   }
 
