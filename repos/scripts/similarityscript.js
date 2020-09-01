@@ -113,11 +113,22 @@ function onloadFrame(ms, md)
       {
         let datetimenow = new Date().getTime() / 1000;
 
-        if ((datetimenow - datetime) > 2)
+        if (window.scrollY < 350)
         {
-          resetDisplay(attribute);
+          resetDisplay('block');
           return datetimenow;
+
+        } else {
+
+          if ((datetimenow - datetime) > 2)
+          {
+            resetDisplay(attribute);
+            return datetimenow;
+          }
+
         }
+
+
 
         return datetime;
       }
