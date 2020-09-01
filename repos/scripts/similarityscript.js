@@ -144,8 +144,6 @@ function resetPinState()
 
   let state = (el.state == null) ? 'disabled' : el.state;
 
-  alert(state);
-
   if (state === 'disabled')
   {
       el.src = "https://ceresbakalite.github.io/similarity/images/pinicon02.png";
