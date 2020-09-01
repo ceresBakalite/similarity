@@ -73,11 +73,11 @@ body {
 }
 
 .section-frame-container {
-  position: relative;
-  z-index: 99;
+  height: 100%;
   display: table-row;
   box-shadow: inset 0px 11px 8px -10px rgba(0,0,0,0.19);
-  height: 100%;
+  position: relative;
+  z-index: 99;
 }
 
 .section-frame-container iframe {
@@ -117,4 +117,6 @@ body {
   box-shadow: 0 2px 10px 0 rgba(0,0,0,0.24), 0 2px 50px 0 rgba(0,0,0,0.19);
   background-color: #dce6f0;
   color: black;
+  position: relative;
+  z-index: 99;
 }
