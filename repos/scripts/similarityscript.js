@@ -33,13 +33,16 @@ function adjustHeaderDisplay()
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)
   {
     el.classList.add('animate__animated', 'animate__fadeOutUp');
-    el.classList.remove('animate__animated', 'animate__fadeOutUp');
-    el.style.display = 'none';
+
+    el.addEventListener('animationend', () => {
+      el.style.display = 'none';
+    });
   } else {
 
     el.classList.add('animate__animated', 'animate__fadeInDown');
     el.style.display = 'block';
 
+    el.removeEventListener('animationend', ());
     el.classList.remove('animate__animated', 'animate__fadeInDown');
   }
 
