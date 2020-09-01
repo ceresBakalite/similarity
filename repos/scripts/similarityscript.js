@@ -36,7 +36,8 @@ function adjustHeaderDisplay()
 
   } else {
 
-    el.style.Display = 'block';
+    el.style.display = 'block';
+    
   }
 
 }
