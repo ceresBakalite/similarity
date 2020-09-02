@@ -18,41 +18,31 @@ function getQueryString()
 
 function onloadPrimary()
 {
-  alert('11');
     getQueryString();
-    alert('111');
-
 }
 
 function onloadFrame(ms, md)
 {
-alert('1');
     if (isValidSource(md))
     {
-      alert('2');
         invokeScrollEventListener();
-        alert('3');
 
         switch (md)
         {
           case 'index':
-            setTimeout(function(){ waitToSyncServerUpdates('index-md'); }, ms);
+            setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
             break;
 
           case 'shell':
-            setTimeout(function(){ waitToSyncServerUpdates('shell-md'); }, ms);
+            setTimeout(function(){ waitForMarkdown('shell-md'); }, ms);
             break;
 
           case 'repos':
-            setTimeout(function(){ waitToSyncServerUpdates('repos-md'); }, ms);
-            break;
-
-          case 'slide':
-            setTimeout(function(){ waitToSyncServerUpdates(); }, ms);
+            setTimeout(function(){ waitForMarkdown('repos-md'); }, ms);
             break;
 
           default:
-            setTimeout(function(){ waitToSyncServerUpdates('index-md'); }, ms);
+            setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
             break;
 
         }
@@ -68,12 +58,12 @@ alert('1');
         return false;
     }
 
-    function waitToSyncServerUpdates(target)
+    function waitForMarkdown(target)
     {
-        if (target !- null) refreshMarkdown(target);
-
         document.getElementById('site-footer-display').style.display = 'block';
         document.getElementById('footer-content').style.display = 'block';
+
+        refreshMarkdown(target);
     }
 
     function refreshMarkdown(target)
