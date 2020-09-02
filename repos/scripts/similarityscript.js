@@ -85,7 +85,7 @@ function onloadFrame(ms, md)
 
     function adjustHeaderDisplay()
     {
-      let pin = parent.document.getElementById('pin-default');
+      let pin = document.getElementById('pin-default');
       if (pin.state == null) pin.state = 'disabled';
 
       if (pin.state === 'enabled')
