@@ -75,6 +75,7 @@ function onloadFrame(ms, md)
     } else if (document.getElementsByTagName('zero-md')[0]) {
 
       document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger());
+
     }
 
   }
@@ -87,33 +88,20 @@ function onloadFrame(ms, md)
     {
       let pin = window.top.document.getElementById('pin-default').getAttribute('state');
 
-      alert(pin);
-
       if (pin == 'disabled')
       {
-        alert('1');
         let el = parent.document.getElementById('site-header-display');
 
-        alert('2');
         if (window.scrollY < 350 || el.style.display == null)
         {
-          alert('3');
-          if (el.style.display !== 'block') resetDisplay('block');
+          if (el.style.display !== 'block') el.style.display = 'block';
 
         } else {
 
-          alert('4');
-          if (el.style.display !== 'none') resetDisplay('none');
+          if (el.style.display !== 'none') el.style.display = 'none';
 
         }
-        alert('5');
 
-      }
-      alert('6');
-
-      function resetDisplay(attribute)
-      {
-        el.style.display = attribute;
       }
 
     }
