@@ -79,11 +79,9 @@ function onloadFrame(ms, md)
 
   }
 
-  function getPinState()
+  function getPinElement()
   {
-    alert(window.name);
-    let el = (window.self == window.top) ? document.getElementById('pin-default') : window.top.document.getElementById('pin-default');
-    return el.getAttribute('state');
+    return (window.self == window.top) ? document.getElementById('pin-default') : window.top.document.getElementById('pin-default');
   }
 
   function invokeScrollEventListener()
@@ -92,7 +90,9 @@ function onloadFrame(ms, md)
 
     function adjustHeaderDisplay()
     {
-      if (getPinState()  === 'enabled')
+      let pin = getPinElemenent();
+
+      if (pin.getAttribute('state') == 'enabled')
       {
         let el = parent.document.getElementById('site-header-display');
 
@@ -151,7 +151,9 @@ function selectMarkdownDocument(md)
 
 function resetPinState()
 {
-  if (getPinState() === 'enabled')
+  let pin = getPinElemenent();
+
+  if (pin.getAttribute('state') == 'enabled')
   {
     pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
     pin.state = 'disabled';
