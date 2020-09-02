@@ -142,8 +142,10 @@ Runtime error logging
 }
 
 .img-logo {
-	width: 35%;
-	position: relative;
+  width: 35%;
+  opacity: 0.999;
+  margin: 15px 0px 15px 0px;
+  position: relative;
   z-index: -1;
 }
 </style>
