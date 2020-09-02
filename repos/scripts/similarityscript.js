@@ -81,7 +81,8 @@ function onloadFrame(ms, md)
 
   function getPinState()
   {
-    return window.top.document.getElementById('pin-default').getAttribute('state');
+    let el = (window.self === window.top) ? document.getElementById('pin-default') : window.top.document.getElementById('pin-default');
+    return el.getAttribute('state');
   }
 
   function invokeScrollEventListener()
