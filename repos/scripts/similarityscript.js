@@ -103,6 +103,10 @@ function selectMarkdownDocument(md)
           getMarkdownDocument('repos', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html');
           break;
 
+        case 'slide':
+          getMarkdownDocument('slide', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html');
+          break;
+
         default:
           getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
           break;
