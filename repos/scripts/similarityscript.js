@@ -67,22 +67,24 @@ function onloadFrame(ms, md)
         document.getElementById('site-footer-display').style.display = 'block';
         document.getElementById('footer-content').style.display = 'block';
 
-        if (target != null) WebComponents.waitFor(() => { refreshMarkdown(target); });
-
-        //if (target != null) refreshMarkdown(target);
+        WebComponents.waitFor(() => { refreshMarkdown(target); });
     }
 
     function refreshMarkdown(target)
     {
+      alert('1');
         if (document.getElementById(target))
         {
+alert('2.1');
             document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger());
 
         } else if (document.getElementsByTagName('zero-md')[0]) {
+          alert('2.2');
 
             document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger());
 
         }
+        alert('3');
 
     }
 
