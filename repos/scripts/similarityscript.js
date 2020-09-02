@@ -81,7 +81,7 @@ function onloadFrame(ms, md)
 
   function getPinState()
   {
-    let pin = (window.top != window.self) ? parent.document.getElementById('pin-default') : document.getElementById('pin-default');
+    let pin = (window.self != window.top) ? parent.document.getElementById('pin-default') : document.getElementById('pin-default');
     if (pin.state == null) pin.state = 'disabled';
 
     return pin;
