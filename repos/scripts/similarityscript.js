@@ -154,17 +154,17 @@ function selectMarkdownDocument(md)
 
 function resetPinState()
 {
-  let el = getPinState();
+  let pin = getPinState();
 
-  if (el.state === 'disabled')
+  if (pin.state === 'disabled')
   {
-      el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
-      el.state = 'enabled';
+      pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
+      pin.state = 'enabled';
   }
   else
   {
-      el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
-      el.state = 'disabled';
+      pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
+      pin.state = 'disabled';
   }
 
 }
