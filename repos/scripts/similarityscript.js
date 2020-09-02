@@ -87,12 +87,10 @@ function onloadFrame(ms, md)
     {
 alert('start');
       let pin = parent.document.getElementById('pin-default');
-      alert('pin');
-      let state = (pin.state == null) ? 'disabled' : pin.state;
-      alert('end pin start');
+      if (pin.state == null) pin.state = 'disabled';
 alert(pin.state);
 alert('end pin state');
-//      if (state === 'enabled')
+//      if (pin.state === 'enabled')
 //      {
         let el = parent.document.getElementById('site-header-display');
 
