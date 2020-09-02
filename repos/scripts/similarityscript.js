@@ -88,8 +88,8 @@ function onloadFrame(ms, md)
       let pin = parent.document.getElementById('pin-default');
       let state = (pin.state == null) ? 'disabled' : pin.state;
 
-      if (state === 'enabled')
-      {
+//      if (state === 'enabled')
+//      {
         let el = parent.document.getElementById('site-header-display');
 
         if (window.scrollY < 350 || el.style.display == null)
@@ -102,7 +102,7 @@ function onloadFrame(ms, md)
 
         }
 
-      }
+//      }
 
       function resetDisplay(attribute)
       {
