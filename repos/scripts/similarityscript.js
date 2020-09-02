@@ -62,6 +62,11 @@ function onloadFrame(ms, md)
         return false;
     }
 
+    function invokeScrollEventListener()
+    {
+        window.onscroll = function(){ adjustHeaderDisplay(); };
+    }
+
     function asyncPullRequest(target)
     {
         document.getElementById('site-footer-display').style.display = 'block';
@@ -72,21 +77,8 @@ function onloadFrame(ms, md)
 
     function refreshMarkdown(target)
     {
-        if (document.getElementById(target))
-        {
-            document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger());
-
-        } else if (document.getElementsByTagName('zero-md')[0]) {
-
-            document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger());
-
-        }
-
-    }
-
-    function invokeScrollEventListener()
-    {
-        window.onscroll = function(){ adjustHeaderDisplay(); };
+        let el = (document.getElementById(target)) ? document.getElementById(target) : document.getElementsByTagName('zero-md')[0];
+        if (el != null) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
     }
 
 }
