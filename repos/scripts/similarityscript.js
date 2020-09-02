@@ -81,7 +81,7 @@ function onloadFrame(ms, md)
 
   function getPinState()
   {
-    let el = (window.self === window.top) ? document.getElementById('pin-default') : window.top.document.getElementById('pin-default');
+    let el = (window.self == window.top) ? document.getElementById('pin-default') : window.top.document.getElementById('pin-default');
     return el.getAttribute('state');
   }
 
