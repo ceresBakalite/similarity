@@ -85,7 +85,9 @@ function onloadFrame(ms, md)
 
     function adjustHeaderDisplay()
     {
-      if (window.top.document.getElementById('pin-default').getAttribute('state') == 'disabled')
+      let pinState = window.top.document.getElementById('pin-default').getAttribute('state');
+alert(pinState);
+      if (pinState == 'disabled')
       {
         let el = parent.document.getElementById('site-header-display');
 
