@@ -79,18 +79,15 @@ function onloadFrame(ms, md)
 
   }
 
-  function getPinElement()
-  {
-    return (window.self == window.top) ? document.getElementById('pin-default') : window.top.document.getElementById('pin-default');
-  }
-
   function invokeScrollEventListener()
   {
     window.onscroll = function(){ adjustHeaderDisplay(); };
 
     function adjustHeaderDisplay()
     {
-      let pin = getPinElemenent();
+      let pin = window.top.document.getElementById('pin-default').getAttribute('state');
+
+alert('pin: ' + pin);
 
       if (pin.getAttribute('state') == 'enabled')
       {
@@ -151,20 +148,17 @@ function selectMarkdownDocument(md)
 
 function resetPinState()
 {
-  let pin = document.getElementById('pin-default');
+  let el = document.getElementById('pin-default');
 
-  alert('self: ' + document.getElementById('pin-default').getAttribute('state'));
-  //alert('top: '+ window.top.document.getElementById('pin-default').getAttribute('state'));
-
-  if (pin.getAttribute('state') == 'enabled')
+  if (el.getAttribute('state') == 'enabled')
   {
-    pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
-    pin.setAttribute('state', 'disabled');
+    el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
+    el.setAttribute('state', 'disabled');
   }
   else
   {
-    pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
-    pin.setAttribute('state', 'enabled');
+    el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
+    el.setAttribute('state', 'enabled');
   }
 
 }
