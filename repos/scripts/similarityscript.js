@@ -79,21 +79,14 @@ function onloadFrame(ms, md)
 
   }
 
-  function getPinState()
-  {
-    let pin = (window.self != window.top) ? parent.document.getElementById('pin-default') : document.getElementById('pin-default');
-    if (pin.state == null) pin.state = 'disabled';
-
-    return pin;
-  }
-
   function invokeScrollEventListener()
   {
     window.onscroll = function(){ adjustHeaderDisplay(); };
 
     function adjustHeaderDisplay()
     {
-      let pin = getPinState();
+      let pin = parent.document.getElementById('pin-default');
+      if (pin.state == null) pin.state = 'disabled';
 
       if (pin.state === 'enabled')
       {
@@ -154,7 +147,8 @@ function selectMarkdownDocument(md)
 
 function resetPinState()
 {
-  let pin = getPinState();
+  let pin = document.getElementById('pin-default');
+  if (pin.state == null) pin.state = 'disabled';
 
   if (pin.state === 'disabled')
   {
