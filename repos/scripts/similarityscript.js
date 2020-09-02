@@ -151,7 +151,10 @@ function selectMarkdownDocument(md)
 
 function resetPinState()
 {
-  let pin = getPinElemenent();
+  alert('self: '+ document.getElementById('pin-default').getAttribute('state'));
+  alert('top: '+ window.top.document.getElementById('pin-default').getAttribute('state'));
+
+  let pin = document.getElementById('pin-default');
 
   if (pin.getAttribute('state') == 'enabled')
   {
