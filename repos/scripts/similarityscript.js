@@ -72,19 +72,15 @@ function onloadFrame(ms, md)
 
     function refreshMarkdown(target)
     {
-      alert('1');
         if (document.getElementById(target))
         {
-alert('2.1');
             document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger());
 
         } else if (document.getElementsByTagName('zero-md')[0]) {
-          alert('2.2');
 
             document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger());
 
         }
-        alert('3');
 
     }
 
