@@ -81,26 +81,26 @@ function onloadFrame(ms, md)
 
   function invokeScrollEventListener()
   {
-    alert('pin1');
-    let pin = parent.document.getElementById('pin-default');
-    alert('pin2');
-
-alert(pin.state);
-    let state = (pin.state == null) ? 'disabled' : pin.state;
-
-    if (state === 'enabled')  window.onscroll = function(){ adjustHeaderDisplay(); };
+    window.onscroll = function(){ adjustHeaderDisplay(); };
 
     function adjustHeaderDisplay()
     {
-      let el = parent.document.getElementById('site-header-display');
+      let pin = parent.document.getElementById('pin-default');
+      let state = (pin.state == null) ? 'disabled' : pin.state;
 
-      if (window.scrollY < 350 || el.style.display == null)
+      if (state === 'enabled')
       {
-        if (el.style.display !== 'block') resetDisplay('block');
+        let el = parent.document.getElementById('site-header-display');
 
-      } else {
+        if (window.scrollY < 350 || el.style.display == null)
+        {
+          if (el.style.display !== 'block') resetDisplay('block');
 
-        if (el.style.display !== 'none') resetDisplay('none');
+        } else {
+
+          if (el.style.display !== 'none') resetDisplay('none');
+
+        }
 
       }
 
