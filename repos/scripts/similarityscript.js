@@ -18,14 +18,20 @@ function getQueryString()
 
 function onloadPrimary()
 {
+  alert('11');
     getQueryString();
+    alert('111');
+
 }
 
 function onloadFrame(ms, md)
 {
+alert('1');
     if (isValidSource(md))
     {
+      alert('2');
         invokeScrollEventListener();
+        alert('3');
 
         switch (md)
         {
