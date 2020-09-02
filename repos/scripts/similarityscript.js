@@ -42,7 +42,7 @@ function onloadFrame(ms, md)
             break;
 
           case 'slide':
-            setTimeout(function(){ asyncPullRequest(); }, ms);
+            setTimeout(function(){ asyncPullRequest(null); }, ms);
             break;
 
           default:

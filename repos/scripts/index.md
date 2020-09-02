@@ -48,13 +48,15 @@ On that note. Updates are automatic, but if you do wish to download the product 
 
 <style>
 .img-pointer {
+  max-width: 100%;
   vertical-align:bottom;
   float:left;
-  margin: 0px 15px 0px 0px;
+  margin: 0px 15px 15px 0px;
   z-index: -1;
 }
 
 .img-logo {
+  max-width: 100%;
   opacity: 0.999;
   position: relative;
   z-index: -1;

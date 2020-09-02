@@ -92,6 +92,7 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 
 <style>
 .img-pointer {
+	max-width: 100%;
   vertical-align:bottom;
   float:left;
   margin: 0px 15px 0px 0px;
@@ -99,6 +100,7 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 }
 
 .img-logo {
+	max-width: 100%;
 	position: relative;
   z-index: -1;
 }

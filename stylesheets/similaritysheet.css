@@ -41,12 +41,14 @@ body {
 }
 
 .img-pointer {
+  max-width: 100%;
   vertical-align:bottom;
   float:left;
   margin: 0px 15px 0px 0px;
 }
 
 .img-logo {
+  max-width: 100%;
   opacity: 0.999;
   position: relative;
   z-index: -1;
