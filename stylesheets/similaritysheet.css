@@ -48,7 +48,7 @@ body {
 }
 
 .img-logo {
-  max-width: 85%;
+  width: 35%;
   opacity: 0.999;
   position: relative;
   z-index: -1;
@@ -59,7 +59,7 @@ body {
   background-size: 100% 100%;
   background-color: #0e2b15;
   padding-right:45px;
-  padding-bottom:55px;
+  padding-bottom:45px;
   transition-property: height;
   transition-duration: 1s;
   height: 210px;

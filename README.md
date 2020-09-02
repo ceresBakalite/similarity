@@ -142,7 +142,7 @@ Runtime error logging
 }
 
 .img-logo {
-	max-width: 85%;
+	width: 35%;
 	position: relative;
   z-index: -1;
 }
