@@ -151,20 +151,20 @@ function selectMarkdownDocument(md)
 
 function resetPinState()
 {
-  alert('self: '+ document.getElementById('pin-default').getAttribute('state'));
-  alert('top: '+ window.top.document.getElementById('pin-default').getAttribute('state'));
-
   let pin = document.getElementById('pin-default');
+
+  alert('self: ' + document.getElementById('pin-default').getAttribute('state'));
+  //alert('top: '+ window.top.document.getElementById('pin-default').getAttribute('state'));
 
   if (pin.getAttribute('state') == 'enabled')
   {
     pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
-    pin.state = 'disabled';
+    pin.setAttribute('state', 'disabled');
   }
   else
   {
     pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
-    pin.state = 'enabled';
+    pin.setAttribute('state', 'enabled');
   }
 
 }
