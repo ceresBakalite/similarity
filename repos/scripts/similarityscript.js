@@ -77,8 +77,12 @@ function onloadFrame(ms, md)
 
     function refreshMarkdown(target)
     {
-        let el = (document.getElementById(target)) ? document.getElementById(target) : document.getElementsByTagName('zero-md')[0];
-        if (el != null) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
+        if (target != null)
+        {
+          let el = (document.getElementById(target)) ? document.getElementById(target) : document.getElementsByTagName('zero-md')[0];
+          if (el != null) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
+        }
+
     }
 
 }
