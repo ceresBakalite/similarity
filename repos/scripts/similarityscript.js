@@ -79,19 +79,24 @@ function onloadFrame(ms, md)
 
   }
 
+  function getPinState()
+  {
+    let pin = parent.document.getElementById('pin-default');
+    if (pin.state == null) pin.state = 'disabled';
+
+    return pin;
+  }
+
   function invokeScrollEventListener()
   {
     window.onscroll = function(){ adjustHeaderDisplay(); };
 
     function adjustHeaderDisplay()
     {
-alert('start');
-      let pin = parent.document.getElementById('pin-default');
-      if (pin.state == null) pin.state = 'disabled';
-alert(pin.state);
-alert('end pin state');
-//      if (pin.state === 'enabled')
-//      {
+      let pin = getPinState();
+
+      if (pin.state === 'enabled')
+      {
         let el = parent.document.getElementById('site-header-display');
 
         if (window.scrollY < 350 || el.style.display == null)
@@ -104,7 +109,7 @@ alert('end pin state');
 
         }
 
-//      }
+      }
 
       function resetDisplay(attribute)
       {
@@ -149,10 +154,9 @@ function selectMarkdownDocument(md)
 
 function resetPinState()
 {
-  let el = document.getElementById('pin-default');
-  let state = (el.state == null) ? 'disabled' : el.state;
+  let el = getPinState();
 
-  if (state === 'disabled')
+  if (el.state === 'disabled')
   {
       el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
       el.state = 'enabled';
