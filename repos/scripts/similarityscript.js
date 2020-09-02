@@ -80,32 +80,9 @@ function onloadFrame(ms, md)
 
     }
 
-}
-
-function invokeScrollEventListener()
-{
-    window.onscroll = function(){ adjustHeaderDisplay(); };
-
-    function adjustHeaderDisplay()
+    function invokeScrollEventListener()
     {
-        let pin = window.top.document.getElementById('pin-default').getAttribute('state');
-
-        if (pin == 'disabled')
-        {
-            let el = parent.document.getElementById('site-header-display');
-
-            if (window.scrollY < 350 || el.style.display == null)
-            {
-                if (el.style.display != 'block') el.style.display = 'block';
-
-            } else {
-
-                if (el.style.display != 'none') el.style.display = 'none';
-
-            }
-
-        }
-
+        window.onscroll = function(){ adjustHeaderDisplay(); };
     }
 
 }
@@ -140,6 +117,28 @@ function selectMarkdownDocument(md)
 
 }
 
+function adjustHeaderDisplay()
+{
+    let pin = window.top.document.getElementById('pin-default').getAttribute('state');
+
+    if (pin == 'disabled')
+    {
+        let el = parent.document.getElementById('site-header-display');
+
+        if (window.scrollY < 350 || el.style.display == null)
+        {
+            if (el.style.display != 'block') el.style.display = 'block';
+
+        } else {
+
+            if (el.style.display != 'none') el.style.display = 'none';
+
+        }
+
+    }
+
+}
+
 function resetPinState()
 {
     let el = document.getElementById('pin-default');
@@ -148,7 +147,7 @@ function resetPinState()
     {
         el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
         el.setAttribute('state', 'disabled');
-        invokeScrollEventListener();
+        adjustHeaderDisplay();
 
     } else {
 
