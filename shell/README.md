@@ -3,12 +3,11 @@
 The following notes summarise calling the Similarity application from the command line and applying arguments to invoke a variety of options available in the GUI. There have been a number of common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
 ***
 
+### Command Line FAQ
+
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
-### Command Line FAQ
-<hr style="border: none; background-color:black; height: 1px;">
-
-#### *def.* Shell (computing)
+#### Shell (computing)
 
 In computing, a shell is a user interface for access to an operating system's services. In general, operating system shells use either a command-line interface (CLI) or graphical user interface (GUI), depending on a computer's role and particular operation. It is named a shell because it is the outermost layer around the operating system.
 
