@@ -67,10 +67,7 @@ function onloadFrame(ms, md)
         document.getElementById('site-footer-display').style.display = 'block';
         document.getElementById('footer-content').style.display = 'block';
 
-        WebComponents.waitFor(() =>
-        {
-          if (target != null) refreshMarkdown(target);
-        });
+        if (target != null) WebComponents.waitFor(() => { refreshMarkdown(target); });
 
         //if (target != null) refreshMarkdown(target);
     }
