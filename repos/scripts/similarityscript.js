@@ -94,11 +94,11 @@ function onloadFrame(ms, md)
 
         if (window.scrollY < 350 || el.style.display == null)
         {
-          if (el.style.display !== 'block') el.style.display = 'block';
+          if (el.style.display != 'block') el.style.display = 'block';
 
         } else {
 
-          if (el.style.display !== 'none') el.style.display = 'none';
+          if (el.style.display != 'none') el.style.display = 'none';
 
         }
 
