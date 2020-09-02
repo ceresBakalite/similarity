@@ -48,7 +48,7 @@ body {
 }
 
 .img-logo {
-  max-width: 100%;
+  max-width: 85%;
   opacity: 0.999;
   position: relative;
   z-index: -1;

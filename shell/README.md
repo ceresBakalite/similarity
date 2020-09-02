@@ -100,7 +100,7 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 }
 
 .img-logo {
-	max-width: 100%;
+	max-width: 85%;
 	position: relative;
   z-index: -1;
 }
