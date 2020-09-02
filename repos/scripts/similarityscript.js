@@ -41,6 +41,10 @@ function onloadFrame(ms, md)
             setTimeout(function(){ waitForMarkdown('repos-md'); }, ms);
             break;
 
+          case 'slide':
+            setTimeout(function(){ waitForMarkdown(); }, ms);
+            break;
+
           default:
             setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
             break;
@@ -63,7 +67,7 @@ function onloadFrame(ms, md)
         document.getElementById('site-footer-display').style.display = 'block';
         document.getElementById('footer-content').style.display = 'block';
 
-        refreshMarkdown(target);
+        if (target != null) refreshMarkdown(target);
     }
 
     function refreshMarkdown(target)
