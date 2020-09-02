@@ -125,8 +125,8 @@ body {
 }
 
 .btn-group img {
-  float:left;
+  float:right;
   width:15px;
   height: 15px;
-  padding: 4px 0px 0px 15px;
+  padding: 4px 15px 0px 15px;
 }
