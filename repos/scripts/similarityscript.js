@@ -87,8 +87,6 @@ function onloadFrame(ms, md)
     {
       let pin = window.top.document.getElementById('pin-default').getAttribute('state');
 
-alert('pin: ' + pin);
-
       if (pin == 'disabled')
       {
         let el = parent.document.getElementById('site-header-display');
