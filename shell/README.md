@@ -5,7 +5,7 @@ The following notes summarise calling the Similarity application from the comman
 
 **Release Version v1.2.8.2b introduced command line usage to Similarity**
 
-## Command Line FAQ
+### Command Line FAQ
 
 #### Shell (computing)
 
