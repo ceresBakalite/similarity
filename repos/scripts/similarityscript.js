@@ -87,21 +87,29 @@ function onloadFrame(ms, md)
     {
       let pin = window.top.document.getElementById('pin-default').getAttribute('state');
 
+      alert(pin);
+
       if (pin == 'disabled')
       {
+        alert('1');
         let el = parent.document.getElementById('site-header-display');
 
+        alert('2');
         if (window.scrollY < 350 || el.style.display == null)
         {
+          alert('3');
           if (el.style.display !== 'block') resetDisplay('block');
 
         } else {
 
+          alert('4');
           if (el.style.display !== 'none') resetDisplay('none');
 
         }
+        alert('5');
 
       }
+      alert('6');
 
       function resetDisplay(attribute)
       {
