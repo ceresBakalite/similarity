@@ -80,27 +80,27 @@ function onloadFrame(ms, md)
 
     }
 
-    function invokeScrollEventListener()
+}
+
+function invokeScrollEventListener()
+{
+    window.onscroll = function(){ adjustHeaderDisplay(); };
+
+    function adjustHeaderDisplay()
     {
-        window.onscroll = function(){ adjustHeaderDisplay(); };
+        let pin = window.top.document.getElementById('pin-default').getAttribute('state');
 
-        function adjustHeaderDisplay()
+        if (pin == 'disabled')
         {
-            let pin = window.top.document.getElementById('pin-default').getAttribute('state');
+            let el = parent.document.getElementById('site-header-display');
 
-            if (pin == 'disabled')
+            if (window.scrollY < 350 || el.style.display == null)
             {
-                let el = parent.document.getElementById('site-header-display');
+                if (el.style.display != 'block') el.style.display = 'block';
 
-                if (window.scrollY < 350 || el.style.display == null)
-                {
-                    if (el.style.display != 'block') el.style.display = 'block';
+            } else {
 
-                } else {
-
-                    if (el.style.display != 'none') el.style.display = 'none';
-
-                }
+                if (el.style.display != 'none') el.style.display = 'none';
 
             }
 
