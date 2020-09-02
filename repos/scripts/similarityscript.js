@@ -30,19 +30,23 @@ function onloadFrame(ms, md)
         switch (md)
         {
           case 'index':
-            setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
+            setTimeout(function(){ waitToSyncServerUpdates('index-md'); }, ms);
             break;
 
           case 'shell':
-            setTimeout(function(){ waitForMarkdown('shell-md'); }, ms);
+            setTimeout(function(){ waitToSyncServerUpdates('shell-md'); }, ms);
             break;
 
           case 'repos':
-            setTimeout(function(){ waitForMarkdown('repos-md'); }, ms);
+            setTimeout(function(){ waitToSyncServerUpdates('repos-md'); }, ms);
+            break;
+
+          case 'slide':
+            setTimeout(function(){ waitToSyncServerUpdates(); }, ms);
             break;
 
           default:
-            setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
+            setTimeout(function(){ waitToSyncServerUpdates('index-md'); }, ms);
             break;
 
         }
@@ -58,12 +62,12 @@ function onloadFrame(ms, md)
         return false;
     }
 
-    function waitForMarkdown(target)
+    function waitToSyncServerUpdates(target)
     {
+        if (target !- null) refreshMarkdown(target);
+
         document.getElementById('site-footer-display').style.display = 'block';
         document.getElementById('footer-content').style.display = 'block';
-
-        refreshMarkdown(target);
     }
 
     function refreshMarkdown(target)
