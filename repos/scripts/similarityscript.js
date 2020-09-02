@@ -1,198 +1,200 @@
 customElements.define('include-directive', class extends HTMLElement
 {
-  async connectedCallback()
-  {
-    let src = this.getAttribute('src');
-    this.innerHTML = await (await fetch(src)).text();
-  }
+    async connectedCallback()
+    {
+        let src = this.getAttribute('src');
+        this.innerHTML = await (await fetch(src)).text();
+    }
 
 });
 
 function getQueryString()
 {
-  const urlParams = new URLSearchParams(window.location.search);
-  const mdd = urlParams.get('mdd')
+    const urlParams = new URLSearchParams(window.location.search);
+    const mdd = urlParams.get('mdd')
 
-  if (mdd != null) selectMarkdownDocument(mdd);
+    if (mdd != null) selectMarkdownDocument(mdd);
 }
 
 function onloadPrimary()
 {
-  getQueryString();
+    getQueryString();
 }
 
 function onloadFrame(ms, md)
 {
-  if (isValidSource(md))
-  {
-    invokeScrollEventListener();
-
-    switch (md)
+    if (isValidSource(md))
     {
-      case 'index':
-        setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
-        break;
+        invokeScrollEventListener();
 
-      case 'shell':
-        setTimeout(function(){ waitForMarkdown('shell-md'); }, ms);
-        break;
-
-      case 'repos':
-        setTimeout(function(){ waitForMarkdown('repos-md'); }, ms);
-        break;
-
-      default:
-        setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
-        break;
-
-    }
-
-  }
-
-  function isValidSource(md)
-  {
-      if (parent.document.getElementById('primary-container')) return true;
-
-      window.location.href = 'https://ceresbakalite.github.io/similarity/?mdd=' + md;
-
-      return false;
-  }
-
-  function waitForMarkdown(target)
-  {
-      document.getElementById('site-footer-display').style.display = 'block';
-      document.getElementById('footer-content').style.display = 'block';
-
-      refreshMarkdown(target);
-  }
-
-  function refreshMarkdown(target)
-  {
-    if (document.getElementById(target))
-    {
-      document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger());
-
-    } else if (document.getElementsByTagName('zero-md')[0]) {
-
-      document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger());
-
-    }
-
-  }
-
-  function invokeScrollEventListener()
-  {
-    window.onscroll = function(){ adjustHeaderDisplay(); };
-
-    function adjustHeaderDisplay()
-    {
-      let pin = window.top.document.getElementById('pin-default').getAttribute('state');
-
-      if (pin == 'disabled')
-      {
-        let el = parent.document.getElementById('site-header-display');
-
-        if (window.scrollY < 350 || el.style.display == null)
+        switch (md)
         {
-          if (el.style.display != 'block') el.style.display = 'block';
+          case 'index':
+            setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
+            break;
 
-        } else {
+          case 'shell':
+            setTimeout(function(){ waitForMarkdown('shell-md'); }, ms);
+            break;
 
-          if (el.style.display != 'none') el.style.display = 'none';
+          case 'repos':
+            setTimeout(function(){ waitForMarkdown('repos-md'); }, ms);
+            break;
+
+          default:
+            setTimeout(function(){ waitForMarkdown('index-md'); }, ms);
+            break;
 
         }
 
-      }
+    }
+
+    function isValidSource(md)
+    {
+        if (parent.document.getElementById('primary-container')) return true;
+
+        window.location.href = 'https://ceresbakalite.github.io/similarity/?mdd=' + md;
+
+        return false;
+    }
+
+    function waitForMarkdown(target)
+    {
+        document.getElementById('site-footer-display').style.display = 'block';
+        document.getElementById('footer-content').style.display = 'block';
+
+        refreshMarkdown(target);
+    }
+
+    function refreshMarkdown(target)
+    {
+        if (document.getElementById(target))
+        {
+            document.getElementById(target).setAttribute('src', document.getElementById(target).getAttribute('src') + '?' + getRandomInteger());
+
+        } else if (document.getElementsByTagName('zero-md')[0]) {
+
+            document.getElementsByTagName('zero-md')[0].setAttribute('src', document.getElementsByTagName('zero-md')[0].getAttribute('src') + '?' + getRandomInteger());
+
+        }
 
     }
 
-  }
+    function invokeScrollEventListener()
+    {
+        window.onscroll = function(){ adjustHeaderDisplay(); };
+
+        function adjustHeaderDisplay()
+        {
+            let pin = window.top.document.getElementById('pin-default').getAttribute('state');
+
+            if (pin == 'disabled')
+            {
+                let el = parent.document.getElementById('site-header-display');
+
+                if (window.scrollY < 350 || el.style.display == null)
+                {
+                    if (el.style.display != 'block') el.style.display = 'block';
+
+                } else {
+
+                    if (el.style.display != 'none') el.style.display = 'none';
+
+                }
+
+            }
+
+        }
+
+    }
 
 }
 
 function selectMarkdownDocument(md)
 {
-  switch (md)
-  {
-    case 'index':
-      getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
-      break;
+    switch (md)
+    {
+        case 'index':
+          getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
+          break;
 
-    case 'shell':
-      getMarkdownDocument('shell', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html');
-      break;
+        case 'shell':
+          getMarkdownDocument('shell', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html');
+          break;
 
-    case 'repos':
-      getMarkdownDocument('repos', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html');
-      break;
+        case 'repos':
+          getMarkdownDocument('repos', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html');
+          break;
 
-    default:
-      getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
-      break;
+        default:
+          getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
+          break;
 
-  }
+    }
 
-  function getMarkdownDocument(id, target)
-  {
-      document.getElementById('frame-container').setAttribute('src', target);
-      document.getElementById(id).blur();
-  }
+    function getMarkdownDocument(id, target)
+    {
+        document.getElementById('frame-container').setAttribute('src', target);
+        document.getElementById(id).blur();
+    }
 
 }
 
 function resetPinState()
 {
-  let el = document.getElementById('pin-default');
+    let el = document.getElementById('pin-default');
 
-  if (el.getAttribute('state') == 'enabled')
-  {
-    el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
-    el.setAttribute('state', 'disabled');
-  }
-  else
-  {
-    el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
-    el.setAttribute('state', 'enabled');
-  }
+    if (el.getAttribute('state') == 'enabled')
+    {
+        el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
+        el.setAttribute('state', 'disabled');
+        invokeScrollEventListener();
+
+    } else {
+
+        el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
+        el.setAttribute('state', 'enabled');
+
+    }
 
 }
 
 function getRandomInteger(min = 10000, max = 1000000)
 {
-  return Math.floor(Math.random() * (max - min) ) + min;
+    return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 function setCookie(cn, cv, ex = 0)
 {
-  if (cn != null && cv != null)
-  {
-      let dt = new Date();
-      dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
-      let expires = "expires=" + dt.toUTCString();
+    if (cn != null && cv != null)
+    {
+        let dt = new Date();
+        dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + dt.toUTCString();
 
-      document.cookie = cn + "=" + cv + ";" + expires + ";path=/";
-  }
+        document.cookie = cn + "=" + cv + ";" + expires + ";path=/";
+    }
 
 }
 
 function getCookie(cn)
 {
-  if (cn != null)
-  {
-    let cp = cn + "=";
-    let dc = decodeURIComponent(document.cookie);
-    let ca = dc.split(';');
-
-    for(var i = 0; i < ca.length; i++)
+    if (cn != null)
     {
-       let chr = ca[i];
+        let cp = cn + "=";
+        let dc = decodeURIComponent(document.cookie);
+        let ca = dc.split(';');
 
-       while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
+        for(var i = 0; i < ca.length; i++)
+        {
+            let chr = ca[i];
 
-       if (chr != null) return chr.substring(cn.length, c.length);
+            while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
+
+            if (chr != null) return chr.substring(cn.length, c.length);
+        }
+
     }
 
-  }
-
-  return null;
+    return null;
 }
