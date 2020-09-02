@@ -107,7 +107,6 @@ body {
   display: inline-block;
   font-size: 12px;
   cursor: pointer;
-  float: left;
   position:static;
   top: 382px;
   float:right;
@@ -123,4 +122,11 @@ body {
   background-color: #dce6f0;
   color: black;
   z-index: 99;
+}
+
+.btn-group img {
+  float:left;
+  width:15px;
+  height: 15px;
+  padding: 4px 0px 0px 15px;
 }
