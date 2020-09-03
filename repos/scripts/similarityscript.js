@@ -42,7 +42,7 @@ function onloadFrame(ms, md)
             break;
 
           case 'slide':
-            setTimeout(function(){ asyncPullRequest(null); }, ms);
+            showSlidesNoRepeat(6);
             break;
 
           default:
@@ -77,12 +77,8 @@ function onloadFrame(ms, md)
 
     function refreshMarkdown(target)
     {
-        if (target != null)
-        {
-          let el = (document.getElementById(target)) ? document.getElementById(target) : document.getElementsByTagName('zero-md')[0];
-          if (el != null) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
-        }
-
+        let el = (document.getElementById(target)) ? document.getElementById(target) : document.getElementsByTagName('zero-md')[0];
+        if (el != null) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
     }
 
 }
