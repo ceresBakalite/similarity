@@ -18,8 +18,8 @@
   position: absolute;
   top: 50%;
   width: auto;
-  margin-top: -52px;
-  padding: 16px;
+  margin-top: -22px;
+  padding: 36px;
   color: white;
   font-weight: bold;
   font-size: 18px;
@@ -36,7 +36,7 @@
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.3);
 }
 
 /* Caption text */
