@@ -1,7 +1,7 @@
 var slideIndex = 1;
 
 // Next/previous controls
-function plusSlides(n)
+function getSlide(n)
 {
   showSlidesNoRepeat(slideIndex += n);
 }
@@ -42,7 +42,7 @@ function showSlidesRepeat()
   setTimeout(showSlidesRepeat, 2000); // Change image every 2 seconds
 }
 
-function expandImage(el)
+function relocateImage(id)
 {
-    window.open(location.href = el.getAttribute('src'), '_blank');
+    window.open(location.href = document.getElementById(id).getAttribute('src'), '_blank');
 }
