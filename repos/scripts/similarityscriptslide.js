@@ -1,46 +1,59 @@
-var index = 1;
+const slideInterval = 2000;
+var slideIndex = 1;
+var slideRepeat = null;
+var slideRepeatTrigger = false;
 
 function getSlide(n)
 {
-    startSlideViewer(index += n);
+    startSlideViewer(slideIndex += n);
 }
 
 function setSlide(n)
 {
-    startSlideViewer(index = n);
+    startSlideViewer(slideIndex = n);
 }
 
 function startSlideViewer(n = 1)
 {
+    checkElapsedTime();
+
+    slideRepeatTrigger = false;
+
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
 
-    if (n > slides.length) index = 1;
+    if (n > slides.length) slideIndex = 1;
 
-    if (n < 1) index = slides.length;
+    if (n < 1) slideIndex = slides.length;
 
     for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
     for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(' active', ''); }
 
-    slides[index-1].style.display = 'block';
-    dots[index-1].className += ' active';
+    slides[slideIndex-1].style.display = 'block';
+    dots[slideIndex-1].className += ' active';
 }
 
 function startSlideViewerRepeat()
 {
+    slideRepeatTrigger = true;
+
     let slides = document.getElementsByClassName('slideview');
 
     for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
 
-    index++;
+    slideIndex++;
 
-    if (index > slides.length) index = 1;
-    slides[index-1].style.display = 'block';
+    if (slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex-1].style.display = 'block';
 
-    setTimeout(startSlideViewerRepeat, 2000); // Change image every 2 seconds
+    slideRepeat = setTimeout(startSlideViewerRepeat, slideInterval);
 }
 
 function relocateImage(el)
 {
-    window.open(el.getAttribute('src'), 'Image');
+    window.open(el.getAttribute('src'), 'image');
+}
+
+function checkElapsedTime()
+{
 }
