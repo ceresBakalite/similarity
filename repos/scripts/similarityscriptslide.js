@@ -42,12 +42,12 @@ function showSlidesRepeat()
   setTimeout(showSlidesRepeat, 2000); // Change image every 2 seconds
 }
 
-function //relocateImage(id)
+function relocateImage(id)
 {
-    window.open(location.href = document.getElementById(id).getAttribute('src'), 'Image');
+    window.open(document.getElementById(id).getAttribute('src'), 'Image');
 }
 
-function relocateImage(id) {
+function xxxrelocateImage(id) {
    var largeImage = document.getElementById(id);
    largeImage.style.display = 'block';
    largeImage.style.width=200+"px";
