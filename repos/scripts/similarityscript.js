@@ -124,22 +124,26 @@ function selectMarkdownDocument(md)
 function adjustHeaderDisplay()
 {
     let pin = window.top.document.getElementById('pin-default').getAttribute('state');
-
-alert(window.innerHeight + ' - ' + window.outerHeight);
+    let trigger = 350;
 
     if (pin == 'disabled')
     {
-        var el = parent.document.getElementById('site-header-display');
-
-        if (window.scrollY < 350 || el.style.display == null)
+        if ((window.outerHeight - window.innerHeight) > trigger)
         {
-            if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 500);
+            var el = parent.document.getElementById('site-header-display');
 
-        } else {
+            if (window.scrollY < trigger || el.style.display == null)
+            {
 
-            if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 500);
+                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 500);
 
-        }
+            } else {
+
+              if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 500);
+
+            }
+
+          }
 
     }
 
