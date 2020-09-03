@@ -124,7 +124,7 @@ function selectMarkdownDocument(md)
 function adjustHeaderDisplay()
 {
     let pin = window.top.document.getElementById('pin-default').getAttribute('state');
-    let trigger = 20;
+    let trigger = 25;
 
 //alert(window.outerHeight + ' - ' + window.innerHeight + ' == ' + (window.outerHeight - window.innerHeight) + ' : ' + window.scrollY);
 
@@ -137,11 +137,11 @@ function adjustHeaderDisplay()
             if (window.scrollY < trigger || el.style.display == null)
             {
 
-                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 100);
+                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
 
             } else {
 
-              if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 100);
+              if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
 
             }
 
