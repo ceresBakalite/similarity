@@ -42,11 +42,11 @@ function showSlidesRepeat()
   setTimeout(showSlidesRepeat, 2000); // Change image every 2 seconds
 }
 
-function expandImage()
+function expandImage(el)
 {
     let slides = document.getElementsByClassName("mySlides");
 
-    alert(slides[slideIndex].getAttribute('src'));
+    alert(el.getAttribute('src'));
 
-    window.open(location.href = slides[slideIndex].getAttribute('src'), '_blank');
+    window.open(location.href = el.getAttribute('src'), '_blank');
 }
