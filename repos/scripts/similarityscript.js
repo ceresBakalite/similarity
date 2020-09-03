@@ -64,9 +64,6 @@ function onloadFrame(ms, md)
 
     function invokeScrollEventListener()
     {
-        let el = parent.document.getElementById('site-header-display');
-        if (el.style.display == null) el.style.display = 'block';
-
         window.onscroll = function(){ adjustHeaderDisplay(); };
     }
 
@@ -128,11 +125,13 @@ function adjustHeaderDisplay()
 {
     let pin = window.top.document.getElementById('pin-default').getAttribute('state');
 
+alert(window.innerHeight);
+
     if (pin == 'disabled')
     {
         var el = parent.document.getElementById('site-header-display');
 
-        if (window.scrollY < 350)
+        if (window.scrollY < 350 || el.style.display == null)
         {
             if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 500);
 
