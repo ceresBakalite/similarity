@@ -42,7 +42,7 @@ function onloadFrame(ms, md)
             break;
 
           case 'slide':
-            showSlidesNoRepeat();
+            initialiseSlideViewer();
             break;
 
           default:
@@ -67,11 +67,21 @@ function onloadFrame(ms, md)
         window.onscroll = function(){ adjustHeaderDisplay(); };
     }
 
+    function displayFooter()
+    {
+      document.getElementById('site-footer-display').style.display = 'block';
+      document.getElementById('footer-content').style.display = 'block';
+    }
+
+    function initialiseSlideViewer(target)
+    {
+        displayFooter();
+        showSlidesNoRepeat();
+    }
+
     function asyncPullRequest(target)
     {
-        document.getElementById('site-footer-display').style.display = 'block';
-        document.getElementById('footer-content').style.display = 'block';
-
+        displayFooter();
         WebComponents.waitFor(() => { refreshMarkdown(target); });
     }
 
