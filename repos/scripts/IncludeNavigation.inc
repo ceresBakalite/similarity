@@ -3,5 +3,5 @@
   <button id="repos" class="button" title="Similarity version release notes" onclick="javascript:selectMarkdownDocument('repos')">Release Notes</button>
   <button id="index" class="button" title="Similarity" onclick="javascript:selectMarkdownDocument('index')">Home</button>
   <img id="pin-default" title="Toggle pin status" state="disabled" onclick="javascript:resetPinState();" src="https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png">
-  <img id="test-trigger" title="Test trigger" onclick="javascript:selectMarkdownDocument('slide');" width="45" src="">
+  <img id="test-trigger" title="Test trigger" onclick="javascript:selectMarkdownDocument('slide');" style="width: 45px; float: left;">
 </div>
