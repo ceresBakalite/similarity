@@ -42,7 +42,8 @@ function onloadFrame(ms, md)
             break;
 
           case 'slide':
-            initialiseSlideViewer();
+            setTimeout(function(){ initialiseSlideViewer(); }, ms);
+
             break;
 
           default:
