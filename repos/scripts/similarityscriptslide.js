@@ -44,5 +44,5 @@ function showSlidesRepeat()
 
 function relocateImage(id)
 {
-    window.open(location.href = document.getElementById(id).getAttribute('src'), '_blank');
+    window.open(location.href = document.getElementById(id).getAttribute('src'), 'Image');
 }
