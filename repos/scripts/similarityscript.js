@@ -125,7 +125,7 @@ function adjustHeaderDisplay()
 {
     let pin = window.top.document.getElementById('pin-default').getAttribute('state');
 
-alert(window.innerHeight);
+alert(window.innerHeight + ' - ' + window.outerHeight);
 
     if (pin == 'disabled')
     {
