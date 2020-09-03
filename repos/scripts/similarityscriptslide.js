@@ -55,7 +55,7 @@ function startSlideViewerRepeat()
     slideRepeat = setTimeout(startSlideViewerRepeat, slideInterval);
 }
 
-function relocateImage(el)
+function openImageTab(el)
 {
     window.open(el.getAttribute('src'), 'image');
 }
