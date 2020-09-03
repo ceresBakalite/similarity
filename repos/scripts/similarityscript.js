@@ -130,7 +130,7 @@ function adjustHeaderDisplay()
 
     if (pin == 'disabled')
     {
-        let el = parent.document.getElementById('site-header-display');
+        var el = parent.document.getElementById('site-header-display');
 
         if (window.scrollY < 350)
         {
