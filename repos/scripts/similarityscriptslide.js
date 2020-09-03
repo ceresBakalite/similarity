@@ -8,7 +8,7 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
-function showSlidesNoRepeat(n) {
+function showSlidesNoRepeat(n = 1) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
