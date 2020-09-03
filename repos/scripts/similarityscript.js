@@ -64,6 +64,9 @@ function onloadFrame(ms, md)
 
     function invokeScrollEventListener()
     {
+        let el = parent.document.getElementById('site-header-display');
+        if (el.style.display == null) el.style.display = 'block';
+        
         window.onscroll = function(){ adjustHeaderDisplay(); };
     }
 
@@ -129,7 +132,7 @@ function adjustHeaderDisplay()
     {
         let el = parent.document.getElementById('site-header-display');
 
-        if (window.scrollY < 350 || el.style.display == null)
+        if (window.scrollY < 350)
         {
             if (el.style.display != 'block') el.style.display = 'block';
 
