@@ -126,10 +126,12 @@ function adjustHeaderDisplay()
     let pin = window.top.document.getElementById('pin-default').getAttribute('state');
     let trigger = 350;
 
+alert(window.innerHeight + ' - ' + window.outerHeight);
+
     if (pin == 'disabled')
     {
-        if ((window.outerHeight - window.innerHeight) > trigger)
-        {
+//        if ((window.outerHeight - window.innerHeight) > trigger)
+//        {
             var el = parent.document.getElementById('site-header-display');
 
             if (window.scrollY < trigger || el.style.display == null)
@@ -143,7 +145,7 @@ function adjustHeaderDisplay()
 
             }
 
-          }
+//          }
 
     }
 
