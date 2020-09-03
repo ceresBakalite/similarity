@@ -10,6 +10,7 @@
 /* Hide the images by default */
 .mySlides {
   display: none;
+  cursor: pointer;
 }
 
 /* Next & previous buttons */
