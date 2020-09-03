@@ -44,8 +44,6 @@ function showSlidesRepeat()
 
 function relocateImage(el)
 {
-  alert('hello');
-  alert('hello: ' + el);
-  alert(el).getAttribute('src'));
+  alert(el.getAttribute('src'));
     window.open(el.getAttribute('src'), 'Image');
 }
