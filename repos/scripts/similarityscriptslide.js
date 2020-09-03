@@ -2,15 +2,15 @@ var index = 1;
 
 function getSlide(n)
 {
-    showSlidesNoRepeat(index += n);
+    startSlideViewer(index += n);
 }
 
 function setSlide(n)
 {
-    showSlidesNoRepeat(index = n);
+    startSlideViewer(index = n);
 }
 
-function showSlidesNoRepeat(n = 1)
+function startSlideViewer(n = 1)
 {
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
@@ -26,7 +26,7 @@ function showSlidesNoRepeat(n = 1)
     dots[index-1].className += ' active';
 }
 
-function showSlidesRepeat()
+function startSlideViewerRepeat()
 {
     let slides = document.getElementsByClassName('slideview');
 
@@ -37,7 +37,7 @@ function showSlidesRepeat()
     if (index > slides.length) index = 1;
     slides[index-1].style.display = 'block';
 
-    setTimeout(showSlidesRepeat, 2000); // Change image every 2 seconds
+    setTimeout(startSlideViewerRepeat, 2000); // Change image every 2 seconds
 }
 
 function relocateImage(el)
