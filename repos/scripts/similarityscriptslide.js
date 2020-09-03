@@ -58,4 +58,8 @@ function relocateImage(el)
 
 function checkElapsedTime()
 {
+    if (!slideRepeatTrigger)
+    {
+        // if elapsed time > slideRepeatInterval startSlideViewerRepeat
+    }
 }
