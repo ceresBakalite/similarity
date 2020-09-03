@@ -9,6 +9,8 @@ function currentSlide(n) {
 }
 
 function showSlidesNoRepeat(n = 1) {
+  alert('2');
+
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");

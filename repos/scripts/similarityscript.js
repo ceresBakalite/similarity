@@ -42,6 +42,7 @@ function onloadFrame(ms, md)
             break;
 
           case 'slide':
+          alert('1');
             showSlidesNoRepeat();
             break;
 
