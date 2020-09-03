@@ -134,11 +134,10 @@ Runtime error logging
 
 <style>
 .img-pointer {
-	max-width: 100%;
+  max-width: 100%;
   vertical-align:bottom;
   float:left;
   margin: 0px 15px 0px 0px;
-  z-index: -1;
 }
 
 .img-logo {

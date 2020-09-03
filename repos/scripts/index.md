@@ -51,8 +51,7 @@ On that note. Updates are automatic, but if you do wish to download the product 
   max-width: 100%;
   vertical-align:bottom;
   float:left;
-  margin: 0px 15px 15px 0px;
-  z-index: -1;
+  margin: 0px 15px 0px 0px;
 }
 
 .img-logo {
