@@ -134,11 +134,11 @@ function adjustHeaderDisplay()
 
         if (window.scrollY < 350)
         {
-            if (el.style.display != 'block') setStyleDisplay('block');
+            if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 500);
 
         } else {
 
-            if (el.style.display != 'none') setStyleDisplay('none');
+            if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 500);
 
         }
 
