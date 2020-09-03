@@ -45,5 +45,8 @@ function showSlidesRepeat()
 function expandImage()
 {
     let slides = document.getElementsByClassName("mySlides");
+
+    alert(slides[slideIndex-1].getAttribute('src'));
+    
     window.open(location.href = slides[slideIndex-1].getAttribute('src'), '_blank');
 }
