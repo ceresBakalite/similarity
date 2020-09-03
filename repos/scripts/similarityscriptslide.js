@@ -42,16 +42,7 @@ function showSlidesRepeat()
   setTimeout(showSlidesRepeat, 2000); // Change image every 2 seconds
 }
 
-function relocateImage(id)
+function relocateImage(el)
 {
-    window.open(document.getElementById(id).getAttribute('src'), 'Image');
-}
-
-function xxxrelocateImage(id) {
-   var largeImage = document.getElementById(id);
-   largeImage.style.display = 'block';
-   largeImage.style.width=200+"px";
-   largeImage.style.height=200+"px";
-   var url=largeImage.getAttribute('src');
-   window.open(url,'Image','width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
+    window.open(document.getElementById(el).getAttribute('src'), 'Image');
 }
