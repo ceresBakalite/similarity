@@ -126,26 +126,19 @@ function adjustHeaderDisplay()
     let pin = window.top.document.getElementById('pin-default').getAttribute('state');
     let trigger = 25;
 
-//alert(window.outerHeight + ' - ' + window.innerHeight + ' == ' + (window.outerHeight - window.innerHeight) + ' : ' + window.scrollY);
-
     if (pin == 'disabled')
     {
-//        if ((window.outerHeight - window.innerHeight) > trigger)
-//        {
-            var el = parent.document.getElementById('site-header-display');
+        var el = parent.document.getElementById('site-header-display');
 
-            if (window.scrollY < trigger || el.style.display == null)
-            {
+        if (window.scrollY < trigger || el.style.display == null)
+        {
+            if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
 
-                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
+        } else {
 
-            } else {
+            if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
 
-              if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
-
-            }
-
-//          }
+        }
 
     }
 
