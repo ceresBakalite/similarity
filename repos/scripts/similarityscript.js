@@ -66,7 +66,7 @@ function onloadFrame(ms, md)
     {
         let el = parent.document.getElementById('site-header-display');
         if (el.style.display == null) el.style.display = 'block';
-        
+
         window.onscroll = function(){ adjustHeaderDisplay(); };
     }
 
@@ -134,14 +134,19 @@ function adjustHeaderDisplay()
 
         if (window.scrollY < 350)
         {
-            if (el.style.display != 'block') el.style.display = 'block';
+            if (el.style.display != 'block') setStyleDisplay('block');
 
         } else {
 
-            if (el.style.display != 'none') el.style.display = 'none';
+            if (el.style.display != 'none') setStyleDisplay('none');
 
         }
 
+    }
+
+    function setStyleDisplay(attribute)
+    {
+      el.style.display = attribute;
     }
 
 }
