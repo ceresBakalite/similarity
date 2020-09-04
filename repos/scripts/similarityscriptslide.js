@@ -38,9 +38,9 @@ var ceres = {};
 
     slideview.buildSlideViewer = function()
     {
-        let ar = slideview.getImageList();
+        imgArray = slideview.getImageList();
 
-        for (let el = 0; el < ar.length; ++el)
+        for (let el = 0; el < imgArray.length; ++el)
         {
             alert(el);
         }
