@@ -10,7 +10,7 @@ ceresbakalite.getTimeNow = function()
     return new Date().getTime();
 };
 
-ceresbakalite.getSlide function(n)
+ceresbakalite.getSlide = function(n)
 {
     startSlideViewer(ceresbakalite.index += n);
 };
