@@ -8,7 +8,7 @@
 
 .slideview {
   display: none;
-  cursor: pointer;
+  cursor: zoom-in;
 }
 
 .prev, .next {
