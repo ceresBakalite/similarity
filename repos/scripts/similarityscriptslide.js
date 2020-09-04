@@ -1,15 +1,41 @@
 var slideview = {}
 slideview.index = 1;
 
+(function(window)
+{
+    var nextSlide function (index)
+    {
+        startSlideViewer(slideview.index += index);
+    }
+
+    var fetchSlide function (index)
+    {
+        startSlideViewer(slideview.index = index);
+    }
+
+    var slide = {
+        getSlide: function(i){
+            return nextSlide(i);
+        },
+
+        setSlide: function(i){
+            return fetchSlide(i);
+        }
+    }
+
+    window.slide = slide;
+
+})(window);
+
 function getSlide(index)
 {
     startSlideViewer(slideview.index += index);
-};
+}
 
 function setSlide(index)
 {
     startSlideViewer(slideview.index = index);
-};
+}
 
 function startSlideViewer(n)
 {
@@ -23,9 +49,9 @@ function startSlideViewer(n)
 
     slides[slideview.index-1].style.display = 'block';
     dots[slideview.index-1].className += ' active';
-};
+}
 
 function openImageTab(el)
 {
     window.open(el.getAttribute('src'), 'image');
-};
+}
