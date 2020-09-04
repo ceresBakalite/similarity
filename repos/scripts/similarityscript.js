@@ -136,23 +136,14 @@ function adjustHeaderDisplay()
     if (pin == 'disabled')
     {
         var el = parent.document.getElementById('site-header-display');
-        let cutoff = (window.outerHeight - (trigger * 2));
 
-        if (cutoff < trigger * 2)
+        if (window.scrollY < trigger || el.style.display == null)
         {
-            if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
+            if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
 
         } else {
 
-            if (window.scrollY < trigger || el.style.display == null)
-            {
-                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
-
-            } else {
-
-                if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
-
-            }
+            if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
 
         }
 
