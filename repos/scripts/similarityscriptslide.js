@@ -5,18 +5,7 @@ var ceres = {};
     var index = 1;
     var dot = true;
     var txt = true;
-
-    slideview.md = null;
-
-    customElements.define('test', class extends HTMLElement
-    {
-        async connectedCallback()
-        {
-            let src = this.getAttribute('src');
-            slideview.md = await (await fetch(src)).text();
-        }
-
-    });
+    var md = null;
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
@@ -51,9 +40,12 @@ var ceres = {};
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
-        alert(md);
+        async connectedCallback()
+        {
+            let src = el.getAttribute('src');
+            md = await (await fetch(src)).text();
+        }
 
-        return el.getAttribute('src');
         //return el.getAttribute('src').split(',');
     }
 
