@@ -5,7 +5,7 @@ ceresbakalite.slideInterval = 5000;
 ceresbakalite.slideRepeatInterval = 25000;
 ceresbakalite.slideLastSlideTime = ceresbakalite.getTimeNow();
 
-var ceresbakalite.getTimeNow = function()
+ceresbakalite.getTimeNow = function()
 {
     return new Date().getTime();
 };
