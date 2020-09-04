@@ -1,5 +1,5 @@
-const slideInterval = 5000;
-const slideRepeatInterval = 20000;
+const slideInterval = 10000;
+const slideRepeatInterval = 30000;
 
 var slideIndex = 1;
 var slideRepeat = null;
