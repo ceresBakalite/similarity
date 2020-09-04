@@ -11,13 +11,13 @@ function getTimeNow()
 
 function getSlide(n)
 {
- //   setInterval(startSlideViewer, slideInterval);
+    setInterval(startSlideViewer, slideInterval);
     startSlideViewer(slideIndex += n);
 }
 
 function setSlide(n)
 {
- //   setInterval(startSlideViewer, slideInterval);
+    setInterval(startSlideViewer, slideInterval);
     startSlideViewer(slideIndex = n);
 }
 
