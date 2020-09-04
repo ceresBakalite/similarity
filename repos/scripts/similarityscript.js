@@ -77,7 +77,7 @@ function onloadFrame(ms, md)
     function initialiseSlideViewer(target)
     {
         displayFooter();
-        startSlideViewer();
+        slideview.startSlideViewer();
     }
 
     function asyncPullRequest(target)
