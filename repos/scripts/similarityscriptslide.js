@@ -43,11 +43,8 @@ var ceres = {};
         async connectedCallback()
         {
             let src = el.getAttribute('src');
-            md = await (await fetch(src)).text();
+            return await (await fetch(src)).text();
         }
-
-alert(md);
-        return md;
         //return el.getAttribute('src').split(',');
     }
 
