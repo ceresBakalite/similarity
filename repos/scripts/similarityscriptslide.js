@@ -2,6 +2,15 @@ var ceres = {};
 (function(slideview)
 {
 
+    window.customElements.define('test', class extends HTMLElement
+    {
+        let src = this.getAttribute('src');
+        if (!this.hasAttribute('cereslist')) this.createAttribute('cereslist');
+
+        this.setAttribute('cereslist', await (await fetch(src)).text()));
+        //this.innerHTML = await (await fetch(src)).text();
+    }
+
     var index = 1;
     var dot = true;
     var txt = true;
@@ -35,24 +44,18 @@ var ceres = {};
 
     slideview.testCeresAttributes = function()
     {
+        alert('0');
         let el = (document.getElementById("test")) ? document.getElementById("test") : document.getElementsByTagName('test')[0];
 
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
 alert('1');
-
-        async connectedCallback()
-        {
-            alert('2');
-            let src = el.getAttribute('src');
-            el.innerHTML = await (await fetch(src)).text();
-            alert('3');
-        }
+        md = (el.getAttribute('cereslist')) ? el.getAttribute('cereslilst') : md;
 
         alert('4');
 
-        alert(el.innerHTML);
+        alert(el.getAttribute('cereslist'));
         //return el.getAttribute('src').split(',');
     }
 
