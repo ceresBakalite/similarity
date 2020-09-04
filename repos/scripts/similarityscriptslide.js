@@ -5,14 +5,15 @@ var ceres = {};
     var index = 1;
     var dot = true;
     var txt = true;
-    var md = null;
+
+    slideview.md = null;
 
     customElements.define('test', class extends HTMLElement
     {
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            md = await (await fetch(src)).text();
+            slideview.md = await (await fetch(src)).text();
         }
 
     });
