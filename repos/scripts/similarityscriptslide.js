@@ -1,4 +1,4 @@
-var ceresview = (function() = {}
+var ceresview = {}
 
 ceresview.index = 1;
 
