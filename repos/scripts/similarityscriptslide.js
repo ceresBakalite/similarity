@@ -1,9 +1,15 @@
 const slideInterval = 2000;
-const slideRepeatInterval = 20000;
+const slideRepeatInterval = 2000;
 
 var slideIndex = 1;
 var slideRepeat = null;
 var slideRepeatTrigger = false;
+var slideLastSlideTime = getTimeNow();
+
+function getTimeNow()
+{
+    return new Date().getTime();
+}
 
 function getSlide(n)
 {
@@ -23,9 +29,6 @@ function startSlideViewer(n = 1)
 
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
-
-    //if (n > slides.length) slideIndex = 1;
-    //if (n < 1) slideIndex = slides.length;
 
     slideIndex = (n > slides.length) ? 1 : (n < 1) ? slides.length : slideIndex;
 
@@ -65,6 +68,8 @@ function checkElapsedTime()
 {
     if (!slideRepeatTrigger)
     {
-        // if elapsed time > slideRepeatInterval startSlideViewerRepeat
+        if ((getTimeNow() - slideLastSlideTime) > slideRepeatInterval) startSlideViewerRepeat();
     }
+
+    slideLastSlideTime = getTimeNow();
 }
