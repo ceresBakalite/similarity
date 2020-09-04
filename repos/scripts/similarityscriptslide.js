@@ -31,4 +31,5 @@ var ceres = {};
         slides[index-1].style.display = 'block';
         dots[index-1].className += ' active';
     };
+
 })(ceres);
