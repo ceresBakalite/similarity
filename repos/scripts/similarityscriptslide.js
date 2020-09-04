@@ -1,22 +1,22 @@
-//var ceresview = (function()
-//{
-//    var index = 1;
+var ceresview = (function()
+{
+    var index = 1;
 
-//    return
-//    {
-//        getIndex: function()
-//        {
-//            return index++;
-//        },
+    return
+    {
+        getIndex: function()
+        {
+            return index++;
+        },
 
-//        InitialiseIndex: function()
-//        {
-//            index = 1;
-//        }
+        InitialiseIndex: function()
+        {
+            index = 1;
+        }
 
-//    };
+    };
 
-//})();
+})();
 
 slideInterval = 5000;
 slideRepeatInterval = 25000;
