@@ -25,7 +25,7 @@ function startSlideViewer(n)
     dots[slideview.index-1].className += ' active';
 }
 
-function openImageTab(el)
+slideview.openImageTab = function(el)
 {
     window.open(el.getAttribute('src'), 'image');
 }
