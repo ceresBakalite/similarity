@@ -1,43 +1,41 @@
-var bakaliteslider = new function()
+var bakaliteslider = {}
+
+bakaliteslider.slideInterval = 5000;
+bakaliteslider.slideRepeatInterval = 25000;
+
+bakaliteslider.slideIndex = 1;
+bakaliteslider.slideLastSlideTime = bakaliteslider.getTimeNow();
+
+bakaliteslider.getTimeNow = function()
 {
-    var slideInterval = 5000;
-    var slideRepeatInterval = 25000;
+    return new Date().getTime();
+};
 
-    var slideIndex = 1;
-    var slideLastSlideTime = getTimeNow();
+function getSlide(n)
+{
+    startSlideViewer(slideIndex += n);
+};
 
-    var getTimeNow = function()
-    {
-        return new Date().getTime();
-    };
+function setSlide(n)
+{
+    startSlideViewer(slideIndex = n);
+};
 
-    function getSlide(n)
-    {
-        startSlideViewer(slideIndex += n);
-    };
+function startSlideViewer(n)
+{
+    let slides = document.getElementsByClassName('slideview');
+    let dots = document.getElementsByClassName('dot');
 
-    function setSlide(n)
-    {
-        startSlideViewer(slideIndex = n);
-    };
+    bakaliteslider.slideIndex = (n < 1) ? slides.length : (n > slides.length) ? 1 : bakaliteslider.slideIndex;
 
-    function startSlideViewer(n)
-    {
-        let slides = document.getElementsByClassName('slideview');
-        let dots = document.getElementsByClassName('dot');
+    for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
+    for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(' active', ''); }
 
-        slideIndex = (n < 1) ? slides.length : (n > slides.length) ? 1 : slideIndex;
+    slides[slideIndex-1].style.display = 'block';
+    dots[slideIndex-1].className += ' active';
+};
 
-        for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
-        for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(' active', ''); }
-
-        slides[slideIndex-1].style.display = 'block';
-        dots[slideIndex-1].className += ' active';
-    };
-
-    function openImageTab(el)
-    {
-        window.open(el.getAttribute('src'), 'image');
-    };
-
+function openImageTab(el)
+{
+    window.open(el.getAttribute('src'), 'image');
 };
