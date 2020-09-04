@@ -3,19 +3,26 @@
 The following slider showcases a small number of screen views highlighting the Similarity client side application GUI.
 
 There have been a number of requests to see a preview in this forum and as such have found a placeholder here.
+
+We’ve crafted extensive data repositories including common abbreviations, acronyms, business language and even jargon, that reside in the cloud. These libraries can be enhanced, either on a user, client or global basis to target specific types of data and can be used to facilitate accurate blending of otherwise disparate data sets. Your original data content is always preserved.
+
+You can select and save from multiple preference types when defining search patterns.
+
+Phonetic matching alleviates sound pronunciation where spelling can be overlooked. Words can be created, removed and normalized automatically, all without altering your original data content. The cutoff point is simply wherever the matching comparisons found are determined to be so numerous as to be of no interest.
 ***
 
 **The views highlight the following attributes**
 
-	The command line can take zero, two or up to nine arguments. Zero arguments will launch the
-	application, whereas any argument passed to the application will return an integer representing
-	a percentage matching value
+	1. Side by side comparison
+	2. Select and confirm duplicates
+	3. Review and select abbreviations
+	4. Add or remove abbreviations
+	5. Detailed duplicate analysis
+	6. Remove rows from either pane
+	7. Automatically remove exact duplicates
+	8. Preset comparison preferences
 
-	For example:
-
-	[location]\similarity.exe "comparison one"  "comparison two"
-
-  If you wish to use the boolean parameters the only required argument other than the comparison strings is the MatchingAlgorithm attribute, otherwise the shell will not know what you are trying to do. The boolean attributes need to be in order but you don't need to use them all.  If you wish to make, for example, the fourth boolean argument (ReverseComparison) true, then you will need to let Similarity know what the preceding arguments are, otherwise it won't know which attribute you are referring to.
+These images simply represent a small subset of the application GUI.  
 
 <br>
 
