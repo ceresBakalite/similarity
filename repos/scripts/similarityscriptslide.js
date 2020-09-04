@@ -6,14 +6,14 @@ slideview.openImageTab = function(el)
     window.open(el.getAttribute('src'), 'image');
 }
 
-slideview.getSlide = function(index)
+slideview.getSlide = function(i)
 {
-    startSlideViewer(slideview.index += index);
+    slideview.startSlideViewer(slideview.index += i);
 }
 
-slideview.setSlide = function(index)
+slideview.setSlide = function(i)
 {
-    startSlideViewer(slideview.index = index);
+    slideview.startSlideViewer(slideview.index = i);
 }
 
 slideview.startSlideViewer = function(n)
