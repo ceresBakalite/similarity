@@ -1,17 +1,22 @@
 var slideview = {}
 slideview.index = 1;
 
-function getSlide(index)
+slideview.openImageTab = function(el)
 {
-    startSlideViewer(slideview.index += index);
+    window.open(el.getAttribute('src'), 'image');
 }
 
-function setSlide(index)
+slideview.getSlide = function(index)
 {
-    startSlideViewer(slideview.index = index);
+    slideview.startSlideViewer(slideview.index += index);
 }
 
-function startSlideViewer(n)
+slideview.setSlide = function(index)
+{
+    slideview.startSlideViewer(slideview.index = index);
+}
+
+slideview.startSlideViewer = function(n)
 {
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
@@ -23,9 +28,4 @@ function startSlideViewer(n)
 
     slides[slideview.index-1].style.display = 'block';
     dots[slideview.index-1].className += ' active';
-}
-
-slideview.openImageTab = function(el)
-{
-    window.open(el.getAttribute('src'), 'image');
 }
