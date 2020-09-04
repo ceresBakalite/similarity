@@ -3,7 +3,6 @@ const slideRepeatInterval = 25000;
 
 var slideIndex = 0;
 var slideLastSlideTime = getTimeNow();
-var slideRepeat = null;
 
 function getTimeNow()
 {
@@ -35,7 +34,7 @@ function startSlideViewer(n = 1)
     slides[slideIndex-1].style.display = 'block';
     dots[slideIndex-1].className += ' active';
 
-    slideRepeat = setInterval(startSlideViewer, slideInterval);
+    setInterval(startSlideViewer, slideInterval);
 }
 
 
@@ -68,7 +67,7 @@ function cancelSlideRepeat()
     slideLastSlideTime = getTimeNow();
 }
 
-function checkElapsedTime()
+function xxxcheckElapsedTime()
 {
     if ((getTimeNow() - slideLastSlideTime) > slideRepeatInterval)
     {
