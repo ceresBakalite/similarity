@@ -2,6 +2,8 @@ var ceres = {};
 (function(slideview)
 {
     var index = 1;
+    var dot = true;
+    var txt = true;
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
@@ -32,6 +34,10 @@ var ceres = {};
     slideview.getImageList = function()
     {
         let el = (document.getElementById("ceres")) ? document.getElementById("ceres") : document.getElementsByTagName('ceres')[0];
+
+        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
+        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
+
         return el.getAttribute('src').split(',');
     }
 
