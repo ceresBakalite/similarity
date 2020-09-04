@@ -23,6 +23,7 @@ function setSlide(n)
 function startSlideViewer(n = 1)
 {
     checkElapsedTime();
+    cancelSlideRepeat()
 
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
@@ -70,6 +71,4 @@ function cancelSlideRepeat()
 function checkElapsedTime()
 {
     if ((getTimeNow() - slideLastSlideTime) > slideRepeatInterval) startSlideViewerRepeat();
-
-    cancelSlideRepeat()
 }
