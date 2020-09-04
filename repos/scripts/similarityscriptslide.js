@@ -40,11 +40,17 @@ var ceres = {};
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
+alert('1');
+
         async connectedCallback()
         {
+            alert('2');
             let src = el.getAttribute('src');
             el.innerHTML = await (await fetch(src)).text();
+            alert('3');
         }
+
+        alert('4');
 
         alert(el.innerHTML);
         //return el.getAttribute('src').split(',');
