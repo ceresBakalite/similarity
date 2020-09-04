@@ -24,7 +24,7 @@ var ceres = {};
         dots[index-1].className += ' active';
     };
 
-    slideview.ceresSlideViewer = function()
+    slideview.slideViewer = function()
     {
         slideview.getImageList();
         slideview.startSlideViewer();
