@@ -33,14 +33,14 @@ var ceres = {};
     slideview.getImageList = function()
     {
         let el = (document.getElementById("ceres")) ? document.getElementById("ceres") : document.getElementsByTagName('ceres')[0];
-        imgArray = el.getAttribute('src').split(',');
+        return el.getAttribute('src').split(',');
     }
 
     slideview.buildSlideViewer = function()
     {
-        imgArray = slideview.getImageList();
+        let ar = slideview.getImageList();
 
-        for (let el = 0; el < imgArray.length; ++el)
+        for (let el = 0; el < ar.length; ++el)
         {
             alert(el);
         }
