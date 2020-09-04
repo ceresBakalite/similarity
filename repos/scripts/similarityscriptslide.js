@@ -11,17 +11,17 @@ var bakaliteslider = new function()
         return new Date().getTime();
     };
 
-    var getSlide = function(n)
+    this.getSlide = function(n)
     {
         startSlideViewer(slideIndex += n);
     };
 
-    var setSlide = function(n)
+    this.setSlide = function(n)
     {
         startSlideViewer(slideIndex = n);
     };
 
-    var.startSlideViewer = function(n)
+    this.startSlideViewer = function(n)
     {
         let slides = document.getElementsByClassName('slideview');
         let dots = document.getElementsByClassName('dot');
@@ -35,7 +35,7 @@ var bakaliteslider = new function()
         dots[slideIndex-1].className += ' active';
     };
 
-    var openImageTab = function(el)
+    this.openImageTab = function(el)
     {
         window.open(el.getAttribute('src'), 'image');
     };
