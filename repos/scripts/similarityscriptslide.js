@@ -27,7 +27,7 @@ function startSlideViewer(n = 1)
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
 
-    slideIndex = (n > slides.length) ? 1 : (n < 1) ? slides.length : slideIndex;
+    slideIndex = (n > slides.length) ? 1 : (n < 1) ? slides.length : slideIndex : slideIndex;
 
     for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
     for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(' active', ''); }
