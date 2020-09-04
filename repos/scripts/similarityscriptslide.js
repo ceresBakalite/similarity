@@ -64,7 +64,7 @@ function openImageTab(el)
 
 function cancelSlideRepeat()
 {
-    clearTimeout(slideRepeat);
+//    clearTimeout(slideRepeat);
     slideLastSlideTime = getTimeNow();
 }
 
