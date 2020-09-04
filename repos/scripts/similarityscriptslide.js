@@ -11,12 +11,12 @@
         return new Date().getTime();
     };
 
-    function getSlide(n)
+    var getSlide = function(n)
     {
         startSlideViewer(slideIndex += n);
     };
 
-    function setSlide(n)
+    var setSlide = function(n)
     {
         startSlideViewer(slideIndex = n);
     };
