@@ -22,7 +22,7 @@ function setSlide(n)
 
 function startSlideViewer(n)
 {
-    alert(ceresbakalite.slideLastSlideTime);
+    alert(ceresbakalite.getTimeNow());
 
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
