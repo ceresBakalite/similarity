@@ -1,7 +1,7 @@
 var bakaliteslider = new function()
 {
-    const slideInterval = 5000;
-    const slideRepeatInterval = 25000;
+    var slideInterval = 5000;
+    var slideRepeatInterval = 25000;
 
     var slideIndex = 1;
     var slideLastSlideTime = getTimeNow();
