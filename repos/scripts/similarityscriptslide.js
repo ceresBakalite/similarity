@@ -31,7 +31,7 @@ var ceres = {};
         slideview.startSlideViewer();
     }
 
-    slideview.getImageList = function()
+    slideview.getCeresAttributes = function()
     {
         let el = (document.getElementById("ceres")) ? document.getElementById("ceres") : document.getElementsByTagName('ceres')[0];
 
@@ -43,11 +43,13 @@ var ceres = {};
 
     slideview.buildSlideViewer = function()
     {
-        let ar = slideview.getImageList();
+        let ar = slideview.getCeresAttributes();
+
+        alert(dot + ' - ' + txt);
 
         for (let el = 0; el < ar.length; ++el)
         {
-            //alert(ar[el].trim());
+            alert(ar[el].trim());
         }
 
     }
