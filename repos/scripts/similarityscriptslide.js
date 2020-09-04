@@ -25,6 +25,12 @@ function setSlide(n)
 
 function startSlideViewer(n)
 {
+    alert(ceresview.index);
+
+    ceresview.index++;
+
+    alert(ceresview.index);
+
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
 
