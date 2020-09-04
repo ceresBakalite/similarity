@@ -9,11 +9,6 @@ var ceresview = (function()
             return index++;
         },
 
-//        SetIndex: function(i)
-//        {
-//            index = i;
-//        }
-
         InitialiseIndex: function()
         {
             index = 1;
