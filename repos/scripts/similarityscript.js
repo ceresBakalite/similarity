@@ -77,7 +77,7 @@ function onloadFrame(ms, md)
     function initialiseSlideViewer(target)
     {
         displayFooter();
-        bakaliteslider.startSlideViewer();
+        startSlideViewer();
     }
 
     function asyncPullRequest(target)
