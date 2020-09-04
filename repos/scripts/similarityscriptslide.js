@@ -38,6 +38,8 @@ function startSlideViewer(n = 1)
 
     slides[slideIndex-1].style.display = 'block';
     dots[slideIndex-1].className += ' active';
+
+    slideRepeat = setTimeout(startSlideViewerRepeat, slideInterval);
 }
 
 function startSlideViewerRepeat()
@@ -65,7 +67,7 @@ function openImageTab(el)
 
 function cancelSlideRepeat()
 {
-    //clearTimeout(slideRepeat);
+    clearTimeout(slideRepeat);
     slideLastSlideTime = getTimeNow();
 }
 
