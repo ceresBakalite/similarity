@@ -1,39 +1,43 @@
-const slideInterval = 5000;
-const slideRepeatInterval = 25000;
-
-var slideIndex = 1;
-var slideLastSlideTime = getTimeNow();
-
-function getTimeNow()
+var bakaliteslider = new function()
 {
-    return new Date().getTime();
-}
+    const slideInterval = 5000;
+    const slideRepeatInterval = 25000;
 
-function getSlide(n)
-{
-    startSlideViewer(slideIndex += n);
-}
+    var slideIndex = 1;
+    var slideLastSlideTime = getTimeNow();
 
-function setSlide(n)
-{
-    startSlideViewer(slideIndex = n);
-}
+    var getTimeNow = function()
+    {
+        return new Date().getTime();
+    };
 
-function startSlideViewer(n)
-{
-    let slides = document.getElementsByClassName('slideview');
-    let dots = document.getElementsByClassName('dot');
+    var getSlide = function(n)
+    {
+        startSlideViewer(slideIndex += n);
+    };
 
-    slideIndex = (n < 1) ? slides.length : (n > slides.length) ? 1 : slideIndex;
+    var setSlide = function(n)
+    {
+        startSlideViewer(slideIndex = n);
+    };
 
-    for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
-    for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(' active', ''); }
+    var.startSlideViewer = function(n)
+    {
+        let slides = document.getElementsByClassName('slideview');
+        let dots = document.getElementsByClassName('dot');
 
-    slides[slideIndex-1].style.display = 'block';
-    dots[slideIndex-1].className += ' active';
-}
+        slideIndex = (n < 1) ? slides.length : (n > slides.length) ? 1 : slideIndex;
 
-function openImageTab(el)
-{
-    window.open(el.getAttribute('src'), 'image');
-}
+        for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
+        for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(' active', ''); }
+
+        slides[slideIndex-1].style.display = 'block';
+        dots[slideIndex-1].className += ' active';
+    };
+
+    var openImageTab = function(el)
+    {
+        window.open(el.getAttribute('src'), 'image');
+    };
+
+};
