@@ -1,5 +1,5 @@
-var bakaliteslider = new function()
-{
+//var bakaliteslider = new function()
+//{
     var slideInterval = 5000;
     var slideRepeatInterval = 25000;
 
@@ -11,17 +11,17 @@ var bakaliteslider = new function()
         return new Date().getTime();
     };
 
-    this.getSlide = function(n)
+    var getSlide = function(n)
     {
         startSlideViewer(slideIndex += n);
     };
 
-    this.setSlide = function(n)
+    var setSlide = function(n)
     {
         startSlideViewer(slideIndex = n);
     };
 
-    this.startSlideViewer = function(n)
+    var startSlideViewer = function(n)
     {
         let slides = document.getElementsByClassName('slideview');
         let dots = document.getElementsByClassName('dot');
@@ -35,9 +35,9 @@ var bakaliteslider = new function()
         dots[slideIndex-1].className += ' active';
     };
 
-    this.openImageTab = function(el)
+    var openImageTab = function(el)
     {
         window.open(el.getAttribute('src'), 'image');
     };
 
-};
+//};
