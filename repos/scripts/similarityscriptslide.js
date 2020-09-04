@@ -32,4 +32,4 @@ var ceres = {};
         dots[index-1].className += ' active';
     };
 
-})(this);
+})(ceres);
