@@ -4,8 +4,6 @@ var ceres = {};
     var index = 1;
     var listArray = null;
 
-    slideview.getImageList();
-
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
     slideview.getSlide = function(i) { slideview.startSlideViewer(index += i); };
@@ -26,6 +24,12 @@ var ceres = {};
         dots[index-1].className += ' active';
     };
 
+    slideview.ceresSlideViewer = function()
+    {
+        slideview.getImageList();
+        slideview.startSlideViewer();
+    }
+
     slideview.getImageList = function()
     {
         alert('1');
@@ -33,6 +37,7 @@ var ceres = {};
         alert('2');
         listArray = el.getAttribute('src').split(',');
         alert('listArray: ' + listArray.length);
+        slideview.startSlideViewer();
     }
 
 })(ceres);
