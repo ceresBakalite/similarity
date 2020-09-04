@@ -136,7 +136,7 @@ function adjustHeaderDisplay()
     if (pin == 'disabled')
     {
         var el = parent.document.getElementById('site-header-display');
-        let cutoff = window.outerHeight - ((window.innerHeight + trigger) * 2);
+        let cutoff = (window.outerHeight - (trigger * 2));
 
         if (cutoff < trigger * 2)
         {
