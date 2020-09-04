@@ -2,12 +2,9 @@ var ceres = {};
 (function(slideview)
 {
     var index = 1;
-    alert('0');
+    var listArray = null;
 
-    var listArray = slideview.getImageList();
-    alert('3');
-
-    alert(listArray.length);
+    slideview.getImageList();
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
@@ -34,7 +31,8 @@ var ceres = {};
         alert('1');
         let el = (document.getElementById("ceres")) ? document.getElementById("ceres") : document.getElementsByTagName('ceres')[0];
         alert('2');
-        return el.getAttribute('src').split(',');
+        listArray = el.getAttribute('src').split(',');
+        alert('listArray: ' + listArray.length);
     }
 
 })(ceres);
