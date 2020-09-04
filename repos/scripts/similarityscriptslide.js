@@ -43,8 +43,10 @@ var ceres = {};
         async connectedCallback()
         {
             let src = el.getAttribute('src');
-            return await (await fetch(src)).text();
+            el.innerHTML = await (await fetch(src)).text();
         }
+
+        alert(el.innerHTML);
         //return el.getAttribute('src').split(',');
     }
 
@@ -60,9 +62,7 @@ var ceres = {};
 
     slideview.buildSlideViewer = function()
     {
-        let test = slideview.testCeresAttributes();
-
-alert(test);
+        slideview.testCeresAttributes();
 
         let ar = slideview.getCeresAttributes();
 
