@@ -1,5 +1,5 @@
-//var bakaliteslider = new function()
-//{
+var bakaliteslider = new function()
+{
     var slideInterval = 5000;
     var slideRepeatInterval = 25000;
 
@@ -40,4 +40,4 @@
         window.open(el.getAttribute('src'), 'image');
     };
 
-//};
+};
