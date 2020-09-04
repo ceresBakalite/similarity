@@ -135,8 +135,7 @@ function adjustHeaderDisplay()
 
     if (pin == 'disabled')
     {
-        //alert((window.outerHeight - window.innerHeight - window.scrollY) + ' - ' + trigger);
-        alert(window.outerHeight - (window.innerHeight + trigger));
+        alert((window.outerHeight - ((window.innerHeight + trigger) * 2)));
 
         var el = parent.document.getElementById('site-header-display');
 
