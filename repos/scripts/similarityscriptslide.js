@@ -1,5 +1,5 @@
-const slideInterval = 2000;
-const slideRepeatInterval = 10000;
+const slideInterval = 5000;
+const slideRepeatInterval = 25000;
 
 var slideIndex = 0;
 var slideLastSlideTime = getTimeNow();
