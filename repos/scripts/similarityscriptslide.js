@@ -8,7 +8,6 @@ slideview.openImageTab = function(el)
 
 slideview.getSlide = function(i)
 {
-    alert('hello');
     slideview.startSlideViewer(slideview.index += i);
 }
 
@@ -19,7 +18,6 @@ slideview.setSlide = function(i)
 
 slideview.startSlideViewer = function(n)
 {
-    alert('hello');
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
 
