@@ -46,6 +46,8 @@ var ceres = {};
             md = await (await fetch(src)).text();
         }
 
+alert(md);
+        return md;
         //return el.getAttribute('src').split(',');
     }
 
