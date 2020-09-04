@@ -4,7 +4,7 @@ customElements.define('ceres-directive', class extends HTMLElement
     if (!this.hasAttribute('lst')) this.createAttribute('lst');
 
     let lst = await (await fetch(src)).text();
-    this.setAttribute('cvl', lst);
+    this.setAttribute('lst', lst);
 }
 
 var ceres = {};
