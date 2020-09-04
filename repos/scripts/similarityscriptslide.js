@@ -4,6 +4,7 @@ var ceres = {};
     var index = 1;
 
     var listArray = slideview.getImageList();
+    alert('3');
 
     alert(listArray.length);
 
@@ -29,7 +30,9 @@ var ceres = {};
 
     slideview.getImageList = function()
     {
+        alert('1');
         let el = (document.getElementById("ceres")) ? document.getElementById("ceres") : document.getElementsByTagName('ceres')[0];
+        alert('2');
         return el.getAttribute('src').split(',');
     }
 
