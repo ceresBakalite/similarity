@@ -1,23 +1,14 @@
 var ceresbakalite = {}
-
 ceresbakalite.index = 1;
-ceresbakalite.slideInterval = 5000;
-ceresbakalite.slideRepeatInterval = 25000;
-ceresbakalite.slideLastSlideTime = ceresbakalite.getTimeNow();
 
-ceresbakalite.getTimeNow = function()
+function getSlide(index)
 {
-    return new Date().getTime();
+    startSlideViewer(ceresbakalite.index += index);
 };
 
-ceresbakalite.getSlide = function(n)
+function setSlide(index)
 {
-    startSlideViewer(ceresbakalite.index += n);
-};
-
-function setSlide(n)
-{
-    startSlideViewer(ceresbakalite.index = n);
+    startSlideViewer(ceresbakalite.index = index);
 };
 
 function startSlideViewer(n)
