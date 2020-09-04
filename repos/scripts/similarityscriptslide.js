@@ -31,6 +31,17 @@ var ceres = {};
         slideview.startSlideViewer();
     }
 
+    slideview.testCeresAttributes = function()
+    {
+        let el = (document.getElementById("test")) ? document.getElementById("test") : document.getElementsByTagName('test')[0];
+
+        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
+        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
+
+        return el.getAttribute('src');
+        //return el.getAttribute('src').split(',');
+    }
+
     slideview.getCeresAttributes = function()
     {
         let el = (document.getElementById("ceres")) ? document.getElementById("ceres") : document.getElementsByTagName('ceres')[0];
@@ -43,6 +54,10 @@ var ceres = {};
 
     slideview.buildSlideViewer = function()
     {
+        let test = slideview.testCeresAttributes();
+
+alert(test);
+
         let ar = slideview.getCeresAttributes();
 
         for (let el = 0; el < ar.length; ++el)
