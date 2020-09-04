@@ -3,6 +3,10 @@ var ceres = {};
 {
     var index = 1;
 
+    var listArray = slideview.getImageList();
+
+    alert(listArray.length);
+
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
     slideview.getSlide = function(i) { slideview.startSlideViewer(index += i); };
@@ -22,5 +26,11 @@ var ceres = {};
         slides[index-1].style.display = 'block';
         dots[index-1].className += ' active';
     };
+
+    slideview.getImageList = function()
+    {
+        let el = (document.getElementById("ceres")) ? document.getElementById("ceres") : document.getElementsByTagName('ceres')[0];
+        return el.getAttribute('src').split(',');
+    }
 
 })(ceres);
