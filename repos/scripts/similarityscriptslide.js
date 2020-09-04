@@ -2,6 +2,7 @@ var ceres = {};
 (function(slideview)
 {
     var index = 1;
+    alert('0');
 
     var listArray = slideview.getImageList();
     alert('3');
