@@ -11,11 +11,13 @@ function getTimeNow()
 
 function getSlide(n)
 {
+    setInterval(startSlideViewer, slideInterval);
     startSlideViewer(slideIndex += n);
 }
 
 function setSlide(n)
 {
+    setInterval(startSlideViewer, slideInterval);
     startSlideViewer(slideIndex = n);
 }
 
@@ -33,8 +35,6 @@ function startSlideViewer(n = 1)
 
     slides[slideIndex-1].style.display = 'block';
     dots[slideIndex-1].className += ' active';
-
-    setInterval(startSlideViewer, slideInterval);
 }
 
 
