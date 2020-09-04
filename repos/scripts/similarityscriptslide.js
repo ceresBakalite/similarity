@@ -1,32 +1,6 @@
 var slideview = {}
 slideview.index = 1;
 
-(function(window)
-{
-    var nextSlide function (index)
-    {
-        startSlideViewer(slideview.index += index);
-    }
-
-    var fetchSlide function (index)
-    {
-        startSlideViewer(slideview.index = index);
-    }
-
-    var slide = {
-        getSlide: function(i){
-            return nextSlide(i);
-        },
-
-        setSlide: function(i){
-            return fetchSlide(i);
-        }
-    }
-
-    window.slide = slide;
-
-})(window);
-
 function getSlide(index)
 {
     startSlideViewer(slideview.index += index);
