@@ -21,7 +21,7 @@ function setSlide(n)
     startSlideViewer(slideIndex = n);
 }
 
-function startSlideViewer(n = 1)
+function startSlideViewer(n)
 {
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
