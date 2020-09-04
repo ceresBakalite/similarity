@@ -3,20 +3,11 @@ var ceres = {};
 {
     var index = 1;
 
-    slideview.openImageTab = function(el)
-    {
-        window.open(el.getAttribute('src'), 'image');
-    };
+    slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
-    slideview.getSlide = function(i)
-    {
-        slideview.startSlideViewer(index += i);
-    };
+    slideview.getSlide = function(i) { slideview.startSlideViewer(index += i); };
 
-    slideview.setSlide = function(i)
-    {
-        slideview.startSlideViewer(index = i);
-    };
+    slideview.setSlide = function(i) { slideview.startSlideViewer(index = i); };
 
     slideview.startSlideViewer = function(n)
     {
