@@ -1,20 +1,19 @@
+customElements.define('ceres-directive', class extends HTMLElement
+{
+    let src = this.getAttribute('src');
+    if (!this.hasAttribute('lst')) this.createAttribute('lst');
+
+    let lst = await (await fetch(src)).text();
+    this.setAttribute('cvl', lst);
+}
+
 var ceres = {};
 (function(slideview)
 {
-
-    window.customElements.define('test', class extends HTMLElement
-    {
-        let src = this.getAttribute('src');
-        if (!this.hasAttribute('cereslist')) this.createAttribute('cereslist');
-
-        this.setAttribute('cereslist', await (await fetch(src)).text()));
-        //this.innerHTML = await (await fetch(src)).text();
-    }
-
     var index = 1;
     var dot = true;
     var txt = true;
-    var md = null;
+    var lst = null;
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
@@ -45,17 +44,17 @@ var ceres = {};
     slideview.testCeresAttributes = function()
     {
         alert('0');
-        let el = (document.getElementById("test")) ? document.getElementById("test") : document.getElementsByTagName('test')[0];
+        let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
 
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
 alert('1');
-        md = (el.getAttribute('cereslist')) ? el.getAttribute('cereslilst') : md;
+        lst = (el.getAttribute('lst')) ? el.getAttribute('lst') : lst;
 
         alert('4');
 
-        alert(el.getAttribute('cereslist'));
+        alert(lst);
         //return el.getAttribute('src').split(',');
     }
 
