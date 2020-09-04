@@ -2,9 +2,9 @@ const slideInterval = 10000;
 const slideRepeatInterval = 30000;
 
 var slideIndex = 1;
-var slideRepeat = null;
 var slideRepeatTrigger = false;
 var slideLastSlideTime = getTimeNow();
+var slideRepeat = setTimeout(startSlideViewerRepeat, slideInterval);;
 
 function getTimeNow()
 {
@@ -64,6 +64,12 @@ function openImageTab(el)
     window.open(el.getAttribute('src'), 'image');
 }
 
+function cancelSlideRepeat()
+{
+    clearTimeout(slideRepeat);
+    slideLastSlideTime = getTimeNow();
+}
+
 function checkElapsedTime()
 {
     if (!slideRepeatTrigger)
@@ -71,5 +77,5 @@ function checkElapsedTime()
         if ((getTimeNow() - slideLastSlideTime) > slideRepeatInterval) startSlideViewerRepeat();
     }
 
-    slideLastSlideTime = getTimeNow();
+    cancelSlideRepeat()
 }
