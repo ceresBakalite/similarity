@@ -1,7 +1,7 @@
 const slideInterval = 2000;
 const slideRepeatInterval = 10000;
 
-var slideIndex = 1;
+var slideIndex = 0;
 var slideLastSlideTime = getTimeNow();
 var slideRepeat = setTimeout(startSlideViewerRepeat, slideInterval);
 
