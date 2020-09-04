@@ -1,46 +1,39 @@
-var ceresview = {}
+var ceresbakalite = {}
 
-ceresview.index = 1;
+ceresbakalite.index = 1;
+ceresbakalite.slideInterval = 5000;
+ceresbakalite.slideRepeatInterval = 25000;
+ceresbakalite.slideLastSlideTime = ceresbakalite.getTimeNow();
 
-slideInterval = 5000;
-slideRepeatInterval = 25000;
-
-slideIndex = 1;
-slideLastSlideTime = getTimeNow();
-
-var getTimeNow = function()
+var ceresbakalite.getTimeNow = function()
 {
     return new Date().getTime();
 };
 
 function getSlide(n)
 {
-    startSlideViewer(slideIndex += n);
+    startSlideViewer(ceresbakalite.index += n);
 };
 
 function setSlide(n)
 {
-    startSlideViewer(slideIndex = n);
+    startSlideViewer(ceresbakalite.index = n);
 };
 
 function startSlideViewer(n)
 {
-    alert(ceresview.index);
-
-    ceresview.index++;
-
-    alert(ceresview.index);
+    alert(ceresbakalite.slideLastSlideTime);
 
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
 
-    slideIndex = (n < 1) ? slides.length : (n > slides.length) ? 1 : slideIndex;
+    ceresbakalite.index = (n < 1) ? slides.length : (n > slides.length) ? 1 : ceresbakalite.index;
 
     for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
     for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(' active', ''); }
 
-    slides[slideIndex-1].style.display = 'block';
-    dots[slideIndex-1].className += ' active';
+    slides[ceresbakalite.index-1].style.display = 'block';
+    dots[ceresbakalite.index-1].className += ' active';
 };
 
 function openImageTab(el)
