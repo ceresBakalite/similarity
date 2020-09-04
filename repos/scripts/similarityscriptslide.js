@@ -6,8 +6,7 @@
     var slideIndex = 1;
     var slideLastSlideTime = getTimeNow();
 
-//    var getTimeNow = function()
-    function getTimeNow()
+    var getTimeNow = function()
     {
         return new Date().getTime();
     };
