@@ -13,12 +13,12 @@ ceresview.getTimeNow = function()
 
 function getSlide(n)
 {
-    startSlideViewer(slideIndex += n);
+    startSlideViewer(ceresview.slideIndex += n);
 };
 
 function setSlide(n)
 {
-    startSlideViewer(slideIndex = n);
+    startSlideViewer(ceresview.slideIndex = n);
 };
 
 function startSlideViewer(n)
