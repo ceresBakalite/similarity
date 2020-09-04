@@ -8,12 +8,12 @@ slideview.openImageTab = function(el)
 
 slideview.getSlide = function(index)
 {
-    this.startSlideViewer(slideview.index += index);
+    startSlideViewer(slideview.index += index);
 }
 
 slideview.setSlide = function(index)
 {
-    this.startSlideViewer(slideview.index = index);
+    startSlideViewer(slideview.index = index);
 }
 
 slideview.startSlideViewer = function(n)
