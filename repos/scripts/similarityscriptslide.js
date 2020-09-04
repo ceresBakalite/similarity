@@ -6,22 +6,23 @@
     var slideIndex = 1;
     var slideLastSlideTime = getTimeNow();
 
-    var getTimeNow = function()
+//    var getTimeNow = function()
+    function getTimeNow()
     {
         return new Date().getTime();
     };
 
-    var getSlide = function(n)
+    function getSlide(n)
     {
         startSlideViewer(slideIndex += n);
     };
 
-    var setSlide = function(n)
+    function setSlide(n)
     {
         startSlideViewer(slideIndex = n);
     };
 
-    var startSlideViewer = function(n)
+    function startSlideViewer(n)
     {
         let slides = document.getElementsByClassName('slideview');
         let dots = document.getElementsByClassName('dot');
@@ -35,7 +36,7 @@
         dots[slideIndex-1].className += ' active';
     };
 
-    var openImageTab = function(el)
+    function openImageTab(el)
     {
         window.open(el.getAttribute('src'), 'image');
     };
