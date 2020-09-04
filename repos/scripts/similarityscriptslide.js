@@ -2,7 +2,6 @@ var ceres = {};
 (function(slideview)
 {
     var index = 1;
-    var imgArray = null;
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
@@ -42,7 +41,7 @@ var ceres = {};
 
         for (let el = 0; el < ar.length; ++el)
         {
-            alert(el);
+            alert(ar[el]);
         }
 
     }
