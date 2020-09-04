@@ -22,8 +22,7 @@ function setSlide(n)
 
 function startSlideViewer(n = 1)
 {
-    checkElapsedTime();
-    cancelSlideRepeat()
+    //checkElapsedTime();
 
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
@@ -36,10 +35,11 @@ function startSlideViewer(n = 1)
     slides[slideIndex-1].style.display = 'block';
     dots[slideIndex-1].className += ' active';
 
-    slideRepeat = setTimeout(startSlideViewerRepeat, slideInterval);
+    slideRepeat = setInterval(startSlideViewer, slideInterval);
 }
 
-function startSlideViewerRepeat()
+
+function xxxxstartSlideViewerRepeat()
 {
     let slides = document.getElementsByClassName('slideview');
     let dots = document.getElementsByClassName('dot');
@@ -54,7 +54,7 @@ function startSlideViewerRepeat()
     slides[slideIndex-1].style.display = 'block';
     dots[slideIndex-1].className += ' active';
 
-    slideRepeat = setTimeout(startSlideViewerRepeat, slideInterval);
+    slideLastSlideTime = getTimeNow();
 }
 
 function openImageTab(el)
@@ -70,5 +70,13 @@ function cancelSlideRepeat()
 
 function checkElapsedTime()
 {
-    if ((getTimeNow() - slideLastSlideTime) > slideRepeatInterval) startSlideViewerRepeat();
+    if ((getTimeNow() - slideLastSlideTime) > slideRepeatInterval)
+    {
+        slideRepeat = setTimeout(startSlideViewerRepeat, slideInterval);
+
+    } else {
+
+        cancelSlideRepeat()
+
+    }
 }
