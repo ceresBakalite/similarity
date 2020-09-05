@@ -14,6 +14,7 @@ var ceres = {};
             //this.innerHTML = await (await fetch(src)).text();
 
             if (!this.hasAttribute('lst')) this.createAttribute('lst');
+            this.setAttribute('lst', 'testing');
             this.setAttribute('lst', await (await fetch(src)).text());
         }
 
