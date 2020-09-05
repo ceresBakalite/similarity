@@ -1,4 +1,4 @@
-var ceres = {};
+let ceres = {};
 (function(slideview)
 {
     let index = 1;
