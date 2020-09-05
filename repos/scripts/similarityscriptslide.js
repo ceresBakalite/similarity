@@ -41,17 +41,21 @@ var ceres = {};
         slideview.startSlideViewer();
     }
 
+    slideview.removeHTMLTags = function(str)
+    {
+        let regex = /(<([^>]+)>)/gi;
+        return str.replace(regex, '');
+    }
+
     slideview.getCeresAttributes = function()
     {
         let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
-        let regex = /<noscript>| |<\/noscript>/gi;
-        let list = el.innerHTML.trim().replace(regex, '');
+        let regex = /\r\n|\r|\n|,/gi;
 
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
-        regex = /\r\n|\r|\n|,/gi;
 
-        return list.trim().replace(regex, ';').split(';');
+        return removeHTMLTags(el.innerHTML.trim()).replace(regex, ';').split(';');
     }
 
     slideview.buildSlideViewer = function()
@@ -60,7 +64,7 @@ var ceres = {};
 
         for (let el = 0; el < ar.length; ++el)
         {
-            //alert(ar[el].trim());
+            alert(ar[el].trim());
         }
 
     }
