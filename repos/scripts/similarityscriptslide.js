@@ -70,7 +70,7 @@ var ceres = {};
         }
 
         // test
-        function test(str)
+        test = function(str)
         {
             alert(str);
         }
