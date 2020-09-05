@@ -25,9 +25,28 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
+        getSlideViewercss();
         getSlideViewer();
         displaySlide();
     }
+
+    function getSlideViewercss()
+    {
+        const head = document.getElementsByTagName('head')[0];
+        const link = document.createElement('link');
+
+        link.createAttribute('rel');
+        link.createAttribute('type');
+        link.createAttribute('href');
+        link.createAttribute('media');
+
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('type', 'text/css');
+        link.setAttribute('href', 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css');
+        link.setAttribute('media', 'screen');
+
+        head.appendChild(link);
+    };
 
     function displaySlide(targetIndex)
     {
