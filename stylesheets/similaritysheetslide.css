@@ -6,6 +6,10 @@
   margin: auto;
 }
 
+.slideview-dot-container {
+   text-align:center;
+ }
+
 .slideview {
   display: none;
   cursor: zoom-in;
