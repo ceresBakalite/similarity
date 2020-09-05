@@ -23,6 +23,12 @@ var ceres = {};
 
     slideview.setSlide = function(targetIndex) { startSlideViewer(index = targetIndex); };
 
+    slideview.slideViewer = function()
+    {
+        buildSlideViewer();
+        startSlideViewer();
+    }
+
     function startSlideViewer(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
@@ -37,13 +43,7 @@ var ceres = {};
         pointers[index-1].className += ' active';
     };
 
-    function slideViewer()
-    {
-        slideview.buildSlideViewer();
-        slideview.startSlideViewer();
-    }
-
-    slideview.buildSlideViewer = function()
+    function buildSlideViewer()
     {
         let ar = getSlideViewerAttributes();
 
