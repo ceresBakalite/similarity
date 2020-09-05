@@ -25,7 +25,7 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        getSlideViewercss();
+        //getSlideViewercss();
         getSlideViewer();
         displaySlide();
     }
