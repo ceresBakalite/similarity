@@ -84,18 +84,18 @@ var ceres = {};
             ar.forEach(item =>
             {
                 let urlArray = item.value.split(',');
-                let slideview-name = 'slideview' + item;
-                let slideview-sur-name = 'slideview-sur' + item;
-                let slideview-sub-name = 'slideview-sub' + item;
-                let slideview-img-name = 'slideview-img' + item;
+                let svname = 'slideview' + item;
+                let surName = 'slideview-sur' + item;
+                let subName = 'slideview-sub' + item;
+                let imgName = 'slideview-img' + item;
 
-                setDivElement(slideview-name, 'slideview fade', parent, null);
+                setDivElement(svname, 'slideview fade', parent, null);
 
-                child = document.getElementById(slideview-name);
+                child = document.getElementById(svname);
 
-                setDivElement(slideview-sur-name, 'surtitle', child, getSurtitle());
-                setImgElement(slideview-img-name, 'ceres.openImageTab(this);', child);
-                setDivElement(slideview-sub-name, 'subtitle', child, getSubtitle());
+                setDivElement(surName, 'surtitle', child, getSurtitle());
+                setImgElement(imgName, 'ceres.openImageTab(this);', child);
+                setDivElement(subName, 'subtitle', child, getSubtitle());
             });
 
             function getSurtitle()
@@ -110,31 +110,31 @@ var ceres = {};
             }
 
             // create slideview+n and class append child
-            function setDivElement(idStr, classStr, obj, htmlStr)
+            function setDivElement(str, strclass, obj, strhtml)
             {
                 let el = document.createElement('div');
 
                 el.createAttribute('id');
                 el.createAttribute('class');
-                el.setAttribute('id', idStr);
-                el.setAttribute('class', classStr);
+                el.setAttribute('id', str);
+                el.setAttribute('class', strclass);
 
-                if (htmlStr != null) el.innerHTML = htmlStr;
+                if (strhtml != null) el.innerHTML = strhtml;
 
                 obj.appendChild(el);
 
             }
 
             // create slideview-img+n and onclick event append child
-            function setImgElement(idStr, clickStr, obj)
+            function setImgElement(str, strclick, obj)
             {
                 let el = document.createElement('img');
 
                 el.createAttribute('id');
                 el.createAttribute('onclick');
                 el.createAttribute('src');
-                el.setAttribute('id', 'slideview-img' + item);
-                el.setAttribute('onclick', clickStr);
+                el.setAttribute('id', str);
+                el.setAttribute('onclick', strclick);
                 el.setAttribute('src', urlArray[0]);
 
                 obj.appendChild(el);
