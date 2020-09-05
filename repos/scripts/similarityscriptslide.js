@@ -1,14 +1,13 @@
 customElements.define('ceres-directive', class extends HTMLElement
 {
-//    alert('hello');
-    let src = this.getAttribute('src');
-    this.innerHTML = await (await fetch(src)).text();
+    async connectedCallback()
+    {
+        let src = this.getAttribute('src');
+        this.innerHTML = await (await fetch(src)).text();
+    }
 
-//    if (!this.hasAttribute('lst')) this.createAttribute('lst');
+});
 
-//    let lst = await (await fetch(src)).text();
-//    this.setAttribute('lst', lst);
-}
 
 var ceres = {};
 (function(slideview)
