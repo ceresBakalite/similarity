@@ -12,8 +12,12 @@ var ceres = {};
         {
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
-        }
 
+            //    if (!this.hasAttribute('lst')) this.createAttribute('lst');
+            //    let lst = await (await fetch(src)).text();
+            //    this.setAttribute('lst', lst);
+        }
+    
     });
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
