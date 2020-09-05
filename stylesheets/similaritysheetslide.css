@@ -1,7 +1,7 @@
 * {box-sizing:border-box}
 
 .slideview-container {
-  max-width: 1000px;
+  /* max-width: 1000px; */
   position: relative;
   margin: auto;
 }
