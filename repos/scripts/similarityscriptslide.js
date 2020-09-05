@@ -14,8 +14,9 @@ var ceres = {};
             //this.innerHTML = await (await fetch(src)).text();
 
             if (!this.hasAttribute('lst')) this.createAttribute('lst');
-            this.setAttribute('lst', 'testing');
-            this.setAttribute('lst', await (await fetch(src)).text());
+            lst = await (await fetch(src)).text();
+
+            this.setAttribute('lst', lst);
         }
 
     });
@@ -50,6 +51,7 @@ var ceres = {};
     {
         let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
 
+        alert(lst);
         alert(el.getAttribute('lst'));
 //        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
 //        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
