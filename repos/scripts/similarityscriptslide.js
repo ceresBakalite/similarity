@@ -11,13 +11,13 @@ var ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            this.innerHTML = await (await fetch(src)).text();
+            //this.innerHTML = await (await fetch(src)).text();
 
-            //    if (!this.hasAttribute('lst')) this.createAttribute('lst');
-            //    let lst = await (await fetch(src)).text();
-            //    this.setAttribute('lst', lst);
+            if (!this.hasAttribute('lst')) this.createAttribute('lst');
+            let lst = await (await fetch(src)).text();
+            this.setAttribute('lst', lst);
         }
-    
+
     });
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
@@ -48,10 +48,9 @@ var ceres = {};
 
     slideview.testCeresAttributes = function()
     {
-        alert('0');
         let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
 
-        alert(el.innerHTML);
+        alert(el.getAttribute('lst'));
 //        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
 //        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
