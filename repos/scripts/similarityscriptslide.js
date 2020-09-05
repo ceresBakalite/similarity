@@ -44,12 +44,12 @@ var ceres = {};
     slideview.testCeresAttributes = function()
     {
         let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
-        let regex = /<noscript>|<\/noscript>/gi;
-        let list = el.innerHTML.trim().replace(/<noscript>|<\/noscript>/gi, '')
+        let regex = /<noscript>| |<\/noscript>/gi;
+        let list = el.innerHTML.trim().replace(regex, '')
 
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
-        regex = /\r|\n|,| |/gi;
+        regex = /\r|\n|,/gi;
 
         return list.trim().replace(regex, ';').split(';');
     }
