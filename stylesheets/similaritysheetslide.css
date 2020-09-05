@@ -8,6 +8,7 @@
 
 .slideview-dot-container {
    text-align:center;
+   cursor:pointer;
  }
 
 .slideview {
