@@ -19,11 +19,11 @@ var ceres = {};
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
-    slideview.getSlide = function(targetIndex) { slideview.startSlideViewer(index += targetIndex); };
+    slideview.getSlide = function(targetIndex) { startSlideViewer(index += targetIndex); };
 
-    slideview.setSlide = function(targetIndex) { slideview.startSlideViewer(index = targetIndex); };
+    slideview.setSlide = function(targetIndex) { startSlideViewer(index = targetIndex); };
 
-    slideview.startSlideViewer = function(targetIndex)
+    function startSlideViewer(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
@@ -41,11 +41,6 @@ var ceres = {};
     {
         slideview.buildSlideViewer();
         slideview.startSlideViewer();
-    }
-
-    slideview.imageListToArray = function(str)
-    {
-        return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
     }
 
     slideview.buildSlideViewer = function()
