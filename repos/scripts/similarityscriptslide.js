@@ -61,7 +61,7 @@ var ceres = {};
             sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
 
-            return imageListToArray(el.innerHTML);
+            return imageListToArray(progenitor.innerHTML);
 
             function imageListToArray(str)
             {
