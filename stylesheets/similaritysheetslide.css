@@ -8,7 +8,7 @@
 
 .slideview-dot-container {
    text-align:center;
-   cursor: pointer;
+   cursor: default;
  }
 
 .slideview {
