@@ -52,7 +52,7 @@ var ceres = {};
             createCeresSlideviewImageContainer(el);
         }
 
-        function getSlideViewerAttributes()
+        let getSlideViewerAttributes = function()
         {
             let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
 
