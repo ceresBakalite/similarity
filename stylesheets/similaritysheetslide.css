@@ -1,12 +1,12 @@
 /* * {box-sizing:border-box} */
 
-.slideview-container {
+.slideview-image-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
 }
 
-.slideview-ptr-container {
+.slideview-pointer-container {
    text-align:center;
    cursor: default;
  }
