@@ -68,6 +68,8 @@ var ceres = {};
 
         //createSlideViewContainer();
 
+        document.getElementById('slideview-image-container').style.display = 'block';
+
         function getSlideViewerAttributes()
         {
             ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
