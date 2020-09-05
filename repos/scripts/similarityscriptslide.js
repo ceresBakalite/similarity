@@ -25,13 +25,9 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        const container = document.getElementById('ceres-slideview-image-container');
-
         getSlideViewercss();
         getSlideViewer();
         displaySlide();
-
-        if (container.style.display == 'none') container.style.display = 'block'
     }
 
     function getSlideViewercss()
