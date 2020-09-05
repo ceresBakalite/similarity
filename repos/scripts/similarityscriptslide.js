@@ -62,7 +62,7 @@ var ceres = {};
 
         for (let el = 0; el < ar.length; ++el)
         {
-            alert(ar[el].trim());
+            //alert(ar[el].trim());
         }
 
     }
