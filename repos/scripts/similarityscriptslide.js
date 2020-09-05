@@ -2,10 +2,10 @@ var ceres = {};
 (function(slideview)
 {
     var index = 1;
-    var ptr = true;
-    var sub = true;
-    var sur = true;
-    var css = true;
+    var ptr = true; // default - display slideviewer pointers
+    var sub = true; // default - display slideviewer subtitles
+    var sur = true; // default - display slideviewer surtitles
+    var css = true; // default - use slideviewer css
 
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
@@ -52,10 +52,10 @@ var ceres = {};
     {
         let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
 
-        ptr = (el.getAttribute('ptr')) ? el.getAttribute('ptr') : ptr; // default true - display slideviewer pointers
-        sub = (el.getAttribute('sub')) ? el.getAttribute('sub') : sub; // default true - display slideviewer subtitles
-        sur = (el.getAttribute('sur')) ? el.getAttribute('sur') : sur; // default true - display slideviewer surtitles
-        css = (el.getAttribute('css')) ? el.getAttribute('css') : css; // default true - use slideviewer css
+        ptr = (el.getAttribute('ptr')) ? el.getAttribute('ptr') : ptr;
+        sub = (el.getAttribute('sub')) ? el.getAttribute('sub') : sub;
+        sur = (el.getAttribute('sur')) ? el.getAttribute('sur') : sur;
+        css = (el.getAttribute('css')) ? el.getAttribute('css') : css;
 
         return slideview.imageListToArray(el.innerHTML);
     }
