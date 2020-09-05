@@ -46,13 +46,9 @@ var ceres = {};
     function buildSlideViewer()
     {
         let ar = getSlideViewerAttributes();
+        let progenitor = document.getElementById("slideview");
 
-        for (let el = 0; el < ar.length; ++el)
-        {
-            createCeresSlideviewImageContainer(el);
-        }
-
-        createSlideviewContainer();
+        //createCeresSlideviewImageContainer();
 
         function getSlideViewerAttributes()
         {
@@ -73,31 +69,68 @@ var ceres = {};
         }
 
         // create ceres-slideview-image-container and class
-        function createCeresSlideviewImageContainer(el)
+        function createCeresSlideviewImageContainer()
         {
             //alert(ar[el].trim());
+            let parent = document.createElement('div');
+            let child = null;
+
+            parent.createAttribute('id');
+            parent.createAttribute('class');
+            parent.setAttribute('id', 'ceres-slideview-image-container');
+            parent.setAttribute('class', 'slideview-image-container');
+
+            progenitor.appendChild(parent);
+
+            ar.forEach(item =>
+            {
+                let urlArray = item.value.split(',');
+                let url = urlArray[0];
+                surtitle = (sur) ? item + ' / ' + ar.Length : '';
+                subtitle = (sub) ? (urlArray[1]) ? urlArray[1] : sub : '';
+
+                createDiv('slideview' + item, 'slideview fade', parent, null);
+
+                child = document.getElementById('slideview' + item);
+
+                createDiv('slideview-sur' + item, 'surtitle', child, surtitle);
+                createImg('slideview-img' + item, 'ceres.openImageTab(this);', child);
+                createDiv('slideview-sub' + item, 'subtitle', child, subtitle);
+            });
+
+            // create slideview+n and class append child
+            function createDiv(idStr, classStr, obj, htmlStr)
+            {
+                let el = document.createElement('div');
+
+                el.createAttribute('id');
+                el.createAttribute('class');
+                el.setAttribute('id', idStr);
+                el.setAttribute('class', classStr);
+
+                if (htmlStr != null) el.innerHTML = htmlStr;
+
+                obj.appendChild(el);
+
+            }
+
+            // create slideview-img+n and onclick event append child
+            function createImg(idStr, clickStr, obj)
+            {
+                let el = document.createElement('img');
+
+                el.createAttribute('id');
+                el.createAttribute('onclick');
+                el.createAttribute('src');
+                el.setAttribute('id', 'slideview-img' + item);
+                el.setAttribute('onclick', clickStr);
+                el.setAttribute('src', url);
+
+                obj.appendChild(el);
+            }
+
         }
 
-        // create slideview+n and class append child
-        function createSlideviewContainer()
-        {
-            //alert(css + ' - ' + ptr + ' - ' + sur + ' - ' + sub);
-        }
-
-        // create slideview-sur+n and class append child
-        function createSlideviewSurtitleContainerfunction()
-        {
-        }
-
-        // create slideview-img+n and onclick event append child
-        function createSlideviewImageContainer()
-        {
-        }
-
-        // create slideview-sub+n and class append child
-        function createSlideviewSubtitleContainer()
-        {
-        }
 
         // create br append child
         function createLineBreakContainer()
