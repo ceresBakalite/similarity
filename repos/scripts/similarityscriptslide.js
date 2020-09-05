@@ -19,11 +19,11 @@ var ceres = {};
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
-    slideview.getSlide = function(i) { slideview.startSlideViewer(index += i); };
+    slideview.getSlide = function(activeIndex) { slideview.startSlideViewer(index += activeIndex); };
 
-    slideview.setSlide = function(i) { slideview.startSlideViewer(index = i); };
+    slideview.setSlide = function(activeIndex) { slideview.startSlideViewer(index = activeIndex); };
 
-    slideview.startSlideViewer = function(n)
+    slideview.startSlideViewer = function(activeIndex)
     {
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
@@ -31,7 +31,7 @@ var ceres = {};
         slides.forEach(slide => { slide.style.display = 'none';	});
         pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
 
-        index = (n < 1) ? slides.length : (n > slides.length) ? 1 : index;
+        index = (activeIndex < 1) ? slides.length : (activeIndex > slides.length) ? 1 : index;
 
         slides[index-1].style.display = 'block';
         pointers[index-1].className += ' active';
