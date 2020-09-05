@@ -88,10 +88,9 @@ var ceres = {};
             {
                 urlArray = item.value.split(',');
                 url = urlArray[0];
-                subtitle = (urlArray[1] != null) ? urlArray[1] : '';
 
-                surtitle = (sur) ? item + ' / ' + ar.Length : '';
-                subtitle = (sub) ? subtitle : '';
+                surtitle = getSurtitle();
+                subtitle = getSubtitle();
 
                 createDiv('slideview' + item, 'slideview fade', parent, null);
 
@@ -101,6 +100,18 @@ var ceres = {};
                 createImg('slideview-img' + item, 'ceres.openImageTab(this);', child);
                 createDiv('slideview-sub' + item, 'subtitle', child, subtitle);
             });
+
+            function getSurtitle()
+            {
+                if (!sur) return null;
+                return item + ' / ' + ar.Length : null;
+            }
+
+            function getSubtitle()
+            {
+                if (!sub) return null;
+                return (urlArray[1] != null) ? urlArray[1] : null;
+            }
 
             // create slideview+n and class append child
             function createDiv(idStr, classStr, obj, htmlStr)
