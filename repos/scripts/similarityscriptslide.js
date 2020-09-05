@@ -1,4 +1,4 @@
-let ceres = {};
+var ceres = {};
 (function(slideview)
 {
     let index = 1;
@@ -52,6 +52,8 @@ let ceres = {};
             createCeresSlideviewImageContainer(el);
         }
 
+        createSlideviewContainer();
+
         function getSlideViewerAttributes()
         {
             let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
@@ -79,6 +81,7 @@ let ceres = {};
         // create slideview+n and class append child
         function createSlideviewContainer()
         {
+            alert(css + ' - ' + ptr + ' - ' + sur + ' - ' + sub);
         }
 
         // create slideview-sur+n and class append child
