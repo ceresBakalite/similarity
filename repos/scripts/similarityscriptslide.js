@@ -43,19 +43,13 @@ var ceres = {};
 
     slideview.testCeresAttributes = function()
     {
+        const regex = /\r|\n|,| |<noscript>|<\/noscript> /gi;
         let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
 
+        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
+        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
-//        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
-//        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
-
-//alert('1');
-//        lst = (el.getAttribute('lst')) ? el.getAttribute('lst') : lst;
-
-//        alert('4');
-
-        alert(el.innerHTML);
-        //return el.getAttribute('src').split(',');
+        return el.innerHTML.replace(regex, ';').split(',');
     }
 
     slideview.getCeresAttributes = function()
@@ -70,13 +64,11 @@ var ceres = {};
 
     slideview.buildSlideViewer = function()
     {
-        slideview.testCeresAttributes();
-
-        let ar = slideview.getCeresAttributes();
+        let ar = slideview.testCeresAttributes();
 
         for (let el = 0; el < ar.length; ++el)
         {
-            //alert(ar[el].trim());
+            alert(ar[el].trim());
         }
 
     }

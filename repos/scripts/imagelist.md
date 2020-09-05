@@ -1,4 +1,4 @@
-<ceresslideview>
+<noscript>
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews01.png
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews02.png
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews03.png
@@ -7,4 +7,4 @@ https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews05.png
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews06.png
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews07.png
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews08.png
-</ceresslideview>
+</noscript>
