@@ -89,13 +89,13 @@ var ceres = {};
                 let slideview-sub-name = 'slideview-sub' + item;
                 let slideview-img-name = 'slideview-img' + item;
 
-                createDiv(slideview-name, 'slideview fade', parent, null);
+                setDivElement(slideview-name, 'slideview fade', parent, null);
 
                 child = document.getElementById(slideview-name);
 
-                createDiv(slideview-sur-name, 'surtitle', child, getSurtitle());
-                createImg(slideview-img-name, 'ceres.openImageTab(this);', child);
-                createDiv(slideview-sub-name, 'subtitle', child, getSubtitle());
+                setDivElement(slideview-sur-name, 'surtitle', child, getSurtitle());
+                setImgElement(slideview-img-name, 'ceres.openImageTab(this);', child);
+                setDivElement(slideview-sub-name, 'subtitle', child, getSubtitle());
             });
 
             function getSurtitle()
@@ -110,7 +110,7 @@ var ceres = {};
             }
 
             // create slideview+n and class append child
-            function createDiv(idStr, classStr, obj, htmlStr)
+            function setDivElement(idStr, classStr, obj, htmlStr)
             {
                 let el = document.createElement('div');
 
@@ -126,7 +126,7 @@ var ceres = {};
             }
 
             // create slideview-img+n and onclick event append child
-            function createImg(idStr, clickStr, obj)
+            function setImgElement(idStr, clickStr, obj)
             {
                 let el = document.createElement('img');
 
