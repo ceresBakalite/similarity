@@ -56,7 +56,7 @@ var ceres = {};
 
     slideview.buildSlideViewer = function()
     {
-        let ar = slideview.testCeresAttributes();
+        let ar = slideview.getCeresAttributes();
 
         for (let el = 0; el < ar.length; ++el)
         {
