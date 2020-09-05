@@ -1,11 +1,13 @@
 customElements.define('ceres-directive', class extends HTMLElement
 {
-    alert('hello');
+//    alert('hello');
     let src = this.getAttribute('src');
-    if (!this.hasAttribute('lst')) this.createAttribute('lst');
+    this.innerHTML = await (await fetch(src)).text();
 
-    let lst = await (await fetch(src)).text();
-    this.setAttribute('lst', lst);
+//    if (!this.hasAttribute('lst')) this.createAttribute('lst');
+
+//    let lst = await (await fetch(src)).text();
+//    this.setAttribute('lst', lst);
 }
 
 var ceres = {};
@@ -47,15 +49,16 @@ var ceres = {};
         alert('0');
         let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
 
-        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
-        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
+        alert(el.innerHTML);
+//        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
+//        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
-alert('1');
-        lst = (el.getAttribute('lst')) ? el.getAttribute('lst') : lst;
+//alert('1');
+//        lst = (el.getAttribute('lst')) ? el.getAttribute('lst') : lst;
 
-        alert('4');
+//        alert('4');
 
-        alert(lst);
+//        alert(lst);
         //return el.getAttribute('src').split(',');
     }
 
