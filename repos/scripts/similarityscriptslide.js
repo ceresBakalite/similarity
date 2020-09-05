@@ -49,19 +49,17 @@ var ceres = {};
 
     function getSlideViewer()
     {
+        let progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         let ar = getSlideViewerAttributes();
-        let progenitor = document.getElementById("slideview");
 
         //createSlideViewContainer();
 
         function getSlideViewerAttributes()
         {
-            let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
-
-            ptr = (el.getAttribute('ptr')) ? el.getAttribute('ptr') : ptr;
-            sub = (el.getAttribute('sub')) ? el.getAttribute('sub') : sub;
-            sur = (el.getAttribute('sur')) ? el.getAttribute('sur') : sur;
-            css = (el.getAttribute('css')) ? el.getAttribute('css') : css;
+            ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
+            sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
+            sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
+            css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
 
             return imageListToArray(el.innerHTML);
 
