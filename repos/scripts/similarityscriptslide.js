@@ -2,10 +2,10 @@ var ceres = {};
 (function(slideview)
 {
     let index = 1;
-    var css = true; // default - use slideviewer css
-    var ptr = true; // default - display slideviewer pointers
-    var sur = true; // default - display slideviewer surtitles
-    var sub = true; // default - display slideviewer subtitles
+    let css = true; // default - use slideviewer css
+    let ptr = true; // default - display slideviewer pointers
+    let sur = true; // default - display slideviewer surtitles
+    let sub = true; // default - display slideviewer subtitles
 
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
