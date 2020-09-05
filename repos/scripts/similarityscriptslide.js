@@ -107,8 +107,7 @@ var ceres = {};
 
             function getSurtitle()
             {
-                if (!sur) return null;
-                return item + ' / ' + ar.Length;
+                return (sur) ? item + ' / ' + ar.Length : null;
             }
 
             function getSubtitle()
