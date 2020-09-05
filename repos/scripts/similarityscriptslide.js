@@ -1,14 +1,3 @@
-customElements.define('ceres-directive', class extends HTMLElement
-{
-    async connectedCallback()
-    {
-        let src = this.getAttribute('src');
-        this.innerHTML = await (await fetch(src)).text();
-    }
-
-});
-
-
 var ceres = {};
 (function(slideview)
 {
@@ -16,6 +5,16 @@ var ceres = {};
     var dot = true;
     var txt = true;
     var lst = null;
+
+    customElements.define('ceres-directive', class extends HTMLElement
+    {
+        async connectedCallback()
+        {
+            let src = this.getAttribute('src');
+            this.innerHTML = await (await fetch(src)).text();
+        }
+
+    });
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
