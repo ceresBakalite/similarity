@@ -5,7 +5,7 @@ var ceres = {};
     var dot = true;
     var txt = true;
 
-    window.customElements.define('ceres-directive', class extends HTMLElement
+    window.customElements.define('ceres-slideview', class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -43,7 +43,7 @@ var ceres = {};
 
     slideview.getCeresAttributes = function()
     {
-        let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
+        let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         let regex = /<noscript>| |<\/noscript>/gi;
         let list = el.innerHTML.trim().replace(regex, '');
 
