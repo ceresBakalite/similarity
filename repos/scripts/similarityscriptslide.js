@@ -4,7 +4,8 @@ var ceres = {};
     var index = 1;
     var dot = true;
     var txt = true;
-    var lst = null;
+
+    slideview.list = null;
 
     customElements.define('ceres-directive', class extends HTMLElement
     {
@@ -14,7 +15,7 @@ var ceres = {};
             //this.innerHTML = await (await fetch(src)).text();
 
             if (!this.hasAttribute('lst')) this.createAttribute('lst');
-            lst = await (await fetch(src)).text();
+            slideview.list = await (await fetch(src)).text();
 
             this.setAttribute('lst', lst);
         }
@@ -51,7 +52,7 @@ var ceres = {};
     {
         let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
 
-        alert(lst);
+        alert(slideview.list);
         alert(el.getAttribute('lst'));
 //        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
 //        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
