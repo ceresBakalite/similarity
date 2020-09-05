@@ -4,6 +4,7 @@ var ceres = {};
     var index = 1;
     var dot = true;
     var txt = true;
+    var css = true;
 
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
@@ -52,6 +53,7 @@ var ceres = {};
 
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
+        css = (el.getAttribute('css')) ? el.getAttribute('css') : css;
 
         return slideview.imageListToArray(el.innerHTML);
     }
@@ -62,7 +64,7 @@ var ceres = {};
 
         for (let el = 0; el < ar.length; ++el)
         {
-            alert(ar[el].trim());
+            //alert(ar[el].trim());
         }
 
     }
