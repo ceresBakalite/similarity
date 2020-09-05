@@ -47,7 +47,7 @@ var ceres = {};
     {
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
-        const container = document.getElementById('slideview-image-container');
+        const container = document.getElementById('ceres-slideview-image-container');
 
         index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
 
