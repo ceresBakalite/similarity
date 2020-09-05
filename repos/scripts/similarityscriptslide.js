@@ -6,7 +6,6 @@ var ceres = {};
     var ptr = true; // default - display slideviewer pointers
     var sur = true; // default - display slideviewer surtitles
     var sub = true; // default - display slideviewer subtitles
-    var caption = 'Slide'; // default - display slideviewer subtitle
 
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
@@ -57,7 +56,6 @@ var ceres = {};
         sub = (el.getAttribute('sub')) ? el.getAttribute('sub') : sub;
         sur = (el.getAttribute('sur')) ? el.getAttribute('sur') : sur;
         css = (el.getAttribute('css')) ? el.getAttribute('css') : css;
-        caption = (el.getAttribute('caption')) ? el.getAttribute('caption') : caption;
 
         return slideview.imageListToArray(el.innerHTML);
     }
@@ -68,9 +66,56 @@ var ceres = {};
 
         for (let el = 0; el < ar.length; ++el)
         {
+            alert(createCeresSlideviewImageContainer());
+        }
+
+        // test
+        createCeresSlideviewImageContainer = function()
+        {
             alert(ar[el].trim());
         }
 
     }
+
+    // create ceres-slideview-image-container and class
+    slideview.createCeresSlideviewImageContainer = function()
+    {
+    }
+
+    // create slideview+n and class append child
+    slideview.createSlideviewContainer = function()
+    {
+    }
+
+    // create slideview-sur+n and class append child
+    slideview.createSlideviewSurtitleContainer = function()
+    {
+    }
+
+    // create slideview-img+n and onclick event append child
+    slideview.createSlideviewImageContainer = function()
+    {
+    }
+
+    // create slideview-sub+n and class append child
+    slideview.createSlideviewSubtitleContainer = function()
+    {
+    }
+
+    // create br append child
+    slideview.createLineBreakContainer = function()
+    {
+    }
+
+    // create ceres-slideview-pointer-container and class
+    slideview.createCeresSlideviewPointerContainer = function()
+    {
+    }
+
+    // create slideview-ptr+n and class and onclick event append child
+    slideview.createSlideviewPointerContainer = function()
+    {
+    }
+
 
 })(ceres);
