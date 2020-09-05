@@ -26,8 +26,6 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         getSlideViewercss();
-        getSlideViewer();
-        displaySlide();
     }
 
     function getSlideViewercss()
@@ -46,6 +44,8 @@ var ceres = {};
         link.setAttribute('media', 'screen');
 
         head.appendChild(link);
+
+        getSlideViewer();
     };
 
     function displaySlide(targetIndex)
@@ -72,6 +72,7 @@ var ceres = {};
         let ar = getSlideViewerAttributes();
 
         //createSlideViewContainer();
+        displaySlide();
 
         function getSlideViewerAttributes()
         {
