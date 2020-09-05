@@ -2,7 +2,7 @@ var ceres = {};
 (function(slideview)
 {
     var index = 1;
-    var dot = true;
+    var ptr = true;
     var txt = true;
     var css = true;
 
@@ -25,15 +25,15 @@ var ceres = {};
     slideview.startSlideViewer = function(n)
     {
         let slides = document.getElementsByClassName('slideview');
-        let dots = document.getElementsByClassName('dot');
+        let ptrs = document.getElementsByClassName('ptr');
 
         index = (n < 1) ? slides.length : (n > slides.length) ? 1 : index;
 
         for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
-        for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(' active', ''); }
+        for (let i = 0; i < ptrs.length; i++) { ptrs[i].className = ptrs[i].className.replace(' active', ''); }
 
         slides[index-1].style.display = 'block';
-        dots[index-1].className += ' active';
+        ptrs[index-1].className += ' active';
     };
 
     slideview.slideViewer = function()
@@ -51,7 +51,7 @@ var ceres = {};
     {
         let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
 
-        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
+        ptr = (el.getAttribute('ptr')) ? el.getAttribute('ptr') : ptr;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
         css = (el.getAttribute('css')) ? el.getAttribute('css') : css;
 
@@ -64,7 +64,7 @@ var ceres = {};
 
         for (let el = 0; el < ar.length; ++el)
         {
-            //alert(ar[el].trim());
+            alert(ar[el].trim());
         }
 
     }
