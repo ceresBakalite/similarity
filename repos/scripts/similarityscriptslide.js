@@ -37,7 +37,7 @@ var ceres = {};
         pointers[index-1].className += ' active';
     };
 
-    slideview.slideViewer = function()
+    function slideViewer()
     {
         slideview.buildSlideViewer();
         slideview.startSlideViewer();
