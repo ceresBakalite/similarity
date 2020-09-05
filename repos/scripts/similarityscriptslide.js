@@ -5,7 +5,7 @@ var ceres = {};
     var dot = true;
     var txt = true;
 
-    customElements.define('ceres-directive', class extends HTMLElement
+    window.customElements.define('ceres-directive', class extends HTMLElement
     {
         async connectedCallback()
         {

@@ -1,4 +1,4 @@
-customElements.define('include-directive', class extends HTMLElement
+window.customElements.define('include-directive', class extends HTMLElement
 {
     async connectedCallback()
     {
