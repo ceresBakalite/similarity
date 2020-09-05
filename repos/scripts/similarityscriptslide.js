@@ -19,17 +19,17 @@ var ceres = {};
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
 
-    slideview.getSlide = function(targetIndex) { startSlideViewer(index += targetIndex); };
+    slideview.getSlide = function(targetIndex) { displaySlide(index += targetIndex); };
 
-    slideview.setSlide = function(targetIndex) { startSlideViewer(index = targetIndex); };
+    slideview.setSlide = function(targetIndex) { displaySlide(index = targetIndex); };
 
     slideview.slideViewer = function()
     {
         buildSlideViewer();
-        startSlideViewer();
+        displaySlide();
     }
 
-    function startSlideViewer(targetIndex)
+    function displaySlide(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
