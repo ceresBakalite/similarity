@@ -2,10 +2,11 @@ var ceres = {};
 (function(slideview)
 {
     var index = 1;
-    var ptr = true; // default - display slideviewer pointers
-    var sub = true; // default - display slideviewer subtitles
-    var sur = true; // default - display slideviewer surtitles
     var css = true; // default - use slideviewer css
+    var ptr = true; // default - display slideviewer pointers
+    var sur = true; // default - display slideviewer surtitles
+    var sub = true; // default - display slideviewer subtitles
+    var caption = 'Slide'; // default - display slideviewer subtitle
 
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
@@ -45,7 +46,7 @@ var ceres = {};
 
     slideview.imageListToArray = function(str)
     {
-        return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n|,/gi, ';').split(';');
+        return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
     }
 
     slideview.getSlideViewerAttributes = function()
@@ -56,6 +57,7 @@ var ceres = {};
         sub = (el.getAttribute('sub')) ? el.getAttribute('sub') : sub;
         sur = (el.getAttribute('sur')) ? el.getAttribute('sur') : sur;
         css = (el.getAttribute('css')) ? el.getAttribute('css') : css;
+        caption = (el.getAttribute('caption')) ? el.getAttribute('caption') : caption;
 
         return slideview.imageListToArray(el.innerHTML);
     }
@@ -66,7 +68,7 @@ var ceres = {};
 
         for (let el = 0; el < ar.length; ++el)
         {
-            //alert(ar[el].trim());
+            alert(ar[el].trim());
         }
 
     }
