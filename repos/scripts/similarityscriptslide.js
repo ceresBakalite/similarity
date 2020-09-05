@@ -5,19 +5,12 @@ var ceres = {};
     var dot = true;
     var txt = true;
 
-    slideview.list = null;
-
     customElements.define('ceres-directive', class extends HTMLElement
     {
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            //this.innerHTML = await (await fetch(src)).text();
-
-            if (!this.hasAttribute('lst')) this.createAttribute('lst');
-            slideview.list = await (await fetch(src)).text();
-
-            this.setAttribute('lst', lst);
+            this.innerHTML = await (await fetch(src)).text();
         }
 
     });
@@ -52,8 +45,7 @@ var ceres = {};
     {
         let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
 
-        alert(slideview.list);
-        alert(el.getAttribute('lst'));
+
 //        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
 //        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
@@ -62,7 +54,7 @@ var ceres = {};
 
 //        alert('4');
 
-//        alert(lst);
+        alert(el.innerHTML);
         //return el.getAttribute('src').split(',');
     }
 
