@@ -62,15 +62,15 @@ var ceres = {};
 
     slideview.buildSlideViewer = function()
     {
-        let ar = slideview.getSlideViewerAttributes();
+        var ar = slideview.getSlideViewerAttributes();
 
         for (let el = 0; el < ar.length; ++el)
         {
-            alert(createCeresSlideviewImageContainer());
+            alert(test());
         }
 
         // test
-        createCeresSlideviewImageContainer = function()
+        test = function()
         {
             alert(ar[el].trim());
         }
