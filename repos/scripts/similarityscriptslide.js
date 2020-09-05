@@ -28,13 +28,10 @@ var ceres = {};
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
 
-        index = (n < 1) ? slides.length : (n > slides.length) ? 1 : index;
-
-        //for (let i = 0; i < slides.length; i++) { slides[i].style.display = 'none'; }
-        //for (let i = 0; i < pointers.length; i++) { pointers[i].className = pointers[i].className.replace(' active', ''); }
-
         slides.forEach(slide => { slide.style.display = 'none';	});
         pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
+
+        index = (n < 1) ? slides.length : (n > slides.length) ? 1 : index;
 
         slides[index-1].style.display = 'block';
         pointers[index-1].className += ' active';
