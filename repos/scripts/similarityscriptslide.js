@@ -41,27 +41,17 @@ var ceres = {};
         slideview.startSlideViewer();
     }
 
-    slideview.testCeresAttributes = function()
+    slideview.getCeresAttributes = function()
     {
         let el = (document.getElementById("ceres-directive")) ? document.getElementById("ceres-directive") : document.getElementsByTagName('ceres-directive')[0];
         let regex = /<noscript>| |<\/noscript>/gi;
-        let list = el.innerHTML.trim().replace(regex, '')
+        let list = el.innerHTML.trim().replace(regex, '');
 
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
         regex = /\r\n|\r|\n|,/gi;
 
         return list.trim().replace(regex, ';').split(';');
-    }
-
-    slideview.getCeresAttributes = function()
-    {
-        let el = (document.getElementById("ceres")) ? document.getElementById("ceres") : document.getElementsByTagName('ceres')[0];
-
-        dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
-        txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
-
-        return el.getAttribute('src').split(',');
     }
 
     slideview.buildSlideViewer = function()
