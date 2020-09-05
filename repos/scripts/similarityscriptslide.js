@@ -1,7 +1,7 @@
 var ceres = {};
 (function(slideview)
 {
-    var index = 1;
+    let index = 1;
     var css = true; // default - use slideviewer css
     var ptr = true; // default - display slideviewer pointers
     var sur = true; // default - display slideviewer surtitles
