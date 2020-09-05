@@ -74,8 +74,12 @@ var ceres = {};
             //alert(ar[el].trim());
             let parent = document.createElement('div');
             let child = null;
+
             let urlArray = null;
             let url = null;
+
+            let surtitle = null;
+            let subtitle = null;
 
             parent.createAttribute('id');
             parent.createAttribute('class');
