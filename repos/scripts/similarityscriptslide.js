@@ -44,6 +44,7 @@ var ceres = {};
             pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
             pointers[index-1].className += ' active';
         }
+
     };
 
     function getSlideViewer()
