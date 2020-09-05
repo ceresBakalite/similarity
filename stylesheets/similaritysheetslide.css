@@ -72,6 +72,7 @@
 
 .active, .dot:hover {
   background-color: #717171;
+  cursor:pointer;
 }
 
 .fade {
