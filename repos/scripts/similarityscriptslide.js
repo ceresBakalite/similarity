@@ -62,18 +62,18 @@ var ceres = {};
 
     slideview.buildSlideViewer = function()
     {
-        var ar = slideview.getSlideViewerAttributes();
+        let ar = slideview.getSlideViewerAttributes();
 
         for (let el = 0; el < ar.length; ++el)
         {
-            alert(test(ar[el].trim()));
+            alert(ar[el].trim());
         }
 
         // test
-        test = function(str)
-        {
-            alert(str);
-        }
+        //test = function(str)
+        //{
+        //    alert(str);
+        //}
 
     }
 
