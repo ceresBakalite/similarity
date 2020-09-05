@@ -1,5 +1,6 @@
 customElements.define('ceres-directive', class extends HTMLElement
 {
+    alert('hello');
     let src = this.getAttribute('src');
     if (!this.hasAttribute('lst')) this.createAttribute('lst');
 
