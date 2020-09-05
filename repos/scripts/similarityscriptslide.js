@@ -26,6 +26,8 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         getSlideViewercss();
+        getSlideViewer();
+        displaySlide();
     }
 
     function getSlideViewercss()
@@ -33,19 +35,12 @@ var ceres = {};
         const head = document.getElementsByTagName('head')[0];
         const link = document.createElement('link');
 
-        link.createAttribute('rel');
-        link.createAttribute('type');
-        link.createAttribute('href');
-        link.createAttribute('media');
-
-        link.setAttribute('rel', 'stylesheet');
-        link.setAttribute('type', 'text/css');
-        link.setAttribute('href', 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css');
-        link.setAttribute('media', 'screen');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+        link.media = 'screen';
 
         head.appendChild(link);
-
-        getSlideViewer();
     };
 
     function displaySlide(targetIndex)
@@ -72,7 +67,6 @@ var ceres = {};
         let ar = getSlideViewerAttributes();
 
         //createSlideViewContainer();
-        displaySlide();
 
         function getSlideViewerAttributes()
         {
