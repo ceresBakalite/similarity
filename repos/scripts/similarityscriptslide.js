@@ -94,7 +94,7 @@ var ceres = {};
                 url = urlArray[0];
 
                 surtitle = getSurtitle();
-                //subtitle = getSubtitle();
+                subtitle = getSubtitle();
 
                 createDiv('slideview' + item, 'slideview fade', parent, null);
 
@@ -108,7 +108,7 @@ var ceres = {};
             function getSurtitle()
             {
                 if (!sur) return null;
-                return item + ' / ' + ar.Length : null;
+                return item + ' / ' + ar.Length;
             }
 
             function getSubtitle()
