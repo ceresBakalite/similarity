@@ -43,7 +43,7 @@ var ceres = {};
 
     slideview.parseImageList = function(str)
     {
-        return str.replace(/(<([^>]+)>)/gi, '').trim().replace(/\r\n|\r|\n|,/gi, ';').split(';');
+        return str.replace(/(<([^>]+)>)| /gi, '').trim().replace(/\r\n|\r|\n|,/gi, ';').split(';');
     }
 
     slideview.getCeresAttributes = function()
