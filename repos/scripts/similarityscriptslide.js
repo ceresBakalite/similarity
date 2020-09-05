@@ -48,25 +48,31 @@ var ceres = {};
         return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
     }
 
-    slideview.getSlideViewerAttributes = function()
-    {
-        let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
-
-        ptr = (el.getAttribute('ptr')) ? el.getAttribute('ptr') : ptr;
-        sub = (el.getAttribute('sub')) ? el.getAttribute('sub') : sub;
-        sur = (el.getAttribute('sur')) ? el.getAttribute('sur') : sur;
-        css = (el.getAttribute('css')) ? el.getAttribute('css') : css;
-
-        return slideview.imageListToArray(el.innerHTML);
-    }
-
     slideview.buildSlideViewer = function()
     {
-        let ar = slideview.getSlideViewerAttributes();
+        let ar = getSlideViewerAttributes();
 
         for (let el = 0; el < ar.length; ++el)
         {
             createCeresSlideviewImageContainer(el);
+        }
+
+        function getSlideViewerAttributes()
+        {
+            let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+
+            ptr = (el.getAttribute('ptr')) ? el.getAttribute('ptr') : ptr;
+            sub = (el.getAttribute('sub')) ? el.getAttribute('sub') : sub;
+            sur = (el.getAttribute('sur')) ? el.getAttribute('sur') : sur;
+            css = (el.getAttribute('css')) ? el.getAttribute('css') : css;
+
+            return imageListToArray(el.innerHTML);
+
+            imageListToArray = function(str)
+            {
+                return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
+            }
+
         }
 
         // create ceres-slideview-image-container and class
@@ -75,43 +81,41 @@ var ceres = {};
             alert(ar[el].trim());
         }
 
+        // create slideview+n and class append child
+        function createSlideviewContainer()
+        {
+        }
+
+        // create slideview-sur+n and class append child
+        function createSlideviewSurtitleContainerfunction()
+        {
+        }
+
+        // create slideview-img+n and onclick event append child
+        function createSlideviewImageContainer()
+        {
+        }
+
+        // create slideview-sub+n and class append child
+        function createSlideviewSubtitleContainer()
+        {
+        }
+
+        // create br append child
+        function createLineBreakContainer()
+        {
+        }
+
+        // create ceres-slideview-pointer-container and class
+        function createCeresSlideviewPointerContainer()
+        {
+        }
+
+        // create slideview-ptr+n and class and onclick event append child
+        function createSlideviewPointerContainer()
+        {
+        }
+
     }
-
-
-    // create slideview+n and class append child
-    slideview.createSlideviewContainer = function()
-    {
-    }
-
-    // create slideview-sur+n and class append child
-    slideview.createSlideviewSurtitleContainer = function()
-    {
-    }
-
-    // create slideview-img+n and onclick event append child
-    slideview.createSlideviewImageContainer = function()
-    {
-    }
-
-    // create slideview-sub+n and class append child
-    slideview.createSlideviewSubtitleContainer = function()
-    {
-    }
-
-    // create br append child
-    slideview.createLineBreakContainer = function()
-    {
-    }
-
-    // create ceres-slideview-pointer-container and class
-    slideview.createCeresSlideviewPointerContainer = function()
-    {
-    }
-
-    // create slideview-ptr+n and class and onclick event append child
-    slideview.createSlideviewPointerContainer = function()
-    {
-    }
-
 
 })(ceres);
