@@ -73,13 +73,6 @@ var ceres = {};
         {
             //alert(ar[el].trim());
             let parent = document.createElement('div');
-            let child = null;
-
-            let urlArray = null;
-            let url = null;
-
-            let surtitle = null;
-            let subtitle = null;
 
             parent.createAttribute('id');
             parent.createAttribute('class');
@@ -90,19 +83,19 @@ var ceres = {};
 
             ar.forEach(item =>
             {
-                urlArray = item.value.split(',');
-                url = urlArray[0];
+                let urlArray = item.value.split(',');
+                let slideview-name = 'slideview' + item;
+                let slideview-sur-name = 'slideview-sur' + item;
+                let slideview-sub-name = 'slideview-sub' + item;
+                let slideview-img-name = 'slideview-img' + item;
 
-                surtitle = getSurtitle();
-                subtitle = getSubtitle();
+                createDiv(slideview-name, 'slideview fade', parent, null);
 
-                createDiv('slideview' + item, 'slideview fade', parent, null);
+                child = document.getElementById(slideview-name);
 
-                child = document.getElementById('slideview' + item);
-
-                createDiv('slideview-sur' + item, 'surtitle', child, surtitle);
-                createImg('slideview-img' + item, 'ceres.openImageTab(this);', child);
-                createDiv('slideview-sub' + item, 'subtitle', child, subtitle);
+                createDiv(slideview-sur-name, 'surtitle', child, getSurtitle());
+                createImg(slideview-img-name, 'ceres.openImageTab(this);', child);
+                createDiv(slideview-sub-name, 'subtitle', child, getSubtitle());
             });
 
             function getSurtitle()
@@ -142,7 +135,7 @@ var ceres = {};
                 el.createAttribute('src');
                 el.setAttribute('id', 'slideview-img' + item);
                 el.setAttribute('onclick', clickStr);
-                el.setAttribute('src', url);
+                el.setAttribute('src', urlArray[0]);
 
                 obj.appendChild(el);
             }
