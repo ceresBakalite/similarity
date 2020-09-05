@@ -70,7 +70,7 @@ var ceres = {};
         }
 
         // test
-        test = function(str)
+        slideview.test = function(str)
         {
             alert(str);
         }
