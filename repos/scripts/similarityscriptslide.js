@@ -75,13 +75,13 @@ var ceres = {};
         // create ceres-slideview-image-container and class
         function createCeresSlideviewImageContainer(el)
         {
-            alert(ar[el].trim());
+            //alert(ar[el].trim());
         }
 
         // create slideview+n and class append child
         function createSlideviewContainer()
         {
-            alert(css + ' - ' + ptr + ' - ' + sur + ' - ' + sub);
+            //alert(css + ' - ' + ptr + ' - ' + sur + ' - ' + sub);
         }
 
         // create slideview-sur+n and class append child
