@@ -66,13 +66,13 @@ var ceres = {};
 
         for (let el = 0; el < ar.length; ++el)
         {
-            alert(test());
+            alert(test(ar[el].trim()));
         }
 
         // test
-        test = function()
+        test = function(str)
         {
-            alert(ar[el].trim());
+            alert(str);
         }
 
     }
