@@ -8,7 +8,7 @@
 
 .slideview-dot-container {
    text-align:center;
-   cursor: pointer;
+   cursor: default;
  }
 
 .slideview {
@@ -72,7 +72,7 @@
 
 .active, .dot:hover {
   background-color: #717171;
-  cursor: pointer;
+  cursor: default;
 }
 
 .fade {
