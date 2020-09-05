@@ -49,7 +49,7 @@ var ceres = {};
 
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
-        regex = /\r|\n|,/gi;
+        regex = /\r\n|\r|\n|,/gi;
 
         return list.trim().replace(regex, ';').split(';');
     }
