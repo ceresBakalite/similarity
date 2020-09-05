@@ -43,7 +43,6 @@ var ceres = {};
 
     slideview.imageListToArray = function(str)
     {
-        // remove any tags, and split on carriage return + line feed, or carriage return, or line feed
         return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n|,/gi, ';').split(';');
     }
 
