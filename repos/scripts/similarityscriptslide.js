@@ -25,7 +25,7 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        buildSlideViewer();
+        getSlideViewer();
         displaySlide();
     }
 
@@ -34,21 +34,24 @@ var ceres = {};
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
 
-        slides.forEach(slide => { slide.style.display = 'none';	});
-        pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
-
         index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
 
+        slides.forEach(slide => { slide.style.display = 'none';	});
         slides[index-1].style.display = 'block';
-        pointers[index-1].className += ' active';
+
+        if (pointers != null)
+        {
+            pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
+            pointers[index-1].className += ' active';
+        }
     };
 
-    function buildSlideViewer()
+    function getSlideViewer()
     {
         let ar = getSlideViewerAttributes();
         let progenitor = document.getElementById("slideview");
 
-        //createCeresSlideviewImageContainer();
+        //createSlideViewContainer();
 
         function getSlideViewerAttributes()
         {
@@ -69,7 +72,7 @@ var ceres = {};
         }
 
         // create ceres-slideview-image-container and class
-        function createCeresSlideviewImageContainer()
+        function createSlideViewContainer()
         {
             //alert(ar[el].trim());
             let parent = document.createElement('div');
