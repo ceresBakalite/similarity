@@ -41,28 +41,29 @@ var ceres = {};
         slideview.startSlideViewer();
     }
 
-    slideview.parseImageList = function(str)
+    slideview.imageListToArray = function(str)
     {
-        return str.replace(/(<([^>]+)>)| /gi, '').trim().replace(/\r\n|\r|\n|,/gi, ';').split(';');
+        // remove any tags, and split on carriage return + line feed, or carriage return, or line feed
+        return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n|,/gi, ';').split(';');
     }
 
-    slideview.getCeresAttributes = function()
+    slideview.getSlideViewAttributes = function()
     {
         let el = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
 
         dot = (el.getAttribute('dot')) ? el.getAttribute('dot') : dot;
         txt = (el.getAttribute('txt')) ? el.getAttribute('txt') : txt;
 
-        return slideview.parseImageList(el.innerHTML);
+        return slideview.imageListToArray(el.innerHTML);
     }
 
     slideview.buildSlideViewer = function()
     {
-        let ar = slideview.getCeresAttributes();
+        let ar = slideview.getSlideViewAttributes();
 
         for (let el = 0; el < ar.length; ++el)
         {
-            //alert(ar[el].trim());
+            alert(ar[el].trim());
         }
 
     }
