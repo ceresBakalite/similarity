@@ -28,8 +28,6 @@ var ceres = {};
         getSlideViewercss();
         getSlideViewer();
         displaySlide();
-
-        document.getElementById('slideview-image-container').style.display = 'block';
     }
 
     function getSlideViewercss()
@@ -49,6 +47,7 @@ var ceres = {};
     {
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
+        const container = document.getElementById('slideview-image-container');
 
         index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
 
@@ -61,6 +60,7 @@ var ceres = {};
             pointers[index-1].className += ' active';
         }
 
+        if (container.style.display == 'none') container.style.display = 'block'
     };
 
     function getSlideViewer()
