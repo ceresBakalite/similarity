@@ -74,6 +74,8 @@ var ceres = {};
             //alert(ar[el].trim());
             let parent = document.createElement('div');
             let child = null;
+            let urlArray = null;
+            let url = null;
 
             parent.createAttribute('id');
             parent.createAttribute('class');
@@ -84,10 +86,12 @@ var ceres = {};
 
             ar.forEach(item =>
             {
-                let urlArray = item.value.split(',');
-                let url = urlArray[0];
+                urlArray = item.value.split(',');
+                url = urlArray[0];
+                subtitle = (urlArray[1] != null) ? urlArray[1] : '';
+
                 surtitle = (sur) ? item + ' / ' + ar.Length : '';
-                subtitle = (sub) ? (urlArray[1]) ? urlArray[1] : sub : '';
+                subtitle = (sub) ? subtitle : '';
 
                 createDiv('slideview' + item, 'slideview fade', parent, null);
 
