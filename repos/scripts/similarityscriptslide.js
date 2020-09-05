@@ -28,6 +28,8 @@ var ceres = {};
         getSlideViewercss();
         getSlideViewer();
         displaySlide();
+
+        document.getElementById('slideview-image-container').style.display = 'block';
     }
 
     function getSlideViewercss()
@@ -67,8 +69,6 @@ var ceres = {};
         let ar = getSlideViewerAttributes();
 
         //createSlideViewContainer();
-
-        document.getElementById('slideview-image-container').style.display = 'block';
 
         function getSlideViewerAttributes()
         {
