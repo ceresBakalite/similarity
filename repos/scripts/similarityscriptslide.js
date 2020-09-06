@@ -148,13 +148,13 @@ var ceres = {};
 
                 //alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
-                setDivElement(svcname, 'slideview fade', parent, null);
+                //setDivElement(svcname, 'slideview fade', parent, null);
 
-                child = document.getElementById(svcname);
+                //child = document.getElementById(svcname);
 
-                setDivElement(surName, 'surtitle', child, getSurtitle());
-                setImgElement(imgName, 'ceres.openImageTab(this);', child);
-                setDivElement(subName, 'subtitle', child, getSubtitle());
+                //setDivElement(surName, 'surtitle', child, getSurtitle());
+                //setImgElement(imgName, 'ceres.openImageTab(this);', child);
+                //setDivElement(subName, 'subtitle', child, getSubtitle());
             }
 
             function getURL()
