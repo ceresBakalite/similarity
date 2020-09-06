@@ -147,7 +147,6 @@ var ceres = {};
 
                 alert('item: ' + item + ' array: ' + itemArray[0]);
                 alert('src: ' + getURL2(itemArray[0]));
-                alert('src: ' + getURL3(itemArray[0]));
                 alert('src: ' + getURL());
                 //alert('surtitle: ' + getSurtitle());
                 //alert('subtitle: ' + getSubtitle());
@@ -163,11 +162,6 @@ var ceres = {};
                 //setDivElement(surName, 'surtitle', child, getSurtitle());
                 //setImgElement(imgName, 'ceres.openImageTab(this);', child);
                 //setDivElement(subName, 'subtitle', child, getSubtitle());
-            }
-
-            var getURL3 = function(str)
-            {
-                return (str) ? str : null;
             }
 
             function getURL2(str)
