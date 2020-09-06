@@ -138,26 +138,27 @@ var ceres = {};
             for (let index = 0; index < ar.length; index++)
             {
                 let item = ar[index];
-                let itemArray = item.split(',');
+                //let itemArray = item.split(',');
 
-                let svname = 'slideview' + index;
-                let surName = 'slideview-sur' + index;
-                let subName = 'slideview-sub' + index;
-                let imgName = 'slideview-img' + index;
+                //let svname = 'slideview' + index;
+                //let surName = 'slideview-sur' + index;
+                //let subName = 'slideview-sub' + index;
+                //let imgName = 'slideview-img' + index;
 
-                alert('item: ' + item + ' src: ' + getURL() + ' surtitle: ' + getSurtitle() + ' subtitle: ' + getSubtitle());
-                alert('svname: ' + svname);
-                alert('surName: ' + surName + ' - ' + itemsur);
-                alert('subName: ' + subName + ' - ' + itemsub);
-                alert('imgName: ' + imgName);
+                alert('item: ' + item);
+                //alert('item: ' + item + ' src: ' + getURL() + ' surtitle: ' + getSurtitle() + ' subtitle: ' + getSubtitle());
+                //alert('svname: ' + svname);
+                //alert('surName: ' + surName + ' - ' + itemsur);
+                //alert('subName: ' + subName + ' - ' + itemsub);
+                //alert('imgName: ' + imgName);
 
-                setDivElement(svname, 'slideview fade', parent, null);
+                //setDivElement(svname, 'slideview fade', parent, null);
 
-                child = document.getElementById(svname);
+                //child = document.getElementById(svname);
 
-                setDivElement(surName, 'surtitle', child, getSurtitle());
-                setImgElement(imgName, 'ceres.openImageTab(this);', child);
-                setDivElement(subName, 'subtitle', child, getSubtitle());
+                //setDivElement(surName, 'surtitle', child, getSurtitle());
+                //setImgElement(imgName, 'ceres.openImageTab(this);', child);
+                //setDivElement(subName, 'subtitle', child, getSubtitle());
             });
 
             function getURL()
