@@ -105,8 +105,8 @@ var ceres = {};
         const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         const ar = getSlideViewerAttributes();
 
-        //createSlideViewContainer();
-        //createSlideviewPointerContainer();
+        createSlideViewContainer();
+        createSlideviewPointerContainer();
 
         function getSlideViewerAttributes()
         {
@@ -183,7 +183,7 @@ var ceres = {};
 
                 parentElement.appendChild(el);
 
-                if (markup) el.innerHTML = markup;
+                if (markup) document.getElementById(idName).innerHTML = markup;
             }
 
             // create slideview-img+n and onclick event append child
@@ -209,7 +209,7 @@ var ceres = {};
 
                 parentElement.appendChild(el);
 
-                if (markup) el.innerHTML = markup;
+                if (markup) document.getElementById(idName).innerHTML = markup;
             }
 
         }
