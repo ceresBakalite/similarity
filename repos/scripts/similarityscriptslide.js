@@ -146,9 +146,9 @@ var ceres = {};
                 //let imgName = 'slideview-img' + index;
 
                 alert('item: ' + item);
-                alert('src: ' + itemArray[0]);
-                alert('surtitle: ' + getSurtitle());
-                alert('subtitle: ' + getSubtitle());
+                alert('src: ' + getURL();
+                //alert('surtitle: ' + getSurtitle());
+                //alert('subtitle: ' + getSubtitle());
                 //alert('svname: ' + svname);
                 //alert('surName: ' + surName + ' - ' + itemsur);
                 //alert('subName: ' + subName + ' - ' + itemsub);
@@ -165,7 +165,7 @@ var ceres = {};
 
             function getURL()
             {
-                return (itemArray[0] == null || itemArray[0] == 'undefined') ? null : itemArray[0];
+                return (itemArray[0]) ? itemArray[0] : null;
             }
 
             function getSurtitle()
@@ -175,7 +175,7 @@ var ceres = {};
 
             function getSubtitle()
             {
-                if (sub) return (itemArray[1] == null || itemArray[1] == 'undefined') ? null : itemArray[1];
+                if (sub) return (itemArray[1]) ? itemArray[1] : null;
                 return null;
             }
 
