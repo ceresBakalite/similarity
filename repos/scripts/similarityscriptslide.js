@@ -145,7 +145,10 @@ var ceres = {};
                 //let subName = 'slideview-sub' + index;
                 //let imgName = 'slideview-img' + index;
 
-                alert('item: ' + item + ' src: ' + getURL() + ' surtitle: ' + getSurtitle() + ' subtitle: ' + getSubtitle());
+                alert('item: ' + item);
+                alert('src: ' + getURL());
+                alert('surtitle: ' + getSurtitle());
+                alert('subtitle: ' + getSubtitle());
                 //alert('svname: ' + svname);
                 //alert('surName: ' + surName + ' - ' + itemsur);
                 //alert('subName: ' + subName + ' - ' + itemsub);
