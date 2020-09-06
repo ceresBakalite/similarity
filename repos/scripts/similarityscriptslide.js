@@ -137,17 +137,18 @@ var ceres = {};
 
             ar.forEach(item =>
             {
-                let urlArray = item.value.split(',');
-                let svname = 'slideview' + item;
-                let surName = 'slideview-sur' + item;
-                let subName = 'slideview-sub' + item;
-                let imgName = 'slideview-img' + item;
+                let urlArray = item.split(',');
+                //let svname = 'slideview' + item;
+                //let surName = 'slideview-sur' + item;
+                //let subName = 'slideview-sub' + item;
+                //let imgName = 'slideview-img' + item;
 
-                alert('svname: ' + svname);
-                alert('surName: ' + surName + ' - ' + getSurtitle());
-                alert('subName: ' + subName + ' - ' + getSubtitle());
-                alert('imgName: ' + imgName);
-                alert('src: ' + urlArray[0]);
+                alert('item: ' + item);
+                //alert('svname: ' + svname);
+                //alert('surName: ' + surName + ' - ' + getSurtitle());
+                //alert('subName: ' + subName + ' - ' + getSubtitle());
+                //alert('imgName: ' + imgName);
+                //alert('src: ' + urlArray[0]);
 
 //                setDivElement(svname, 'slideview fade', parent, null);
 
