@@ -146,7 +146,7 @@ var ceres = {};
                 let subName = 'slideview-sub' + qualifier;
                 let imgName = 'slideview-img' + qualifier;
 
-                //alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
+                alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
                 //setDivElement(svcname, 'slideview fade', parent, null);
 
