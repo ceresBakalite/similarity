@@ -105,7 +105,7 @@ var ceres = {};
         let progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         let ar = getSlideViewerAttributes();
 
-        //createSlideViewContainer();
+        createSlideViewContainer();
 
         function getSlideViewerAttributes()
         {
@@ -126,15 +126,14 @@ var ceres = {};
         // create ceres-slideview-image-container and class
         function createSlideViewContainer()
         {
-            //alert(ar[el].trim());
-            let parent = document.createElement('div');
+            //let parent = document.createElement('div');
 
-            parent.createAttribute('id');
-            parent.createAttribute('class');
-            parent.setAttribute('id', 'ceres-slideview-image-container');
-            parent.setAttribute('class', 'slideview-image-container');
+            //parent.createAttribute('id');
+            //parent.createAttribute('class');
+            //parent.setAttribute('id', 'ceres-slideview-image-container');
+            //parent.setAttribute('class', 'slideview-image-container');
 
-            progenitor.appendChild(parent);
+            //progenitor.appendChild(parent);
 
             ar.forEach(item =>
             {
@@ -144,13 +143,19 @@ var ceres = {};
                 let subName = 'slideview-sub' + item;
                 let imgName = 'slideview-img' + item;
 
-                setDivElement(svname, 'slideview fade', parent, null);
+                alert('svname: ' + svname);
+                alert('surName: ' + surName + ' - ' + getSurtitle());
+                alert('subName: ' + subName + ' - ' + getSubtitle());
+                alert('imgName: ' + imgName);
+                alert('src: ' + urlArray[0]);
 
-                child = document.getElementById(svname);
+//                setDivElement(svname, 'slideview fade', parent, null);
 
-                setDivElement(surName, 'surtitle', child, getSurtitle());
-                setImgElement(imgName, 'ceres.openImageTab(this);', child);
-                setDivElement(subName, 'subtitle', child, getSubtitle());
+//                child = document.getElementById(svname);
+
+//                setDivElement(surName, 'surtitle', child, getSurtitle());
+//                setImgElement(imgName, 'ceres.openImageTab(this);', child);
+//                setDivElement(subName, 'subtitle', child, getSubtitle());
             });
 
             function getSurtitle()
@@ -165,14 +170,14 @@ var ceres = {};
             }
 
             // create slideview+n and class append child
-            function setDivElement(str, strclass, obj, strhtml)
+            function setDivElement(str, strc, obj, strhtml)
             {
                 let el = document.createElement('div');
 
                 el.createAttribute('id');
                 el.createAttribute('class');
                 el.setAttribute('id', str);
-                el.setAttribute('class', strclass);
+                el.setAttribute('class', strc);
 
                 if (strhtml != null) el.innerHTML = strhtml;
 
@@ -181,7 +186,7 @@ var ceres = {};
             }
 
             // create slideview-img+n and onclick event append child
-            function setImgElement(str, strclick, obj)
+            function setImgElement(str, strc, obj)
             {
                 let el = document.createElement('img');
 
@@ -189,7 +194,7 @@ var ceres = {};
                 el.createAttribute('onclick');
                 el.createAttribute('src');
                 el.setAttribute('id', str);
-                el.setAttribute('onclick', strclick);
+                el.setAttribute('onclick', strc);
                 el.setAttribute('src', urlArray[0]);
 
                 obj.appendChild(el);
