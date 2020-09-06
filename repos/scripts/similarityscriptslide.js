@@ -171,16 +171,16 @@ var ceres = {};
             }
 
             // create slideview+n and class append child
-            function setDivElement(idName, className, obj, mu)
+            function setDivElement(idName, className, parentElement, markup)
             {
                 let el = document.createElement('div');
 
                 el.id = idName;
                 el.class = className;
 
-                if (strhtml != null) el.innerHTML = mu;
+                if (markup) el.innerHTML = markup;
 
-                obj.appendChild(el);
+                parentElement.appendChild(el);
             }
 
             // create slideview-img+n and onclick event append child
