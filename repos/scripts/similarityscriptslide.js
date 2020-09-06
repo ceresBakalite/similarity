@@ -132,7 +132,7 @@ var ceres = {};
         function createSlideViewContainer()
         {
             progenitor.innerHTML = null;
-            
+
             const parent = document.createElement('div');
             let child = null;
 
@@ -140,6 +140,9 @@ var ceres = {};
             parent.class = 'slideview-image-container';
 
             progenitor.appendChild(parent);
+
+            let el = (document.getElementById(parent)) ? document.getElementById(parent) : document.getElementsByTagName(parent.id)[0];
+            if (el != null) el.setAttribute('class', parent.class);
 
             for (let item = 0; item < ar.length; item++)
             {
