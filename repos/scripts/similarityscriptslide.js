@@ -126,14 +126,15 @@ var ceres = {};
 
         function createSlideViewContainer()
         {
-            //let parent = document.createElement('div');
+            const parent = document.createElement('div');
+            let child = null;
 
-            //parent.createAttribute('id');
-            //parent.createAttribute('class');
-            //parent.setAttribute('id', 'ceres-slideview-image-container');
-            //parent.setAttribute('class', 'slideview-image-container');
+            parent.createAttribute('id');
+            parent.createAttribute('class');
+            parent.setAttribute('id', 'ceres-slideview-image-container');
+            parent.setAttribute('class', 'slideview-image-container');
 
-            //progenitor.appendChild(parent);
+            progenitor.appendChild(parent);
 
             for (let item = 0; item < ar.length; item++)
             {
@@ -147,13 +148,13 @@ var ceres = {};
 
                 //alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
-                //setDivElement(svcname, 'slideview fade', parent, null);
+                setDivElement(svcname, 'slideview fade', parent, null);
 
-                //child = document.getElementById(svcname);
+                child = document.getElementById(svcname);
 
-                //setDivElement(surName, 'surtitle', child, getSurtitle());
-                //setImgElement(imgName, 'ceres.openImageTab(this);', child);
-                //setDivElement(subName, 'subtitle', child, getSubtitle());
+                setDivElement(surName, 'surtitle', child, getSurtitle());
+                setImgElement(imgName, 'ceres.openImageTab(this);', child);
+                setDivElement(subName, 'subtitle', child, getSubtitle());
             }
 
             function getURL()
