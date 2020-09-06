@@ -140,6 +140,9 @@ var ceres = {};
             {
                 let item = ar[index];
                 let itemArray = item.split(',');
+                let itemsrc = (itemArray[0] == null || itemArray[0] == 'undefined') ? null : itemArray[0];
+                let itemsub = (itemArray[1] == null || itemArray[1] == 'undefined') ? null : itemArray[1];
+
                 let svname = 'slideview' + index;
                 let surName = 'slideview-sur' + index;
                 let subName = 'slideview-sub' + index;
@@ -147,29 +150,18 @@ var ceres = {};
 
                 alert('item: ' + item + ' - ' + itemArray[0] + ' - ' + itemArray[1]);
                 alert('svname: ' + svname);
-                alert('surName: ' + surName + ' - ' + getSurtitle());
-                alert('subName: ' + subName + ' - ' + getSubtitle());
+                alert('surName: ' + surName + ' - ' + itemsur);
+                alert('subName: ' + subName + ' - ' + itemsub);
                 alert('imgName: ' + imgName);
 
 //                setDivElement(svname, 'slideview fade', parent, null);
 
 //                child = document.getElementById(svname);
 
-//                setDivElement(surName, 'surtitle', child, getSurtitle());
+//                setDivElement(surName, 'surtitle', child, itemsur);
 //                setImgElement(imgName, 'ceres.openImageTab(this);', child);
-//                setDivElement(subName, 'subtitle', child, getSubtitle());
+//                setDivElement(subName, 'subtitle', child, itemsub);
             });
-
-            function getSurtitle()
-            {
-                return (sur) ? item + ' / ' + ar.Length : null;
-            }
-
-            function getSubtitle()
-            {
-                if (!sub) return null;
-                return (itemArray[1] != null) ? itemArray[1] : null;
-            }
 
             // create slideview+n and class append child
             function setDivElement(str, strc, obj, strhtml)
@@ -191,13 +183,14 @@ var ceres = {};
             function setImgElement(str, strc, obj)
             {
                 let el = document.createElement('img');
+                let src = (itemsrc == null || itemsrc == 'undefined') ? null : itemsrc;
 
                 el.createAttribute('id');
                 el.createAttribute('onclick');
                 el.createAttribute('src');
                 el.setAttribute('id', str);
                 el.setAttribute('onclick', strc);
-                el.setAttribute('src', itemArray[0]);
+                el.setAttribute('src', src);
 
                 obj.appendChild(el);
             }
