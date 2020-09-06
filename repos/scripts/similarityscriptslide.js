@@ -146,7 +146,7 @@ var ceres = {};
                 //let imgName = 'slideview-img' + index;
 
                 alert('item: ' + item);
-                alert('src: ' + getURL();
+                alert('src: ' + getURL());
                 //alert('surtitle: ' + getSurtitle());
                 //alert('subtitle: ' + getSubtitle());
                 //alert('svname: ' + svname);
