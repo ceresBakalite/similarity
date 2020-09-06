@@ -131,6 +131,8 @@ var ceres = {};
 
         function createSlideViewContainer()
         {
+            progenitor.innerHTML = null;
+            
             const parent = document.createElement('div');
             let child = null;
 
