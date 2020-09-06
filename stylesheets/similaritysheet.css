@@ -24,7 +24,7 @@ body::-webkit-scrollbar {
 
 @-moz-document url-prefix() {
     body {
-        overflow: hidden !important;
+        overflow: auto !important;
     }
 }
 
