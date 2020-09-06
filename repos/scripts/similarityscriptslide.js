@@ -131,10 +131,6 @@ var ceres = {};
 
             parent.id = 'ceres-slideview-image-container';
             parent.class = 'slideview-image-container';
-//            parent.createAttribute('id');
-//            parent.createAttribute('class');
-//            parent.setAttribute('id', 'ceres-slideview-image-container');
-//            parent.setAttribute('class', 'slideview-image-container');
 
             progenitor.appendChild(parent);
 
@@ -150,7 +146,7 @@ var ceres = {};
 
                 alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
-                //setDivElement(svcname, 'slideview fade', parent, null);
+                setDivElement(svcname, 'slideview fade', parent, null);
 
                 //child = document.getElementById(svcname);
 
@@ -175,16 +171,14 @@ var ceres = {};
             }
 
             // create slideview+n and class append child
-            function setDivElement(str, strc, obj, strhtml)
+            function setDivElement(id, class, obj, html)
             {
                 let el = document.createElement('div');
 
-                el.createAttribute('id');
-                el.createAttribute('class');
-                el.setAttribute('id', str);
-                el.setAttribute('class', strc);
+                el.id = id;
+                el.class = class;
 
-                if (strhtml != null) el.innerHTML = strhtml;
+                if (strhtml != null) el.innerHTML = html;
 
                 obj.appendChild(el);
             }
