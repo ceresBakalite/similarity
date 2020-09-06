@@ -83,7 +83,7 @@ function onloadFrame(ms, md)
     function asyncPullRequest(target)
     {
         displayFooter();
-        refreshMarkdown(target);
+        setTimeout(refreshMarkdown(target), 3000);
     }
 
     function refreshMarkdown(target)
