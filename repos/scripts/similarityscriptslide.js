@@ -135,22 +135,16 @@ var ceres = {};
 
             //progenitor.appendChild(parent);
 
-            for (let index = 0; index < ar.length; index++)
+            for (let item = 0; item < ar.length; item++)
             {
-                var itemArray = ar[index].split(',');
+                var arrayItem = ar[item].split(',');
 
-                let svname = 'slideview' + index;
-                let surName = 'slideview-sur' + index;
-                let subName = 'slideview-sub' + index;
-                let imgName = 'slideview-img' + index;
+                let svname = 'slideview' + item;
+                let surName = 'slideview-sur' + item;
+                let subName = 'slideview-sub' + item;
+                let imgName = 'slideview-img' + item;
 
-                alert('src: ' + getURL());
-                alert('surtitle: ' + getSurtitle());
-                alert('subtitle: ' + getSubtitle());
-                alert('svname: ' + svname);
-                alert('surName: ' + surName + ' - ' + getSurtitle());
-                alert('subName: ' + subName + ' - ' + getSubtitle());
-                alert('imgName: ' + imgName);
+                alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
                 //setDivElement(svname, 'slideview fade', parent, null);
 
@@ -163,17 +157,17 @@ var ceres = {};
 
             function getURL()
             {
-                return (itemArray[0]) ? itemArray[0] : null;
+                return (arrayItem[0]) ? arrayItem[0] : null;
             }
 
             function getSurtitle()
             {
-                return (sur) ? index + ' / ' + ar.length : null;
+                return (sur) ? item + ' / ' + ar.length : null;
             }
 
             function getSubtitle()
             {
-                if (sub) return (itemArray[1]) ? itemArray[1] : null;
+                if (sub) return (arrayItem[1]) ? arrayItem[1] : null;
                 return null;
             }
 
