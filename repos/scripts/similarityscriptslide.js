@@ -170,7 +170,7 @@ var ceres = {};
 
             function getSurtitle()
             {
-                return (sur) ? index + ' / ' + ar.Length : null;
+                return (sur) ? index + ' / ' + ar.length : null;
             }
 
             function getSubtitle()
