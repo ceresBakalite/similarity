@@ -159,7 +159,7 @@ var ceres = {};
                 //setDivElement(surName, 'surtitle', child, getSurtitle());
                 //setImgElement(imgName, 'ceres.openImageTab(this);', child);
                 //setDivElement(subName, 'subtitle', child, getSubtitle());
-            });
+            }
 
             function getURL()
             {
@@ -181,6 +181,7 @@ var ceres = {};
             function setDivElement(str, strc, obj, strhtml)
             {
                 let el = document.createElement('div');
+
                 el.createAttribute('id');
                 el.createAttribute('class');
                 el.setAttribute('id', str);
