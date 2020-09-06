@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
+*/
 
 @-moz-document url-prefix() {
     html, body {
