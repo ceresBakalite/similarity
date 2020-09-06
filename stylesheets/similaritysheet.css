@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
 */
 
 @-moz-document url-prefix() {
-    body {
+    html {
         overflow: hidden !important;
     }
 }
