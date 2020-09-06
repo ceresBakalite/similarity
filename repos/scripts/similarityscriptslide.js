@@ -26,13 +26,13 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         getSlideViewercss();
-        getSlideViewer();
-        displaySlide();
     }
 
     slideview.CSSDone = function(str)
     {
         alert(str);
+        getSlideViewer();
+        displaySlide();
     }
 
     function getSlideViewercss()
