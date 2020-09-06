@@ -137,18 +137,18 @@ var ceres = {};
 
             ar.forEach(item =>
             {
-                let urlArray = item.split(',');
+                let itemArray = item.split(',');
                 //let svname = 'slideview' + item;
                 //let surName = 'slideview-sur' + item;
                 //let subName = 'slideview-sub' + item;
                 //let imgName = 'slideview-img' + item;
 
-                alert('item: ' + item);
+                alert('item: ' + item + ' - ' + itemArray[0] + ' - ' + itemArray[1]);
                 //alert('svname: ' + svname);
                 //alert('surName: ' + surName + ' - ' + getSurtitle());
                 //alert('subName: ' + subName + ' - ' + getSubtitle());
                 //alert('imgName: ' + imgName);
-                //alert('src: ' + urlArray[0]);
+                //alert('src: ' + itemArray[0]);
 
 //                setDivElement(svname, 'slideview fade', parent, null);
 
@@ -167,7 +167,7 @@ var ceres = {};
             function getSubtitle()
             {
                 if (!sub) return null;
-                return (urlArray[1] != null) ? urlArray[1] : null;
+                return (itemArray[1] != null) ? itemArray[1] : null;
             }
 
             // create slideview+n and class append child
@@ -196,7 +196,7 @@ var ceres = {};
                 el.createAttribute('src');
                 el.setAttribute('id', str);
                 el.setAttribute('onclick', strc);
-                el.setAttribute('src', urlArray[0]);
+                el.setAttribute('src', itemArray[0]);
 
                 obj.appendChild(el);
             }
