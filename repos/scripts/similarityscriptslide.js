@@ -123,7 +123,7 @@ var ceres = {};
 
         }
 
-        // create ceres-slideview-image-container and class
+
         function createSlideViewContainer()
         {
             //let parent = document.createElement('div');
@@ -135,39 +135,51 @@ var ceres = {};
 
             //progenitor.appendChild(parent);
 
-//            ar.forEach(item =>
             for (let index = 0; index < ar.length; index++)
             {
                 let item = ar[index];
                 let itemArray = item.split(',');
-                let itemsrc = (itemArray[0] == null || itemArray[0] == 'undefined') ? null : itemArray[0];
-                let itemsub = (itemArray[1] == null || itemArray[1] == 'undefined') ? null : itemArray[1];
 
                 let svname = 'slideview' + index;
                 let surName = 'slideview-sur' + index;
                 let subName = 'slideview-sub' + index;
                 let imgName = 'slideview-img' + index;
 
-                alert('item: ' + item + ' - ' + itemArray[0] + ' - ' + itemArray[1]);
+                alert('item: ' + item + ' src: ' + getURL() + ' surtitle: ' + getSurtitle() + ' subtitle: ' + getSubtitle());
                 alert('svname: ' + svname);
                 alert('surName: ' + surName + ' - ' + itemsur);
                 alert('subName: ' + subName + ' - ' + itemsub);
                 alert('imgName: ' + imgName);
 
-//                setDivElement(svname, 'slideview fade', parent, null);
+                setDivElement(svname, 'slideview fade', parent, null);
 
-//                child = document.getElementById(svname);
+                child = document.getElementById(svname);
 
-//                setDivElement(surName, 'surtitle', child, itemsur);
-//                setImgElement(imgName, 'ceres.openImageTab(this);', child);
-//                setDivElement(subName, 'subtitle', child, itemsub);
+                setDivElement(surName, 'surtitle', child, getSurtitle());
+                setImgElement(imgName, 'ceres.openImageTab(this);', child);
+                setDivElement(subName, 'subtitle', child, getSubtitle());
             });
+
+            function getURL()
+            {
+                return (itemArray[0] == null || itemArray[0] == 'undefined') ? null : itemArray[0];
+            }
+
+            function getSurtitle()
+            {
+                return (sur) ? index + ' / ' + ar.Length : null;
+            }
+
+            function getSubtitle()
+            {
+                if (sub) return (itemArray[1] == null || itemArray[1] == 'undefined') ? null : itemArray[1];
+                return null;
+            }
 
             // create slideview+n and class append child
             function setDivElement(str, strc, obj, strhtml)
             {
                 let el = document.createElement('div');
-
                 el.createAttribute('id');
                 el.createAttribute('class');
                 el.setAttribute('id', str);
@@ -176,27 +188,24 @@ var ceres = {};
                 if (strhtml != null) el.innerHTML = strhtml;
 
                 obj.appendChild(el);
-
             }
 
             // create slideview-img+n and onclick event append child
             function setImgElement(str, strc, obj)
             {
                 let el = document.createElement('img');
-                let src = (itemsrc == null || itemsrc == 'undefined') ? null : itemsrc;
 
                 el.createAttribute('id');
                 el.createAttribute('onclick');
                 el.createAttribute('src');
                 el.setAttribute('id', str);
                 el.setAttribute('onclick', strc);
-                el.setAttribute('src', src);
+                el.setAttribute('src', getURL());
 
                 obj.appendChild(el);
             }
 
         }
-
 
         // create br append child
         function createLineBreakContainer()
