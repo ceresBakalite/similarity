@@ -155,6 +155,24 @@ var ceres = {};
                 setDivElement(subName, 'subtitle', child, getSubtitle());
             }
 
+            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', progenitor, '&#10094;');
+            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', progenitor, '&#10095;');
+
+            function setAElement(idName, className, onClickEvent, parentElement, markup)
+            {
+                let el = document.createElement('a');
+
+                el.id = idName;
+                el.class = className;
+                el.onclick = onClickEvent;
+                el.src = getURL();
+
+                if (markup) el.innerHTML = markup;
+
+                parentElement.appendChild(el);
+
+            }
+
             function getURL()
             {
                 return (arrayItem[0]) ? arrayItem[0] : null;
