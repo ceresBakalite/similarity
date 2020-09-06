@@ -107,7 +107,9 @@ var ceres = {};
 
         createSlideViewContainer();
         createSlideviewPointerContainer();
-alert(progenitor.immerHTML)
+        
+alert(progenitor.innerHTML);
+
         function getSlideViewerAttributes()
         {
             ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
