@@ -5,20 +5,13 @@ body, html {
 
 /* Hide browser scrollbar for IE, Edge and Firefox */
 body {
-  /* -ms-overflow-style: none; */
-  /* scrollbar-width: none; */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Hide browser scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
-    /* display: none; */
-}
-
-/* Hide browser scrollbar for IE, Edge and Firefox */
-body {
-  overflow: auto !important;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  display: none;
 }
 
 /* Hide <pre> scrollbar for Chrome, Safari and Opera */
