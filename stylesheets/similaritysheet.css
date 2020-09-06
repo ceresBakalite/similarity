@@ -9,6 +9,10 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+@-moz-document url-prefix() {
+    html,body{overflow: hidden !important;}
+}
+
 /* Hide browser scrollbar for IE, Edge and Firefox */
 body {
   overflow: auto;
