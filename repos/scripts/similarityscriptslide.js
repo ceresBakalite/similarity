@@ -31,6 +31,7 @@ var ceres = {};
     slideview.CSSDone = function(str)
     {
         alert(str);
+        document.getElementById('ceres-slideview-image-container').style.display = 'block';
         getSlideViewer();
         displaySlide();
     }
