@@ -5,7 +5,7 @@ body, html {
 
 /* Hide browser scrollbar for IE, Edge and Firefox */
 body {
-  -ms-overflow-style: none;
+  /* -ms-overflow-style: none; */
   /* scrollbar-width: none; */
 }
 
