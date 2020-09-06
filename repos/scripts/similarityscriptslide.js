@@ -155,22 +155,8 @@ var ceres = {};
                 setDivElement(subName, 'subtitle', child, getSubtitle());
             }
 
-            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', progenitor, '&#10094;');
-            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', progenitor, '&#10095;');
-
-            function setAElement(idName, className, onClickEvent, parentElement, markup)
-            {
-                let el = document.createElement('a');
-
-                el.id = idName;
-                el.class = className;
-                el.onclick = onClickEvent;
-                el.src = getURL();
-
-                parentElement.appendChild(el);
-
-                if (markup) el.innerHTML = markup;
-            }
+            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', parent, '&#10094;');
+            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', parent, '&#10095;');
 
             function getURL()
             {
@@ -210,6 +196,20 @@ var ceres = {};
                 el.src = getURL();
 
                 parentElement.appendChild(el);
+            }
+
+            function setAElement(idName, className, onClickEvent, parentElement, markup)
+            {
+                let el = document.createElement('a');
+
+                el.id = idName;
+                el.class = className;
+                el.onclick = onClickEvent;
+                el.src = getURL();
+
+                parentElement.appendChild(el);
+
+                if (markup) el.innerHTML = markup;
             }
 
         }
