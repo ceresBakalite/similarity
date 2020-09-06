@@ -105,8 +105,8 @@ var ceres = {};
         const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         const ar = getSlideViewerAttributes();
 
-        createSlideViewContainer();
-        createSlideviewPointerContainer();
+        //createSlideViewContainer();
+        //createSlideviewPointerContainer();
 
         function getSlideViewerAttributes()
         {
