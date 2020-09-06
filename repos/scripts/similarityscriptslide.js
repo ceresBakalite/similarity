@@ -80,7 +80,7 @@ var ceres = {};
         }, 10);
 
         document.head.appendChild(link);
-    };
+    }
 
     function displaySlide(targetIndex)
     {
@@ -98,12 +98,12 @@ var ceres = {};
             pointers[index-1].className += ' active';
         }
 
-    };
+    }
 
     function getSlideViewer()
     {
-        let progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
-        let ar = getSlideViewerAttributes();
+        const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+        const ar = getSlideViewerAttributes();
 
         createSlideViewContainer();
 
