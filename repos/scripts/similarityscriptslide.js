@@ -148,7 +148,7 @@ var ceres = {};
 
                 setDivElement(svcname, 'slideview fade', parent, null);
 
-                //child = document.getElementById(svcname);
+                child = document.getElementById(svcname);
 
                 //setDivElement(surName, 'surtitle', child, getSurtitle());
                 //setImgElement(imgName, 'ceres.openImageTab(this);', child);
@@ -184,18 +184,15 @@ var ceres = {};
             }
 
             // create slideview-img+n and onclick event append child
-            function setImgElement(str, strc, obj)
+            function setImgElement(idName, onClickEvent, parentElement)
             {
                 let el = document.createElement('img');
 
-                el.createAttribute('id');
-                el.createAttribute('onclick');
-                el.createAttribute('src');
-                el.setAttribute('id', str);
-                el.setAttribute('onclick', strc);
-                el.setAttribute('src', getURL());
+                el.id = idName;
+                el.onclick = onClickEvent;
+                el.src = getURL();
 
-                obj.appendChild(el);
+                parentElement.appendChild(el);
             }
 
         }
