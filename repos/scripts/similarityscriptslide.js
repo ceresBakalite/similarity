@@ -135,20 +135,21 @@ var ceres = {};
 
             //progenitor.appendChild(parent);
 
-            ar.forEach(item =>
+//            ar.forEach(item =>
+            for (let index = 0; index < ar.length; index++)
             {
+                let item = ar[index];
                 let itemArray = item.split(',');
-                //let svname = 'slideview' + item;
-                //let surName = 'slideview-sur' + item;
-                //let subName = 'slideview-sub' + item;
-                //let imgName = 'slideview-img' + item;
+                let svname = 'slideview' + item;
+                let surName = 'slideview-sur' + index;
+                let subName = 'slideview-sub' + index;
+                let imgName = 'slideview-img' + index;
 
                 alert('item: ' + item + ' - ' + itemArray[0] + ' - ' + itemArray[1]);
-                //alert('svname: ' + svname);
-                //alert('surName: ' + surName + ' - ' + getSurtitle());
-                //alert('subName: ' + subName + ' - ' + getSubtitle());
-                //alert('imgName: ' + imgName);
-                //alert('src: ' + itemArray[0]);
+                alert('svname: ' + svname);
+                alert('surName: ' + surName + ' - ' + getSurtitle());
+                alert('subName: ' + subName + ' - ' + getSubtitle());
+                alert('imgName: ' + imgName);
 
 //                setDivElement(svname, 'slideview fade', parent, null);
 
