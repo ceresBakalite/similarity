@@ -43,7 +43,39 @@ var ceres = {};
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-        link.onload = 'alert(hello);';
+
+        link.onload = function () {
+          slideview.CSSDone('onload listener');
+        }
+
+        if (link.addEventListener) {
+          link.addEventListener('load', function() {
+            slideview.CSSDone("DOM's load event");
+          }, false);
+        }
+
+        link.onreadystatechange = function() {
+          var state = link.readyState;
+          if (state === 'loaded' || state === 'complete') {
+            link.onreadystatechange = null;
+            slideview.CSSDone("onreadystatechange");
+          }
+        };
+
+        var cssnum = document.styleSheets.length;
+        var ti = setInterval(function() {
+          if (document.styleSheets.length > cssnum) {
+            // needs more work when you load a bunch of CSS files quickly
+            // e.g. loop from cssnum to the new length, looking
+            // for the document.styleSheets[n].href === url
+            // ...
+
+            // FF changes the length prematurely :()
+            slideview.CSSDone('listening to styleSheets.length change');
+            clearInterval(ti);
+
+          }
+        }, 10);
 
         head.appendChild(link);
     };
