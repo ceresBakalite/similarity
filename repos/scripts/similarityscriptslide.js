@@ -107,8 +107,9 @@ var ceres = {};
 
         createSlideViewContainer();
         createSlideviewPointerContainer();
-        
+
 alert(progenitor.innerHTML);
+console.log(progenitor.innerHTML);
 
         function getSlideViewerAttributes()
         {
