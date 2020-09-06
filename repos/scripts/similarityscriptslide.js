@@ -43,7 +43,7 @@ var ceres = {};
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-        link.onload = 'slideview.CSSDone();';
+        link.onload = 'alert(hello);';
 
         head.appendChild(link);
     };
