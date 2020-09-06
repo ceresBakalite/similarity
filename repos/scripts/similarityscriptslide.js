@@ -140,7 +140,7 @@ var ceres = {};
             {
                 let item = ar[index];
                 let itemArray = item.split(',');
-                let svname = 'slideview' + item;
+                let svname = 'slideview' + index;
                 let surName = 'slideview-sur' + index;
                 let subName = 'slideview-sub' + index;
                 let imgName = 'slideview-img' + index;
