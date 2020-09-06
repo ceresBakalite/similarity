@@ -137,23 +137,20 @@ var ceres = {};
 
             for (let index = 0; index < ar.length; index++)
             {
-                let item = ar[index];
-                var itemArray = item.split(',');
+                var itemArray = ar[index].split(',');
 
-                //let svname = 'slideview' + index;
-                //let surName = 'slideview-sur' + index;
-                //let subName = 'slideview-sub' + index;
-                //let imgName = 'slideview-img' + index;
+                let svname = 'slideview' + index;
+                let surName = 'slideview-sur' + index;
+                let subName = 'slideview-sub' + index;
+                let imgName = 'slideview-img' + index;
 
-                alert('item: ' + item + ' array: ' + itemArray[0]);
-                alert('src: ' + getURL2(itemArray[0]));
                 alert('src: ' + getURL());
-                //alert('surtitle: ' + getSurtitle());
-                //alert('subtitle: ' + getSubtitle());
-                //alert('svname: ' + svname);
-                //alert('surName: ' + surName + ' - ' + itemsur);
-                //alert('subName: ' + subName + ' - ' + itemsub);
-                //alert('imgName: ' + imgName);
+                alert('surtitle: ' + getSurtitle());
+                alert('subtitle: ' + getSubtitle());
+                alert('svname: ' + svname);
+                alert('surName: ' + surName + ' - ' + getSurtitle());
+                alert('subName: ' + subName + ' - ' + getSubtitle());
+                alert('imgName: ' + imgName);
 
                 //setDivElement(svname, 'slideview fade', parent, null);
 
@@ -162,11 +159,6 @@ var ceres = {};
                 //setDivElement(surName, 'surtitle', child, getSurtitle());
                 //setImgElement(imgName, 'ceres.openImageTab(this);', child);
                 //setDivElement(subName, 'subtitle', child, getSubtitle());
-            }
-
-            function getURL2(str)
-            {
-                return (str) ? str : null;
             }
 
             function getURL()
