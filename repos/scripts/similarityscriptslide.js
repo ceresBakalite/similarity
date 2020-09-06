@@ -105,7 +105,8 @@ var ceres = {};
         const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         const ar = getSlideViewerAttributes();
 
-        //createSlideViewContainer();
+        createSlideViewContainer();
+        createSlideviewPointerContainer();
 
         function getSlideViewerAttributes()
         {
@@ -199,16 +200,50 @@ var ceres = {};
         // create br append child
         function createLineBreakContainer()
         {
+            let el = document.createElement('br');
+            progenitor.appendChild(el);
         }
 
         // create ceres-slideview-pointer-container and class
-        function createCeresSlideviewPointerContainer()
-        {
-        }
-
-        // create slideview-ptr+n and class and onclick event append child
         function createSlideviewPointerContainer()
         {
+            createLineBreakContainer();
+
+            const parent = document.createElement('div');
+            let child = null;
+
+            parent.id = 'ceres-slideview-pointer-container';
+            parent.class = 'slideview-pointer-container';
+
+            progenitor.appendChild(parent);
+
+            for (let item = 0; item < ar.length; item++)
+            {
+                var qualifier = item + 1;
+                let svpname = 'slideview-ptr' + qualifier;
+
+                alert('svpname: ' + svpname + ' onClickEvent: ' + getClickEvent());
+
+                setSpanElement(svpname, 'ptr', getClickEvent(), parent);
+            }
+
+            function getClickEvent()
+            {
+                return 'ceres.setSlide(' + qualifier + ')';
+            }
+
+            // create slideview+n and class append child
+            function setSpanElement(idName, className, onClickEvent, parentElement)
+            {
+                let el = document.createElement('span');
+
+                el.id = idName;
+                el.class = className;
+                el.onclick = onClickEvent;
+
+                parentElement.appendChild(el);
+            }
+
         }
 
     }
