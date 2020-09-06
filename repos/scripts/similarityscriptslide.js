@@ -145,7 +145,7 @@ var ceres = {};
                 let subName = 'slideview-sub' + qualifier;
                 let imgName = 'slideview-img' + qualifier;
 
-                alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
+                //alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
                 //setDivElement(svname, 'slideview fade', parent, null);
 
@@ -168,8 +168,7 @@ var ceres = {};
 
             function getSubtitle()
             {
-                if (sub) return (arrayItem[1]) ? arrayItem[1] : null;
-                return null;
+                return (sub) ? (arrayItem[1]) ? arrayItem[1] : null : null;
             }
 
             // create slideview+n and class append child
