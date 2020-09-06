@@ -25,7 +25,7 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        //getSlideViewercss();
+        getSlideViewercss();
         getSlideViewer();
         displaySlide();
     }
@@ -38,10 +38,16 @@ var ceres = {};
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-        link.media = 'screen';
+        link.onload = 'CSSDone();';
 
         head.appendChild(link);
     };
+
+    function CSSDone()
+    {
+        alert('unexpected');
+    }
+
 
     function displaySlide(targetIndex)
     {
