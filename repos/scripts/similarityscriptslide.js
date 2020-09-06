@@ -129,9 +129,9 @@ var ceres = {};
             const parent = document.createElement('div');
             let child = null;
 
-            parent.createAttribute('id');
+//            parent.createAttribute('id');
 //            parent.createAttribute('class');
-            parent.setAttribute('id', 'ceres-slideview-image-container');
+//            parent.setAttribute('id', 'ceres-slideview-image-container');
 //            parent.setAttribute('class', 'slideview-image-container');
 
             progenitor.appendChild(parent);
