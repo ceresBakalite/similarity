@@ -138,13 +138,14 @@ var ceres = {};
             for (let item = 0; item < ar.length; item++)
             {
                 var arrayItem = ar[item].split(',');
+                var qualifier = item + 1;
 
-                let svname = 'slideview' + item;
-                let surName = 'slideview-sur' + item;
-                let subName = 'slideview-sub' + item;
-                let imgName = 'slideview-img' + item;
+                let svname = 'slideview' + qualifier;
+                let surName = 'slideview-sur' + qualifier;
+                let subName = 'slideview-sub' + qualifier;
+                let imgName = 'slideview-img' + qualifier;
 
-                alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle(item) + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
+                alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
                 //setDivElement(svname, 'slideview fade', parent, null);
 
@@ -160,9 +161,9 @@ var ceres = {};
                 return (arrayItem[0]) ? arrayItem[0] : null;
             }
 
-            function getSurtitle(int)
+            function getSurtitle()
             {
-                return (sur) ? int + ' / ' + ar.length : null;
+                return (sur) ? qualifier + ' / ' + ar.length : null;
             }
 
             function getSubtitle()
