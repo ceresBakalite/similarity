@@ -25,6 +25,7 @@ body::-webkit-scrollbar {
 @-moz-document url-prefix() {
     body {
         /* overflow: auto !important; */
+        display: none;
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
