@@ -26,6 +26,8 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         getSlideViewercss();
+        //getSlideViewer();
+        //displaySlide();
     }
 
     slideview.CSSDone = function(str)
