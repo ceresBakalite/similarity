@@ -30,9 +30,9 @@ var ceres = {};
         displaySlide();
     }
 
-    slideview.CSSDone = function()
+    slideview.CSSDone = function(str)
     {
-        alert('unexpected');
+        alert(str);
     }
 
     function getSlideViewercss()
