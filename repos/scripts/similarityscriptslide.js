@@ -167,10 +167,9 @@ var ceres = {};
                 el.onclick = onClickEvent;
                 el.src = getURL();
 
-                if (markup) el.innerHTML = markup;
-
                 parentElement.appendChild(el);
 
+                if (markup) el.innerHTML = markup;
             }
 
             function getURL()
@@ -196,9 +195,9 @@ var ceres = {};
                 el.id = idName;
                 el.class = className;
 
-                if (markup) el.innerHTML = markup;
-
                 parentElement.appendChild(el);
+
+                if (markup) el.innerHTML = markup;
             }
 
             // create slideview-img+n and onclick event append child
