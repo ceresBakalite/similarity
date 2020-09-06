@@ -3,10 +3,9 @@ body, html {
   height: 100%;
 }
 
-/* Hide browser scrollbar for IE, Edge */
+/* Blunt instrument to hide browser scrollbar for IE, Edge, Opera and Firefox */
 body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow: hidden !important;
 }
 
 /* Hide <pre> scrollbar for Chrome, Safari and Opera */
