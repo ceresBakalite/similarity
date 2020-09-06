@@ -140,16 +140,16 @@ var ceres = {};
                 var arrayItem = ar[item].split(',');
                 var qualifier = item + 1;
 
-                let svname = 'slideview' + qualifier;
+                let svcname = 'slideview' + qualifier;
                 let surName = 'slideview-sur' + qualifier;
                 let subName = 'slideview-sub' + qualifier;
                 let imgName = 'slideview-img' + qualifier;
 
                 //alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
-                //setDivElement(svname, 'slideview fade', parent, null);
+                //setDivElement(svcname, 'slideview fade', parent, null);
 
-                //child = document.getElementById(svname);
+                //child = document.getElementById(svcname);
 
                 //setDivElement(surName, 'surtitle', child, getSurtitle());
                 //setImgElement(imgName, 'ceres.openImageTab(this);', child);
