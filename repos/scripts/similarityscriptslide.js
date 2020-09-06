@@ -25,9 +25,9 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        //getSlideViewercss();
-        getSlideViewer();
-        displaySlide();
+        getSlideViewercss();
+        //getSlideViewer();
+        //displaySlide();
     }
 
     slideview.CSSDone = function(str)
@@ -80,6 +80,9 @@ var ceres = {};
         }, 10);
 
         document.head.appendChild(link);
+
+        console.log(document.head.innerHTML);
+
     }
 
     function displaySlide(targetIndex)
