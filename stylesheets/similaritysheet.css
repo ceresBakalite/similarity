@@ -15,21 +15,11 @@ body::-webkit-scrollbar {
 }
 
 /* Hide browser scrollbar for IE, Edge and Firefox */
-/* body {
+body {
   overflow: auto !important;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-*/
-
-@-moz-document url-prefix() {
-    body {
-        overflow: auto;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-}
-
 
 /* Hide <pre> scrollbar for Chrome, Safari and Opera */
 .pre-word-wrap {
