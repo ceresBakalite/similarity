@@ -141,8 +141,12 @@ var ceres = {};
 
             progenitor.appendChild(parent);
 
-            let el = (document.getElementById(parent)) ? document.getElementById(parent) : document.getElementsByTagName(parent.id)[0];
-            if (el != null) el.setAttribute('class', parent.class);
+            let el = (document.getElementById(parent.id)) ? document.getElementById(parent.id) : document.getElementsByTagName(parent.id)[0];
+            if (el != null)
+            {
+                el.createAttribute('class');
+                el.setAttribute('class', 'slideview-image-container');
+            }
 
             for (let item = 0; item < ar.length; item++)
             {
