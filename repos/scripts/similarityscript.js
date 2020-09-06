@@ -83,12 +83,7 @@ function onloadFrame(ms, md)
     function asyncPullRequest(target)
     {
         displayFooter();
-
-        async connectedCallback()
-        {
-            var x = await refreshMarkdown(target);
-        }
-
+        refreshMarkdown(target);
     }
 
     function refreshMarkdown(target)
