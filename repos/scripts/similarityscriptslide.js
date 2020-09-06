@@ -41,13 +41,13 @@ var ceres = {};
         link.onload = 'CSSDone();';
 
         head.appendChild(link);
+
+        function CSSDone()
+        {
+            alert('unexpected');
+        }
+
     };
-
-    function CSSDone()
-    {
-        alert('unexpected');
-    }
-
 
     function displaySlide(targetIndex)
     {
