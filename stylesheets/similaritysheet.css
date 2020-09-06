@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
         overflow: hidden !important;
     }
 }
-*/
+
 
 /* Hide <pre> scrollbar for Chrome, Safari and Opera */
 .pre-word-wrap {
