@@ -150,9 +150,9 @@ var ceres = {};
 
                 child = document.getElementById(svcname);
 
-                //setDivElement(surName, 'surtitle', child, getSurtitle());
-                //setImgElement(imgName, 'ceres.openImageTab(this);', child);
-                //setDivElement(subName, 'subtitle', child, getSubtitle());
+                setDivElement(surName, 'surtitle', child, getSurtitle());
+                setImgElement(imgName, 'ceres.openImageTab(this);', child);
+                setDivElement(subName, 'subtitle', child, getSubtitle());
             }
 
             function getURL()
