@@ -144,7 +144,7 @@ var ceres = {};
                 let subName = 'slideview-sub' + item;
                 let imgName = 'slideview-img' + item;
 
-                alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle() + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
+                alert('src: ' + getURL() + ' ' + surName + ': ' + getSurtitle(item) + ' ' + subName + ': ' + getSubtitle() + ' imgName: ' + imgName);
 
                 //setDivElement(svname, 'slideview fade', parent, null);
 
@@ -160,9 +160,9 @@ var ceres = {};
                 return (arrayItem[0]) ? arrayItem[0] : null;
             }
 
-            function getSurtitle()
+            function getSurtitle(int)
             {
-                return (sur) ? item + ' / ' + ar.length : null;
+                return (sur) ? int + ' / ' + ar.length : null;
             }
 
             function getSubtitle()
