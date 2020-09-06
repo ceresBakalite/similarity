@@ -10,6 +10,7 @@ body {
 }
 
 /* Hide <pre> scrollbar for Chrome, Safari and Opera */
+/*
 .pre-word-wrap {
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -17,6 +18,7 @@ body {
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
+*/
 
 .hr-line-paleblue {
   height:2px;
@@ -31,9 +33,11 @@ body {
   display: none;
 }
 
+/*
 .project-name-textcolor {
   color: #ffffe8;
 }
+*/
 
 .img-pointer {
   max-width: 100%;
@@ -50,6 +54,7 @@ body {
   z-index: -1;
 }
 
+/*
 .section-header-background {
   background: url(https://ceresbakalite.github.io/similarity/images/NAVBridgeViewHeaderBackground.png) no-repeat;
   background-size: 100% 100%;
@@ -61,9 +66,11 @@ body {
   height: 210px;
 }
 
+
 .section-header-transition {
   height: 70px;
 }
+
 .section-body-container {
   display: table;
   empty-cells: show;
@@ -85,17 +92,18 @@ body {
   height: 100%;
   /* overflow: hidden; */
 }
-
+/*
 .section-frame-container iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
-
+*/
 .footer-content {
   display: none;
 }
 
+/*
 .btn-group .button {
   background-color: #5c685a;
   border: 1px solid gray;
@@ -115,7 +123,7 @@ body {
 .btn-group .button:not(:last-child) {
   border-right: none; /* Prevent double borders */
 }
-
+/*
 .btn-group .button:hover {
   box-shadow: 0 2px 10px 0 rgba(0,0,0,0.24), 0 2px 50px 0 rgba(0,0,0,0.19);
   background-color: #dce6f0;
@@ -129,3 +137,4 @@ body {
   height: 13px;
   padding: 5px 15px 0px 15px;
 }
+*/
