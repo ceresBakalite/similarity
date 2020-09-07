@@ -151,13 +151,13 @@ var ceres = {};
             let child = null;
 
             parent.id = 'ceres-slideview-image-container';
-            parent.class = 'slideview-image-container';
+            //parent.class = 'slideview-image-container';
 
             progenitor.appendChild(parent);
 
-            createAttribute('ceres-slideview-image-container', 'class', 'slideview-image-container');
+            createAttribute(parent.id, 'class', 'slideview-image-container');
 
-alert(document.getElementById('ceres-slideview-image-container').getAttribute('class'));
+alert(document.getElementById(parent.id).getAttribute('class'));
 
             for (let item = 0; item < ar.length; item++)
             {
