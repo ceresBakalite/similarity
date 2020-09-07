@@ -2,9 +2,8 @@ var ceres = {};
 (function(slideview)
 {
     const trace = true; // environment directive
-    //var progenitor = null; // parent slideviewer place holder
-    //var attributes = null; // slideviewer element attributes
-
+    var progenitor = null; // parent slideviewer place holder
+    var attributes = null; // slideviewer element attributes
     let ptr = true; // default - use slideviewer css stylesheet
     let sub = true; // default - display slideviewer pointers
     let sur = true; // default - display slideviewer surtitles
@@ -30,8 +29,8 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        var progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
-        var attributes = getSlideViewerAttributes();
+        progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+        attributes = getSlideViewerAttributes();
 
         if (css)
         {
