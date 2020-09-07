@@ -42,7 +42,7 @@ var ceres = {};
             let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
             let sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             let css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
-            // let emb = (progenitor.getAttribute('emb')) ? progenitor.getAttribute('emb') : emb;
+            let emb = (progenitor.getAttribute('emb')) ? progenitor.getAttribute('emb') : emb;
             let trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
             return imageListToArray(progenitor.innerHTML);
