@@ -47,7 +47,7 @@ var ceres = {};
 
 alert('src: ' + src);
 
-            let imageList = (src) ? progenitor.innerHTML : lookForImageList();
+            let imageList = (src) ? progenitor.innerHTML : getImageList();
 
             return imageListToArray(imageList);
 
