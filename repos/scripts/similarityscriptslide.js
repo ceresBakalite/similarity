@@ -2,7 +2,8 @@ var ceres = {};
 (function(slideview)
 {
     const trace = true; // environment directive
-//    const progenitor = null; // parent slideviewer place holder
+    const progenitor = null; // parent slideviewer place holder
+    const attributes = null; // slideviewer element attributes
 
     let ptr = true; // default - use slideviewer css stylesheet
     let sub = true; // default - display slideviewer pointers
@@ -29,8 +30,8 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
-        const ar = getSlideViewerAttributes();
+        progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+        attributes = getSlideViewerAttributes();
 
         if (css)
         {
@@ -193,7 +194,7 @@ var ceres = {};
 
             createAttribute(descendant.id, 'class', 'slideview-image-container');
 
-            for (let item = 0; item < ar.length; item++)
+            for (let item = 0; item < attributes.length; item++)
             {
                 var arrayItem = ar[item].split(',');
                 var qualifier = item + 1;
@@ -222,7 +223,7 @@ var ceres = {};
 
             function getSurtitle()
             {
-                return (sur) ? qualifier + ' / ' + ar.length : null;
+                return (sur) ? qualifier + ' / ' + attributes.length : null;
             }
 
             function getSubtitle()
@@ -280,7 +281,7 @@ var ceres = {};
 
             createAttribute(descendant.id, 'class', 'slideview-pointer-container');
 
-            for (let item = 0; item < ar.length; item++)
+            for (let item = 0; item < attributes.length; item++)
             {
                 var qualifier = item + 1;
                 let svpname = 'slideview-ptr' + qualifier;
