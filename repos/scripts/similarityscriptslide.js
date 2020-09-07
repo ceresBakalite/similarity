@@ -47,6 +47,8 @@ alert('bool: ' + progenitor.innerHTML.length);
 
             let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getImageList();
 
+            if (trc && !imageList) console.log('ceres-csv image list not found');
+
             return imageListToArray(imageList);
 
             function imageListToArray(str)
