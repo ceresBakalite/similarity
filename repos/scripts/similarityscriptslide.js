@@ -1,7 +1,7 @@
 var ceres = {};
 (function(slideview)
 {
-    const trace = true; // environment directive
+    const trace = false; // environment directive
 
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
