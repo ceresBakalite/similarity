@@ -38,12 +38,12 @@ var ceres = {};
 
         function getSlideViewAttributes()
         {
-            let ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
-            let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
-            let sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
-            let css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
-            let emb = (progenitor.getAttribute('emb')) ? progenitor.getAttribute('emb') : emb;
-            let trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
+            ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
+            sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
+            sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
+            css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
+            emb = (progenitor.getAttribute('emb')) ? progenitor.getAttribute('emb') : emb;
+            trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
             return imageListToArray(progenitor.innerHTML);
 
