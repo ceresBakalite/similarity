@@ -53,64 +53,60 @@ var ceres = {};
 
     }
 
-    function intialiseSlideViewer()
+    function linkSlideViewerCSS()
     {
-        if (css)
+        const link = document.createElement('link');
+
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+        link.as = 'style';
+
+        link.onload = function ()
         {
-            const link = document.createElement('link');
+            if (trace) console.log('onload listener');
+        }
 
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-            link.as = 'style';
-
-            link.onload = function ()
+        if (link.addEventListener)
+        {
+            link.addEventListener('load', function()
             {
-                if (trace) console.log('onload listener');
-            }
-
-            if (link.addEventListener)
-            {
-                link.addEventListener('load', function()
-                {
-                    if (trace) console.log("DOM's load event");
-                }, false);
-
-            }
-
-            link.onreadystatechange = function()
-            {
-                var state = link.readyState;
-
-                if (state === 'loaded' || state === 'complete')
-                {
-                    link.onreadystatechange = null;
-                    if (trace) console.log('onreadystatechange');
-                }
-
-            };
-
-            var cssnum = document.styleSheets.length;
-
-            var ti = setInterval(function()
-            {
-                if (document.styleSheets.length > cssnum)
-                {
-                    clearInterval(ti);
-                    if (trace) console.log('listening to styleSheets.length change');
-                }
-
-            }, 10);
-
-            document.head.appendChild(link);
+                if (trace) console.log("DOM's load event");
+            }, false);
 
         }
 
-        loadSlideViewer();
+        link.onreadystatechange = function()
+        {
+            var state = link.readyState;
+
+            if (state === 'loaded' || state === 'complete')
+            {
+                link.onreadystatechange = null;
+                if (trace) console.log('onreadystatechange');
+            }
+
+        };
+
+        var cssnum = document.styleSheets.length;
+
+        var ti = setInterval(function()
+        {
+            if (document.styleSheets.length > cssnum)
+            {
+                clearInterval(ti);
+                if (trace) console.log('listening to styleSheets.length change');
+            }
+
+        }, 10);
+
+        document.head.appendChild(link);
     }
 
-    function loadSlideViewer()
+    function intialiseSlideViewer()
     {
+        if (css) linkSlideViewerCSS();
+
         getSlideViewer();
         displaySlide();
     }
