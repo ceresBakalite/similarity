@@ -25,10 +25,19 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        if (getSlideViewerStylesheet()) getSlideViewer();
+        getSlideViewercss();
+        //getSlideViewer();
+        //displaySlide();
     }
 
-    function getSlideViewerStylesheet()
+    slideview.CSSDone = function(str)
+    {
+        document.getElementById('ceres-slideview-image-container').style.display = 'block';
+        getSlideViewer();
+        displaySlide();
+    }
+
+    function getSlideViewercss()
     {
         const link = document.createElement('link');
 
@@ -37,75 +46,42 @@ var ceres = {};
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         link.as = 'style';
 
-        let lost = true;
-
-        if (lost)
-        {
-            link.onload = function ()
-            {
-                logStylesheetDetection('using the document onload listener');
-            }
+        link.onload = function () {
+          slideview.CSSDone('onload listener');
         }
 
-        if (lost)
-        {
-            if (link.addEventListener)
-            {
-                link.addEventListener('load', function()
-                {
-                    logStylesheetDetection('adding an event listener');
-
-                }, false);
-
-            }
-
+        if (link.addEventListener) {
+          link.addEventListener('load', function() {
+            slideview.CSSDone("DOM's load event");
+          }, false);
         }
 
-        if (lost)
-        {
-            link.onreadystatechange = function()
-            {
-                let state = link.readyState;
+        link.onreadystatechange = function() {
+          var state = link.readyState;
+          if (state === 'loaded' || state === 'complete') {
+            link.onreadystatechange = null;
+            slideview.CSSDone("onreadystatechange");
+          }
+        };
 
-                if (state === 'loaded' || state === 'complete')
-                {
-                    link.onreadystatechange = null;
-                    logStylesheetDetection('checking the link readyState');
-                }
+        var cssnum = document.styleSheets.length;
+        var ti = setInterval(function() {
+          if (document.styleSheets.length > cssnum) {
+            // needs more work when you load a bunch of CSS files quickly
+            // e.g. loop from cssnum to the new length, looking
+            // for the document.styleSheets[n].href === url
+            // ...
 
-            };
+            // FF changes the length prematurely :()
+            slideview.CSSDone('listening to styleSheets.length change');
+            clearInterval(ti);
 
-        }
-
-        if (lost)
-        {
-            var cssnum = document.styleSheets.length;
-
-            var ti = setInterval(function()
-            {
-                if (document.styleSheets.length > cssnum)
-                {
-                    // needs more work when you load a bunch of CSS files quickly
-                    // e.g. loop from cssnum to the new length, looking
-                    // for the document.styleSheets[n].href === url
-                    // ...
-
-                    // FF changes the length prematurely :()
-                    logStylesheetDetection('listening to styleSheets.length change');
-                    clearInterval(ti);
-                }
-
-            }, 10);
-
-        }
+          }
+        }, 10);
 
         document.head.appendChild(link);
 
-        function logStylesheetDetection(str)
-        {
-            lost = false;
-            console.log('Found slideviewer stylesheet by ' + str);
-        }
+        console.log(document.head.innerHTML);
 
     }
 
@@ -134,8 +110,6 @@ var ceres = {};
 
         createSlideViewContainer();
         createSlideviewPointerContainer();
-
-        displaySlide();
 
         console.log(progenitor.innerHTML);
 
