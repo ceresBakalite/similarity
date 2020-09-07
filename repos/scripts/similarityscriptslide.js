@@ -95,7 +95,7 @@ var ceres = {};
         slides.forEach(slide => { slide.style.display = 'none';	});
         slides[index-1].style.display = 'block';
 
-        if (pointers != null)
+        if (pointers)
         {
             pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
             pointers[index-1].className += ' active';
@@ -133,7 +133,7 @@ var ceres = {};
         {
             let el = document.getElementById(id);
 
-            if (el != null)
+            if (el)
             {
                 let attribute = document.createAttribute(type);
                 attribute.value = value;

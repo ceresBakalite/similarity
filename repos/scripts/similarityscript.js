@@ -13,7 +13,7 @@ function getQueryString()
     const urlParams = new URLSearchParams(window.location.search);
     const mdd = urlParams.get('mdd')
 
-    if (mdd != null) selectMarkdownDocument(mdd);
+    if (mdd) selectMarkdownDocument(mdd);
 }
 
 function onloadPrimary()
@@ -89,7 +89,7 @@ function onloadFrame(ms, md)
     function refreshMarkdown(target)
     {
         let el = (document.getElementById(target)) ? document.getElementById(target) : document.getElementsByTagName('zero-md')[0];
-        if (el != null) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
+        if (el) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
     }
 
 }
@@ -137,13 +137,13 @@ function adjustHeaderDisplay()
     {
         var el = parent.document.getElementById('site-header-display');
 
-        if (window.scrollY < trigger || el.style.display == null)
+        if (el.style.display && window.scrollY > trigger)
         {
-            if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
+            if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
 
         } else {
 
-            if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
+            if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
 
         }
 
@@ -182,7 +182,7 @@ function getRandomInteger(min = 10000, max = 1000000)
 
 function setCookie(cn, cv, ex = 0)
 {
-    if (cn != null && cv != null)
+    if (cn && cv)
     {
         let dt = new Date();
         dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
@@ -195,7 +195,7 @@ function setCookie(cn, cv, ex = 0)
 
 function getCookie(cn)
 {
-    if (cn != null)
+    if (cn)
     {
         let cp = cn + "=";
         let dc = decodeURIComponent(document.cookie);
@@ -207,7 +207,7 @@ function getCookie(cn)
 
             while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
 
-            if (chr != null) return chr.substring(cn.length, c.length);
+            if (chr) return chr.substring(cn.length, c.length);
         }
 
     }
