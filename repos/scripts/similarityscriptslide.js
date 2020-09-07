@@ -7,6 +7,8 @@ var ceres = {};
     let sur = true; // default - display slideviewer surtitles
     let sub = true; // default - display slideviewer subtitles
 
+    let cssfound = false;
+
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
         async connectedCallback()
@@ -32,9 +34,14 @@ var ceres = {};
 
     slideview.CSSDone = function(str)
     {
-        document.getElementById('ceres-slideview-image-container').style.display = 'block';
-        getSlideViewer();
-        displaySlide();
+        //document.getElementById('ceres-slideview-image-container').style.display = 'block';
+        if (!cssfound)
+        {
+            cssfound = true;
+
+            getSlideViewer();
+            displaySlide();
+        }
     }
 
     function getSlideViewercss()
