@@ -3,12 +3,13 @@ var ceres = {};
 {
     const trace = true; // environment directive
 
-    let progenitor = null; // parent slideviewer place holder
-    let attributes = null; // slideviewer element attributes
-    let ptr = true; // default - use slideviewer css stylesheet
-    let sub = true; // default - display slideviewer pointers
-    let sur = true; // default - display slideviewer surtitles
-    let css = true; // default - display slideviewer subtitles
+    let progenitor = null; // parent slideview place holder
+    let attributes = null; // slideview element item attributes array
+
+    let ptr = true; // default element attribute - display slideview item pointers
+    let sub = true; // default element attribute - display slideview item subtitles
+    let sur = true; // default element attribute - display slideview item surtitles
+    let css = true; // default element attribute - use the default slideview stylesheet
 
     let index = 1;
 
@@ -31,11 +32,11 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
-        attributes = getSlideViewerAttributes();
+        attributes = getSlideViewAttributes();
 
         intialiseSlideViewer();
 
-        function getSlideViewerAttributes()
+        function getSlideViewAttributes()
         {
             let ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
             let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
