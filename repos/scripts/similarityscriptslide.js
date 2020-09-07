@@ -141,7 +141,7 @@ var ceres = {};
 
             progenitor.appendChild(parent);
 
-            let el = (document.getElementById(parent.id)) ? document.getElementById(parent.id) : document.getElementsByTagName(parent.id)[0];
+            let el = (document.getElementById('ceres-slideview-image-container')) ? document.getElementById('ceres-slideview-image-container') : document.getElementsByTagName('ceres-slideview-image-container')[0];
             if (el != null)
             {
                 let attribute = document.createAttribute('class');
