@@ -45,7 +45,7 @@ var ceres = {};
             sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
 
-alert('bool: ' + progenitor.innerHTML.length);
+alert('bool: ' + progenitor.innerHTML);
 
 //            let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getImageList();
 
