@@ -1,4 +1,4 @@
-<noscript id="ceres-slideview-list-container">
+<noscript id="ceres-csv">
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews01.png, image one
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews02.png, image two
 https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews03.png, image three
