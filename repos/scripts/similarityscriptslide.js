@@ -151,13 +151,9 @@ var ceres = {};
             let child = null;
 
             parent.id = 'ceres-slideview-image-container';
-            //parent.class = 'slideview-image-container';
-
             progenitor.appendChild(parent);
 
             createAttribute(parent.id, 'class', 'slideview-image-container');
-
-alert(document.getElementById(parent.id).getAttribute('class'));
 
             for (let item = 0; item < ar.length; item++)
             {
@@ -196,55 +192,51 @@ alert(document.getElementById(parent.id).getAttribute('class'));
                 return (sub) ? (arrayItem[1]) ? arrayItem[1] : null : null;
             }
 
-            // create slideview+n and class append child
-            function setDivElement(idName, className, parentElement, markup)
+            function setDivElement(id, classValue, parentElement, markup)
             {
                 let el = document.createElement('div');
 
-                el.id = idName;
-                el.class = className;
-
+                el.id = id;
                 parentElement.appendChild(el);
 
-                if (markup) document.getElementById(idName).innerHTML = markup;
+                createAttribute(el.id, 'class', classValue);
+
+                if (markup) document.getElementById(el.id).innerHTML = markup;
             }
 
-            // create slideview-img+n and onclick event append child
-            function setImgElement(idName, onClickEvent, parentElement)
+            function setImgElement(id, onClickEventValue, parentElement)
             {
                 let el = document.createElement('img');
 
-                el.id = idName;
-                el.onclick = onClickEvent;
-                el.src = getURL();
-
+                el.id = id;
                 parentElement.appendChild(el);
+
+                createAttribute(el.id, 'onclick', onClickEventValue);
+                createAttribute(el.id, 'src', getURL());
             }
 
-            function setAElement(idName, className, onClickEvent, parentElement, markup)
+            function setAElement(id, classValue, onClickEventValue, parentElement, markup)
             {
                 let el = document.createElement('a');
 
-                el.id = idName;
-                el.class = className;
-                el.onclick = onClickEvent;
-                el.src = getURL();
-
+                el.id = id;
                 parentElement.appendChild(el);
 
-                if (markup) document.getElementById(idName).innerHTML = markup;
+                createAttribute(el.id, 'class', classValue);
+                createAttribute(el.id, 'onclick', onClickEventValue);
+                createAttribute(el.id, 'src', getURL());
+
+                if (markup) document.getElementById(el.id).innerHTML = markup;
             }
 
         }
 
-        // create br append child
         function createLineBreakContainer()
         {
             let el = document.createElement('br');
             progenitor.appendChild(el);
         }
 
-        // create ceres-slideview-pointer-container and class
         function createSlideviewPointerContainer()
         {
             createLineBreakContainer();
@@ -253,33 +245,32 @@ alert(document.getElementById(parent.id).getAttribute('class'));
             let child = null;
 
             parent.id = 'ceres-slideview-pointer-container';
-            parent.class = 'slideview-pointer-container';
-
             progenitor.appendChild(parent);
+
+            createAttribute(parent.id, 'class', 'slideview-pointer-container');
 
             for (let item = 0; item < ar.length; item++)
             {
                 var qualifier = item + 1;
                 let svpname = 'slideview-ptr' + qualifier;
 
-                setSpanElement(svpname, 'ptr', getClickEvent(), parent);
+                setSpanElement(svpname, 'ptr', getClickEventValue(), parent);
             }
 
-            function getClickEvent()
+            function getClickEventValue()
             {
                 return 'ceres.setSlide(' + qualifier + ')';
             }
 
-            // create slideview+n and class append child
-            function setSpanElement(idName, className, onClickEvent, parentElement)
+            function setSpanElement(id, classValue, onClickEventValue, parentElement)
             {
                 let el = document.createElement('span');
 
-                el.id = idName;
-                el.class = className;
-                el.onclick = onClickEvent;
-
+                el.id = id;
                 parentElement.appendChild(el);
+
+                createAttribute(el.id, 'class', classValue);
+                createAttribute(el.id, 'onclick', onClickEventValue);
             }
 
         }
