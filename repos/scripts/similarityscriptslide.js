@@ -34,7 +34,7 @@ var ceres = {};
 
         alert('attributes: ' + attributes.length);
 
-        //getSlideViewer();
+        getSlideViewer();
 
         function getSlideViewAttributes()
         {
@@ -45,7 +45,7 @@ var ceres = {};
             sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
 
-console.log(progenitor.innerHTML);
+//console.log(progenitor.innerHTML);
 
 //            let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getImageList();
 
@@ -58,24 +58,6 @@ console.log(progenitor.innerHTML);
                 return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
-        }
-
-    }
-
-    function displaySlide(targetIndex)
-    {
-        const slides = document.querySelectorAll(".slideview");
-        const pointers = document.querySelectorAll(".ptr");
-
-        index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
-
-        slides.forEach(slide => { slide.style.display = 'none';	});
-        slides[index-1].style.display = 'block';
-
-        if (pointers)
-        {
-            pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
-            pointers[index-1].className += ' active';
         }
 
     }
@@ -230,6 +212,24 @@ console.log(progenitor.innerHTML);
 
                 createAttribute(el.id, 'class', classValue);
                 createAttribute(el.id, 'onclick', onClickEventValue);
+            }
+
+        }
+
+        function displaySlide(targetIndex)
+        {
+            const slides = document.querySelectorAll(".slideview");
+            const pointers = document.querySelectorAll(".ptr");
+
+            index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
+
+            slides.forEach(slide => { slide.style.display = 'none';	});
+            slides[index-1].style.display = 'block';
+
+            if (pointers)
+            {
+                pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
+                pointers[index-1].className += ' active';
             }
 
         }
