@@ -16,7 +16,6 @@ var ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            alert(src.length);
             this.innerHTML = await (await fetch(src)).text();
         }
 
