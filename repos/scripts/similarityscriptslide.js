@@ -7,7 +7,7 @@ var ceres = {};
     let sur = true; // default - display slideviewer surtitles
     let sub = true; // default - display slideviewer subtitles
 
-    let stylesheet = false;
+    let pullSlideViewerScripts = true;
 
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
@@ -35,9 +35,9 @@ var ceres = {};
     slideview.initialise = function(str)
     {
         //document.getElementById('ceres-slideview-image-container').style.display = 'block';
-        if (pullStylesheet)
+        if (pullSlideViewerScripts)
         {
-            cssfound = true;
+            pullSlideViewerScripts = false;
             console.log(str);
 
             getSlideViewer();
@@ -54,7 +54,7 @@ var ceres = {};
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         link.as = 'style';
 
-        if (!cssfound)
+        if (pullSlideViewerScripts)
         {
             link.onload = function ()
             {
@@ -63,7 +63,7 @@ var ceres = {};
 
         }
 
-        if (!cssfound)
+        if (pullSlideViewerScripts)
         {
             if (link.addEventListener)
             {
@@ -76,7 +76,7 @@ var ceres = {};
 
         }
 
-        if (!cssfound)
+        if (pullSlideViewerScripts)
         {
 
             link.onreadystatechange = function()
@@ -93,7 +93,7 @@ var ceres = {};
 
         }
 
-        if (!cssfound)
+        if (pullSlideViewerScripts)
         {
             var cssnum = document.styleSheets.length;
 
