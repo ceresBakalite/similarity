@@ -258,6 +258,8 @@ var ceres = {};
                 setSpanElement(svpname, 'ptr', getClickEventValue(), descendant);
             }
 
+            progenitor.appendChild(document.createElement('br'));
+
             function getClickEventValue()
             {
                 return 'ceres.setSlide(' + qualifier + ')';
