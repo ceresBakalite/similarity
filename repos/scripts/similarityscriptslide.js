@@ -89,8 +89,8 @@ var ceres = {};
 
         function setDocumentHeader(str)
         {
-            document.head.innerHTML
             console.log('Found slideviewer stylesheet by ' + str);
+            document.head.appendChild(link);
         }
 
     }
