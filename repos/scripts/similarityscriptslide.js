@@ -2,7 +2,7 @@ var ceres = {};
 (function(slideview)
 {
     const trace = true; // environment directive
-    const progenitor = null; // parent slideviewer place holder
+//    const progenitor = null; // parent slideviewer place holder
 
     let ptr = true; // default - use slideviewer css stylesheet
     let sub = true; // default - display slideviewer pointers
@@ -29,7 +29,8 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+        const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+        const ar = getSlideViewerAttributes();
 
         if (css)
         {
@@ -38,6 +39,23 @@ var ceres = {};
         } else {
             intialiseSlideViewer();
         }
+
+        function getSlideViewerAttributes()
+        {
+            let ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
+            let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
+            let sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
+            let css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
+
+            return imageListToArray(progenitor.innerHTML);
+
+            function imageListToArray(str)
+            {
+                return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
+            }
+
+        }
+
     }
 
     function intialiseSlideViewer()
@@ -144,28 +162,10 @@ var ceres = {};
 
     function getSlideViewer()
     {
-        const ar = getSlideViewerAttributes();
-
         createSlideViewContainer();
         createSlideviewPointerContainer();
 
         //console.log(progenitor.innerHTML);
-
-        function getSlideViewerAttributes()
-        {
-            let ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
-            let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
-            let sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
-            let css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
-
-            return imageListToArray(progenitor.innerHTML);
-
-            function imageListToArray(str)
-            {
-                return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
-            }
-
-        }
 
         function createAttribute(id, type, value)
         {
