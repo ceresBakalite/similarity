@@ -2,8 +2,10 @@ var ceres = {};
 (function(slideview)
 {
     const trace = true; // environment directive
+
     var progenitor = null; // parent slideviewer place holder
     var attributes = null; // slideviewer element attributes
+
     let ptr = true; // default - use slideviewer css stylesheet
     let sub = true; // default - display slideviewer pointers
     let sur = true; // default - display slideviewer surtitles
@@ -195,7 +197,7 @@ var ceres = {};
 
             for (let item = 0; item < attributes.length; item++)
             {
-                var arrayItem = ar[item].split(',');
+                var arrayItem = attributes[item].split(',');
                 var qualifier = item + 1;
 
                 let svcname = 'slideview' + qualifier;
