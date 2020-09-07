@@ -25,19 +25,10 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        //getSlideViewercss();
-        getSlideViewer();
-        displaySlide();
+        if (getSlideViewerStylesheet()) getSlideViewer();
     }
 
-    slideview.CSSDone = function(str)
-    {
-        document.getElementById('ceres-slideview-image-container').style.display = 'block';
-        getSlideViewer();
-        displaySlide();
-    }
-
-    function getSlideViewercss()
+    function getSlideViewerStylesheet()
     {
         const link = document.createElement('link');
 
@@ -46,42 +37,61 @@ var ceres = {};
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         link.as = 'style';
 
-        link.onload = function () {
-          slideview.CSSDone('onload listener');
+        link.onload = function ()
+        {
+            setDocumentHeader('using the document onload listener');
+            return true;
         }
 
-        if (link.addEventListener) {
-          link.addEventListener('load', function() {
-            slideview.CSSDone("DOM's load event");
+        if (link.addEventListener)
+        {
+          link.addEventListener('load', function()
+          {
+              setDocumentHeader('adding an event listener');
+              return true;
+
           }, false);
+
         }
 
-        link.onreadystatechange = function() {
-          var state = link.readyState;
-          if (state === 'loaded' || state === 'complete') {
+        link.onreadystatechange = function()
+        {
+          let state = link.readyState;
+
+          if (state === 'loaded' || state === 'complete')
+          {
             link.onreadystatechange = null;
-            slideview.CSSDone("onreadystatechange");
+            setDocumentHeader('checking the link readyState');
+            return true;
           }
+
         };
 
         var cssnum = document.styleSheets.length;
-        var ti = setInterval(function() {
-          if (document.styleSheets.length > cssnum) {
+
+        var ti = setInterval(function()
+        {
+          if (document.styleSheets.length > cssnum)
+          {
             // needs more work when you load a bunch of CSS files quickly
             // e.g. loop from cssnum to the new length, looking
             // for the document.styleSheets[n].href === url
             // ...
 
             // FF changes the length prematurely :()
-            slideview.CSSDone('listening to styleSheets.length change');
+            setDocumentHeader('listening to styleSheets.length change');
             clearInterval(ti);
 
+            return true;
           }
+
         }, 10);
 
-        document.head.appendChild(link);
-
-        console.log(document.head.innerHTML);
+        function setDocumentHeader(str)
+        {
+            document.head.innerHTML
+            console.log('Found slideviewer stylesheet by ' + str);
+        }
 
     }
 
@@ -110,6 +120,8 @@ var ceres = {};
 
         createSlideViewContainer();
         createSlideviewPointerContainer();
+
+        displaySlide();
 
         console.log(progenitor.innerHTML);
 
