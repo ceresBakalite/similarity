@@ -67,9 +67,12 @@ var ceres = {};
         {
             if (link.addEventListener)
             {
-                link.addEventListener('load', function() {
-                slideview.initialise("DOM's load event");
-            }, false);
+                link.addEventListener('load', function()
+                {
+                    slideview.initialise("DOM's load event");
+                }, false);
+
+            }
 
         }
 
@@ -114,6 +117,7 @@ var ceres = {};
 
         document.head.appendChild(link);
     }
+
 
     function displaySlide(targetIndex)
     {
