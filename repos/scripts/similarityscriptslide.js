@@ -17,7 +17,7 @@ var ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            if (src) this.innerHTML = await (await fetch(src)).text();
+            this.innerHTML = await (await fetch(src)).text();
         }
 
     });
@@ -37,14 +37,17 @@ var ceres = {};
 
         function getSlideViewAttributes()
         {
+            let src = (progenitor.innerHTML) ? true : false; // initialist src url found
+
             ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
             sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
             sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
             trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
-alert(src);
-            let imageList = (src) ? progenitor.innerHTML : lookForimageList();
+alert('src: ' + src);
+
+            let imageList = (src) ? progenitor.innerHTML : lookForImageList();
 
             return imageListToArray(imageList);
 
