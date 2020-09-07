@@ -17,7 +17,7 @@ var ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            this.innerHTML = await (await fetch(src)).text();
+            if (src) this.innerHTML = await (await fetch(src)).text();
         }
 
     });
@@ -43,7 +43,10 @@ var ceres = {};
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
             trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
-            return imageListToArray(progenitor.innerHTML);
+alert(src);
+            let imageList = (src) ? progenitor.innerHTML : lookForimageList();
+
+            return imageListToArray(imageList);
 
             function imageListToArray(str)
             {
@@ -100,7 +103,7 @@ var ceres = {};
         function createSlideViewContainer()
         {
             if (trc) console.log(progenitor.innerHTML);
-            
+
             progenitor.innerHTML = null;
 
             const descendant = document.createElement('div');
