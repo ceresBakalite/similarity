@@ -37,17 +37,15 @@ var ceres = {};
 
         function getSlideViewAttributes()
         {
-            let src = (progenitor.innerHTML) ? true : false; // initialist src url found
-
             ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
             sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
             sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
             trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
-alert('src: ' + src);
+alert('bool: ' + Boolean(progenitor.innerHTML));
 
-            let imageList = (src) ? progenitor.innerHTML : getImageList();
+            let imageList = (Boolean(progenitor.innerHTML)) ? progenitor.innerHTML : getImageList();
 
             return imageListToArray(imageList);
 
