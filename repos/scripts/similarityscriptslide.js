@@ -7,7 +7,7 @@ var ceres = {};
     let sur = true; // default - display slideviewer surtitles
     let sub = true; // default - display slideviewer subtitles
 
-    let cssfound = false;
+    let stylesheet = false;
 
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
@@ -27,24 +27,25 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        getSlideViewercss();
+        getSlideViewerScripts();
         //getSlideViewer();
         //displaySlide();
     }
 
-    slideview.CSSDone = function(str)
+    slideview.initialise = function(str)
     {
         //document.getElementById('ceres-slideview-image-container').style.display = 'block';
-        if (!cssfound)
+        if (pullStylesheet)
         {
             cssfound = true;
+            console.log(str);
 
             getSlideViewer();
             displaySlide();
         }
     }
 
-    function getSlideViewercss()
+    function getSlideViewerScripts()
     {
         const link = document.createElement('link');
 
@@ -53,43 +54,65 @@ var ceres = {};
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         link.as = 'style';
 
-        link.onload = function () {
-          slideview.CSSDone('onload listener');
+        if (!cssfound)
+        {
+            link.onload = function ()
+            {
+                slideview.initialise('onload listener');
+            }
+
         }
 
-        if (link.addEventListener) {
-          link.addEventListener('load', function() {
-            slideview.CSSDone("DOM's load event");
-          }, false);
+        if (!cssfound)
+        {
+            if (link.addEventListener)
+            {
+                link.addEventListener('load', function() {
+                slideview.initialise("DOM's load event");
+            }, false);
+
         }
 
-        link.onreadystatechange = function() {
-          var state = link.readyState;
-          if (state === 'loaded' || state === 'complete') {
-            link.onreadystatechange = null;
-            slideview.CSSDone("onreadystatechange");
-          }
-        };
+        if (!cssfound)
+        {
 
-        var cssnum = document.styleSheets.length;
-        var ti = setInterval(function() {
-          if (document.styleSheets.length > cssnum) {
-            // needs more work when you load a bunch of CSS files quickly
-            // e.g. loop from cssnum to the new length, looking
-            // for the document.styleSheets[n].href === url
-            // ...
+            link.onreadystatechange = function()
+            {
+                var state = link.readyState;
 
-            // FF changes the length prematurely :()
-            slideview.CSSDone('listening to styleSheets.length change');
-            clearInterval(ti);
+                if (state === 'loaded' || state === 'complete')
+                {
+                    link.onreadystatechange = null;
+                    slideview.initialise("onreadystatechange");
+                }
 
-          }
-        }, 10);
+            };
+
+        }
+
+        if (!cssfound)
+        {
+            var cssnum = document.styleSheets.length;
+
+            var ti = setInterval(function()
+            {
+                if (document.styleSheets.length > cssnum)
+                {
+                    // needs more work when you load a bunch of CSS files quickly
+                    // e.g. loop from cssnum to the new length, looking
+                    // for the document.styleSheets[n].href === url
+                    // ...
+
+                    // FF changes the length prematurely :()
+                    slideview.initialise('listening to styleSheets.length change');
+                    clearInterval(ti);
+                }
+
+            }, 10);
+
+        }
 
         document.head.appendChild(link);
-
-        console.log(document.head.innerHTML);
-
     }
 
     function displaySlide(targetIndex)
