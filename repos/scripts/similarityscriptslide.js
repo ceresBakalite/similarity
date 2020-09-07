@@ -62,6 +62,24 @@ var ceres = {};
 
     }
 
+    function displaySlide(targetIndex)
+    {
+        const slides = document.querySelectorAll(".slideview");
+        const pointers = document.querySelectorAll(".ptr");
+
+        index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
+
+        slides.forEach(slide => { slide.style.display = 'none';	});
+        slides[index-1].style.display = 'block';
+
+        if (pointers)
+        {
+            pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
+            pointers[index-1].className += ' active';
+        }
+
+    }
+
     function getSlideViewer()
     {
         if (css) linkSlideViewerCSS();
@@ -212,24 +230,6 @@ var ceres = {};
 
                 createAttribute(el.id, 'class', classValue);
                 createAttribute(el.id, 'onclick', onClickEventValue);
-            }
-
-        }
-
-        function displaySlide(targetIndex)
-        {
-            const slides = document.querySelectorAll(".slideview");
-            const pointers = document.querySelectorAll(".ptr");
-
-            index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
-
-            slides.forEach(slide => { slide.style.display = 'none';	});
-            slides[index-1].style.display = 'block';
-
-            if (pointers)
-            {
-                pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
-                pointers[index-1].className += ' active';
             }
 
         }
