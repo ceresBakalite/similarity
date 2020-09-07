@@ -33,7 +33,9 @@ var ceres = {};
         progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         attributes = getSlideViewAttributes();
 
-        getSlideViewer();
+        alert('attributes: ' + attributes.length);
+
+        //getSlideViewer();
 
         function getSlideViewAttributes()
         {
@@ -49,7 +51,7 @@ alert('bool: ' + progenitor.innerHTML.length);
 
 //            if (trc && !imageList) console.log('ceres-csv image list not found');
 
-//            return imageListToArray(imageList);
+            return imageListToArray(imageList);
 
             function imageListToArray(str)
             {
