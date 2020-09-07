@@ -144,8 +144,9 @@ var ceres = {};
             let el = (document.getElementById(parent.id)) ? document.getElementById(parent.id) : document.getElementsByTagName(parent.id)[0];
             if (el != null)
             {
-                el.createAttribute('class');
-                el.setAttribute('class', 'slideview-image-container');
+                let attribute = document.createAttribute('class');
+                attribute.value = 'slideview-image-container';
+                el.setAttributeNode(attribute);
             }
 
             for (let item = 0; item < ar.length; item++)
