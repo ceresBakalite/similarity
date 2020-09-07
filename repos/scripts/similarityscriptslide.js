@@ -147,13 +147,13 @@ var ceres = {};
         {
             progenitor.innerHTML = null;
 
-            const parent = document.createElement('div');
-            let child = null;
+            const descendant = document.createElement('div');
+            let progeny = null;
 
-            parent.id = 'ceres-slideview-image-container';
-            progenitor.appendChild(parent);
+            descendant.id = 'ceres-slideview-image-container';
+            progenitor.appendChild(descendant);
 
-            createAttribute(parent.id, 'class', 'slideview-image-container');
+            createAttribute(descendant.id, 'class', 'slideview-image-container');
 
             for (let item = 0; item < ar.length; item++)
             {
@@ -165,17 +165,17 @@ var ceres = {};
                 let subName = 'slideview-sub' + qualifier;
                 let imgName = 'slideview-img' + qualifier;
 
-                setDivElement(svcname, 'slideview fade', parent, null);
+                setDivElement(svcname, 'slideview fade', descendant, null);
 
-                child = document.getElementById(svcname);
+                progeny = document.getElementById(svcname);
 
-                setDivElement(surName, 'surtitle', child, getSurtitle());
-                setImgElement(imgName, 'ceres.openImageTab(this);', child);
-                setDivElement(subName, 'subtitle', child, getSubtitle());
+                setDivElement(surName, 'surtitle', progeny, getSurtitle());
+                setImgElement(imgName, 'ceres.openImageTab(this);', progeny);
+                setDivElement(subName, 'subtitle', progeny, getSubtitle());
             }
 
-            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', parent, '&#10094;');
-            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', parent, '&#10095;');
+            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
+            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '&#10095;');
 
             function getURL()
             {
@@ -192,35 +192,35 @@ var ceres = {};
                 return (sub) ? (arrayItem[1]) ? arrayItem[1] : null : null;
             }
 
-            function setDivElement(id, classValue, parentElement, markup)
+            function setDivElement(id, classValue, parent, markup)
             {
                 let el = document.createElement('div');
 
                 el.id = id;
-                parentElement.appendChild(el);
+                parent.appendChild(el);
 
                 createAttribute(el.id, 'class', classValue);
 
                 if (markup) document.getElementById(el.id).innerHTML = markup;
             }
 
-            function setImgElement(id, onClickEventValue, parentElement)
+            function setImgElement(id, onClickEventValue, parent)
             {
                 let el = document.createElement('img');
 
                 el.id = id;
-                parentElement.appendChild(el);
+                parent.appendChild(el);
 
                 createAttribute(el.id, 'onclick', onClickEventValue);
                 createAttribute(el.id, 'src', getURL());
             }
 
-            function setAElement(id, classValue, onClickEventValue, parentElement, markup)
+            function setAElement(id, classValue, onClickEventValue, parent, markup)
             {
                 let el = document.createElement('a');
 
                 el.id = id;
-                parentElement.appendChild(el);
+                parent.appendChild(el);
 
                 createAttribute(el.id, 'class', classValue);
                 createAttribute(el.id, 'onclick', onClickEventValue);
@@ -231,30 +231,23 @@ var ceres = {};
 
         }
 
-        function createLineBreakContainer()
-        {
-            let el = document.createElement('br');
-            progenitor.appendChild(el);
-        }
-
         function createSlideviewPointerContainer()
         {
-            createLineBreakContainer();
+            progenitor.appendChild(document.createElement('br'));
 
-            const parent = document.createElement('div');
-            let child = null;
+            const descendant = document.createElement('div');
 
-            parent.id = 'ceres-slideview-pointer-container';
-            progenitor.appendChild(parent);
+            descendant.id = 'ceres-slideview-pointer-container';
+            progenitor.appendChild(descendant);
 
-            createAttribute(parent.id, 'class', 'slideview-pointer-container');
+            createAttribute(descendant.id, 'class', 'slideview-pointer-container');
 
             for (let item = 0; item < ar.length; item++)
             {
                 var qualifier = item + 1;
                 let svpname = 'slideview-ptr' + qualifier;
 
-                setSpanElement(svpname, 'ptr', getClickEventValue(), parent);
+                setSpanElement(svpname, 'ptr', getClickEventValue(), descendant);
             }
 
             function getClickEventValue()
@@ -262,12 +255,12 @@ var ceres = {};
                 return 'ceres.setSlide(' + qualifier + ')';
             }
 
-            function setSpanElement(id, classValue, onClickEventValue, parentElement)
+            function setSpanElement(id, classValue, onClickEventValue, parent)
             {
                 let el = document.createElement('span');
 
                 el.id = id;
-                parentElement.appendChild(el);
+                parent.appendChild(el);
 
                 createAttribute(el.id, 'class', classValue);
                 createAttribute(el.id, 'onclick', onClickEventValue);
