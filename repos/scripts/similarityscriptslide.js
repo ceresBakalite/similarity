@@ -39,7 +39,7 @@ var ceres = {};
 
         link.onload = function ()
         {
-            setDocumentHeader('using the document onload listener');
+            logStylesheetDetection('using the document onload listener');
             return true;
         }
 
@@ -47,7 +47,7 @@ var ceres = {};
         {
           link.addEventListener('load', function()
           {
-              setDocumentHeader('adding an event listener');
+              logStylesheetDetection('adding an event listener');
               return true;
 
           }, false);
@@ -61,7 +61,7 @@ var ceres = {};
           if (state === 'loaded' || state === 'complete')
           {
             link.onreadystatechange = null;
-            setDocumentHeader('checking the link readyState');
+            logStylesheetDetection('checking the link readyState');
             return true;
           }
 
@@ -79,7 +79,7 @@ var ceres = {};
             // ...
 
             // FF changes the length prematurely :()
-            setDocumentHeader('listening to styleSheets.length change');
+            logStylesheetDetection('listening to styleSheets.length change');
             clearInterval(ti);
 
             return true;
