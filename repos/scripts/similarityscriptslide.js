@@ -3,12 +3,11 @@ var ceres = {};
 {
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
-
+    let trace = false; // default element attribute - enable the trace environment directive
     let ptr = true; // default element attribute - display slideview item pointers
     let sub = true; // default element attribute - display slideview item subtitles
     let sur = true; // default element attribute - display slideview item surtitles
     let css = true; // default element attribute - use the default slideview stylesheet
-    let trc = false; // default element attribute - enable the trace environment directive
 
     let index = 1;
 
@@ -40,17 +39,18 @@ var ceres = {};
 
         function getSlideViewAttributes()
         {
+            trace = (progenitor.getAttribute('trace')) ? progenitor.getAttribute('trace') : trace;
+
             ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
             sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
             sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
-            trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
 alert('bool: ' + progenitor.innerHTML.length);
 
 //            let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getImageList();
 
-//            if (trc && !imageList) console.log('ceres-csv image list not found');
+//            if (trace && !imageList) console.log('ceres-csv image list not found');
 
             return imageListToArray(progenitor.innerHTML);
 
@@ -88,8 +88,6 @@ alert('bool: ' + progenitor.innerHTML.length);
         createSlideViewContainer();
         createSlideviewPointerContainer();
 
-        if (trc) console.log(progenitor.innerHTML);
-
         displaySlide();
 
         function createAttribute(id, type, value)
@@ -108,7 +106,7 @@ alert('bool: ' + progenitor.innerHTML.length);
 
         function createSlideViewContainer()
         {
-            if (trc) console.log(progenitor.innerHTML);
+            if (trace) console.log(progenitor.innerHTML);
 
             progenitor.innerHTML = null;
 
@@ -217,6 +215,8 @@ alert('bool: ' + progenitor.innerHTML.length);
 
             progenitor.appendChild(document.createElement('br'));
 
+            if (trace) console.log(progenitor.innerHTML);
+
             function getClickEventValue()
             {
                 return 'ceres.setSlide(' + qualifier + ')';
@@ -246,14 +246,14 @@ alert('bool: ' + progenitor.innerHTML.length);
 
             link.onload = function ()
             {
-                if (trc) console.log('onload listener');
+                if (trace) console.log('onload listener');
             }
 
             if (link.addEventListener)
             {
                 link.addEventListener('load', function()
                 {
-                    if (trc) console.log("DOM's load event");
+                    if (trace) console.log("DOM's load event");
                 }, false);
 
             }
@@ -265,7 +265,7 @@ alert('bool: ' + progenitor.innerHTML.length);
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    if (trc) console.log('onreadystatechange');
+                    if (trace) console.log('onreadystatechange');
                 }
 
             };
@@ -277,7 +277,7 @@ alert('bool: ' + progenitor.innerHTML.length);
                 if (document.styleSheets.length > cssnum)
                 {
                     clearInterval(ti);
-                    if (trc) console.log('listening to styleSheets.length change');
+                    if (trace) console.log('listening to styleSheets.length change');
                 }
 
             }, 10);
