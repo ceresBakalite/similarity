@@ -37,60 +37,73 @@ var ceres = {};
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         link.as = 'style';
 
-        link.onload = function ()
+        let lost = true;
+
+        if (lost)
         {
-            logStylesheetDetection('using the document onload listener');
-            return true;
+            link.onload = function ()
+            {
+                logStylesheetDetection('using the document onload listener');
+            }
         }
 
-        if (link.addEventListener)
+        if (lost)
         {
-          link.addEventListener('load', function()
-          {
-              logStylesheetDetection('adding an event listener');
-              return true;
+            if (link.addEventListener)
+            {
+                link.addEventListener('load', function()
+                {
+                    logStylesheetDetection('adding an event listener');
 
-          }, false);
+                }, false);
+
+            }
 
         }
 
-        link.onreadystatechange = function()
+        if (lost)
         {
-          let state = link.readyState;
+            link.onreadystatechange = function()
+            {
+                let state = link.readyState;
 
-          if (state === 'loaded' || state === 'complete')
-          {
-            link.onreadystatechange = null;
-            logStylesheetDetection('checking the link readyState');
-            return true;
-          }
+                if (state === 'loaded' || state === 'complete')
+                {
+                    link.onreadystatechange = null;
+                    logStylesheetDetection('checking the link readyState');
+                }
 
-        };
+            };
 
-        var cssnum = document.styleSheets.length;
+        }
 
-        var ti = setInterval(function()
+        if (lost)
         {
-          if (document.styleSheets.length > cssnum)
-          {
-            // needs more work when you load a bunch of CSS files quickly
-            // e.g. loop from cssnum to the new length, looking
-            // for the document.styleSheets[n].href === url
-            // ...
+            var cssnum = document.styleSheets.length;
 
-            // FF changes the length prematurely :()
-            logStylesheetDetection('listening to styleSheets.length change');
-            clearInterval(ti);
+            var ti = setInterval(function()
+            {
+                if (document.styleSheets.length > cssnum)
+                {
+                    // needs more work when you load a bunch of CSS files quickly
+                    // e.g. loop from cssnum to the new length, looking
+                    // for the document.styleSheets[n].href === url
+                    // ...
 
-            return true;
-          }
+                    // FF changes the length prematurely :()
+                    logStylesheetDetection('listening to styleSheets.length change');
+                    clearInterval(ti);
+                }
 
-        }, 10);
+            }, 10);
+
+        }
 
         document.head.appendChild(link);
 
         function logStylesheetDetection(str)
         {
+            lost = false;
             console.log('Found slideviewer stylesheet by ' + str);
         }
 
