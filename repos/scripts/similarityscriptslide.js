@@ -8,7 +8,6 @@ var ceres = {};
     let sub = true; // default element attribute - display slideview item subtitles
     let sur = true; // default element attribute - display slideview item surtitles
     let css = true; // default element attribute - use the default slideview stylesheet
-    let emb = false; // default element attribute - embed the noscript image list in the document body
     let trc = false; // default element attribute - enable the trace environment directive
 
     let index = 1;
@@ -42,7 +41,6 @@ var ceres = {};
             sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
             sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
-            emb = (progenitor.getAttribute('emb')) ? progenitor.getAttribute('emb') : emb;
             trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
             return imageListToArray(progenitor.innerHTML);
