@@ -3,9 +3,8 @@ var ceres = {};
 {
     const trace = true; // environment directive
 
-    var progenitor = null; // parent slideviewer place holder
-    var attributes = null; // slideviewer element attributes
-
+    let progenitor = null; // parent slideviewer place holder
+    let attributes = null; // slideviewer element attributes
     let ptr = true; // default - use slideviewer css stylesheet
     let sub = true; // default - display slideviewer pointers
     let sur = true; // default - display slideviewer surtitles
@@ -68,8 +67,6 @@ var ceres = {};
 
     function getSlideViewerScripts()
     {
-        let aquire = (css) ? true : false;
-
         const link = document.createElement('link');
 
         link.rel = 'stylesheet';
@@ -77,70 +74,47 @@ var ceres = {};
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         link.as = 'style';
 
-        if (aquire)
+        link.onload = function ()
         {
-            link.onload = function ()
+           if (trace) console.log('onload listener');
+        }
+
+        if (link.addEventListener)
+        {
+            link.addEventListener('load', function()
             {
-                redirectToSlideViewer('onload listener');
+                if (trace) console.log("DOM's load event");
+            }, false);
+
+        }
+
+        link.onreadystatechange = function()
+        {
+            var state = link.readyState;
+
+            if (state === 'loaded' || state === 'complete')
+            {
+                link.onreadystatechange = null;
+                if (trace) console.log('onreadystatechange');
             }
 
-        }
+        };
 
-        if (aquire)
+        var cssnum = document.styleSheets.length;
+
+        var ti = setInterval(function()
         {
-            if (link.addEventListener)
+            if (document.styleSheets.length > cssnum)
             {
-                link.addEventListener('load', function()
-                {
-                    redirectToSlideViewer("DOM's load event");
-                }, false);
-
+                clearInterval(ti);
+                if (trace) console.log('listening to styleSheets.length change');
             }
 
-        }
-
-        if (aquire)
-        {
-
-            link.onreadystatechange = function()
-            {
-                var state = link.readyState;
-
-                if (state === 'loaded' || state === 'complete')
-                {
-                    link.onreadystatechange = null;
-                    redirectToSlideViewer("onreadystatechange");
-                }
-
-            };
-
-        }
-
-        if (aquire)
-        {
-            var cssnum = document.styleSheets.length;
-
-            var ti = setInterval(function()
-            {
-                if (document.styleSheets.length > cssnum)
-                {
-                    clearInterval(ti);
-                    redirectToSlideViewer('listening to styleSheets.length change');
-                }
-
-            }, 10);
-
-        }
+        }, 10);
 
         document.head.appendChild(link);
 
-        function redirectToSlideViewer(str)
-        {
-            if (trace) console.log(str);
-            aquire = false;
-
-            intialiseSlideViewer();
-        }
+        intialiseSlideViewer();
     }
 
 
@@ -167,7 +141,7 @@ var ceres = {};
         createSlideViewContainer();
         createSlideviewPointerContainer();
 
-        //console.log(progenitor.innerHTML);
+        if (trace) console.log(progenitor.innerHTML);
 
         function createAttribute(id, type, value)
         {
