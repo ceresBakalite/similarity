@@ -43,6 +43,8 @@ var ceres = {};
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
             trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
+alert('trc: ' + trc);
+
             return imageListToArray(progenitor.innerHTML);
 
             function imageListToArray(str)
