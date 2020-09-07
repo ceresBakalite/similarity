@@ -1,13 +1,16 @@
 var ceres = {};
 (function(slideview)
 {
-    let index = 1;
-    let css = true; // default - use slideviewer css
-    let ptr = true; // default - display slideviewer pointers
-    let sur = true; // default - display slideviewer surtitles
-    let sub = true; // default - display slideviewer subtitles
+    const trace = true; // environment directive
 
-    let pullSlideViewerScripts = true;
+    const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+
+    let ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : true; // default true - use slideviewer css stylesheet
+    let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : true; // default true - display slideviewer pointers
+    let sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : true; // default true - display slideviewer surtitles
+    let css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : true; // default true - display slideviewer subtitles
+
+    let index = 1;
 
     window.customElements.define('ceres-slideview', class extends HTMLElement
     {
@@ -27,18 +30,11 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        getSlideViewerScripts();
-        //getSlideViewer();
-        //displaySlide();
-    }
-
-    slideview.initialise = function(str)
-    {
-        //document.getElementById('ceres-slideview-image-container').style.display = 'block';
-        if (pullSlideViewerScripts)
+        if (css)
         {
-            pullSlideViewerScripts = false;
-            //console.log(str);
+            getSlideViewerScripts();
+
+        } else {
 
             getSlideViewer();
             displaySlide();
@@ -47,6 +43,8 @@ var ceres = {};
 
     function getSlideViewerScripts()
     {
+        let aquire = (css) ? true : false;
+
         const link = document.createElement('link');
 
         link.rel = 'stylesheet';
@@ -54,29 +52,29 @@ var ceres = {};
         link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         link.as = 'style';
 
-        if (pullSlideViewerScripts)
+        if (aquire)
         {
             link.onload = function ()
             {
-                slideview.initialise('onload listener');
+                initialise('onload listener');
             }
 
         }
 
-        if (pullSlideViewerScripts)
+        if (aquire)
         {
             if (link.addEventListener)
             {
                 link.addEventListener('load', function()
                 {
-                    slideview.initialise("DOM's load event");
+                    initialise("DOM's load event");
                 }, false);
 
             }
 
         }
 
-        if (pullSlideViewerScripts)
+        if (aquire)
         {
 
             link.onreadystatechange = function()
@@ -86,14 +84,14 @@ var ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    slideview.initialise("onreadystatechange");
+                    initialise("onreadystatechange");
                 }
 
             };
 
         }
 
-        if (pullSlideViewerScripts)
+        if (aquire)
         {
             var cssnum = document.styleSheets.length;
 
@@ -101,14 +99,8 @@ var ceres = {};
             {
                 if (document.styleSheets.length > cssnum)
                 {
-                    // needs more work when you load a bunch of CSS files quickly
-                    // e.g. loop from cssnum to the new length, looking
-                    // for the document.styleSheets[n].href === url
-                    // ...
-
-                    // FF changes the length prematurely :()
-                    slideview.initialise('listening to styleSheets.length change');
                     clearInterval(ti);
+                    initialise('listening to styleSheets.length change');
                 }
 
             }, 10);
@@ -116,6 +108,16 @@ var ceres = {};
         }
 
         document.head.appendChild(link);
+
+        function initialise(str)
+        {
+            aquire = false;
+
+            if (trace) console.log(str);
+
+            getSlideViewer();
+            displaySlide();
+        }
     }
 
 
@@ -139,7 +141,6 @@ var ceres = {};
 
     function getSlideViewer()
     {
-        const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         const ar = getSlideViewerAttributes();
 
         createSlideViewContainer();
@@ -149,11 +150,6 @@ var ceres = {};
 
         function getSlideViewerAttributes()
         {
-            ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
-            sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
-            sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
-            css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
-
             return imageListToArray(progenitor.innerHTML);
 
             function imageListToArray(str)
