@@ -87,10 +87,11 @@ var ceres = {};
 
         }, 10);
 
-        function setDocumentHeader(str)
+        document.head.appendChild(link);
+
+        function logStylesheetDetection(str)
         {
             console.log('Found slideviewer stylesheet by ' + str);
-            document.head.appendChild(link);
         }
 
     }
