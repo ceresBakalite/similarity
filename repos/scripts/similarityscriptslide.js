@@ -51,7 +51,7 @@ alert('bool: ' + progenitor.innerHTML.length);
 
 //            if (trc && !imageList) console.log('ceres-csv image list not found');
 
-            return imageListToArray(imageList);
+            return imageListToArray(progenitor.innerHTML);
 
             function imageListToArray(str)
             {
