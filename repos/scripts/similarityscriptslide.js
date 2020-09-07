@@ -16,7 +16,7 @@ var ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            this.innerHTML = await (await fetch(src)).text();
+            this.innerHTML = (src.length > 0) ? await (await fetch(src)).text() : null;
         }
 
     });
@@ -32,7 +32,7 @@ var ceres = {};
         progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         attributes = getSlideViewAttributes();
 
-        alert('attributes: ' + attributes.length);
+        //alert('attributes: ' + attributes.length);
 
         getSlideViewer();
 
