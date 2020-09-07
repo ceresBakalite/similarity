@@ -1,8 +1,6 @@
 var ceres = {};
 (function(slideview)
 {
-    const trace = false; // environment directive
-
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
 
@@ -10,6 +8,8 @@ var ceres = {};
     let sub = true; // default element attribute - display slideview item subtitles
     let sur = true; // default element attribute - display slideview item surtitles
     let css = true; // default element attribute - use the default slideview stylesheet
+    let emb = false; // default element attribute - embed the noscript image list in the document body
+    let trc = false; // default element attribute - enable the trace environment directive
 
     let index = 1;
 
@@ -34,7 +34,7 @@ var ceres = {};
         progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         attributes = getSlideViewAttributes();
 
-        intialiseSlideViewer();
+        getSlideViewer();
 
         function getSlideViewAttributes()
         {
@@ -42,6 +42,8 @@ var ceres = {};
             let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
             let sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
             let css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
+            let emb = (progenitor.getAttribute('emb')) ? progenitor.getAttribute('emb') : emb;
+            let trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
             return imageListToArray(progenitor.innerHTML);
 
@@ -52,64 +54,6 @@ var ceres = {};
 
         }
 
-    }
-
-    function linkSlideViewerCSS()
-    {
-        const link = document.createElement('link');
-
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-        link.as = 'style';
-
-        link.onload = function ()
-        {
-            if (trace) console.log('onload listener');
-        }
-
-        if (link.addEventListener)
-        {
-            link.addEventListener('load', function()
-            {
-                if (trace) console.log("DOM's load event");
-            }, false);
-
-        }
-
-        link.onreadystatechange = function()
-        {
-            var state = link.readyState;
-
-            if (state === 'loaded' || state === 'complete')
-            {
-                link.onreadystatechange = null;
-                if (trace) console.log('onreadystatechange');
-            }
-
-        };
-
-        var cssnum = document.styleSheets.length;
-
-        var ti = setInterval(function()
-        {
-            if (document.styleSheets.length > cssnum)
-            {
-                clearInterval(ti);
-                if (trace) console.log('listening to styleSheets.length change');
-            }
-
-        }, 10);
-
-        document.head.appendChild(link);
-    }
-
-    function intialiseSlideViewer()
-    {
-        if (css) linkSlideViewerCSS();
-
-        getSlideViewer();
-        displaySlide();
     }
 
     function displaySlide(targetIndex)
@@ -132,10 +76,14 @@ var ceres = {};
 
     function getSlideViewer()
     {
+        if (css) linkSlideViewerCSS();
+
         createSlideViewContainer();
         createSlideviewPointerContainer();
 
-        if (trace) console.log(progenitor.innerHTML);
+        if (trc) console.log(progenitor.innerHTML);
+
+        displaySlide();
 
         function createAttribute(id, type, value)
         {
@@ -276,6 +224,56 @@ var ceres = {};
                 createAttribute(el.id, 'onclick', onClickEventValue);
             }
 
+        }
+
+        function linkSlideViewerCSS()
+        {
+            const link = document.createElement('link');
+
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+            link.as = 'style';
+
+            link.onload = function ()
+            {
+                if (trc) console.log('onload listener');
+            }
+
+            if (link.addEventListener)
+            {
+                link.addEventListener('load', function()
+                {
+                    if (trc) console.log("DOM's load event");
+                }, false);
+
+            }
+
+            link.onreadystatechange = function()
+            {
+                var state = link.readyState;
+
+                if (state === 'loaded' || state === 'complete')
+                {
+                    link.onreadystatechange = null;
+                    if (trc) console.log('onreadystatechange');
+                }
+
+            };
+
+            var cssnum = document.styleSheets.length;
+
+            var ti = setInterval(function()
+            {
+                if (document.styleSheets.length > cssnum)
+                {
+                    clearInterval(ti);
+                    if (trc) console.log('listening to styleSheets.length change');
+                }
+
+            }, 10);
+
+            document.head.appendChild(link);
         }
 
     }
