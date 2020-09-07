@@ -38,7 +38,7 @@ var ceres = {};
         if (pullSlideViewerScripts)
         {
             pullSlideViewerScripts = false;
-            console.log(str);
+            //console.log(str);
 
             getSlideViewer();
             displaySlide();
@@ -145,7 +145,7 @@ var ceres = {};
         createSlideViewContainer();
         createSlideviewPointerContainer();
 
-        console.log(progenitor.innerHTML);
+        //console.log(progenitor.innerHTML);
 
         function getSlideViewerAttributes()
         {
