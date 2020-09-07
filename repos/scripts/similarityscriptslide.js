@@ -80,7 +80,7 @@ var ceres = {};
         {
             link.onload = function ()
             {
-                invokeSlideViewer('onload listener');
+                redirectToSlideViewer('onload listener');
             }
 
         }
@@ -91,7 +91,7 @@ var ceres = {};
             {
                 link.addEventListener('load', function()
                 {
-                    invokeSlideViewer("DOM's load event");
+                    redirectToSlideViewer("DOM's load event");
                 }, false);
 
             }
@@ -108,7 +108,7 @@ var ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    initialise("onreadystatechange");
+                    redirectToSlideViewer("onreadystatechange");
                 }
 
             };
@@ -124,7 +124,7 @@ var ceres = {};
                 if (document.styleSheets.length > cssnum)
                 {
                     clearInterval(ti);
-                    invokeSlideViewer('listening to styleSheets.length change');
+                    redirectToSlideViewer('listening to styleSheets.length change');
                 }
 
             }, 10);
@@ -133,7 +133,7 @@ var ceres = {};
 
         document.head.appendChild(link);
 
-        function invokeSlideViewer(str)
+        function redirectToSlideViewer(str)
         {
             if (trace) console.log(str);
             aquire = false;
