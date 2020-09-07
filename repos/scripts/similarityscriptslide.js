@@ -157,6 +157,8 @@ var ceres = {};
 
             createAttribute('ceres-slideview-image-container', 'class', 'slideview-image-container');
 
+alert(document.getElementById('ceres-slideview-image-container').getAttribute('class'));
+
             for (let item = 0; item < ar.length; item++)
             {
                 var arrayItem = ar[item].split(',');
