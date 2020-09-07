@@ -43,9 +43,9 @@ var ceres = {};
             css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
             trc = (progenitor.getAttribute('trc')) ? progenitor.getAttribute('trc') : trc;
 
-alert('bool: ' + Boolean(progenitor.innerHTML));
+alert('bool: ' + progenitor.innerHTML.length);
 
-            let imageList = (Boolean(progenitor.innerHTML)) ? progenitor.innerHTML : getImageList();
+            let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getImageList();
 
             return imageListToArray(imageList);
 
