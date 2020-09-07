@@ -129,14 +129,14 @@ var ceres = {};
 
         }
 
-        function createAttribute(idName, attributeType, attributeValue)
+        function createAttribute(id, type, value)
         {
-            let el = (document.getElementById(idName)) ? document.getElementById(idName) : document.getElementsByTagName(idName)[0];
+            let el = document.getElementById(id);
 
             if (el != null)
             {
-                let attribute = document.createAttribute(attributeType);
-                attribute.value = attributeValue;
+                let attribute = document.createAttribute(type);
+                attribute.value = value;
 
                 el.setAttributeNode(attribute);
             }
