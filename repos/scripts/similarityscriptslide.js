@@ -2,13 +2,12 @@ var ceres = {};
 (function(slideview)
 {
     const trace = true; // environment directive
+    const progenitor = null; // parent slideviewer place holder
 
-    const progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
-
-    let ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : true; // default true - use slideviewer css stylesheet
-    let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : true; // default true - display slideviewer pointers
-    let sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : true; // default true - display slideviewer surtitles
-    let css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : true; // default true - display slideviewer subtitles
+    let ptr = true; // default - use slideviewer css stylesheet
+    let sub = true; // default - display slideviewer pointers
+    let sur = true; // default - display slideviewer surtitles
+    let css = true; // default - display slideviewer subtitles
 
     let index = 1;
 
@@ -30,15 +29,21 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
+        progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+
         if (css)
         {
             getSlideViewerScripts();
 
         } else {
-
-            getSlideViewer();
-            displaySlide();
+            intialiseSlideViewer();
         }
+    }
+
+    function intialiseSlideViewer()
+    {
+        getSlideViewer();
+        displaySlide();
     }
 
     function getSlideViewerScripts()
@@ -56,7 +61,7 @@ var ceres = {};
         {
             link.onload = function ()
             {
-                initialise('onload listener');
+                invokeSlideViewer('onload listener');
             }
 
         }
@@ -67,7 +72,7 @@ var ceres = {};
             {
                 link.addEventListener('load', function()
                 {
-                    initialise("DOM's load event");
+                    invokeSlideViewer("DOM's load event");
                 }, false);
 
             }
@@ -100,7 +105,7 @@ var ceres = {};
                 if (document.styleSheets.length > cssnum)
                 {
                     clearInterval(ti);
-                    initialise('listening to styleSheets.length change');
+                    invokeSlideViewer('listening to styleSheets.length change');
                 }
 
             }, 10);
@@ -109,14 +114,12 @@ var ceres = {};
 
         document.head.appendChild(link);
 
-        function initialise(str)
+        function invokeSlideViewer(str)
         {
+            if (trace) console.log(str);
             aquire = false;
 
-            if (trace) console.log(str);
-
-            getSlideViewer();
-            displaySlide();
+            intialiseSlideViewer();
         }
     }
 
@@ -150,6 +153,11 @@ var ceres = {};
 
         function getSlideViewerAttributes()
         {
+            let ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
+            let sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
+            let sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
+            let css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
+
             return imageListToArray(progenitor.innerHTML);
 
             function imageListToArray(str)
