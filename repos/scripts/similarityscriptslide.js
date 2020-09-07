@@ -129,6 +129,20 @@ var ceres = {};
 
         }
 
+        function createAttribute(idName, attributeType, attributeValue)
+        {
+            let el = (document.getElementById(idName)) ? document.getElementById(idName) : document.getElementsByTagName(idName)[0];
+
+            if (el != null)
+            {
+                let attribute = document.createAttribute(attributeType);
+                attribute.value = attributeValue;
+
+                el.setAttributeNode(attribute);
+            }
+
+        }
+
         function createSlideViewContainer()
         {
             progenitor.innerHTML = null;
@@ -141,13 +155,7 @@ var ceres = {};
 
             progenitor.appendChild(parent);
 
-            let el = (document.getElementById('ceres-slideview-image-container')) ? document.getElementById('ceres-slideview-image-container') : document.getElementsByTagName('ceres-slideview-image-container')[0];
-            if (el != null)
-            {
-                let attribute = document.createAttribute('class');
-                attribute.value = 'slideview-image-container';
-                el.setAttributeNode(attribute);
-            }
+            createAttribute('ceres-slideview-image-container', 'class', 'slideview-image-container');
 
             for (let item = 0; item < ar.length; item++)
             {
