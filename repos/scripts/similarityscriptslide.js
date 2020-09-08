@@ -32,26 +32,30 @@ var ceres = {};
         progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
         attributes = getSlideViewAttributes();
 
-        //alert('attributes: ' + attributes.length);
-
-        getSlideViewer();
+        if (attributes) getSlideViewer();
 
         function getSlideViewAttributes()
         {
-            trace = (progenitor.getAttribute('trace')) ? progenitor.getAttribute('trace') : trace;
+            if (progenitor)
+            {
+                trace = (progenitor.getAttribute('trace')) ? progenitor.getAttribute('trace') : trace;
 
-            ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
-            sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
-            sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
-            css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
+                ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
+                sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
+                sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
+                css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
+    
+                alert(progenitor.innerHTML.length);
 
-//console.log(progenitor.innerHTML);
+                return imageListToArray(progenitor.innerHTML);
 
-//            let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getImageList();
+            } else {
 
-//            if (trace && !imageList) console.log('ceres-csv image list not found');
+                console.log('Unable to find the ceres-slideview document element');
+                return null;
 
-            return imageListToArray(progenitor.innerHTML);
+            }
+
 
             function imageListToArray(str)
             {
