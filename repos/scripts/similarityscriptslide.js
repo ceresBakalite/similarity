@@ -47,7 +47,8 @@ var ceres = {};
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
 alert('1');
-                let imageList = waitForList(() => getImageList())
+                let imageList = getImageList();
+                
                 //let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
 
                 alert('6');
