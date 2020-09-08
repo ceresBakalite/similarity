@@ -123,8 +123,6 @@ var ceres = {};
             descendant.id = slideview.container + '-image-container';
             progenitor.appendChild(descendant);
 
-            document.getElementById(descendant.id).style.display = 'none';
-
             createAttribute(descendant.id, 'class', 'slideview-image-container');
 
             for (let item = 0; item < attributes.length; item++)
@@ -148,8 +146,6 @@ var ceres = {};
 
             setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
             setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '&#10095;');
-
-            document.getElementById(descendant.id).style.display = 'block';
 
             function getURL()
             {
