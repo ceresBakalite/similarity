@@ -58,8 +58,6 @@ var ceres = {};
 
                 }
 
-                return (imageList) ? imageListToArray(imageList) : null;
-
             } else {
 
                 return errorHandler('Unable to find the ceres-slideview document element');
