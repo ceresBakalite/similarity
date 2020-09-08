@@ -75,7 +75,6 @@ var ceres = {};
     function displaySlide(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
-        const pointers = document.querySelectorAll(".ptr");
 
         index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
 
@@ -84,6 +83,8 @@ var ceres = {};
 
         if (ptr)
         {
+            const pointers = document.querySelectorAll(".ptr");
+            
             pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
             pointers[index-1].className += ' active';
         }
