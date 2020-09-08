@@ -328,11 +328,11 @@ var ceres = {};
 
         switch (symbol)
         {
-            case "TRUE": return true;
-            case "T": return true;
-            case "YES": return true;
-            case "Y": return true;
-            case "1": return true;
+            case 'TRUE': return true;
+            case 'T': return true;
+            case 'YES': return true;
+            case 'Y': return true;
+            case '1': return true;
             default: return false;
         }
 
