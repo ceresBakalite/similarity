@@ -45,23 +45,24 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
                 css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
 
-                //let imageList = (progenitor.innerHTML) ? alert('innerHTML exist but with a length of ' + progenitor.innerHTML.length) : alert('innerHTML does not exist. Length: ' + progenitor.innerHTML.length);
-                if (progenitor.innerHTML)
+                let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+
+                if (imageList)
                 {
-                    alert('innerHTML DOES exist with a length of ' + progenitor.innerHTML.length);
+                    if (trace) console.log(progenitor.innerHTML);
+                    return imageListToArray(progenitor.innerHTML);
+
                 } else {
-                    alert('innerHTML does NOT exist with a length of ' + progenitor.innerHTML.length);
+
+                    return errorHandler('The ceres-slideview document element was found but the ceres-csv image list could not be read');
+
                 }
 
-                if (trace) console.log(progenitor.innerHTML);
-
-
-                return imageListToArray(progenitor.innerHTML);
+                return (imageList) ? imageListToArray(progenitor.innerHTML) : null;
 
             } else {
 
-                console.log('Unable to find the ceres-slideview document element');
-                return null;
+                return errorHandler('Unable to find the ceres-slideview document element');
 
             }
 
@@ -73,6 +74,21 @@ var ceres = {};
 
         }
 
+    }
+
+    function errorHandler(str)
+    {
+        let err = 'ERROR: ' + str + '. DateTime: ' + new Date().toLocaleString();
+
+        console.log(err);
+        alert(err);
+
+        return null;
+    }
+
+    function getEmbedImageList()
+    {
+        return (document.getElementById("ceres-csv")) ? document.getElementById("ceres-csv").innerHTML : null;
     }
 
     function displaySlide(targetIndex)
