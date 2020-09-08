@@ -63,9 +63,11 @@ var ceres = {};
                let retry = 0;
                let list = null;
 
-               let fetch = setInterval(tryList, 250);
+               let fetch = setInterval(getList, 250);
 
-               function tryList()
+               return list;
+
+               function getList()
                {
                    list = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
                    retry = (list) ? 5 : retry++;
