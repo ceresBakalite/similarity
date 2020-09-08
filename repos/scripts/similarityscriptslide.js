@@ -45,7 +45,7 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                let imageList = getImageList();
 
                 if (trace) console.log('Image list: ' + imageList);
 
@@ -55,6 +55,24 @@ var ceres = {};
 
                 return errorHandler('ERROR_NotFoundProgenitor');
 
+            }
+
+            function getImageList()
+            {
+                let retry = 0;
+                let imageList = null;
+
+                while (retry < 5);
+                {
+                    imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                    retry = (imageList) ? 5 : retry++;
+                }
+
+                return imageList;
+            }
+
+
+                return
             }
 
             function imageListToArray(str)
