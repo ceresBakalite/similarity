@@ -250,7 +250,7 @@ var ceres = {};
 
             document.head.appendChild(link);
 
-            function onloadListener()
+            onloadListener = function()
             {
                 link.onload = function ()
                 {
