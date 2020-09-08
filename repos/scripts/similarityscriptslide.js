@@ -82,7 +82,7 @@ var ceres = {};
         slides.forEach(slide => { slide.style.display = 'none';	});
         slides[index-1].style.display = 'block';
 
-        if (pointers)
+        if (ptr)
         {
             pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
             pointers[index-1].className += ' active';
