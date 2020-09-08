@@ -246,7 +246,7 @@ var ceres = {};
             onloadListener();
             addEventListener();
             stylesheetsLengthListener();
-            onReadyStateChangeLengthListener();
+            onReadyStateChangeListener();
 
             document.head.appendChild(link);
 
@@ -288,7 +288,8 @@ var ceres = {};
 
             }
 
-            function onReadyStateChangeLengthListener() {
+            function onReadyStateChangeListener()
+            {
                 link.onreadystatechange = function()
                 {
                     var state = link.readyState;
