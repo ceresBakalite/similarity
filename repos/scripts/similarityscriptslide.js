@@ -34,11 +34,7 @@ var ceres = {};
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
         attributes = getSlideViewAttributes();
 
-        alert('3');
-
         if (attributes) getSlideViewer();
-
-        alert('4');
 
         function getSlideViewAttributes()
         {
@@ -50,9 +46,10 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-alert('1');
-                let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-                alert('2');
+alert('100');
+                //let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                let imageList = getImageList();
+                alert('400');
 
                 if (trace) console.log('Image list: ' + imageList);
 
@@ -62,6 +59,24 @@ alert('1');
 
                 return errorHandler('ERROR_NotFoundProgenitor');
 
+            }
+
+            function getImageList()
+            {
+                var retry = 0;
+                var imageList = null;
+
+                alert('200');
+                while (retry < 5);
+                {
+                    imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                    retry = (imageList) ? 5 : retry++;
+                    alert(retry);
+
+                }
+                alert('300');
+
+                return imageList;
             }
 
             function imageListToArray(str)
@@ -76,20 +91,6 @@ alert('1');
 
         }
 
-    }
-
-    function getImageList()
-    {
-        var retry = 0;
-        var imageList = null;
-
-        while (retry < 5);
-        {
-            imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-            retry = (imageList) ? 5 : retry++;
-        }
-
-        return imageList;
     }
 
     function displaySlide(targetIndex)
