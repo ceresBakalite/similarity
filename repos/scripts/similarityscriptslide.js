@@ -63,14 +63,14 @@ var ceres = {};
                let retry = 0;
                let list = null;
 
-               let fetch = setInterval(tryList, 100);
+               let fetch = setInterval(tryList, 250);
 
                function tryList()
                {
                    list = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-                   retry = (list) ? 10 : retry++;
+                   retry = (list) ? 5 : retry++;
 
-                   if (retry == 10) clearInterval(fetch);
+                   if (retry == 5) clearInterval(fetch);
                }
 
             }
