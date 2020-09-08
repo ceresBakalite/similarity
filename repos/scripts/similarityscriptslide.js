@@ -31,8 +31,7 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-
-        attributes = getSlideViewAttributes();
+        attributes = setTimeout(function(){ getSlideViewAttributes(); }, 500);
 
         if (attributes) getSlideViewer();
 
