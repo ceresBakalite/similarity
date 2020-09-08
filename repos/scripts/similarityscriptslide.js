@@ -1,6 +1,10 @@
 var ceres = {};
 (function(slideview)
 {
+    slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+    slideview.progenitorid = 'ceres-slideview';
+    slideview.imagelistid = 'ceres-csv';
+
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable the trace environment directive
@@ -11,7 +15,7 @@ var ceres = {};
 
     let index = 1;
 
-    window.customElements.define('ceres-slideview', class extends HTMLElement
+    window.customElements.define(slideview.progenitorid, class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -29,7 +33,7 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        progenitor = (document.getElementById("ceres-slideview")) ? document.getElementById("ceres-slideview") : document.getElementsByTagName('ceres-slideview')[0];
+        progenitor = (document.getElementById(slideview.progenitorid)) ? document.getElementById(slideview.progenitorid) : document.getElementsByTagName(slideview.progenitorid)[0];
         attributes = getSlideViewAttributes();
 
         if (attributes) getSlideViewer();
@@ -49,11 +53,11 @@ var ceres = {};
 
                 if (trace) console.log('Image list: ' + imageList);
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler('imageListNotFound');
+                return (imageList) ? imageListToArray(imageList) : errorHandler('ERROR_NotFoundImageList');
 
             } else {
 
-                return errorHandler('progenitorNotFound');
+                return errorHandler('ERROR_NotFoundProgenitor');
 
             }
 
@@ -64,7 +68,7 @@ var ceres = {};
 
             function getEmbedImageList()
             {
-                return (document.getElementById("ceres-csv")) ? document.getElementById("ceres-csv").innerHTML : null;
+                return (document.getElementById(slideview.imagelistid)) ? document.getElementById(slideview.imagelistid).innerHTML : null;
             }
 
         }
@@ -119,7 +123,7 @@ var ceres = {};
             const descendant = document.createElement('div');
             let progeny = null;
 
-            descendant.id = 'ceres-slideview-image-container';
+            descendant.id = slideview.progenitorid + '-image-container';
             progenitor.appendChild(descendant);
 
             createAttribute(descendant.id, 'class', 'slideview-image-container');
@@ -206,7 +210,7 @@ var ceres = {};
 
             const descendant = document.createElement('div');
 
-            descendant.id = 'ceres-slideview-pointer-container';
+            descendant.id = slideview.progenitorid + '-pointer-container';
             progenitor.appendChild(descendant);
 
             createAttribute(descendant.id, 'class', 'slideview-pointer-container');
@@ -221,7 +225,7 @@ var ceres = {};
 
             progenitor.appendChild(document.createElement('br'));
 
-            if (trace) console.log(progenitor.innerHTML);
+            if (trace) console.log('Progenitor: ' + progenitor.innerHTML);
 
             function getClickEventValue()
             {
@@ -247,7 +251,7 @@ var ceres = {};
 
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+            link.href = slideview.defaultStylesheet;
             link.as = 'style';
 
             onloadListener();
@@ -261,7 +265,7 @@ var ceres = {};
             {
                 link.onload = function ()
                 {
-                    if (trace) console.log('onload listener');
+                    if (trace) console.log(ceresResource('NOTIFY_LinkOnload'));
                 }
 
             }
@@ -272,7 +276,7 @@ var ceres = {};
                 {
                     link.addEventListener('load', function()
                     {
-                        if (trace) console.log("DOM's load event");
+                        if (trace) console.log(ceresResource('NOTIFY_LinkAddEventListener'));
                     }, false);
 
                 }
@@ -281,14 +285,14 @@ var ceres = {};
 
             function stylesheetsLengthListener()
             {
-                var cssnum = document.styleSheets.length;
+                var cssnum = document.stylesheets.length;
 
                 var ti = setInterval(function()
                 {
-                    if (document.styleSheets.length > cssnum)
+                    if (document.stylesheets.length > cssnum)
                     {
                         clearInterval(ti);
-                        if (trace) console.log('listening to styleSheets.length change');
+                        if (trace) console.log(ceresResource('NOTIFY_LinkStylesheetCount'));
                     }
 
                 }, 10);
@@ -304,7 +308,7 @@ var ceres = {};
                     if (state === 'loaded' || state === 'complete')
                     {
                         link.onreadystatechange = null;
-                        if (trace) console.log('onreadystatechange');
+                        if (trace) console.log(ceresResource('NOTIFY_LinkOnReadyState'));
                     }
 
                 };
@@ -329,8 +333,12 @@ var ceres = {};
     {
         switch (name)
         {
-          case 'imageListNotFound': return 'The ceres-slideview document element was found but the ceres-csv image list could not be read';
-          case 'progenitorNotFound': return 'Unable to find the ceres-slideview document element';
+          case 'ERROR_NotFoundImageList': return 'The ' + slideview.progenitorid + ' document element was found but the ' + slideview.imagelistid + ' image list could not be read';
+          case 'ERROR_NotFoundProgenitor': return 'Unable to find the ' + slideview.progenitorid + ' document element';
+          case 'NOTIFY_LinkOnload': 'Link insert invoked: the onload listener';
+          case 'NOTIFY_LinkAddEventListener': 'Link insert invoked: the addEventListener';
+          case 'NOTIFY_LinkStylesheetCount': 'Link insert invoked: the styleSheets.length count increase';
+          case 'NOTIFY_LinkOnReadyState': 'Link insert invoked: the onreadystatechange event';
           default: return 'An unexpected error has occurred. The slide viewer has stopped';
         }
 
