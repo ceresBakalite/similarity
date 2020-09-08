@@ -99,7 +99,7 @@ var ceres = {};
 
         displaySlide();
 
-        progenitor..style.display = 'block';
+        progenitor.style.display = 'block';
 
         function createAttribute(id, type, value)
         {
@@ -118,7 +118,7 @@ var ceres = {};
         function createSlideViewContainer()
         {
             progenitor.innerHTML = null;
-            progenitor..style.display = 'none';
+            progenitor.style.display = 'none';
 
             const descendant = document.createElement('div');
             let progeny = null;
