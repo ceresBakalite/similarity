@@ -66,6 +66,8 @@ var ceres = {};
                 {
                     imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
                     retry = (imageList) ? 5 : retry++;
+
+                    alert(retry);
                 }
 
                 return imageList;
