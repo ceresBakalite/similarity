@@ -256,7 +256,7 @@ var ceres = {};
 
             onloadListener();
             addEventListener();
-            stylesheetsLengthListener();
+            styleSheetsLengthListener();
             onReadyStateChangeListener();
 
             document.head.appendChild(link);
@@ -283,7 +283,7 @@ var ceres = {};
 
             }
 
-            function stylesheetsLengthListener()
+            function styleSheetsLengthListener()
             {
                 var cssnum = document.styleSheets.length;
 
