@@ -60,16 +60,19 @@ var ceres = {};
 
             function getImageList()
             {
-                let retry = 0;
-                let list = null;
+               let retry = 0;
+               let list = null;
 
-                while (retry < 5)
-                {
-                    list = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-                    retry = (list) ? 5 : retry++;
-                }
+               let fetch = setInterval(tryList, 100);
 
-                return list;
+               function tryList()
+               {
+                   list = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                   retry = (list) ? 5 : retry++;
+
+                   if (retry == 5) clearInterval(fetch);
+               }
+
             }
 
             function imageListToArray(str)
