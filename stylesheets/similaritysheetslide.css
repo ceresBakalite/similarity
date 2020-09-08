@@ -36,20 +36,6 @@
   border-radius: 3px 0 0 3px;
 }
 
-.prev:after {
-  content: '<';
-  font-weight: bold;
-  font-size: 18px;
-  border-radius: 0 3px 3px 0;
-}
-
- .next:after {
-  content: '>';
-  font-weight: bold;
-  font-size: 18px;
-  border-radius: 3px 0 0 3px;
-}
-
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.3);
   text-decoration: none;
