@@ -70,7 +70,9 @@ alert('100');
                 while (retry < 5);
                 {
                     imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-                    retry = (imageList) ? 5 : retry++;
+                    retry++;
+
+                    if (imageList) return imageList;
                     alert(retry);
 
                 }
