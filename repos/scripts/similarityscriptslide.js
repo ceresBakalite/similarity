@@ -46,7 +46,6 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                //let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
                 let imageList = awaitImageList();
 
                 if (trace) console.log('Image list: ' + imageList);
