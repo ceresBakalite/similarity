@@ -58,7 +58,7 @@ var ceres = {};
 
                 }
 
-                return (imageList) ? imageListToArray(progenitor.innerHTML) : null;
+                return (imageList) ? imageListToArray(imageList) : null;
 
             } else {
 
