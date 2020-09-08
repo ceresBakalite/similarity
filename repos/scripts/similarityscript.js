@@ -43,7 +43,6 @@ function onloadFrame(ms, md)
 
           case 'slide':
             setTimeout(function(){ initialiseSlideViewer(); }, ms);
-
             break;
 
           default:
