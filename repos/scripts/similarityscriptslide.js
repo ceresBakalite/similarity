@@ -31,7 +31,6 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-        progenitor.style.visibility = 'hidden';
 
         attributes = getSlideViewAttributes();
 
@@ -100,7 +99,7 @@ var ceres = {};
 
         displaySlide();
 
-        progenitor.style.visibility = 'visible';
+        progenitor..style.display = 'block';
 
         function createAttribute(id, type, value)
         {
@@ -119,6 +118,7 @@ var ceres = {};
         function createSlideViewContainer()
         {
             progenitor.innerHTML = null;
+            progenitor..style.display = 'none';
 
             const descendant = document.createElement('div');
             let progeny = null;
