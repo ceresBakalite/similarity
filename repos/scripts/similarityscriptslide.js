@@ -75,6 +75,7 @@ var ceres = {};
     function displaySlide(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
+        const pointers = document.querySelectorAll(".ptr");
 
         index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
 
@@ -83,8 +84,6 @@ var ceres = {};
 
         if (ptr)
         {
-            const pointers = document.querySelectorAll(".ptr");
-            
             pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
             pointers[index-1].className += ' active';
         }
@@ -140,9 +139,9 @@ var ceres = {};
 
                 progeny = document.getElementById(svcname);
 
-                setDivElement(surName, 'surtitle', progeny, getSurtitle());
+                if (sur) setDivElement(surName, 'surtitle', progeny, getSurtitle());
                 setImgElement(imgName, 'ceres.openImageTab(this);', progeny);
-                setDivElement(subName, 'subtitle', progeny, getSubtitle());
+                if (sub) setDivElement(subName, 'subtitle', progeny, getSubtitle());
             }
 
             setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
