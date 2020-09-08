@@ -332,10 +332,10 @@ var ceres = {};
         {
           case 'ERROR_NotFoundImageList': return 'The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
           case 'ERROR_NotFoundProgenitor': return 'Unable to find the ' + slideview.container + ' document element';
-          case 'NOTIFY_LinkOnload': 'Link insert invoked: the onload listener';
-          case 'NOTIFY_LinkAddEventListener': 'Link insert invoked: the addEventListener';
-          case 'NOTIFY_LinkStylesheetCount': 'Link insert invoked: the styleSheets.length count increase';
-          case 'NOTIFY_LinkOnReadyState': 'Link insert invoked: the onreadystatechange event';
+          case 'NOTIFY_LinkOnload': return 'Link insert invoked: the onload listener';
+          case 'NOTIFY_LinkAddEventListener': return 'Link insert invoked: the addEventListener';
+          case 'NOTIFY_LinkStylesheetCount': return 'Link insert invoked: the styleSheets.length count increase';
+          case 'NOTIFY_LinkOnReadyState': return 'Link insert invoked: the onreadystatechange event';
           default: return 'An unexpected error has occurred. The slide viewer has stopped';
         }
 
