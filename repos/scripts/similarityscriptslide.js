@@ -60,7 +60,7 @@ var ceres = {};
 
             function imageListToArray(str)
             {
-                return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
+                return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
             function getEmbedImageList()
@@ -149,7 +149,7 @@ var ceres = {};
 
             function getURL()
             {
-                return (arrayItem[0]) ? arrayItem[0] : null;
+                return (arrayItem[0]) ? arrayItem[0].trim() : null;
             }
 
             function getSurtitle()
@@ -159,7 +159,7 @@ var ceres = {};
 
             function getSubtitle()
             {
-                return (sub) ? (arrayItem[1]) ? arrayItem[1] : null : null;
+                return (sub) ? (arrayItem[1]) ? arrayItem[1].trim() : null : null;
             }
 
             function setDivElement(id, classValue, parent, markup)
