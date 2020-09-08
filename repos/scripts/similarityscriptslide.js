@@ -22,6 +22,7 @@ var ceres = {};
     let sub = true; // default element attribute - display slideview item subtitles
     let sur = true; // default element attribute - display slideview item surtitles
     let css = true; // default element attribute - use the default slideview stylesheet
+
     let index = 1;
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
@@ -31,7 +32,6 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-
         attributes = getSlideViewAttributes();
 
         if (attributes) getSlideViewer();
@@ -70,6 +70,20 @@ var ceres = {};
 
         }
 
+    }
+
+    function getImageList()
+    {
+        var retry = 0;
+        var imageList = null;
+
+        while (retry < 5);
+        {
+            imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+            retry = (imageList) ? 5 : retry++;
+        }
+
+        return imageList;
     }
 
     function displaySlide(targetIndex)
