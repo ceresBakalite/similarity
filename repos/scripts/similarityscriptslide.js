@@ -144,8 +144,10 @@ var ceres = {};
                 setDivElement(subName, 'subtitle', progeny, getSubtitle());
             }
 
-            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
-            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '&#10095;');
+            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '');
+            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '');
+//            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
+//            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '&#10095;');
 
             function getURL()
             {
