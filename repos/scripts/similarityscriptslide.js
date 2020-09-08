@@ -80,6 +80,16 @@ var ceres = {};
 
     }
 
+    function errorHandler(str)
+    {
+        let err = 'ERROR: ' + str + '. DateTime: ' + new Date().toLocaleString();
+
+        console.log(err);
+        alert(err);
+
+        return null;
+    }
+
     function displaySlide(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
@@ -320,16 +330,6 @@ var ceres = {};
 
             }
 
-        }
-
-        function errorHandler(str)
-        {
-            let err = 'ERROR: ' + str + '. DateTime: ' + new Date().toLocaleString();
-
-            console.log(err);
-            alert(err);
-
-            return null;
         }
 
     }
