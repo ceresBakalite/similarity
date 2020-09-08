@@ -73,6 +73,7 @@ var ceres = {};
 
             function getEmbedImageList()
             {
+                alert('here now');
                 return (document.getElementById("ceres-csv")) ? document.getElementById("ceres-csv").innerHTML : null;
             }
 
