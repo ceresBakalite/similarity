@@ -65,9 +65,9 @@ var ceres = {};
                 while (retry < 5);
                 {
                     imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-                    retry = (imageList) ? 5 : retry++;
 
-                    alert(retry);
+                    if (imageList) return imagelist;
+                    retry++;
                 }
 
                 return imageList;
