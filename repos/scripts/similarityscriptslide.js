@@ -245,6 +245,8 @@ var ceres = {};
 
         function linkSlideViewerListener()
         {
+            if (!css) return;
+
             const link = document.createElement('link');
 
             link.rel = 'stylesheet';
