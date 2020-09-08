@@ -39,12 +39,12 @@ var ceres = {};
         {
             if (progenitor)
             {
-                trace = (progenitor.getAttribute('trace')) ? progenitor.getAttribute('trace') : trace;
+                trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : trace;
 
-                ptr = (progenitor.getAttribute('ptr')) ? SymbolToBoolean(progenitor.getAttribute('ptr')) : ptr;
-                sub = (progenitor.getAttribute('sub')) ? SymbolToBoolean(progenitor.getAttribute('sub')) : sub;
-                sur = (progenitor.getAttribute('sur')) ? SymbolToBoolean(progenitor.getAttribute('sur')) : sur;
-                css = (progenitor.getAttribute('css')) ? SymbolToBoolean(progenitor.getAttribute('css')) : css;
+                ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : ptr;
+                sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : sub;
+                sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
+                css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
                 let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
 
@@ -318,7 +318,7 @@ var ceres = {};
 
     }
 
-    function SymbolToBoolean(value)
+    function getBoolean(value)
     {
         let symbol = value.trim().toUpperCase();
 
