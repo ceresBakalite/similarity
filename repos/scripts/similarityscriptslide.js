@@ -82,7 +82,7 @@ var ceres = {};
 
     function getSlideViewer()
     {
-        if (css) linkSlideViewerCSS();
+        if (css) linkSlideViewerListener();
 
         createSlideViewContainer();
         createSlideviewPointerContainer();
@@ -234,7 +234,7 @@ var ceres = {};
 
         }
 
-        function linkSlideViewerCSS()
+        function linkSlideViewerListener()
         {
             const link = document.createElement('link');
 
