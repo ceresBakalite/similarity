@@ -31,7 +31,7 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-        progenitor.visibility = hidden;
+        progenitor.style.visibility = 'hidden';
 
         attributes = getSlideViewAttributes();
 
@@ -100,7 +100,7 @@ var ceres = {};
 
         displaySlide();
 
-        progenitor.visibility = visible;
+        progenitor.style.visibility = 'visible';
 
         function createAttribute(id, type, value)
         {
