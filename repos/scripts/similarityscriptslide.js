@@ -45,7 +45,13 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
                 css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
 
-                let imageList = (progenitor.innerHTML) ? alert('innerHTML exist but with a length of ' + progenitor.innerHTML.length) : alert('innerHTML does not exist. Length: ' + progenitor.innerHTML.length);
+                //let imageList = (progenitor.innerHTML) ? alert('innerHTML exist but with a length of ' + progenitor.innerHTML.length) : alert('innerHTML does not exist. Length: ' + progenitor.innerHTML.length);
+                if (progenitor.innerHTML)
+                {
+                    alert('innerHTML DOES exist with a length of ' + progenitor.innerHTML.length);
+                } else {
+                    alert('innerHTML does NOT exist with a length of ' + progenitor.innerHTML.length);
+                }
 
                 if (trace) console.log(progenitor.innerHTML);
 
