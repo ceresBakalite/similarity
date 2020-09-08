@@ -39,8 +39,6 @@ var ceres = {};
         {
             if (progenitor)
             {
-                progenitor.style.display = 'none';
-
                 trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : trace;
                 ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : ptr;
                 sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : sub;
@@ -98,9 +96,9 @@ var ceres = {};
         createSlideViewContainer();
         createSlideviewPointerContainer();
 
-        progenitor.style.display = 'block';
-
         displaySlide();
+
+        progenitor.style.display = 'block';
 
         function createAttribute(id, type, value)
         {
@@ -118,6 +116,7 @@ var ceres = {};
 
         function createSlideViewContainer()
         {
+            progenitor.style.display = 'none';
             progenitor.innerHTML = null;
 
             const descendant = document.createElement('div');
