@@ -46,10 +46,7 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-alert('100');
-                //let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
                 let imageList = getImageList();
-                alert('400');
 
                 if (trace) console.log('Image list: ' + imageList);
 
@@ -63,22 +60,16 @@ alert('100');
 
             function getImageList()
             {
-                var retry = 0;
-                var imageList = null;
+                let retry = 0;
+                let list = null;
 
-                alert('200');
                 while (retry < 5)
                 {
-                    imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-                    retry++;
-
-                    if (imageList) return imageList;
-                    alert(retry);
-
+                    list = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                    retry = (list) ? 5 : retry++;
                 }
-                alert('300');
 
-                return imageList;
+                return list;
             }
 
             function imageListToArray(str)
