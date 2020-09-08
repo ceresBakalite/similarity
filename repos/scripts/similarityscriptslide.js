@@ -47,10 +47,10 @@ var ceres = {};
 
                 let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
 
-                alert('imageList: ' + imageList);
-
                 if (imageList)
                 {
+                    alert('imageList: ' + imageList);
+
                     if (trace) console.log(progenitor.innerHTML);
                     return imageListToArray(progenitor.innerHTML);
 
