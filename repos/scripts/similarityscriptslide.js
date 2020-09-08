@@ -49,10 +49,8 @@ var ceres = {};
 
                 if (imageList)
                 {
-                    alert('imageList: ' + imageList);
-
-                    if (trace) console.log(progenitor.innerHTML);
-                    return imageListToArray(progenitor.innerHTML);
+                    if (trace) console.log(imageList);
+                    return imageListToArray(imageList);
 
                 } else {
 
