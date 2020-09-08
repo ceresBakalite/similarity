@@ -32,11 +32,11 @@
 }
 
 .prev:after {
-  content: &#10094;
+  content: '<';
 }
 
  .next:after {
-  content: &#10095;
+  content: '>';
 }
 
 .next {
