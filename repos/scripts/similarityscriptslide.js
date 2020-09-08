@@ -69,7 +69,7 @@ var ceres = {};
                 return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
             }
 
-            async function awaitImageList()
+            function awaitImageList()
             {
                 return (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
             }
