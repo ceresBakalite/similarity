@@ -67,7 +67,7 @@ alert('100');
                 var imageList = null;
 
                 alert('200');
-                while (retry < 5);
+                while (retry < 5)
                 {
                     imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
                     retry++;
