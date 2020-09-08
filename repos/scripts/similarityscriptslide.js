@@ -47,9 +47,7 @@ var ceres = {};
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
                 //let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-                let imageList = null;
-
-                awaitImageList();
+                let imageList = awaitImageList();
 
                 if (trace) console.log('Image list: ' + imageList);
 
@@ -73,12 +71,12 @@ var ceres = {};
 
             async function awaitImageList()
             {
-                await getImageList();
+                return await getImageList();
             }
 
             async function getImageList()
             {
-                imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                return (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
             }
 
         }
