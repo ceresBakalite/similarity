@@ -1,6 +1,10 @@
 var ceres = {};
 (function(slideview)
 {
+    slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+    slideview.container = 'ceres-slideview';
+    slideview.imagelist = 'ceres-csv';
+
     window.customElements.define(slideview.container, class extends HTMLElement
     {
         async connectedCallback()
@@ -20,12 +24,10 @@ var ceres = {};
     let css = true; // default element attribute - use the default slideview stylesheet
     let index = 1;
 
-    slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-    slideview.container = 'ceres-slideview';
-    slideview.imagelist = 'ceres-csv';
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
     slideview.getSlide = function(targetIndex) { displaySlide(index += targetIndex); };
     slideview.setSlide = function(targetIndex) { displaySlide(index = targetIndex); };
+
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
