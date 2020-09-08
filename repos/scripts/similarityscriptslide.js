@@ -10,7 +10,7 @@ var ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            this.innerHTML = (src.length > 0) ? await (await fetch(src)).text() : null;
+            this.innerHTML = (src) ? (src.length > 0) ? await (await fetch(src)).text() : null : null;
         }
 
     });
