@@ -41,10 +41,10 @@ var ceres = {};
             {
                 trace = (progenitor.getAttribute('trace')) ? progenitor.getAttribute('trace') : trace;
 
-                ptr = (progenitor.getAttribute('ptr')) ? progenitor.getAttribute('ptr') : ptr;
-                sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
-                sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
-                css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
+                ptr = (progenitor.getAttribute('ptr')) ? SymbolToBoolean(progenitor.getAttribute('ptr')) : ptr;
+                sub = (progenitor.getAttribute('sub')) ? SymbolToBoolean(progenitor.getAttribute('sub')) : sub;
+                sur = (progenitor.getAttribute('sur')) ? SymbolToBoolean(progenitor.getAttribute('sur')) : sur;
+                css = (progenitor.getAttribute('css')) ? SymbolToBoolean(progenitor.getAttribute('css')) : css;
 
                 let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
 
@@ -319,6 +319,25 @@ var ceres = {};
         }
 
     }
+
+    function SymbolToBoolean(value)
+    {
+        let symbol = value.trim().toUpperCase();
+
+        if (!symbol) return false;
+
+        switch (symbol)
+        {
+            case "TRUE": return true;
+            case "T": return true;
+            case "YES": return true;
+            case "Y": return true;
+            case "1": return true;
+            default: return false;
+        }
+
+    }
+
 
     function errorHandler(name)
     {
