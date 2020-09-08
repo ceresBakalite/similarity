@@ -71,10 +71,6 @@ var ceres = {};
                 return imageList;
             }
 
-
-                return
-            }
-
             function imageListToArray(str)
             {
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
