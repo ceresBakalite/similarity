@@ -66,29 +66,18 @@ var ceres = {};
 
             }
 
-
             function imageListToArray(str)
             {
                 return str.replace(/((<([^>]+)>)| )/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
+            function getEmbedImageList()
+            {
+                return (document.getElementById("ceres-csv")) ? document.getElementById("ceres-csv").innerHTML : null;
+            }
+
         }
 
-    }
-
-    function errorHandler(str)
-    {
-        let err = 'ERROR: ' + str + '. DateTime: ' + new Date().toLocaleString();
-
-        console.log(err);
-        alert(err);
-
-        return null;
-    }
-
-    function getEmbedImageList()
-    {
-        return (document.getElementById("ceres-csv")) ? document.getElementById("ceres-csv").innerHTML : null;
     }
 
     function displaySlide(targetIndex)
@@ -331,6 +320,16 @@ var ceres = {};
 
             }
 
+        }
+
+        function errorHandler(str)
+        {
+            let err = 'ERROR: ' + str + '. DateTime: ' + new Date().toLocaleString();
+
+            console.log(err);
+            alert(err);
+
+            return null;
         }
 
     }
