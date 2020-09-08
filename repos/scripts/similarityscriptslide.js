@@ -285,11 +285,11 @@ var ceres = {};
 
             function stylesheetsLengthListener()
             {
-                var cssnum = document.stylesheets.length;
+                var cssnum = document.styleSheets.length;
 
                 var ti = setInterval(function()
                 {
-                    if (document.stylesheets.length > cssnum)
+                    if (document.styleSheets.length > cssnum)
                     {
                         clearInterval(ti);
                         if (trace) console.log(ceresResource('NOTIFY_LinkStylesheetCount'));
