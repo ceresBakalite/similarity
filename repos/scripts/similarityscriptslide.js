@@ -46,7 +46,11 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+alert('1');
+                let imageList = waitForList(() => getImageList())
+                //let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+
+                alert('6');
 
                 if (trace) console.log('Image list: ' + imageList);
 
@@ -66,6 +70,33 @@ var ceres = {};
             function getEmbedImageList()
             {
                 return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
+            }
+
+            function getImageList()
+            {
+                alert('2');
+                let i = 0;
+                let list = null;
+
+                let intval = setInterval(function() { waitInterval(); }, 200);
+
+                function waitInterval()
+                {
+alert('3');
+                    while (i < 5)
+                    {
+                        list = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                        if (list) i = 5;
+                        i++;
+                    }
+
+alert('4');
+                    clearInterval(intval);
+
+                }
+
+alert('5');
+                return list;
             }
 
         }
