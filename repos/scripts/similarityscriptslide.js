@@ -2,8 +2,8 @@ var ceres = {};
 (function(slideview)
 {
     slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-    slideview.progenitorid = 'ceres-slideview';
-    slideview.imagelistid = 'ceres-csv';
+    slideview.container = 'ceres-slideview';
+    slideview.imagelist = 'ceres-csv';
 
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
@@ -15,7 +15,7 @@ var ceres = {};
 
     let index = 1;
 
-    window.customElements.define(slideview.progenitorid, class extends HTMLElement
+    window.customElements.define(slideview.container, class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -33,7 +33,7 @@ var ceres = {};
 
     slideview.slideViewer = function()
     {
-        progenitor = (document.getElementById(slideview.progenitorid)) ? document.getElementById(slideview.progenitorid) : document.getElementsByTagName(slideview.progenitorid)[0];
+        progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
         attributes = getSlideViewAttributes();
 
         if (attributes) getSlideViewer();
@@ -68,7 +68,7 @@ var ceres = {};
 
             function getEmbedImageList()
             {
-                return (document.getElementById(slideview.imagelistid)) ? document.getElementById(slideview.imagelistid).innerHTML : null;
+                return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
             }
 
         }
@@ -123,7 +123,7 @@ var ceres = {};
             const descendant = document.createElement('div');
             let progeny = null;
 
-            descendant.id = slideview.progenitorid + '-image-container';
+            descendant.id = slideview.container + '-image-container';
             progenitor.appendChild(descendant);
 
             createAttribute(descendant.id, 'class', 'slideview-image-container');
@@ -210,7 +210,7 @@ var ceres = {};
 
             const descendant = document.createElement('div');
 
-            descendant.id = slideview.progenitorid + '-pointer-container';
+            descendant.id = slideview.container + '-pointer-container';
             progenitor.appendChild(descendant);
 
             createAttribute(descendant.id, 'class', 'slideview-pointer-container');
@@ -333,8 +333,8 @@ var ceres = {};
     {
         switch (name)
         {
-          case 'ERROR_NotFoundImageList': return 'The ' + slideview.progenitorid + ' document element was found but the ' + slideview.imagelistid + ' image list could not be read';
-          case 'ERROR_NotFoundProgenitor': return 'Unable to find the ' + slideview.progenitorid + ' document element';
+          case 'ERROR_NotFoundImageList': return 'The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
+          case 'ERROR_NotFoundProgenitor': return 'Unable to find the ' + slideview.container + ' document element';
           case 'NOTIFY_LinkOnload': 'Link insert invoked: the onload listener';
           case 'NOTIFY_LinkAddEventListener': 'Link insert invoked: the addEventListener';
           case 'NOTIFY_LinkStylesheetCount': 'Link insert invoked: the styleSheets.length count increase';
