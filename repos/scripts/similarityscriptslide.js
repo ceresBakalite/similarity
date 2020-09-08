@@ -71,11 +71,6 @@ var ceres = {};
 
             async function awaitImageList()
             {
-                return await getImageList();
-            }
-
-            async function getImageList()
-            {
                 return (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
             }
 
