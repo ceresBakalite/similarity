@@ -131,9 +131,10 @@ var ceres = {};
                 var qualifier = item + 1;
 
                 let svcname = 'slideview' + qualifier;
-                let surName = 'slideview-sur' + qualifier;
-                let subName = 'slideview-sub' + qualifier;
                 let imgName = 'slideview-img' + qualifier;
+
+                if (sur) let surName = 'slideview-sur' + qualifier;
+                if (sub) let subName = 'slideview-sub' + qualifier;
 
                 setDivElement(svcname, 'slideview fade', descendant, null);
 
