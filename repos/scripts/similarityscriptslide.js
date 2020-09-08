@@ -47,20 +47,13 @@ var ceres = {};
 
                 let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
 
-                if (imageList)
-                {
-                    if (trace) console.log(imageList);
-                    return imageListToArray(imageList);
+                if (trace) console.log('Image list: ' + imageList);
 
-                } else {
-
-                    return errorHandler('The ceres-slideview document element was found but the ceres-csv image list could not be read');
-
-                }
+                return (imageList) ? imageListToArray(imageList) : errorHandler('imageListNotFound');
 
             } else {
 
-                return errorHandler('Unable to find the ceres-slideview document element');
+                return errorHandler('progenitorNotFound');
 
             }
 
@@ -78,14 +71,25 @@ var ceres = {};
 
     }
 
-    function errorHandler(str)
+    function errorHandler(name)
     {
-        let err = 'ERROR: ' + str + '. DateTime: ' + new Date().toLocaleString();
+        let err = 'ERROR: ' + ceresResource(name) + '. DateTime: ' + new Date().toLocaleString();
 
         console.log(err);
         alert(err);
 
         return null;
+    }
+
+    function ceresResource(name)
+    {
+        switch (name)
+        {
+          case 'imageListNotFound': return 'The ceres-slideview document element was found but the ceres-csv image list could not be read';
+          case 'progenitorNotFound': return 'Unable to find the ceres-slideview document element';
+          default: return 'An unexpected error has occurred. The slide viewer has stopped';
+        }
+
     }
 
     function displaySlide(targetIndex)
