@@ -39,6 +39,8 @@ var ceres = {};
         {
             if (progenitor)
             {
+                progenitor.style.display = 'none';
+
                 trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : trace;
                 ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : ptr;
                 sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : sub;
@@ -95,6 +97,8 @@ var ceres = {};
 
         createSlideViewContainer();
         createSlideviewPointerContainer();
+
+        progenitor.style.display = 'block';
 
         displaySlide();
 
