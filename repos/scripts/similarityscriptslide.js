@@ -34,7 +34,11 @@ var ceres = {};
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
         attributes = getSlideViewAttributes();
 
+        alert('3');
+
         if (attributes) getSlideViewer();
+
+        alert('4');
 
         function getSlideViewAttributes()
         {
@@ -46,7 +50,9 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
+alert('1');
                 let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+                alert('2');
 
                 if (trace) console.log('Image list: ' + imageList);
 
