@@ -68,9 +68,9 @@ var ceres = {};
                function tryList()
                {
                    list = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-                   retry = (list) ? 5 : retry++;
+                   retry = (list) ? 10 : retry++;
 
-                   if (retry == 5) clearInterval(fetch);
+                   if (retry == 10) clearInterval(fetch);
                }
 
             }
