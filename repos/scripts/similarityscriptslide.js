@@ -1,20 +1,6 @@
 var ceres = {};
 (function(slideview)
 {
-    slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-    slideview.container = 'ceres-slideview';
-    slideview.imagelist = 'ceres-csv';
-
-    let progenitor = null; // parent slideview place holder
-    let attributes = null; // slideview element item attributes array
-    let trace = false; // default element attribute - enable the trace environment directive
-    let ptr = true; // default element attribute - display slideview item pointers
-    let sub = true; // default element attribute - display slideview item subtitles
-    let sur = true; // default element attribute - display slideview item surtitles
-    let css = true; // default element attribute - use the default slideview stylesheet
-
-    let index = 1;
-
     window.customElements.define(slideview.container, class extends HTMLElement
     {
         async connectedCallback()
@@ -25,12 +11,21 @@ var ceres = {};
 
     });
 
+    let progenitor = null; // parent slideview place holder
+    let attributes = null; // slideview element item attributes array
+    let trace = false; // default element attribute - enable the trace environment directive
+    let ptr = true; // default element attribute - display slideview item pointers
+    let sub = true; // default element attribute - display slideview item subtitles
+    let sur = true; // default element attribute - display slideview item surtitles
+    let css = true; // default element attribute - use the default slideview stylesheet
+    let index = 1;
+
+    slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+    slideview.container = 'ceres-slideview';
+    slideview.imagelist = 'ceres-csv';
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
-
     slideview.getSlide = function(targetIndex) { displaySlide(index += targetIndex); };
-
     slideview.setSlide = function(targetIndex) { displaySlide(index = targetIndex); };
-
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
