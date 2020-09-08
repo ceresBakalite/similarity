@@ -31,6 +31,7 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
+
         attributes = getSlideViewAttributes();
 
         if (attributes) getSlideViewer();
@@ -57,22 +58,6 @@ var ceres = {};
 
             }
 
-            function getImageList()
-            {
-                let retry = 0;
-                let imageList = null;
-
-                while (retry < 5);
-                {
-                    imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-
-                    if (imageList) return imagelist;
-                    retry++;
-                }
-
-                return imageList;
-            }
-
             function imageListToArray(str)
             {
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
@@ -85,6 +70,20 @@ var ceres = {};
 
         }
 
+    }
+
+    function getImageList()
+    {
+        var retry = 0;
+        var imageList = null;
+
+        while (retry < 5);
+        {
+            imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
+            retry = (imageList) ? 5 : retry++;
+        }
+
+        return imageList;
     }
 
     function displaySlide(targetIndex)
