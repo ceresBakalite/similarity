@@ -47,6 +47,8 @@ var ceres = {};
 
                 let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
 
+                alert('imageList: ' + imageList);
+
                 if (imageList)
                 {
                     if (trace) console.log(progenitor.innerHTML);
@@ -73,7 +75,6 @@ var ceres = {};
 
             function getEmbedImageList()
             {
-                alert('here now');
                 return (document.getElementById("ceres-csv")) ? document.getElementById("ceres-csv").innerHTML : null;
             }
 
