@@ -44,8 +44,11 @@ var ceres = {};
                 sub = (progenitor.getAttribute('sub')) ? progenitor.getAttribute('sub') : sub;
                 sur = (progenitor.getAttribute('sur')) ? progenitor.getAttribute('sur') : sur;
                 css = (progenitor.getAttribute('css')) ? progenitor.getAttribute('css') : css;
-    
+
                 alert(progenitor.innerHTML.length);
+
+                if (trace) console.log(progenitor.innerHTML);
+
 
                 return imageListToArray(progenitor.innerHTML);
 
@@ -109,8 +112,6 @@ var ceres = {};
 
         function createSlideViewContainer()
         {
-            if (trace) console.log(progenitor.innerHTML);
-
             progenitor.innerHTML = null;
 
             const descendant = document.createElement('div');
