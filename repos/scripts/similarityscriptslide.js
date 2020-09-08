@@ -46,7 +46,7 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                let imageList = getImageList();
+                let imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
 
                 if (trace) console.log('Image list: ' + imageList);
 
@@ -70,20 +70,6 @@ var ceres = {};
 
         }
 
-    }
-
-    function getImageList()
-    {
-        var retry = 0;
-        var imageList = null;
-
-        while (retry < 5);
-        {
-            imageList = (progenitor.innerHTML) ? progenitor.innerHTML : getEmbedImageList();
-            retry = (imageList) ? 5 : retry++;
-        }
-
-        return imageList;
     }
 
     function displaySlide(targetIndex)
