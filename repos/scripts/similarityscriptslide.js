@@ -203,6 +203,8 @@ var ceres = {};
 
         function createSlideviewPointerContainer()
         {
+            if (!ptr) return;
+            
             progenitor.appendChild(document.createElement('br'));
 
             const descendant = document.createElement('div');
