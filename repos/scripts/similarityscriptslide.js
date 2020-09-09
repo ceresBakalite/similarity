@@ -18,7 +18,6 @@ var ceres = {};
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable the trace environment directive
-    let newline = '\n'; // facilitate trace-log line breaks
     let ptr = true; // default element attribute - display slideview item pointers
     let sub = true; // default element attribute - display slideview item subtitles
     let sur = true; // default element attribute - display slideview item surtitles
@@ -49,7 +48,7 @@ var ceres = {};
 
                 let imageList = awaitImageList();
 
-                if (trace) console.log('Image list markup: ' + newline + imageList);
+                if (trace) console.log(ceresResource('NOTIFY_ImageListMarkup', imageList));
 
                 return (imageList) ? imageListToArray(imageList) : errorHandler('ERROR_NotFoundImageList');
 
@@ -254,7 +253,7 @@ var ceres = {};
 
             progenitor.appendChild(document.createElement('br'));
 
-            if (trace) console.log('Progenitor innerHTML: ' + newline + progenitor.innerHTML);
+            if (trace) console.log(ceresResource('NOTIFY_ProgenitorInnerHTML'));
 
             function getClickEventValue()
             {
@@ -379,17 +378,21 @@ var ceres = {};
         return null;
     }
 
-    function ceresResource(name)
+    function ceresResource(name, value)
     {
+        let newline = '\n'; // facilitate trace-log line breaks
+
         switch (name)
         {
           case 'ERROR_NotFoundImageList': return 'The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
           case 'ERROR_NotFoundProgenitor': return 'Unable to find the ' + slideview.container + ' document element';
-          case 'NOTIFY_LinkOnload': return 'Link insert: onload listener';
-          case 'NOTIFY_LinkAddEventListener': return 'Link insert: addEventListener';
-          case 'NOTIFY_LinkStylesheetCount': return 'Link insert: styleSheets.length increment';
-          case 'NOTIFY_LinkOnReadyState': return 'Link insert: onreadystatechange event';
-          default: return 'An unexpected error has occurred. The slide viewer has stopped';
+          case 'NOTIFY_LinkOnload': return 'Link ceres-slideview default stylesheet insert: onload listener';
+          case 'NOTIFY_LinkAddEventListener': return 'Link ceres-slideview default stylesheet insert: addEventListener';
+          case 'NOTIFY_LinkStylesheetCount': return 'Link ceres-slideview default stylesheet insert: styleSheets.length increment';
+          case 'NOTIFY_LinkOnReadyState': return 'Link ceres-slideview default stylesheet insert: onreadystatechange event';
+          case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML: ' + newline + progenitor.innerHTML;
+          case 'NOTIFY_ImageListMarkup: ': return 'Image list markup: ' + newline + value;
+          default: return 'An unexpected error has occurred. The ceres-slideviewer has stopped';
         }
 
     }
