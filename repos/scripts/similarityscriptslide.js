@@ -81,40 +81,6 @@ var ceres = {};
 
             }
 
-            function xxxgetImageList()
-            {
-                let list = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getMarkupImageList();
-
-                if (!list) return syncRetryAttempt();
-
-                function syncRetryAttempt()
-                {
-                    let retryAttempt = 0;
-                    let retryLimit = 5;
-                    let interval = setInterval(lookAgain, 200);
-
-                    function lookAgain()
-                    {
-                        list = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null;
-
-                        if (list)
-                        {
-                          clearInterval(interval);
-                          return list;
-                        }
-
-                        if (retryAttempt == retryLimit) clearInterval(interval);
-
-                        if (trace) console.log('Image list search retry attempt [' + slideview.imagelist + ']: ' + (retryAttempt + 1));
-
-                        retryAttempt++;
-                    }
-
-                    return list;
-               }
-
-            }
-
         }
 
     }
@@ -239,17 +205,17 @@ var ceres = {};
                 let imgName = 'slideview-img' + qualifier;
                 let subName = 'slideview-sub' + qualifier;
 
-                composeElementDIV(svcname, 'slideview fade', imageElement, null);
+                composeElement('div', svcname, 'slideview fade', imageElement, null, null, null);
 
                 progeny = document.getElementById(svcname);
 
-                if (sur) composeElementDIV(surName, 'surtitle', progeny, getSurtitle(qualifier));
-                composeElementIMG(imgName, 'ceres.openImageTab(this);', progeny);
-                if (sub) composeElementDIV(subName, 'subtitle', progeny, getSubtitle());
+                if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
+                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, null)
+                if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
             }
 
-            composeElementA('slideview-prev', 'prev', 'ceres.getSlide(-1, true)', imageElement, '&#10094;');
-            composeElementA('slideview-next', 'next', 'ceres.getSlide(1, true)', imageElement, '&#10095;');
+            composeElement('a', 'slideview-prev', 'prev', imageElement, 'ceres.getSlide(-1, true)', '&#10094;', true);
+            composeElement('a', 'slideview-next', 'next', imageElement, 'ceres.getSlide(1, true)', '&#10095;', true);
 
             createSlideViewPointerContainer();
 
@@ -271,7 +237,7 @@ var ceres = {};
                     let qualifier = item + 1;
                     let svpname = 'slideview-ptr' + qualifier;
 
-                    setSpanElement(svpname, 'ptr', getClickEventValue(qualifier), pointerElement);
+                    composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null);
                 }
 
                 progenitor.appendChild(document.createElement('br'));
@@ -309,6 +275,20 @@ var ceres = {};
             function getSubtitle()
             {
                 return (sub) ? (arrayItem[1]) ? arrayItem[1].trim() : null : null;
+            }
+
+            function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
+            {
+                let el = document.createElement(element);
+
+                el.id = id;
+                parent.appendChild(el);
+
+                if (classValue) composeAttribute(el.id, 'class', classValue);
+                if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
+                if (url) composeAttribute(el.id, 'src', getURL());
+
+                if (markup) document.getElementById(el.id).innerHTML = markup;
             }
 
             function composeElementDIV(id, classValue, parent, markup)
