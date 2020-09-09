@@ -50,7 +50,11 @@ var ceres = {};
                 //let imageList = getImageList();
                 let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getMarkupImageList();
 
-                if (trace) console.log(resource('NOTIFY_ImageListMarkup', imageList));
+                if (trace)
+                {
+                    console.trace();
+                    console.log(resource('NOTIFY_ImageListMarkup', imageList));
+                }
 
                 return (imageList) ? imageListToArray(imageList) : errorHandler('ERROR_NotFoundImageList');
 
