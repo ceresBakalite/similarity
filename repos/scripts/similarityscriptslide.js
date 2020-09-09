@@ -47,8 +47,7 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                //let imageList = getImageList();
-                let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getMarkupImageList();
+                let imageList = getImageList();
 
                 if (trace)
                 {
@@ -69,12 +68,18 @@ var ceres = {};
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
-            function getMarkupImageList()
+            function getImageList()
             {
                 return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
             }
 
             function getImageList()
+            {
+                if (progenitor.src) return (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null;
+                return getMarkupImageList();
+            }
+
+            function xxxgetImageList()
             {
                 let list = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getMarkupImageList();
 
