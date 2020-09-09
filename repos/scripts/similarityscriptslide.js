@@ -26,10 +26,6 @@ var ceres = {};
     let index = 1;
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
-//    slideview.getSlide = function(targetIndex) { displaySlide(index += targetIndex); };
-//    slideview.setSlide = function(targetIndex) { displaySlide(index = targetIndex); };
-//    slideview.composeSlide = function(target, calc) { displaySlide(index = targetIndex); };
-
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
 
     slideview.slideViewer = function()
@@ -113,12 +109,12 @@ var ceres = {};
 
         index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
 
-        slides.forEach(slide => { slide.style.display = 'none';	});
+        slides.forEach(slide => { slide.style.display = 'none';	} );
         slides[index-1].style.display = 'block';
 
         if (ptr)
         {
-            pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	});
+            pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	} );
             pointers[index-1].className += ' active';
         }
 
@@ -150,13 +146,13 @@ var ceres = {};
 
     }
 
-    function getBoolean(value)
+    function getBoolean(symbol)
     {
-        let symbol = value.trim().toUpperCase();
+        let token = symbol.trim().toUpperCase();
 
-        if (!symbol) return false;
+        if (!token) return false;
 
-        switch (symbol)
+        switch (token)
         {
             case 'TRUE': return true;
             case 'T': return true;
@@ -178,7 +174,7 @@ var ceres = {};
         return null;
     }
 
-    function resource(name, value)
+    function resource(name, str)
     {
         let newline = '\n';
 
@@ -191,7 +187,7 @@ var ceres = {};
           case 'NOTIFY_LinkStylesheetCount': return 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment';
           case 'NOTIFY_LinkOnReadyState': return 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event';
           case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
-          case 'NOTIFY_ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + value;
+          case 'NOTIFY_ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + str;
           default: return 'An unexpected error has occurred - ' + slideview.container + ' has stopped';
         }
 
@@ -219,7 +215,7 @@ var ceres = {};
             for (let item = 0; item < attributes.length; item++)
             {
                 var arrayItem = attributes[item].split(',');
-                var qualifier = item + 1;
+                let qualifier = item + 1;
 
                 let svcname = 'slideview' + qualifier;
                 let surName = 'slideview-sur' + qualifier;
@@ -230,7 +226,7 @@ var ceres = {};
 
                 progeny = document.getElementById(svcname);
 
-                if (sur) composeElementDIV(surName, 'surtitle', progeny, getSurtitle());
+                if (sur) composeElementDIV(surName, 'surtitle', progeny, getSurtitle(qualifier));
                 composeElementIMG(imgName, 'ceres.openImageTab(this);', progeny);
                 if (sub) composeElementDIV(subName, 'subtitle', progeny, getSubtitle());
             }
@@ -255,19 +251,19 @@ var ceres = {};
 
                 for (let item = 0; item < attributes.length; item++)
                 {
-                    var qualifier = item + 1;
+                    let qualifier = item + 1;
                     let svpname = 'slideview-ptr' + qualifier;
 
-                    setSpanElement(svpname, 'ptr', getClickEventValue(), pointerElement);
+                    setSpanElement(svpname, 'ptr', getClickEventValue(qualifier), pointerElement);
                 }
 
                 progenitor.appendChild(document.createElement('br'));
 
                 if (trace) console.log(resource('NOTIFY_ProgenitorInnerHTML'));
 
-                function getClickEventValue()
+                function getClickEventValue(indexItem)
                 {
-                    return 'ceres.getSlide(' + qualifier + ', false)';
+                    return 'ceres.getSlide(' + indexItem + ', false)';
                 }
 
                 function setSpanElement(id, classValue, onClickEventValue, parent)
@@ -288,9 +284,9 @@ var ceres = {};
                 return (arrayItem[0]) ? arrayItem[0].trim() : null;
             }
 
-            function getSurtitle()
+            function getSurtitle(indexItem)
             {
-                return (sur) ? qualifier + ' / ' + attributes.length : null;
+                return (sur) ? indexItem + ' / ' + attributes.length : null;
             }
 
             function getSubtitle()
