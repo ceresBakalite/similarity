@@ -18,6 +18,7 @@ var ceres = {};
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable the trace environment directive
+    let newline = '\n'; // facilitate trace-log line breaks
     let ptr = true; // default element attribute - display slideview item pointers
     let sub = true; // default element attribute - display slideview item subtitles
     let sur = true; // default element attribute - display slideview item surtitles
@@ -48,7 +49,7 @@ var ceres = {};
 
                 let imageList = awaitImageList();
 
-                if (trace) console.log('Image list: <br>' + imageList);
+                if (trace) console.log('Image list: ' + newline + imageList);
 
                 return (imageList) ? imageListToArray(imageList) : errorHandler('ERROR_NotFoundImageList');
 
@@ -96,32 +97,6 @@ var ceres = {};
                 }
 
             }
-
-
-            //1. Create a new function that returns a promise
-            //    function firstFunction() {
-            //      return new Promise((resolve, reject) => {
-            //          let y = 0
-            //          setTimeout(() => {
-            //            for(i=0; i<10; i++){
-            //               y++
-            //            }
-            //             console.log('loop completed')
-            //             resolve(y)
-            //          }, 2000)
-            //      })
-            //    }
-
-            //2. Create an async function
-            //    async function secondFunction() {
-            //        console.log('before promise call')
-            //        //3. Await for the first function to complete
-            //        let result = await firstFunction()
-            //        console.log('promise resolved: ' + result)
-            //        console.log('next step')
-            //    };
-
-            //    secondFunction()
 
         }
 
@@ -279,8 +254,7 @@ var ceres = {};
 
             progenitor.appendChild(document.createElement('br'));
 
-            let linebreak = '\n';
-            if (trace) console.log('Progenitor: ' + linebreak + progenitor.innerHTML);
+            if (trace) console.log('Progenitor: ' + newline + progenitor.innerHTML);
 
             function getClickEventValue()
             {
