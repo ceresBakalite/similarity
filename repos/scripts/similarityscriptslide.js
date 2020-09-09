@@ -48,7 +48,7 @@ var ceres = {};
 
                 let imageList = awaitImageList();
 
-                if (trace) console.log('Image list: ' + imageList);
+                if (trace) console.log('Image list: <br>' + imageList);
 
                 return (imageList) ? imageListToArray(imageList) : errorHandler('ERROR_NotFoundImageList');
 
@@ -279,7 +279,7 @@ var ceres = {};
 
             progenitor.appendChild(document.createElement('br'));
 
-            if (trace) console.log('Progenitor: ' + progenitor.innerHTML);
+            if (trace) console.log('Progenitor: <br>' + progenitor.innerHTML);
 
             function getClickEventValue()
             {
