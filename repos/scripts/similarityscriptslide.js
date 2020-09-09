@@ -164,7 +164,7 @@ var ceres = {};
 
             displaySlide();
 
-            //setTimeout(function(){ createAttribute(imageElement.id, 'style', 'display: block;'); }, 500);
+            setTimeout(function(){ activateContainer(); }, 500);
 
             function createSlideviewPointerContainer()
             {
@@ -178,6 +178,7 @@ var ceres = {};
                 progenitor.appendChild(pointerElement);
 
                 createAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
+                createAttribute(pointerElement.id, 'style', 'display: none;');
 
                 for (let item = 0; item < attributes.length; item++)
                 {
@@ -273,6 +274,12 @@ var ceres = {};
                 createAttribute(el.id, 'src', getURL());
 
                 if (markup) document.getElementById(el.id).innerHTML = markup;
+            }
+
+            function activateContainer()
+            {
+                createAttribute(slideview.container + '-image-container', 'style', 'display: block;');
+                createAttribute(slideview.container + '-pointer-container', 'style', 'display: block;');
             }
 
         }
