@@ -124,38 +124,19 @@ var ceres = {};
         if (css) linkSlideViewerListener();
 
         createSlideViewContainer();
-        createSlideviewPointerContainer();
-
-        displaySlide();
-
-        //createAttribute(slideview.container + '-image-container', 'style', 'display: block;');
-
-        function createAttribute(id, type, value)
-        {
-            let el = document.getElementById(id);
-
-            if (el)
-            {
-                let attribute = document.createAttribute(type);
-                attribute.value = value;
-
-                el.setAttributeNode(attribute);
-            }
-
-        }
 
         function createSlideViewContainer()
         {
             progenitor.innerHTML = null;
 
-            const descendant = document.createElement('div');
+            const imageElement = document.createElement('div');
             let progeny = null;
 
-            descendant.id = slideview.container + '-image-container';
-            progenitor.appendChild(descendant);
+            imageElement.id = slideview.container + '-image-container';
+            progenitor.appendChild(imageElement);
 
-            createAttribute(descendant.id, 'class', 'slideview-image-container');
-            createAttribute(descendant.id, 'style', 'display: none;');
+            createAttribute(imageElement.id, 'class', 'slideview-image-container');
+            createAttribute(imageElement.id, 'style', 'display: none;');
 
             for (let item = 0; item < attributes.length; item++)
             {
@@ -167,7 +148,7 @@ var ceres = {};
                 let imgName = 'slideview-img' + qualifier;
                 let subName = 'slideview-sub' + qualifier;
 
-                setDivElement(svcname, 'slideview fade', descendant, null);
+                setDivElement(svcname, 'slideview fade', imageElement, null);
 
                 progeny = document.getElementById(svcname);
 
@@ -176,8 +157,71 @@ var ceres = {};
                 if (sub) setDivElement(subName, 'subtitle', progeny, getSubtitle());
             }
 
-            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
-            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '&#10095;');
+            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', imageElement, '&#10094;');
+            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', imageElement, '&#10095;');
+
+            createSlideviewPointerContainer();
+
+            displaySlide();
+
+            createAttribute(imageElement.id, 'style', 'display: block;');
+
+            function createSlideviewPointerContainer()
+            {
+                if (!ptr) return;
+
+                progenitor.appendChild(document.createElement('br'));
+
+                const pointerElement = document.createElement('div');
+
+                pointerElement.id = slideview.container + '-pointer-container';
+                progenitor.appendChild(pointerElement);
+
+                createAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
+
+                for (let item = 0; item < attributes.length; item++)
+                {
+                    var qualifier = item + 1;
+                    let svpname = 'slideview-ptr' + qualifier;
+
+                    setSpanElement(svpname, 'ptr', getClickEventValue(), pointerElement);
+                }
+
+                progenitor.appendChild(document.createElement('br'));
+
+                if (trace) console.log(ceresResource('NOTIFY_ProgenitorInnerHTML'));
+
+                function getClickEventValue()
+                {
+                    return 'ceres.setSlide(' + qualifier + ')';
+                }
+
+                function setSpanElement(id, classValue, onClickEventValue, parent)
+                {
+                    let el = document.createElement('span');
+
+                    el.id = id;
+                    parent.appendChild(el);
+
+                    createAttribute(el.id, 'class', classValue);
+                    createAttribute(el.id, 'onclick', onClickEventValue);
+                }
+
+            }
+
+            function createAttribute(id, type, value)
+            {
+                let el = document.getElementById(id);
+
+                if (el)
+                {
+                    let attribute = document.createAttribute(type);
+                    attribute.value = value;
+
+                    el.setAttributeNode(attribute);
+                }
+
+            }
 
             function getURL()
             {
@@ -229,49 +273,6 @@ var ceres = {};
                 createAttribute(el.id, 'src', getURL());
 
                 if (markup) document.getElementById(el.id).innerHTML = markup;
-            }
-
-        }
-
-        function createSlideviewPointerContainer()
-        {
-            if (!ptr) return;
-
-            progenitor.appendChild(document.createElement('br'));
-
-            const descendant = document.createElement('div');
-
-            descendant.id = slideview.container + '-pointer-container';
-            progenitor.appendChild(descendant);
-
-            createAttribute(descendant.id, 'class', 'slideview-pointer-container');
-
-            for (let item = 0; item < attributes.length; item++)
-            {
-                var qualifier = item + 1;
-                let svpname = 'slideview-ptr' + qualifier;
-
-                setSpanElement(svpname, 'ptr', getClickEventValue(), descendant);
-            }
-
-            progenitor.appendChild(document.createElement('br'));
-
-            if (trace) console.log(ceresResource('NOTIFY_ProgenitorInnerHTML'));
-
-            function getClickEventValue()
-            {
-                return 'ceres.setSlide(' + qualifier + ')';
-            }
-
-            function setSpanElement(id, classValue, onClickEventValue, parent)
-            {
-                let el = document.createElement('span');
-
-                el.id = id;
-                parent.appendChild(el);
-
-                createAttribute(el.id, 'class', classValue);
-                createAttribute(el.id, 'onclick', onClickEventValue);
             }
 
         }
