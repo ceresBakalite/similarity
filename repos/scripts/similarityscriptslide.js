@@ -74,7 +74,7 @@ var ceres = {};
 
                 let list = getEmbedImageList();
 
-                if (!list) retryProgenitor();
+                return (list) ? list : retryProgenitor();
 
                 function retryProgenitor()
                 {
@@ -89,9 +89,9 @@ var ceres = {};
                         i++;
                     }
 
+                    return list;
                 }
 
-                return list;
             }
 
 
