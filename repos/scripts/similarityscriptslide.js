@@ -164,8 +164,7 @@ var ceres = {};
 
             displaySlide();
 
-            //setTimeout(function(){ activateContainer(); }, 500);
-            activateContainer();
+            setTimeout(function(){ activateContainer(); }, 500);
 
             function createSlideviewPointerContainer()
             {
