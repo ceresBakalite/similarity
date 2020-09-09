@@ -127,7 +127,7 @@ var ceres = {};
         const svcPointerElement = document.createElement('div');
 
         createSlideViewContainer();
-        createpointercontainer();
+        createSlideviewPointerContainer();
 
         displaySlide();
 
