@@ -90,7 +90,7 @@ var ceres = {};
                             list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
                             if (list || retryAttempt == retryLimit) clearInterval(interval);
 
-                            if (trace) console.log('Image list search retry attempt [' + slideview.imagelist + ']: ' + (retryAttempt + 1)));
+                            if (trace) console.log('Image list search retry attempt [' + slideview.imagelist + ']: ' + (retryAttempt + 1));
 
                             retryAttempt++;
                         }
