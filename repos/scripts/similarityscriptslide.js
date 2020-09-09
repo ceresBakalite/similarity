@@ -121,6 +121,12 @@ var ceres = {};
 
     }
 
+    function activateSlideViewer()
+    {
+        displaySlide();
+        setTimeout(function(){ createAttribute(slideview.container, 'style', 'display: block;'); }, 500);
+    }
+
     function createAttribute(id, type, value)
     {
         let el = document.getElementById(id);
@@ -135,11 +141,59 @@ var ceres = {};
 
     }
 
+    function getBoolean(value)
+    {
+        let symbol = value.trim().toUpperCase();
+
+        if (!symbol) return false;
+
+        switch (symbol)
+        {
+            case 'TRUE': return true;
+            case 'T': return true;
+            case 'YES': return true;
+            case 'Y': return true;
+            case '1': return true;
+            default: return false;
+        }
+
+    }
+
+    function errorHandler(name)
+    {
+        let err = resource(name) + '. DateTime: ' + new Date().toLocaleString();
+
+        console.log(err);
+        alert(err);
+
+        return null;
+    }
+
+    function resource(name, value)
+    {
+        let newline = '\n';
+
+        switch (name)
+        {
+          case 'ERROR_NotFoundImageList': return 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
+          case 'ERROR_NotFoundProgenitor': return 'Error: Unable to find the ' + slideview.container + ' document element';
+          case 'NOTIFY_LinkOnload': return 'Link default stylesheet insert [' + slideview.container + ']: onload listener';
+          case 'NOTIFY_LinkAddEventListener': return 'Link default stylesheet insert [' + slideview.container + ']: addEventListener';
+          case 'NOTIFY_LinkStylesheetCount': return 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment';
+          case 'NOTIFY_LinkOnReadyState': return 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event';
+          case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
+          case 'NOTIFY_ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + value;
+          default: return 'An unexpected error has occurred - ' + slideview.container + ' has stopped';
+        }
+
+    }
+
     function getSlideViewer()
     {
         if (css) importSlideViewStylesheet();
 
         createSlideViewContainer();
+        activateSlideViewer();
 
         function createSlideViewContainer()
         {
@@ -152,7 +206,6 @@ var ceres = {};
             progenitor.appendChild(imageElement);
 
             createAttribute(imageElement.id, 'class', 'slideview-image-container');
-            //createAttribute(imageElement.id, 'style', 'display: none;');
 
             for (let item = 0; item < attributes.length; item++)
             {
@@ -177,7 +230,6 @@ var ceres = {};
             setAElement('slideview-next', 'next', 'ceres.getSlide(1)', imageElement, '&#10095;');
 
             createSlideViewPointerContainer();
-            activateSlideViewer();
 
             function createSlideViewPointerContainer()
             {
@@ -220,12 +272,6 @@ var ceres = {};
                     createAttribute(el.id, 'onclick', onClickEventValue);
                 }
 
-            }
-
-            function activateSlideViewer()
-            {
-                displaySlide();
-                setTimeout(function(){ createAttribute(slideview.container, 'style', 'display: block;'); }, 500);
             }
 
             function getURL()
@@ -354,54 +400,6 @@ var ceres = {};
 
             }
 
-        }
-
-    }
-
-    function getBoolean(value)
-    {
-        let symbol = value.trim().toUpperCase();
-
-        if (!symbol) return false;
-
-        switch (symbol)
-        {
-            case 'TRUE': return true;
-            case 'T': return true;
-            case 'YES': return true;
-            case 'Y': return true;
-            case '1': return true;
-            default: return false;
-        }
-
-    }
-
-
-    function errorHandler(name)
-    {
-        let err = resource(name) + '. DateTime: ' + new Date().toLocaleString();
-
-        console.log(err);
-        alert(err);
-
-        return null;
-    }
-
-    function resource(name, value)
-    {
-        let newline = '\n'; // facilitate trace-log line breaks
-
-        switch (name)
-        {
-          case 'ERROR_NotFoundImageList': return 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
-          case 'ERROR_NotFoundProgenitor': return 'Error: Unable to find the ' + slideview.container + ' document element';
-          case 'NOTIFY_LinkOnload': return 'Link default stylesheet insert [' + slideview.container + ']: onload listener';
-          case 'NOTIFY_LinkAddEventListener': return 'Link default stylesheet insert [' + slideview.container + ']: addEventListener';
-          case 'NOTIFY_LinkStylesheetCount': return 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment';
-          case 'NOTIFY_LinkOnReadyState': return 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event';
-          case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
-          case 'NOTIFY_ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + value;
-          default: return 'An unexpected error has occurred - ' + slideview.container + ' has stopped';
         }
 
     }
