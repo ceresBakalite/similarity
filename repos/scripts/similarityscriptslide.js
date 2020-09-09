@@ -71,34 +71,28 @@ var ceres = {};
 
             function getImageList()
             {
-                if (progenitor.innerHTML) return progenitor.innerHTML;
+                let list = (progenitor.innerHTML) ? progenitor.innerHTML : getMarkupImageList();
 
-                return syncRetryAttempt();
+                if (!list) return syncRetryAttempt();
 
                 function syncRetryAttempt()
                 {
-                    let list = getMarkupImageList();
+                    let retryAttempt = 0;
+                    let retryLimit = 5;
+                    let interval = setInterval(lookAgain, 200);
 
-                    if (!list)
+                    function lookAgain()
                     {
-                        let retryAttempt = 0;
-                        let retryLimit = 5;
-                        let interval = setInterval(lookAgain, 200);
+                        list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                        if (list || (retryAttempt == retryLimit)) clearInterval(interval);
 
-                        function lookAgain()
-                        {
-                            list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
-                            if (list || retryAttempt == retryLimit) clearInterval(interval);
+                        if (trace) console.log('Image list search retry attempt [' + slideview.imagelist + ']: ' + (retryAttempt + 1));
 
-                            if (trace) console.log('Image list search retry attempt [' + slideview.imagelist + ']: ' + (retryAttempt + 1));
-
-                            retryAttempt++;
-                        }
-
+                        retryAttempt++;
                     }
 
                     return list;
-                }
+               }
 
             }
 
