@@ -73,7 +73,7 @@ function onloadFrame(ms, md)
       document.getElementById('footer-content').style.display = 'block';
     }
 
-    function initialiseSlideViewer(target)
+    function initialiseSlideViewer()
     {
         displayFooter();
         ceres.slideViewer();

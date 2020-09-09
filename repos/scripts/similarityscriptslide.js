@@ -129,7 +129,7 @@ var ceres = {};
         {
             progenitor.innerHTML = null;
 
-            //createAttribute(slideview.container, 'style', 'display: none;');
+            createAttribute(slideview.container, 'style', 'display: none;');
 
             const imageElement = document.createElement('div');
             let progeny = null;
@@ -162,7 +162,7 @@ var ceres = {};
             setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', imageElement, '&#10094;');
             setAElement('slideview-next', 'next', 'ceres.getSlide(1)', imageElement, '&#10095;');
 
-            createSlideviewPointerContainer();
+            createSlideViewPointerContainer();
             activateSlideViewer();
 
             function createSlideViewPointerContainer()
