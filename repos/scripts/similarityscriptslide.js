@@ -73,29 +73,33 @@ var ceres = {};
             {
                 if (progenitor.innerHTML) return progenitor.innerHTML;
 
-                let list = getMarkupImageList();
-
-                if (!list) syncRetryAttempt();
+                return syncRetryAttempt();
 
                 function syncRetryAttempt()
                 {
-                    let retryAttempt = 0;
-                    let retryLimit = 5;
-                    let interval = setInterval(function(){ lookAgain(); }, 200);
+                    let list = getMarkupImageList();
 
-                    function lookAgain()
+                    if (!list)
                     {
-                        list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
-                        if (list || retryAttempt == retryLimit) clearInterval(interval);
+                        let retryAttempt = 0;
+                        let retryLimit = 5;
+                        let interval = setInterval(function(){ lookAgain(); }, 200);
 
-                        if (trace) console.log('Image list search retry attempt [' + slideview.imagelist + ']: ' + retryAttempt);
+                        function lookAgain()
+                        {
+                            list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                            if (list || retryAttempt == retryLimit) clearInterval(interval);
 
-                        retryAttempt++;
+                            if (trace) console.log('Image list search retry attempt [' + slideview.imagelist + ']: ' + retryAttempt);
+
+                            retryAttempt++;
+                        }
+
                     }
 
+                    return list;
                 }
 
-                return list;
             }
 
         }
