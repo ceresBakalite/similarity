@@ -379,7 +379,7 @@ var ceres = {};
 
     function errorHandler(name)
     {
-        let err = 'ERROR: ' + ceresResource(name) + '. DateTime: ' + new Date().toLocaleString();
+        let err = ceresResource(name) + '. DateTime: ' + new Date().toLocaleString();
 
         console.log(err);
         alert(err);
@@ -393,8 +393,8 @@ var ceres = {};
 
         switch (name)
         {
-          case 'ERROR_NotFoundImageList': return 'The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
-          case 'ERROR_NotFoundProgenitor': return 'Unable to find the ' + slideview.container + ' document element';
+          case 'ERROR_NotFoundImageList': return 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
+          case 'ERROR_NotFoundProgenitor': return 'Error: Unable to find the ' + slideview.container + ' document element';
           case 'NOTIFY_LinkOnload': return 'Link default stylesheet insert [' + slideview.container + ']: onload listener';
           case 'NOTIFY_LinkAddEventListener': return 'Link default stylesheet insert [' + slideview.container + ']: addEventListener';
           case 'NOTIFY_LinkStylesheetCount': return 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment';
