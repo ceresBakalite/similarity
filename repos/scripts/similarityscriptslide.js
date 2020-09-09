@@ -28,11 +28,14 @@ var ceres = {};
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
     slideview.getSlide = function(targetIndex) { displaySlide(index += targetIndex); };
     slideview.setSlide = function(targetIndex) { displaySlide(index = targetIndex); };
+    slideview.composeSlide = function(targetIndex) { displaySlide(index = targetIndex); };
 
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
         attributes = getSlideViewAttributes();
+
+alert('test: ' + (10 += -1));
 
         composeAttribute(slideview.container, 'style', 'display: none;');
 
