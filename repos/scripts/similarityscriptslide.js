@@ -123,9 +123,6 @@ var ceres = {};
     {
         if (css) linkSlideViewerListener();
 
-        const svcImageElement = document.createElement('div');
-        const svcPointerElement = document.createElement('div');
-
         createSlideViewContainer();
         createSlideviewPointerContainer();
 
@@ -151,13 +148,14 @@ var ceres = {};
         {
             progenitor.innerHTML = null;
 
+            const descendant = document.createElement('div');
             let progeny = null;
 
-            svcImageElement.id = slideview.container + '-image-container';
-            progenitor.appendChild(svcImageElement);
+            descendant.id = slideview.container + '-image-container';
+            progenitor.appendChild(descendant);
 
-            createAttribute(svcImageElement.id, 'class', 'slideview-image-container');
-            createAttribute(svcImageElement.id, 'style', 'display: none;');
+            createAttribute(descendant.id, 'class', 'slideview-image-container');
+            createAttribute(descendant.id, 'style', 'display: none;');
 
             for (let item = 0; item < attributes.length; item++)
             {
@@ -169,7 +167,7 @@ var ceres = {};
                 let imgName = 'slideview-img' + qualifier;
                 let subName = 'slideview-sub' + qualifier;
 
-                setDivElement(svcname, 'slideview fade', svcImageElement, null);
+                setDivElement(svcname, 'slideview fade', descendant, null);
 
                 progeny = document.getElementById(svcname);
 
@@ -178,8 +176,8 @@ var ceres = {};
                 if (sub) setDivElement(subName, 'subtitle', progeny, getSubtitle());
             }
 
-            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', svcImageElement, '&#10094;');
-            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', svcImageElement, '&#10095;');
+            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
+            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '&#10095;');
 
             function getURL()
             {
@@ -241,17 +239,19 @@ var ceres = {};
 
             progenitor.appendChild(document.createElement('br'));
 
-            svcPointerElement.id = slideview.container + '-pointer-container';
-            progenitor.appendChild(svcPointerElement);
+            const descendant = document.createElement('div');
 
-            createAttribute(svcPointerElement.id, 'class', 'slideview-pointer-container');
+            descendant.id = slideview.container + '-pointer-container';
+            progenitor.appendChild(descendant);
+
+            createAttribute(descendant.id, 'class', 'slideview-pointer-container');
 
             for (let item = 0; item < attributes.length; item++)
             {
                 var qualifier = item + 1;
                 let svpname = 'slideview-ptr' + qualifier;
 
-                setSpanElement(svpname, 'ptr', getClickEventValue(), svcPointerElement);
+                setSpanElement(svpname, 'ptr', getClickEventValue(), descendant);
             }
 
             progenitor.appendChild(document.createElement('br'));
