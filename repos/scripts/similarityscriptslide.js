@@ -26,9 +26,11 @@ var ceres = {};
     let index = 1;
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
-    slideview.getSlide = function(targetIndex) { displaySlide(index += targetIndex); };
-    slideview.setSlide = function(targetIndex) { displaySlide(index = targetIndex); };
-    slideview.composeSlide = function(targetIndex) { displaySlide(index = targetIndex); };
+//    slideview.getSlide = function(targetIndex) { displaySlide(index += targetIndex); };
+//    slideview.setSlide = function(targetIndex) { displaySlide(index = targetIndex); };
+//    slideview.composeSlide = function(target, calc) { displaySlide(index = targetIndex); };
+
+    slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
 
     slideview.slideViewer = function()
     {
@@ -233,8 +235,8 @@ var ceres = {};
                 if (sub) composeElementDIV(subName, 'subtitle', progeny, getSubtitle());
             }
 
-            composeElementA('slideview-prev', 'prev', 'ceres.getSlide(-1)', imageElement, '&#10094;');
-            composeElementA('slideview-next', 'next', 'ceres.getSlide(1)', imageElement, '&#10095;');
+            composeElementA('slideview-prev', 'prev', 'ceres.getSlide(-1, true)', imageElement, '&#10094;');
+            composeElementA('slideview-next', 'next', 'ceres.getSlide(1, true)', imageElement, '&#10095;');
 
             createSlideViewPointerContainer();
 
@@ -265,7 +267,7 @@ var ceres = {};
 
                 function getClickEventValue()
                 {
-                    return 'ceres.setSlide(' + qualifier + ')';
+                    return 'ceres.getSlide(' + qualifier + ', false)';
                 }
 
                 function setSpanElement(id, classValue, onClickEventValue, parent)
