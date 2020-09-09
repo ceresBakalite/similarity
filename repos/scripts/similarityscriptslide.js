@@ -35,11 +35,7 @@ var ceres = {};
 
         composeAttribute(slideview.container, 'style', 'display: none;');
 
-        if (attributes)
-        {
-            getSlideViewer();
-            activateSlideViewer();
-        }
+        if (attributes) activateSlideViewer();
 
         function getSlideViewAttributes()
         {
@@ -109,6 +105,7 @@ var ceres = {};
 
     function activateSlideViewer()
     {
+        getSlideViewer();
         displaySlide();
 
         setTimeout(function()
