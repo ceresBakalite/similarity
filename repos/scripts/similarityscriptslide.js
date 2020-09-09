@@ -35,8 +35,6 @@ var ceres = {};
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
         attributes = getSlideViewAttributes();
 
-alert('test: ' + (10 += -1));
-
         composeAttribute(slideview.container, 'style', 'display: none;');
 
         if (attributes) getSlideViewer();
