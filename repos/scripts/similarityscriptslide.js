@@ -131,7 +131,7 @@ var ceres = {};
 
         displaySlide();
 
-        createAttribute(svcImageElement.id, 'style', 'display: block;');
+        createAttribute(slideview.container + '-image-container', 'style', 'display: block;');
 
         function createAttribute(id, type, value)
         {
