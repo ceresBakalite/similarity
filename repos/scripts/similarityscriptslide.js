@@ -263,17 +263,6 @@ var ceres = {};
                     return 'ceres.getSlide(' + indexItem + ')';
                 }
 
-                function xxxsetSpanElement(id, classValue, onClickEventValue, parent)
-                {
-                    let el = document.createElement('span');
-
-                    el.id = id;
-                    parent.appendChild(el);
-
-                    composeAttribute(el.id, 'class', classValue);
-                    composeAttribute(el.id, 'onclick', onClickEventValue);
-                }
-
             }
 
             function getURL()
@@ -289,43 +278,6 @@ var ceres = {};
             function getSubtitle()
             {
                 return (sub) ? (arrayItem[1]) ? arrayItem[1].trim() : null : null;
-            }
-
-            function xxxcomposeElementDIV(id, classValue, parent, markup)
-            {
-                let el = document.createElement('div');
-
-                el.id = id;
-                parent.appendChild(el);
-
-                composeAttribute(el.id, 'class', classValue);
-
-                if (markup) document.getElementById(el.id).innerHTML = markup;
-            }
-
-            function xxxcomposeElementIMG(id, onClickEventValue, parent)
-            {
-                let el = document.createElement('img');
-
-                el.id = id;
-                parent.appendChild(el);
-
-                composeAttribute(el.id, 'onclick', onClickEventValue);
-                composeAttribute(el.id, 'src', getURL());
-            }
-
-            function xxxcomposeElementA(id, classValue, onClickEventValue, parent, markup)
-            {
-                let el = document.createElement('a');
-
-                el.id = id;
-                parent.appendChild(el);
-
-                composeAttribute(el.id, 'class', classValue);
-                composeAttribute(el.id, 'onclick', onClickEventValue);
-                composeAttribute(el.id, 'src', getURL());
-
-                if (markup) document.getElementById(el.id).innerHTML = markup;
             }
 
         }
