@@ -50,7 +50,7 @@ var ceres = {};
 
                 let imageList = awaitImageList();
 
-                if (trace) console.log(ceresResource('NOTIFY_ImageListMarkup', imageList));
+                if (trace) console.log(resource('NOTIFY_ImageListMarkup', imageList));
 
                 return (imageList) ? imageListToArray(imageList) : errorHandler('ERROR_NotFoundImageList');
 
@@ -202,7 +202,7 @@ var ceres = {};
 
                 progenitor.appendChild(document.createElement('br'));
 
-                if (trace) console.log(ceresResource('NOTIFY_ProgenitorInnerHTML'));
+                if (trace) console.log(resource('NOTIFY_ProgenitorInnerHTML'));
 
                 function getClickEventValue()
                 {
@@ -304,7 +304,7 @@ var ceres = {};
             {
                 link.onload = function ()
                 {
-                    if (trace) console.log(ceresResource('NOTIFY_LinkOnload'));
+                    if (trace) console.log(resource('NOTIFY_LinkOnload'));
                 }
 
             }
@@ -315,7 +315,7 @@ var ceres = {};
                 {
                     link.addEventListener('load', function()
                     {
-                        if (trace) console.log(ceresResource('NOTIFY_LinkAddEventListener'));
+                        if (trace) console.log(resource('NOTIFY_LinkAddEventListener'));
                     }, false);
 
                 }
@@ -331,7 +331,7 @@ var ceres = {};
                     if (document.styleSheets.length > cssnum)
                     {
                         clearInterval(ti);
-                        if (trace) console.log(ceresResource('NOTIFY_LinkStylesheetCount'));
+                        if (trace) console.log(resource('NOTIFY_LinkStylesheetCount'));
                     }
 
                 }, 10);
@@ -347,7 +347,7 @@ var ceres = {};
                     if (state === 'loaded' || state === 'complete')
                     {
                         link.onreadystatechange = null;
-                        if (trace) console.log(ceresResource('NOTIFY_LinkOnReadyState'));
+                        if (trace) console.log(resource('NOTIFY_LinkOnReadyState'));
                     }
 
                 };
@@ -379,7 +379,7 @@ var ceres = {};
 
     function errorHandler(name)
     {
-        let err = ceresResource(name) + '. DateTime: ' + new Date().toLocaleString();
+        let err = resource(name) + '. DateTime: ' + new Date().toLocaleString();
 
         console.log(err);
         alert(err);
@@ -387,7 +387,7 @@ var ceres = {};
         return null;
     }
 
-    function ceresResource(name, value)
+    function resource(name, value)
     {
         let newline = '\n'; // facilitate trace-log line breaks
 
