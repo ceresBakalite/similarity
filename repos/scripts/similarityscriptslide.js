@@ -128,6 +128,8 @@ var ceres = {};
 
         displaySlide();
 
+        createAttribute(descendant.id, 'style', 'display: block;');
+
         function createAttribute(id, type, value)
         {
             let el = document.getElementById(id);
