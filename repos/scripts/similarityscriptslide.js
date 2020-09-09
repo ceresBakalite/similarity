@@ -86,7 +86,7 @@ var ceres = {};
                     {
                         list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
                         if (list || retryAttempt == retryLimit) clearInterval(interval);
-                        i++;
+                        retryAttempt++;
                     }
 
                     return list;
