@@ -34,6 +34,8 @@ var ceres = {};
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
         attributes = getSlideViewAttributes();
 
+        createAttribute(slideview.container, 'style', 'display: none;');
+
         if (attributes) getSlideViewer();
 
         function getSlideViewAttributes()
@@ -119,6 +121,20 @@ var ceres = {};
 
     }
 
+    function createAttribute(id, type, value)
+    {
+        let el = document.getElementById(id);
+
+        if (el)
+        {
+            let attribute = document.createAttribute(type);
+            attribute.value = value;
+
+            el.setAttributeNode(attribute);
+        }
+
+    }
+
     function getSlideViewer()
     {
         if (css) importSlideViewStylesheet();
@@ -128,8 +144,6 @@ var ceres = {};
         function createSlideViewContainer()
         {
             progenitor.innerHTML = null;
-
-            createAttribute(slideview.container, 'style', 'display: none;');
 
             const imageElement = document.createElement('div');
             let progeny = null;
@@ -211,23 +225,7 @@ var ceres = {};
             function activateSlideViewer()
             {
                 displaySlide();
-
-                //setTimeout(function(){ createAttribute(slideview.container, 'style', 'display: block;'); }, 500);
-                createAttribute(slideview.container, 'style', 'display: block;');
-            }
-
-            function createAttribute(id, type, value)
-            {
-                let el = document.getElementById(id);
-
-                if (el)
-                {
-                    let attribute = document.createAttribute(type);
-                    attribute.value = value;
-
-                    el.setAttributeNode(attribute);
-                }
-
+                setTimeout(function(){ createAttribute(slideview.container, 'style', 'display: block;'); }, 500);
             }
 
             function getURL()
