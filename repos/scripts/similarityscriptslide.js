@@ -244,7 +244,7 @@ var ceres = {};
             svcPointerElement.id = slideview.container + '-pointer-container';
             progenitor.appendChild(svcPointerElement);
 
-            createAttribute(descendant.id, 'class', 'slideview-pointer-container');
+            createAttribute(svcPointerElement.id, 'class', 'slideview-pointer-container');
 
             for (let item = 0; item < attributes.length; item++)
             {
