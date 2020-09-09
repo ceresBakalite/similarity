@@ -75,8 +75,8 @@ function onloadFrame(ms, md)
 
     function initialiseSlideViewer()
     {
-        displayFooter();
         ceres.slideViewer();
+        displayFooter();
     }
 
     function asyncPullRequest(target)
