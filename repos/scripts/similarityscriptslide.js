@@ -164,7 +164,7 @@ var ceres = {};
 
             displaySlide();
 
-            setTimeout(function(){ createAttribute(imageElement.id, 'style', 'display: block;'); }, 500);
+            //setTimeout(function(){ createAttribute(imageElement.id, 'style', 'display: block;'); }, 500);
 
             function createSlideviewPointerContainer()
             {
