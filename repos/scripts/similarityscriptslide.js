@@ -75,7 +75,7 @@ var ceres = {};
 
                 let list = getMarkupImageList();
 
-                return (list) ? list : syncRetryAttempt();
+                if (!list) syncRetryAttempt();
 
                 function syncRetryAttempt()
                 {
@@ -93,9 +93,9 @@ var ceres = {};
                         retryAttempt++;
                     }
 
-                    return list;
                 }
 
+                return list;
             }
 
         }
