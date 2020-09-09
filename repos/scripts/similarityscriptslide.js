@@ -279,7 +279,7 @@ var ceres = {};
 
             progenitor.appendChild(document.createElement('br'));
 
-            if (trace) console.log('Progenitor: <br>' + progenitor.innerHTML);
+            if (trace) console.log({ 'Progenitor: ' } + '\n' + { progenitor.innerHTML });
 
             function getClickEventValue()
             {
