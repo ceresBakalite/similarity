@@ -64,7 +64,7 @@ var ceres = {};
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
-            function getEmbedImageList()
+            function getMarkupImageList()
             {
                 return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
             }
@@ -73,7 +73,7 @@ var ceres = {};
             {
                 if (progenitor.innerHTML) return progenitor.innerHTML;
 
-                let list = getEmbedImageList();
+                let list = getMarkupImageList();
 
                 return (list) ? list : syncRetryAttempt();
 
