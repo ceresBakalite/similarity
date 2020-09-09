@@ -212,7 +212,8 @@ var ceres = {};
             {
                 displaySlide();
 
-                setTimeout(function(){ createAttribute(slideview.container, 'style', 'display: block;'); }, 500);
+                //setTimeout(function(){ createAttribute(slideview.container, 'style', 'display: block;'); }, 500);
+                createAttribute(slideview.container, 'style', 'display: block;');
             }
 
             function createAttribute(id, type, value)
