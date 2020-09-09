@@ -47,7 +47,7 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                let imageList = awaitImageList();
+                let imageList = setTimeout(function(){ awaitImageList(); }, 500);
 
                 if (trace) console.log(resource('NOTIFY_ImageListMarkup', imageList));
 
