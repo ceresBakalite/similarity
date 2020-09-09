@@ -136,7 +136,7 @@ var ceres = {};
             progenitor.appendChild(imageElement);
 
             createAttribute(imageElement.id, 'class', 'slideview-image-container');
-            //createAttribute(imageElement.id, 'style', 'display: none;');
+            createAttribute(imageElement.id, 'style', 'display: none;');
 
             for (let item = 0; item < attributes.length; item++)
             {
@@ -279,7 +279,7 @@ var ceres = {};
 
             function activateContainer()
             {
-                //createAttribute(slideview.container + '-image-container', 'style', 'display: block;');
+                createAttribute(slideview.container + '-image-container', 'style', 'display: block;');
                 createAttribute(slideview.container + '-pointer-container', 'style', 'display: block;');
             }
 
