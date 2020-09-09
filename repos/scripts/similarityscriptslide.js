@@ -123,10 +123,15 @@ var ceres = {};
     {
         if (css) linkSlideViewerListener();
 
+        const svcImageElement = document.createElement('div');
+        const svcPointerElement = document.createElement('div');
+
         createSlideViewContainer();
-        createSlideviewPointerContainer();
+        createpointercontainer();
 
         displaySlide();
+
+        createAttribute(svcImageElement.id, 'style', 'display: block;');
 
         function createAttribute(id, type, value)
         {
@@ -146,14 +151,13 @@ var ceres = {};
         {
             progenitor.innerHTML = null;
 
-            const descendant = document.createElement('div');
             let progeny = null;
 
-            descendant.id = slideview.container + '-image-container';
-            progenitor.appendChild(descendant);
+            svcImageElement.id = slideview.container + '-image-container';
+            progenitor.appendChild(svcImageElement);
 
-            createAttribute(descendant.id, 'class', 'slideview-image-container');
-            createAttribute(descendant.id, 'style', 'display: none;');
+            createAttribute(svcImageElement.id, 'class', 'slideview-image-container');
+            createAttribute(svcImageElement.id, 'style', 'display: none;');
 
             for (let item = 0; item < attributes.length; item++)
             {
@@ -174,10 +178,8 @@ var ceres = {};
                 if (sub) setDivElement(subName, 'subtitle', progeny, getSubtitle());
             }
 
-            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
-            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '&#10095;');
-
-            createAttribute(descendant.id, 'style', 'display: block;');
+            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', svcImageElement, '&#10094;');
+            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', svcImageElement, '&#10095;');
 
             function getURL()
             {
@@ -239,10 +241,8 @@ var ceres = {};
 
             progenitor.appendChild(document.createElement('br'));
 
-            const descendant = document.createElement('div');
-
-            descendant.id = slideview.container + '-pointer-container';
-            progenitor.appendChild(descendant);
+            svcPointerElement.id = slideview.container + '-pointer-container';
+            progenitor.appendChild(svcPointerElement);
 
             createAttribute(descendant.id, 'class', 'slideview-pointer-container');
 
@@ -251,7 +251,7 @@ var ceres = {};
                 var qualifier = item + 1;
                 let svpname = 'slideview-ptr' + qualifier;
 
-                setSpanElement(svpname, 'ptr', getClickEventValue(), descendant);
+                setSpanElement(svpname, 'ptr', getClickEventValue(), svcPointerElement);
             }
 
             progenitor.appendChild(document.createElement('br'));
