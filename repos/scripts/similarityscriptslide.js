@@ -73,22 +73,25 @@ var ceres = {};
                 if (progenitor.innerHTML) return progenitor.innerHTML;
 
                 let list = getEmbedImageList();
-                if (!list)
+
+                if (!list) retryProgenitor();
+
+                function retryProgenitor()
                 {
                     let retryAttempt = 0;
                     let retryLimit = 5;
                     let interval = setInterval(function(){ lookAgain(); }, 200);
+
+                    function lookAgain()
+                    {
+                        list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                        if (list || retryAttempt == retryLimit) clearInterval(interval);
+                        i++;
+                    }
+
                 }
 
                 return list;
-
-                function lookAgain()
-                {
-                    list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
-                    if (list || retryAttempt == retryLimit) clearInterval(interval);
-                    i++;
-                }
-
             }
 
 
