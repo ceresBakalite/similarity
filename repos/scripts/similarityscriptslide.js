@@ -129,7 +129,7 @@ var ceres = {};
         {
             progenitor.innerHTML = null;
 
-            createAttribute(slideview.container, 'style', 'display: none;');
+            //createAttribute(slideview.container, 'style', 'display: none;');
 
             const imageElement = document.createElement('div');
             let progeny = null;
