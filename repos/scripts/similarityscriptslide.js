@@ -69,10 +69,15 @@ var ceres = {};
                 return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
             }
 
+            function getMarkdownImageList()
+            {
+                return (progenitor.src) ? (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null : null;
+            }
+
             function getImageList()
             {
-                if (progenitor.src) return (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null;
-                return getMarkupImageList();
+                let list = getMarkdownImageList();
+                return (list) ? list : getMarkupImageList();
             }
 
             function xxxgetImageList()
