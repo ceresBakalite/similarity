@@ -391,7 +391,7 @@ var ceres = {};
           case 'NOTIFY_LinkStylesheetCount': return 'Link ceres-slideview default stylesheet insert: styleSheets.length increment';
           case 'NOTIFY_LinkOnReadyState': return 'Link ceres-slideview default stylesheet insert: onreadystatechange event';
           case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML: ' + newline + progenitor.innerHTML;
-          case 'NOTIFY_ImageListMarkup:': return 'Image list markup: ' + newline + value;
+          case 'NOTIFY_ImageListMarkup': return 'Image list markup: ' + newline + value;
           default: return 'An unexpected error has occurred. The ceres-slideviewer has stopped';
         }
 
