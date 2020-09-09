@@ -124,7 +124,7 @@ var ceres = {};
 
         if (classValue) composeAttribute(el.id, 'class', classValue);
         if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
-        if (url) composeAttribute(el.id, 'src', getURL());
+        if (url) composeAttribute(el.id, 'src', url);
 
         if (markup) document.getElementById(el.id).innerHTML = markup;
     }
@@ -224,12 +224,12 @@ var ceres = {};
                 progeny = document.getElementById(svcname);
 
                 if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
-                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, true)
+                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL())
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
             }
 
-            composeElement('a', 'slideview-prev', 'prev', imageElement, 'ceres.getSlide(-1, true)', '&#10094;', true);
-            composeElement('a', 'slideview-next', 'next', imageElement, 'ceres.getSlide(1, true)', '&#10095;', true);
+            composeElement('a', 'slideview-prev', 'prev', imageElement, 'ceres.getSlide(-1, true)', '&#10094;', getURL());
+            composeElement('a', 'slideview-next', 'next', imageElement, 'ceres.getSlide(1, true)', '&#10095;', getURL());
 
             createSlideViewPointerContainer();
 
