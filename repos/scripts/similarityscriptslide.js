@@ -47,7 +47,7 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                let imageList = awaitImageList();
+                let imageList = getImageList();
 
                 if (trace) console.log(resource('NOTIFY_ImageListMarkup', imageList));
 
@@ -69,7 +69,7 @@ var ceres = {};
                 return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
             }
 
-            function awaitImageList()
+            function getImageList()
             {
                 if (progenitor.innerHTML) return progenitor.innerHTML;
 
