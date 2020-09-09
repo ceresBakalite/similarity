@@ -73,13 +73,20 @@ var ceres = {};
                 if (progenitor.innerHTML) return progenitor.innerHTML;
 
                 let list = getEmbedImageList();
-                if (!list) setTimeout(function(){ lookAgain(); }, 1000);
+                if (!list)
+                {
+                    let retryAttempt = 0;
+                    let retryLimit = 5;
+                    let interval = setInterval(function(){ lookAgain(); }, 200);
+                }
 
                 return list;
 
                 function lookAgain()
                 {
                     list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                    if (list || retryAttempt == retryLimit) clearInterval(interval);
+                    i++;
                 }
 
             }
