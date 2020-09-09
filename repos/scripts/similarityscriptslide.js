@@ -10,7 +10,6 @@ var ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            //this.innerHTML = (src) ? (src.length > 0) ? await (await fetch(src)).text() : null : null;
             this.innerHTML = await (await fetch(src)).text();
         }
 
@@ -48,8 +47,8 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                //let imageList = getImageList();
-                let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getMarkupImageList();
+                let imageList = getImageList();
+                //let imageList = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getMarkupImageList();
 
                 if (trace) console.log(resource('NOTIFY_ImageListMarkup', imageList));
 
