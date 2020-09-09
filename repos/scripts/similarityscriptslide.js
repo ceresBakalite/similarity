@@ -66,7 +66,7 @@ var ceres = {};
 
             function getImageList()
             {
-                let list = function() { getMarkdownImageList(); };
+                let list = getMarkdownImageList();
                 return (list) ? list : getMarkupImageList();
 
                 function getMarkupImageList()
