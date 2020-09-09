@@ -35,7 +35,11 @@ var ceres = {};
 
         composeAttribute(slideview.container, 'style', 'display: none;');
 
-        if (attributes) getSlideViewer();
+        if (attributes)
+        {
+            getSlideViewer();
+            activateSlideViewer();
+        }
 
         function getSlideViewAttributes()
         {
@@ -195,7 +199,6 @@ var ceres = {};
         if (css) importSlideViewStylesheet();
 
         createSlideViewContainer();
-        activateSlideViewer();
 
         function createSlideViewContainer()
         {
