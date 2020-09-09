@@ -34,7 +34,7 @@ var ceres = {};
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
         attributes = getSlideViewAttributes();
 
-        createAttribute(slideview.container, 'style', 'display: none;');
+        composeAttribute(slideview.container, 'style', 'display: none;');
 
         if (attributes) getSlideViewer();
 
@@ -124,10 +124,16 @@ var ceres = {};
     function activateSlideViewer()
     {
         displaySlide();
-        setTimeout(function(){ createAttribute(slideview.container, 'style', 'display: block;'); }, 500);
+
+        setTimeout(function()
+        {
+            composeAttribute(slideview.container, 'style', 'display: block;');
+
+        }, 500);
+
     }
 
-    function createAttribute(id, type, value)
+    function composeAttribute(id, type, value)
     {
         let el = document.getElementById(id);
 
@@ -205,7 +211,7 @@ var ceres = {};
             imageElement.id = slideview.container + '-image-container';
             progenitor.appendChild(imageElement);
 
-            createAttribute(imageElement.id, 'class', 'slideview-image-container');
+            composeAttribute(imageElement.id, 'class', 'slideview-image-container');
 
             for (let item = 0; item < attributes.length; item++)
             {
@@ -217,17 +223,17 @@ var ceres = {};
                 let imgName = 'slideview-img' + qualifier;
                 let subName = 'slideview-sub' + qualifier;
 
-                setDivElement(svcname, 'slideview fade', imageElement, null);
+                composeElementDIV(svcname, 'slideview fade', imageElement, null);
 
                 progeny = document.getElementById(svcname);
 
-                if (sur) setDivElement(surName, 'surtitle', progeny, getSurtitle());
-                setImgElement(imgName, 'ceres.openImageTab(this);', progeny);
-                if (sub) setDivElement(subName, 'subtitle', progeny, getSubtitle());
+                if (sur) composeElementDIV(surName, 'surtitle', progeny, getSurtitle());
+                composeElementIMG(imgName, 'ceres.openImageTab(this);', progeny);
+                if (sub) composeElementDIV(subName, 'subtitle', progeny, getSubtitle());
             }
 
-            setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', imageElement, '&#10094;');
-            setAElement('slideview-next', 'next', 'ceres.getSlide(1)', imageElement, '&#10095;');
+            composeElementA('slideview-prev', 'prev', 'ceres.getSlide(-1)', imageElement, '&#10094;');
+            composeElementA('slideview-next', 'next', 'ceres.getSlide(1)', imageElement, '&#10095;');
 
             createSlideViewPointerContainer();
 
@@ -242,7 +248,7 @@ var ceres = {};
                 pointerElement.id = slideview.container + '-pointer-container';
                 progenitor.appendChild(pointerElement);
 
-                createAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
+                composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
 
                 for (let item = 0; item < attributes.length; item++)
                 {
@@ -268,8 +274,8 @@ var ceres = {};
                     el.id = id;
                     parent.appendChild(el);
 
-                    createAttribute(el.id, 'class', classValue);
-                    createAttribute(el.id, 'onclick', onClickEventValue);
+                    composeAttribute(el.id, 'class', classValue);
+                    composeAttribute(el.id, 'onclick', onClickEventValue);
                 }
 
             }
@@ -289,39 +295,39 @@ var ceres = {};
                 return (sub) ? (arrayItem[1]) ? arrayItem[1].trim() : null : null;
             }
 
-            function setDivElement(id, classValue, parent, markup)
+            function composeElementDIV(id, classValue, parent, markup)
             {
                 let el = document.createElement('div');
 
                 el.id = id;
                 parent.appendChild(el);
 
-                createAttribute(el.id, 'class', classValue);
+                composeAttribute(el.id, 'class', classValue);
 
                 if (markup) document.getElementById(el.id).innerHTML = markup;
             }
 
-            function setImgElement(id, onClickEventValue, parent)
+            function composeElementIMG(id, onClickEventValue, parent)
             {
                 let el = document.createElement('img');
 
                 el.id = id;
                 parent.appendChild(el);
 
-                createAttribute(el.id, 'onclick', onClickEventValue);
-                createAttribute(el.id, 'src', getURL());
+                composeAttribute(el.id, 'onclick', onClickEventValue);
+                composeAttribute(el.id, 'src', getURL());
             }
 
-            function setAElement(id, classValue, onClickEventValue, parent, markup)
+            function composeElementA(id, classValue, onClickEventValue, parent, markup)
             {
                 let el = document.createElement('a');
 
                 el.id = id;
                 parent.appendChild(el);
 
-                createAttribute(el.id, 'class', classValue);
-                createAttribute(el.id, 'onclick', onClickEventValue);
-                createAttribute(el.id, 'src', getURL());
+                composeAttribute(el.id, 'class', classValue);
+                composeAttribute(el.id, 'onclick', onClickEventValue);
+                composeAttribute(el.id, 'src', getURL());
 
                 if (markup) document.getElementById(el.id).innerHTML = markup;
             }
