@@ -386,13 +386,13 @@ var ceres = {};
         {
           case 'ERROR_NotFoundImageList': return 'The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
           case 'ERROR_NotFoundProgenitor': return 'Unable to find the ' + slideview.container + ' document element';
-          case 'NOTIFY_LinkOnload': return 'Link ceres-slideview default stylesheet insert: onload listener';
-          case 'NOTIFY_LinkAddEventListener': return 'Link ceres-slideview default stylesheet insert: addEventListener';
-          case 'NOTIFY_LinkStylesheetCount': return 'Link ceres-slideview default stylesheet insert: styleSheets.length increment';
-          case 'NOTIFY_LinkOnReadyState': return 'Link ceres-slideview default stylesheet insert: onreadystatechange event';
-          case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML: ' + newline + progenitor.innerHTML;
-          case 'NOTIFY_ImageListMarkup': return 'Image list markup: ' + newline + value;
-          default: return 'An unexpected error has occurred. The ceres-slideviewer has stopped';
+          case 'NOTIFY_LinkOnload': return 'Link ' + slideview.container + ' default stylesheet insert: onload listener';
+          case 'NOTIFY_LinkAddEventListener': return 'Link ' + slideview.container + ' default stylesheet insert: addEventListener';
+          case 'NOTIFY_LinkStylesheetCount': return 'Link ' + slideview.container + ' default stylesheet insert: styleSheets.length increment';
+          case 'NOTIFY_LinkOnReadyState': return 'Link ' + slideview.container + ' default stylesheet insert: onreadystatechange event';
+          case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor ' + slideview.container + ' innerHTML: ' + newline + progenitor.innerHTML;
+          case 'NOTIFY_ImageListMarkup': return 'Image list ' + slideview.container + ' markup: ' + newline + value;
+          default: return 'An unexpected error has occurred - ' + slideview.container + ' has stopped';
         }
 
     }
