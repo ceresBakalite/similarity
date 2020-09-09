@@ -153,6 +153,7 @@ var ceres = {};
             progenitor.appendChild(descendant);
 
             createAttribute(descendant.id, 'class', 'slideview-image-container');
+            createAttribute(descendant.id, 'style', 'display: none;');
 
             for (let item = 0; item < attributes.length; item++)
             {
