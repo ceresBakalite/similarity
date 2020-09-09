@@ -71,7 +71,7 @@ var ceres = {};
 
             function getImageList()
             {
-                let list = (progenitor.innerHTML) ? progenitor.innerHTML : getMarkupImageList();
+                let list = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : getMarkupImageList();
 
                 if (!list) return syncRetryAttempt();
 
