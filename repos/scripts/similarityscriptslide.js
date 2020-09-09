@@ -115,6 +115,20 @@ var ceres = {};
 
     }
 
+    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
+    {
+        let el = document.createElement(element);
+
+        el.id = id;
+        parent.appendChild(el);
+
+        if (classValue) composeAttribute(el.id, 'class', classValue);
+        if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
+        if (url) composeAttribute(el.id, 'src', getURL());
+
+        if (markup) document.getElementById(el.id).innerHTML = markup;
+    }
+
     function composeAttribute(id, type, value)
     {
         let el = document.getElementById(id);
@@ -249,7 +263,7 @@ var ceres = {};
                     return 'ceres.getSlide(' + indexItem + ')';
                 }
 
-                function setSpanElement(id, classValue, onClickEventValue, parent)
+                function xxxsetSpanElement(id, classValue, onClickEventValue, parent)
                 {
                     let el = document.createElement('span');
 
@@ -277,21 +291,7 @@ var ceres = {};
                 return (sub) ? (arrayItem[1]) ? arrayItem[1].trim() : null : null;
             }
 
-            function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
-            {
-                let el = document.createElement(element);
-
-                el.id = id;
-                parent.appendChild(el);
-
-                if (classValue) composeAttribute(el.id, 'class', classValue);
-                if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
-                if (url) composeAttribute(el.id, 'src', getURL());
-
-                if (markup) document.getElementById(el.id).innerHTML = markup;
-            }
-
-            function composeElementDIV(id, classValue, parent, markup)
+            function xxxcomposeElementDIV(id, classValue, parent, markup)
             {
                 let el = document.createElement('div');
 
@@ -303,7 +303,7 @@ var ceres = {};
                 if (markup) document.getElementById(el.id).innerHTML = markup;
             }
 
-            function composeElementIMG(id, onClickEventValue, parent)
+            function xxxcomposeElementIMG(id, onClickEventValue, parent)
             {
                 let el = document.createElement('img');
 
@@ -314,7 +314,7 @@ var ceres = {};
                 composeAttribute(el.id, 'src', getURL());
             }
 
-            function composeElementA(id, classValue, onClickEventValue, parent, markup)
+            function xxxcomposeElementA(id, classValue, onClickEventValue, parent, markup)
             {
                 let el = document.createElement('a');
 
