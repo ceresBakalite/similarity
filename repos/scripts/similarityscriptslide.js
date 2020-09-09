@@ -169,7 +169,7 @@ var ceres = {};
                 let imgName = 'slideview-img' + qualifier;
                 let subName = 'slideview-sub' + qualifier;
 
-                setDivElement(svcname, 'slideview fade', descendant, null);
+                setDivElement(svcname, 'slideview fade', svcImageElement, null);
 
                 progeny = document.getElementById(svcname);
 
