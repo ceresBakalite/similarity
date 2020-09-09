@@ -83,7 +83,7 @@ var ceres = {};
                     {
                         let retryAttempt = 0;
                         let retryLimit = 5;
-                        let interval = setInterval(function(){ lookAgain(); }, 200);
+                        let interval = setInterval(lookAgain, 200);
 
                         function lookAgain()
                         {
