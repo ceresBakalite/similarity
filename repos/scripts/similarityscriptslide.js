@@ -49,11 +49,7 @@ var ceres = {};
 
                 let imageList = getImageList();
 
-                if (trace)
-                {
-                    console.trace();
-                    console.log(resource('NOTIFY_ImageListMarkup', imageList));
-                }
+                if (trace) console.log(resource('NOTIFY_ImageListMarkup', imageList));
 
                 return (imageList) ? imageListToArray(imageList) : errorHandler('ERROR_NotFoundImageList');
 
