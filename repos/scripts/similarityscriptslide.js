@@ -228,8 +228,8 @@ var ceres = {};
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
             }
 
-            composeElement('a', 'slideview-prev', 'prev', imageElement, 'ceres.getSlide(-1, true)', '&#10094;', getURL());
-            composeElement('a', 'slideview-next', 'next', imageElement, 'ceres.getSlide(1, true)', '&#10095;', getURL());
+            composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
+            composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL());
 
             createSlideViewPointerContainer();
 
