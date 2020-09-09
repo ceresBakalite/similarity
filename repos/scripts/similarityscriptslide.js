@@ -86,6 +86,9 @@ var ceres = {};
                     {
                         list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
                         if (list || retryAttempt == retryLimit) clearInterval(interval);
+
+                        if (trace) console.log('Look for list retry attempt: ' + retryAttempt);
+
                         retryAttempt++;
                     }
 
