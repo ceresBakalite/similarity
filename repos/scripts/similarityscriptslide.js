@@ -121,7 +121,7 @@ var ceres = {};
 
     function getSlideViewer()
     {
-        if (css) linkSlideViewerListener();
+        if (css) importSlideViewStylesheet();
 
         createSlideViewContainer();
 
@@ -277,7 +277,7 @@ var ceres = {};
 
         }
 
-        function linkSlideViewerListener()
+        function importSlideViewStylesheet()
         {
             if (!css) return;
 
