@@ -84,6 +84,7 @@ var ceres = {};
                     function lookAgain()
                     {
                         list = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null;
+
                         if (list)
                         {
                           clearInterval(interval);
