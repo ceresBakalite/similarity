@@ -263,7 +263,7 @@ var ceres = {};
 
                 function getClickEventValue(indexItem)
                 {
-                    return 'ceres.getSlide(' + indexItem + ', false)';
+                    return 'ceres.getSlide(' + indexItem + ')';
                 }
 
                 function setSpanElement(id, classValue, onClickEventValue, parent)
