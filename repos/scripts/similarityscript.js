@@ -23,8 +23,6 @@ function onloadPrimary()
 
 function onloadFrame(ms, md)
 {
-    alert(10 += -1);
-
     if (isValidSource(md))
     {
         invokeScrollEventListener();
