@@ -64,20 +64,21 @@ var ceres = {};
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
-            function getMarkupImageList()
-            {
-                return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
-            }
-
-            function getMarkdownImageList()
-            {
-                return (progenitor.src) ? (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null : null;
-            }
-
             function getImageList()
             {
-                let list = getMarkdownImageList();
+                let list = function() { getMarkdownImageList(); };
                 return (list) ? list : getMarkupImageList();
+
+                function getMarkupImageList()
+                {
+                    return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
+                }
+
+                function getMarkdownImageList()
+                {
+                    return (progenitor.src) ? (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null : null;
+                }
+
             }
 
             function xxxgetImageList()
