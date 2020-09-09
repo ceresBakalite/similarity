@@ -224,7 +224,7 @@ var ceres = {};
                 progeny = document.getElementById(svcname);
 
                 if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
-                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, null)
+                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, true)
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
             }
 
