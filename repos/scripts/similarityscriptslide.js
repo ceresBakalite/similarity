@@ -83,7 +83,7 @@ var ceres = {};
 
                     function lookAgain()
                     {
-                        list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                        list = (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null;
                         if (list || (retryAttempt == retryLimit)) clearInterval(interval);
 
                         if (trace) console.log('Image list search retry attempt [' + slideview.imagelist + ']: ' + (retryAttempt + 1));
