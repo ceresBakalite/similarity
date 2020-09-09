@@ -75,9 +75,9 @@ var ceres = {};
 
                 let list = getEmbedImageList();
 
-                return (list) ? list : retryProgenitor();
+                return (list) ? list : syncRetryAttempt();
 
-                function retryProgenitor()
+                function syncRetryAttempt()
                 {
                     let retryAttempt = 0;
                     let retryLimit = 5;
