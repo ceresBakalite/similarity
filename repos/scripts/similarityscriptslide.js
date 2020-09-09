@@ -128,8 +128,6 @@ var ceres = {};
 
         displaySlide();
 
-        createAttribute(descendant.id, 'style', 'display: block;');
-
         function createAttribute(id, type, value)
         {
             let el = document.getElementById(id);
@@ -178,6 +176,8 @@ var ceres = {};
 
             setAElement('slideview-prev', 'prev', 'ceres.getSlide(-1)', descendant, '&#10094;');
             setAElement('slideview-next', 'next', 'ceres.getSlide(1)', descendant, '&#10095;');
+
+            createAttribute(descendant.id, 'style', 'display: block;');
 
             function getURL()
             {
