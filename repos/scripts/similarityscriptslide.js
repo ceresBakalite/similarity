@@ -89,6 +89,8 @@ var ceres = {};
 
     function activateSlideViewer()
     {
+        progenitor.style.display = 'none';
+
         getSlideViewer();
         displaySlide();
 
