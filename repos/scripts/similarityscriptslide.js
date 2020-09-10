@@ -89,7 +89,7 @@ var ceres = {};
 
     function activateSlideViewer()
     {
-        composeAttribute(slideview.container, 'style', 'display: none;');
+        //composeAttribute(slideview.container, 'style', 'display: none;');
 
         getSlideViewer();
         displaySlide();
