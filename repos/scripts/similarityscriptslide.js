@@ -158,36 +158,17 @@ let ceres = {};
 
         if (!token) return false;
 
-        const lookup =
-        {
+        const lookup = {
             'TRUE': true,
             'T':  true,
             'YES': true,
             'Y': true,
-            '1': true,
+            '1': true
         };
 
         return lookup[token] || false;
     }
 
-
-    function xxxgetBoolean(symbol)
-    {
-        const token = symbol.trim().toUpperCase();
-
-        if (!token) return false;
-
-        switch (token)
-        {
-            case 'TRUE': return true;
-            case 'T': return true;
-            case 'YES': return true;
-            case 'Y': return true;
-            case '1': return true;
-            default: return false;
-        }
-
-    }
 
     function errorHandler(str)
     {
@@ -204,8 +185,8 @@ let ceres = {};
         const newline = '\n';
         let lookupName = null;
 
-        const lookupType =
-        {
+        const lookupType = {
+
             notify: lookupName = {
 
                 'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
@@ -214,8 +195,7 @@ let ceres = {};
                 'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
                 'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
                 'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
-
+                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
             },
 
             error: lookupName = {
@@ -226,8 +206,7 @@ let ceres = {};
                 'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
                 'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
                 'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
-
+                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
             }
 
         };
