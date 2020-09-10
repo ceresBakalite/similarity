@@ -159,6 +159,7 @@ let ceres = {};
         if (!token) return false;
 
         const lookup = {
+
             'TRUE': true,
             'T':  true,
             'YES': true,
@@ -200,13 +201,8 @@ let ceres = {};
 
             error: lookupName = {
 
-                'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
-                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
-                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
-                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
-                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
-                'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
+                'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
+                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
             }
 
         };
