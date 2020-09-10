@@ -71,7 +71,7 @@ var ceres = {};
 
                 function getMarkdownImageList()
                 {
-                    return (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                    return (progenitor.src) ? (progenitor.innerHTML > 0) ? progenitor.innerHTML : null : null;
                 }
 
                 function getMarkupImageList()
