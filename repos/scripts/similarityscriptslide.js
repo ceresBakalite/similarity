@@ -169,7 +169,6 @@ let ceres = {};
         if (!token) return false;
 
         const lookup = {
-
             'TRUE': true,
             'T':  true,
             'YES': true,
