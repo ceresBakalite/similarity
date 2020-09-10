@@ -39,10 +39,15 @@ var ceres = {};
         {
             let start = new Date();
             let attempt = 0;
+            let test = true;
 
             while ((new Date() - start) < ms)
             {
-                if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
+                if (test)
+                {
+                    if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
+                    test = false;
+                }
             }
 
             return (callback) ? callback() : null;
