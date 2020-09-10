@@ -27,11 +27,12 @@ var ceres = {};
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
+    slideview.slideViewer = function() { setTimeout(initiateSlideViewer, 500); };
 
-    slideview.slideViewer = function()
+    function initiateSlideViewer()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-        attributes = syncWait(500, function(){ getSlideViewAttributes(); });
+        attributes = getSlideViewAttributes();
 
         if (attributes) activateSlideViewer();
 
