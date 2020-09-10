@@ -80,11 +80,14 @@ var ceres = {};
                     {
                         let start = Date.now();
                         let now = start;
+                        let attempt = 0;
 
                         while ((now - start) < ms)
                         {
                             now = Date.now();
                             list = getMarkdownImageList();
+
+                            if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
 
                             if (list) break;
                         }
@@ -211,6 +214,7 @@ var ceres = {};
           case 'NOTIFY_LinkOnReadyState': return 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event';
           case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
           case 'NOTIFY_ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + str;
+          case 'NOTIFY_ListRetryAttempt': return 'Image list retry attempt [' + slideview.imagelist + ']: ' + str;
           default: return 'An unexpected error has occurred - ' + slideview.container + ' has stopped';
         }
 
