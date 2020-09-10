@@ -32,29 +32,11 @@ var ceres = {};
     function initiateSlideViewer()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-        attributes = getSlideViewAttributes();
+        attributes = getSlideViewerAttributes();
 
         if (attributes) activateSlideViewer();
 
-        function syncWait(ms, callback)
-        {
-            let start = new Date();
-            let attempt = 0;
-            let log = true;
-
-            while ((new Date() - start) < ms)
-            {
-                if (log && trace)
-                {
-                    console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
-                    log = false;
-                }
-            }
-
-            return (callback) ? callback() : null;
-        }
-
-        function getSlideViewAttributes()
+        function getSlideViewerAttributes()
         {
             if (progenitor)
             {
@@ -84,22 +66,17 @@ var ceres = {};
             function getImageList()
             {
                 let list = getMarkdownImageList();
-                return (list) ? list : lookAgain();
 
-                function lookAgain()
+                return (list) ? list : getMarkupImageList();
+
+                function getMarkdownImageList()
                 {
-                    let list = getMarkupImageList();
-                    return (list) ? list : syncWait(5000, function(){ getMarkdownImageList(); });
+                    return (progenitor.src) ? (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null : null;
                 }
 
                 function getMarkupImageList()
                 {
                     return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
-                }
-
-                function getMarkdownImageList()
-                {
-                    return (progenitor.src) ? (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null : null;
                 }
 
             }
