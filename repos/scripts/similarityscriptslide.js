@@ -1,6 +1,8 @@
 let ceres = {};
 (function(slideview)
 {
+    "use strict";
+    
     slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
     slideview.container = 'ceres-slideview';
     slideview.imagelist = 'ceres-csv';
