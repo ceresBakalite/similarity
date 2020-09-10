@@ -77,10 +77,16 @@ var ceres = {};
                     function syncWait(ms, callback)
                     {
                         let start = new Date();
-                        while ((new Date() - start) < ms) {}
+                        let attempt = 0;
+
+                        while ((new Date() - start) < ms)
+                        {
+                            if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
+                        }
+                        
                         if (callback) callback();
                     }
-                    
+
                 }
 
                 function getMarkupImageList()
