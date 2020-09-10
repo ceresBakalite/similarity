@@ -74,11 +74,13 @@ var ceres = {};
                     let list = getMarkupImageList();
                     return (list) ? list : syncWait(1000, function(){ getMarkupImageList(); });
 
-                function syncWait(ms, callback)
-                {
-                  let start = new Date();
-                  while ((new Date() - start) < ms) {}
-                  if (callback) callback();
+                    function syncWait(ms, callback)
+                    {
+                        let start = new Date();
+                        while ((new Date() - start) < ms) {}
+                        if (callback) callback();
+                    }
+                    
                 }
 
                 function getMarkupImageList()
