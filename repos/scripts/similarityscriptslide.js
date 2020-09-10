@@ -183,10 +183,11 @@ let ceres = {};
     function resource(type, name, str)
     {
         const newline = '\n';
+        let lookupName = null;
 
         const lookupType = {
 
-            notify: let lookupName = {
+            notify: lookupName = {
 
                 'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
                 'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
@@ -198,7 +199,7 @@ let ceres = {};
 
             },
 
-            error: let lookupName = {
+            error: lookupName = {
 
                 'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
                 'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
