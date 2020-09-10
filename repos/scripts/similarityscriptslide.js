@@ -229,7 +229,7 @@ var ceres = {};
                 if (sur)
                 {
                     composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
-                    composeAttribute(surName, 'style', 'display: none;');
+                    document.getElementById(surName).style.display = 'none';
                 }
 
                 composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL())
