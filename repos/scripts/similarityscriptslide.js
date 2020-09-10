@@ -94,19 +94,13 @@ var ceres = {};
         getSlideViewer();
         displaySlide();
 
-        setTimeout(function() { displayBlock(); }, 250);
+        setTimeout(function() { setNodeListDisplay('block'); }, 250);
     }
 
-    function displayBlock()
+    function setNodeListDisplay(attribute)
     {
-        const slideview = document.querySelectorAll('div.slideview, div.surtitle, div.subtitle, a.prev, a.next, span.ptr');
-        slideview.forEach(el => { el.style.display = 'block';	} );
-    }
-
-    function displayNone()
-    {
-        const slideview = document.querySelectorAll('div.slideview, div.surtitle, div.subtitle, a.prev, a.next, span.ptr');
-        slideview.forEach(el => { el.style.display = 'none';	} );
+        const nodelist = document.querySelectorAll('div.surtitle, div.subtitle, a.prev, a.next, span.ptr');
+        nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
     function displaySlide(targetIndex)
@@ -242,7 +236,7 @@ var ceres = {};
 
             createSlideViewPointerContainer();
 
-            displayNone();
+            setNodeListDisplay('none');
 
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
             composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL());
