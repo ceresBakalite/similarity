@@ -89,8 +89,6 @@ var ceres = {};
 
     function activateSlideViewer()
     {
-        //composeAttribute(slideview.container, 'style', 'display: none;');
-
         getSlideViewer();
         displaySlide();
 
@@ -100,8 +98,8 @@ var ceres = {};
     function setNodeListDisplay(attribute)
     {
         const nodelist = document.querySelectorAll('div.' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next');
-        nodelist.forEach(node => { node.style.display = attribute; } );
 
+        nodelist.forEach(node => { node.style.display = attribute; } );
         composeAttribute(slideview.container, 'style', 'display: ' + attribute + ';');
     }
 
