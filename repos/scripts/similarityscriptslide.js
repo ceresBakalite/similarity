@@ -17,7 +17,7 @@ var ceres = {};
 
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
-    let trace = false; // default element attribute - enable the trace environment directive
+    let trace = false; // default element attribute - enable slideview trace environment directive
     let ptr = true; // default element attribute - display slideview item pointers
     let sub = true; // default element attribute - display slideview item subtitles
     let sur = true; // default element attribute - display slideview item surtitles
@@ -50,11 +50,11 @@ var ceres = {};
 
                 if (trace) console.log(resource('NOTIFY_ImageListMarkup', imageList));
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler('ERROR_NotFoundImageList');
+                return (imageList) ? imageListToArray(imageList) : errorHandler(resource('ERROR_NotFoundImageList'));
 
             } else {
 
-                return errorHandler('ERROR_NotFoundProgenitor');
+                return errorHandler(resource('ERROR_NotFoundProgenitor'));
 
             }
 
@@ -87,6 +87,16 @@ var ceres = {};
 
     }
 
+    function activateSlideViewer()
+    {
+        composeAttribute(slideview.container, 'style', 'display: none;');
+
+        getSlideViewer();
+        displaySlide();
+
+        setTimeout(function() { composeAttribute(slideview.container, 'style', 'display: block;'); }, 250);
+    }
+
     function displaySlide(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
@@ -103,16 +113,6 @@ var ceres = {};
             pointers[index-1].className += ' active';
         }
 
-    }
-
-    function activateSlideViewer()
-    {
-        composeAttribute(slideview.container, 'style', 'display: none;');
-
-        getSlideViewer();
-        displaySlide();
-
-        setTimeout(function() { composeAttribute(slideview.container, 'style', 'display: block;'); }, 250);
     }
 
     function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
@@ -161,9 +161,9 @@ var ceres = {};
 
     }
 
-    function errorHandler(name)
+    function errorHandler(str)
     {
-        let err = resource(name) + '. DateTime: ' + new Date().toLocaleString();
+        let err = str + '. DateTime: ' + new Date().toLocaleString();
 
         console.log(err);
         alert(err);
@@ -186,7 +186,7 @@ var ceres = {};
           case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
           case 'NOTIFY_ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + str;
           case 'NOTIFY_ListRetryAttempt': return 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location';
-          default: return 'An unexpected error has occurred - ' + slideview.container + ' has stopped';
+          default: return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
         }
 
     }
@@ -226,6 +226,8 @@ var ceres = {};
                 if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
                 composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL())
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
+
+                document.getElementById(surName).style.display = 'none';
             }
 
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
