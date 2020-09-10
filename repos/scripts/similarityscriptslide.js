@@ -110,11 +110,11 @@ var ceres = {};
         getSlideViewer();
         displaySlide();
 
-        setTimeout(function()
-        {
+        //setTimeout(function()
+        //{
             composeAttribute(slideview.container, 'style', 'display: block;');
 
-        }, 500);
+        //}, 500);
 
     }
 
