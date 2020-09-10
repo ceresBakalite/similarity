@@ -185,7 +185,7 @@ var ceres = {};
           case 'NOTIFY_LinkOnReadyState': return 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event';
           case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
           case 'NOTIFY_ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + str;
-          case 'NOTIFY_ListRetryAttempt': return 'Image list found [' + slideview.imagelist + ']: found on the second attempt in the element fallback location';
+          case 'NOTIFY_ListRetryAttempt': return 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location';
           default: return 'An unexpected error has occurred - ' + slideview.container + ' has stopped';
         }
 
