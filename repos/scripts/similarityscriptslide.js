@@ -46,7 +46,7 @@ var ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
 
-                let imageList = getImageList();
+                const imageList = getImageList();
 
                 if (trace) console.log(resource('NOTIFY_ImageListMarkup', imageList));
 
@@ -115,7 +115,7 @@ var ceres = {};
 
     function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
     {
-        let el = document.createElement(element);
+        const el = document.createElement(element);
 
         el.id = id;
         parent.appendChild(el);
@@ -129,11 +129,11 @@ var ceres = {};
 
     function composeAttribute(id, type, value)
     {
-        let el = document.getElementById(id);
+        const el = document.getElementById(id);
 
         if (el)
         {
-            let attribute = document.createAttribute(type);
+            const attribute = document.createAttribute(type);
             attribute.value = value;
 
             el.setAttributeNode(attribute);
@@ -206,7 +206,6 @@ var ceres = {};
             progenitor.innerHTML = null;
 
             const imageElement = document.createElement('div');
-            //let progeny = null;
 
             imageElement.id = slideview.container + '-image-container';
             progenitor.appendChild(imageElement);
