@@ -143,7 +143,7 @@ var ceres = {};
 
     function setSlideViewerDisplay(attribute)
     {
-        const nodelist = document.querySelectorAll('#' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next');
+        const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, #' + slideview.container);
         nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
