@@ -15,9 +15,6 @@ let ceres = {};
 
     });
 
-    const notify = 1;
-    const error = 99;
-
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
@@ -31,6 +28,9 @@ let ceres = {};
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
     slideview.slideViewer = function() { setTimeout(initiateSlideViewer, 500); };
+
+    const notify = 1;
+    const error = 99;
 
     function initiateSlideViewer()
     {
