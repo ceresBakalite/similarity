@@ -72,7 +72,7 @@ var ceres = {};
                 function lookAgain()
                 {
                     let list = getMarkupImageList();
-                    return (list) ? list : syncWait(1000, function(){ getMarkupImageList(); });
+                    return (list) ? list : syncWait(5000, function(){ getMarkupImageList(); });
 
                     function syncWait(ms, callback)
                     {
@@ -83,8 +83,8 @@ var ceres = {};
                         {
                             if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
                         }
-                        
-                        if (callback) callback();
+
+                        return (callback) callback() : null;
                     }
 
                 }
