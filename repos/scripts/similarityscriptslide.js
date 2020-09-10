@@ -68,15 +68,15 @@ var ceres = {};
             {
                 let list = getMarkdownImageList();
 
-                return (list) ? list : syncWait(5000);
+                return (list) ? list : lookAgain();
 
-                function syncWait(ms)
+                function lookAgain()
                 {
                     let list = getMarkupImageList();
 
-                    return (list) ? list : lookAgain();
+                    return (list) ? list : syncWait(5000);
 
-                    function lookAgain()
+                    function syncWait(ms)
                     {
                         let start = Date.now();
                         let now = start;
