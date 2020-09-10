@@ -24,8 +24,6 @@ Phonetic matching alleviates sound pronunciation where spelling can be overlooke
 
 These images simply represent a small subset of the application GUI.  
 
-<br>
-
 <style>
 .img-pointer {
   max-width: 100%;
