@@ -100,7 +100,7 @@ var ceres = {};
         const nodelist = document.querySelectorAll('#' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next');
 
         nodelist.forEach(node => { node.style.display = attribute; } );
-        composeAttribute(slideview.container, 'style', 'display: ' + attribute + ';');
+        //composeAttribute(slideview.container, 'style', 'display: ' + attribute + ';');
     }
 
     function displaySlide(targetIndex)
