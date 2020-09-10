@@ -67,34 +67,18 @@ var ceres = {};
             function getImageList()
             {
                 let list = getMarkdownImageList();
-
                 return (list) ? list : lookAgain();
 
                 function lookAgain()
                 {
                     let list = getMarkupImageList();
+                    return (list) ? list : syncWait(1000, function(){ getMarkupImageList() });
 
-                    return (list) ? list : syncWait(5000);
-
-                    function syncWait(ms)
-                    {
-                        let start = Date.now();
-                        let now = start;
-                        let attempt = 0;
-
-                        while ((now - start) < ms)
-                        {
-                            now = Date.now();
-                            list = getMarkdownImageList();
-
-                            if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
-
-                            if (list) break;
-                        }
-
-                        return list;
-                    }
-
+                function syncWait(ms, callback)
+                {
+                  let start = new Date();
+                  while ((new Date()) - start < ms) {}
+                  if (callback) callback();
                 }
 
                 function getMarkupImageList()
