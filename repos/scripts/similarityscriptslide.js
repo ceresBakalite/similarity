@@ -102,12 +102,12 @@ var ceres = {};
 
         index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
 
-        slides.forEach(slide => { slide.style.display = 'none';	} );
+        slides.forEach(node => { node.style.display = 'none';	} );
         slides[index-1].style.display = 'block';
 
         if (ptr)
         {
-            pointers.forEach(pointer => { pointer.className = pointer.className.replace(' active', '');	} );
+            pointers.forEach(node => { node.className = node.className.replace(' active', '');	} );
             pointers[index-1].className += ' active';
         }
 
@@ -149,7 +149,7 @@ var ceres = {};
 
     function getBoolean(symbol)
     {
-        let token = symbol.trim().toUpperCase();
+        const token = symbol.trim().toUpperCase();
 
         if (!token) return false;
 
@@ -167,7 +167,7 @@ var ceres = {};
 
     function errorHandler(str)
     {
-        let err = str + '. DateTime: ' + new Date().toLocaleString();
+        const err = str + '. DateTime: ' + new Date().toLocaleString();
 
         console.log(err);
         alert(err);
@@ -177,7 +177,7 @@ var ceres = {};
 
     function resource(name, str)
     {
-        let newline = '\n';
+        const newline = '\n';
 
         switch (name)
         {
@@ -206,7 +206,7 @@ var ceres = {};
             progenitor.innerHTML = null;
 
             const imageElement = document.createElement('div');
-            let progeny = null;
+            //let progeny = null;
 
             imageElement.id = slideview.container + '-image-container';
             progenitor.appendChild(imageElement);
@@ -225,7 +225,7 @@ var ceres = {};
 
                 composeElement('div', svcname, 'slideview fade', imageElement, null, null, null);
 
-                progeny = document.getElementById(svcname);
+                let progeny = document.getElementById(svcname);
 
                 if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
                 composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL())
@@ -330,7 +330,7 @@ var ceres = {};
 
             function styleSheetsLengthListener()
             {
-                var cssnum = document.styleSheets.length;
+                const cssnum = document.styleSheets.length;
 
                 var ti = setInterval(function()
                 {
@@ -348,7 +348,7 @@ var ceres = {};
             {
                 link.onreadystatechange = function()
                 {
-                    var state = link.readyState;
+                    const state = link.readyState;
 
                     if (state === 'loaded' || state === 'complete')
                     {
