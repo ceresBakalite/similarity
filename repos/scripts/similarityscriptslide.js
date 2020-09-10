@@ -188,7 +188,7 @@ let ceres = {};
 
         const lookupType = {
 
-            notify: lookupName = {
+            notify: lookupNotify = {
 
                 'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
                 'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
@@ -199,7 +199,7 @@ let ceres = {};
                 'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
             },
 
-            error: lookupName = {
+            error: lookupError = {
 
                 'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
                 'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
@@ -207,7 +207,7 @@ let ceres = {};
 
         };
 
-        return lookupType[type], lookupName[name] || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+        return lookupType[type] || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
     }
 
     function getSlideViewer()
