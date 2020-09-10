@@ -110,12 +110,7 @@ var ceres = {};
         getSlideViewer();
         displaySlide();
 
-        //setTimeout(function()
-        //{
-            composeAttribute(slideview.container, 'style', 'display: block;');
-
-        //}, 500);
-
+        setTimeout(function() { composeAttribute(slideview.container, 'style', 'display: block;'); }, 250);
     }
 
     function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
