@@ -183,9 +183,10 @@ let ceres = {};
     function resource(type, name, str)
     {
         const newline = '\n';
-        let lookupName = null;
 
         const lookupType = {
+
+            let lookupName = null;
 
             notify: lookupName = {
 
