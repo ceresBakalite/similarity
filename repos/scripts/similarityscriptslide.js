@@ -76,8 +76,9 @@ var ceres = {};
 
                 function getMarkupImageList()
                 {
-                    if (trace) console.log(resource('NOTIFY_ListRetryAttempt'));
-                    return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
+                    let list = (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
+                    if (list && trace) console.log(resource('NOTIFY_ListRetryAttempt'));
+                    return list;
                 }
 
             }
