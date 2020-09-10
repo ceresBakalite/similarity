@@ -99,14 +99,14 @@ var ceres = {};
 
     function displayBlock()
     {
-        const slideview = document.querySelectorAll('div.slideview, div.surtitle, div.subtitle');
-        slideview.forEach(element => { element.style.display = 'block';	} );
+        const slideview = document.querySelectorAll('div.slideview, div.surtitle, div.subtitle, a.prev, a.next, span.ptr');
+        slideview.forEach(el => { el.style.display = 'block';	} );
     }
 
     function displayNone()
     {
-        const slideview = document.querySelectorAll('div.slideview, div.surtitle, div.subtitle');
-        slideview.forEach(element => { element.style.display = 'none';	} );
+        const slideview = document.querySelectorAll('div.slideview, div.surtitle, div.subtitle, a.prev, a.next, span.ptr');
+        slideview.forEach(el => { el.style.display = 'none';	} );
     }
 
     function displaySlide(targetIndex)
