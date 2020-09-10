@@ -72,11 +72,11 @@ var ceres = {};
 
                 function syncWait(ms)
                 {
-                    let list : getMarkupImageList();
+                    let list = getMarkupImageList();
 
                     return (list) ? list : lookAgain();
 
-                    function lookAgain() 
+                    function lookAgain()
                     {
                         let start = Date.now();
                         let now = start;
