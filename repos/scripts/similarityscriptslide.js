@@ -95,12 +95,6 @@ var ceres = {};
         setTimeout(function() { setSlideViewerDisplay('block'); }, 250);
     }
 
-    function setSlideViewerDisplay(attribute)
-    {
-        const nodelist = document.querySelectorAll('#' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next');
-        nodelist.forEach(node => { node.style.display = attribute; } );
-    }
-
     function displaySlide(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
@@ -145,6 +139,12 @@ var ceres = {};
             el.setAttributeNode(attribute);
         }
 
+    }
+
+    function setSlideViewerDisplay(attribute)
+    {
+        const nodelist = document.querySelectorAll('#' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next');
+        nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
     function getBoolean(symbol)
