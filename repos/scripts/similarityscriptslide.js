@@ -99,8 +99,14 @@ var ceres = {};
 
     function displayBlock()
     {
-        composeAttribute(slideview.container, 'style', 'display: block;');
-        composeAttribute('slideview-sur1', 'style', 'display: block;');
+        const slideview = document.querySelectorAll('div.slideview, div.surtitle, div.subtitle');
+        slideview.forEach(element => { element.style.display = 'block';	} );
+    }
+
+    function displayNone()
+    {
+        const slideview = document.querySelectorAll('div.slideview, div.surtitle, div.subtitle');
+        slideview.forEach(element => { element.style.display = 'none';	} );
     }
 
     function displaySlide(targetIndex)
@@ -133,8 +139,6 @@ var ceres = {};
         if (url) composeAttribute(el.id, 'src', url);
 
         if (markup) document.getElementById(el.id).innerHTML = markup;
-
-        console.log(element + '.' + classValue);
     }
 
     function composeAttribute(id, type, value)
@@ -236,12 +240,12 @@ var ceres = {};
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
             }
 
-            composeAttribute('slideview-sur1', 'style', 'display: none;');
+            createSlideViewPointerContainer();
+
+            displayNone();
 
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
             composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL());
-
-            createSlideViewPointerContainer();
 
             function createSlideViewPointerContainer()
             {
