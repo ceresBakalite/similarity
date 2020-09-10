@@ -92,15 +92,13 @@ var ceres = {};
         getSlideViewer();
         displaySlide();
 
-        setTimeout(function() { setNodeListDisplay('block'); }, 250);
+        setTimeout(function() { setSlideViewerDisplay('block'); }, 250);
     }
 
-    function setNodeListDisplay(attribute)
+    function setSlideViewerDisplay(attribute)
     {
         const nodelist = document.querySelectorAll('#' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next');
-
         nodelist.forEach(node => { node.style.display = attribute; } );
-        //composeAttribute(slideview.container, 'style', 'display: ' + attribute + ';');
     }
 
     function displaySlide(targetIndex)
@@ -199,11 +197,11 @@ var ceres = {};
 
     function getSlideViewer()
     {
-        if (css) importSlideViewStylesheet();
+        if (css) importSlideViewerStylesheet();
 
-        createSlideViewContainer();
+        createSlideViewerContainer();
 
-        function createSlideViewContainer()
+        function createSlideViewerContainer()
         {
             progenitor.innerHTML = null;
 
@@ -234,14 +232,14 @@ var ceres = {};
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
             }
 
-            createSlideViewPointerContainer();
+            createSlideViewerPointerContainer();
 
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
             composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL());
 
-            setNodeListDisplay('none');
+            setSlideViewerDisplay('none');
 
-            function createSlideViewPointerContainer()
+            function createSlideViewerPointerContainer()
             {
                 if (!ptr) return;
 
@@ -290,7 +288,7 @@ var ceres = {};
 
         }
 
-        function importSlideViewStylesheet()
+        function importSlideViewerStylesheet()
         {
             if (!css) return;
 
