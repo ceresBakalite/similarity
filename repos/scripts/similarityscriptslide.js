@@ -123,8 +123,8 @@ var ceres = {};
         if (classValue) composeAttribute(el.id, 'class', classValue);
         if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
         if (url) composeAttribute(el.id, 'src', url);
-        if (display) composeAttribute(el.id, 'style', display);
 
+        if (display) document.getElementById(el.id).style.display = display;
         if (markup) document.getElementById(el.id).innerHTML = markup;
     }
 
