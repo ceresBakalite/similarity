@@ -76,6 +76,7 @@ var ceres = {};
 
                 function getMarkupImageList()
                 {
+                    alert('here now');
                     return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
                 }
 
