@@ -71,12 +71,12 @@ var ceres = {};
 
                 function getMarkdownImageList()
                 {
-                    return (progenitor.src) ? (progenitor.innerHTML.length > 0) ? progenitor.innerHTML : null : null;
+                    return (progenitor.src) ? progenitor.innerHTML : null;
                 }
 
                 function getMarkupImageList()
                 {
-                    alert('here now');
+                    alert('still here');
                     return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
                 }
 
