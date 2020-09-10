@@ -67,7 +67,32 @@ var ceres = {};
             function getImageList()
             {
                 let list = getMarkdownImageList();
-                return (list) ? list : getMarkupImageList();
+
+                return (list) ? list : syncWait(5000);
+
+                function syncWait(ms)
+                {
+                    let list : getMarkupImageList();
+
+                    return (list) ? list : lookAgain();
+
+                    function lookAgain() 
+                    {
+                        let start = Date.now();
+                        let now = start;
+
+                        while ((now - start) < ms)
+                        {
+                            now = Date.now();
+                            list = getMarkdownImageList();
+
+                            if (list) break;
+                        }
+
+                        return list;
+                    }
+
+                }
 
                 function getMarkupImageList()
                 {
