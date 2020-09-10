@@ -31,9 +31,22 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-        attributes = setTimeout(function(){ getSlideViewAttributes(); }, 500);
+        attributes = syncWait(500, function(){ getSlideViewAttributes(); });
 
         if (attributes) activateSlideViewer();
+
+        function syncWait(ms, callback)
+        {
+            let start = new Date();
+            let attempt = 0;
+
+            while ((new Date() - start) < ms)
+            {
+                if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
+            }
+
+            return (callback) ? callback() : null;
+        }
 
         function getSlideViewAttributes()
         {
@@ -71,20 +84,6 @@ var ceres = {};
                 {
                     let list = getMarkupImageList();
                     return (list) ? list : syncWait(5000, function(){ getMarkdownImageList(); });
-
-                    function syncWait(ms, callback)
-                    {
-                        let start = new Date();
-                        let attempt = 0;
-
-                        while ((new Date() - start) < ms)
-                        {
-                            if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
-                        }
-
-                        return (callback) ? callback() : null;
-                    }
-
                 }
 
                 function getMarkupImageList()
