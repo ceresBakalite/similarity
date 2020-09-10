@@ -182,20 +182,43 @@ let ceres = {};
 
     function resource(type, name, str)
     {
+      const lookupType = {
+
+        notify: lookupName = {
+
+            'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
+            'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
+            'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
+            'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
+            'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
+            'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
+            'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
+
+        },
+
+        error: lookupName = {
+
+            'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
+            'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
+            'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
+            'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
+            'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
+            'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
+            'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
+
+        };
+
+      };
+
+      return lookupType[type], lookupName[name] || '';
+    }
+
+    function xxxresource(type, name, str)
+    {
         const newline = '\n';
 
         switch (type)
         {
-            case error:
-
-                switch (name)
-                {
-                    case 'NotFoundImageList': return 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
-                    case 'NotFoundProgenitor': return 'Error: Unable to find the ' + slideview.container + ' document element';
-                }
-
-                break;
-
             case notify:
 
                 switch (name)
@@ -207,6 +230,16 @@ let ceres = {};
                     case 'ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
                     case 'ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + str;
                     case 'ListRetryAttempt': return 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location';
+                }
+
+                break;
+
+            case error:
+
+                switch (name)
+                {
+                    case 'NotFoundImageList': return 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
+                    case 'NotFoundProgenitor': return 'Error: Unable to find the ' + slideview.container + ' document element';
                 }
 
                 break;
