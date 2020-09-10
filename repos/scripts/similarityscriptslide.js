@@ -113,7 +113,7 @@ var ceres = {};
 
     }
 
-    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
+    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url, display)
     {
         const el = document.createElement(element);
 
@@ -124,6 +124,7 @@ var ceres = {};
         if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
         if (url) composeAttribute(el.id, 'src', url);
 
+        if (display) document.getElementById(el.id).style.display = display;
         if (markup) document.getElementById(el.id).innerHTML = markup;
     }
 
@@ -226,20 +227,15 @@ var ceres = {};
 
                 let progeny = document.getElementById(svcname);
 
-                if (sur)
-                {
-                    composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
-                    document.getElementById(surName).style.display = 'none';
-                }
-
-                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL())
-                if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
+                if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null, 'none');
+                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL(), null)
+                if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null, 'none');
             }
 
             createSlideViewerPointerContainer();
 
-            composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
-            composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL());
+            composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), 'none');
+            composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL(), 'none');
 
             setSlideViewerDisplay('none');
 
@@ -261,7 +257,7 @@ var ceres = {};
                     let qualifier = item + 1;
                     let svpname = 'slideview-ptr' + qualifier;
 
-                    composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null);
+                    composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
                 }
 
                 progenitor.appendChild(document.createElement('br'));
