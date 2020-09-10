@@ -186,7 +186,7 @@ let ceres = {};
         const newline = '\n';
 
         let lookupName = null;
-        let fallout = 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+        let lookupFail = 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
 
         const lookupType = {
 
@@ -209,7 +209,8 @@ let ceres = {};
 
         };
 
-        return (type == error) ? (lookupType[type], lookupError[name] || fallout) : (lookupType[type], lookupNotify[name] || fallout);
+        return (type == notify) ? (lookupType[type], lookupNotify[name] || lookupFail) : (lookupType[type], lookupError[name] || lookupFail);
+        //return (type == error) ? (lookupType[type], lookupError[name] || lookupFail) : (lookupType[type], lookupNotify[name] || lookupFail);
     }
 
     function getSlideViewer()
