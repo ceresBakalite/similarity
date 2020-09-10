@@ -31,9 +31,7 @@ var ceres = {};
     slideview.slideViewer = function()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-        attributes = getSlideViewAttributes();
-
-        composeAttribute(slideview.container, 'style', 'display: none;');
+        attributes = setTimeout(function(){ getSlideViewAttributes(); }, 500);
 
         if (attributes) activateSlideViewer();
 
@@ -125,6 +123,8 @@ var ceres = {};
 
     function activateSlideViewer()
     {
+        composeAttribute(slideview.container, 'style', 'display: none;');
+
         getSlideViewer();
         displaySlide();
 
