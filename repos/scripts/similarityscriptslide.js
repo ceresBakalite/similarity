@@ -236,10 +236,10 @@ var ceres = {};
 
             createSlideViewPointerContainer();
 
-            setNodeListDisplay('none');
-
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
             composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL());
+
+            setNodeListDisplay('none');
 
             function createSlideViewPointerContainer()
             {
