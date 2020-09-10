@@ -89,7 +89,7 @@ var ceres = {};
 
     function activateSlideViewer()
     {
-        //composeAttribute(slideview.container, 'style', 'display: none;');
+        composeAttribute(slideview.container, 'style', 'display: none;');
 
         getSlideViewer();
         displaySlide();
@@ -99,7 +99,7 @@ var ceres = {};
 
     function setNodeListDisplay(attribute)
     {
-        const nodelist = document.querySelectorAll('div.surtitle, div.subtitle, a.prev, a.next, span.ptr');
+        const nodelist = document.querySelectorAll('div.' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next, span.ptr');
         nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
