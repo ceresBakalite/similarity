@@ -21,7 +21,6 @@ let ceres = {};
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
-    let trace = false; // default element attribute - enable slideview trace environment directive
     let ptr = true; // default element attribute - display slideview item pointers
     let sub = true; // default element attribute - display slideview item subtitles
     let sur = true; // default element attribute - display slideview item surtitles
