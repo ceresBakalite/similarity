@@ -84,7 +84,7 @@ var ceres = {};
                             if (trace) console.log(resource('NOTIFY_ListRetryAttempt', ++attempt));
                         }
 
-                        return (callback) callback() : null;
+                        return (callback) ? callback() : null;
                     }
 
                 }
