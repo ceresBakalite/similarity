@@ -154,6 +154,25 @@ let ceres = {};
 
     function getBoolean(symbol)
     {
+        let token = symbol.trim().toUpperCase();
+
+        if (!token) return false;
+
+        const lookup =
+        {
+            'TRUE': true;
+            'T':  true;
+            'YES': true;
+            'Y': true;
+            '1': true;
+        };
+
+        return lookup[token] || false;
+    }
+
+
+    function xxxgetBoolean(symbol)
+    {
         const token = symbol.trim().toUpperCase();
 
         if (!token) return false;
@@ -183,11 +202,10 @@ let ceres = {};
     function resource(type, name, str)
     {
         const newline = '\n';
+        let lookupName = null;
 
-        const lookupType = {
-
-            let lookupName = null;
-
+        const lookupType =
+        {
             notify: lookupName = {
 
                 'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
@@ -212,9 +230,9 @@ let ceres = {};
 
             }
 
-      };
+        };
 
-      return lookupType[type], lookupName[name] || '';
+        return lookupType[type], lookupName[name] || '';
     }
 
     function getSlideViewer()
