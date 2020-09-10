@@ -226,7 +226,12 @@ var ceres = {};
 
                 let progeny = document.getElementById(svcname);
 
-                if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
+                if (sur)
+                {
+                    composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
+                    composeAttribute(surName, 'style', 'display: none;');
+                }
+
                 composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL())
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
             }
