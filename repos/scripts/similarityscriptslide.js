@@ -1,4 +1,4 @@
-var ceres = {};
+let ceres = {};
 (function(slideview)
 {
     slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
