@@ -99,7 +99,7 @@ var ceres = {};
 
     function setNodeListDisplay(attribute)
     {
-        const nodelist = document.querySelectorAll('div.' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next, span.ptr');
+        const nodelist = document.querySelectorAll('div.' + slideview.container +  ', div.surtitle, div.subtitle, a.prev, a.next');
         nodelist.forEach(node => { node.style.display = attribute; } );
 
         composeAttribute(slideview.container, 'style', 'display: ' + attribute + ';');
