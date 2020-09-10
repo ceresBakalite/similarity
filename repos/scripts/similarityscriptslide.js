@@ -72,12 +72,12 @@ var ceres = {};
                 function lookAgain()
                 {
                     let list = getMarkupImageList();
-                    return (list) ? list : syncWait(1000, function(){ getMarkupImageList() });
+                    return (list) ? list : syncWait(1000, function(){ getMarkupImageList(); });
 
                 function syncWait(ms, callback)
                 {
                   let start = new Date();
-                  while ((new Date()) - start < ms) {}
+                  while ((new Date() - start) < ms) {}
                   if (callback) callback();
                 }
 
