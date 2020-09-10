@@ -206,7 +206,7 @@ let ceres = {};
             'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
             'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
 
-        };
+        }
 
       };
 
