@@ -99,7 +99,7 @@ var ceres = {};
 
     function displayBlock()
     { 
-        composeAttribute(slideview.container, 'style', 'display: block;'); }
+        composeAttribute(slideview.container, 'style', 'display: block;');
         composeAttribute('slideview-sur1', 'style', 'display: block;');
     }
 
