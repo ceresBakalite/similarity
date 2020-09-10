@@ -15,8 +15,12 @@ let ceres = {};
 
     });
 
+    const notify = 1;
+    const error = 99;
+
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
+    let trace = false; // default element attribute - enable slideview trace environment directive
     let trace = false; // default element attribute - enable slideview trace environment directive
     let ptr = true; // default element attribute - display slideview item pointers
     let sub = true; // default element attribute - display slideview item subtitles
@@ -48,13 +52,13 @@ let ceres = {};
 
                 const imageList = getImageList();
 
-                if (trace) console.log(resource('notify', 'NOTIFY_ImageListMarkup', imageList));
+                if (trace) console.log(resource(notify, 'ImageListMarkup', imageList));
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler(resource('error', 'ERROR_NotFoundImageList'));
+                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(error, 'NotFoundImageList'));
 
             } else {
 
-                return errorHandler(resource('error', 'ERROR_NotFoundProgenitor'));
+                return errorHandler(resource(error, 'NotFoundProgenitor'));
 
             }
 
@@ -77,7 +81,7 @@ let ceres = {};
                 function getMarkupImageList()
                 {
                     let list = (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
-                    if (list && trace) console.log(resource('notify', 'NOTIFY_ListRetryAttempt'));
+                    if (list && trace) console.log(resource(notify, 'ListRetryAttempt'));
                     return list;
                 }
 
@@ -183,28 +187,27 @@ let ceres = {};
 
         switch (type)
         {
-            case 'error':
+            case error:
 
                 switch (name)
                 {
-                    case 'ERROR_NotFoundImageList': return 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
-                    case 'ERROR_NotFoundProgenitor': return 'Error: Unable to find the ' + slideview.container + ' document element';
+                    case 'NotFoundImageList': return 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
+                    case 'NotFoundProgenitor': return 'Error: Unable to find the ' + slideview.container + ' document element';
                 }
 
                 break;
 
-            case 'notify':
+            case notify:
 
                 switch (name)
                 {
-                    case 'NOTIFY_LinkOnload': return 'Link default stylesheet insert [' + slideview.container + ']: onload listener';
-                    case 'NOTIFY_LinkAddEventListener': return 'Link default stylesheet insert [' + slideview.container + ']: addEventListener';
-                    case 'NOTIFY_LinkStylesheetCount': return 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment';
-                    case 'NOTIFY_LinkOnReadyState': return 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event';
-                    case 'NOTIFY_ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
-                    case 'NOTIFY_ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + str;
-                    case 'NOTIFY_ListRetryAttempt': return 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location';
-                    default: return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+                    case 'LinkOnload': return 'Link default stylesheet insert [' + slideview.container + ']: onload listener';
+                    case 'LinkAddEventListener': return 'Link default stylesheet insert [' + slideview.container + ']: addEventListener';
+                    case 'LinkStylesheetCount': return 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment';
+                    case 'LinkOnReadyState': return 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event';
+                    case 'ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
+                    case 'ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + str;
+                    case 'ListRetryAttempt': return 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location';
                 }
 
                 break;
@@ -281,7 +284,7 @@ let ceres = {};
 
                 progenitor.appendChild(document.createElement('br'));
 
-                if (trace) console.log(resource('notify', 'NOTIFY_ProgenitorInnerHTML'));
+                if (trace) console.log(resource(notify, 'ProgenitorInnerHTML'));
 
                 function getClickEventValue(indexItem)
                 {
@@ -329,7 +332,7 @@ let ceres = {};
             {
                 link.onload = function ()
                 {
-                    if (trace) console.log(resource('notify', 'NOTIFY_LinkOnload'));
+                    if (trace) console.log(resource(notify, 'LinkOnload'));
                 }
 
             }
@@ -340,7 +343,7 @@ let ceres = {};
                 {
                     link.addEventListener('load', function()
                     {
-                        if (trace) console.log(resource('notify', 'NOTIFY_LinkAddEventListener'));
+                        if (trace) console.log(resource(notify, 'LinkAddEventListener'));
                     }, false);
 
                 }
@@ -356,7 +359,7 @@ let ceres = {};
                     if (document.styleSheets.length > cssnum)
                     {
                         clearInterval(ti);
-                        if (trace) console.log(resource('notify', 'NOTIFY_LinkStylesheetCount'));
+                        if (trace) console.log(resource(notify, 'LinkStylesheetCount'));
                     }
 
                 }, 10);
@@ -372,7 +375,7 @@ let ceres = {};
                     if (state === 'loaded' || state === 'complete')
                     {
                         link.onreadystatechange = null;
-                        if (trace) console.log(resource('notify', 'NOTIFY_LinkOnReadyState'));
+                        if (trace) console.log(resource(notify, 'LinkOnReadyState'));
                     }
 
                 };
