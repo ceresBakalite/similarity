@@ -152,6 +152,16 @@ let ceres = {};
         nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
+    function errorHandler(str)
+    {
+        const err = str + '. DateTime: ' + new Date().toLocaleString();
+
+        console.log(err);
+        alert(err);
+
+        return null;
+    }
+
     function getBoolean(symbol)
     {
         let token = symbol.trim().toUpperCase();
@@ -170,47 +180,41 @@ let ceres = {};
         return lookup[token] || false;
     }
 
-
-    function errorHandler(str)
-    {
-        const err = str + '. DateTime: ' + new Date().toLocaleString();
-
-        console.log(err);
-        alert(err);
-
-        return null;
-    }
-
     function resource(type, name, str)
     {
         const newline = '\n';
 
-        let lookupName = null;
-        let lookupFail = 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+        switch (type)
+        {
+            case notify:
 
-        const lookupType = {
+                switch (name)
+                {
+                    case 'LinkOnload': return 'Link default stylesheet insert [' + slideview.container + ']: onload listener';
+                    case 'LinkAddEventListener': return 'Link default stylesheet insert [' + slideview.container + ']: addEventListener';
+                    case 'LinkStylesheetCount': return 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment';
+                    case 'LinkOnReadyState': return 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event';
+                    case 'ProgenitorInnerHTML': return 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML;
+                    case 'ImageListMarkup': return 'Image list markup [' + slideview.container + ']: ' + newline + str;
+                    case 'ListRetryAttempt': return 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location';
+                }
 
-            notify: lookupNotify = {
+                break;
 
-                'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
-                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
-                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
-                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
-                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
-                'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
-            },
+            case error:
 
-            error: lookupError = {
+                switch (name)
+                {
+                    case 'NotFoundImageList': return 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read';
+                    case 'NotFoundProgenitor': return 'Error: Unable to find the ' + slideview.container + ' document element';
+                }
 
-                'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
-                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
-            }
+                break;
 
-        };
+            default: return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
 
-        return (type == notify) ? (lookupType[type], lookupNotify[name] || lookupFail) : (lookupType[type], lookupError[name] || lookupFail);
-        //return (type == error) ? (lookupType[type], lookupError[name] || lookupFail) : (lookupType[type], lookupNotify[name] || lookupFail);
+        }
+
     }
 
     function getSlideViewer()
