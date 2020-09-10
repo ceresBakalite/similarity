@@ -188,7 +188,7 @@ let ceres = {};
 
         const lookupType = {
 
-            notify: lookupNotify = {
+            notify: lookupName = {
 
                 'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
                 'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
@@ -199,7 +199,7 @@ let ceres = {};
                 'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
             },
 
-            error: lookupError = {
+            error: lookupName = {
 
                 'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
                 'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
