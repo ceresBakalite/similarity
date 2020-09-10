@@ -182,31 +182,33 @@ let ceres = {};
 
     function resource(type, name, str)
     {
-      const lookupType = {
+        const newline = '\n';
 
-        notify: lookupName = {
+        const lookupType = {
 
-            'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
-            'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
-            'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
-            'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
-            'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
-            'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-            'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
+            notify: lookupName = {
 
-        },
+                'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
+                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
+                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
+                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
+                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
+                'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
+                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
 
-        error: lookupName = {
+            },
 
-            'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
-            'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
-            'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
-            'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
-            'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
-            'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-            'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
+            error: lookupName = {
 
-        }
+                'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
+                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
+                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
+                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
+                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
+                'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
+                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
+
+            }
 
       };
 
