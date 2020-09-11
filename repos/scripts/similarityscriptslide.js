@@ -105,6 +105,8 @@ let ceres = {};
 
                 function getMarkdownImageListRetry(retry = 1, retryLimit = 50)
                 {
+                    if (trace) console.log(resource(notify, 'ListRetryAttempt', retry));
+
                     try
                     {
                         let list = progenitor.innerHTML.length > 0 ? getMarkdownImageList() : getMarkupList();
@@ -112,7 +114,6 @@ let ceres = {};
 
                     } catch (ex) {
 
-                        if (trace) console.log(resource(notify, 'ListRetryAttempt', retry));
                         if (retry != retryLimit) getMarkdownImageListRetry(++retry);
                    }
 
