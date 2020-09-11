@@ -81,9 +81,14 @@ let ceres = {};
                     return (progenitor.innerHTML) ? progenitor.innerHTML : null;
                 }
 
+                function getMarkupList()
+                {
+                    return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
+                }
+
                 function getMarkupImageList()
                 {
-                    let list = (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
+                    let list = getMarkupList();
 
                     if (list)
                     {
@@ -103,9 +108,7 @@ let ceres = {};
                     try
                     {
                         let list = getMarkdownImageList();
-
-                        return (list) ? list : document.getElementById(slideview.imagelist) ? document.getElementById(slideview.imagelist).innerHTML : null : null;
-
+                        if (!list) list = getMarkupList();
                         if (!list) throw 'ListNotFoundException';
 
                     } catch (ex) {
