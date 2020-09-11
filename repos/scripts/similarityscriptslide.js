@@ -185,9 +185,9 @@ let ceres = {};
 
         const lookup = {
 
-            notify: {
+            notify: function() {
 
-                const lookupNotify = [
+                const lookupNotify = {
                     'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
                     'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
                     'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
@@ -198,17 +198,17 @@ let ceres = {};
                 };
 
                 return lookupNotify[name] || false;
-            ],
+            },
 
-            error: {
+            error: function() {
 
-                const lookupError = [
+                const lookupError = {
                     'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
                     'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
                 };
 
                 return lookupError[name] || false;
-            ]
+            }
 
         };
 
