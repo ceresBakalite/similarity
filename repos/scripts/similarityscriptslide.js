@@ -4,7 +4,7 @@ let ceres = {};
     slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
     slideview.container = 'ceres-slideview';
     slideview.imagelist = 'ceres-csv';
-    slideview.delay = 250;
+    slideview.delay = 500;
 
     window.customElements.define(slideview.container, class extends HTMLElement
     {
