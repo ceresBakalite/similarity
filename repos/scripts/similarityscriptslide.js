@@ -186,7 +186,7 @@ let ceres = {};
 
         let lookup = {
 
-            notify1: function () {
+            ${notify1}: function () {
 
                 const lookupNotify = {
                     'NotifyOne': 'Test notify one string',
@@ -196,7 +196,7 @@ let ceres = {};
                 return lookupNotify[name] || 'An unexpected notification error has occurred';
             },
 
-            error2: function () {
+            ${error2}: function () {
 
                 const lookupError = {
                     'ErrorOne': 'Test error one string',
