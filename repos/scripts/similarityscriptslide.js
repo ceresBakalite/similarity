@@ -51,13 +51,13 @@ let ceres = {};
 
                 const imageList = getImageList();
 
-                if (trace) console.log(resource('notify', 'ImageListMarkup', imageList));
+                if (trace) console.log(resource(notify, 'ImageListMarkup', imageList));
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler(resource('error', 'NotFoundImageList'));
+                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(error, 'NotFoundImageList'));
 
             } else {
 
-                return errorHandler(resource('error', 'NotFoundProgenitor'));
+                return errorHandler(resource(error, 'NotFoundProgenitor'));
 
             }
 
@@ -181,8 +181,6 @@ let ceres = {};
 
     function resource(type, name, str)
     {
-        type = 1;
-        
         const newline = '\n';
 
         let lookup = {
@@ -283,7 +281,7 @@ let ceres = {};
 
                 progenitor.appendChild(document.createElement('br'));
 
-                if (trace) console.log(resource('notify', 'ProgenitorInnerHTML'));
+                if (trace) console.log(resource(notify, 'ProgenitorInnerHTML'));
 
                 function getClickEventValue(indexItem)
                 {
@@ -331,7 +329,7 @@ let ceres = {};
             {
                 link.onload = function ()
                 {
-                    if (trace) console.log(resource('notify', 'LinkOnload'));
+                    if (trace) console.log(resource(notify, 'LinkOnload'));
                 }
 
             }
@@ -342,7 +340,7 @@ let ceres = {};
                 {
                     link.addEventListener('load', function()
                     {
-                        if (trace) console.log(resource('notify', 'LinkAddEventListener'));
+                        if (trace) console.log(resource(notify, 'LinkAddEventListener'));
                     }, false);
 
                 }
@@ -358,7 +356,7 @@ let ceres = {};
                     if (document.styleSheets.length > cssnum)
                     {
                         clearInterval(ti);
-                        if (trace) console.log(resource('notify', 'LinkStylesheetCount'));
+                        if (trace) console.log(resource(notify, 'LinkStylesheetCount'));
                     }
 
                 }, 10);
@@ -374,7 +372,7 @@ let ceres = {};
                     if (state === 'loaded' || state === 'complete')
                     {
                         link.onreadystatechange = null;
-                        if (trace) console.log(resource('notify', 'LinkOnReadyState'));
+                        if (trace) console.log(resource(notify, 'LinkOnReadyState'));
                     }
 
                 };
