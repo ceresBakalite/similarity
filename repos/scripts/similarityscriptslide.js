@@ -94,8 +94,8 @@ let ceres = {};
 
                         //async connectedCallback()
                         //{
-                            let src = progenitor.getAttribute('src');
-                            progenitor.innerHTML = await (await fetch(src)).text();
+                            //let src = progenitor.getAttribute('src');
+                            //progenitor.innerHTML = await (await fetch(src)).text();
                         //}
 
                         return getMarkdownImageListRetry();
