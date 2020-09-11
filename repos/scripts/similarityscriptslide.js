@@ -72,16 +72,11 @@ let ceres = {};
 
             function getImageList()
             {
-                let list = getMarkdownImageList();
+                let list = getMarkdownList();
 
-                return (list) ? list : getMarkupImageList();
+                return (list) ? list : lookAgain();
 
-                function getMarkdownImageList()
-                {
-                    return (progenitor.innerHTML) ? progenitor.innerHTML : null;
-                }
-
-                function getMarkupImageList()
+                function lookAgain()
                 {
                     let list = getMarkupList();
 
@@ -92,10 +87,15 @@ let ceres = {};
 
                     } else {
 
-                        return getMarkdownImageListRetry();
+                        return getImageListRetry();
 
                     }
 
+                }
+
+                function getMarkdownList()
+                {
+                    return (progenitor.innerHTML) ? progenitor.innerHTML : null;
                 }
 
                 function getMarkupList()
@@ -103,18 +103,18 @@ let ceres = {};
                     return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
                 }
 
-                function getMarkdownImageListRetry(retry = 1, retryLimit = 50)
+                function getImageListRetry(retry = 1, retryLimit = 50)
                 {
                     if (trace) console.log(resource(notify, 'ListRetryAttempt', retry));
 
                     try
                     {
-                        let list = progenitor.innerHTML.length > 0 ? getMarkdownImageList() : getMarkupList();
+                        let list = progenitor.innerHTML.length > 0 ? getMarkdownList() : getMarkupList();
                         if (!list) throw 'ListNotFoundException';
 
                     } catch (ex) {
 
-                        if (retry != retryLimit) getMarkdownImageListRetry(++retry);
+                        if (retry != retryLimit) getImageListRetry(++retry);
                    }
 
                    return list;
