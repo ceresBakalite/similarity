@@ -4,7 +4,7 @@ let ceres = {};
     slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
     slideview.container = 'ceres-slideview';
     slideview.imagelist = 'ceres-csv';
-    slideview.delay = 500;
+    slideview.delayRender = 500;
 
     window.customElements.define(slideview.container, class extends HTMLElement
     {
@@ -28,7 +28,7 @@ let ceres = {};
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
-    slideview.slideViewer = function() { setTimeout(initiateSlideViewer, slideview.delay); };
+    slideview.slideViewer = function() { setTimeout(initiateSlideViewer, slideview.delayRender); };
 
     const notify = 1;
     const error = 99;
@@ -292,7 +292,7 @@ let ceres = {};
         getSlideViewer();
         displaySlide();
 
-        setTimeout(function() { setSlideViewerDisplay('block'); }, slideview.delay);
+        setTimeout(function() { setSlideViewerDisplay('block'); }, slideview.delayRender);
     }
 
     function displaySlide(targetIndex)
