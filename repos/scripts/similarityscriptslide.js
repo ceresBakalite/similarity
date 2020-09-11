@@ -12,6 +12,7 @@ let ceres = {};
         {
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
+            await this.renderComplete;
         }
 
     });
@@ -91,14 +92,7 @@ let ceres = {};
 
                     } else {
 
-                        let list = async connectedCallback()
-                        {
-                            let src = progenitor.getAttribute('src');
-                            progenitor.innerHTML = await fetch(src)).text();
-                            await progenitor.renderComplete;
-
-                            return getMarkdownImageListRetry();
-                        }
+                        return getMarkdownImageListRetry();
 
                     }
 
@@ -106,6 +100,9 @@ let ceres = {};
 
                 function getMarkdownImageListRetry(retry = 1, retryLimit = 500)
                 {
+                    let src = progenitor.getAttribute('src');
+                    progenitor.innerHTML = fetch(src)).text();
+
                     try
                     {
                         let list = getMarkdownImageList();
