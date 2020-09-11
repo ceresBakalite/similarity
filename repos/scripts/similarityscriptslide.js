@@ -153,7 +153,7 @@ let ceres = {};
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
             }
 
-            createSlideViewerPointerContainer();
+            if (ptr) createSlideViewerPointerContainer();
 
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
             composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL());
@@ -162,8 +162,6 @@ let ceres = {};
 
             function createSlideViewerPointerContainer()
             {
-                if (!ptr) return;
-
                 progenitor.appendChild(document.createElement('br'));
 
                 const pointerElement = document.createElement('div');
