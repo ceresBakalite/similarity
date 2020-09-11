@@ -325,7 +325,7 @@ let ceres = {};
 
     function establishProgenitorId()
     {
-        if (!document.getElementById(slideview.container)
+        if (!document.getElementById(slideview.container))
         {
             const attribute = document.createAttribute('id');
             attribute.value = slideview.container;
