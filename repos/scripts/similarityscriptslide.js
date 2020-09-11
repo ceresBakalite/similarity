@@ -179,48 +179,8 @@ let ceres = {};
         return lookup[token] || false;
     }
 
-    function testResource(type, name, str)
-    {
-        const notify1 = 1;
-        const error2 = 99;
-
-        let lookup = {
-
-            ${notify1}: function () {
-
-                const lookupNotify = {
-                    'NotifyOne': 'Test notify one string',
-                    'NotifyTwo': 'Test notify two string' + str
-                };
-
-                return lookupNotify[name] || 'An unexpected notification error has occurred';
-            },
-
-            ${error2}: function () {
-
-                const lookupError = {
-                    'ErrorOne': 'Test error one string',
-                    'ErrorTwo': 'Test error two string',
-                    'ErrorThree': 'Test error three string',
-                };
-
-                return lookupError[name] || 'An unexpected error has occurred';
-            }
-
-        };
-
-        return lookup[type]();
-    }
-
-
     function resource(type, name, str)
     {
-//        const typeNotify = 1;
-//        const typeError = 99;
-
-//        console.log(testResource(typeNotify, 'NotifyTwo', ' and more stuff'));
-//        console.log(testResource(typeError, 'ErrorTwo'));
-
         const newline = '\n';
 
         let lookup = {
