@@ -99,6 +99,12 @@ let ceres = {};
 
                 function getMarkdownImageListRetry(retry = 1, retryLimit = 500)
                 {
+                    async connectedCallback()
+                    {
+                        let src = progenitor.getAttribute('src');
+                        progenitor.innerHTML = await (await fetch(src)).text();
+                    }
+
                     try
                     {
                         let list = getMarkdownImageList();
