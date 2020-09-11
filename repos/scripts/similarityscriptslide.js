@@ -362,9 +362,9 @@ let ceres = {};
     function errorHandler(str)
     {
         const err = str + '. DateTime: ' + new Date().toLocaleString();
-
         console.log(err);
-        alert(err);
+
+        if (trace) alert(err);
 
         return null;
     }
