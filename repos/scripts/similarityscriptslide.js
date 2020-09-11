@@ -107,13 +107,8 @@ let ceres = {};
                 {
                     try
                     {
-                        let list = getMarkdownImageList();
-
-                        if (!list)
-                        {
-                            list = getMarkupList();
-                            if (!list) throw 'ListNotFoundException';
-                        }
+                        let list = progenitor.innerHTML.length > 0 ? getMarkdownImageList() : getMarkupList();
+                        if (!list) throw 'ListNotFoundException';
 
                     } catch (ex) {
 
