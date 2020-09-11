@@ -105,7 +105,7 @@ let ceres = {};
                     } catch (ex) {
 
                         if (trace) console.log(resource(notify, 'ListRetryAttempt', retry));
-                        if (retry != retryLimit) getImageListRetry(++retry);
+                        if (retry != retryLimit) getMarkdownImageListRetry(++retry);
                    }
 
                    return list;
