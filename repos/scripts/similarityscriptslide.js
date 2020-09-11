@@ -90,133 +90,6 @@ let ceres = {};
 
     }
 
-    function activateSlideViewer()
-    {
-        progenitor.style.display = 'none';
-
-        getSlideViewer();
-        displaySlide();
-
-        setTimeout(function() { setSlideViewerDisplay('block'); }, 250);
-    }
-
-    function displaySlide(targetIndex)
-    {
-        const slides = document.querySelectorAll(".slideview");
-        const pointers = document.querySelectorAll(".ptr");
-
-        index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
-
-        slides.forEach(node => { node.style.display = 'none';	} );
-        slides[index-1].style.display = 'block';
-
-        if (ptr)
-        {
-            pointers.forEach(node => { node.className = node.className.replace(' active', '');	} );
-            pointers[index-1].className += ' active';
-        }
-
-    }
-
-    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
-    {
-        const el = document.createElement(element);
-
-        el.id = id;
-        parent.appendChild(el);
-
-        if (classValue) composeAttribute(el.id, 'class', classValue);
-        if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
-        if (url) composeAttribute(el.id, 'src', url);
-
-        if (markup) document.getElementById(el.id).innerHTML = markup;
-    }
-
-    function composeAttribute(id, type, value)
-    {
-        const el = document.getElementById(id);
-
-        if (el)
-        {
-            const attribute = document.createAttribute(type);
-            attribute.value = value;
-
-            el.setAttributeNode(attribute);
-        }
-
-    }
-
-    function setSlideViewerDisplay(attribute)
-    {
-        const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, #' + slideview.container);
-        nodelist.forEach(node => { node.style.display = attribute; } );
-    }
-
-    function errorHandler(str)
-    {
-        const err = str + '. DateTime: ' + new Date().toLocaleString();
-
-        console.log(err);
-        alert(err);
-
-        return null;
-    }
-
-    function getBoolean(symbol)
-    {
-        let token = symbol.trim().toUpperCase();
-
-        if (!token) return false;
-
-        const lookup = {
-            'TRUE': true,
-            'T':  true,
-            'YES': true,
-            'Y': true,
-            '1': true
-        };
-
-        return lookup[token] || false;
-    }
-
-    function resource(type, name, str)
-    {
-        const newline = '\n';
-
-        switch (type)
-        {
-            case notify: return lookupNotify();
-            case error: return lookupError();
-            default: return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
-        }
-
-        function lookupNotify()
-        {
-            const lookup = {
-                'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
-                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
-                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
-                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
-                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
-                'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
-            };
-
-            return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
-        }
-
-        function lookupError()
-        {
-            const lookup = {
-                'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
-                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
-            };
-
-            return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' error notification is unresponsive';
-        }
-
-    }
-
     function getSlideViewer()
     {
         if (css) importSlideViewerStylesheet();
@@ -381,6 +254,133 @@ let ceres = {};
 
             }
 
+        }
+
+    }
+
+    function activateSlideViewer()
+    {
+        progenitor.style.display = 'none';
+
+        getSlideViewer();
+        displaySlide();
+
+        setTimeout(function() { setSlideViewerDisplay('block'); }, 500);
+    }
+
+    function displaySlide(targetIndex)
+    {
+        const slides = document.querySelectorAll(".slideview");
+        const pointers = document.querySelectorAll(".ptr");
+
+        index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
+
+        slides.forEach(node => { node.style.display = 'none';	} );
+        slides[index-1].style.display = 'block';
+
+        if (ptr)
+        {
+            pointers.forEach(node => { node.className = node.className.replace(' active', '');	} );
+            pointers[index-1].className += ' active';
+        }
+
+    }
+
+    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
+    {
+        const el = document.createElement(element);
+
+        el.id = id;
+        parent.appendChild(el);
+
+        if (classValue) composeAttribute(el.id, 'class', classValue);
+        if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
+        if (url) composeAttribute(el.id, 'src', url);
+
+        if (markup) document.getElementById(el.id).innerHTML = markup;
+    }
+
+    function composeAttribute(id, type, value)
+    {
+        const el = document.getElementById(id);
+
+        if (el)
+        {
+            const attribute = document.createAttribute(type);
+            attribute.value = value;
+
+            el.setAttributeNode(attribute);
+        }
+
+    }
+
+    function setSlideViewerDisplay(attribute)
+    {
+        const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, #' + slideview.container);
+        nodelist.forEach(node => { node.style.display = attribute; } );
+    }
+
+    function errorHandler(str)
+    {
+        const err = str + '. DateTime: ' + new Date().toLocaleString();
+
+        console.log(err);
+        alert(err);
+
+        return null;
+    }
+
+    function getBoolean(symbol)
+    {
+        let token = symbol.trim().toUpperCase();
+
+        if (!token) return false;
+
+        const lookup = {
+            'TRUE': true,
+            'T':  true,
+            'YES': true,
+            'Y': true,
+            '1': true
+        };
+
+        return lookup[token] || false;
+    }
+
+    function resource(type, name, str)
+    {
+        const newline = '\n';
+
+        switch (type)
+        {
+            case notify: return lookupNotify();
+            case error: return lookupError();
+            default: return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+        }
+
+        function lookupNotify()
+        {
+            const lookup = {
+                'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
+                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
+                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
+                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
+                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
+                'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
+                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
+            };
+
+            return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
+        }
+
+        function lookupError()
+        {
+            const lookup = {
+                'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
+                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
+            };
+
+            return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' error notification is unresponsive';
         }
 
     }
