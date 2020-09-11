@@ -45,6 +45,8 @@ let ceres = {};
         {
             if (progenitor)
             {
+                setProgenitorId();
+
                 trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : trace;
                 ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : ptr;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
@@ -317,6 +319,17 @@ let ceres = {};
         {
             pointers.forEach(node => { node.className = node.className.replace(' active', ''); } );
             pointers[index-1].className += ' active';
+        }
+
+    }
+
+    function setProgenitorId()
+    {
+        if (!document.getElementById(slideview.container) 
+        {
+            const attribute = document.createAttribute('id');
+            attribute.value = slideview.container;
+            progenitor.setAttributeNode(attribute);
         }
 
     }
