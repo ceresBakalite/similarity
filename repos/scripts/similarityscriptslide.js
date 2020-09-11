@@ -12,6 +12,7 @@ let ceres = {};
         {
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
+            await this.renderComplete;
         }
 
     });
@@ -91,11 +92,11 @@ let ceres = {};
 
                     } else {
 
-                        async connectedCallback()
-                        {
+                        //async connectedCallback()
+                        //{
                             let src = progenitor.getAttribute('src');
                             progenitor.innerHTML = await (await fetch(src)).text();
-                        }
+                        //}
 
                         return getMarkdownImageListRetry();
                     }
