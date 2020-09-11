@@ -24,7 +24,6 @@ let ceres = {};
     let css = true; // default element attribute - use the default slideview stylesheet
     let sur = true; // default element attribute - display slideview item surtitles
     let sub = true; // default element attribute - display slideview item subtitles
-    let alt = false; // default element attribute - display slideview item subtitles when hovering over an image
 
     let index = 1;
 
@@ -51,7 +50,6 @@ let ceres = {};
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : sub;
-                alt = (progenitor.getAttribute('alt')) ? getBoolean(progenitor.getAttribute('alt')) : alt;
 
                 const imageList = getImageList();
 
@@ -158,7 +156,7 @@ let ceres = {};
                 let progeny = document.getElementById(svcName);
 
                 if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null, null);
-                composeElement('img', imgName, null, progeny, null, 'ceres.openImageTab(this);', getURL(), getSubtitle())
+                composeElement('img', imgName, null, progeny, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null, null);
             }
 
@@ -211,7 +209,12 @@ let ceres = {};
 
             function getSubtitle()
             {
-                return (sub || alt) ? (arrayItem[1]) ? arrayItem[1].trim() : null : null;
+                return (sub) ? getAccessibilityText() : null;
+            }
+
+            function getAccessibilityText()
+            {
+                return (arrayItem[1]) ? arrayItem[1].trim() : null;
             }
 
         }
