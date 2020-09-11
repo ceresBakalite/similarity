@@ -8,7 +8,12 @@ let ceres = {};
 
     window.customElements.define(slideview.container, class extends HTMLElement
     {
-        progenitorCallback(this);
+        async connectedCallback()
+        {
+            let src = this.getAttribute('src');
+            this.innerHTML = await (await fetch(src)).text();
+        }
+
     });
 
     let progenitor = null; // parent slideview place holder
@@ -86,16 +91,19 @@ let ceres = {};
 
                     } else {
 
-                        return getMarkdownImageListRetry();
+                        async connectedCallback()
+                        {
+                            let src = progenitor.getAttribute('src');
+                            progenitor.innerHTML = await (await fetch(src)).text();
+                        }
 
+                        return getMarkdownImageListRetry();
                     }
 
                 }
 
                 function getMarkdownImageListRetry(retry = 1, retryLimit = 500)
                 {
-                    progenitorCallback(progenitor);
-
                     try
                     {
                         let list = getMarkdownImageList();
@@ -112,16 +120,6 @@ let ceres = {};
 
             }
 
-        }
-
-    }
-
-    function progenitorCallback(el)
-    {
-        async connectedCallback()
-        {
-            let src = el.getAttribute('src');
-            el.innerHTML = await (await fetch(src)).text();
         }
 
     }
