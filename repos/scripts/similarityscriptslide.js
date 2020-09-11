@@ -183,7 +183,7 @@ let ceres = {};
     {
         const newline = '\n';
 
-        let type = Number(type);
+        let category = Number(type);
 
         let lookup = {
 
@@ -214,7 +214,7 @@ let ceres = {};
 
         };
 
-        return lookup[type]();
+        return lookup[category]();
     }
 
     function getSlideViewer()
