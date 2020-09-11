@@ -100,8 +100,11 @@ let ceres = {};
 
                 function getMarkdownImageListRetry(retry = 1, retryLimit = 500)
                 {
-                    let src = progenitor.getAttribute('src');
-                    progenitor.innerHTML = fetch(src).text();
+                    if (progenitor.innerHTML.length == 0)
+                    {
+                        let src = progenitor.getAttribute('src');
+                        progenitor.innerHTML = fetch(src).text();
+                    }
 
                     try
                     {
