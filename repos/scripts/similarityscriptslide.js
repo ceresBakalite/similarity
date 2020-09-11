@@ -213,7 +213,7 @@ let ceres = {};
 
         };
 
-        return (lookup[type]);
+        return lookup[type];
 
         //return lookup[type](); || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
     }
