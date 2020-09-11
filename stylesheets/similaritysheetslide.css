@@ -14,7 +14,7 @@
 .slideview {
   display: none;
   /* cursor: zoom-in; */
-  cursor: pointer;
+  cursor: default;
 }
 
 .prev, .next {
