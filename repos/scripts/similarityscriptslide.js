@@ -95,7 +95,7 @@ let ceres = {};
 
                 }
 
-                function getImageList(retry = 1)
+                function getImageListRetry(retry = 1)
                 {
                     const retryLimit = 5;
 
