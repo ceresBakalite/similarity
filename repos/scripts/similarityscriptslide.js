@@ -29,8 +29,8 @@ let ceres = {};
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
     slideview.slideViewer = function() { setTimeout(initiateSlideViewer, 500); };
 
-    slideview.notify = 1;
-    slideview.error = 99;
+    const notify = 1;
+    const error = 99;
 
     function initiateSlideViewer()
     {
@@ -51,13 +51,13 @@ let ceres = {};
 
                 const imageList = getImageList();
 
-                if (trace) console.log(resource(slideview.notify, 'ImageListMarkup', imageList));
+                if (trace) console.log(resource(notify, 'ImageListMarkup', imageList));
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(slideview.error, 'NotFoundImageList'));
+                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(error, 'NotFoundImageList'));
 
             } else {
 
-                return errorHandler(resource(slideview.error, 'NotFoundProgenitor'));
+                return errorHandler(resource(error, 'NotFoundProgenitor'));
 
             }
 
@@ -80,7 +80,7 @@ let ceres = {};
                 function getMarkupImageList()
                 {
                     let list = (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
-                    if (list && trace) console.log(resource(slideview.notify, 'ListRetryAttempt'));
+                    if (list && trace) console.log(resource(notify, 'ListRetryAttempt'));
                     return list;
                 }
 
@@ -183,9 +183,11 @@ let ceres = {};
     {
         const newline = '\n';
 
+        let category = Number(type);
+
         let lookup = {
 
-            slideview.notify: function () {
+            notify: function () {
 
                 const lookupNotify = {
                     'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
@@ -200,7 +202,7 @@ let ceres = {};
                 return lookupNotify[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
             },
 
-            slideview.error: function () {
+            error;: function () {
 
                 const lookupError = {
                     'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
@@ -212,7 +214,7 @@ let ceres = {};
 
         };
 
-        return lookup[type]();
+        return lookup[category]();
     }
 
     function getSlideViewer()
@@ -281,7 +283,7 @@ let ceres = {};
 
                 progenitor.appendChild(document.createElement('br'));
 
-                if (trace) console.log(resource(slideview.notify, 'ProgenitorInnerHTML'));
+                if (trace) console.log(resource(notify, 'ProgenitorInnerHTML'));
 
                 function getClickEventValue(indexItem)
                 {
@@ -329,7 +331,7 @@ let ceres = {};
             {
                 link.onload = function ()
                 {
-                    if (trace) console.log(resource(slideview.notify, 'LinkOnload'));
+                    if (trace) console.log(resource(notify, 'LinkOnload'));
                 }
 
             }
@@ -340,7 +342,7 @@ let ceres = {};
                 {
                     link.addEventListener('load', function()
                     {
-                        if (trace) console.log(resource(slideview.notify, 'LinkAddEventListener'));
+                        if (trace) console.log(resource(notify, 'LinkAddEventListener'));
                     }, false);
 
                 }
@@ -356,7 +358,7 @@ let ceres = {};
                     if (document.styleSheets.length > cssnum)
                     {
                         clearInterval(ti);
-                        if (trace) console.log(resource(slideview.notify, 'LinkStylesheetCount'));
+                        if (trace) console.log(resource(notify, 'LinkStylesheetCount'));
                     }
 
                 }, 10);
@@ -372,7 +374,7 @@ let ceres = {};
                     if (state === 'loaded' || state === 'complete')
                     {
                         link.onreadystatechange = null;
-                        if (trace) console.log(resource(slideview.notify, 'LinkOnReadyState'));
+                        if (trace) console.log(resource(notify, 'LinkOnReadyState'));
                     }
 
                 };
