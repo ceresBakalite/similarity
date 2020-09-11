@@ -84,7 +84,7 @@ let ceres = {};
 
                     if (list)
                     {
-                        if (trace) console.log(resource(notify, 'ListCaughtInFallback'));
+                        if (trace) console.log(resource(notify, 'ListFallback'));
                         return list;
 
                     } else {
@@ -209,8 +209,6 @@ let ceres = {};
 
         function importSlideViewerStylesheet()
         {
-            if (!css) return;
-
             const link = document.createElement('link');
 
             link.rel = 'stylesheet';
@@ -300,12 +298,12 @@ let ceres = {};
 
         index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
 
-        slides.forEach(node => { node.style.display = 'none';	} );
+        slides.forEach(node => { node.style.display = 'none'; } );
         slides[index-1].style.display = 'block';
 
         if (ptr)
         {
-            pointers.forEach(node => { node.className = node.className.replace(' active', '');	} );
+            pointers.forEach(node => { node.className = node.className.replace(' active', ''); } );
             pointers[index-1].className += ' active';
         }
 
@@ -392,7 +390,7 @@ let ceres = {};
                 'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
                 'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
                 'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                'ListCaughtInFallback': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
+                'ListFallback': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
                 'ListRetryAttempt': 'Image list search retry attempt: ' + str
             };
 
