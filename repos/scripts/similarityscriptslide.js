@@ -20,9 +20,10 @@ let ceres = {};
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
     let ptr = true; // default element attribute - display slideview item pointers
-    let sub = true; // default element attribute - display slideview item subtitles
-    let sur = true; // default element attribute - display slideview item surtitles
     let css = true; // default element attribute - use the default slideview stylesheet
+    let sur = true; // default element attribute - display slideview item surtitles
+    let sub = true; // default element attribute - display slideview item subtitles
+    let alt = false; // default element attribute - display slideview item subtitles when hovering over an image
 
     let index = 1;
 
@@ -46,9 +47,10 @@ let ceres = {};
             {
                 trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : trace;
                 ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : ptr;
-                sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : sub;
-                sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : css;
+                sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
+                sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : sub;
+                alt = (progenitor.getAttribute('alt')) ? getBoolean(progenitor.getAttribute('alt')) : alt;
 
                 const imageList = getImageList();
 
@@ -144,19 +146,19 @@ let ceres = {};
                 let imgName = 'slideview-img' + qualifier;
                 let subName = 'slideview-sub' + qualifier;
 
-                composeElement('div', svcname, 'slideview fade', imageElement, null, null, null);
+                composeElement('div', svcname, 'slideview fade', imageElement, null, null, null, null);
 
                 let progeny = document.getElementById(svcname);
 
-                if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null);
-                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL())
-                if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null);
+                if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null, null);
+                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL(), getSubtitle())
+                if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null, null);
             }
 
             if (ptr) createSlideViewerPointerContainer();
 
-            composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL());
-            composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL());
+            composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
+            composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
             setSlideViewerDisplay('none');
 
@@ -176,7 +178,7 @@ let ceres = {};
                     let qualifier = item + 1;
                     let svpname = 'slideview-ptr' + qualifier;
 
-                    composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null);
+                    composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
                 }
 
                 progenitor.appendChild(document.createElement('br'));
@@ -309,7 +311,7 @@ let ceres = {};
 
     }
 
-    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url)
+    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url, hover)
     {
         const el = document.createElement(element);
 
@@ -319,6 +321,7 @@ let ceres = {};
         if (classValue) composeAttribute(el.id, 'class', classValue);
         if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
         if (url) composeAttribute(el.id, 'src', url);
+        if (alt) composeAttribute(el.id, 'alt', hover);
 
         if (markup) document.getElementById(el.id).innerHTML = markup;
     }
