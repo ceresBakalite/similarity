@@ -204,7 +204,7 @@ let ceres = {};
 
             function getSubtitle()
             {
-                return (sub) ? (arrayItem[1]) ? arrayItem[1].trim() : null : null;
+                return (sub || alt) ? (arrayItem[1]) ? arrayItem[1].trim() : null : null;
             }
 
         }
@@ -311,7 +311,7 @@ let ceres = {};
 
     }
 
-    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url, hover)
+    function composeElement(element, id, classValue, parent, markup, onClickEventValue, url, accessibility)
     {
         const el = document.createElement(element);
 
@@ -321,7 +321,7 @@ let ceres = {};
         if (classValue) composeAttribute(el.id, 'class', classValue);
         if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
         if (url) composeAttribute(el.id, 'src', url);
-        if (alt) composeAttribute(el.id, 'alt', hover);
+        if (alt) composeAttribute(el.id, 'alt', accessibility);
 
         if (markup) document.getElementById(el.id).innerHTML = markup;
     }
