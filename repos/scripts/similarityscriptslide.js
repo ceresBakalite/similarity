@@ -183,9 +183,9 @@ let ceres = {};
     {
         const newline = '\n';
 
-        let lookup = {
-
-             1: function () {
+        switch (type)
+        {
+            case notify:
 
                 const lookupNotify = {
                     'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
@@ -198,9 +198,8 @@ let ceres = {};
                 };
 
                 return lookupNotify[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
-            },
 
-            99: function () {
+            case error:
 
                 const lookupError = {
                     'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
@@ -208,11 +207,13 @@ let ceres = {};
                 };
 
                 return lookupError[name] || 'An unexpected error has occurred - ' + slideview.container + ' error notification is unresponsive';
-            }
 
-        };
+            default:
 
-        return lookup[type]();
+                return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+
+        }
+
     }
 
     function getSlideViewer()
