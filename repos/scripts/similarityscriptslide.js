@@ -94,7 +94,7 @@ let ceres = {};
                         connectedCallback()
                         {
                             let src = progenitor.getAttribute('src');
-                            progenitor.innerHTML = await (await fetch(src)).text();
+                            progenitor.innerHTML = await ( (await fetch(src)).text(); );
                             await progenitor.renderComplete;
                         }
 
