@@ -182,10 +182,11 @@ let ceres = {};
     function resource(type, name, str)
     {
         const newline = '\n';
+        var fn;
 
-        var lookup = function() {
+        var lookup = {
 
-            notify: function() {
+            notify: function () {
 
                 const lookupNotify = {
                     'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
@@ -197,23 +198,29 @@ let ceres = {};
                     'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
                 };
 
-                return lookupNotify[name] || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+                return lookupNotify[name];
             },
 
-            error: function() {
+            error: function () {
 
                 const lookupError = {
                     'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
                     'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
                 };
 
-                return lookupError[name] || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+                return lookupError[name];
+            },
+
+            default: function () {
+
+                return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
             }
 
         };
 
+        return (lookup[type]) ? lookup[type] : lookup['default'];
+
         //return lookup[type](); || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
-        return lookup[type]();
     }
 
     function getSlideViewer()
