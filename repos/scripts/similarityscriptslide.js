@@ -209,16 +209,11 @@ let ceres = {};
                 };
 
                 return lookupError[name];
-            },
-
-            default: function () {
-
-                return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
             }
 
         };
 
-        return (lookup[type]) ? lookup[type] : lookup['default'];
+        return (lookup[type]);
 
         //return lookup[type](); || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
     }
