@@ -183,7 +183,7 @@ let ceres = {};
     {
         const newline = '\n';
 
-        const lookup = {
+        var lookup = {
 
             notify: function() {
 
@@ -197,7 +197,7 @@ let ceres = {};
                     'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
                 };
 
-                return lookupNotify[name] || false;
+                return lookupNotify[name] || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
             },
 
             error: function() {
@@ -207,13 +207,13 @@ let ceres = {};
                     'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
                 };
 
-                return lookupError[name] || false;
+                return lookupError[name] || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
             }
 
         };
 
         //return lookup[type](); || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
-        return lookup[type];
+        return lookup[type]();
     }
 
     function getSlideViewer()
