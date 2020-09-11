@@ -182,9 +182,8 @@ let ceres = {};
     function resource(type, name, str)
     {
         const newline = '\n';
-        var fn;
 
-        var lookup = {
+        let lookup = {
 
             notify: function () {
 
@@ -213,7 +212,7 @@ let ceres = {};
 
         };
 
-        return lookup[type];
+        return lookup[type]();
 
         //return lookup[type](); || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
     }
