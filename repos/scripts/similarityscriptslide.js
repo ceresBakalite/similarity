@@ -148,17 +148,17 @@ let ceres = {};
                 var arrayItem = attributes[item].split(',');
                 let qualifier = item + 1;
 
-                let svcname = 'slideview' + qualifier;
+                let svcName = 'slideview' + qualifier;
                 let surName = 'slideview-sur' + qualifier;
                 let imgName = 'slideview-img' + qualifier;
                 let subName = 'slideview-sub' + qualifier;
 
-                composeElement('div', svcname, 'slideview fade', imageElement, null, null, null, null);
+                composeElement('div', svcName, 'slideview fade', imageElement, null, null, null, null);
 
-                let progeny = document.getElementById(svcname);
+                let progeny = document.getElementById(svcName);
 
                 if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null, null);
-                composeElement('img', imgName, null, progeny, 'ceres.openImageTab(this);', null, getURL(), getSubtitle())
+                composeElement('img', imgName, null, progeny, null, 'ceres.openImageTab(this);', getURL(), getSubtitle())
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null, null);
             }
 
