@@ -45,7 +45,7 @@ let ceres = {};
         {
             if (progenitor)
             {
-                setProgenitorId();
+                establishProgenitorId();
 
                 trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : trace;
                 ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : ptr;
@@ -323,9 +323,9 @@ let ceres = {};
 
     }
 
-    function setProgenitorId()
+    function establishProgenitorId()
     {
-        if (!document.getElementById(slideview.container) 
+        if (!document.getElementById(slideview.container)
         {
             const attribute = document.createAttribute('id');
             attribute.value = slideview.container;
