@@ -181,9 +181,12 @@ let ceres = {};
 
     function testResource(type, name, str)
     {
+        const notify1 = 1;
+        const error2 = 99;
+
         let lookup = {
 
-             1: function () {
+            notify1: function () {
 
                 const lookupNotify = {
                     'NotifyOne': 'Test notify one string',
@@ -193,7 +196,7 @@ let ceres = {};
                 return lookupNotify[name] || 'An unexpected notification error has occurred';
             },
 
-            99: function () {
+            error2: function () {
 
                 const lookupError = {
                     'ErrorOne': 'Test error one string',
@@ -215,7 +218,7 @@ let ceres = {};
         const typeNotify = 1;
         const typeError = 99;
 
-        console.log(testResource(typeNotify, 'NotifyTwo', ' add more stuff'));
+        console.log(testResource(typeNotify, 'NotifyTwo', ' and more stuff'));
         console.log(testResource(typeError, 'ErrorTwo'));
 
         const newline = '\n';
