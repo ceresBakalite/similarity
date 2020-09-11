@@ -179,16 +179,50 @@ let ceres = {};
         return lookup[token] || false;
     }
 
+    function testResource(type, name, str)
+    {
+        let lookup = {
+
+             1: function () {
+
+                const lookupNotify = {
+                    'NotifyOne': 'Test notify one string',
+                    'NotifyTwo': 'Test notify two string' + str
+                };
+
+                return lookupNotify[name] || 'An unexpected notification error has occurred';
+            },
+
+            99: function () {
+
+                const lookupError = {
+                    'ErrorOne': 'Test error one string',
+                    'ErrorTwo': 'Test error two string',
+                    'ErrorThree': 'Test error three string',
+                };
+
+                return lookupError[name] || 'An unexpected error has occurred';
+            }
+
+        };
+
+        return lookup[type]();
+    }
+
+
     function resource(type, name, str)
     {
-        const newline = '\n';
+        const typeNotify = 1;
+        const typeError = 99;
 
-        const test1 = 1;
-        const test2 = 99;
+        console.log(testResource(typeNotify, 'NotifyTwo', ' add more stuff'));
+        console.log(testResource(typeError, 'ErrorTwo'));
+
+        const newline = '\n';
 
         let lookup = {
 
-             test1: function () {
+             1: function () {
 
                 const lookupNotify = {
                     'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
@@ -203,7 +237,7 @@ let ceres = {};
                 return lookupNotify[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
             },
 
-            test2: function () {
+            99: function () {
 
                 const lookupError = {
                     'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
