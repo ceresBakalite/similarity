@@ -103,13 +103,13 @@ let ceres = {};
                     return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
                 }
 
-                function getImageListRetry(retry = 1, retryLimit = 50)
+                function getImageListRetry(retry = 1, retryLimit = 15)
                 {
                     if (trace) console.log(resource(notify, 'ListRetryAttempt', retry));
 
                     try
                     {
-                        let list = progenitor.innerHTML.length > 0 ? getMarkdownList() : getMarkupList();
+                        let list = getMarkdownList() ? getMarkdownList() : getMarkupList();
                         if (!list) throw 'ListNotFoundException';
 
                     } catch (ex) {
