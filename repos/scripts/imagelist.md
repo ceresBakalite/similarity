@@ -1,4 +1,4 @@
-<noscript id="ceres-csv">
+<ceres-csv id="ceres-csv">
 
     https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews01.png, image one
     https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews02.png, image two
@@ -9,4 +9,4 @@
     https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews07.png, image seven
     https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews08.png, image eight
 
-</noscript>
+</ceres-csv>

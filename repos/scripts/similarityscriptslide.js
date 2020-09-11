@@ -100,7 +100,8 @@ let ceres = {};
 
                 function getMarkupList()
                 {
-                    return (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
+                    let el = document.getElementById(slideview.imagelist) ? document.getElementById(slideview.imagelist) : document.getElementsByTagName(slideview.imagelist)[0];
+                    return (el) ? el.innerHTML : null;
                 }
 
                 function getImageListRetry(retry = 1, retryLimit = 15)
