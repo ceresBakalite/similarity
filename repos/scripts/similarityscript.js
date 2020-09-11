@@ -76,13 +76,13 @@ function onloadFrame(ms, md)
     function initialiseSlideViewer()
     {
         ceres.slideViewer();
-        displayFooter();
+        setTimeout(function(){ displayFooter(); }, 2000);
     }
 
     function asyncPullRequest(target)
     {
         displayFooter();
-        setTimeout(refreshMarkdown(target), 3000);
+        setTimeout(function(){ refreshMarkdown(target); }, 5000);
     }
 
     function refreshMarkdown(target)
