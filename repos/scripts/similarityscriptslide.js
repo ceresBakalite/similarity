@@ -98,20 +98,14 @@ let ceres = {};
 
                 }
 
-                async function callback()
+                function getMarkdownImageListRetry(retry = 1, retryLimit = 50)
                 {
-                    let src = progenitor.getAttribute('src');
-                    progenitor.innerHTML = await (await fetch(src)).text();
-                    await progenitor.renderComplete;
-                }
-
-                function getMarkdownImageListRetry(retry = 1, retryLimit = 500)
-                {
-                    if (progenitor.innerHTML.length == 0) callback();
-
                     try
                     {
                         let list = getMarkdownImageList();
+
+                        return (list) ? list : document.getElementById(slideview.imagelist) ? document.getElementById(slideview.imagelist).innerHTML : null : null;
+
                         if (!list) throw 'ListNotFoundException';
 
                     } catch (ex) {
