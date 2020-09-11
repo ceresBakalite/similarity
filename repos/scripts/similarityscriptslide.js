@@ -95,10 +95,8 @@ let ceres = {};
 
                 }
 
-                function getMarkdownImageListRetry(retry = 1)
+                function getMarkdownImageListRetry(retry = 1, retryLimit = 500)
                 {
-                    const retryLimit = 500;
-
                     try
                     {
                         let list = getMarkdownImageList();
