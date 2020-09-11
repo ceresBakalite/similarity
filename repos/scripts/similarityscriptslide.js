@@ -362,7 +362,7 @@ let ceres = {};
     {
         if (!document.getElementById(slideview.container))
         {
-            const attribute = document.createAttribute('id');
+            const attribute = (progenitor.id) ? progenitor.id : document.createAttribute('id');
             attribute.value = slideview.container;
             progenitor.setAttributeNode(attribute);
         }
