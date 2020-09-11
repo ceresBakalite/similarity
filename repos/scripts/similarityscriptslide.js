@@ -183,7 +183,7 @@ let ceres = {};
     {
         const newline = '\n';
 
-        var drinks = {
+        let lookup = {
 
             notify: function () {
 
@@ -212,8 +212,7 @@ let ceres = {};
 
         };
 
-        return drinks[type]();
-        //return lookup[type]();
+        return lookup.[type]();
 
         //return lookup[type](); || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
     }
