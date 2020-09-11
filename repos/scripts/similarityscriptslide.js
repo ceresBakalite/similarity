@@ -91,7 +91,7 @@ let ceres = {};
 
                     } else {
 
-                        async connectedCallback()
+                        let list = async connectedCallback()
                         {
                             let src = progenitor.getAttribute('src');
                             progenitor.innerHTML = await fetch(src)).text();
