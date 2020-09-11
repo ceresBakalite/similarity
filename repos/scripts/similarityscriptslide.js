@@ -163,10 +163,10 @@ let ceres = {};
                 if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null, null);
             }
 
-            if (ptr) createSlideViewerPointerContainer();
-
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
             composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
+
+            if (ptr) createSlideViewerPointerContainer();
 
             setSlideViewerDisplay('none');
 
