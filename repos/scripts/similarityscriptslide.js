@@ -29,8 +29,8 @@ let ceres = {};
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
     slideview.slideViewer = function() { setTimeout(initiateSlideViewer, 500); };
 
-    const notify = 1;
-    const error = 99;
+    slideview.notify = 1;
+    slideview.error = 99;
 
     function initiateSlideViewer()
     {
@@ -51,13 +51,13 @@ let ceres = {};
 
                 const imageList = getImageList();
 
-                if (trace) console.log(resource(notify, 'ImageListMarkup', imageList));
+                if (trace) console.log(resource(slideview.notify, 'ImageListMarkup', imageList));
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(error, 'NotFoundImageList'));
+                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(slideview.error, 'NotFoundImageList'));
 
             } else {
 
-                return errorHandler(resource(error, 'NotFoundProgenitor'));
+                return errorHandler(resource(slideview.error, 'NotFoundProgenitor'));
 
             }
 
@@ -80,7 +80,7 @@ let ceres = {};
                 function getMarkupImageList()
                 {
                     let list = (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
-                    if (list && trace) console.log(resource('notify', 'ListRetryAttempt'));
+                    if (list && trace) console.log(resource(slideview.notify, 'ListRetryAttempt'));
                     return list;
                 }
 
@@ -185,7 +185,7 @@ let ceres = {};
 
         let lookup = {
 
-            1: function () {
+            slideview.notify: function () {
 
                 const lookupNotify = {
                     'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
@@ -200,7 +200,7 @@ let ceres = {};
                 return lookupNotify[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
             },
 
-            99: function () {
+            slideview.error: function () {
 
                 const lookupError = {
                     'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
@@ -281,7 +281,7 @@ let ceres = {};
 
                 progenitor.appendChild(document.createElement('br'));
 
-                if (trace) console.log(resource(notify, 'ProgenitorInnerHTML'));
+                if (trace) console.log(resource(slideview.notify, 'ProgenitorInnerHTML'));
 
                 function getClickEventValue(indexItem)
                 {
@@ -329,7 +329,7 @@ let ceres = {};
             {
                 link.onload = function ()
                 {
-                    if (trace) console.log(resource(notify, 'LinkOnload'));
+                    if (trace) console.log(resource(slideview.notify, 'LinkOnload'));
                 }
 
             }
@@ -340,7 +340,7 @@ let ceres = {};
                 {
                     link.addEventListener('load', function()
                     {
-                        if (trace) console.log(resource(notify, 'LinkAddEventListener'));
+                        if (trace) console.log(resource(slideview.notify, 'LinkAddEventListener'));
                     }, false);
 
                 }
@@ -356,7 +356,7 @@ let ceres = {};
                     if (document.styleSheets.length > cssnum)
                     {
                         clearInterval(ti);
-                        if (trace) console.log(resource(notify, 'LinkStylesheetCount'));
+                        if (trace) console.log(resource(slideview.notify, 'LinkStylesheetCount'));
                     }
 
                 }, 10);
@@ -372,7 +372,7 @@ let ceres = {};
                     if (state === 'loaded' || state === 'complete')
                     {
                         link.onreadystatechange = null;
-                        if (trace) console.log(resource(notify, 'LinkOnReadyState'));
+                        if (trace) console.log(resource(slideview.notify, 'LinkOnReadyState'));
                     }
 
                 };
