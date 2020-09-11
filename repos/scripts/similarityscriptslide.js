@@ -98,13 +98,16 @@ let ceres = {};
 
                 }
 
+                async connectedCallback()
+                {
+                    let src = progenitor.getAttribute('src');
+                    progenitor.innerHTML = await (await fetch(src)).text();
+                    await progenitor.renderComplete;
+                }
+
                 function getMarkdownImageListRetry(retry = 1, retryLimit = 500)
                 {
-                    if (progenitor.innerHTML.length == 0)
-                    {
-                        let src = progenitor.getAttribute('src');
-                        progenitor.innerHTML = fetch(src).text();
-                    }
+                    if (progenitor.innerHTML.length == 0) connectedCallback();
 
                     try
                     {
