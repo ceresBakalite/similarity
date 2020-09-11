@@ -29,8 +29,8 @@ let ceres = {};
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
     slideview.slideViewer = function() { setTimeout(initiateSlideViewer, 500); };
 
-    const notify = 1;
-    const error = 99;
+    var notify = 1;
+    var error = 99;
 
     function initiateSlideViewer()
     {
