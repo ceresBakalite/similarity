@@ -183,12 +183,12 @@ let ceres = {};
     {
         const newline = '\n';
 
-        const notify = 1;
-        const error = 99;
+        const test1 = 1;
+        const test2 = 99;
 
         let lookup = {
 
-             notify: function () {
+             test1: function () {
 
                 const lookupNotify = {
                     'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
@@ -203,7 +203,7 @@ let ceres = {};
                 return lookupNotify[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
             },
 
-            error: function () {
+            test2: function () {
 
                 const lookupError = {
                     'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
