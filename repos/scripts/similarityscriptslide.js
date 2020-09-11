@@ -91,14 +91,15 @@ let ceres = {};
 
                     } else {
 
-                        connectedCallback()
+                        async connectedCallback()
                         {
                             let src = progenitor.getAttribute('src');
                             progenitor.innerHTML = await fetch(src)).text();
                             await progenitor.renderComplete;
+
+                            return getMarkdownImageListRetry();
                         }
 
-                        return getMarkdownImageListRetry();
                     }
 
                 }
