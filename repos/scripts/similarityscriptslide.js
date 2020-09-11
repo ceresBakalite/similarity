@@ -321,7 +321,7 @@ let ceres = {};
         if (classValue) composeAttribute(el.id, 'class', classValue);
         if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
         if (url) composeAttribute(el.id, 'src', url);
-        if (alt) composeAttribute(el.id, 'alt', accessibility);
+        if (accessibility) composeAttribute(el.id, 'alt', accessibility);
 
         if (markup) document.getElementById(el.id).innerHTML = markup;
     }
