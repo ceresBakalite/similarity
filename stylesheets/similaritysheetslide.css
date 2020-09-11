@@ -13,7 +13,8 @@
 
 .slideview {
   display: none;
-  cursor: zoom-in;
+  /* cursor: zoom-in; */
+  cursor: pointer;
 }
 
 .prev, .next {
