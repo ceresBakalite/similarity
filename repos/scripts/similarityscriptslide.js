@@ -29,6 +29,9 @@ let ceres = {};
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
     slideview.slideViewer = function() { setTimeout(initiateSlideViewer, 500); };
 
+    const notify = 1;
+    const error = 99;
+
     function initiateSlideViewer()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
