@@ -215,11 +215,11 @@ let ceres = {};
 
     function resource(type, name, str)
     {
-        const typeNotify = 1;
-        const typeError = 99;
+//        const typeNotify = 1;
+//        const typeError = 99;
 
-        console.log(testResource(typeNotify, 'NotifyTwo', ' and more stuff'));
-        console.log(testResource(typeError, 'ErrorTwo'));
+//        console.log(testResource(typeNotify, 'NotifyTwo', ' and more stuff'));
+//        console.log(testResource(typeError, 'ErrorTwo'));
 
         const newline = '\n';
 
