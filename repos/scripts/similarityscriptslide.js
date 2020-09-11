@@ -183,7 +183,7 @@ let ceres = {};
     {
         const newline = '\n';
 
-        var lookup = {
+        var lookup = function() {
 
             notify: function() {
 
