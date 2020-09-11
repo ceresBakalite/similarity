@@ -185,33 +185,34 @@ let ceres = {};
 
         switch (type)
         {
-            case notify:
+            case notify: return lookupNotification();
+            case error: return lookupError();
+            default: return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+        }
 
-                const lookupNotify = {
-                    'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
-                    'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
-                    'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
-                    'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
-                    'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
-                    'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                    'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
-                };
+        function lookupNotification()
+        {
+            const lookup = {
+                'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
+                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
+                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
+                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
+                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
+                'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
+                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
+            };
 
-                return lookupNotify[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
+            return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
+        }
 
-            case error:
+        function lookupError()
+        {
+            const lookup = {
+                'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
+                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
+            };
 
-                const lookupError = {
-                    'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
-                    'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
-                };
-
-                return lookupError[name] || 'An unexpected error has occurred - ' + slideview.container + ' error notification is unresponsive';
-
-            default:
-
-                return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
-
+            return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' error notification is unresponsive';
         }
 
     }
