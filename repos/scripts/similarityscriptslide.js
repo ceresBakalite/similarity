@@ -81,8 +81,36 @@ let ceres = {};
                 function getMarkupImageList()
                 {
                     let list = (document.getElementById(slideview.imagelist)) ? document.getElementById(slideview.imagelist).innerHTML : null;
-                    if (list && trace) console.log(resource(notify, 'ListRetryAttempt'));
-                    return list;
+
+                    if (list)
+                    {
+                        if (trace) console.log(resource(notify, 'ListCaughtInFallback'));
+                        return list;
+
+                    } else {
+
+                        return getImageListRetry();
+
+                    }
+
+                }
+
+                function getImageList(retry = 1)
+                {
+                    const retryLimit = 5;
+
+                    try
+                    {
+                        let list = getMarkdownImageList();
+                        if (!list) throw 'imageListNotFoundException';
+
+                    } catch (ex) {
+
+                        if (trace) console.log(resource(notify, 'ListRetryAttempt: ' + retry));
+                        if (retry != retryLimit)) getImageListRetry(++retry);
+                   }
+
+                   return list;
                 }
 
             }
@@ -368,7 +396,8 @@ let ceres = {};
                 'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
                 'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
                 'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                'ListRetryAttempt': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location'
+                'ListCaughtInFallback': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
+                'ListRetryAttempt': 'Image list search retry attempt: ' + str
             };
 
             return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
