@@ -89,13 +89,13 @@ let ceres = {};
 
                     } else {
 
-                        return getImageListRetry();
+                        return getMarkdownImageListRetry();
 
                     }
 
                 }
 
-                function getImageListRetry(retry = 1)
+                function getMarkdownImageListRetry(retry = 1)
                 {
                     const retryLimit = 500;
 
