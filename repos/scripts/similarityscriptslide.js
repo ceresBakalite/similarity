@@ -102,7 +102,7 @@ let ceres = {};
                     try
                     {
                         let list = getMarkdownImageList();
-                        if (!list) throw 'imageListNotFoundException';
+                        if (!list) throw 'ListNotFoundException';
 
                     } catch (ex) {
 
