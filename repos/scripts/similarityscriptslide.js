@@ -45,7 +45,7 @@ let ceres = {};
         {
             if (progenitor)
             {
-                establishProgenitorId();
+                setSlideViewerId();
 
                 trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : trace;
                 ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : ptr;
@@ -323,17 +323,6 @@ let ceres = {};
 
     }
 
-    function establishProgenitorId()
-    {
-        if (!document.getElementById(slideview.container))
-        {
-            const attribute = document.createAttribute('id');
-            attribute.value = slideview.container;
-            progenitor.setAttributeNode(attribute);
-        }
-
-    }
-
     function composeElement(element, id, classValue, parent, markup, onClickEventValue, url, accessibility)
     {
         const el = document.createElement(element);
@@ -367,6 +356,17 @@ let ceres = {};
     {
         const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, #' + slideview.container);
         nodelist.forEach(node => { node.style.display = attribute; } );
+    }
+
+    function setSlideViewerId()
+    {
+        if (!document.getElementById(slideview.container))
+        {
+            const attribute = document.createAttribute('id');
+            attribute.value = slideview.container;
+            progenitor.setAttributeNode(attribute);
+        }
+
     }
 
     function errorHandler(str)
