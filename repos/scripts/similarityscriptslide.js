@@ -185,12 +185,12 @@ let ceres = {};
 
         switch (type)
         {
-            case notify: return lookupNotification();
+            case notify: return lookupNotify();
             case error: return lookupError();
             default: return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
         }
 
-        function lookupNotification()
+        function lookupNotify()
         {
             const lookup = {
                 'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
