@@ -212,7 +212,8 @@ let ceres = {};
 
         };
 
-        return lookup[type]() || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+        //return lookup[type](); || 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+        return lookup[type]();
     }
 
     function getSlideViewer()
