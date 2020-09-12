@@ -50,7 +50,7 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 
 	For example:
 
-	[location]\similarity.exe "comparison one"  "comparison two"
+	[location]\similarity.exe "comparison one"  "comparison two" <span class="demphasis">(returns 88%)</span>
 
   If you wish to use the boolean parameters the only required argument other than the comparison strings is the MatchingAlgorithm attribute, otherwise the shell will not know what you are trying to do. The boolean attributes need to be in order but you don't need to use them all.  If you wish to make, for example, the fourth boolean argument (ReverseComparison) true, then you will need to let Similarity know what the preceding arguments are, otherwise it won't know which attribute you are referring to.
 
@@ -104,5 +104,9 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
   margin: 15px 0px 15px 0px;
   position: relative;
   z-index: -1;
+}
+
+.demphasis {
+  color: #8FBC8F;
 }
 </style>
