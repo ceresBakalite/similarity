@@ -129,7 +129,7 @@ function selectMarkdownDocument(md)
 
 function adjustHeaderDisplay()
 {
-    let pin = window.top.document.getElementById('pin-default').getAttribute('state');
+    let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
     let trigger = 25;
 
     if (pin == 'disabled')
@@ -157,7 +157,7 @@ function adjustHeaderDisplay()
 
 function resetPinState()
 {
-    let el = document.getElementById('pin-default');
+    let el = document.getElementById('pin-navbar');
 
     if (el.getAttribute('state') == 'enabled')
     {
