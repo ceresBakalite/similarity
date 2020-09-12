@@ -25,21 +25,18 @@ function onloadFrame(ms, md)
 {
     if (isValidSource(md))
     {
-        alert('0');
         invokeScrollEventListener();
-        alert('0.1');
-        
+
         const initialise = {
-            'index': function() { setTimeout(function() { alert('md: ' + md); asyncPullRequest('index-md'); }, ms); },
-            'shell': function() { setTimeout(function() { alert('md: ' + md); asyncPullRequest('shell-md'); }, ms); },
-            'repos': function() { setTimeout(function() { alert('md: ' + md); asyncPullRequest('repos-md'); }, ms); },
-            'slide': function() { setTimeout(function() { alert('hello'); initialiseSlideViewer(); }, ms); },
+            'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
+            'shell': function() { setTimeout(function() { asyncPullRequest('shell-md'); }, ms); },
+            'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); },
+            'slide': function() { setTimeout(function() { initialiseSlideViewer(); }, ms); },
         };
 
-        alert('0.2');
         initialise[md] || initialise['index'];
-        alert('0.3');
 
+alert('md: ' + md + ' - ' + ms);
 /*
         switch (md)
         {
