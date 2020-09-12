@@ -35,35 +35,6 @@ function onloadFrame(ms, md)
         };
 
         initialise[md]() || initialise['index']();
-
-/*
-
-alert('md: ' + md + ' - ' + ms);
-
-        switch (md)
-        {
-          case 'index':
-            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
-            break;
-
-          case 'shell':
-            setTimeout(function() { asyncPullRequest('shell-md'); }, ms);
-            break;
-
-          case 'repos':
-            setTimeout(function() { asyncPullRequest('repos-md'); }, ms);
-            break;
-
-          case 'slide':
-            setTimeout(function() { initialiseSlideViewer(); }, ms);
-            break;
-
-          default:
-            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
-            break;
-
-        }
-*/
     }
 
     function isValidSource(md)
@@ -88,7 +59,6 @@ alert('md: ' + md + ' - ' + ms);
 
     function initialiseSlideViewer()
     {
-        //ceres.slideViewer();
         displayFooter();
     }
 
