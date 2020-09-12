@@ -36,30 +36,31 @@ function onloadFrame(ms, md)
 
         initialise[md] || initialise['index'];
 
-//        switch (md)
-//        {
-//          case 'index':
-//            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
-//            break;
+/*
+        switch (md)
+        {
+          case 'index':
+            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
+            break;
 
-//          case 'shell':
-//            setTimeout(function() { asyncPullRequest('shell-md'); }, ms);
-//            break;
+          case 'shell':
+            setTimeout(function() { asyncPullRequest('shell-md'); }, ms);
+            break;
 
-//          case 'repos':
-//            setTimeout(function() { asyncPullRequest('repos-md'); }, ms);
-//            break;
+          case 'repos':
+            setTimeout(function() { asyncPullRequest('repos-md'); }, ms);
+            break;
 
-//          case 'slide':
-//            setTimeout(function() { initialiseSlideViewer(); }, ms);
-//            break;
+          case 'slide':
+            setTimeout(function() { initialiseSlideViewer(); }, ms);
+            break;
 
-//          default:
-//            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
-//            break;
+          default:
+            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
+            break;
 
-//        }
-
+        }
+*/
     }
 
     function isValidSource(md)
