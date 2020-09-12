@@ -147,8 +147,8 @@ let ceres = {};
             for (let item = 0; item < attributes.length; item++)
             {
                 var arrayItem = attributes[item].split(',');
-                let qualifier = item + 1;
 
+                let qualifier = item + 1;
                 let svcName = 'slideview' + qualifier;
                 let surName = 'slideview-sur' + qualifier;
                 let imgName = 'slideview-img' + qualifier;

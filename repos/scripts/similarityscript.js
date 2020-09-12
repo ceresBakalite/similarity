@@ -27,29 +27,38 @@ function onloadFrame(ms, md)
     {
         invokeScrollEventListener();
 
-        switch (md)
-        {
-          case 'index':
-            setTimeout(function(){ asyncPullRequest('index-md'); }, ms);
-            break;
+        const initialise = {
+            'index': function() { setTimeout(function(){ asyncPullRequest('index-md'); }, ms); },
+            'shell': function() { setTimeout(function(){ asyncPullRequest('shell-md'); }, ms); },
+            'repos': function() { setTimeout(function(){ asyncPullRequest('repos-md'); }, ms); },
+            'slide': function() { setTimeout(function(){ initialiseSlideViewer(); }, ms); }
+        };
 
-          case 'shell':
-            setTimeout(function(){ asyncPullRequest('shell-md'); }, ms);
-            break;
+        initialise[md];
 
-          case 'repos':
-            setTimeout(function(){ asyncPullRequest('repos-md'); }, ms);
-            break;
+        //switch (md)
+        //{
+          //case 'index':
+          //  setTimeout(function(){ asyncPullRequest('index-md'); }, ms);
+          //  break;
 
-          case 'slide':
-            setTimeout(function(){ initialiseSlideViewer(); }, ms);
-            break;
+          //case 'shell':
+            //setTimeout(function(){ asyncPullRequest('shell-md'); }, ms);
+            //break;
 
-          default:
-            setTimeout(function(){ asyncPullRequest('index-md'); }, ms);
-            break;
+          //case 'repos':
+            //setTimeout(function(){ asyncPullRequest('repos-md'); }, ms);
+            //break;
 
-        }
+          //case 'slide':
+            //setTimeout(function(){ initialiseSlideViewer(); }, ms);
+            //break;
+
+          //default:
+            //setTimeout(function(){ asyncPullRequest('index-md'); }, ms);
+            //break;
+
+        //}
 
     }
 
@@ -129,13 +138,12 @@ function selectMarkdownDocument(md)
 
 function adjustHeaderDisplay()
 {
+    let el = parent.document.getElementById('site-header-display');
     let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
     let trigger = 25;
 
     if (pin == 'disabled')
     {
-        var el = parent.document.getElementById('site-header-display');
-
         if (el.style.display && window.scrollY > trigger)
         {
             if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
@@ -200,7 +208,7 @@ function getCookie(cn)
         let dc = decodeURIComponent(document.cookie);
         let ca = dc.split(';');
 
-        for(var i = 0; i < ca.length; i++)
+        for(let i = 0; i < ca.length; i++)
         {
             let chr = ca[i];
 
