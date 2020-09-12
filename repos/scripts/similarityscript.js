@@ -28,34 +28,34 @@ function onloadFrame(ms, md)
         invokeScrollEventListener();
 
 //        const initialise = {
-//            'index': function() { setTimeout(function(){ asyncPullRequest('index-md'); }, ms); },
-//            'shell': function() { setTimeout(function(){ asyncPullRequest('shell-md'); }, ms); },
-//            'repos': function() { setTimeout(function(){ asyncPullRequest('repos-md'); }, ms); },
-//            'slide': function() { setTimeout(function(){ initialiseSlideViewer(); }, ms); }
+//            'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
+//            'shell': function() { setTimeout(function() { asyncPullRequest('shell-md'); }, ms); },
+//            'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); },
+//            'slide': function() { setTimeout(function() { initialiseSlideViewer(); }, ms); }
 //        };
 
-//        initialise[md];
+//        initialise[md] || initialise['index'];
 
         switch (md)
         {
           case 'index':
-            setTimeout(function(){ asyncPullRequest('index-md'); }, ms);
+            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
             break;
 
           case 'shell':
-            setTimeout(function(){ asyncPullRequest('shell-md'); }, ms);
+            setTimeout(function() { asyncPullRequest('shell-md'); }, ms);
             break;
 
           case 'repos':
-            setTimeout(function(){ asyncPullRequest('repos-md'); }, ms);
+            setTimeout(function() { asyncPullRequest('repos-md'); }, ms);
             break;
 
           case 'slide':
-            setTimeout(function(){ initialiseSlideViewer(); }, ms);
+            setTimeout(function() { initialiseSlideViewer(); }, ms);
             break;
 
           default:
-            setTimeout(function(){ asyncPullRequest('index-md'); }, ms);
+            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
             break;
 
         }
@@ -73,7 +73,7 @@ function onloadFrame(ms, md)
 
     function invokeScrollEventListener()
     {
-        window.onscroll = function(){ adjustHeaderDisplay(); };
+        window.onscroll = function() { adjustHeaderDisplay(); };
     }
 
     function displayFooter()
@@ -85,13 +85,13 @@ function onloadFrame(ms, md)
     function initialiseSlideViewer()
     {
         ceres.slideViewer();
-        setTimeout(function(){ displayFooter(); }, 2000);
+        setTimeout(function() { displayFooter(); }, 2000);
     }
 
     function asyncPullRequest(target)
     {
         displayFooter();
-        setTimeout(function(){ refreshMarkdown(target); }, 5000);
+        setTimeout(function() { refreshMarkdown(target); }, 5000);
     }
 
     function refreshMarkdown(target)
