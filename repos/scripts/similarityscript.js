@@ -63,9 +63,9 @@ alert('md: ' + md + ' - ' + ms);
             break;
 
         }
-
-    }
 */
+    }
+
     function isValidSource(md)
     {
         if (parent.document.getElementById('primary-container')) return true;
