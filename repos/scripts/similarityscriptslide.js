@@ -5,7 +5,7 @@ let ceres = {};
     slideview.container = 'ceres-slideview';
     slideview.imagelist = 'ceres-csv';
     slideview.renderdelay = 500;
-
+alert('2');
     window.customElements.define(slideview.container, class extends HTMLElement
     {
         async connectedCallback()
