@@ -25,7 +25,9 @@ function onloadFrame(ms, md)
 {
     if (isValidSource(md))
     {
+        alert('0');
         invokeScrollEventListener();
+        alert('0.1');
 
         const initialise = {
             'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
@@ -34,7 +36,9 @@ function onloadFrame(ms, md)
             'slide': function() { setTimeout(function() { initialiseSlideViewer(); }, ms); }
         };
 
+        alert('0.2');
         initialise[md] || initialise['index'];
+        alert('0.3');
 
 /*
         switch (md)
