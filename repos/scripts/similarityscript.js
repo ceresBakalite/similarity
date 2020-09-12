@@ -26,7 +26,7 @@ function onloadFrame(ms, md)
     if (isValidSource(md))
     {
         invokeScrollEventListener();
-
+/*
         const initialise = {
             'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
             'shell': function() { setTimeout(function() { asyncPullRequest('shell-md'); }, ms); },
@@ -37,7 +37,7 @@ function onloadFrame(ms, md)
         initialise[md] || initialise['index'];
 
 alert('md: ' + md + ' - ' + ms);
-/*
+*/
         switch (md)
         {
           case 'index':
@@ -61,7 +61,7 @@ alert('md: ' + md + ' - ' + ms);
             break;
 
         }
-*/
+
     }
 
     function isValidSource(md)
