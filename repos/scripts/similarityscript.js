@@ -86,7 +86,7 @@ alert('md: ' + md + ' - ' + ms);
 
     function initialiseSlideViewer()
     {
-        ceres.slideViewer();
+        //ceres.slideViewer();
         setTimeout(function() { displayFooter(); }, 2000);
     }
 

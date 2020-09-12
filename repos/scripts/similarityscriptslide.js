@@ -34,6 +34,8 @@ let ceres = {};
     const notify = 1;
     const error = 99;
 
+    slideview.slideViewer();
+
     function initiateSlideViewer()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
