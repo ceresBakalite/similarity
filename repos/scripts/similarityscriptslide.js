@@ -72,13 +72,13 @@ let ceres = {};
 
             function getImageList()
             {
-                let list = getMarkdownList();
+                const list = getMarkdownList();
 
                 return (list) ? list : lookAgain();
 
                 function lookAgain()
                 {
-                    let list = getMarkupList();
+                    const list = getMarkupList();
 
                     if (list)
                     {
@@ -100,7 +100,7 @@ let ceres = {};
 
                 function getMarkupList()
                 {
-                    let el = document.getElementById(slideview.imagelist) ? document.getElementById(slideview.imagelist) : document.getElementsByTagName('noscript')[0];
+                    const el = document.getElementById(slideview.imagelist) ? document.getElementById(slideview.imagelist) : document.getElementsByTagName('noscript')[0];
                     return (el) ? el.innerHTML : null;
                 }
 
@@ -110,7 +110,7 @@ let ceres = {};
 
                     try
                     {
-                        let list = getMarkdownList() ? getMarkdownList() : getMarkupList();
+                        const list = getMarkdownList() ? getMarkdownList() : getMarkupList();
                         if (!list) throw 'ListNotFoundException';
 
                     } catch (ex) {
@@ -264,7 +264,7 @@ let ceres = {};
             {
                 const cssnum = document.styleSheets.length;
 
-                var ti = setInterval(function()
+                const ti = setInterval(function()
                 {
                     if (document.styleSheets.length > cssnum)
                     {
@@ -335,7 +335,6 @@ let ceres = {};
         if (onClickEventValue) composeAttribute(el.id, 'onclick', onClickEventValue);
         if (url) composeAttribute(el.id, 'src', url);
         if (accessibility) composeAttribute(el.id, 'alt', accessibility);
-
         if (markup) document.getElementById(el.id).innerHTML = markup;
     }
 
@@ -371,7 +370,7 @@ let ceres = {};
 
     function getBoolean(symbol)
     {
-        let token = symbol.trim().toUpperCase();
+        const token = symbol.trim().toUpperCase();
 
         if (!token) return false;
 
