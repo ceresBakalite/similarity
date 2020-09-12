@@ -28,6 +28,7 @@ function onloadFrame(ms, md)
         alert('0');
         invokeScrollEventListener();
         alert('0.1');
+        alert('md:' + md);
 
         const initialise = {
             'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
