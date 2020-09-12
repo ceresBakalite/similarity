@@ -31,7 +31,7 @@ function onloadFrame(ms, md)
             'index': function() { setTimeout(function(){ asyncPullRequest('index-md'); }, ms); },
             'shell': function() { setTimeout(function(){ asyncPullRequest('shell-md'); }, ms); },
             'repos': function() { setTimeout(function(){ asyncPullRequest('repos-md'); }, ms); },
-            'slide': function() { setTimeout(function(){ initialiseSlideViewer(); }, ms); }
+            'slide': function() { setTimeout(function(){ initialiseSlideViewer(); }, ms); },
         };
 
         initialise[md];
