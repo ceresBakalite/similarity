@@ -34,7 +34,7 @@ function onloadFrame(ms, md)
             'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); },
         };
 
-        initialise[md] || initialise['index'];
+        initialise[md]() || initialise['index']();
 
 /*
 
