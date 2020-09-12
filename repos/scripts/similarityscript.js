@@ -11,9 +11,28 @@ window.customElements.define('include-directive', class extends HTMLElement
 function getQueryString()
 {
     const urlParams = new URLSearchParams(window.location.search);
-    const mdd = urlParams.get('mdd')
+    const md = urlParams.get('mdd')
 
-    if (mdd) selectMarkdownDocument(mdd);
+    if (md) getMarkdownDocument();
+
+    function getMarkdownLocation()
+    {
+       const lookup = {
+           'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
+           'shell': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
+           'slide': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
+           'repos': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html'
+       };
+
+       return lookup[md] || 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html';
+    }
+
+    function getMarkdownDocument()
+    {
+        document.getElementById('frame-container').setAttribute('src', getMarkdownLocation(md));
+        document.getElementById(md).blur();
+    }
+
 }
 
 function onloadPrimary()
@@ -31,7 +50,7 @@ function onloadFrame(ms, md)
             'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
             'shell': function() { setTimeout(function() { asyncPullRequest('shell-md'); }, ms); },
             'slide': function() { setTimeout(function() { initialiseSlideViewer(); }, ms); },
-            'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); },
+            'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); }
         };
 
         initialise[md]() || initialise['index']();
@@ -72,40 +91,6 @@ function onloadFrame(ms, md)
     {
         let el = (document.getElementById(target)) ? document.getElementById(target) : document.getElementsByTagName('zero-md')[0];
         if (el) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
-    }
-
-}
-
-function selectMarkdownDocument(md)
-{
-    switch (md)
-    {
-        case 'index':
-          getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
-          break;
-
-        case 'shell':
-          getMarkdownDocument('shell', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html');
-          break;
-
-        case 'repos':
-          getMarkdownDocument('repos', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html');
-          break;
-
-        case 'slide':
-          getMarkdownDocument('slide', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html');
-          break;
-
-        default:
-          getMarkdownDocument('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
-          break;
-
-    }
-
-    function getMarkdownDocument(id, target)
-    {
-        document.getElementById('frame-container').setAttribute('src', target);
-        document.getElementById(id).blur();
     }
 
 }
