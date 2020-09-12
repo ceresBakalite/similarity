@@ -29,7 +29,7 @@ let ceres = {};
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
-    slideview.slideViewer = function() { setTimeout(initiateSlideViewer, slideview.renderdelay / 2); };
+    slideview.slideViewer = function() { setTimeout(initiateSlideViewer, slideview.renderdelay); };
 
     const notify = 1;
     const error = 99;
@@ -305,7 +305,7 @@ let ceres = {};
         getSlideViewer();
         displaySlide();
 
-        setTimeout(function() { setSlideViewerDisplay('block'); }, slideview.renderdelay);
+        setTimeout(function() { setSlideViewerDisplay('block'); }, slideview.renderdelay / 2);
     }
 
     function displaySlide(targetIndex)
