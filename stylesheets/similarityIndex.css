@@ -89,3 +89,7 @@ body {
   height: 13px;
   padding: 5px 15px 0px 15px;
 }
+
+.pin-navbar {
+  cursor:pointer;
+}

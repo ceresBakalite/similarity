@@ -37,10 +37,6 @@ body {
   z-index: -1;
 }
 
-.pin-navbar {
-  cursor:pointer;
-}
-
 .footer-content {
   display: none;
 }
