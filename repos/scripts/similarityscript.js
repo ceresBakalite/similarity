@@ -27,38 +27,38 @@ function onloadFrame(ms, md)
     {
         invokeScrollEventListener();
 
-//        const initialise = {
-//            'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
-//            'shell': function() { setTimeout(function() { asyncPullRequest('shell-md'); }, ms); },
-//            'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); },
-//            'slide': function() { setTimeout(function() { initialiseSlideViewer(); }, ms); }
-//        };
+        const initialise = {
+            'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
+            'shell': function() { setTimeout(function() { asyncPullRequest('shell-md'); }, ms); },
+            'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); },
+            'slide': function() { setTimeout(function() { initialiseSlideViewer(); }, ms); }
+        };
 
-//        initialise[md] || initialise['index'];
+        initialise[md] || initialise['index'];
 
-        switch (md)
-        {
-          case 'index':
-            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
-            break;
+//        switch (md)
+//        {
+//          case 'index':
+//            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
+//            break;
 
-          case 'shell':
-            setTimeout(function() { asyncPullRequest('shell-md'); }, ms);
-            break;
+//          case 'shell':
+//            setTimeout(function() { asyncPullRequest('shell-md'); }, ms);
+//            break;
 
-          case 'repos':
-            setTimeout(function() { asyncPullRequest('repos-md'); }, ms);
-            break;
+//          case 'repos':
+//            setTimeout(function() { asyncPullRequest('repos-md'); }, ms);
+//            break;
 
-          case 'slide':
-            setTimeout(function() { initialiseSlideViewer(); }, ms);
-            break;
+//          case 'slide':
+//            setTimeout(function() { initialiseSlideViewer(); }, ms);
+//            break;
 
-          default:
-            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
-            break;
+//          default:
+//            setTimeout(function() { asyncPullRequest('index-md'); }, ms);
+//            break;
 
-        }
+//        }
 
     }
 
@@ -84,6 +84,7 @@ function onloadFrame(ms, md)
 
     function initialiseSlideViewer()
     {
+        alert('1');
         ceres.slideViewer();
         setTimeout(function() { displayFooter(); }, 2000);
     }
