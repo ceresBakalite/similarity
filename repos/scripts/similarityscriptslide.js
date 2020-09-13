@@ -22,12 +22,6 @@ let ceres = {};
     const notify = 1; // console notification type
     const error = 99; // console notification type
 
-    const testresource =
-    {
-        testnotify: 1,
-        testerror: 99
-    };
-
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
@@ -401,31 +395,26 @@ let ceres = {};
         return lookup[token] || false;
     }
 
-
-    function test(type)
-    {
-        alert(type);
-
-        const lookup = {
-            [notify]: 'testnotify found',
-            [error]: 'testerror found'
-        };
-
-        return lookup[type] || 'lost';
-
-    }
-
     function resource(type, name, str)
     {
         const newline = '\n';
 
+        const lookup = {
+            [notify]: function() { lookupNotify(); },
+            [error]: function() { lookupError(); },
+            default: 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive'
+        };
+
+        return lookup[type]() || lookup['default'];
+
+/*
         switch (type)
         {
             case notify: return lookupNotify();
             case error: return lookupError();
             default: return 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive';
         }
-
+*/
         function lookupNotify()
         {
             const lookup = {
