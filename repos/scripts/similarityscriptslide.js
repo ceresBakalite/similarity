@@ -94,8 +94,8 @@ let ceres = {};
             function getImageList()
             {
                 const list = getMarkdownList();
-finalAttempt();
-                //return (list) ? list : lookAgain();
+
+                return (list) ? list : lookAgain();
 
                 function lookAgain()
                 {
@@ -140,7 +140,8 @@ finalAttempt();
                         if (retry != retryLimit) getImageListRetry(++retry);
                    }
 
-                   return list;
+                   finalAttempt();
+                   //return list;
                 }
 
                 function finalAttempt()
