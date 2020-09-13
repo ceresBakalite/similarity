@@ -108,9 +108,7 @@ let ceres = {};
 
                     } else {
 
-                        //importSlideViewScript();
-                        location.reload();
-                        //return getImageListRetry();
+                        return getImageListRetry() || location.reload();
                     }
 
                 }
@@ -367,48 +365,9 @@ let ceres = {};
 
     }
 
-    function importSlideViewScript()
-    {
-        const src = parent.document.getElementById('ceres-svc').getAttribute('src');
-
-        alert(src);
-
-        const el = document.querySelector('script[src="' + src + '"]');
-        if (el) document.head.removeChild(el);
-
-        const script = document.createElement('script');
-
-        script.type = 'text/javascript';
-        script.src = src + Date.now();
-
-        document.head.appendChild(script);
-
-    }
-
     function loadSlideView()
     {
-        setSourceFileName();
         setTimeout(initiateSlideView, constants.renderdelay);
-    };
-
-    function setSourceFileName()
-    {
-        const scripts = document.getElementsByTagName('script');
-        const lastScript = scripts[scripts.length-1];
-        const value = lastScript.src;
-        const id = 'ceres-svc';
-        const type = 'src';
-
-        if (!parent.document.getElementById(id))
-        {
-            const el = parent.document.createElement('div');
-            el.id = id;
-            parent.document.body.appendChild(el);
-        }
-
-        const attribute = parent.document.createAttribute(type);
-        attribute.value = value;
-        parent.document.getElementById(id).setAttributeNode(attribute);
     };
 
     function activateSlideView()
