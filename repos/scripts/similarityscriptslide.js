@@ -401,7 +401,7 @@ let ceres = {};
         {
             el = parent.document.createElement('div');
             el.id = id;
-            el.body.appendChild(el);
+            parent.document.body.appendChild(el);
         }
 
         composeAttribute(el, id, scriptName)
