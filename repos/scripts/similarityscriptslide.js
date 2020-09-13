@@ -395,13 +395,13 @@ let ceres = {};
         const scriptName = lastScript.src;
         const id = 'ceres-svc';
 
-        let el = window.top.document.getElementById(id) ? window.top.document.getElementById(id) : null;
+        let el = parent.document.getElementById(id) ? parent.document.getElementById(id) : null;
 
         if (!el)
         {
-            el = window.top.document.createElement(el);
+            el = document.createElement(el);
             el.id = id;
-            window.top.document.appendChild(el);
+            el.body.appendChild(el);
         }
 
         composeAttribute(el, id, scriptName)
