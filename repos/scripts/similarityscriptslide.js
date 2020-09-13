@@ -366,7 +366,7 @@ let ceres = {};
 
     function errorHandler(str)
     {
-        const err = str + '[ DateTime: ' + new Date().toLocaleString() + ' ]';
+        const err = str + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
         console.log(err);
 
         if (trace) alert(err);
