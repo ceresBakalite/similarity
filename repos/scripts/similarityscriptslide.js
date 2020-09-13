@@ -394,6 +394,7 @@ let ceres = {};
         const lastScript = scripts[scripts.length-1];
         const scriptName = lastScript.src;
         const id = 'ceres-svc';
+        const attribute = 'src';
 
         let el = parent.document.getElementById(id) ? parent.document.getElementById(id) : null;
 
@@ -404,9 +405,9 @@ let ceres = {};
             parent.document.body.appendChild(el);
         }
 
-        composeAttribute(el, id, scriptName)
+        composeAttribute(el, attribute, scriptName)
 
-        alert("loading: " + parent.document.getElementById(id).src);
+        alert("loading: " + parent.document.getElementById(id).getAttribute(attribute);
 
     };
 
