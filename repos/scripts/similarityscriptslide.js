@@ -384,7 +384,7 @@ let ceres = {};
 */
     function loadSlideView()
     {
-        //setSourceFileName();
+        setSourceFileName();
         setTimeout(initiateSlideView, constants.renderdelay);
     };
 
@@ -404,7 +404,7 @@ let ceres = {};
         composeAttribute(el, elName, scriptName)
 
         alert("loading: " + window.top.document.getElementById(elName).src);
-*/
+
     };
 
     function activateSlideView()
