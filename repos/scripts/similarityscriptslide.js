@@ -154,19 +154,21 @@ let ceres = {};
             {
                 var arrayItem = attributes[item].split(',');
 
-                let qualifier = item + 1;
-                let svcName = 'slideview' + qualifier;
-                let surName = 'slideview-sur' + qualifier;
-                let imgName = 'slideview-img' + qualifier;
-                let subName = 'slideview-sub' + qualifier;
+                let offspring = {
+                    'qualifier' : item + 1;
+                    'svcName': 'slideview' + qualifier;
+                    'surName': 'slideview-sur' + qualifier;
+                    'imgName': 'slideview-img' + qualifier;
+                    'subName': 'slideview-sub' + qualifier;
+                };
 
-                composeElement('div', svcName, 'slideview fade', imageElement, null, null, null, null);
+                composeElement('div', offspring.svcName, 'slideview fade', imageElement, null, null, null, null);
 
                 let progeny = document.getElementById(svcName);
 
-                if (sur) composeElement('div', surName, 'surtitle', progeny, getSurtitle(qualifier), null, null, null);
-                composeElement('img', imgName, null, progeny, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (sub) composeElement('div', subName, 'subtitle', progeny, getSubtitle(), null, null, null);
+                if (sur) composeElement('div', offspring.surName, 'surtitle', progeny, getSurtitle(qualifier), null, null, null);
+                composeElement('img', offspring.imgName, null, progeny, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+                if (sub) composeElement('div', offspring.subName, 'subtitle', progeny, getSubtitle(), null, null, null);
             }
 
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
