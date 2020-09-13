@@ -392,9 +392,9 @@ let ceres = {};
     {
         const scripts = document.getElementsByTagName('script');
         const lastScript = scripts[scripts.length-1];
-        const scriptName = lastScript.src;
+        const value = lastScript.src;
         const id = 'ceres-svc';
-        const attribute = 'src';
+        const type = 'src';
 
         let el = parent.document.getElementById(id) ? parent.document.getElementById(id) : null;
 
@@ -405,9 +405,14 @@ let ceres = {};
             parent.document.body.appendChild(el);
         }
 
-        composeAttribute(el, attribute, scriptName)
+        el = parent.document.getElementById(id);
+        const attribute = parent.document.createAttribute(type);
+        attribute.value = value;
 
-        alert("loading: " + parent.document.getElementById(id).getAttribute(attribute));
+        el.setAttributeNode(attribute);
+
+
+        alert("loading: " + el.getAttribute(type));
 
     };
 
