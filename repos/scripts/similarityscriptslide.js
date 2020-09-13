@@ -24,6 +24,8 @@ let ceres = {};
         'error': 99 // console notification type
     };
 
+    Object.freeze(constants);
+
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
