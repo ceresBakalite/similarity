@@ -1,7 +1,10 @@
 let ceres = {};
 (function(slideview)
 {
-    window.customElements.define(slideview.container, class extends HTMLElement
+    slideview.HTMLSlideViewElement = 'ceres-slideview'; // required element name and id
+    slideview.HTMLImageListElement = 'ceres-csv'; // optional markup noscript tag id when bypassing src file download
+
+    window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -12,14 +15,10 @@ let ceres = {};
 
     });
 
-    slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
-    slideview.container = 'ceres-slideview';
-    slideview.imagelist = 'ceres-csv';
-    slideview.renderdelay = 500;
+    slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
+    slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };  // public method reference
 
-    slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
-    slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
-
+    const renderdelay = 500; // onload setTimeout period in ms
     const notify = 1; // console notification type
     const error = 99; // console notification type
 
@@ -36,7 +35,7 @@ let ceres = {};
 
     function initiateSlideView()
     {
-        progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
+        progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
         attributes = getSlideViewAttributes();
 
         if (attributes) activateSlideView();
@@ -45,7 +44,7 @@ let ceres = {};
         {
             if (progenitor)
             {
-                progenitor.id = slideview.container;
+                progenitor.id = slideview.HTMLSlideViewElement;
 
                 trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : trace;
                 ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : ptr;
@@ -100,7 +99,7 @@ let ceres = {};
 
                 function getMarkupList()
                 {
-                    const el = document.getElementById(slideview.imagelist) ? document.getElementById(slideview.imagelist) : document.getElementsByTagName('noscript')[0];
+                    const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                     return (el) ? el.innerHTML : null;
                 }
 
@@ -139,7 +138,7 @@ let ceres = {};
 
             const imageElement = document.createElement('div');
 
-            imageElement.id = slideview.container + '-image-container';
+            imageElement.id = slideview.HTMLSlideViewElement + '-image-container';
             progenitor.appendChild(imageElement);
 
             composeAttribute(imageElement.id, 'class', 'slideview-image-container');
@@ -176,7 +175,7 @@ let ceres = {};
 
                 const pointerElement = document.createElement('div');
 
-                pointerElement.id = slideview.container + '-pointer-container';
+                pointerElement.id = slideview.HTMLSlideViewElement + '-pointer-container';
                 progenitor.appendChild(pointerElement);
 
                 composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
@@ -224,11 +223,12 @@ let ceres = {};
 
         function importSlideViewStylesheet()
         {
+            const defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
             const link = document.createElement('link');
 
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = slideview.defaultStylesheet;
+            link.href = defaultCSS;
             link.as = 'style';
 
             onloadListener();
@@ -360,7 +360,7 @@ let ceres = {};
 
     function setSlideViewDisplay(attribute)
     {
-        const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, #' + slideview.container);
+        const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, #' + slideview.HTMLSlideViewElement);
         nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
@@ -399,21 +399,21 @@ let ceres = {};
         {
             case notify: return lookupNotify();
             case error: return lookupError();
-            default: return 'An unexpected error has occurred - ' + slideview.container + ' is unresponsive';
+            default: return 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive';
         }
 
         function lookupNotify()
         {
             const lookup = {
-                'LinkOnload': 'Link default stylesheet insert [' + slideview.container + ']: onload listener',
-                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.container + ']: addEventListener',
-                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.container + ']: styleSheets.length increment',
-                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.container + ']: onreadystatechange event',
-                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
-                'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
-                'ListFallback': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
+                'LinkOnload': 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
+                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
+                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
+                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event',
+                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + progenitor.innerHTML,
+                'ImageListMarkup': 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
+                'ListFallback': 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
                 'ListRetryAttempt': 'Image list search retry attempt: ' + str,
-                'default': 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive'
+                'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
             return lookup[name] || lookup['default'];
@@ -422,9 +422,9 @@ let ceres = {};
         function lookupError()
         {
             const lookup = {
-                'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
-                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element',
-                'default': 'An unexpected error has occurred - ' + slideview.container + ' error notification is unresponsive'
+                'NotFoundImageList': 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
+                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
+                'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
 
             return lookup[name] || lookup['default'];
