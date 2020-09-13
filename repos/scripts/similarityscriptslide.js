@@ -18,16 +18,10 @@ let ceres = {};
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };  // public method reference
 
-    const renderdelay = 500; // onload setTimeout period in ms
-    const notify = 1; // console notification type
-    const error = 99; // console notification type
-
     const constants = {
-
         'renderdelay': 500, // onload setTimeout period in ms
         'notify': 1, // console notification type
         'error': 99 // console notification type
-
     };
 
     let progenitor = null; // parent slideview place holder
