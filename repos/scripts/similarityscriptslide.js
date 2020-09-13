@@ -1,6 +1,8 @@
 let ceres = {};
 (function(slideview)
 {
+    'use strict';
+    
     slideview.HTMLSlideViewElement = 'ceres-slideview'; // required public element name and id
     slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
 
