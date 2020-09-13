@@ -41,7 +41,7 @@ function onloadPrimary()
     getQueryString();
 }
 
-function onloadFrame(ms, mu)
+function onloadFrame(mu, ms)
 {
     if (isValidSource(mu))
     {
@@ -55,7 +55,7 @@ function onloadFrame(ms, mu)
             'default': function() { setTimeout(function() { asyncPullMarkdownRequest('index-md'); }, ms); }
         };
 
-        initialise[md]() || initialise['default']();
+        initialise[mu]() || initialise['default']();
     }
 
     function isValidSource(mu)
