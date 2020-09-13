@@ -8,6 +8,7 @@ window.customElements.define('include-directive', class extends HTMLElement
 
 });
 
+/*
 function getQueryString()
 {
     const urlParams = new URLSearchParams(window.location.search);
@@ -15,14 +16,20 @@ function getQueryString()
 
     if (mdd) selectMarkdownDocument(mdd);
 }
+*/
 
-/*
 function getQueryString()
 {
     const urlParams = new URLSearchParams(window.location.search);
     const md = urlParams.get('mdd')
 
-    if (md) getMarkdownDocument();
+    if (md) getMarkdownDocument(md);
+}
+
+function getMarkdownDocument(md)
+{
+    document.getElementById('frame-container').setAttribute('src', getMarkdownLocation());
+    document.getElementById(md).blur();
 
     function getMarkdownLocation()
     {
@@ -36,14 +43,7 @@ function getQueryString()
        return lookup[md] || 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html';
     }
 
-    function getMarkdownDocument()
-    {
-        document.getElementById('frame-container').setAttribute('src', getMarkdownLocation(md));
-        document.getElementById(md).blur();
-    }
-
 }
-*/
 
 function onloadPrimary()
 {
