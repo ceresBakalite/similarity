@@ -108,7 +108,8 @@ let ceres = {};
 
                     } else {
 
-                        importSlideViewScript();
+                        //importSlideViewScript();
+                        location.reload();
                         //return getImageListRetry();
                     }
 
