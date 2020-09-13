@@ -390,13 +390,12 @@ let ceres = {};
 
     function setSourceFileName()
     {
-        var scripts = document.getElementsByTagName('script');
-        var lastScript = scripts[scripts.length-1];
-        var scriptName = lastScript.src;
+        const scripts = document.getElementsByTagName('script');
+        const lastScript = scripts[scripts.length-1];
+        const scriptName = lastScript.src;
 
-        let id = 'ceres-svc';
-
-        let el = window.top.document.getElementById(id) ? window.top.document.getElementById(id) : null;
+        const id = 'ceres-svc';
+        const el = window.top.document.getElementById(id) ? window.top.document.getElementById(id) : null;
 
         if (!el)
         {
@@ -407,7 +406,7 @@ let ceres = {};
 
         composeAttribute(el, id, scriptName)
 
-        alert("loading: " + window.top.document.getElementById(id).src);
+        alert("loading: " + el.getElementById(id).src);
 
     };
 
