@@ -153,18 +153,10 @@ finalAttempt();
 
                     function returnStatus(status)
                     {
-                      if ( status === 200 )
-                      {
-                        alert('file exists!');
-
-                      } else {
-
-                        alert('file does not exist! status: ' + status);
-                      }
-
+                      if ( status === 200 ) location.reload();
                     }
 
-                    //if (progenitor.getAttribute('src').length > 0) location.reload();
+                    return null;
                 }
 
             }
