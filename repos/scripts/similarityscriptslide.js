@@ -30,16 +30,16 @@ let ceres = {};
     Object.freeze(constants);
 
     const manifest = {
-        'LinkOnload': 1,
-        'LinkAddEventListener': 2,
-        'LinkStylesheetCount': 3,
-        'LinkOnReadyState': 4,
-        'ProgenitorInnerHTML': 5,
-        'ImageListMarkup': 6,
-        'ListFallback': 7,
-        'ListRetryAttempt': 8,
-        'NotFoundImageList': 9,
-        'NotFoundProgenitor': 10
+        'LinkOnload': 100,
+        'LinkAddEventListener': 101,
+        'LinkStylesheetCount': 102,
+        'LinkOnReadyState': 103,
+        'ProgenitorInnerHTML': 104,
+        'ImageListMarkup': 105,
+        'ListFallback': 106,
+        'ListRetryAttempt': 107,
+        'NotFoundImageList': 108,
+        'NotFoundProgenitor': 109
     };
 
     Object.freeze(manifest);
