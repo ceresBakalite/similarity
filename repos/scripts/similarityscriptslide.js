@@ -35,14 +35,14 @@ let ceres = {};
 
     loadSlideView();
 
-    function initiateSlideViewer()
+    function initiateSlideView()
     {
         progenitor = (document.getElementById(slideview.container)) ? document.getElementById(slideview.container) : document.getElementsByTagName(slideview.container)[0];
-        attributes = getSlideViewerAttributes();
+        attributes = getSlideViewAttributes();
 
-        if (attributes) activateSlideViewer();
+        if (attributes) activateSlideView();
 
-        function getSlideViewerAttributes()
+        function getSlideViewAttributes()
         {
             if (progenitor)
             {
@@ -128,13 +128,13 @@ let ceres = {};
 
     }
 
-    function getSlideViewer()
+    function getSlideView()
     {
-        if (css) importSlideViewerStylesheet();
+        if (css) importSlideViewStylesheet();
 
-        createSlideViewerContainer();
+        createSlideViewContainer();
 
-        function createSlideViewerContainer()
+        function createSlideViewContainer()
         {
             progenitor.innerHTML = null;
 
@@ -167,11 +167,11 @@ let ceres = {};
             composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
             composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
-            if (ptr) createSlideViewerPointerContainer();
+            if (ptr) createSlideViewPointerContainer();
 
-            setSlideViewerDisplay('none');
+            setSlideViewDisplay('none');
 
-            function createSlideViewerPointerContainer()
+            function createSlideViewPointerContainer()
             {
                 progenitor.appendChild(document.createElement('br'));
 
@@ -223,7 +223,7 @@ let ceres = {};
 
         }
 
-        function importSlideViewerStylesheet()
+        function importSlideViewStylesheet()
         {
             const link = document.createElement('link');
 
@@ -345,21 +345,21 @@ let ceres = {};
 
     function loadSlideView()
     {
-        setTimeout(initiateSlideViewer, slideview.renderdelay);
+        setTimeout(initiateSlideView, slideview.renderdelay);
     };
 
-    function activateSlideViewer()
+    function activateSlideView()
     {
         progenitor.style.display = 'none';
 
-        getSlideViewer();
+        getSlideView();
         displaySlide();
 
-        setTimeout(function() { setSlideViewerDisplay('block'); }, slideview.renderdelay / 2);
+        setTimeout(function() { setSlideViewDisplay('block'); }, slideview.renderdelay / 2);
     }
 
 
-    function setSlideViewerDisplay(attribute)
+    function setSlideViewDisplay(attribute)
     {
         const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, #' + slideview.container);
         nodelist.forEach(node => { node.style.display = attribute; } );
