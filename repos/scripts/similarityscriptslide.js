@@ -155,21 +155,21 @@ let ceres = {};
                 var arrayItem = attributes[item].split(',');
 
                 let qualifier = item + 1;
-                let slideViewContainerName = 'slideview' + qualifier;
+                let slideViewContainerId = 'slideview' + qualifier;
 
-                let slideViewContainerElements = {
+                let slideViewContainerElement = {
                     'surName': 'slideview-sur' + qualifier,
                     'imgName': 'slideview-img' + qualifier,
                     'subName': 'slideview-sub' + qualifier
                 };
 
-                composeElement('div', slideViewContainerName, 'slideview fade', imageContainer, null, null, null, null);
+                composeElement('div', slideViewContainerId, 'slideview fade', imageContainer, null, null, null, null);
 
-                let slideViewContainer = document.getElementById(slideViewContainerName);
+                let slideViewContainer = document.getElementById(slideViewContainerId);
 
-                if (sur) composeElement('div', slideViewContainerElements.surName, 'surtitle', slideViewContainer, getSurtitle(qualifier), null, null, null);
-                composeElement('img', slideViewContainerElements.imgName, null, slideViewContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (sub) composeElement('div', slideViewContainerElements.subName, 'subtitle', slideViewContainer, getSubtitle(), null, null, null);
+                if (sur) composeElement('div', slideViewContainerElement.surName, 'surtitle', slideViewContainer, getSurtitle(qualifier), null, null, null);
+                composeElement('img', slideViewContainerElement.imgName, null, slideViewContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+                if (sub) composeElement('div', slideViewContainerElement.subName, 'subtitle', slideViewContainer, getSubtitle(), null, null, null);
             }
 
             composeElement('a', 'slideview-prev', 'prev', imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
