@@ -22,6 +22,7 @@ let ceres = {};
 
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
+        'defaultJS': 'https://ceresbakalite.github.io/similarity/repos/scripts/similarityscriptslide.js', // the default slideview javascript
         'renderdelay': 500, // onload setTimeout period in ms
         'notify': 1, // console notification type
         'error': 99 // console notification type
@@ -52,6 +53,12 @@ let ceres = {};
     let sur = true; // default element attribute - display slideview item surtitles
     let sub = true; // default element attribute - display slideview item subtitles
     let index = 1; // pointer referencing to the currently active slide
+
+    var scripts = document.getElementsByTagName('script');
+    var lastScript = scripts[scripts.length-1];
+    var scriptName = lastScript.src;
+
+    alert("loading: " + scriptName);
 
     loadSlideView();
 
@@ -366,6 +373,22 @@ let ceres = {};
 
     }
 
+/*
+    function importSlideViewScript()
+    {
+        //let n = str.indexOf("/similarityscriptslide.js");
+        const el = document.querySelector('script[src="' + constants.defaultJS + '"]');
+        if (el) document.head.removeChild(el);
+
+        const script = document.createElement('script');
+
+        script.type = 'text/javascript';
+        script.src = constants.defaultJS + Date.now();
+
+        document.head.appendChild(script);
+
+    }
+*/
     function loadSlideView()
     {
         setTimeout(initiateSlideView, constants.renderdelay);

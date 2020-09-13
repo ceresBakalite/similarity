@@ -91,7 +91,7 @@ function onloadFrame(mu, ms)
         function refreshMarkdown()
         {
             let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
-            if (el) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
+            if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
         }
 
     }
