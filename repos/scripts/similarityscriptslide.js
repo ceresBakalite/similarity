@@ -2,7 +2,7 @@ let ceres = {};
 (function(slideview)
 {
     'use strict';
-    
+
     slideview.HTMLSlideViewElement = 'ceres-slideview'; // required public element name and id
     slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
 
@@ -21,6 +21,7 @@ let ceres = {};
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };  // public method reference
 
     const constants = {
+        'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
         'renderdelay': 500, // onload setTimeout period in ms
         'notify': 1, // console notification type
         'error': 99 // console notification type
@@ -229,12 +230,11 @@ let ceres = {};
 
         function importSlideViewStylesheet()
         {
-            const defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
             const link = document.createElement('link');
 
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = defaultCSS;
+            link.href = constants.defaultCSS;
             link.as = 'style';
 
             onloadListener();
