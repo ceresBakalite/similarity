@@ -384,7 +384,7 @@ let ceres = {};
 */
     function loadSlideView()
     {
-        setSourceFileName();
+//        setSourceFileName();
         setTimeout(initiateSlideView, constants.renderdelay);
     };
 
