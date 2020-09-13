@@ -54,12 +54,6 @@ let ceres = {};
     let sub = true; // default element attribute - display slideview item subtitles
     let index = 1; // pointer referencing to the currently active slide
 
-    var scripts = document.getElementsByTagName('script');
-    var lastScript = scripts[scripts.length-1];
-    var scriptName = lastScript.src;
-
-    alert("loading: " + scriptName);
-
     loadSlideView();
 
     function initiateSlideView()
@@ -391,7 +385,17 @@ let ceres = {};
 */
     function loadSlideView()
     {
+        setSourceFileName();
         setTimeout(initiateSlideView, constants.renderdelay);
+    };
+
+    function setSourceFileName()
+    {
+        let el = window.top.getElementById('ceresbakalite');
+        if (!el) composeElement('div', 'ceresbakalite', null, 'window.top.document.body', null, null, null, null);
+        composeAttribute(el, 'scsrc', document.getElementsByTagName('script')[scripts.length-1].src)
+
+        alert("loading: " + el.src);
     };
 
     function activateSlideView()
