@@ -39,7 +39,9 @@ let ceres = {};
         'ListFallback': 106,
         'ListRetryAttempt': 107,
         'NotFoundImageList': 108,
-        'NotFoundProgenitor': 109
+        'NotFoundProgenitor': 109,
+        'NotFoundCSSDefault': 110,
+        'NotFoundProgenitorSrc': 111
     };
 
     Object.freeze(manifest);
@@ -93,7 +95,11 @@ let ceres = {};
 
             function getImageList()
             {
-                if (!importFileExists(importFileExists(progenitor.getAttribute('src')) return;
+                if (!importFileExists(progenitor.getAttribute('src')))
+                {
+                    console.log(resource(constants.error, manifest.NotFoundProgenitorSrc, imageList));
+                    return null;
+                }
 
                 const list = getMarkdownList();
 
@@ -263,7 +269,11 @@ let ceres = {};
 
         function importSlideViewStylesheet()
         {
-            if (!importFileExists(constants.defaultCSS) return;
+            if (!importFileExists(constants.defaultCSS))
+            {
+                if (trace) console.log(resource(constants.error, manifest.NotFoundCSSDefault));
+                return;
+            }
 
             const link = document.createElement('link');
 
@@ -466,6 +476,8 @@ let ceres = {};
             const lookup = {
                 [manifest.NotFoundImageList]: 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
+                [manifest.NotFoundCSSDefault]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' default CSS file',
+                [manifest.NotFoundProgenitorSrc]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' source file',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
 
