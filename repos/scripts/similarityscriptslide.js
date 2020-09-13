@@ -155,7 +155,7 @@ let ceres = {};
                 var arrayItem = attributes[item].split(',');
 
                 let qualifier = item + 1;
-                let progeny = 'slideview' + qualifier;
+                let secondChild = 'slideview' + qualifier;
 
                 let thirdChildren = {
                     'surName': 'slideview-sur' + qualifier,
@@ -163,9 +163,9 @@ let ceres = {};
                     'subName': 'slideview-sub' + qualifier
                 };
 
-                composeElement('div', progeny, 'slideview fade', firstChild, null, null, null, null);
+                composeElement('div', secondChild, 'slideview fade', firstChild, null, null, null, null);
 
-                let secondChild = document.getElementById(progeny);
+                //let secondChild = document.getElementById(progeny);
 
                 if (sur) composeElement('div', thirdChildren.surName, 'surtitle', secondChild, getSurtitle(qualifier), null, null, null);
                 composeElement('img', thirdChildren.imgName, null, secondChild, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
