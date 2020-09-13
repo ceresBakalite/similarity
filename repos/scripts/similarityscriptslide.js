@@ -154,8 +154,9 @@ let ceres = {};
             {
                 var arrayItem = attributes[item].split(',');
 
+                let qualifier = item + 1;
+
                 let offspring = {
-                    'qualifier' : item + 1,
                     'svcName': 'slideview' + qualifier,
                     'surName': 'slideview-sur' + qualifier,
                     'imgName': 'slideview-img' + qualifier,
