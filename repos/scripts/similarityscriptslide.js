@@ -24,8 +24,8 @@ let ceres = {};
 
     const testresource =
     {
-        testnotify: true,
-        testerror: true
+        testnotify: 1,
+        testerror: 99
     };
 
     let progenitor = null; // parent slideview place holder
