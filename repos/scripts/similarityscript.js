@@ -43,7 +43,7 @@ function onloadPrimary()
 
 function onloadFrame(mu, ms)
 {
-    if (isValidSource(mu))
+    if (isValidSource())
     {
         invokeScrollEventListener();
 
@@ -58,7 +58,7 @@ function onloadFrame(mu, ms)
         initialise[mu]() || initialise['default']();
     }
 
-    function isValidSource(mu)
+    function isValidSource()
     {
         if (parent.document.getElementById('ceresbakalite')) return true;
 
@@ -86,13 +86,14 @@ function onloadFrame(mu, ms)
     function asyncPullMarkdownRequest(md)
     {
         displayFooter();
-        setTimeout(function() { refreshMarkdown(md); }, 5000);
-    }
+        setTimeout(function() { refreshMarkdown(); }, 5000);
 
-    function refreshMarkdown(md)
-    {
-        let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
-        if (el) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
+        function refreshMarkdown()
+        {
+            let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
+            if (el) el.setAttribute('src', el.getAttribute('src') + '?' + getRandomInteger());
+        }
+
     }
 
 }
