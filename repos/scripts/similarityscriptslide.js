@@ -398,7 +398,7 @@ let ceres = {};
 
         if (!parent.document.getElementById(id))
         {
-            el = parent.document.createElement('div');
+            let el = parent.document.createElement('div');
             el.id = id;
             parent.document.body.appendChild(el);
         }
