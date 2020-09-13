@@ -399,7 +399,7 @@ let ceres = {};
 
         let el = window.top.document.getElementById(elName) ? window.top.document.getElementById(elName) : null;
 
-        if (!el) composeElement('div', elName, null, 'window.top.document.body', null, null, null, null);
+        if (!el) composeElement('div', elName, null, window.top.document.body, null, null, null, null);
 
         composeAttribute(el, elName, scriptName)
 
