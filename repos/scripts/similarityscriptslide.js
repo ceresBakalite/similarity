@@ -22,7 +22,6 @@ let ceres = {};
 
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
-        'defaultJS': 'https://ceresbakalite.github.io/similarity/repos/scripts/similarityscriptslide.js', // the default slideview javascript
         'renderdelay': 500, // onload setTimeout period in ms
         'notify': 1, // console notification type
         'error': 99 // console notification type
@@ -395,15 +394,16 @@ let ceres = {};
         var lastScript = scripts[scripts.length-1];
         var scriptName = lastScript.src;
 
-/*
         alert("scriptName: " + scriptName);
+        let elName = 'ceres-svc';
 
-        let el = window.top.document.getElementById('ceresbakalite');
-        if (!el) composeElement('div', 'ceresbakalite', null, 'window.top.document.body', null, null, null, null);
+        let el = window.top.document.getElementById(elName) ? window.top.document.getElementById(elName) : null;
 
-        composeAttribute(el, 'scsrc', scriptName)
+        if (!el) composeElement('div', elName, null, 'window.top.document.body', null, null, null, null);
 
-        alert("loading: " + el.src);
+        composeAttribute(el, elName, scriptName)
+
+        alert("loading: " + window.top.document.getElementById(elName).src);
 */
     };
 

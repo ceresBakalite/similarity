@@ -60,7 +60,7 @@ function onloadFrame(mu, ms)
 
     function isValidSource()
     {
-        if (parent.document.getElementById('ceresbakalite')) return true;
+        if (window.top.document.getElementById('ceresbakalite')) return true;
 
         window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + mu;
 
@@ -100,7 +100,7 @@ function onloadFrame(mu, ms)
 
 function adjustHeaderDisplay()
 {
-    let el = parent.document.getElementById('site-header-display');
+    let el = window.top.document.getElementById('site-header-display');
     let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
     let trigger = 25;
 
