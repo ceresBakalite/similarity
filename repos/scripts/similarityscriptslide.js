@@ -1,8 +1,8 @@
 let ceres = {};
 (function(slideview)
 {
-    slideview.HTMLSlideViewElement = 'ceres-slideview'; // required element name and id
-    slideview.HTMLImageListElement = 'ceres-csv'; // optional markup noscript tag id when bypassing src file download
+    slideview.HTMLSlideViewElement = 'ceres-slideview'; // required public element name and id
+    slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
 
     window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
@@ -29,7 +29,7 @@ let ceres = {};
     let css = true; // default element attribute - use the default slideview stylesheet
     let sur = true; // default element attribute - display slideview item surtitles
     let sub = true; // default element attribute - display slideview item subtitles
-    let index = 1; // referes to the currently active slide
+    let index = 1; // pointer referencing to the currently active slide
 
     loadSlideView();
 
