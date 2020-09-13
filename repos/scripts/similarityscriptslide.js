@@ -22,6 +22,12 @@ let ceres = {};
     const notify = 1; // console notification type
     const error = 99; // console notification type
 
+    const testresource =
+    {
+        testnotify: true,
+        testerror: true
+    };
+
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
@@ -30,6 +36,9 @@ let ceres = {};
     let sur = true; // default element attribute - display slideview item surtitles
     let sub = true; // default element attribute - display slideview item subtitles
     let index = 1; // pointer referencing to the currently active slide
+
+    alert('testnotify: ' + testresource.testnotify);
+
 
     loadSlideView();
 
@@ -391,6 +400,18 @@ let ceres = {};
         return lookup[token] || false;
     }
 
+/*
+    function test(type)
+    {
+        const lookup = {
+            resourcetype.testnotify: 'testnotify found',
+            resourcetype.testerror: 'testerror found'
+        };
+
+        return lookup[type] || 'lost';
+
+    }
+*/
     function resource(type, name, str)
     {
         const newline = '\n';
