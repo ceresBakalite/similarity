@@ -145,7 +145,7 @@ let ceres = {};
 
             const firstChild = document.createElement('div');
 
-            imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
+            firstChild.id = slideview.HTMLSlideViewElement + '-image-container';
             progenitor.appendChild(firstChild);
 
             composeAttribute(firstChild.id, 'class', 'slideview-image-container');
@@ -163,7 +163,7 @@ let ceres = {};
                     'subName': 'slideview-sub' + qualifier
                 };
 
-                composeElement('div', secondChild, 'slideview fade', imageContainer, null, null, null, null);
+                composeElement('div', secondChild, 'slideview fade', firstChild, null, null, null, null);
 
                 let secondChild = document.getElementById(progeny);
 
