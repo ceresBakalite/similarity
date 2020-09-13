@@ -108,8 +108,8 @@ let ceres = {};
 
                     } else {
 
-                        return getImageListRetry();
-
+                        importSlideViewScript();
+                        //return getImageListRetry();
                     }
 
                 }
@@ -136,6 +136,7 @@ let ceres = {};
 
                     } catch (ex) {
 
+                        //alert(parent.document.getElementById('ceres-svc').getAttribute('src'));
                         if (retry != retryLimit) getImageListRetry(++retry);
                    }
 
@@ -366,25 +367,27 @@ let ceres = {};
 
     }
 
-/*
     function importSlideViewScript()
     {
-        //let n = str.indexOf("/similarityscriptslide.js");
-        const el = document.querySelector('script[src="' + constants.defaultJS + '"]');
+        const src = parent.document.getElementById('ceres-svc').getAttribute('src');
+
+        alert(src);
+
+        const el = document.querySelector('script[src="' + src + '"]');
         if (el) document.head.removeChild(el);
 
         const script = document.createElement('script');
 
         script.type = 'text/javascript';
-        script.src = constants.defaultJS + Date.now();
+        script.src = src + Date.now();
 
         document.head.appendChild(script);
 
     }
-*/
+
     function loadSlideView()
     {
-//        setSourceFileName();
+        setSourceFileName();
         setTimeout(initiateSlideView, constants.renderdelay);
     };
 
@@ -406,8 +409,6 @@ let ceres = {};
         const attribute = parent.document.createAttribute(type);
         attribute.value = value;
         parent.document.getElementById(id).setAttributeNode(attribute);
-
-        alert(parent.document.getElementById('ceres-svc').getAttribute('src'));
     };
 
     function activateSlideView()
