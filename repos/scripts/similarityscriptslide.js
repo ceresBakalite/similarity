@@ -29,6 +29,21 @@ let ceres = {};
 
     Object.freeze(constants);
 
+    const manifest = {
+        'LinkOnload': 1,
+        'LinkAddEventListener': 2,
+        'LinkStylesheetCount': 3,
+        'LinkOnReadyState': 4,
+        'ProgenitorInnerHTML': 5,
+        'ImageListMarkup': 6,
+        'ListFallback': 7,
+        'ListRetryAttempt': 8,
+        'NotFoundImageList': 9,
+        'NotFoundProgenitor': 10
+    };
+
+    Object.freeze(manifest);
+
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
@@ -61,13 +76,13 @@ let ceres = {};
 
                 const imageList = getImageList();
 
-                if (trace) console.log(resource(constants.notify, 'ImageListMarkup', imageList));
+                if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(constants.error, 'NotFoundImageList'));
+                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(constants.error, manifest.NotFoundImageList));
 
             } else {
 
-                return errorHandler(resource(constants.error, 'NotFoundProgenitor'));
+                return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
 
             }
 
@@ -88,7 +103,7 @@ let ceres = {};
 
                     if (list)
                     {
-                        if (trace) console.log(resource(constants.notify, 'ListFallback'));
+                        if (trace) console.log(resource(constants.notify, manifest.ListFallback));
                         return list;
 
                     } else {
@@ -112,7 +127,7 @@ let ceres = {};
 
                 function getImageListRetry(retry = 1, retryLimit = 15)
                 {
-                    if (trace) console.log(resource(constants.notify, 'ListRetryAttempt', retry));
+                    if (trace) console.log(resource(constants.notify, manifest.ListRetryAttempt, retry));
 
                     try
                     {
@@ -200,7 +215,7 @@ let ceres = {};
 
                 progenitor.appendChild(document.createElement('br'));
 
-                if (trace) console.log(resource(constants.notify, 'ProgenitorInnerHTML'));
+                if (trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
 
                 function getClickEventValue(indexItem)
                 {
@@ -251,7 +266,7 @@ let ceres = {};
             {
                 link.onload = function ()
                 {
-                    if (trace) console.log(resource(constants.notify, 'LinkOnload'));
+                    if (trace) console.log(resource(constants.notify, manifest.LinkOnload));
                 }
 
             }
@@ -262,7 +277,7 @@ let ceres = {};
                 {
                     link.addEventListener('load', function()
                     {
-                        if (trace) console.log(resource(constants.notify, 'LinkAddEventListener'));
+                        if (trace) console.log(resource(constants.notify, manifest.LinkAddEventListener));
                     }, false);
 
                 }
@@ -278,7 +293,7 @@ let ceres = {};
                     if (document.styleSheets.length > cssnum)
                     {
                         clearInterval(ti);
-                        if (trace) console.log(resource(constants.notify, 'LinkStylesheetCount'));
+                        if (trace) console.log(resource(constants.notify, manifest.LinkStylesheetCount));
                     }
 
                 }, 10);
@@ -294,7 +309,7 @@ let ceres = {};
                     if (state === 'loaded' || state === 'complete')
                     {
                         link.onreadystatechange = null;
-                        if (trace) console.log(resource(constants.notify, 'LinkOnReadyState'));
+                        if (trace) console.log(resource(constants.notify, manifest.LinkOnReadyState));
                     }
 
                 };
@@ -400,7 +415,7 @@ let ceres = {};
         return lookup[token] || false;
     }
 
-    function resource(type, name, str)
+    function resource(type, item, str)
     {
         const newline = '\n';
 
@@ -415,29 +430,29 @@ let ceres = {};
         function lookupNotify()
         {
             const lookup = {
-                'LinkOnload': 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
-                'LinkAddEventListener': 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
-                'LinkStylesheetCount': 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
-                'LinkOnReadyState': 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event',
-                'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + progenitor.innerHTML,
-                'ImageListMarkup': 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
-                'ListFallback': 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
-                'ListRetryAttempt': 'Image list search retry attempt: ' + str,
+                [manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
+                [manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
+                [manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
+                [manifest.LinkOnReadyState]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event',
+                [manifest.ProgenitorInnerHTML]: 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + progenitor.innerHTML,
+                [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
+                [manifest.ListFallback]: 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
+                [manifest.ListRetryAttempt]: 'Image list search retry attempt: ' + str,
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
-            return lookup[name] || lookup['default'];
+            return lookup[item] || lookup['default'];
         }
 
         function lookupError()
         {
             const lookup = {
-                'NotFoundImageList': 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
-                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
+                [manifest.NotFoundImageList]: 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
+                [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
 
-            return lookup[name] || lookup['default'];
+            return lookup[item] || lookup['default'];
         }
 
     }
