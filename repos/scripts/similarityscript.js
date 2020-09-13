@@ -8,16 +8,6 @@ window.customElements.define('include-directive', class extends HTMLElement
 
 });
 
-/*
-function getQueryString()
-{
-    const urlParams = new URLSearchParams(window.location.search);
-    const mdd = urlParams.get('mdd')
-
-    if (mdd) selectMarkdownDocument(mdd);
-}
-*/
-
 function getQueryString()
 {
     const urlParams = new URLSearchParams(window.location.search);
@@ -37,10 +27,11 @@ function getMarkdownDocument(md)
            'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
            'shell': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
            'slide': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
-           'repos': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html'
+           'repos': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html',
+           'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
        };
 
-       return lookup[md] || 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html';
+       return lookup[md] || lookup['default'];
     }
 
 }
@@ -60,10 +51,11 @@ function onloadFrame(ms, md)
             'index': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); },
             'shell': function() { setTimeout(function() { asyncPullRequest('shell-md'); }, ms); },
             'slide': function() { setTimeout(function() { initialiseSlideViewer(); }, ms); },
-            'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); }
+            'repos': function() { setTimeout(function() { asyncPullRequest('repos-md'); }, ms); },
+            'default': function() { setTimeout(function() { asyncPullRequest('index-md'); }, ms); }
         };
 
-        initialise[md]() || initialise['index']();
+        initialise[md]() || initialise['default']();
     }
 
     function isValidSource(md)

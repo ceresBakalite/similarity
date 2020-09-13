@@ -408,20 +408,22 @@ let ceres = {};
                 'ProgenitorInnerHTML': 'Progenitor innerHTML [' + slideview.container + ']: ' + newline + progenitor.innerHTML,
                 'ImageListMarkup': 'Image list markup [' + slideview.container + ']: ' + newline + str,
                 'ListFallback': 'Image list [' + slideview.imagelist + ']: found on the second attempt in the element fallback location',
-                'ListRetryAttempt': 'Image list search retry attempt: ' + str
+                'ListRetryAttempt': 'Image list search retry attempt: ' + str,
+                'default': 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive'
             };
 
-            return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' trace notification is unresponsive';
+            return lookup[name] || lookup['default'];
         }
 
         function lookupError()
         {
             const lookup = {
                 'NotFoundImageList': 'Error: The ' + slideview.container + ' document element was found but the ' + slideview.imagelist + ' image list could not be read',
-                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element'
+                'NotFoundProgenitor': 'Error: Unable to find the ' + slideview.container + ' document element',
+                'default': 'An unexpected error has occurred - ' + slideview.container + ' error notification is unresponsive'
             };
 
-            return lookup[name] || 'An unexpected error has occurred - ' + slideview.container + ' error notification is unresponsive';
+            return lookup[name] || lookup['default'];
         }
 
     }
