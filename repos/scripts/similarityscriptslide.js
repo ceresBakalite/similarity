@@ -38,6 +38,7 @@ let ceres = {};
     let index = 1; // pointer referencing to the currently active slide
 
     alert('testnotify: ' + testresource.testnotify);
+    alert('testerror: ' + testresource.testerror);
 
 
     loadSlideView();
