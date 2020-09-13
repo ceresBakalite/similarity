@@ -1,10 +1,7 @@
 let ceres = {};
 (function(slideview)
 {
-    slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
     slideview.container = 'ceres-slideview';
-    slideview.imagelist = 'ceres-csv';
-    slideview.renderdelay = 500;
 
     window.customElements.define(slideview.container, class extends HTMLElement
     {
@@ -17,6 +14,14 @@ let ceres = {};
 
     });
 
+    slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+    slideview.imagelist = 'ceres-csv';
+    slideview.renderdelay = 500;
+
+    slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
+    slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
+    slideview.slideViewer = function() { setTimeout(initiateSlideViewer, slideview.renderdelay); };
+
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
@@ -27,14 +32,10 @@ let ceres = {};
 
     let index = 1;
 
-    slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
-    slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
-    slideview.slideViewer = function() { setTimeout(initiateSlideViewer, slideview.renderdelay); };
-
     const notify = 1;
     const error = 99;
 
-    slideview.slideViewer();
+    slideViewer();
 
     function initiateSlideViewer()
     {
@@ -298,16 +299,6 @@ let ceres = {};
 
     }
 
-    function activateSlideViewer()
-    {
-        progenitor.style.display = 'none';
-
-        getSlideViewer();
-        displaySlide();
-
-        setTimeout(function() { setSlideViewerDisplay('block'); }, slideview.renderdelay / 2);
-    }
-
     function displaySlide(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
@@ -353,6 +344,22 @@ let ceres = {};
         }
 
     }
+
+    function slideViewer()
+    {
+        setTimeout(initiateSlideViewer, slideview.renderdelay);
+    };
+
+    function activateSlideViewer()
+    {
+        progenitor.style.display = 'none';
+
+        getSlideViewer();
+        displaySlide();
+
+        setTimeout(function() { setSlideViewerDisplay('block'); }, slideview.renderdelay / 2);
+    }
+
 
     function setSlideViewerDisplay(attribute)
     {
