@@ -1,8 +1,6 @@
 let ceres = {};
 (function(slideview)
 {
-    slideview.container = 'ceres-slideview';
-
     window.customElements.define(slideview.container, class extends HTMLElement
     {
         async connectedCallback()
@@ -15,6 +13,7 @@ let ceres = {};
     });
 
     slideview.defaultStylesheet = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
+    slideview.container = 'ceres-slideview';
     slideview.imagelist = 'ceres-csv';
     slideview.renderdelay = 500;
 
