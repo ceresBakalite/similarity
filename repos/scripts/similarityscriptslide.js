@@ -22,6 +22,14 @@ let ceres = {};
     const notify = 1; // console notification type
     const error = 99; // console notification type
 
+    const constants = {
+
+        'renderdelay': 500, // onload setTimeout period in ms
+        'notify': 1, // console notification type
+        'error': 99 // console notification type
+
+    };
+
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
@@ -54,13 +62,13 @@ let ceres = {};
 
                 const imageList = getImageList();
 
-                if (trace) console.log(resource(notify, 'ImageListMarkup', imageList));
+                if (trace) console.log(resource(constants.notify, 'ImageListMarkup', imageList));
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(error, 'NotFoundImageList'));
+                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(constants.error, 'NotFoundImageList'));
 
             } else {
 
-                return errorHandler(resource(error, 'NotFoundProgenitor'));
+                return errorHandler(resource(constants.error, 'NotFoundProgenitor'));
 
             }
 
@@ -81,7 +89,7 @@ let ceres = {};
 
                     if (list)
                     {
-                        if (trace) console.log(resource(notify, 'ListFallback'));
+                        if (trace) console.log(resource(constants.notify, 'ListFallback'));
                         return list;
 
                     } else {
@@ -105,7 +113,7 @@ let ceres = {};
 
                 function getImageListRetry(retry = 1, retryLimit = 15)
                 {
-                    if (trace) console.log(resource(notify, 'ListRetryAttempt', retry));
+                    if (trace) console.log(resource(constants.notify, 'ListRetryAttempt', retry));
 
                     try
                     {
@@ -190,7 +198,7 @@ let ceres = {};
 
                 progenitor.appendChild(document.createElement('br'));
 
-                if (trace) console.log(resource(notify, 'ProgenitorInnerHTML'));
+                if (trace) console.log(resource(constants.notify, 'ProgenitorInnerHTML'));
 
                 function getClickEventValue(indexItem)
                 {
@@ -242,7 +250,7 @@ let ceres = {};
             {
                 link.onload = function ()
                 {
-                    if (trace) console.log(resource(notify, 'LinkOnload'));
+                    if (trace) console.log(resource(constants.notify, 'LinkOnload'));
                 }
 
             }
@@ -253,7 +261,7 @@ let ceres = {};
                 {
                     link.addEventListener('load', function()
                     {
-                        if (trace) console.log(resource(notify, 'LinkAddEventListener'));
+                        if (trace) console.log(resource(constants.notify, 'LinkAddEventListener'));
                     }, false);
 
                 }
@@ -269,7 +277,7 @@ let ceres = {};
                     if (document.styleSheets.length > cssnum)
                     {
                         clearInterval(ti);
-                        if (trace) console.log(resource(notify, 'LinkStylesheetCount'));
+                        if (trace) console.log(resource(constants.notify, 'LinkStylesheetCount'));
                     }
 
                 }, 10);
@@ -285,7 +293,7 @@ let ceres = {};
                     if (state === 'loaded' || state === 'complete')
                     {
                         link.onreadystatechange = null;
-                        if (trace) console.log(resource(notify, 'LinkOnReadyState'));
+                        if (trace) console.log(resource(constants.notify, 'LinkOnReadyState'));
                     }
 
                 };
@@ -344,7 +352,7 @@ let ceres = {};
 
     function loadSlideView()
     {
-        setTimeout(initiateSlideView, renderdelay);
+        setTimeout(initiateSlideView, constants.renderdelay);
     };
 
     function activateSlideView()
@@ -354,7 +362,7 @@ let ceres = {};
         getSlideView();
         displaySlide();
 
-        setTimeout(function() { setSlideViewDisplay('block'); }, renderdelay / 2);
+        setTimeout(function() { setSlideViewDisplay('block'); }, constants.renderdelay / 2);
     }
 
 
@@ -396,8 +404,8 @@ let ceres = {};
         const newline = '\n';
 
         const lookup = {
-            [notify]: function() { return lookupNotify(); },
-            [error]: function() { return lookupError(); },
+            [constants.notify]: function() { return lookupNotify(); },
+            [constants.error]: function() { return lookupError(); },
             default: 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive',
         };
 
