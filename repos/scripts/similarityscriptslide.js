@@ -396,9 +396,9 @@ let ceres = {};
         const newline = '\n';
 
         const lookup = {
+            [notify]: function() { return null; },
+            [error]: function() { return null; },
             default: 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive',
-            [notify]: function() { return lookupNotify(); },
-            [error]: function() { return lookupError(); },
         };
 
         return lookup[type]() || lookup['default'];
