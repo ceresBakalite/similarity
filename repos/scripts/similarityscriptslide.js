@@ -396,24 +396,17 @@ let ceres = {};
         const id = 'ceres-svc';
         const type = 'src';
 
-        let el = parent.document.getElementById(id) ? parent.document.getElementById(id) : null;
-
-        if (!el)
+        if (!parent.document.getElementById(id))
         {
             el = parent.document.createElement('div');
             el.id = id;
             parent.document.body.appendChild(el);
         }
 
-        el = parent.document.getElementById(id);
-        const attribute = parent.document.createAttribute(type);
-        attribute.value = value;
+        parent.document.createAttribute(type).value = value;
+        parent.document.getElementById(id).setAttributeNode(attribute);
 
-        el.setAttributeNode(attribute);
-
-
-        alert("loading: " + el.getAttribute(type));
-
+        alert(parent.document.getElementById('ceres-svc').getAttribute('src'));
     };
 
     function activateSlideView()
