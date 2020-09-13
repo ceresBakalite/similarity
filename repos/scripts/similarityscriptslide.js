@@ -391,7 +391,7 @@ let ceres = {};
 
     function setSourceFileName()
     {
-        let el = window.top.getElementById('ceresbakalite');
+        let el = window.top.document.getElementById('ceresbakalite');
         if (!el) composeElement('div', 'ceresbakalite', null, 'window.top.document.body', null, null, null, null);
         composeAttribute(el, 'scsrc', document.getElementsByTagName('script')[scripts.length-1].src)
 
