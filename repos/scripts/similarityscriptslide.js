@@ -93,6 +93,8 @@ let ceres = {};
 
             function getImageList()
             {
+                if (!importFileExists(importFileExists(progenitor.getAttribute('src')) return;
+
                 const list = getMarkdownList();
 
                 return (list) ? list : lookAgain();
@@ -142,25 +144,23 @@ let ceres = {};
                         if (retry != retryLimit) getImageListRetry(++retry);
                    }
 
-                   finalAttempt();
-                }
-
-                function finalAttempt()
-                {
-                    let xhr = new XMLHttpRequest();
-
-                    xhr.open('GET', progenitor.getAttribute('src'), false);
-                    xhr.send();
-
-                    if (xhr.status === 200) location.reload();
-
-                    return null;
+                   if (importFileExists(progenitor.getAttribute('src')) location.reload();
                 }
 
             }
 
         }
 
+    }
+
+    function importFileExists(url)
+    {
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET', url, false);
+        xhr.send();
+
+        return (xhr.status === 200) ? true : false;
     }
 
     function getSlideView()
@@ -263,6 +263,8 @@ let ceres = {};
 
         function importSlideViewStylesheet()
         {
+            if (!importFileExists(constants.defaultCSS) return;
+
             const link = document.createElement('link');
 
             link.rel = 'stylesheet';
