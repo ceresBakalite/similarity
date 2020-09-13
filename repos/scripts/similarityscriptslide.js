@@ -143,36 +143,37 @@ let ceres = {};
         {
             progenitor.innerHTML = null;
 
-            const imageElement = document.createElement('div');
+            const firstChild = document.createElement('div');
 
-            imageElement.id = slideview.HTMLSlideViewElement + '-image-container';
-            progenitor.appendChild(imageElement);
+            imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
+            progenitor.appendChild(firstChild);
 
-            composeAttribute(imageElement.id, 'class', 'slideview-image-container');
+            composeAttribute(firstChild.id, 'class', 'slideview-image-container');
 
             for (let item = 0; item < attributes.length; item++)
             {
                 var arrayItem = attributes[item].split(',');
-                let qualifier = item + 1;
 
-                let offspring = {
-                    'parent': 'slideview' + qualifier,
+                let qualifier = item + 1;
+                let progeny = 'slideview' + qualifier;
+
+                let thirdChildren = {
                     'surName': 'slideview-sur' + qualifier,
                     'imgName': 'slideview-img' + qualifier,
                     'subName': 'slideview-sub' + qualifier
                 };
 
-                composeElement('div', offspring.parent, 'slideview fade', imageElement, null, null, null, null);
+                composeElement('div', secondChild, 'slideview fade', imageContainer, null, null, null, null);
 
-                let progeny = document.getElementById(offspring.parent);
+                let secondChild = document.getElementById(progeny);
 
-                if (sur) composeElement('div', offspring.surName, 'surtitle', progeny, getSurtitle(qualifier), null, null, null);
-                composeElement('img', offspring.imgName, null, progeny, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (sub) composeElement('div', offspring.subName, 'subtitle', progeny, getSubtitle(), null, null, null);
+                if (sur) composeElement('div', thirdChildren.surName, 'surtitle', secondChild, getSurtitle(qualifier), null, null, null);
+                composeElement('img', thirdChildren.imgName, null, secondChild, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+                if (sub) composeElement('div', thirdChildren.subName, 'subtitle', secondChild, getSubtitle(), null, null, null);
             }
 
-            composeElement('a', 'slideview-prev', 'prev', imageElement, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
-            composeElement('a', 'slideview-next', 'next', imageElement, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
+            composeElement('a', 'slideview-prev', 'prev', firstChild, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
+            composeElement('a', 'slideview-next', 'next', firstChild, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
             if (ptr) createSlideViewPointerContainer();
 
