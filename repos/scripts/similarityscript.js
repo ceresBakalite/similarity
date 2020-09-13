@@ -21,7 +21,7 @@ function getMarkupDocument(mu)
     document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     document.getElementById(mu).blur();
 
-    function getMarkdownLocation()
+    function getMarkupLocation()
     {
        const lookup = {
            'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
