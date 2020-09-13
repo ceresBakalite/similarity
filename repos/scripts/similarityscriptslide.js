@@ -407,7 +407,7 @@ let ceres = {};
 
         composeAttribute(el, attribute, scriptName)
 
-        alert("loading: " + parent.document.getElementById(id).getAttribute(attribute);
+        alert("loading: " + parent.document.getElementById(id).getAttribute(attribute));
 
     };
 
