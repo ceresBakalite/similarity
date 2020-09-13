@@ -94,7 +94,7 @@ let ceres = {};
             function getImageList()
             {
                 const list = getMarkdownList();
-
+finalAttempt();
                 return (list) ? list : lookAgain();
 
                 function lookAgain()
@@ -108,7 +108,7 @@ let ceres = {};
 
                     } else {
 
-                        return getImageListRetry() || location.reload();
+                        return getImageListRetry() || finalAttempt();
                     }
 
                 }
@@ -139,6 +139,19 @@ let ceres = {};
                    }
 
                    return list;
+                }
+
+                function finalAttempt()
+                {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', progenitor.getAttribute('src'), true);
+
+                    xhr.onload = function () {
+                        console.log(xhr.responseURL); // http://example.com/test
+                    };
+                    xhr.send(null);
+
+                    //if (progenitor.getAttribute('src').length > 0) location.reload();
                 }
 
             }
