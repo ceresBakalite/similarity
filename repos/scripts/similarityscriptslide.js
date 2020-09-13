@@ -155,21 +155,21 @@ let ceres = {};
                 var arrayItem = attributes[item].split(',');
 
                 let qualifier = item + 1;
-                let secondChild = 'slideview' + qualifier;
+                let grandChildName = 'slideview' + qualifier;
 
-                let thirdChildren = {
+                let greatGrandChild = {
                     'surName': 'slideview-sur' + qualifier,
                     'imgName': 'slideview-img' + qualifier,
                     'subName': 'slideview-sub' + qualifier
                 };
 
-                composeElement('div', secondChild, 'slideview fade', firstChild, null, null, null, null);
+                composeElement('div', grandChildName, 'slideview fade', firstChild, null, null, null, null);
 
-                //let secondChild = document.getElementById(progeny);
+                let grandChild = document.getElementById(grandChildName);
 
-                if (sur) composeElement('div', thirdChildren.surName, 'surtitle', secondChild, getSurtitle(qualifier), null, null, null);
-                composeElement('img', thirdChildren.imgName, null, secondChild, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (sub) composeElement('div', thirdChildren.subName, 'subtitle', secondChild, getSubtitle(), null, null, null);
+                if (sur) composeElement('div', greatGrandChild.surName, 'surtitle', grandChild, getSurtitle(qualifier), null, null, null);
+                composeElement('img', greatGrandChild.imgName, null, grandChild, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+                if (sub) composeElement('div', greatGrandChild.subName, 'subtitle', grandChild, getSubtitle(), null, null, null);
             }
 
             composeElement('a', 'slideview-prev', 'prev', firstChild, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
