@@ -155,11 +155,11 @@ let ceres = {};
                 var arrayItem = attributes[item].split(',');
 
                 let offspring = {
-                    'qualifier' : item + 1;
-                    'svcName': 'slideview' + qualifier;
-                    'surName': 'slideview-sur' + qualifier;
-                    'imgName': 'slideview-img' + qualifier;
-                    'subName': 'slideview-sub' + qualifier;
+                    'qualifier' : item + 1,
+                    'svcName': 'slideview' + qualifier,
+                    'surName': 'slideview-sur' + qualifier,
+                    'imgName': 'slideview-img' + qualifier,
+                    'subName': 'slideview-sub' + qualifier
                 };
 
                 composeElement('div', offspring.svcName, 'slideview fade', imageElement, null, null, null, null);
