@@ -153,7 +153,6 @@ let ceres = {};
             for (let item = 0; item < attributes.length; item++)
             {
                 var arrayItem = attributes[item].split(',');
-
                 let qualifier = item + 1;
 
                 let offspring = {
