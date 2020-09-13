@@ -393,9 +393,9 @@ let ceres = {};
         const scripts = document.getElementsByTagName('script');
         const lastScript = scripts[scripts.length-1];
         const scriptName = lastScript.src;
-
         const id = 'ceres-svc';
-        const el = window.top.document.getElementById(id) ? window.top.document.getElementById(id) : null;
+
+        let el = window.top.document.getElementById(id) ? window.top.document.getElementById(id) : null;
 
         if (!el)
         {
