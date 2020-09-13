@@ -403,14 +403,6 @@ let ceres = {};
 
         return lookup[type]() || lookup['default'];
 
-/*
-        switch (type)
-        {
-            case notify: return lookupNotify();
-            case error: return lookupError();
-            default: return 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive';
-        }
-*/
         function lookupNotify()
         {
             const lookup = {
