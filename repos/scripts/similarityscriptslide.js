@@ -136,7 +136,6 @@ let ceres = {};
 
                     } catch (ex) {
 
-                        //alert(parent.document.getElementById('ceres-svc').getAttribute('src'));
                         if (retry != retryLimit) getImageListRetry(++retry);
                    }
 
