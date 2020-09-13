@@ -60,7 +60,7 @@ function onloadFrame(mu, ms)
 
     function isValidSource(mu)
     {
-        if (parent.document.getElementById('primary-container')) return true;
+        if (parent.document.getElementById('ceresbakalite')) return true;
 
         window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + mu;
 
