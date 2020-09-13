@@ -407,8 +407,8 @@ let ceres = {};
         alert(type);
 
         const lookup = {
-            testnotify: 'testnotify found',
-            testerror: 'testerror found'
+            [testresource.testnotify]: 'testnotify found',
+            [testresource.testerror]: 'testerror found'
         };
 
         return lookup[type] || 'lost';
