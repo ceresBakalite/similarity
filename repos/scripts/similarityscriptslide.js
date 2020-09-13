@@ -108,7 +108,9 @@ finalAttempt();
 
                     } else {
 
-                        return getImageListRetry() || finalAttempt();
+                        list = getImageListRetry();
+
+                        return (list) ? list : finalAttempt();
                     }
 
                 }
@@ -143,13 +145,24 @@ finalAttempt();
 
                 function finalAttempt()
                 {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('GET', progenitor.getAttribute('src'), true);
+                    let xhr = new XMLHttpRequest();
 
-                    xhr.onload = function () {
-                        console.log(xhr.responseURL); // http://example.com/test
-                    };
-                    xhr.send(null);
+                    xhr.open('HEAD', progenitor.getAttribute('src'), true);
+                    xhr.onload = function () { returnStatus( this.status ); };
+                    xhr.send();
+
+                    function returnStatus(status)
+                    {
+                      if ( status === 200 )
+                      {
+                        alert('file exists!');
+
+                      } else {
+
+                        alert('file does not exist! status: ' + status);
+                      }
+
+                    }
 
                     //if (progenitor.getAttribute('src').length > 0) location.reload();
                 }
