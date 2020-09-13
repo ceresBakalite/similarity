@@ -149,14 +149,10 @@ let ceres = {};
                 {
                     let xhr = new XMLHttpRequest();
 
-                    xhr.open('HEAD', progenitor.getAttribute('src'), true);
-                    xhr.onload = function () { returnStatus( this.status ); };
+                    xhr.open('GET', progenitor.getAttribute('src'), false);
                     xhr.send();
 
-                    function returnStatus(status)
-                    {
-                      if (status === 200) location.reload();
-                    }
+                    if (xhr.status === 200) location.reload();
 
                     return null;
                 }
