@@ -344,7 +344,7 @@ let ceres = {};
 
     function loadSlideView()
     {
-        setTimeout(initiateSlideView, slideview.renderdelay);
+        setTimeout(initiateSlideView, renderdelay);
     };
 
     function activateSlideView()
@@ -354,7 +354,7 @@ let ceres = {};
         getSlideView();
         displaySlide();
 
-        setTimeout(function() { setSlideViewDisplay('block'); }, slideview.renderdelay / 2);
+        setTimeout(function() { setSlideViewDisplay('block'); }, renderdelay / 2);
     }
 
 
