@@ -37,8 +37,8 @@ let ceres = {};
     let sub = true; // default element attribute - display slideview item subtitles
     let index = 1; // pointer referencing to the currently active slide
 
-    alert('testnotify: ' + testresource.testnotify);
-    alert('testerror: ' + testresource.testerror);
+    alert('testnotifyLookup: ' + test(testresource.testnotify);
+    alert('testerrorLookup: ' + test(testresource.testerror);
 
 
     loadSlideView();
@@ -401,18 +401,18 @@ let ceres = {};
         return lookup[token] || false;
     }
 
-/*
+
     function test(type)
     {
         const lookup = {
-            resourcetype.testnotify: 'testnotify found',
-            resourcetype.testerror: 'testerror found'
+            testresource.testnotify: 'testnotify found',
+            testresource.testerror: 'testerror found'
         };
 
         return lookup[type] || 'lost';
 
     }
-*/
+
     function resource(type, name, str)
     {
         const newline = '\n';
