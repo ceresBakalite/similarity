@@ -404,9 +404,11 @@ let ceres = {};
 
     function test(type)
     {
+        alert(type);
+
         const lookup = {
-            testresource.testnotify: 'testnotify found',
-            testresource.testerror: 'testerror found'
+            testnotify: 'testnotify found',
+            testerror: 'testerror found'
         };
 
         return lookup[type] || 'lost';
