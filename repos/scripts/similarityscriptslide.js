@@ -126,14 +126,16 @@ let ceres = {};
                     return (el) ? el.innerHTML : null;
                 }
 
-                function getImageListRetry(retry = 1, retryLimit = 15)
+                function getImageListRetry(retry = 1, retryLimit = 5)
                 {
                     if (trace) console.log(resource(constants.notify, manifest.ListRetryAttempt, retry));
 
                     try
                     {
                         let list = getMarkdownList() ? getMarkdownList() : getMarkupList();
-                        if (!list) throw 'ListNotFoundException';
+                        if (list) return list;
+
+                        throw 'ListNotFoundException';
 
                     } catch (ex) {
 
@@ -141,7 +143,6 @@ let ceres = {};
                    }
 
                    finalAttempt();
-                   //return list;
                 }
 
                 function finalAttempt()
