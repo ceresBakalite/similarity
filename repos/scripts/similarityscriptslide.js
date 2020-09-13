@@ -37,8 +37,8 @@ let ceres = {};
     let sub = true; // default element attribute - display slideview item subtitles
     let index = 1; // pointer referencing to the currently active slide
 
-    alert('testnotifyLookup: ' + test(testresource.testnotify));
-    alert('testerrorLookup: ' + test(testresource.testerror));
+    alert('testnotifyLookup: ' + test(notify));
+    alert('testerrorLookup: ' + test(error));
 
 
     loadSlideView();
@@ -407,8 +407,8 @@ let ceres = {};
         alert(type);
 
         const lookup = {
-            [testresource.testnotify]: 'testnotify found',
-            [testresource.testerror]: 'testerror found'
+            [notify]: 'testnotify found',
+            [error]: 'testerror found'
         };
 
         return lookup[type] || 'lost';
