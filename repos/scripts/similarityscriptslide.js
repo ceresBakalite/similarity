@@ -156,15 +156,15 @@ let ceres = {};
                 let qualifier = item + 1;
 
                 let offspring = {
-                    'svcName': 'slideview' + qualifier,
+                    'parent': 'slideview' + qualifier,
                     'surName': 'slideview-sur' + qualifier,
                     'imgName': 'slideview-img' + qualifier,
                     'subName': 'slideview-sub' + qualifier
                 };
 
-                composeElement('div', offspring.svcName, 'slideview fade', imageElement, null, null, null, null);
+                composeElement('div', offspring.parent, 'slideview fade', imageElement, null, null, null, null);
 
-                let progeny = document.getElementById(svcName);
+                let progeny = document.getElementById(offspring.parent);
 
                 if (sur) composeElement('div', offspring.surName, 'surtitle', progeny, getSurtitle(qualifier), null, null, null);
                 composeElement('img', offspring.imgName, null, progeny, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
