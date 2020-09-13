@@ -396,12 +396,12 @@ let ceres = {};
         const newline = '\n';
 
         const lookup = {
-            5: function() { return lookupNotify(); },
-            10: function() { return lookupError(); },
-            default: function() { return 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive'; }
+            default: 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive',
+            [notify]: function() { return lookupNotify(); },
+            [error]: function() { return lookupError(); },
         };
 
-        return lookup[type]() || lookup['default']();
+        return lookup[type]() || lookup['default'];
 
         function lookupNotify()
         {
