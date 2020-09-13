@@ -150,7 +150,7 @@ let ceres = {};
                         if (retry != retryLimit) getImageListRetry(++retry);
                    }
 
-                   if (importFileExists(progenitor.getAttribute('src')) location.reload();
+                   if (importFileExists(progenitor.getAttribute('src'))) location.reload();
                 }
 
             }
