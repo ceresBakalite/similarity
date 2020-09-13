@@ -95,11 +95,11 @@ let ceres = {};
             {
                 const list = getMarkdownList();
 finalAttempt();
-                return (list) ? list : lookAgain();
+                //return (list) ? list : lookAgain();
 
                 function lookAgain()
                 {
-                    const list = getMarkupList();
+                    let list = getMarkupList();
 
                     if (list)
                     {
@@ -132,7 +132,7 @@ finalAttempt();
 
                     try
                     {
-                        const list = getMarkdownList() ? getMarkdownList() : getMarkupList();
+                        let list = getMarkdownList() ? getMarkdownList() : getMarkupList();
                         if (!list) throw 'ListNotFoundException';
 
                     } catch (ex) {
@@ -153,10 +153,10 @@ finalAttempt();
 
                     function returnStatus(status)
                     {
-                      if ( status === 200 ) location.reload();
-                      return null;
+                      if (status === 200) location.reload();
                     }
 
+                    return null;
                 }
 
             }
