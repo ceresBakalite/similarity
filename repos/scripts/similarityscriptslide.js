@@ -154,9 +154,9 @@ finalAttempt();
                     function returnStatus(status)
                     {
                       if ( status === 200 ) location.reload();
+                      return null;
                     }
 
-                    return null;
                 }
 
             }
