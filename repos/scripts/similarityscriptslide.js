@@ -163,7 +163,7 @@ let ceres = {};
                     'subName': 'slideview-sub' + qualifier
                 };
 
-                composeElement('div', secondChild, 'slideview fade', firstChild, null, null, null, null);
+                composeElement('div', progeny, 'slideview fade', firstChild, null, null, null, null);
 
                 let secondChild = document.getElementById(progeny);
 
