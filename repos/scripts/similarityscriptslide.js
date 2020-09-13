@@ -385,7 +385,7 @@ let ceres = {};
 */
     function loadSlideView()
     {
-        setSourceFileName();
+        //setSourceFileName();
         setTimeout(initiateSlideView, constants.renderdelay);
     };
 
@@ -395,16 +395,16 @@ let ceres = {};
         var lastScript = scripts[scripts.length-1];
         var scriptName = lastScript.src;
 
+/*
         alert("scriptName: " + scriptName);
 
         let el = window.top.document.getElementById('ceresbakalite');
         if (!el) composeElement('div', 'ceresbakalite', null, 'window.top.document.body', null, null, null, null);
 
-        alert("loading: " + scriptName);
-
         composeAttribute(el, 'scsrc', scriptName)
 
         alert("loading: " + el.src);
+*/
     };
 
     function activateSlideView()
