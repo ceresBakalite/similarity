@@ -398,12 +398,13 @@ let ceres = {};
 
         if (!parent.document.getElementById(id))
         {
-            let el = parent.document.createElement('div');
+            const el = parent.document.createElement('div');
             el.id = id;
             parent.document.body.appendChild(el);
         }
 
-        parent.document.createAttribute(type).value = value;
+        const attribute = parent.document.createAttribute(type);
+        attribute.value = value;
         parent.document.getElementById(id).setAttributeNode(attribute);
 
         alert(parent.document.getElementById('ceres-svc').getAttribute('src'));
