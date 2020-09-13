@@ -395,7 +395,7 @@ let ceres = {};
         if (!el) composeElement('div', 'ceresbakalite', null, 'window.top.document.body', null, null, null, null);
         composeAttribute(el, 'scsrc', document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1].src)
 
-        alert("loading: " + el.src);
+        //alert("loading: " + el.src);
     };
 
     function activateSlideView()
