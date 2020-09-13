@@ -20,7 +20,9 @@ let ceres = {};
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); };
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };
-    slideview.slideViewer = function() { setTimeout(initiateSlideViewer, slideview.renderdelay); };
+
+    const notify = 1; // console notification type
+    const error = 99; // console notification type
 
     let progenitor = null; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
@@ -29,13 +31,9 @@ let ceres = {};
     let css = true; // default element attribute - use the default slideview stylesheet
     let sur = true; // default element attribute - display slideview item surtitles
     let sub = true; // default element attribute - display slideview item subtitles
+    let index = 1; // referes to the currently active slide
 
-    let index = 1;
-
-    const notify = 1;
-    const error = 99;
-
-    slideViewer();
+    loadSlideView();
 
     function initiateSlideViewer()
     {
@@ -345,7 +343,7 @@ let ceres = {};
 
     }
 
-    function slideViewer()
+    function loadSlideView()
     {
         setTimeout(initiateSlideViewer, slideview.renderdelay);
     };
