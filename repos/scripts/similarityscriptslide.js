@@ -400,7 +400,7 @@ let ceres = {};
 
         if (!el)
         {
-            el = window.top.document.createElement(element);
+            el = window.top.document.createElement(el);
             el.id = id;
             parent.appendChild(el);
         }
