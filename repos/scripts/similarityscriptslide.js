@@ -394,16 +394,20 @@ let ceres = {};
         var lastScript = scripts[scripts.length-1];
         var scriptName = lastScript.src;
 
-        alert("scriptName: " + scriptName);
-        let elName = 'ceres-svc';
+        let id = 'ceres-svc';
 
-        let el = window.top.document.getElementById(elName) ? window.top.document.getElementById(elName) : null;
+        let el = window.top.document.getElementById(id) ? window.top.document.getElementById(id) : null;
 
-        if (!el) composeElement('div', elName, null, window.top.document.body, null, null, null, null);
+        if (!el)
+        {
+            el = window.top.document.createElement(element);
+            el.id = id;
+            parent.appendChild(el);
+        }
 
-        composeAttribute(el, elName, scriptName)
+        composeAttribute(el, id, scriptName)
 
-        alert("loading: " + window.top.document.getElementById(elName).src);
+        alert("loading: " + window.top.document.getElementById(id).src);
 
     };
 
