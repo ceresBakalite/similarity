@@ -357,7 +357,7 @@ let ceres = {};
         getSlideView();
         displaySlide();
 
-        setTimeout(function() { setSlideViewDisplay('block'); }, constants.renderdelay / 3);
+        setTimeout(function() { setSlideViewDisplay('block'); }, constants.renderdelay / 2);
     }
 
 
