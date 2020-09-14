@@ -79,22 +79,18 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                if (imageList) {
-
-                    return imageListToArray(imageList);
-
-                } else {
-
-                    if (trace) console.log(resource(constants.notify, manifest.NotFoundProgenitorSrcFetch, imageList));
-                    imageList = fetch(progenitor.getAttribute('src')).text();
-
-                    return imageListToArray(imageList);
-                }
+                return (imageList) ? imageListToArray(imageList) : imageListToArray(refreshImageList());
 
             } else {
 
                 return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
 
+            }
+
+            function refreshImageList()
+            {
+                if (trace) console.log(resource(constants.notify, manifest.NotFoundProgenitorSrcFetch, imageList));
+                return fetch(progenitor.getAttribute('src')).text();
             }
 
             function imageListToArray(str)
