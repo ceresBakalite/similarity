@@ -220,75 +220,75 @@ let ceres = {};
 
         }
 
-        function importSlideViewStylesheet()
+    }
+
+    function importSlideViewStylesheet()
+    {
+        const link = document.createElement('link');
+
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = constants.defaultCSS;
+        link.as = 'style';
+
+        onloadListener();
+        addEventListener();
+        styleSheetsLengthListener();
+        onReadyStateChangeListener();
+
+        document.head.appendChild(link);
+
+        function onloadListener()
         {
-            const link = document.createElement('link');
-
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = constants.defaultCSS;
-            link.as = 'style';
-
-            onloadListener();
-            addEventListener();
-            styleSheetsLengthListener();
-            onReadyStateChangeListener();
-
-            document.head.appendChild(link);
-
-            function onloadListener()
+            link.onload = function ()
             {
-                link.onload = function ()
+                if (svcAttribute.trace) console.log(resource(constants.notify, manifest.LinkOnload));
+            }
+
+        }
+
+        function addEventListener()
+        {
+            if (link.addEventListener)
+            {
+                link.addEventListener('load', function()
                 {
-                    if (svcAttribute.trace) console.log(resource(constants.notify, manifest.LinkOnload));
+                    if (svcAttribute.trace) console.log(resource(constants.notify, manifest.LinkAddEventListener));
+                }, false);
+
+            }
+
+        }
+
+        function styleSheetsLengthListener()
+        {
+            const cssnum = document.styleSheets.length;
+
+            const ti = setInterval(function()
+            {
+                if (document.styleSheets.length > cssnum)
+                {
+                    clearInterval(ti);
+                    if (svcAttribute.trace) console.log(resource(constants.notify, manifest.LinkStylesheetCount));
                 }
 
-            }
+            }, 10);
 
-            function addEventListener()
+        }
+
+        function onReadyStateChangeListener()
+        {
+            link.onreadystatechange = function()
             {
-                if (link.addEventListener)
-                {
-                    link.addEventListener('load', function()
-                    {
-                        if (svcAttribute.trace) console.log(resource(constants.notify, manifest.LinkAddEventListener));
-                    }, false);
+                const state = link.readyState;
 
+                if (state === 'loaded' || state === 'complete')
+                {
+                    link.onreadystatechange = null;
+                    if (svcAttribute.trace) console.log(resource(constants.notify, manifest.LinkOnReadyState));
                 }
 
-            }
-
-            function styleSheetsLengthListener()
-            {
-                const cssnum = document.styleSheets.length;
-
-                const ti = setInterval(function()
-                {
-                    if (document.styleSheets.length > cssnum)
-                    {
-                        clearInterval(ti);
-                        if (svcAttribute.trace) console.log(resource(constants.notify, manifest.LinkStylesheetCount));
-                    }
-
-                }, 10);
-
-            }
-
-            function onReadyStateChangeListener()
-            {
-                link.onreadystatechange = function()
-                {
-                    const state = link.readyState;
-
-                    if (state === 'loaded' || state === 'complete')
-                    {
-                        link.onreadystatechange = null;
-                        if (svcAttribute.trace) console.log(resource(constants.notify, manifest.LinkOnReadyState));
-                    }
-
-                };
-
-            }
+            };
 
         }
 
