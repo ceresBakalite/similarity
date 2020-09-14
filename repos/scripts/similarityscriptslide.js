@@ -95,7 +95,7 @@ let ceres = {};
 
             function getImageList()
             {
-                if (!importFileExists(progenitor.getAttribute('src')))
+                if (!XMLHttpRequestStatus(progenitor.getAttribute('src')))
                 {
                     console.log(resource(constants.error, manifest.NotFoundProgenitorSrc, imageList));
                     return null;
@@ -150,23 +150,13 @@ let ceres = {};
                         if (retry != retryLimit) getImageListRetry(++retry);
                    }
 
-                   if (importFileExists(progenitor.getAttribute('src'))) location.reload();
+                   if (XMLHttpRequestStatus(progenitor.getAttribute('src'))) location.reload();
                 }
 
             }
 
         }
 
-    }
-
-    function importFileExists(url)
-    {
-        let xhr = new XMLHttpRequest();
-
-        xhr.open('GET', url, false);
-        xhr.send();
-
-        return (xhr.status === 200) ? true : false;
     }
 
     function getSlideView()
@@ -269,7 +259,7 @@ let ceres = {};
 
         function importSlideViewStylesheet()
         {
-            if (!importFileExists(constants.defaultCSS))
+            if (!XMLHttpRequestStatus(constants.defaultCSS))
             {
                 if (trace) console.log(resource(constants.error, manifest.NotFoundCSSDefault));
                 return;
@@ -413,6 +403,15 @@ let ceres = {};
     {
         const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, #' + slideview.HTMLSlideViewElement);
         nodelist.forEach(node => { node.style.display = attribute; } );
+    }
+
+    function XMLHttpRequestStatus(url)
+    {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.send();
+
+        return (xhr.status == 200 && xhr.responseXML != null) ? true : false;
     }
 
     function errorHandler(str)
