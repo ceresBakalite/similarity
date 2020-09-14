@@ -67,6 +67,19 @@ let ceres = {};
 
         function getSlideViewAttributes()
         {
+            const asynchronousFunction = callback => {
+              return fetch(progenitor.getAttribute('src')).then(response => {
+                callback(response)
+              })
+            }
+            const callbackFunction = result => {
+               console.log(result)
+            }
+
+            const mainFunction = callback => {
+              asynchronousFunction(callback)
+            }
+
             if (progenitor)
             {
                 progenitor.id = slideview.HTMLSlideViewElement;
@@ -85,19 +98,6 @@ let ceres = {};
 
                 return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
 
-            }
-
-            const asynchronousFunction = callback => {
-              return fetch(progenitor.getAttribute('src')).then(response => {
-                callback(response)
-              })
-            }
-            const callbackFunction = result => {
-               console.log(result)
-            }
-
-            const mainFunction = callback => {
-              asynchronousFunction(callback)
             }
 
             function imageListToArray(str)
