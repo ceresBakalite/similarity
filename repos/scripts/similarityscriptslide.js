@@ -93,7 +93,7 @@ let ceres = {};
             {
                 fetchImageListToArray();
 
-                if ((progenitor.innerHTML.length == 0)
+                if (progenitor.innerHTML.length == 0)
                 {
                     if (retry < attempt)) testRetry(++retry);
                 }
