@@ -102,6 +102,8 @@ let ceres = {};
 
             function imageListToArray(str)
             {
+                if (!str) return null;
+
                 if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
