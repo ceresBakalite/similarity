@@ -79,11 +79,7 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                return (imageList) ? imageListToArray(imageList) : location.reload;
-                //return (imageList) ? imageListToArray(imageList) : screwRetry();
-                //imageList = (imageList) ? imageListToArray(imageList) : imageListToArray(testRetry());
-
-                return (imageList) ? imageList : location.reload;
+                return (imageList) ? imageList : reloadImageList();
 
             } else {
 
@@ -91,36 +87,10 @@ let ceres = {};
 
             }
 
-            function screwRetry(retry = 1, attempt = 15)
+            async function reloadImageList()
             {
-                fetchImageListToArray();
-
-                console.log('Screw Retry attempt: ' + retry);
-                if (progenitor.innerHTML.length == 0 && retry < attempt) screwRetry(++retry);
-
-                console.log('Screw retrying - reloading...');
+                await (await fetch(progenitor.getAttribute('src'))).text();
                 location.reload;
-            }
-
-            function testRetry(retry = 1, attempt = 5)
-            {
-                fetchImageListToArray();
-
-                if (progenitor.innerHTML.length === 0)
-                {
-                    console.log('Test Retry attempt: ' + retry);
-                    if (retry < attempt) testRetry(++retry);
-                }
-
-                return progenitor.innerHTML;
-            }
-
-            async function fetchImageListToArray()
-            {
-                let src = progenitor.getAttribute('src');
-
-
-                progenitor.innerHTML = await (await fetch(src)).text();
             }
 
             function imageListToArray(str)
