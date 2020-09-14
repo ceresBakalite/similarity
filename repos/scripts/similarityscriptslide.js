@@ -26,6 +26,10 @@ let ceres = {};
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };  // public method reference
 
+    let progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0]; // parent slideview place holder
+    let attributes = null; // slideview element item attributes array
+    let index = 1; // pointer referencing to the currently active slide
+
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
         'notify': 1, // console notification type
@@ -49,35 +53,36 @@ let ceres = {};
 
     Object.freeze(manifest);
 
-    let progenitor = null; // parent slideview place holder
-    let attributes = null; // slideview element item attributes array
-    let index = 1; // pointer referencing to the currently active slide
+    const svcAttribute = {
+        'trace': function() { return (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : false; },
+        'ptr': function() { return (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : true; },
+        'css': function() { return (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : true; },
+        'sur': function() { return (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : true; },
+        'sub': function() { return (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : true; },
+    };
+
+    Object.freeze(svcAttribute);
 
     function initiateSlideView()
     {
-        progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
+        attributes = getSlideViewAttributes();
 
-        if (progenitor)
+        if (attributes) activateSlideView();
+
+        function getSlideViewAttributes()
         {
-            const svcAttribute = {
-                'trace': function() { return (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : false; },
-                'ptr': function() { return (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : true; },
-                'css': function() { return (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : true; },
-                'sur': function() { return (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : true; },
-                'sub': function() { return (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : true; },
-            };
-
-            attributes = getSlideViewAttributes();
-
-            if (attributes) activateSlideView();
-
-            function getSlideViewAttributes()
+            if (progenitor)
             {
                 progenitor.id = slideview.HTMLSlideViewElement;
 
                 let imageList = getImageList();
 
                 return (imageList) ? imageListToArray(imageList) : null;
+
+            } else {
+
+                return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
+
             }
 
             function imageListToArray(str)
@@ -115,10 +120,6 @@ let ceres = {};
                 }
 
             }
-
-        } else {
-
-            return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
 
         }
 
