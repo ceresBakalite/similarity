@@ -80,7 +80,7 @@ let ceres = {};
                 let imageList = getImageList();
 
                 //return (imageList) ? imageListToArray(imageList) : location.reload;
-                return (imageList) ? imageListToArray(imageList) : testRetry();
+                return (imageList) ? imageListToArray(imageList) : screwRetry();
 
             } else {
 
