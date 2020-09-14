@@ -92,11 +92,8 @@ let ceres = {};
             {
                 fetchImageListToArray();
 
-                if (progenitor.innerHTML.length === 0)
-                {
-                    console.log('Screw Retry attempt: ' + retry);
-                    if (retry < attempt) screwRetry(++retry);
-                }
+                console.log('Screw Retry attempt: ' + retry);
+                if (rogenitor.innerHTML.length === 0 && retry < attempt) screwRetry(++retry);
 
                 location.reload;
             }
