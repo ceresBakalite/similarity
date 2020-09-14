@@ -158,7 +158,7 @@ let ceres = {};
                 var arrayItem = svc.imageArray[item].split(',');
 
                 let qualifier = item + 1;
-                let id = 'slideview' + qualifier;
+                //let id = 'slideview' + qualifier;
 
                 let elements = {
                     'surName': 'slideview-sur' + qualifier,
@@ -168,6 +168,7 @@ let ceres = {};
 
                 composeElement('div', id, 'slideview fade', svc.imageContainer, null, null, null, null);
 
+                svc.slideViewContainer.id = 'slideview' + qualifier;
                 svc.slideViewContainer = document.getElementById(id);
 
                 if (attributes.sur) composeElement('div', elements.surName, 'surtitle', svc.slideViewContainer, getSurtitle(qualifier), null, null, null);
