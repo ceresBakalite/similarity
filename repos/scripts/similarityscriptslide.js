@@ -66,11 +66,6 @@ let ceres = {};
         'index': 1
     }
 
-/*
-    let progenitor = null; // parent slideview place holder
-    let imageArray = null; // slideview element item attributes array
-    let index = 1; // pointer referencing to the currently active slide
-*/
     function initiateSlideView()
     {
         svc.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
