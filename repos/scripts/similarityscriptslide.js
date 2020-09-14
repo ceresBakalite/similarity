@@ -58,8 +58,6 @@ let ceres = {};
     let sub = true; // default element attribute - display slideview item subtitles
     let index = 1; // pointer referencing to the currently active slide
 
-    //loadSlideView();
-
     function initiateSlideView()
     {
         progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
@@ -346,12 +344,6 @@ let ceres = {};
         }
 
     }
-
-    function loadSlideView()
-    {
-        //setTimeout(function() { initiateSlideView(); }, constants.renderdelay)
-        initiateSlideView();
-    };
 
     function activateSlideView()
     {
