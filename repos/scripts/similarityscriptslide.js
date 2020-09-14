@@ -104,11 +104,6 @@ let ceres = {};
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
-            function imageListToArray(str)
-            {
-                return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
-            }
-
             function getImageList()
             {
                 return (progenitor.getAttribute('src')) ? getMarkdownList() : getMarkupList();
