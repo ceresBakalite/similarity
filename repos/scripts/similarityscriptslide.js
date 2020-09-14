@@ -24,7 +24,7 @@ let ceres = {};
 
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
-        'renderdelay': 250, // onload setTimeout period in ms
+        'renderdelay': 250, // onload slideview style.display delay in ms (awaiting slideview css catchup)
         'notify': 1, // console notification type
         'error': 99 // console notification type
     };
@@ -39,12 +39,9 @@ let ceres = {};
         'ProgenitorInnerHTML': 104,
         'ImageListMarkup': 105,
         'ListFallback': 106,
-        'NotFoundImageList': 107,
-        'NotFoundProgenitor': 108,
-        'NotFoundCSSDefault': 109,
-        'NotFoundListFallback': 110,
-        'NotFoundProgenitorSrcFetch': 111,
-        'EmptyProgenitorSrc': 112
+        'NotFoundProgenitor': 107,
+        'NotFoundListFallback': 108,
+        'EmptyProgenitorSrc': 109
     };
 
     Object.freeze(manifest);
@@ -412,7 +409,6 @@ let ceres = {};
                 [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
                 [manifest.ListFallback]: 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
                 [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is unavailable. Searching the fallback noscript image list content in the document body...',
-                [manifest.NotFoundProgenitorSrcFetch]: 'The fetch API was unable to capture the ' + slideview.HTMLSlideViewElement + ' src attribute innerHTML content. Attempting to pull the source directly...',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
@@ -422,9 +418,7 @@ let ceres = {};
         function lookupError()
         {
             const lookup = {
-                [manifest.NotFoundImageList]: 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
-                [manifest.NotFoundCSSDefault]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' default CSS file',
                 [manifest.NotFoundListFallback]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
