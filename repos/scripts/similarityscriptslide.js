@@ -61,7 +61,7 @@ let ceres = {};
         'progenitor': null,
         'imageArray': null,
         'imageContainer': null,
-        'slideViewContainer': null,
+        'slideContainer': null,
         'attributes': function() { return attribute; },
         'index': 1
     }
@@ -164,11 +164,11 @@ let ceres = {};
 
                 composeElement('div', id, 'slideview fade', svc.imageContainer, null, null, null, null);
 
-                svc.slideViewContainer = document.getElementById(id);
+                svc.slideContainer = document.getElementById(id);
 
-                if (svc.attributes.sur) composeElement('div', elements.surName, 'surtitle', svc.slideViewContainer, getSurtitle(qualifier), null, null, null);
-                composeElement('img', elements.imgName, null, svc.slideViewContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (svc.attributes.sub) composeElement('div', elements.subName, 'subtitle', svc.slideViewContainer, getSubtitle(), null, null, null);
+                if (svc.attributes.sur) composeElement('div', elements.surName, 'surtitle', svc.slideContainer, getSurtitle(qualifier), null, null, null);
+                composeElement('img', elements.imgName, null, svc.slideContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+                if (svc.attributes.sub) composeElement('div', elements.subName, 'subtitle', svc.slideContainer, getSubtitle(), null, null, null);
             }
 
             composeElement('a', 'slideview-prev', 'prev', svc.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
