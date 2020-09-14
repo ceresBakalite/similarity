@@ -104,7 +104,7 @@ let ceres = {};
             {
                 if (!str) return null;
 
-                if (attributes.trace) console.log(resource(constants.notify, manifest.ImageListMarkup, str));
+                if (svc.attributes.trace) console.log(resource(constants.notify, manifest.ImageListMarkup, str));
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
@@ -119,10 +119,10 @@ let ceres = {};
 
                 function getMarkupList()
                 {
-                    if (attributes.trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
+                    if (svc.attributes.trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
 
                     const lookup = {
-                        'logFound': function() { if (attributes.trace) console.log(resource(constants.notify, manifest.ListFallback)); },
+                        'logFound': function() { if (svc.attributes.trace) console.log(resource(constants.notify, manifest.ListFallback)); },
                         'logNotFound': function() { errorHandler(resource(constants.error, manifest.NotFoundListFallback)); },
                     };
 
@@ -171,15 +171,15 @@ let ceres = {};
 
                 svc.slideViewContainer = document.getElementById(id);
 
-                if (attributes.sur) composeElement('div', elements.surName, 'surtitle', svc.slideViewContainer, getSurtitle(qualifier), null, null, null);
+                if (svc.attributes.sur) composeElement('div', elements.surName, 'surtitle', svc.slideViewContainer, getSurtitle(qualifier), null, null, null);
                 composeElement('img', elements.imgName, null, svc.slideViewContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (attributes.sub) composeElement('div', elements.subName, 'subtitle', svc.slideViewContainer, getSubtitle(), null, null, null);
+                if (svc.attributes.sub) composeElement('div', elements.subName, 'subtitle', svc.slideViewContainer, getSubtitle(), null, null, null);
             }
 
             composeElement('a', 'slideview-prev', 'prev', svc.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
             composeElement('a', 'slideview-next', 'next', svc.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
-            if (attributes.ptr) createSlideViewPointerContainer();
+            if (svc.attributes.ptr) createSlideViewPointerContainer();
 
             setSlideViewDisplay('none');
 
@@ -204,7 +204,7 @@ let ceres = {};
 
                 svc.progenitor.appendChild(document.createElement('br'));
 
-                if (attributes.trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
+                if (svc.attributes.trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
 
                 function getClickEventValue(indexItem)
                 {
@@ -220,12 +220,12 @@ let ceres = {};
 
             function getSurtitle(indexItem)
             {
-                return (attributes.sur) ? indexItem + ' / ' + svc.imageArray.length : null;
+                return (svc.attributes.sur) ? indexItem + ' / ' + svc.imageArray.length : null;
             }
 
             function getSubtitle()
             {
-                return (attributes.sub) ? getAccessibilityText() : null;
+                return (svc.attributes.sub) ? getAccessibilityText() : null;
             }
 
             function getAccessibilityText()
@@ -257,7 +257,7 @@ let ceres = {};
         {
             link.onload = function ()
             {
-                if (attributes.trace) console.log(resource(constants.notify, manifest.LinkOnload));
+                if (svc.attributes.trace) console.log(resource(constants.notify, manifest.LinkOnload));
             }
 
         }
@@ -268,7 +268,7 @@ let ceres = {};
             {
                 link.addEventListener('load', function()
                 {
-                    if (attributes.trace) console.log(resource(constants.notify, manifest.LinkAddEventListener));
+                    if (svc.attributes.trace) console.log(resource(constants.notify, manifest.LinkAddEventListener));
                 }, false);
 
             }
@@ -284,7 +284,7 @@ let ceres = {};
                 if (document.styleSheets.length > cssnum)
                 {
                     clearInterval(ti);
-                    if (attributes.trace) console.log(resource(constants.notify, manifest.LinkStylesheetCount));
+                    if (svc.attributes.trace) console.log(resource(constants.notify, manifest.LinkStylesheetCount));
                 }
 
             }, 10);
@@ -300,7 +300,7 @@ let ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    if (attributes.trace) console.log(resource(constants.notify, manifest.LinkOnReadyState));
+                    if (svc.attributes.trace) console.log(resource(constants.notify, manifest.LinkOnReadyState));
                 }
 
             };
@@ -319,7 +319,7 @@ let ceres = {};
         slides.forEach(node => { node.style.display = 'none'; } );
         slides[svc.index-1].style.display = 'block';
 
-        if (attributes.ptr)
+        if (svc.attributes.ptr)
         {
             pointers.forEach(node => { node.className = node.className.replace(' active', ''); } );
             pointers[svc.index-1].className += ' active';
@@ -379,7 +379,7 @@ let ceres = {};
         const err = str + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
         console.log(err);
 
-        if (attributes.trace) alert(err);
+        if (svc.attributes.trace) alert(err);
 
         return null;
     }
