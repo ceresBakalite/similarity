@@ -79,12 +79,26 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                return (imageList) ? imageListToArray(imageList) : fetchImageListToArray();
+                if (!imageList) fetchImageListToArray();
+
+                return (imageList) ? imageListToArray(imageList) : imageListToArray(testRetry());
 
             } else {
 
                 return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
 
+            }
+
+            function testRetry(retry = 1, attempt = 15)
+            {
+                fetchImageListToArray();
+
+                if ((progenitor.innerHTML.length == 0)
+                {
+                    if (retry < attempt)) testRetry(++retry);
+                }
+
+                return progenitor.innerHTML;
             }
 
             async function fetchImageListToArray()
@@ -93,9 +107,7 @@ let ceres = {};
 
                 alert('src: ' + src);
 
-                let result = await (await fetch(src)).text();
-
-                return imageListToArray(result);
+                progenitor.innerHTML = await (await fetch(src)).text();
             }
 
             function imageListToArray(str)
