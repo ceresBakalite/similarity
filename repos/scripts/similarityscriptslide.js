@@ -79,13 +79,22 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                return (imageList) ? imageList : reloadImageList();
+                return (imageList) ? imageListToArray(imageList) : imageListToArray(mainFunction(callbackFunction));
 
             } else {
 
                 return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
 
             }
+
+            const callbackFunction = result => {
+              return await (await fetch(progenitor.getAttribute('src'))).text();
+            }
+
+            const mainFunction = callback => {
+              asynchronousFunction(callback)
+            }
+
 
             async function reloadImageList()
             {
