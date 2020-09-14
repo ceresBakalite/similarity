@@ -57,7 +57,7 @@ let ceres = {};
         'sub': true  // default element attribute - display slideview item subtitles
     };
 
-    let svc = {
+    var svc = {
         'progenitor': null,
         'imageArray': null,
         'imageContainer': null,
