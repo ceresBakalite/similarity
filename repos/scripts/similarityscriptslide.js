@@ -89,7 +89,6 @@ let ceres = {};
 
             function refreshImageList()
             {
-                if (trace) console.log(resource(constants.notify, manifest.NotFoundProgenitorSrcFetch, imageList));
                 return fetch(progenitor.getAttribute('src')).text();
             }
 
