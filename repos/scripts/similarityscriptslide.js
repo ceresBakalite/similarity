@@ -118,18 +118,20 @@ let ceres = {};
                                                     return response.text();
                                                 });
 */
-                        try
-                        {
-                            let response = await fetch(url);
-                            let data = await response.text();
+                        (async () => {
+                            try
+                            {
+                                let response = await fetch(url);
+                                let data = await response.text();
+                                return data;
 
-                        } catch (e) {
+                            } catch (e) {
 
-                            errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrcFetch));
-                            console.log('Booo');
-                        }
+                                errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrcFetch));
+                                console.log('Booo');
+                            }
 
-                        return data;
+                        })();
                     }
 
                 }
