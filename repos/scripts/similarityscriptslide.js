@@ -99,6 +99,12 @@ let ceres = {};
 
             function getImageList()
             {
+                fetch(progenitor.getAttribute('src')).then(function (response)
+                {
+                    console.log(response.text());
+                    //return response.text();
+                });
+
                 if (!progenitor.getAttribute('src'))
                 {
                     if (trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
