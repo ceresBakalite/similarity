@@ -80,7 +80,10 @@ let ceres = {};
                 let imageList = getImageList();
 
                 //return (imageList) ? imageListToArray(imageList) : location.reload;
-                return (imageList) ? imageListToArray(imageList) : screwRetry();
+                //return (imageList) ? imageListToArray(imageList) : screwRetry();
+                imageList = (imageList) ? imageListToArray(imageList) : imageListToArray(testRetry());
+
+                return (imageList) ? imageList : location.reload;
 
             } else {
 
@@ -99,7 +102,7 @@ let ceres = {};
                 location.reload;
             }
 
-            function testRetry(retry = 1, attempt = 15)
+            function testRetry(retry = 1, attempt = 5)
             {
                 fetchImageListToArray();
 
