@@ -13,6 +13,8 @@ let ceres = {};
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
             await this.renderComplete;
+
+            initiateSlideView();
         }
 
     });
@@ -56,7 +58,7 @@ let ceres = {};
     let sub = true; // default element attribute - display slideview item subtitles
     let index = 1; // pointer referencing to the currently active slide
 
-    loadSlideView();
+    //loadSlideView();
 
     function initiateSlideView()
     {
