@@ -95,6 +95,7 @@ let ceres = {};
                 console.log('Screw Retry attempt: ' + retry);
                 if (progenitor.innerHTML.length == 0 && retry < attempt) screwRetry(++retry);
 
+                console.log('Screw retrying - reloading...');
                 location.reload;
             }
 
