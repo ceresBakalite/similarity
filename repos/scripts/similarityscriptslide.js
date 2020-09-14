@@ -87,19 +87,17 @@ let ceres = {};
 
             }
 
+            const asynchronousFunction = callback => {
+              return fetch(progenitor.getAttribute('src')).then(response => {
+                callback(response)
+              })
+            }
             const callbackFunction = result => {
-              return await (await fetch(progenitor.getAttribute('src'))).text();
+               console.log(result)
             }
 
             const mainFunction = callback => {
               asynchronousFunction(callback)
-            }
-
-
-            async function reloadImageList()
-            {
-                await (await fetch(progenitor.getAttribute('src'))).text();
-                location.reload;
             }
 
             function imageListToArray(str)
