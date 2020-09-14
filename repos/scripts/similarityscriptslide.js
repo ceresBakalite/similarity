@@ -101,7 +101,7 @@ let ceres = {};
             {
                 let url = progenitor.getAttribute('src');
 
-                return (url) getMarkdownList();
+                return (url) ? getMarkdownList() : null;
 
                 function getMarkdownList()
                 {
