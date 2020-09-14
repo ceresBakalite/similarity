@@ -99,6 +99,8 @@ let ceres = {};
 
             function getImageList()
             {
+                getMarkdownList();
+                
                 function getMarkdownList()
                 {
                     if (progenitor.getAttribute('src'))
