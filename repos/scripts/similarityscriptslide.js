@@ -43,8 +43,9 @@ let ceres = {};
         'NotFoundCSSDefault': 110,
         'NotFoundProgenitorSrc': 111,
         'NotFoundListFallback': 112,
-        'EmptyProgenitorSrc': 113,
-        'DocumentLocationReload': 114
+        'NotFoundProgenitorSrcFetch': 113,
+        'EmptyProgenitorSrc': 114,
+        'DocumentLocationReload': 115
     };
 
     Object.freeze(manifest);
@@ -112,11 +113,18 @@ let ceres = {};
                     {
                         errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrc));
 
-                        fetch(url).then(function (response)
+                        try
                         {
-                            return response.text();
-                        });
+                            let response = await fetch(url);
+                            let data = await response.text();
 
+                        } catch (e) {
+
+                            errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrcFetch));
+                            console.log('Booo');
+                        }
+
+                        return data;
                     }
 
                 }
@@ -389,15 +397,6 @@ let ceres = {};
         nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
-    function XMLHttpRequestStatus(url)
-    {
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.send();
-
-        return (xhr.status == 200 && xhr.responseXML != null) ? true : false;
-    }
-
     function errorHandler(str)
     {
         const err = str + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
@@ -463,6 +462,7 @@ let ceres = {};
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
                 [manifest.NotFoundCSSDefault]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' default CSS file',
                 [manifest.NotFoundProgenitorSrc]: 'Error: Unable to read the ' + slideview.HTMLSlideViewElement + ' innerHTML image list content',
+                [manifest.NotFoundProgenitorSrcFetch]: 'Error: The fetch API was unable to capture the ' + slideview.HTMLSlideViewElement + ' src attribute content',
                 [manifest.NotFoundListFallback]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
