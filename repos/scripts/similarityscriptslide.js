@@ -100,7 +100,7 @@ let ceres = {};
             {
                 if (!str) return null;
 
-                if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
+                if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, str));
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
