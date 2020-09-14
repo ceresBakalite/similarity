@@ -95,7 +95,7 @@ let ceres = {};
 
                 if (progenitor.innerHTML.length == 0)
                 {
-                    if (retry < attempt)) testRetry(++retry);
+                    if (retry < attempt) testRetry(++retry);
                 }
 
                 return progenitor.innerHTML;
