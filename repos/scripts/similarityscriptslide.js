@@ -89,7 +89,6 @@ let ceres = {};
 
                     fetch(progenitor.getAttribute('src')).then(function (response)
                     {
-
                         return setTimeout(function() { imageListToArray(response.text()); }, constants.renderdelay);
                     });
 
