@@ -204,7 +204,7 @@ let ceres = {};
 
                 svc.progenitor.appendChild(document.createElement('br'));
 
-                if (svc.attributes.trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
+                //if (svc.attributes.trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
 
                 function getClickEventValue(indexItem)
                 {
