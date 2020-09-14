@@ -12,7 +12,6 @@ let ceres = {};
         {
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
-            await this.renderComplete;
         }
 
     });
@@ -41,7 +40,11 @@ let ceres = {};
         'NotFoundImageList': 108,
         'NotFoundProgenitor': 109,
         'NotFoundCSSDefault': 110,
-        'NotFoundProgenitorSrc': 111
+        'NotFoundProgenitorSrc': 111,
+        'NotFoundListFallback': 112,
+        'EmptyProgenitorSrc': 113,
+        'ProgenitorSrcFound': 114,
+        'DocumentLocationReload': 115
     };
 
     Object.freeze(manifest);
@@ -95,15 +98,28 @@ let ceres = {};
 
             function getImageList()
             {
-                if (!XMLHttpRequestStatus(progenitor.getAttribute('src')))
+                if (!progenitor.getAttribute('src'))
                 {
+                    if (trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
+                    startLooking();
+
+                } else if (!XMLHttpRequestStatus(progenitor.getAttribute('src'))) {
+
                     console.log(resource(constants.error, manifest.NotFoundProgenitorSrc));
-                    return null;
+                    setTimeout(function() { startLooking(); }, constants.renderdelay * 2);
+
+                } else {
+
+                    if (trace) console.log(resource(constants.notify, manifest.ProgenitorSrcFound));
+                    startLooking();
+
                 }
 
-                const list = getMarkdownList();
-
-                return (list) ? list : lookAgain();
+                function startLooking()
+                {
+                    const list = getMarkdownList();
+                    return (list) ? list : lookAgain();
+                }
 
                 function lookAgain()
                 {
@@ -116,7 +132,7 @@ let ceres = {};
 
                     } else {
 
-                        list = getImageListRetry();
+                        list = getMarkdownListRetry();
 
                         return (list) ? list : finalAttempt();
                     }
@@ -134,21 +150,23 @@ let ceres = {};
                     return (el) ? el.innerHTML : null;
                 }
 
-                function getImageListRetry(retry = 1, retryLimit = 5)
+                function getMarkdownListRetry(retry = 1, retryLimit = 5)
                 {
                     if (trace) console.log(resource(constants.notify, manifest.ListRetryAttempt, retry));
 
                     try
                     {
-                        let list = getMarkdownList() ? getMarkdownList() : getMarkupList();
+                        let list = getMarkdownList();
                         if (list) return list;
 
                         throw 'ListNotFoundException';
 
                     } catch (ex) {
 
-                        if (retry != retryLimit) getImageListRetry(++retry);
+                        if (retry != retryLimit) getMarkdownListRetry(++retry);
                    }
+
+                   if (trace) console.log(resource(constants.notify, manifest.DocumentLocationReload));
 
                    if (XMLHttpRequestStatus(progenitor.getAttribute('src'))) location.reload();
                 }
@@ -464,6 +482,9 @@ let ceres = {};
                 [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
                 [manifest.ListFallback]: 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
                 [manifest.ListRetryAttempt]: 'Image list search retry attempt: ' + str,
+                [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is unavailable. Searching the fallback noscript image list content in the document body...',
+                [manifest.ProgenitorSrcFound]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is visible. Searching for the primary image list download file content...',
+                [manifest.DocumentLocationReload]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is visible. Multiple searches for the primary image list download file have failed.  All hope is abandoned. Reloading...',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
@@ -476,7 +497,8 @@ let ceres = {};
                 [manifest.NotFoundImageList]: 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
                 [manifest.NotFoundCSSDefault]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' default CSS file',
-                [manifest.NotFoundProgenitorSrc]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' source file',
+                [manifest.NotFoundProgenitorSrc]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' source file [' + progenitor.getAttribute('src') + ']',
+                [manifest.NotFoundListFallback]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
 
