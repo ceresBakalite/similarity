@@ -50,10 +50,10 @@ let ceres = {};
     Object.freeze(manifest);
 
     let progenitor = null; // parent slideview place holder
-    let imageListArray = null; // slideview element item attributes array
+    let imageArray = null; // slideview element item attributes array
     let index = 1; // pointer referencing to the currently active slide
 
-    let progenitorAttribute = {
+    let attributes = {
         'trace': false, // default element attribute - enable slideview trace environment directive
         'ptr': true, // default element attribute - display slideview item pointers
         'css': true, // default element attribute - use the default slideview stylesheet
@@ -64,9 +64,9 @@ let ceres = {};
     function initiateSlideView()
     {
         progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
-        imageListArray = getSlideViewAttributes();
+        imageArray = getSlideViewAttributes();
 
-        if (imageListArray) activateSlideView();
+        if (imageArray) activateSlideView();
 
         function getSlideViewAttributes()
         {
@@ -74,11 +74,11 @@ let ceres = {};
             {
                 progenitor.id = slideview.HTMLSlideViewElement;
 
-                progenitorAttribute.trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : progenitorAttribute.trace;
-                progenitorAttribute.ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : progenitorAttribute.ptr;
-                progenitorAttribute.css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : progenitorAttribute.css;
-                progenitorAttribute.sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : progenitorAttribute.sur;
-                progenitorAttribute.sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : progenitorAttribute.sub;
+                attributes.trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : attributes.trace;
+                attributes.ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : attributes.ptr;
+                attributes.css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : attributes.css;
+                attributes.sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : attributes.sur;
+                attributes.sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : attributes.sub;
 
                 let imageList = getImageList();
 
@@ -94,7 +94,7 @@ let ceres = {};
             {
                 if (!str) return null;
 
-                if (progenitorAttribute.trace) console.log(resource(constants.notify, manifest.ImageListMarkup, str));
+                if (attributes.trace) console.log(resource(constants.notify, manifest.ImageListMarkup, str));
                 return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
@@ -109,10 +109,10 @@ let ceres = {};
 
                 function getMarkupList()
                 {
-                    if (progenitorAttribute.trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
+                    if (attributes.trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
 
                     const lookup = {
-                        'logFound': function() { if (progenitorAttribute.trace) console.log(resource(constants.notify, manifest.ListFallback)); },
+                        'logFound': function() { if (attributes.trace) console.log(resource(constants.notify, manifest.ListFallback)); },
                         'logNotFound': function() { errorHandler(resource(constants.error, manifest.NotFoundListFallback)); },
                     };
 
@@ -145,14 +145,14 @@ let ceres = {};
 
             composeAttribute(imageContainer.id, 'class', 'slideview-image-container');
 
-            for (let item = 0; item < imageListArray.length; item++)
+            for (let item = 0; item < imageArray.length; item++)
             {
-                var arrayItem = imageListArray[item].split(',');
+                var arrayItem = imageArray[item].split(',');
 
                 let qualifier = item + 1;
                 let slideViewContainerId = 'slideview' + qualifier;
 
-                let slideViewContainerElement = {
+                let elements = {
                     'surName': 'slideview-sur' + qualifier,
                     'imgName': 'slideview-img' + qualifier,
                     'subName': 'slideview-sub' + qualifier
@@ -162,15 +162,15 @@ let ceres = {};
 
                 let slideViewContainer = document.getElementById(slideViewContainerId);
 
-                if (progenitorAttribute.sur) composeElement('div', slideViewContainerElement.surName, 'surtitle', slideViewContainer, getSurtitle(qualifier), null, null, null);
-                composeElement('img', slideViewContainerElement.imgName, null, slideViewContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (progenitorAttribute.sub) composeElement('div', slideViewContainerElement.subName, 'subtitle', slideViewContainer, getSubtitle(), null, null, null);
+                if (attributes.sur) composeElement('div', elements.surName, 'surtitle', slideViewContainer, getSurtitle(qualifier), null, null, null);
+                composeElement('img', elements.imgName, null, slideViewContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+                if (attributes.sub) composeElement('div', elements.subName, 'subtitle', slideViewContainer, getSubtitle(), null, null, null);
             }
 
             composeElement('a', 'slideview-prev', 'prev', imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
             composeElement('a', 'slideview-next', 'next', imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
-            if (progenitorAttribute.ptr) createSlideViewPointerContainer();
+            if (attributes.ptr) createSlideViewPointerContainer();
 
             setSlideViewDisplay('none');
 
@@ -185,7 +185,7 @@ let ceres = {};
 
                 composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
 
-                for (let item = 0; item < imageListArray.length; item++)
+                for (let item = 0; item < imageArray.length; item++)
                 {
                     let qualifier = item + 1;
                     let svpname = 'slideview-ptr' + qualifier;
@@ -195,7 +195,7 @@ let ceres = {};
 
                 progenitor.appendChild(document.createElement('br'));
 
-                if (progenitorAttribute.trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
+                if (attributes.trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
 
                 function getClickEventValue(indexItem)
                 {
@@ -211,12 +211,12 @@ let ceres = {};
 
             function getSurtitle(indexItem)
             {
-                return (progenitorAttribute.sur) ? indexItem + ' / ' + imageListArray.length : null;
+                return (attributes.sur) ? indexItem + ' / ' + imageArray.length : null;
             }
 
             function getSubtitle()
             {
-                return (progenitorAttribute.sub) ? getAccessibilityText() : null;
+                return (attributes.sub) ? getAccessibilityText() : null;
             }
 
             function getAccessibilityText()
@@ -248,7 +248,7 @@ let ceres = {};
         {
             link.onload = function ()
             {
-                if (progenitorAttribute.trace) console.log(resource(constants.notify, manifest.LinkOnload));
+                if (attributes.trace) console.log(resource(constants.notify, manifest.LinkOnload));
             }
 
         }
@@ -259,7 +259,7 @@ let ceres = {};
             {
                 link.addEventListener('load', function()
                 {
-                    if (progenitorAttribute.trace) console.log(resource(constants.notify, manifest.LinkAddEventListener));
+                    if (attributes.trace) console.log(resource(constants.notify, manifest.LinkAddEventListener));
                 }, false);
 
             }
@@ -275,7 +275,7 @@ let ceres = {};
                 if (document.styleSheets.length > cssnum)
                 {
                     clearInterval(ti);
-                    if (progenitorAttribute.trace) console.log(resource(constants.notify, manifest.LinkStylesheetCount));
+                    if (attributes.trace) console.log(resource(constants.notify, manifest.LinkStylesheetCount));
                 }
 
             }, 10);
@@ -291,7 +291,7 @@ let ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    if (progenitorAttribute.trace) console.log(resource(constants.notify, manifest.LinkOnReadyState));
+                    if (attributes.trace) console.log(resource(constants.notify, manifest.LinkOnReadyState));
                 }
 
             };
@@ -310,7 +310,7 @@ let ceres = {};
         slides.forEach(node => { node.style.display = 'none'; } );
         slides[index-1].style.display = 'block';
 
-        if (progenitorAttribute.ptr)
+        if (attributes.ptr)
         {
             pointers.forEach(node => { node.className = node.className.replace(' active', ''); } );
             pointers[index-1].className += ' active';
@@ -370,7 +370,7 @@ let ceres = {};
         const err = str + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
         console.log(err);
 
-        if (progenitorAttribute.trace) alert(err);
+        if (attributes.trace) alert(err);
 
         return null;
     }
