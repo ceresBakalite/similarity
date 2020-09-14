@@ -97,7 +97,7 @@ let ceres = {};
             {
                 if (!XMLHttpRequestStatus(progenitor.getAttribute('src')))
                 {
-                    console.log(resource(constants.error, manifest.NotFoundProgenitorSrc, imageList));
+                    console.log(resource(constants.error, manifest.NotFoundProgenitorSrc));
                     return null;
                 }
 
