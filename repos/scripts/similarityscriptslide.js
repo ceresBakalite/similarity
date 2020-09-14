@@ -148,8 +148,7 @@ let ceres = {};
             svc.progenitor.innerHTML = null;
 
             svc.imageContainer = document.createElement('div');
-
-            imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
+            svc.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
             svc.progenitor.appendChild(svc.imageContainer);
 
             composeAttribute(svc.imageContainer.id, 'class', 'slideview-image-container');
