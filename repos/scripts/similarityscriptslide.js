@@ -81,7 +81,7 @@ let ceres = {};
 
                 if (!imageList) fetchImageListToArray();
 
-                return (imageList) ? imageListToArray(imageList) : imageListToArray(testRetry());
+                return (imageList) ? imageListToArray(imageList) : location.reload;
 
             } else {
 
