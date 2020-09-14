@@ -12,7 +12,10 @@ let ceres = {};
         {
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
+            let css = getBoolean(this.getAttribute('src'));
             await this.renderComplete;
+
+            if (css) importSlideViewStylesheet();
 
             initiateSlideView();
         }
@@ -125,7 +128,7 @@ let ceres = {};
 
     function getSlideView()
     {
-        if (css) importSlideViewStylesheet();
+        //if (css) importSlideViewStylesheet();
 
         createSlideViewContainer();
 
