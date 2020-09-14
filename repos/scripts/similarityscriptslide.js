@@ -112,7 +112,12 @@ let ceres = {};
                     function fetchMarkdownList()
                     {
                         errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrc));
-
+/*
+                                                fetch(url).then(function (response)
+                                                {
+                                                    return response.text();
+                                                });
+*/
                         try
                         {
                             let response = await fetch(url);
