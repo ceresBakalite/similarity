@@ -24,7 +24,7 @@ let ceres = {};
 
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
-        'renderdelay': 500, // onload setTimeout period in ms
+        'renderdelay': 250, // onload setTimeout period in ms
         'notify': 1, // console notification type
         'error': 99 // console notification type
     };
