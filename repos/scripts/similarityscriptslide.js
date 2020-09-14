@@ -310,12 +310,6 @@ let ceres = {};
 
         function importSlideViewStylesheet()
         {
-            if (!XMLHttpRequestStatus(constants.defaultCSS))
-            {
-                if (trace) errorHandler(resource(constants.error, manifest.NotFoundCSSDefault));
-                return;
-            }
-
             const link = document.createElement('link');
 
             link.rel = 'stylesheet';
