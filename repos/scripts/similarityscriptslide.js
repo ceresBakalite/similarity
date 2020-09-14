@@ -348,10 +348,14 @@ let ceres = {};
 
     function activateSlideView()
     {
+        const renderdelay = 250; // awaiting slideview css catchup
+
         progenitor.style.display = 'none';
+
         getSlideView();
         displaySlide();
-        setSlideViewDisplay('block');
+
+        setTimeout(function() { setSlideViewDisplay('block'); }, renderdelay);
     }
 
 
