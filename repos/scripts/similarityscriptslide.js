@@ -24,7 +24,6 @@ let ceres = {};
 
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
-        'renderdelay': 250, // onload slideview style.display delay in ms (awaiting slideview css catchup)
         'notify': 1, // console notification type
         'error': 99 // console notification type
     };
@@ -344,12 +343,14 @@ let ceres = {};
 
     function activateSlideView()
     {
+        const renderdelay = 250; // awaiting slideview css catchup
+
         progenitor.style.display = 'none';
 
         getSlideView();
         displaySlide();
 
-        setTimeout(function() { setSlideViewDisplay('block'); }, constants.renderdelay);
+        setTimeout(function() { setSlideViewDisplay('block'); }, renderdelay);
     }
 
 
