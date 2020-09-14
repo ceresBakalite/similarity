@@ -79,7 +79,7 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                return (imageList) ? imageListToArray(imageList) : imageListToArray(refreshImageList());
+                return (imageList) ? imageListToArray(imageList) : fetchImageListToArray();
 
             } else {
 
@@ -87,15 +87,14 @@ let ceres = {};
 
             }
 
-            function refreshImageList()
+            async function fetchImageListToArray()
             {
                 alert('src: ' + progenitor.getAttribute('src'));
-                
-                fetch(progenitor.getAttribute('src')).then(function (response)
-                {
-                    return response.text();
-                });
 
+                let promise = Promise.fetch(progenitor.getAttribute('src')).text();
+                let result = await promise;
+
+                return imageListToArray(result);
             }
 
             function imageListToArray(str)
