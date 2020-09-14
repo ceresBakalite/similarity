@@ -89,10 +89,11 @@ let ceres = {};
 
             async function fetchImageListToArray()
             {
-                alert('src: ' + progenitor.getAttribute('src'));
+                let src = progenitor.getAttribute('src');
 
-                let promise = Promise.fetch(progenitor.getAttribute('src')).text();
-                let result = await promise;
+                alert('src: ' + src);
+
+                let result = await (await fetch(src)).text();
 
                 return imageListToArray(result);
             }
