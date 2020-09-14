@@ -57,7 +57,7 @@ let ceres = {};
         'sub': true  // default element attribute - display slideview item subtitles
     };
 
-    var svc = {
+    let svc = {
         'progenitor': null,
         'imageArray': null,
         'imageContainer': null,
@@ -84,11 +84,11 @@ let ceres = {};
             {
                 svc.progenitor.id = slideview.HTMLSlideViewElement;
 
-                svc.attributes.trace = (svc.progenitor.getAttribute('trace')) ? getBoolean(svc.progenitor.getAttribute('trace')) : svc.attributes.trace;
-                svc.attributes.ptr = (svc.progenitor.getAttribute('ptr')) ? getBoolean(svc.progenitor.getAttribute('ptr')) : svc.attributes.ptr;
-                svc.attributes.css = (svc.progenitor.getAttribute('css')) ? getBoolean(svc.progenitor.getAttribute('css')) : svc.attributes.css;
-                svc.attributes.sur = (svc.progenitor.getAttribute('sur')) ? getBoolean(svc.progenitor.getAttribute('sur')) : svc.attributes.sur;
-                svc.attributes.sub = (svc.progenitor.getAttribute('sub')) ? getBoolean(svc.progenitor.getAttribute('sub')) : svc.attributes.sub;
+                svc.attributes.trace = (svc.progenitor.getAttribute('trace')) ? getBoolean(svc.progenitor.getAttribute('trace')) : attribute.trace;
+                svc.attributes.ptr = (svc.progenitor.getAttribute('ptr')) ? getBoolean(svc.progenitor.getAttribute('ptr')) : attribute.ptr;
+                svc.attributes.css = (svc.progenitor.getAttribute('css')) ? getBoolean(svc.progenitor.getAttribute('css')) : attribute.css;
+                svc.attributes.sur = (svc.progenitor.getAttribute('sur')) ? getBoolean(svc.progenitor.getAttribute('sur')) : attribute.sur;
+                svc.attributes.sub = (svc.progenitor.getAttribute('sub')) ? getBoolean(svc.progenitor.getAttribute('sub')) : attribute.sub;
 
                 let imageList = getImageList();
 
