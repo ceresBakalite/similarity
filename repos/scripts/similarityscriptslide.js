@@ -49,7 +49,7 @@ let ceres = {};
 
     Object.freeze(manifest);
 
-    let attributes = {
+    let attribute = {
         'trace': false, // default element attribute - enable slideview trace environment directive
         'ptr': true, // default element attribute - display slideview item pointers
         'css': true, // default element attribute - use the default slideview stylesheet
@@ -62,6 +62,7 @@ let ceres = {};
         'imageArray': null,
         'imageContainer': null,
         'slideViewContainer': null,
+        'attributes': function() { return attribute; }
         'index': 1
     }
 
@@ -83,11 +84,11 @@ let ceres = {};
             {
                 svc.progenitor.id = slideview.HTMLSlideViewElement;
 
-                attributes.trace = (svc.progenitor.getAttribute('trace')) ? getBoolean(svc.progenitor.getAttribute('trace')) : attributes.trace;
-                attributes.ptr = (svc.progenitor.getAttribute('ptr')) ? getBoolean(svc.progenitor.getAttribute('ptr')) : attributes.ptr;
-                attributes.css = (svc.progenitor.getAttribute('css')) ? getBoolean(svc.progenitor.getAttribute('css')) : attributes.css;
-                attributes.sur = (svc.progenitor.getAttribute('sur')) ? getBoolean(svc.progenitor.getAttribute('sur')) : attributes.sur;
-                attributes.sub = (svc.progenitor.getAttribute('sub')) ? getBoolean(svc.progenitor.getAttribute('sub')) : attributes.sub;
+                svc.attributes.trace = (svc.progenitor.getAttribute('trace')) ? getBoolean(svc.progenitor.getAttribute('trace')) : svc.attributes.trace;
+                svc.attributes.ptr = (svc.progenitor.getAttribute('ptr')) ? getBoolean(svc.progenitor.getAttribute('ptr')) : svc.attributes.ptr;
+                svc.attributes.css = (svc.progenitor.getAttribute('css')) ? getBoolean(svc.progenitor.getAttribute('css')) : svc.attributes.css;
+                svc.attributes.sur = (svc.progenitor.getAttribute('sur')) ? getBoolean(svc.progenitor.getAttribute('sur')) : svc.attributes.sur;
+                svc.attributes.sub = (svc.progenitor.getAttribute('sub')) ? getBoolean(svc.progenitor.getAttribute('sub')) : svc.attributes.sub;
 
                 let imageList = getImageList();
 
