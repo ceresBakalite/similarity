@@ -49,7 +49,7 @@ let ceres = {};
 
     Object.freeze(manifest);
 
-    let progenitor = null; // parent slideview place holder
+    let progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0]; // parent slideview place holder
     let attributes = null; // slideview element item attributes array
     let trace = false; // default element attribute - enable slideview trace environment directive
     let ptr = true; // default element attribute - display slideview item pointers
@@ -60,7 +60,6 @@ let ceres = {};
 
     function initiateSlideView()
     {
-        progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
         attributes = getSlideViewAttributes();
 
         if (attributes) activateSlideView();
