@@ -89,6 +89,8 @@ let ceres = {};
 
             function refreshImageList()
             {
+                alert('src: ' + progenitor.getAttribute('src'));
+                
                 fetch(progenitor.getAttribute('src')).then(function (response)
                 {
                     return response.text();
