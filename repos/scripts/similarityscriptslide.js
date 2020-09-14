@@ -91,9 +91,7 @@ let ceres = {};
                     fetch(progenitor.getAttribute('src')).then(function (response)
                     {
                         imageList = response.text();
-
                         return imageListToArray(response.text());
-
                     });
 
                 }
