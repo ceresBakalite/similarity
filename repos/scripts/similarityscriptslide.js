@@ -12,6 +12,7 @@ let ceres = {};
         {
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
+            await this.renderComplete;
         }
 
     });
