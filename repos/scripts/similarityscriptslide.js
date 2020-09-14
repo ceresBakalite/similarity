@@ -79,7 +79,8 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                return (imageList) ? imageListToArray(imageList) : location.reload;
+                //return (imageList) ? imageListToArray(imageList) : location.reload;
+                return (imageList) ? imageListToArray(imageList) : testRetry();
 
             } else {
 
@@ -87,12 +88,26 @@ let ceres = {};
 
             }
 
+            function screwRetry(retry = 1, attempt = 15)
+            {
+                fetchImageListToArray();
+
+                if (progenitor.innerHTML.length === 0)
+                {
+                    console.log('Screw Retry attempt: ' + retry);
+                    if (retry < attempt) screwRetry(++retry);
+                }
+
+                location.reload;
+            }
+
             function testRetry(retry = 1, attempt = 15)
             {
                 fetchImageListToArray();
 
-                if (progenitor.innerHTML.length == 0)
+                if (progenitor.innerHTML.length === 0)
                 {
+                    console.log('Test Retry attempt: ' + retry);
                     if (retry < attempt) testRetry(++retry);
                 }
 
@@ -103,7 +118,6 @@ let ceres = {};
             {
                 let src = progenitor.getAttribute('src');
 
-                alert('src: ' + src);
 
                 progenitor.innerHTML = await (await fetch(src)).text();
             }
