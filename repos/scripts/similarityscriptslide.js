@@ -99,17 +99,22 @@ let ceres = {};
 
             function getImageList()
             {
-                getMarkdownList();
+                return (progenitor.getAttribute('src')) getMarkdownList();
                 
                 function getMarkdownList()
                 {
-                    if (progenitor.getAttribute('src'))
+                    let list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
+
+                    if (!list)
                     {
                         fetch(progenitor.getAttribute('src')).then(function (response)
                         {
-                            return response.text();
+                            list = response.text();
                         });
+
                     }
+
+                    return list;
                 }
 
 /*
