@@ -89,7 +89,8 @@ let ceres = {};
 
                     fetch(progenitor.getAttribute('src')).then(function (response)
                     {
-                        return imageListToArray(response.text());
+
+                        return setTimeout(function() { imageListToArray(response.text()); }, constants.renderdelay);
                     });
 
                 }
@@ -365,7 +366,7 @@ let ceres = {};
 
     function loadSlideView()
     {
-        setTimeout(initiateSlideView, constants.renderdelay);
+        setTimeout(function() { initiateSlideView(); }, constants.renderdelay)
     };
 
     function activateSlideView()
