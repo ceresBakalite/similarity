@@ -89,7 +89,11 @@ let ceres = {};
 
             function refreshImageList()
             {
-                return fetch(progenitor.getAttribute('src')).text();
+                fetch(progenitor.getAttribute('src')).then(function (response)
+                {
+                    return response.text();
+                });
+
             }
 
             function imageListToArray(str)
