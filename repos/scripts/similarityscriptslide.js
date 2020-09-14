@@ -37,15 +37,12 @@ let ceres = {};
         'ProgenitorInnerHTML': 104,
         'ImageListMarkup': 105,
         'ListFallback': 106,
-        'ListRetryAttempt': 107,
-        'NotFoundImageList': 108,
-        'NotFoundProgenitor': 109,
-        'NotFoundCSSDefault': 110,
-        'NotFoundProgenitorSrc': 111,
-        'NotFoundListFallback': 112,
-        'NotFoundProgenitorSrcFetch': 113,
-        'EmptyProgenitorSrc': 114,
-        'DocumentLocationReload': 115
+        'NotFoundImageList': 107,
+        'NotFoundProgenitor': 108,
+        'NotFoundCSSDefault': 109,
+        'NotFoundListFallback': 110,
+        'NotFoundProgenitorSrcFetch': 111,
+        'EmptyProgenitorSrc': 112
     };
 
     Object.freeze(manifest);
@@ -87,6 +84,8 @@ let ceres = {};
                     return imageListToArray(imageList);
 
                 } else {
+
+                    if (trace) console.log(resource(constants.notify, manifest.NotFoundProgenitorSrcFetch, imageList));
 
                     fetch(progenitor.getAttribute('src')).then(function (response)
                     {
@@ -433,9 +432,8 @@ let ceres = {};
                 [manifest.ProgenitorInnerHTML]: 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + progenitor.innerHTML,
                 [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
                 [manifest.ListFallback]: 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
-                [manifest.ListRetryAttempt]: 'Image list search retry attempt: ' + str,
                 [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is unavailable. Searching the fallback noscript image list content in the document body...',
-                [manifest.DocumentLocationReload]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is visible. Multiple searches for the primary image list download file have failed.  All hope is abandoned. Reloading...',
+                [manifest.NotFoundProgenitorSrcFetch]: 'The fetch API was unable to capture the ' + slideview.HTMLSlideViewElement + ' src attribute innerHTML content. Attempting to pull the source directly...',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
@@ -448,8 +446,6 @@ let ceres = {};
                 [manifest.NotFoundImageList]: 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
                 [manifest.NotFoundCSSDefault]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' default CSS file',
-                [manifest.NotFoundProgenitorSrc]: 'Error: Unable to read the ' + slideview.HTMLSlideViewElement + ' innerHTML image list content',
-                [manifest.NotFoundProgenitorSrcFetch]: 'Error: The fetch API was unable to capture the ' + slideview.HTMLSlideViewElement + ' src attribute content',
                 [manifest.NotFoundListFallback]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
