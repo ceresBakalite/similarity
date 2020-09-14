@@ -101,11 +101,11 @@ let ceres = {};
             {
                 let url = progenitor.getAttribute('src');
 
-                return (url) ? getMarkdownList() : null;
+                return (url) ? getImageList() : getMarkupList();
 
-                function getMarkdownList()
+                function getImageList()
                 {
-                    let list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                    let list = getMarkdownList();
 
                     if (!list)
                     {
@@ -117,6 +117,17 @@ let ceres = {};
                     }
 
                     return list;
+                }
+
+                function getMarkdownList()
+                {
+                    return (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                }
+
+                function getMarkupList()
+                {
+                    const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+                    return (el) ? el.innerHTML : null;
                 }
 
 /*
