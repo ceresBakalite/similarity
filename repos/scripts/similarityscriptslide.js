@@ -44,8 +44,7 @@ let ceres = {};
         'NotFoundProgenitorSrc': 111,
         'NotFoundListFallback': 112,
         'EmptyProgenitorSrc': 113,
-        'ProgenitorSrcFound': 114,
-        'DocumentLocationReload': 115
+        'DocumentLocationReload': 114
     };
 
     Object.freeze(manifest);
@@ -107,103 +106,43 @@ let ceres = {};
                 {
                     let list = getMarkdownList();
 
-                    if (!list)
+                    return (list) ? list : fetchMarkdownList();
+
+                    function fetchMarkdownList()
                     {
+                        errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrc));
+
                         fetch(url).then(function (response)
                         {
-                            list = response.text();
+                            return response.text();
                         });
 
                     }
 
+                }
+
+                function getMarkdownList()
+                {
+                    return (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                }
+
+                function getMarkupList()
+                {
+                    if (trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
+
+                    const lookup = {
+                        'logFound': function() { if (trace) console.log(resource(constants.notify, manifest.ListFallback)); },
+                        'logNotFound': function() { errorHandler(resource(constants.error, manifest.NotFoundListFallback)); },
+                    };
+
+                    const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+                    const list = (el) ? el.innerHTML : null;
+                    const response = (list) ? 'logFound' : 'logNotFound';
+
+                    lookup[response]();
                     return list;
                 }
 
-                function getMarkdownList()
-                {
-                    return (progenitor.innerHTML) ? progenitor.innerHTML : null;
-                }
-
-                function getMarkupList()
-                {
-                    const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
-                    return (el) ? el.innerHTML : null;
-                }
-
-/*
-                if (!progenitor.getAttribute('src'))
-                {
-                    if (trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
-                    startLooking();
-
-                } else if (!XMLHttpRequestStatus(progenitor.getAttribute('src'))) {
-
-                    errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrc));
-                    setTimeout(function() { startLooking(); }, constants.renderdelay * 2);
-
-                } else {
-
-                    if (trace) console.log(resource(constants.notify, manifest.ProgenitorSrcFound));
-                    startLooking();
-
-                }
-
-                function startLooking()
-                {
-                    const list = getMarkdownList();
-                    return (list) ? list : lookAgain();
-                }
-
-                function lookAgain()
-                {
-                    let list = getMarkupList();
-
-                    if (list)
-                    {
-                        if (trace) console.log(resource(constants.notify, manifest.ListFallback));
-                        return list;
-
-                    } else {
-
-                        list = getMarkdownListRetry();
-
-                        return (list) ? list : finalAttempt();
-                    }
-
-                }
-
-                function getMarkdownList()
-                {
-                    return (progenitor.innerHTML) ? progenitor.innerHTML : null;
-                }
-
-                function getMarkupList()
-                {
-                    const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
-                    return (el) ? el.innerHTML : null;
-                }
-
-                function getMarkdownListRetry(retry = 1, retryLimit = 5)
-                {
-                    if (trace) console.log(resource(constants.notify, manifest.ListRetryAttempt, retry));
-
-                    try
-                    {
-                        let list = getMarkdownList();
-                        if (list) return list;
-
-                        throw 'ListNotFoundException';
-
-                    } catch (ex) {
-
-                        if (retry != retryLimit) getMarkdownListRetry(++retry);
-                   }
-
-                   if (trace) console.log(resource(constants.notify, manifest.DocumentLocationReload));
-
-                   if (XMLHttpRequestStatus(progenitor.getAttribute('src'))) location.reload();
-                }
-*/
             }
 
         }
@@ -510,7 +449,6 @@ let ceres = {};
                 [manifest.ListFallback]: 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
                 [manifest.ListRetryAttempt]: 'Image list search retry attempt: ' + str,
                 [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is unavailable. Searching the fallback noscript image list content in the document body...',
-                [manifest.ProgenitorSrcFound]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is visible. Searching for the primary image list download file content...',
                 [manifest.DocumentLocationReload]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is visible. Multiple searches for the primary image list download file have failed.  All hope is abandoned. Reloading...',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
@@ -524,7 +462,7 @@ let ceres = {};
                 [manifest.NotFoundImageList]: 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
                 [manifest.NotFoundCSSDefault]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' default CSS file',
-                [manifest.NotFoundProgenitorSrc]: 'Error: Unable to see the ' + slideview.HTMLSlideViewElement + ' source file [' + progenitor.getAttribute('src') + '] during an XMLHttpRequestStatus peek',
+                [manifest.NotFoundProgenitorSrc]: 'Error: Unable to read the ' + slideview.HTMLSlideViewElement + ' innerHTML image list content',
                 [manifest.NotFoundListFallback]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
