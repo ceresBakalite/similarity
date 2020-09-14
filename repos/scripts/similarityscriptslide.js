@@ -99,11 +99,14 @@ let ceres = {};
 
             function getImageList()
             {
-                fetch(progenitor.getAttribute('src')).then(function (response)
+                if (progenitor.getAttribute('src'))
                 {
-                    console.log(response.text());
-                    //return response.text();
-                });
+                    fetch(progenitor.getAttribute('src')).then(function (response)
+                    {
+                        return response.text();
+                    });
+
+                }
 
                 if (!progenitor.getAttribute('src'))
                 {
