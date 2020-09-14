@@ -60,6 +60,8 @@ let ceres = {};
     let svc = {
         'progenitor': null,
         'imageArray': null,
+        'imageContainer': null,
+        'slideViewContainer': null,
         'index': 1
     }
 
@@ -145,19 +147,19 @@ let ceres = {};
         {
             svc.progenitor.innerHTML = null;
 
-            const imageContainer = document.createElement('div');
+            svc.imageContainer = document.createElement('div');
 
             imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-            svc.progenitor.appendChild(imageContainer);
+            svc.progenitor.appendChild(svc.imageContainer);
 
-            composeAttribute(imageContainer.id, 'class', 'slideview-image-container');
+            composeAttribute(svc.imageContainer.id, 'class', 'slideview-image-container');
 
             for (let item = 0; item < svc.imageArray.length; item++)
             {
                 var arrayItem = svc.imageArray[item].split(',');
 
                 let qualifier = item + 1;
-                let slideViewContainerId = 'slideview' + qualifier;
+                let id = 'slideview' + qualifier;
 
                 let elements = {
                     'surName': 'slideview-sur' + qualifier,
@@ -165,17 +167,17 @@ let ceres = {};
                     'subName': 'slideview-sub' + qualifier
                 };
 
-                composeElement('div', slideViewContainerId, 'slideview fade', imageContainer, null, null, null, null);
+                composeElement('div', id, 'slideview fade', svc.imageContainer, null, null, null, null);
 
-                let slideViewContainer = document.getElementById(slideViewContainerId);
+                svc.slideViewContainer = document.getElementById(id);
 
-                if (attributes.sur) composeElement('div', elements.surName, 'surtitle', slideViewContainer, getSurtitle(qualifier), null, null, null);
-                composeElement('img', elements.imgName, null, slideViewContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (attributes.sub) composeElement('div', elements.subName, 'subtitle', slideViewContainer, getSubtitle(), null, null, null);
+                if (attributes.sur) composeElement('div', elements.surName, 'surtitle', svc.slideViewContainer, getSurtitle(qualifier), null, null, null);
+                composeElement('img', elements.imgName, null, svc.slideViewContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+                if (attributes.sub) composeElement('div', elements.subName, 'subtitle', svc.slideViewContainer, getSubtitle(), null, null, null);
             }
 
-            composeElement('a', 'slideview-prev', 'prev', imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
-            composeElement('a', 'slideview-next', 'next', imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
+            composeElement('a', 'slideview-prev', 'prev', svc.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
+            composeElement('a', 'slideview-next', 'next', svc.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
             if (attributes.ptr) createSlideViewPointerContainer();
 
