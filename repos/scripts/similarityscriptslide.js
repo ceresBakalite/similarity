@@ -105,7 +105,7 @@ let ceres = {};
 
                 } else if (!XMLHttpRequestStatus(progenitor.getAttribute('src'))) {
 
-                    console.log(resource(constants.error, manifest.NotFoundProgenitorSrc));
+                    errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrc));
                     setTimeout(function() { startLooking(); }, constants.renderdelay * 2);
 
                 } else {
@@ -279,7 +279,7 @@ let ceres = {};
         {
             if (!XMLHttpRequestStatus(constants.defaultCSS))
             {
-                if (trace) console.log(resource(constants.error, manifest.NotFoundCSSDefault));
+                if (trace) errorHandler(resource(constants.error, manifest.NotFoundCSSDefault));
                 return;
             }
 
