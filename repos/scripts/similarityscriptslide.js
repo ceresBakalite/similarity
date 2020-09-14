@@ -99,15 +99,18 @@ let ceres = {};
 
             function getImageList()
             {
-                if (progenitor.getAttribute('src'))
+                function getMarkdownList()
                 {
-                    fetch(progenitor.getAttribute('src')).then(function (response)
+                    if (progenitor.getAttribute('src'))
                     {
-                        return response.text();
-                    });
-
+                        fetch(progenitor.getAttribute('src')).then(function (response)
+                        {
+                            return response.text();
+                        });
+                    }
                 }
 
+/*
                 if (!progenitor.getAttribute('src'))
                 {
                     if (trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
@@ -180,7 +183,7 @@ let ceres = {};
 
                    if (XMLHttpRequestStatus(progenitor.getAttribute('src'))) location.reload();
                 }
-
+*/
             }
 
         }
