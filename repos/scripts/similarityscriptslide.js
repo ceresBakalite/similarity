@@ -347,7 +347,7 @@ let ceres = {};
 
     function loadSlideView()
     {
-        setTimeout(function() { initiateSlideView(); }, constants.renderdelay * 2)
+        setTimeout(function() { initiateSlideView(); }, constants.renderdelay)
     };
 
     function activateSlideView()
