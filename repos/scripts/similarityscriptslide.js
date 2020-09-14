@@ -497,7 +497,7 @@ let ceres = {};
                 [manifest.NotFoundImageList]: 'Error: The ' + slideview.HTMLSlideViewElement + ' document element was found but the ' + slideview.HTMLImageListElement + ' image list could not be read',
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
                 [manifest.NotFoundCSSDefault]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' default CSS file',
-                [manifest.NotFoundProgenitorSrc]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' source file [' + progenitor.getAttribute('src') + ']',
+                [manifest.NotFoundProgenitorSrc]: 'Error: Unable to see the ' + slideview.HTMLSlideViewElement + ' source file [' + progenitor.getAttribute('src') + '] during an XMLHttpRequestStatus peek',
                 [manifest.NotFoundListFallback]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
