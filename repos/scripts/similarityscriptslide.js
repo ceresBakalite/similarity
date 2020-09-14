@@ -84,8 +84,7 @@ let ceres = {};
 
                 if (imageList) {
 
-                    if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
-                    return (imageList) ? imageListToArray(imageList) : errorHandler(resource(constants.error, manifest.NotFoundImageList));
+                    return imageListToArray(imageList);
 
                 } else {
 
@@ -93,8 +92,7 @@ let ceres = {};
                     {
                         imageList = response.text();
 
-                        if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
-                        return (imageList) ? imageListToArray(imageList) : errorHandler(resource(constants.error, manifest.NotFoundImageList));
+                        return imageListToArray(response.text());
 
                     });
 
@@ -104,6 +102,12 @@ let ceres = {};
 
                 return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
 
+            }
+
+            function imageListToArray(str)
+            {
+                if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
+                return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
             }
 
             function imageListToArray(str)
