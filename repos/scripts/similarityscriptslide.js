@@ -86,11 +86,7 @@ let ceres = {};
                 } else {
 
                     if (trace) console.log(resource(constants.notify, manifest.NotFoundProgenitorSrcFetch, imageList));
-
-                    fetch(progenitor.getAttribute('src')).then(function (response)
-                    {
-                        return setTimeout(function() { imageListToArray(response.text()); }, constants.renderdelay);
-                    });
+                    return imageListToArray(fetch(progenitor.getAttribute('src'))).text());
 
                 }
 
