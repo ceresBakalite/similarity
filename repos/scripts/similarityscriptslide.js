@@ -80,11 +80,25 @@ let ceres = {};
                 sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : sur;
                 sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : sub;
 
-                const imageList = getImageList();
+                let imageList = getImageList();
 
-                if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
+                if (imageList) {
 
-                return (imageList) ? imageListToArray(imageList) : errorHandler(resource(constants.error, manifest.NotFoundImageList));
+                    if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
+                    return (imageList) ? imageListToArray(imageList) : errorHandler(resource(constants.error, manifest.NotFoundImageList));
+
+                } else {
+
+                    fetch(progenitor.getAttribute('src')).then(function (response)
+                    {
+                        imageList = response.text();
+
+                        if (trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
+                        return (imageList) ? imageListToArray(imageList) : errorHandler(resource(constants.error, manifest.NotFoundImageList));
+
+                    });
+
+                }
 
             } else {
 
@@ -99,42 +113,7 @@ let ceres = {};
 
             function getImageList()
             {
-                let url = progenitor.getAttribute('src');
-
-                return (url) ? getImageList() : getMarkupList();
-
-                function getImageList()
-                {
-                    let list = getMarkdownList();
-
-                    return (list) ? list : fetchMarkdownList();
-
-                    function fetchMarkdownList()
-                    {
-                        errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrc));
-/*
-                                                fetch(url).then(function (response)
-                                                {
-                                                    return response.text();
-                                                });
-*/
-                        (async () => {
-                            try
-                            {
-                                let response = await fetch(url);
-                                let data = await response.text();
-                                return data;
-
-                            } catch (e) {
-
-                                errorHandler(resource(constants.error, manifest.NotFoundProgenitorSrcFetch));
-                                console.log('Booo');
-                            }
-
-                        })();
-                    }
-
-                }
+                return (progenitor.getAttribute('src')) ? getMarkdownList()() : getMarkupList();
 
                 function getMarkdownList()
                 {
