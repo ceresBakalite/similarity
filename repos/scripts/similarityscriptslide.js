@@ -24,7 +24,7 @@ let ceres = {};
     });
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
-    slideview.getSlide = function(target, calc) { displaySlide(index = (calc) ? index += target : target); };  // public method reference
+    slideview.getSlide = function(target, calc) { displaySlide(svc.index = (calc) ? svc.index += target : target); };  // public method reference
 
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
@@ -49,10 +49,6 @@ let ceres = {};
 
     Object.freeze(manifest);
 
-    let progenitor = null; // parent slideview place holder
-    let imageArray = null; // slideview element item attributes array
-    let index = 1; // pointer referencing to the currently active slide
-
     let attributes = {
         'trace': false, // default element attribute - enable slideview trace environment directive
         'ptr': true, // default element attribute - display slideview item pointers
@@ -61,24 +57,35 @@ let ceres = {};
         'sub': true  // default element attribute - display slideview item subtitles
     };
 
+    let svc = {
+        'progenitor': null,
+        'imageArray': null,
+        'index': 1
+    }
+
+/*
+    let progenitor = null; // parent slideview place holder
+    let imageArray = null; // slideview element item attributes array
+    let index = 1; // pointer referencing to the currently active slide
+*/
     function initiateSlideView()
     {
-        progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
-        imageArray = getSlideViewAttributes();
+        svc.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
+        svc.imageArray = getSlideViewAttributes();
 
-        if (imageArray) activateSlideView();
+        if (svc.imageArray) activateSlideView();
 
         function getSlideViewAttributes()
         {
-            if (progenitor)
+            if (svc.progenitor)
             {
-                progenitor.id = slideview.HTMLSlideViewElement;
+                svc.progenitor.id = slideview.HTMLSlideViewElement;
 
-                attributes.trace = (progenitor.getAttribute('trace')) ? getBoolean(progenitor.getAttribute('trace')) : attributes.trace;
-                attributes.ptr = (progenitor.getAttribute('ptr')) ? getBoolean(progenitor.getAttribute('ptr')) : attributes.ptr;
-                attributes.css = (progenitor.getAttribute('css')) ? getBoolean(progenitor.getAttribute('css')) : attributes.css;
-                attributes.sur = (progenitor.getAttribute('sur')) ? getBoolean(progenitor.getAttribute('sur')) : attributes.sur;
-                attributes.sub = (progenitor.getAttribute('sub')) ? getBoolean(progenitor.getAttribute('sub')) : attributes.sub;
+                attributes.trace = (svc.progenitor.getAttribute('trace')) ? getBoolean(svc.progenitor.getAttribute('trace')) : attributes.trace;
+                attributes.ptr = (svc.progenitor.getAttribute('ptr')) ? getBoolean(svc.progenitor.getAttribute('ptr')) : attributes.ptr;
+                attributes.css = (svc.progenitor.getAttribute('css')) ? getBoolean(svc.progenitor.getAttribute('css')) : attributes.css;
+                attributes.sur = (svc.progenitor.getAttribute('sur')) ? getBoolean(svc.progenitor.getAttribute('sur')) : attributes.sur;
+                attributes.sub = (svc.progenitor.getAttribute('sub')) ? getBoolean(svc.progenitor.getAttribute('sub')) : attributes.sub;
 
                 let imageList = getImageList();
 
@@ -100,11 +107,11 @@ let ceres = {};
 
             function getImageList()
             {
-                return (progenitor.getAttribute('src')) ? getMarkdownList() : getMarkupList();
+                return (svc.progenitor.getAttribute('src')) ? getMarkdownList() : getMarkupList();
 
                 function getMarkdownList()
                 {
-                    return (progenitor.innerHTML) ? progenitor.innerHTML : null;
+                    return (svc.progenitor.innerHTML) ? svc.progenitor.innerHTML : null;
                 }
 
                 function getMarkupList()
@@ -136,18 +143,18 @@ let ceres = {};
 
         function createSlideViewContainer()
         {
-            progenitor.innerHTML = null;
+            svc.progenitor.innerHTML = null;
 
             const imageContainer = document.createElement('div');
 
             imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-            progenitor.appendChild(imageContainer);
+            svc.progenitor.appendChild(imageContainer);
 
             composeAttribute(imageContainer.id, 'class', 'slideview-image-container');
 
-            for (let item = 0; item < imageArray.length; item++)
+            for (let item = 0; item < svc.imageArray.length; item++)
             {
-                var arrayItem = imageArray[item].split(',');
+                var arrayItem = svc.imageArray[item].split(',');
 
                 let qualifier = item + 1;
                 let slideViewContainerId = 'slideview' + qualifier;
@@ -176,16 +183,16 @@ let ceres = {};
 
             function createSlideViewPointerContainer()
             {
-                progenitor.appendChild(document.createElement('br'));
+                svc.progenitor.appendChild(document.createElement('br'));
 
                 const pointerElement = document.createElement('div');
 
                 pointerElement.id = slideview.HTMLSlideViewElement + '-pointer-container';
-                progenitor.appendChild(pointerElement);
+                svc.progenitor.appendChild(pointerElement);
 
                 composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
 
-                for (let item = 0; item < imageArray.length; item++)
+                for (let item = 0; item < svc.imageArray.length; item++)
                 {
                     let qualifier = item + 1;
                     let svpname = 'slideview-ptr' + qualifier;
@@ -193,7 +200,7 @@ let ceres = {};
                     composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
                 }
 
-                progenitor.appendChild(document.createElement('br'));
+                svc.progenitor.appendChild(document.createElement('br'));
 
                 if (attributes.trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
 
@@ -211,7 +218,7 @@ let ceres = {};
 
             function getSurtitle(indexItem)
             {
-                return (attributes.sur) ? indexItem + ' / ' + imageArray.length : null;
+                return (attributes.sur) ? indexItem + ' / ' + svc.imageArray.length : null;
             }
 
             function getSubtitle()
@@ -305,15 +312,15 @@ let ceres = {};
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
 
-        index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : index;
+        svc.index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : svc.index;
 
         slides.forEach(node => { node.style.display = 'none'; } );
-        slides[index-1].style.display = 'block';
+        slides[svc.index-1].style.display = 'block';
 
         if (attributes.ptr)
         {
             pointers.forEach(node => { node.className = node.className.replace(' active', ''); } );
-            pointers[index-1].className += ' active';
+            pointers[svc.index-1].className += ' active';
         }
 
     }
@@ -350,7 +357,7 @@ let ceres = {};
     {
         const renderdelay = 250; // awaiting slideview css catchup
 
-        progenitor.style.display = 'none';
+        svc.progenitor.style.display = 'none';
 
         getSlideView();
         displaySlide();
