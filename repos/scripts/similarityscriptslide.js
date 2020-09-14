@@ -99,15 +99,17 @@ let ceres = {};
 
             function getImageList()
             {
-                return (progenitor.getAttribute('src')) getMarkdownList();
-                
+                let url = progenitor.getAttribute('src');
+
+                return (url) getMarkdownList();
+
                 function getMarkdownList()
                 {
                     let list = (progenitor.innerHTML) ? progenitor.innerHTML : null;
 
                     if (!list)
                     {
-                        fetch(progenitor.getAttribute('src')).then(function (response)
+                        fetch(url).then(function (response)
                         {
                             list = response.text();
                         });
