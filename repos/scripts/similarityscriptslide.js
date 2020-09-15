@@ -49,7 +49,6 @@ let ceres = {};
             this.NotFoundProgenitor = 108,
             this.NotFoundListFallback = 109,
             this.EmptyProgenitorSrc = 110
-            Object.freeze(this);
         }
 
     }
@@ -92,7 +91,7 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
-                Object.defineProperties(manifest, { writable:false });
+                Object.defineProperty(csv, attributes, { writable:false });
 
                 manifest.CSVObjectAttributes = 'aaa';
 
