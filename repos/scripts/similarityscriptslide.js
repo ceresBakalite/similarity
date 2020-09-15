@@ -89,13 +89,9 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                if (csv.attributes.trace) console.log('test1: ' + resources(constants.notify, manifest.CSVObjectAttributes));
-
                 Object.freeze(csv.attributes);
 
-                csv.imageArray = 'hello';
-
-                if (csv.attributes.trace) console.log('test2: ' + resources(constants.notify, manifest.CSVObjectAttributes));
+                if (csv.attributes.trace) console.log('test1: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
                 return imageArray();
 
