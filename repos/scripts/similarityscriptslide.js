@@ -49,15 +49,6 @@ let ceres = {};
 
     Object.freeze(manifest);
 
-/*
-    let attribute = {
-        'trace': false, // default element attribute - enable slideview trace environment directive
-        'ptr': true, // default element attribute - display slideview item pointers
-        'css': true, // default element attribute - use the default slideview stylesheet
-        'sur': true, // default element attribute - display slideview item surtitles
-        'sub': true  // default element attribute - display slideview item subtitles
-    };
-*/
     let csv = {
         'progenitor': null,
         'imageArray': null,
