@@ -70,6 +70,9 @@ let ceres = {};
     let manifest = new settings();
     let csv = new slideviewer();
 
+    Object.seal(manifest);
+    Object.seal(csv);
+
     function initiateSlideView()
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
