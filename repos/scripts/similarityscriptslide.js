@@ -147,10 +147,10 @@ let ceres = {};
 
     function getSlideView()
     {
-        getSlideViewContainer();
+        //getSlideViewContainer();
 
-        function getSlideViewContainer()
-        {
+        //function getSlideViewContainer()
+        //{
             csv.progenitor.innerHTML = null;
 
             csv.imageContainer = document.createElement('div');
@@ -238,7 +238,7 @@ let ceres = {};
                 return (arrayItem[1]) ? arrayItem[1].trim() : null;
             }
 
-        }
+        //}
 
     }
 
