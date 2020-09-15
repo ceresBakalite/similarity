@@ -147,98 +147,92 @@ let ceres = {};
 
     function getSlideView()
     {
-        //getSlideViewContainer();
+        csv.progenitor.innerHTML = null;
 
-        //function getSlideViewContainer()
-        //{
-            csv.progenitor.innerHTML = null;
+        csv.imageContainer = document.createElement('div');
+        csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
+        csv.progenitor.appendChild(csv.imageContainer);
 
-            csv.imageContainer = document.createElement('div');
-            csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-            csv.progenitor.appendChild(csv.imageContainer);
+        composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
 
-            composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
+        for (let item = 0; item < csv.imageArray.length; item++)
+        {
+            var arrayItem = csv.imageArray[item].split(',');
+
+            let qualifier = item + 1;
+            let id = 'slideview' + qualifier;
+
+            let elements = {
+                'surName': 'slideview-sur' + qualifier,
+                'imgName': 'slideview-img' + qualifier,
+                'subName': 'slideview-sub' + qualifier
+            };
+
+            composeElement('div', id, 'slideview fade', csv.imageContainer, null, null, null, null);
+
+            csv.slideContainer = document.getElementById(id);
+
+            if (csv.attributes.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
+            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+            if (csv.attributes.sub) composeElement('div', elements.subName, 'subtitle', csv.slideContainer, getSubtitle(), null, null, null);
+        }
+
+        composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
+        composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
+
+        if (csv.attributes.ptr) getSlideViewPointerContainer();
+
+        setSlideViewDisplay('none');
+
+        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ProgenitorInnerHTML));
+
+        function getSlideViewPointerContainer()
+        {
+            csv.progenitor.appendChild(document.createElement('br'));
+
+            const pointerElement = document.createElement('div');
+
+            pointerElement.id = slideview.HTMLSlideViewElement + '-pointer-container';
+            csv.progenitor.appendChild(pointerElement);
+
+            composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
 
             for (let item = 0; item < csv.imageArray.length; item++)
             {
-                var arrayItem = csv.imageArray[item].split(',');
-
                 let qualifier = item + 1;
-                let id = 'slideview' + qualifier;
+                let svpname = 'slideview-ptr' + qualifier;
 
-                let elements = {
-                    'surName': 'slideview-sur' + qualifier,
-                    'imgName': 'slideview-img' + qualifier,
-                    'subName': 'slideview-sub' + qualifier
-                };
-
-                composeElement('div', id, 'slideview fade', csv.imageContainer, null, null, null, null);
-
-                csv.slideContainer = document.getElementById(id);
-
-                if (csv.attributes.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
-                composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
-                if (csv.attributes.sub) composeElement('div', elements.subName, 'subtitle', csv.slideContainer, getSubtitle(), null, null, null);
+                composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
             }
 
-            composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
-            composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
+            csv.progenitor.appendChild(document.createElement('br'));
 
-            if (csv.attributes.ptr) getSlideViewPointerContainer();
-
-            setSlideViewDisplay('none');
-
-            if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ProgenitorInnerHTML));
-
-            function getSlideViewPointerContainer()
+            function getClickEventValue(indexItem)
             {
-                csv.progenitor.appendChild(document.createElement('br'));
-
-                const pointerElement = document.createElement('div');
-
-                pointerElement.id = slideview.HTMLSlideViewElement + '-pointer-container';
-                csv.progenitor.appendChild(pointerElement);
-
-                composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
-
-                for (let item = 0; item < csv.imageArray.length; item++)
-                {
-                    let qualifier = item + 1;
-                    let svpname = 'slideview-ptr' + qualifier;
-
-                    composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
-                }
-
-                csv.progenitor.appendChild(document.createElement('br'));
-
-                function getClickEventValue(indexItem)
-                {
-                    return 'ceres.getSlide(' + indexItem + ')';
-                }
-
+                return 'ceres.getSlide(' + indexItem + ')';
             }
 
-            function getURL()
-            {
-                return (arrayItem[0]) ? arrayItem[0].trim() : null;
-            }
+        }
 
-            function getSurtitle(indexItem)
-            {
-                return (csv.attributes.sur) ? indexItem + ' / ' + csv.imageArray.length : null;
-            }
+        function getURL()
+        {
+            return (arrayItem[0]) ? arrayItem[0].trim() : null;
+        }
 
-            function getSubtitle()
-            {
-                return (csv.attributes.sub) ? getAccessibilityText() : null;
-            }
+        function getSurtitle(indexItem)
+        {
+            return (csv.attributes.sur) ? indexItem + ' / ' + csv.imageArray.length : null;
+        }
 
-            function getAccessibilityText()
-            {
-                return (arrayItem[1]) ? arrayItem[1].trim() : null;
-            }
+        function getSubtitle()
+        {
+            return (csv.attributes.sub) ? getAccessibilityText() : null;
+        }
 
-        //}
+        function getAccessibilityText()
+        {
+            return (arrayItem[1]) ? arrayItem[1].trim() : null;
+        }
 
     }
 
