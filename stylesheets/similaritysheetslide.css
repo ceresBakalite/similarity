@@ -16,6 +16,10 @@
   cursor: zoom-in;
 }
 
+.slide {
+  display: none;
+}
+
 .prev, .next {
   cursor: pointer;
   position: absolute;
