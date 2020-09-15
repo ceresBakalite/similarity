@@ -82,15 +82,9 @@ let ceres = {};
 
         function getImageArray()
         {
-            if (csv.progenitor)
-            {
-                return imageArray();
+            if (csv.progenitor) return imageArray();
 
-            } else {
-
-                return errorHandler(resources(constants.error, manifest.NotFoundProgenitor));
-
-            }
+            return errorHandler(resources(constants.error, manifest.NotFoundProgenitor));
 
             function imageArray()
             {
