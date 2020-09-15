@@ -49,7 +49,7 @@ let ceres = {};
             this.NotFoundProgenitor = 108,
             this.NotFoundListFallback = 109,
             this.EmptyProgenitorSrc = 110
-            Object.seal(this);
+            Object.freeze(this);
         }
 
     }
