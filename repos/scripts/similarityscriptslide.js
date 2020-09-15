@@ -91,6 +91,14 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
+                csv.newProperty = 'foo';
+                csv.foo = 'hello from foo';
+                console.log(csv.foo);
+
+                csv.attributes.newProperty = 'bar';
+                csv.attributes.bar = 'hello from bar';
+                console.log(csv.attributes.bar);
+
                 return imageArray();
 
             } else {
