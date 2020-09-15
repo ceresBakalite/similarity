@@ -94,11 +94,11 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
-                let manifest2 = new settings();
+                let constants2 = new constants();
 
-                manifest2.newProperty = 'foo';
-                manifest2.foo = 'hello from the unsealed foo manifest2';
-                console.log(manifest2.foo);
+                constants2.newProperty = 'foo';
+                constants2.foo = 'hello from the frozen foo constant';
+                console.log(constants2.foo);
 
                 return imageArray();
 
