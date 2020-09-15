@@ -436,6 +436,8 @@ let ceres = {};
 
         function getAttributeProperties()
         {
+            csv.attributes.forEach( node => { console.log(node) } );
+            
             let str = '';
             for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
             return str.replace(/, +$/g,'');
