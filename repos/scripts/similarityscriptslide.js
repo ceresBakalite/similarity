@@ -53,6 +53,9 @@ let ceres = {};
 
     }
 
+    let manifest = new settings();
+    Object.seal(manifest);
+
     class slideviewer
     {
         constructor()
@@ -67,11 +70,7 @@ let ceres = {};
 
     }
 
-    let manifest = new settings();
     let csv = new slideviewer();
-
-    Object.seal(manifest);
-    Object.seal(csv);
 
     function initiateSlideView()
     {
@@ -93,12 +92,6 @@ let ceres = {};
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
-
-                let constants2 = new constants();
-
-                constants2.newProperty = 'foo';
-                constants2.foo = 'hello from the frozen foo constant';
-                console.log(constants2.foo);
 
                 return imageArray();
 
