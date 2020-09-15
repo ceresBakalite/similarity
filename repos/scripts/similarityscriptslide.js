@@ -408,7 +408,7 @@ let ceres = {};
         function lookupNotify()
         {
             const lookup = {
-                [manifest.CSVObjectProperties]: 'The Ceres Slide Viewer [' + slideview.HTMLSlideViewElement + '] object properties after initialisation: ' + (Object.keys(csv) + ' ' + Object.keys(csv).value).join(", "),
+                [manifest.CSVObjectProperties]: 'The Ceres Slide Viewer [' + slideview.HTMLSlideViewElement + '] object properties after initialisation: ' + Object.keys(csv).value.join(", "),
                 [manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
                 [manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
                 [manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
