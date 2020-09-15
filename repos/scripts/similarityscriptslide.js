@@ -11,7 +11,7 @@ let ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            this.innerHTML = (src) ? await (await fetch(src)).text() : null;
+            if (src) this.innerHTML = await (await fetch(src)).text();
 
             let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
             if (css) importSlideViewStylesheet();
@@ -109,7 +109,7 @@ let ceres = {};
                     {
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.innerHTML : null;
-
+alert('list: ' + list);
                         logListProgress();
 
                         return list;
