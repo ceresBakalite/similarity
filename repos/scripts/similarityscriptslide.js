@@ -34,8 +34,9 @@ let ceres = {};
 
     Object.freeze(constants);
 
+
+    const manifest = {};
 /*
-    const manifest = {
         'CSVObjectProperties': 100,
         'LinkOnload': 101,
         'LinkAddEventListener': 102,
