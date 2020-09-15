@@ -401,8 +401,6 @@ let ceres = {};
 
     function resource(type, item, str)
     {
-
-alert(item);
         const newline = '\n';
 
         const lookup = {
