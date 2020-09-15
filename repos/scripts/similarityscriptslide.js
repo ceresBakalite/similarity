@@ -83,8 +83,8 @@ let ceres = {};
                 if (csv.attributes.trace)
                 {
                     let str = null;
-                    for (var property in csv) str += property + ": " + obj[property] + ', ';
-                    console.log(resource(constants.notify, manifest.CSVObjectProperties), str);
+                    for (var property in csv) str += property + ": " + csv[property] + ', ';
+                    console.log(resource(constants.notify, manifest.CSVObjectProperties, str);
                 }
 
                 let imageList = getImageList();
