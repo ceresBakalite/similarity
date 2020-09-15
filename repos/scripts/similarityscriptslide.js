@@ -397,7 +397,7 @@ let ceres = {};
     {
         let str = '';
         for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
-        console.log(resource(constants.notify, manifest.CSVObjectProperties, str.replace(/,+$/g,'')));
+        console.log(resource(constants.notify, manifest.CSVObjectProperties, str.replace(/, +$/g,'')));
     }
 
     function resource(type, item, str)
