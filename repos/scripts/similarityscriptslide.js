@@ -76,11 +76,11 @@ let ceres = {};
     function initiateSlideView()
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
-        csv.imageArray = getSlideViewAttributes();
+        csv.imageArray = getImageArray();
 
         if (csv.imageArray) activateSlideView();
 
-        function getSlideViewAttributes()
+        function getImageArray()
         {
             if (csv.progenitor)
             {
@@ -90,21 +90,6 @@ let ceres = {};
 
                 return errorHandler(resources(constants.error, manifest.NotFoundProgenitor));
 
-            }
-
-            function initialiseAttributes()
-            {
-                csv.progenitor.id = slideview.HTMLSlideViewElement;
-
-                csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
-                csv.attributes.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
-                csv.attributes.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
-                csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
-                csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
-
-                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
-
-                Object.freeze(csv.attributes);
             }
 
             function imageArray()
@@ -143,6 +128,21 @@ let ceres = {};
                         return list;
                     }
 
+                }
+
+                function initialiseAttributes()
+                {
+                    csv.progenitor.id = slideview.HTMLSlideViewElement;
+
+                    csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
+                    csv.attributes.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
+                    csv.attributes.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
+                    csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
+                    csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
+
+                    if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
+
+                    Object.freeze(csv.attributes);
                 }
 
             }
