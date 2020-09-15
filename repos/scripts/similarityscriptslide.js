@@ -16,62 +16,62 @@ let ceres = {};
             let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
             if (css) importSlideViewStylesheet();
 
+            slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
+            slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
+
+            const constants = {
+                'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
+                'notify': 1, // console notification type
+                'error': 99 // console notification type
+            };
+
+            Object.freeze(constants);
+
+            class settings
+            {
+                constructor()
+                {
+                    this.CSVObjectAttributes = 100,
+                    this.LinkOnload = 101,
+                    this.LinkAddEventListener = 102,
+                    this.LinkStylesheetCount = 103,
+                    this.LinkOnReadyState = 104,
+                    this.ProgenitorInnerHTML = 105,
+                    this.ImageListMarkup = 106,
+                    this.ListFallback = 107,
+                    this.NotFoundProgenitor = 108,
+                    this.NotFoundListFallback = 109,
+                    this.EmptyProgenitorSrc = 110
+                }
+
+            }
+
+            let manifest = new settings();
+
+            Object.freeze(manifest);
+
+            class slideviewer
+            {
+                constructor()
+                {
+                    this.progenitor = null;
+                    this.imageArray = null,
+                    this.imageContainer = null,
+                    this.slideContainer = null,
+                    this.attributes = function() { return attribute; },
+                    this.index = 1
+                }
+
+            }
+
+            let csv = new slideviewer();
+
             await this.renderComplete;
 
             initiateSlideView();
         }
 
     });
-
-    slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
-    slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
-
-    const constants = {
-        'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
-        'notify': 1, // console notification type
-        'error': 99 // console notification type
-    };
-
-    Object.freeze(constants);
-
-    class settings
-    {
-        constructor()
-        {
-            this.CSVObjectAttributes = 100,
-            this.LinkOnload = 101,
-            this.LinkAddEventListener = 102,
-            this.LinkStylesheetCount = 103,
-            this.LinkOnReadyState = 104,
-            this.ProgenitorInnerHTML = 105,
-            this.ImageListMarkup = 106,
-            this.ListFallback = 107,
-            this.NotFoundProgenitor = 108,
-            this.NotFoundListFallback = 109,
-            this.EmptyProgenitorSrc = 110
-        }
-
-    }
-
-    let manifest = new settings();
-
-    Object.freeze(manifest);
-
-    class slideviewer
-    {
-        constructor()
-        {
-            this.progenitor = null;
-            this.imageArray = null,
-            this.imageContainer = null,
-            this.slideContainer = null,
-            this.attributes = function() { return attribute; },
-            this.index = 1
-        }
-
-    }
-
-    let csv = new slideviewer();
 
     function initiateSlideView()
     {
