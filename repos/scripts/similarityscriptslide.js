@@ -94,7 +94,7 @@ let ceres = {};
 
             function imageArray()
             {
-                initialiseAttributes();
+                getAttributes();
 
                 let imageList = getImageList();
 
@@ -130,7 +130,7 @@ let ceres = {};
 
                 }
 
-                function initialiseAttributes()
+                function getAttributes()
                 {
                     csv.progenitor.id = slideview.HTMLSlideViewElement;
 
