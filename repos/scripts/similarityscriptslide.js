@@ -50,7 +50,8 @@ let ceres = {};
 
     Object.freeze(manifest);
 
-    class slideviewer {
+    class slideviewer
+    {
         constructor()
         {
             this.progenitor = null;
@@ -60,20 +61,8 @@ let ceres = {};
             this.attributes = function() { return attribute; },
             this.index = 1
         }
-    }
 
-/*
-    let csv = {
-        'progenitor': null,
-        'imageArray': null,
-        'imageContainer': null,
-        'slideContainer': null,
-        'attributes': function() { return attribute; },
-        'index': 1
     }
-
-    Object.preventExtensions(csv);
-*/
 
     let csv = new slideviewer();
 
