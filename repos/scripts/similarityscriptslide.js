@@ -49,7 +49,24 @@ let ceres = {};
         'EmptyProgenitorSrc': 110
     };
 
-    Object.freeze(manifest);
+    class resource
+    {
+        constructor()
+        {
+            this.CSVObjectAttributes': 100,
+            this.LinkOnload': 101,
+            this.LinkAddEventListener': 102,
+            this.LinkStylesheetCount': 103,
+            this.LinkOnReadyState': 104,
+            this.ProgenitorInnerHTML': 105,
+            this.ImageListMarkup': 106,
+            this.ListFallback': 107,
+            this.NotFoundProgenitor': 108,
+            this.NotFoundListFallback': 109,
+            this.EmptyProgenitorSrc': 110
+        }
+
+    }
 
     class slideviewer
     {
@@ -65,6 +82,7 @@ let ceres = {};
 
     }
 
+    let manifest = new resource();
     let csv = new slideviewer();
 
     function initiateSlideView()
