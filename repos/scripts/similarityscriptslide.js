@@ -85,8 +85,7 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                //if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectAttributes));
-                if (csv.attributes.trace) console.log(csv.attributes);
+                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectAttributes));
 
                 let imageList = getImageList();
 
@@ -442,9 +441,12 @@ let ceres = {};
 
         function getAttributeProperties()
         {
+            let str = JSON.stringify(csv.attributes, null, 4);
+            /*
             let str = '';
             for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
             return str.replace(/, +$/g,'');
+            */
         }
 
     }
