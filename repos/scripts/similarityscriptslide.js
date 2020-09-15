@@ -167,7 +167,7 @@ let ceres = {};
                 csv.slideContainer = document.getElementById(id);
 
                 if (csv.attributes.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
-                composeElement('img', elements.imgName, null, csv.slideContainer, 'slide', 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+                composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
                 if (csv.attributes.sub) composeElement('div', elements.subName, 'subtitle', csv.slideContainer, getSubtitle(), null, null, null);
             }
 
