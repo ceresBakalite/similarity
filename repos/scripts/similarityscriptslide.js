@@ -82,11 +82,8 @@ let ceres = {};
 
                 if (csv.attributes.trace)
                 {
-                    for (var property in csv)
-                    {
-                         let str = str += property + ": " + obj[property] + ', ';
-                    }
-
+                    let str = null;
+                    for (var property in csv) str += property + ": " + obj[property] + ', ';
                     console.log(resource(constants.notify, manifest.CSVObjectProperties), str);
                 }
 
