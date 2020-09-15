@@ -91,7 +91,7 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log('test1: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
-                csv.attributes.trace = false;
+                csv.attributes.ptr = false;
 
                 if (csv.attributes.trace) console.log('test2: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
@@ -99,7 +99,7 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log('test3: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
-                csv.attributes.trace = true;
+                csv.attributes.ptr = true;
 
                 if (csv.attributes.trace) console.log('test4: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
