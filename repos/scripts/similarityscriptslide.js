@@ -4,6 +4,7 @@ let ceres = {};
     'use strict';
 
     slideview.HTMLSlideViewElement = 'ceres-slideview'; // required public element name and id
+    slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
 
     window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
@@ -22,7 +23,6 @@ let ceres = {};
 
     });
 
-    slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
@@ -94,7 +94,7 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ImageListMarkup, imageList));
 
-                return imageList.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
+                return (imageList) ? imageList.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
                 function getImageList()
                 {
