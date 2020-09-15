@@ -80,11 +80,7 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true; // display slideview item surtitles
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true; // display slideview item subtitles
 
-                if (csv.attributes.trace)
-                {
-                    for (let property in csv.attributes) let str = str += property + ": " + csv.attributes[property] + ', ';
-                    console.log(resource(constants.notify, manifest.CSVObjectProperties, str));
-                }
+                if (csv.attributes.trace) logAttributeProperties();
 
                 let imageList = getImageList();
 
@@ -395,6 +391,13 @@ let ceres = {};
         };
 
         return lookup[token] || false;
+    }
+
+    function logAttributeProperties()
+    {
+        let str = '';
+        for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
+        console.log(resource(constants.notify, manifest.CSVObjectProperties, str));
     }
 
     function resource(type, item, str)
