@@ -91,7 +91,7 @@ let ceres = {};
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
-
+                manifest.CSVObjectAttributes = 'aaa';
                 return imageArray();
 
             } else {
