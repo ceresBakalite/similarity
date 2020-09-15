@@ -446,9 +446,9 @@ let ceres = {};
 
         function getAttributeProperties()
         {
-            let str = '';
-            for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
-            return str.replace(/, +$/g,'');
+            let str = '[';
+            for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + '][ ';
+            return str + ']';
         }
 
     }
