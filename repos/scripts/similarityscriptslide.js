@@ -34,7 +34,7 @@ let ceres = {};
 
     Object.freeze(constants);
 
-    class resource
+    class settings
     {
         constructor()
         {
@@ -67,7 +67,7 @@ let ceres = {};
 
     }
 
-    let manifest = new resource();
+    let manifest = new settings();
     let csv = new slideviewer();
 
     function initiateSlideView()
@@ -89,13 +89,13 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectAttributes));
+                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
                 return imageArray();
 
             } else {
 
-                return errorHandler(resource(constants.error, manifest.NotFoundProgenitor));
+                return errorHandler(resources(constants.error, manifest.NotFoundProgenitor));
 
             }
 
@@ -103,7 +103,7 @@ let ceres = {};
             {
                 let imageList = getImageList();
 
-                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
+                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ImageListMarkup, imageList));
 
                 return imageList.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
 
@@ -118,11 +118,11 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        if (csv.attributes.trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
+                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.EmptyProgenitorSrc));
 
                         const lookup = {
-                            'logFound': function() { if (csv.attributes.trace) console.log(resource(constants.notify, manifest.ListFallback)); },
-                            'logNotFound': function() { errorHandler(resource(constants.error, manifest.NotFoundListFallback)); },
+                            'logFound': function() { if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ListFallback)); },
+                            'logNotFound': function() { errorHandler(resources(constants.error, manifest.NotFoundListFallback)); },
                         };
 
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
@@ -184,7 +184,7 @@ let ceres = {};
 
             setSlideViewDisplay('none');
 
-            if (csv.attributes.trace) console.log(resource(constants.notify, manifest.ProgenitorInnerHTML));
+            if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ProgenitorInnerHTML));
 
             function createSlideViewPointerContainer()
             {
@@ -258,7 +258,7 @@ let ceres = {};
         {
             link.onload = function ()
             {
-                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.LinkOnload));
+                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.LinkOnload));
             }
 
         }
@@ -269,7 +269,7 @@ let ceres = {};
             {
                 link.addEventListener('load', function()
                 {
-                    if (csv.attributes.trace) console.log(resource(constants.notify, manifest.LinkAddEventListener));
+                    if (csv.attributes.trace) console.log(resources(constants.notify, manifest.LinkAddEventListener));
                 }, false);
 
             }
@@ -285,7 +285,7 @@ let ceres = {};
                 if (document.styleSheets.length > cssnum)
                 {
                     clearInterval(ti);
-                    if (csv.attributes.trace) console.log(resource(constants.notify, manifest.LinkStylesheetCount));
+                    if (csv.attributes.trace) console.log(resources(constants.notify, manifest.LinkStylesheetCount));
                 }
 
             }, 10);
@@ -301,7 +301,7 @@ let ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    if (csv.attributes.trace) console.log(resource(constants.notify, manifest.LinkOnReadyState));
+                    if (csv.attributes.trace) console.log(resources(constants.notify, manifest.LinkOnReadyState));
                 }
 
             };
@@ -402,7 +402,7 @@ let ceres = {};
         return lookup[token] || false;
     }
 
-    function resource(type, item, str)
+    function resources(type, item, str)
     {
         const newline = '\n';
 
