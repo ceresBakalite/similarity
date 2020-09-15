@@ -84,7 +84,7 @@ let ceres = {};
                 {
                     let str = null;
                     for (var property in csv) str += property + ": " + csv[property] + ', ';
-                    console.log(resource(constants.notify, manifest.CSVObjectProperties, str);
+                    console.log(resource(constants.notify, manifest.CSVObjectProperties, str));
                 }
 
                 let imageList = getImageList();
