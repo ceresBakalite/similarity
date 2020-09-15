@@ -94,13 +94,6 @@ let ceres = {};
 
                 Object.freeze(csv.attributes);
 
-                let manifest2 = new settings();
-                manifest2.test = 'dsfasdfasdf';
-
-                console.log('manifest2.test: ' + manifest2.test);
-
-                manifest.test = 'dsfasdfasdf';
-
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
                 return imageArray();
