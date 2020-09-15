@@ -87,7 +87,7 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectAttributes));
 
-                return imageListToArray();
+                return imageArray();
 
             } else {
 
@@ -95,7 +95,7 @@ let ceres = {};
 
             }
 
-            function imageListToArray()
+            function imageArray()
             {
                 let imageList = getImageList();
 
