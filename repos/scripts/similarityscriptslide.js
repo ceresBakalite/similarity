@@ -80,7 +80,7 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true; // display slideview item surtitles
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true; // display slideview item subtitles
 
-                if (csv.attributes.trace) logAttributeProperties();
+                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectProperties));
 
                 let imageList = getImageList();
 
@@ -393,13 +393,6 @@ let ceres = {};
         return lookup[token] || false;
     }
 
-    function logAttributeProperties()
-    {
-        let str = '';
-        for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
-        console.log(resource(constants.notify, manifest.CSVObjectProperties, str.replace(/, +$/g,'')));
-    }
-
     function resource(type, item, str)
     {
         const newline = '\n';
@@ -415,7 +408,7 @@ let ceres = {};
         function lookupNotify()
         {
             const lookup = {
-                [manifest.CSVObjectProperties]: 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + str,
+                [manifest.CSVObjectProperties]: 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + getAttributeProperties(),
                 [manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
                 [manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
                 [manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
@@ -439,6 +432,13 @@ let ceres = {};
             };
 
             return lookup[item] || lookup['default'];
+        }
+
+        function getAttributeProperties()
+        {
+            let str = '';
+            for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
+            return str.replace(/, +$/g,'');
         }
 
     }
