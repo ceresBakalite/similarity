@@ -48,7 +48,7 @@ let ceres = {};
             this.ListFallback = 107,
             this.NotFoundProgenitor = 108,
             this.NotFoundListFallback = 109,
-            this.EmptyProgenitorSrc = 110
+            this.EmptyProgenitorSrc = 110,
         }
 
     }
@@ -84,15 +84,7 @@ let ceres = {};
         {
             if (csv.progenitor)
             {
-                csv.progenitor.id = slideview.HTMLSlideViewElement;
-
-                csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
-                csv.attributes.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
-                csv.attributes.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
-                csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
-                csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
-
-                Object.freeze(csv.attributes);
+                initialiseAttributes();
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
@@ -102,6 +94,19 @@ let ceres = {};
 
                 return errorHandler(resources(constants.error, manifest.NotFoundProgenitor));
 
+            }
+
+            function initialiseAttributes()
+            {
+                csv.progenitor.id = slideview.HTMLSlideViewElement;
+
+                csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
+                csv.attributes.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
+                csv.attributes.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
+                csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
+                csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
+
+                Object.freeze(csv.attributes);
             }
 
             function imageArray()
