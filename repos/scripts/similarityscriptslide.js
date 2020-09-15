@@ -56,6 +56,11 @@ let ceres = {};
         'imageContainer': null,
         'slideContainer': null,
         'attributes': function() { return attribute; },
+        'showAttributes': function() {
+            let str = '';
+            for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
+            return str.replace(/, +$/g,'');
+        },
         'index': 1
     }
 
@@ -408,7 +413,7 @@ let ceres = {};
         function lookupNotify()
         {
             const lookup = {
-                [manifest.CSVObjectAttributes]: 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + getAttributeProperties(),
+                [manifest.CSVObjectAttributes]: 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + csv.showAttributes,
                 [manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
                 [manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
                 [manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
