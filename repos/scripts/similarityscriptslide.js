@@ -75,7 +75,7 @@ let ceres = {};
     Object.preventExtensions(csv);
 */
 
-    csv = new slideviewer();
+    let csv = new slideviewer();
 
     function initiateSlideView()
     {
