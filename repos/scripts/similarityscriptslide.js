@@ -91,7 +91,7 @@ let ceres = {};
 
                 Object.freeze(csv.attributes);
 
-                if (csv.attributes.trace) console.log('test1: ' + resources(constants.notify, manifest.CSVObjectAttributes));
+                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
                 return imageArray();
 
