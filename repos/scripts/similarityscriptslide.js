@@ -91,13 +91,9 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
-                csv.newProperty = 'foo';
-                csv.foo = 'hello from foo';
-                console.log(csv.foo);
-
-                csv.attributes.newProperty = 'bar';
-                csv.attributes.bar = 'hello from bar';
-                console.log(csv.attributes.bar);
+                constants.newProperty = 'foo';
+                constants.foo = 'hello from the frozen foo constant';
+                console.log(constants.foo);
 
                 return imageArray();
 
