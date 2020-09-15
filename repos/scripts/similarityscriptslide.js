@@ -93,9 +93,13 @@ let ceres = {};
 
                 csv.attributes.trace = false;
 
+                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
+
                 Object.defineProperty(csv, 'attributes', { writable:false });
 
                 csv.attributes.trace = true;
+
+                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
                 return imageArray();
 
@@ -451,9 +455,9 @@ let ceres = {};
 
         function getAttributeProperties()
         {
-            let str = '[';
-            for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + '][ ';
-            return str + ']';
+            let str = '';
+            for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
+            return str.replace(/, +$/g,'');
         }
 
     }
