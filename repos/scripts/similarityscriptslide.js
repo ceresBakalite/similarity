@@ -66,8 +66,6 @@ let ceres = {};
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
         csv.imageArray = getSlideViewAttributes();
 
-        if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectProperties));
-
         if (csv.imageArray) activateSlideView();
 
         function getSlideViewAttributes()
@@ -81,6 +79,8 @@ let ceres = {};
                 csv.attributes.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true; // display slideview item pointers
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true; // display slideview item surtitles
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true; // display slideview item subtitles
+
+                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectProperties));
 
                 let imageList = getImageList();
 
