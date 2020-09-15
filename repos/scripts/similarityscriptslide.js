@@ -48,7 +48,7 @@ let ceres = {};
             this.ListFallback = 107,
             this.NotFoundProgenitor = 108,
             this.NotFoundListFallback = 109,
-            this.EmptyProgenitorSrc = 110,
+            this.EmptyProgenitorSrc = 110
         }
 
     }
