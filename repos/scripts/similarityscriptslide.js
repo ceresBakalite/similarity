@@ -107,19 +107,27 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.EmptyProgenitorSrc));
-
-                        const lookup = {
-                            'logFound': function() { if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ListFallback)); },
-                            'logNotFound': function() { errorHandler(resources(constants.error, manifest.NotFoundListFallback)); },
-                        };
-
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.innerHTML : null;
-                        const response = (list) ? 'logFound' : 'logNotFound';
 
-                        lookup[response]();
+                        logListProgress();
+
                         return list;
+
+                        function logListProgress()
+                        {
+                            const response = (list) ? 'logFound' : 'logNotFound';
+
+                            if (csv.attributes.trace) console.log(resources(constants.notify, manifest.EmptyProgenitorSrc));
+
+                            const lookup = {
+                                'logFound': function() { if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ListFallback)); },
+                                'logNotFound': function() { errorHandler(resources(constants.error, manifest.NotFoundListFallback)); },
+                            };
+
+                            lookup[response]();
+                        }
+
                     }
 
                 }
