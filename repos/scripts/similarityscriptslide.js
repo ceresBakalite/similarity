@@ -84,10 +84,6 @@ let ceres = {};
         {
             if (csv.progenitor)
             {
-                initialiseAttributes();
-
-                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
-
                 return imageArray();
 
             } else {
@@ -106,11 +102,15 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
+                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
+
                 Object.freeze(csv.attributes);
             }
 
             function imageArray()
             {
+                initialiseAttributes();
+
                 let imageList = getImageList();
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ImageListMarkup, imageList));
