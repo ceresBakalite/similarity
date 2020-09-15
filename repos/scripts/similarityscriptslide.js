@@ -93,7 +93,6 @@ let ceres = {};
 
                 Object.freeze(csv.attributes);
 
-                csv.attributes.ptr = false;
                 csv.imageArray = 'hello';
 
                 if (csv.attributes.trace) console.log('test2: ' + resources(constants.notify, manifest.CSVObjectAttributes));
