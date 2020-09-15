@@ -91,15 +91,12 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log('test1: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
+                Object.freeze(csv.attributes);
+
                 csv.attributes.ptr = false;
+                csv.imageArray = 'hello';
 
                 if (csv.attributes.trace) console.log('test2: ' + resources(constants.notify, manifest.CSVObjectAttributes));
-
-                Object.defineProperty(csv, 'attributes', { writable:false });
-
-                csv.attributes.ptr = true;
-
-                if (csv.attributes.trace) console.log('test3: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
                 return imageArray();
 
