@@ -24,7 +24,7 @@ let ceres = {};
     });
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
-    slideview.getSlide = function(target, calc) { displaySlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
+    slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
@@ -147,9 +147,9 @@ let ceres = {};
 
     function getSlideView()
     {
-        createSlideViewContainer();
+        getSlideViewContainer();
 
-        function createSlideViewContainer()
+        function getSlideViewContainer()
         {
             csv.progenitor.innerHTML = null;
 
@@ -184,13 +184,13 @@ let ceres = {};
             composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
             composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
-            if (csv.attributes.ptr) createSlideViewPointerContainer();
+            if (csv.attributes.ptr) getSlideViewPointerContainer();
 
             setSlideViewDisplay('none');
 
             if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ProgenitorInnerHTML));
 
-            function createSlideViewPointerContainer()
+            function getSlideViewPointerContainer()
             {
                 csv.progenitor.appendChild(document.createElement('br'));
 
@@ -314,7 +314,7 @@ let ceres = {};
 
     }
 
-    function displaySlide(targetIndex)
+    function getSlide(targetIndex)
     {
         const slides = document.querySelectorAll(".slideview");
         const pointers = document.querySelectorAll(".ptr");
@@ -367,7 +367,7 @@ let ceres = {};
         csv.progenitor.style.display = 'none';
 
         getSlideView();
-        displaySlide();
+        getSlide();
 
         setTimeout(function() { setSlideViewDisplay('block'); }, renderdelay);
     }
