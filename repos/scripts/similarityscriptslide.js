@@ -85,12 +85,9 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                if (csv.attributes.trace) console.log(JSON.stringify(csv, null, 4));
                 if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectAttributes));
 
-                let imageList = getImageList();
-
-                return (imageList) ? imageListToArray(imageList) : null;
+                return imageListToArray();
 
             } else {
 
@@ -98,38 +95,40 @@ let ceres = {};
 
             }
 
-            function imageListToArray(str)
+            function imageListToArray()
             {
-                if (!str) return null;
+                let imageList = getImageList();
 
-                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.ImageListMarkup, str));
-                return str.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
-            }
+                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.ImageListMarkup, imageList));
 
-            function getImageList()
-            {
-                return (csv.progenitor.getAttribute('src')) ? getMarkdownList() : getMarkupList();
+                return imageList.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';');
 
-                function getMarkdownList()
+                function getImageList()
                 {
-                    return (csv.progenitor.innerHTML) ? csv.progenitor.innerHTML : null;
-                }
+                    return (csv.progenitor.getAttribute('src')) ? getMarkdownList() : getMarkupList();
 
-                function getMarkupList()
-                {
-                    if (csv.attributes.trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
+                    function getMarkdownList()
+                    {
+                        return (csv.progenitor.innerHTML) ? csv.progenitor.innerHTML : null;
+                    }
 
-                    const lookup = {
-                        'logFound': function() { if (csv.attributes.trace) console.log(resource(constants.notify, manifest.ListFallback)); },
-                        'logNotFound': function() { errorHandler(resource(constants.error, manifest.NotFoundListFallback)); },
-                    };
+                    function getMarkupList()
+                    {
+                        if (csv.attributes.trace) console.log(resource(constants.notify, manifest.EmptyProgenitorSrc));
 
-                    const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
-                    const list = (el) ? el.innerHTML : null;
-                    const response = (list) ? 'logFound' : 'logNotFound';
+                        const lookup = {
+                            'logFound': function() { if (csv.attributes.trace) console.log(resource(constants.notify, manifest.ListFallback)); },
+                            'logNotFound': function() { errorHandler(resource(constants.error, manifest.NotFoundListFallback)); },
+                        };
 
-                    lookup[response]();
-                    return list;
+                        const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+                        const list = (el) ? el.innerHTML : null;
+                        const response = (list) ? 'logFound' : 'logNotFound';
+
+                        lookup[response]();
+                        return list;
+                    }
+
                 }
 
             }
