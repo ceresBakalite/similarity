@@ -53,6 +53,10 @@ let ceres = {};
 
     }
 
+    let manifest = new settings();
+
+    Object.freeze(manifest);
+
     class slideviewer
     {
         constructor()
@@ -67,7 +71,6 @@ let ceres = {};
 
     }
 
-    let manifest = new settings();
     let csv = new slideviewer();
 
     function initiateSlideView()
@@ -90,6 +93,13 @@ let ceres = {};
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
                 Object.freeze(csv.attributes);
+
+                let manifest2 = new settings();
+                manifest2.test = 'dsfasdfasdf';
+
+                console.log('manifest2.test: ' + manifest2.test);
+
+                manifest.test = 'dsfasdfasdf';
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
