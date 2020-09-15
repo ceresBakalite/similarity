@@ -34,21 +34,6 @@ let ceres = {};
 
     Object.freeze(constants);
 
-
-    const manifest = {
-        'CSVObjectAttributes': 100,
-        'LinkOnload': 101,
-        'LinkAddEventListener': 102,
-        'LinkStylesheetCount': 103,
-        'LinkOnReadyState': 104,
-        'ProgenitorInnerHTML': 105,
-        'ImageListMarkup': 106,
-        'ListFallback': 107,
-        'NotFoundProgenitor': 108,
-        'NotFoundListFallback': 109,
-        'EmptyProgenitorSrc': 110
-    };
-
     class resource
     {
         constructor()
