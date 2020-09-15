@@ -35,16 +35,17 @@ let ceres = {};
     Object.freeze(constants);
 
     const manifest = {
-        'LinkOnload': 100,
-        'LinkAddEventListener': 101,
-        'LinkStylesheetCount': 102,
-        'LinkOnReadyState': 103,
-        'ProgenitorInnerHTML': 104,
-        'ImageListMarkup': 105,
-        'ListFallback': 106,
-        'NotFoundProgenitor': 107,
-        'NotFoundListFallback': 108,
-        'EmptyProgenitorSrc': 109
+        'CSVObjectProperties': 100,
+        'LinkOnload': 101,
+        'LinkAddEventListener': 102,
+        'LinkStylesheetCount': 103,
+        'LinkOnReadyState': 104,
+        'ProgenitorInnerHTML': 105,
+        'ImageListMarkup': 106,
+        'ListFallback': 107,
+        'NotFoundProgenitor': 108,
+        'NotFoundListFallback': 109,
+        'EmptyProgenitorSrc': 110
     };
 
     Object.freeze(manifest);
@@ -64,6 +65,8 @@ let ceres = {};
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
         csv.imageArray = getSlideViewAttributes();
+
+        if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectProperties));
 
         if (csv.imageArray) activateSlideView();
 
@@ -405,6 +408,7 @@ let ceres = {};
         function lookupNotify()
         {
             const lookup = {
+                [manifest.CSVObjectProperties]: 'The Ceres Slide Viewer [' + slideview.HTMLSlideViewElement + '] object properties after initialisation:' + Object.keys(csv).join(", "),
                 [manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
                 [manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
                 [manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
