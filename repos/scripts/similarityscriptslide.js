@@ -34,6 +34,7 @@ let ceres = {};
 
     Object.freeze(constants);
 
+/*
     const manifest = {
         'CSVObjectProperties': 100,
         'LinkOnload': 101,
@@ -47,7 +48,7 @@ let ceres = {};
         'NotFoundListFallback': 109,
         'EmptyProgenitorSrc': 110
     };
-
+*/
     Object.freeze(manifest);
 
     class slideviewer
