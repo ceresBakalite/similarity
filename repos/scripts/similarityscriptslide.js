@@ -93,7 +93,7 @@ let ceres = {};
 
                 Object.defineProperty(csv, attributes, { writable:false });
 
-                manifest.CSVObjectAttributes = 'aaa';
+                csv.attributes.trace = false;
 
                 return imageArray();
 
