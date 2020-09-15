@@ -92,8 +92,9 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
-                //let manifest2 = new settings();
-                //manifest2.CSVObjectAttributes = 'aaa';
+                Object.defineProperties(manifest, { writable:false });
+
+                manifest.CSVObjectAttributes = 'aaa';
 
                 return imageArray();
 
