@@ -63,8 +63,7 @@ let ceres = {};
         'imageArray': null,
         'imageContainer': null,
         'slideContainer': null,
-        'attributes': null,
-        //'attributes': function() { return attribute; },
+        'attributes': function() { return attribute; },
         'index': 1
     }
 
