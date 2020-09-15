@@ -413,7 +413,8 @@ let ceres = {};
         function lookupNotify()
         {
             const lookup = {
-                [manifest.CSVObjectAttributes]: 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + getAttributeProperties(),
+                //[manifest.CSVObjectAttributes]: 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + getAttributeProperties(),
+                [manifest.CSVObjectAttributes]: getAttributeProperties(),
                 [manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
                 [manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
                 [manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
