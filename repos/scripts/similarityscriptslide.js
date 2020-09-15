@@ -356,7 +356,7 @@ let ceres = {};
 
     function activateSlideView()
     {
-        const renderdelay = 250; // awaiting slideview css catchup
+        const renderdelay = 500; // awaiting slideview css catchup
 
         csv.progenitor.style.display = 'none';
 
