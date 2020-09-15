@@ -80,7 +80,14 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true; // display slideview item surtitles
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true; // display slideview item subtitles
 
-                if (csv.attributes.trace) console.log(resource(constants.notify, manifest.CSVObjectProperties));
+                if (csv.attributes.trace)
+                {
+                    for (var property in csv){
+                         let str += property + ": " + obj[property] + ', ';
+                    }
+
+                    console.log(resource(constants.notify, manifest.CSVObjectProperties), str);
+                }
 
                 let imageList = getImageList();
 
@@ -408,7 +415,7 @@ let ceres = {};
         function lookupNotify()
         {
             const lookup = {
-                [manifest.CSVObjectProperties]: 'The Ceres Slide Viewer [' + slideview.HTMLSlideViewElement + '] object properties after initialisation: ' + Object.keys(csv).value.join(", "),
+                [manifest.CSVObjectProperties]: 'The Ceres Slide Viewer [' + slideview.HTMLSlideViewElement + '] object properties after initialisation: ' + str,
                 [manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
                 [manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
                 [manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
