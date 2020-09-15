@@ -91,7 +91,7 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
 
-/^
+/*
                 constants.newProperty = 'foo';
                 constants.foo = 'hello from the frozen foo constant';
                 console.log(constants.foo);
