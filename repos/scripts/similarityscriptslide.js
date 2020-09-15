@@ -49,12 +49,10 @@ let ceres = {};
             this.NotFoundProgenitor = 108,
             this.NotFoundListFallback = 109,
             this.EmptyProgenitorSrc = 110
+            Object.seal(this);
         }
 
     }
-
-    let manifest = new settings();
-    Object.seal(manifest);
 
     class slideviewer
     {
@@ -70,6 +68,7 @@ let ceres = {};
 
     }
 
+    let manifest = new settings();
     let csv = new slideviewer();
 
     function initiateSlideView()
