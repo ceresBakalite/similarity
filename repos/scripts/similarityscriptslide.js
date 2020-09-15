@@ -97,11 +97,9 @@ let ceres = {};
 
                 Object.defineProperty(csv, 'attributes', { writable:false });
 
-                if (csv.attributes.trace) console.log('test3: ' + resources(constants.notify, manifest.CSVObjectAttributes));
-
                 csv.attributes.ptr = true;
 
-                if (csv.attributes.trace) console.log('test4: ' + resources(constants.notify, manifest.CSVObjectAttributes));
+                if (csv.attributes.trace) console.log('test3: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
                 return imageArray();
 
