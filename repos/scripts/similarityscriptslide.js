@@ -431,7 +431,7 @@ alert('list: ' + list);
                 [manifest.ProgenitorInnerHTML]: 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML,
                 [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
                 [manifest.ListFallback]: 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
-                [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute content is unavailable. Searching the fallback noscript image list content in the document body...',
+                [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching the fallback noscript image list content in the document body...',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
