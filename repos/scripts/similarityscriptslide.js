@@ -89,17 +89,19 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
+                if (csv.attributes.trace) console.log('test1: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
                 csv.attributes.trace = false;
 
-                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
+                if (csv.attributes.trace) console.log('test2: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
                 Object.defineProperty(csv, 'attributes', { writable:false });
 
+                if (csv.attributes.trace) console.log('test3: ' + resources(constants.notify, manifest.CSVObjectAttributes));
+
                 csv.attributes.trace = true;
 
-                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
+                if (csv.attributes.trace) console.log('test4: ' + resources(constants.notify, manifest.CSVObjectAttributes));
 
                 return imageArray();
 
