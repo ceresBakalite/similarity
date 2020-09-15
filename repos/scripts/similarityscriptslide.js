@@ -58,6 +58,8 @@ let ceres = {};
         'index': 1
     }
 
+    Object.preventExtensions(csv);
+
     function initiateSlideView()
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
