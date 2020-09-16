@@ -15,7 +15,7 @@ let ceres = {};
             let src = this.getAttribute('src');
             if (src) this.innerHTML =  await ( await fetch(src)).text();
 
-            await initiateSlideView();
+            await asyncInitiateSlideView();
         }
 
     })
@@ -69,7 +69,7 @@ let ceres = {};
 
     let csv = new slideviewer();
 
-    function initiateSlideView()
+    function asyncInitiateSlideView()
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
         csv.imageArray = getImageArray();
