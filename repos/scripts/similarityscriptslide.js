@@ -49,7 +49,7 @@ let ceres = {};
             this.ProgenitorInnerHTML = 105,
             this.ImageListMarkup = 106,
             this.NotFoundProgenitor = 107,
-            this.NotFoundBodyContentList = 108,
+            this.BodyContentListNotFound = 108,
             this.BodyContentList = 109
         }
 
@@ -114,7 +114,7 @@ let ceres = {};
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.textContent : null;
 
-                        return (list) ? list : errorHandler(resources(constants.error, manifest.NotFoundBodyContentList));
+                        return (list) ? list : errorHandler(resources(constants.error, manifest.BodyContentListNotFound));
                     }
 
                 }
@@ -427,7 +427,7 @@ let ceres = {};
         {
             const lookup = {
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
-                [manifest.NotFoundBodyContentList]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
+                [manifest.BodyContentListNotFound]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
 
