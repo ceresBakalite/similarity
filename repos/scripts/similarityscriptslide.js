@@ -88,7 +88,6 @@ let ceres = {};
 
             function imageArray()
             {
-                alert(csv.progenitor.innerHTML);
                 getAttributes();
 
                 let imageList = getImageList();
