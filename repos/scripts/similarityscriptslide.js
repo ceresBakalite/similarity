@@ -16,14 +16,12 @@ let ceres = {};
             let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
             if (css) importSlideViewStylesheet();
 
-/*
-            window.addEventListener('load', (event) => {
-                initiateSlideView();
-            });
-*/
+            await this.renderComplete;
+            
+            initiateSlideView();
         }
 
-    }).then(repsonse => { initiateSlideView(); });
+    })
 
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
@@ -75,6 +73,11 @@ let ceres = {};
 
     let csv = new slideviewer();
 
+/*
+    window.addEventListener('load', (event) => {
+        initiateSlideView();
+    });
+*/
     function initiateSlideView()
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
