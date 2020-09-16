@@ -28,6 +28,7 @@ let ceres = {};
     {
         constructor()
         {
+            this.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
             this.type = function() { return name; },
             this.manifest = function() { return item; }
         }
@@ -36,6 +37,7 @@ let ceres = {};
 
     let resource = new csvresource();
 
+/*
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
         'notify': 1, // console notification type
@@ -65,7 +67,7 @@ let ceres = {};
     let manifest = new settings();
 
     Object.freeze(manifest);
-
+*/
     class slideviewer
     {
         constructor()
@@ -263,7 +265,7 @@ let ceres = {};
 
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = constants.defaultCSS;
+        link.href = resource.defaultCSS;
         link.as = 'style';
 
         onloadListener();
@@ -425,8 +427,8 @@ let ceres = {};
         const newline = '\n';
 
         const lookup = {
-            [constants.notify]: function() { return lookupNotify(); },
-            [constants.error]: function() { return lookupError(); },
+            [resource.type.notify]: function() { return lookupNotify(); },
+            [resource.type.error]: function() { return lookupError(); },
             default: 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive',
         };
 
@@ -435,14 +437,14 @@ let ceres = {};
         function lookupNotify()
         {
             const lookup = {
-                [manifest.CSVObjectAttributes]: 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + getAttributeProperties(),
-                [manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
-                [manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
-                [manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
-                [manifest.LinkOnReadyState]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event',
-                [manifest.ProgenitorInnerHTML]: 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML,
-                [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
-                [manifest.BodyContentList]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body',
+                [resource.manifest.CSVObjectAttributes]: 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + getAttributeProperties(),
+                [resource.manifest.LinkOnload]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener',
+                [resource.manifest.LinkAddEventListener]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener',
+                [resource.manifest.LinkStylesheetCount]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment',
+                [resource.manifest.LinkOnReadyState]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event',
+                [resource.manifest.ProgenitorInnerHTML]: 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML,
+                [resource.manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
+                [resource.manifest.BodyContentList]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
@@ -452,8 +454,8 @@ let ceres = {};
         function lookupError()
         {
             const lookup = {
-                [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
-                [manifest.BodyContentListNotFound]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
+                [resource.manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
+                [resource.manifest.BodyContentListNotFound]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
 
