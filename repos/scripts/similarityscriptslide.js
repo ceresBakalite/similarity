@@ -10,7 +10,7 @@ let ceres = {};
     {
         async connectedCallback()
         {
-            await fetchAttributes(this);
+            await asyncImportCSS(this);
 
             let src = this.getAttribute('src');
             if (src) this.innerHTML =  await ( await fetch(src)).text();
@@ -19,14 +19,6 @@ let ceres = {};
         }
 
     })
-
-    function fetchAttributes(obj)
-    {
-        let css = (obj.getAttribute('css')) ? getBoolean(obj.getAttribute('css')) : true;
-        if (css) importSlideViewStylesheet();
-
-        //alert('hello from fetchAttributes');
-    }
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
@@ -77,11 +69,6 @@ let ceres = {};
 
     let csv = new slideviewer();
 
-/*
-    window.addEventListener('load', (event) => {
-        initiateSlideView();
-    });
-*/
     function initiateSlideView()
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
@@ -372,6 +359,12 @@ let ceres = {};
     {
         const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, img.slide, #' + slideview.HTMLSlideViewElement);
         nodelist.forEach(node => { node.style.display = attribute; } );
+    }
+
+    function asyncImportCSS(obj)
+    {
+        let css = (obj.getAttribute('css')) ? getBoolean(obj.getAttribute('css')) : true;
+        if (css) importSlideViewStylesheet();
     }
 
     function errorHandler(str)
