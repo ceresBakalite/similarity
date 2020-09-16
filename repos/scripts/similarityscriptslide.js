@@ -99,6 +99,23 @@ let ceres = {};
 
                 function getAttributes()
                 {
+                    const newline = '\n';
+
+                    resource.type.notify = 1;
+                    resource.type.error = 99;
+                    resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
+                    resource.attributes.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
+                    resource.attributes.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
+                    resource.attributes.LinkStylesheetCount = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment';
+                    resource.attributes.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
+                    resource.attributes.ImageListMarkup = 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline;
+                    resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
+                    resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
+                    resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
+                    resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
+
+                    Object.freeze(resource.attributes);
+
                     csv.progenitor.id = slideview.HTMLSlideViewElement;
 
                     csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
@@ -110,26 +127,6 @@ let ceres = {};
                     if (csv.attributes.trace) console.log(resource.attributes.CSVObjectAttributes + getAttributeProperties());
 
                     Object.freeze(csv.attributes);
-
-                    const newline = '\n';
-
-                    resource.type.notify = 1;
-                    resource.type.error = 99;
-                    resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
-                    resource.attributes.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
-                    resource.attributes.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
-                    resource.attributes.LinkStylesheetCount = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment';
-                    resource.attributes.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
-            //        resource.attributes.ImageListMarkup = 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str;
-            //        resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML;
-                    resource.attributes.ImageListMarkup = 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline;
-                    resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
-                    resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
-                    resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
-                    resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
-
-                    //Object.freeze(resource.attributes);
-
                 }
 
             }
