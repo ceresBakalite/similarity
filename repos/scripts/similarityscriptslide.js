@@ -68,6 +68,8 @@ let ceres = {};
 
             function imageArray()
             {
+                const newline = '\n';
+
                 getAttributes();
 
                 let imageList = getImageList();
@@ -101,8 +103,6 @@ let ceres = {};
 
                 function getAttributes()
                 {
-                    const newline = '\n';
-
                     csv.progenitor.id = slideview.HTMLSlideViewElement;
 
                     csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
