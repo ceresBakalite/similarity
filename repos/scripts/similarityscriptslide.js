@@ -128,7 +128,7 @@ let ceres = {};
 
                 function getAttributes()
                 {
-                    enableResource();
+                    enableResources();
 
                     csv.progenitor.id = slideview.HTMLSlideViewElement;
 
