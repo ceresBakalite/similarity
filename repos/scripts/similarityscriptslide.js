@@ -22,10 +22,10 @@ let ceres = {};
         if (css) importSlideViewStylesheet();
 
         let src = obj.getAttribute('src');
-        if (src) obj.innerHTML = await (await fetch(src)).text();
+        if (src) obj.innerHTML = await (await fetch(src)).text());
 
         alert('hello from fetchAttributes');
-    })
+    }
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
