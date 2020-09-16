@@ -11,7 +11,7 @@ let ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            if (src) this.innerHTML = await (await fetch(src)).text();
+            if (src) this.innerHTML = await (await fetch(src)).text().replace(/((<([^>]+)>))/gi, '');
 
             let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
             if (css) importSlideViewStylesheet();
@@ -96,6 +96,7 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ImageListMarkup, imageList));
 
+                //return (imageList) ? imageList.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
                 return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
                 function getImageList()
