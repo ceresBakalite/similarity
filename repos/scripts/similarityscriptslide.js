@@ -8,7 +8,7 @@ let ceres = {};
 
     window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
-        async connectedCallback()
+        let connectedCallback = async function()
         {
             let src = this.getAttribute('src');
             if (src) this.innerHTML = await (await fetch(src)).text();
@@ -16,13 +16,14 @@ let ceres = {};
             let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
             if (css) importSlideViewStylesheet();
 
-            await this.renderComplete;
-
+/*
             window.addEventListener('load', (event) => {
                 initiateSlideView();
             });
+*/
+        };
 
-        }
+        connectedCallback().then(initiateSlideView());
 
     });
 
