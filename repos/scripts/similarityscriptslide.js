@@ -107,8 +107,8 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName(slideview.HTMLImageListElement)[0];
-                        const list = (el) ? el.textContent || el.innerHTML : null;
+                        const el = document.getElementById('ceres-csv') ? document.getElementById('ceres-csv') : document.getElementsByTagName('ceres-csv')[0];
+                        const list = (el) ? (el.textContent || el.innerHTML) : null;
 
 alert('list: ' + list);
                         logListProgress();
