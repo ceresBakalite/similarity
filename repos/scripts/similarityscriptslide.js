@@ -114,7 +114,6 @@ let ceres = {};
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.innerHTML : null;
 
-alert('list: ' + list);
                         logListProgress();
 
                         return list;
