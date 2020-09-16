@@ -10,8 +10,8 @@ let ceres = {};
     {
         async connectedCallback()
         {
-            let src = obj.getAttribute('src');
-            if (src) obj.innerHTML = await ( await fetch(src)).text();
+            let src = this.getAttribute('src');
+            if (src) this.innerHTML = await ( await fetch(src)).text();
 
             await fetchAttributes(this)
             .then(result => { initiateSlideView(); });
