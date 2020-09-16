@@ -11,11 +11,7 @@ let ceres = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            if (src)
-            {
-                let list = await (await fetch(src)).text();
-                this.innerHTML = list.innerContent;
-            }
+            if (src) this.innerHTML = await (await fetch(src)).text();
 
             let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
             if (css) importSlideViewStylesheet();
