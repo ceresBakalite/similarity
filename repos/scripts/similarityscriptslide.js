@@ -22,7 +22,7 @@ let ceres = {};
         if (css) importSlideViewStylesheet();
 
         let src = obj.getAttribute('src');
-        if (src) obj.innerHTML = fetch(src).text();
+        if (src) obj.innerHTML = (fetch(src)).text();
 
         //alert('hello from fetchAttributes');
     }
