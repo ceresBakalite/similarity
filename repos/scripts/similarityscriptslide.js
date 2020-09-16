@@ -99,8 +99,6 @@ let ceres = {};
 
                 function getAttributes()
                 {
-                    initialiseResources();
-
                     csv.progenitor.id = slideview.HTMLSlideViewElement;
 
                     csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
@@ -113,23 +111,20 @@ let ceres = {};
 
                     Object.freeze(csv.attributes);
 
-                    function initialiseResources()
-                    {
-                        resource.type.notify = 1;
-                        resource.type.error = 99;
-                        resource.attributes.CSVObjectAttributes = 100,
-                        resource.attributes.LinkOnload = 101,
-                        resource.attributes.LinkAddEventListener = 102,
-                        resource.attributes.LinkStylesheetCount = 103,
-                        resource.attributes.LinkOnReadyState = 104,
-                        resource.attributes.ProgenitorInnerHTML = 105,
-                        resource.attributes.ImageListMarkup = 106,
-                        resource.attributes.NotFoundProgenitor = 107,
-                        resource.attributes.BodyContentListNotFound = 108,
-                        resource.attributes.BodyContentList = 109
+                    resource.type.notify = 1;
+                    resource.type.error = 99;
+                    resource.attributes.CSVObjectAttributes = 100,
+                    resource.attributes.LinkOnload = 101,
+                    resource.attributes.LinkAddEventListener = 102,
+                    resource.attributes.LinkStylesheetCount = 103,
+                    resource.attributes.LinkOnReadyState = 104,
+                    resource.attributes.ProgenitorInnerHTML = 105,
+                    resource.attributes.ImageListMarkup = 106,
+                    resource.attributes.NotFoundProgenitor = 107,
+                    resource.attributes.BodyContentListNotFound = 108,
+                    resource.attributes.BodyContentList = 109
 
-                        Object.freeze(resource.attributes);
-                    }
+                    Object.freeze(resource.attributes);
                 }
 
             }
@@ -166,12 +161,12 @@ let ceres = {};
             csv.slideContainer = document.getElementById(id);
 
             if (csv.attributes.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
-            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceresource.tabImage(this);', getURL(), getAccessibilityText())
+            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.tabImage(this);', getURL(), getAccessibilityText())
             if (csv.attributes.sub) composeElement('div', elements.subName, 'subtitle', csv.slideContainer, getSubtitle(), null, null, null);
         }
 
-        composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'ceresource.getSlide(-1, true)', getURL(), null);
-        composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'ceresource.getSlide(1, true)', getURL(), null);
+        composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
+        composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
         if (csv.attributes.ptr) getSlideViewPointerContainer();
 
@@ -202,7 +197,7 @@ let ceres = {};
 
             function getClickEventValue(indexItem)
             {
-                return 'ceresource.getSlide(' + indexItem + ')';
+                return 'ceres.getSlide(' + indexItem + ')';
             }
 
         }
