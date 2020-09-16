@@ -17,6 +17,11 @@ let ceres = {};
             if (css) importSlideViewStylesheet();
 
             await this.renderComplete;
+
+            window.addEventListener('load', (event) => {
+                initiateSlideView();
+            });
+
         }
 
     });
@@ -69,10 +74,6 @@ let ceres = {};
     }
 
     let csv = new slideviewer();
-
-    window.addEventListener('load', (event) => {
-        initiateSlideView();
-    });
 
     function initiateSlideView()
     {
