@@ -10,8 +10,8 @@ let ceres = {};
     {
         async connectedCallback()
         {
-            let css = (obj.getAttribute('css')) ? getBoolean(obj.getAttribute('css')) : true;
-            if (css) await importSlideViewStylesheet();
+            let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
+            if (css) await ( await importSlideViewStylesheet() );
 
             let src = this.getAttribute('src');
             if (src) this.innerHTML =  await ( await fetch(src)).text();
