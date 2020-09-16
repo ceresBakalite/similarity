@@ -10,6 +10,9 @@ let ceres = {};
     {
         async connectedCallback()
         {
+            let src = obj.getAttribute('src');
+            if (src) obj.innerHTML = await ( await fetch(src)).text();
+
             await fetchAttributes(this)
             .then(result => { initiateSlideView(); });
         }
@@ -20,9 +23,6 @@ let ceres = {};
     {
         let css = (obj.getAttribute('css')) ? getBoolean(obj.getAttribute('css')) : true;
         if (css) importSlideViewStylesheet();
-
-        let src = obj.getAttribute('src');
-        if (src) obj.innerHTML = (fetch(src)).text();
 
         //alert('hello from fetchAttributes');
     }
