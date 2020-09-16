@@ -49,8 +49,8 @@ let ceres = {};
             this.ProgenitorInnerHTML = 105,
             this.ImageListMarkup = 106,
             this.NotFoundProgenitor = 107,
-            this.NotFoundListFallback = 108,
-            this.ListFallback = 109
+            this.NotFoundBodyContentList = 108,
+            this.BodyContentList = 109
         }
 
     }
@@ -96,26 +96,25 @@ let ceres = {};
 
                 if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ImageListMarkup, imageList));
 
-                //return (imageList) ? imageList.replace(/((<([^>]+)>))/gi, '').trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
                 return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
                 function getImageList()
                 {
-                    return (csv.progenitor.getAttribute('src')) ? getMarkdownList() : getMarkupList();
+                    return (csv.progenitor.getAttribute('src')) ? getCallbackRemoteList() : getBodyContentList();
 
-                    function getMarkdownList()
+                    function getCallbackRemoteList()
                     {
                         return (csv.progenitor.textContent) ? csv.progenitor.textContent : null;
                     }
 
-                    function getMarkupList()
+                    function getBodyContentList()
                     {
-                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ListFallback));
+                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.BodyContentList));
 
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.textContent : null;
 
-                        return (list) ? list : errorHandler(resources(constants.error, manifest.NotFoundListFallback));
+                        return (list) ? list : errorHandler(resources(constants.error, manifest.NotFoundBodyContentList));
                     }
 
                 }
@@ -417,7 +416,7 @@ let ceres = {};
                 [manifest.LinkOnReadyState]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event',
                 [manifest.ProgenitorInnerHTML]: 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML,
                 [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
-                [manifest.ListFallback]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body',
+                [manifest.BodyContentList]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
@@ -428,7 +427,7 @@ let ceres = {};
         {
             const lookup = {
                 [manifest.NotFoundProgenitor]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element',
-                [manifest.NotFoundListFallback]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
+                [manifest.NotFoundBodyContentList]: 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' error notification is unresponsive'
             };
 
