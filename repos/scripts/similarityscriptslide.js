@@ -77,14 +77,6 @@ let ceres = {};
         initiateSlideView();
     });
 
-    document.addEventListener('readystatechange', (event) => {
-        initiateSlideView();
-    });
-
-    document.addEventListener('DOMContentLoaded', (event) => {
-        initiateSlideView();
-    });
-
     function initiateSlideView()
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
