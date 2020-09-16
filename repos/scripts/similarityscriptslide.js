@@ -93,7 +93,7 @@ let ceres = {};
         {
             if (csv.progenitor) return imageArray();
 
-            return errorHandler(resources(resource.type.error, manifest.NotFoundProgenitor));
+            return errorHandler(resources(resource.type.error, resource.manifest.NotFoundProgenitor));
 
             function imageArray()
             {
@@ -101,7 +101,7 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                if (csv.attributes.trace) console.log(resources(resource.type.notify, manifest.ImageListMarkup, imageList));
+                if (csv.attributes.trace) console.log(resources(resource.type.notify, resource.manifest.ImageListMarkup, imageList));
 
                 return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
@@ -116,12 +116,12 @@ let ceres = {};
 
                     function getBodyContentList()
                     {
-                        if (csv.attributes.trace) console.log(resources(resource.type.notify, manifest.BodyContentList));
+                        if (csv.attributes.trace) console.log(resources(resource.type.notify, resource.manifest.BodyContentList));
 
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.textContent : null;
 
-                        return (list) ? list : errorHandler(resources(resource.type.error, manifest.BodyContentListNotFound));
+                        return (list) ? list : errorHandler(resources(resource.type.error, resource.manifest.BodyContentListNotFound));
                     }
 
                 }
@@ -138,7 +138,7 @@ let ceres = {};
                     csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                     csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                    if (csv.attributes.trace) console.log(resources(resource.type.notify, manifest.CSVObjectAttributes));
+                    if (csv.attributes.trace) console.log(resources(resource.type.notify, resource.manifest.CSVObjectAttributes));
 
                     Object.freeze(csv.attributes);
 
@@ -146,6 +146,17 @@ let ceres = {};
                     {
                         resource.type.notify = 1;
                         resource.type.error = 99;
+                        resource.manifest.CSVObjectAttributes = 100,
+                        resource.manifest.LinkOnload = 101,
+                        resource.manifest.LinkAddEventListener = 102,
+                        resource.manifest.LinkStylesheetCount = 103,
+                        resource.manifest.LinkOnReadyState = 104,
+                        resource.manifest.ProgenitorInnerHTML = 105,
+                        resource.manifest.ImageListMarkup = 106,
+                        resource.manifest.NotFoundProgenitor = 107,
+                        resource.manifest.BodyContentListNotFound = 108,
+                        resource.manifest.BodyContentList = 109
+
                     }
                 }
 
@@ -194,7 +205,7 @@ let ceres = {};
 
         setSlideViewDisplay('none');
 
-        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ProgenitorInnerHTML));
+        if (csv.attributes.trace) console.log(resources(resource.type.notify, resource.manifest.ProgenitorInnerHTML));
 
         function getSlideViewPointerContainer()
         {
@@ -265,7 +276,7 @@ let ceres = {};
         {
             link.onload = function ()
             {
-                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.LinkOnload));
+                if (csv.attributes.trace) console.log(resources(resource.type.notify, resource.manifest.LinkOnload));
             }
 
         }
@@ -276,7 +287,7 @@ let ceres = {};
             {
                 link.addEventListener('load', function()
                 {
-                    if (csv.attributes.trace) console.log(resources(constants.notify, manifest.LinkAddEventListener));
+                    if (csv.attributes.trace) console.log(resources(resource.type.notify, resource.manifest.LinkAddEventListener));
                 }, false);
 
             }
@@ -292,7 +303,7 @@ let ceres = {};
                 if (document.styleSheets.length > cssnum)
                 {
                     clearInterval(ti);
-                    if (csv.attributes.trace) console.log(resources(constants.notify, manifest.LinkStylesheetCount));
+                    if (csv.attributes.trace) console.log(resources(resource.type.notify, resource.manifest.LinkStylesheetCount));
                 }
 
             }, 10);
@@ -308,7 +319,7 @@ let ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    if (csv.attributes.trace) console.log(resources(constants.notify, manifest.LinkOnReadyState));
+                    if (csv.attributes.trace) console.log(resources(resource.type.notify, resource.manifest.LinkOnReadyState));
                 }
 
             };
