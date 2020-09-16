@@ -107,7 +107,7 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+                        const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName(slideview.HTMLImageListElement)[0];
                         const list = (el) ? el.textContent || el.innerHTML : null;
 
 alert('list: ' + list);
