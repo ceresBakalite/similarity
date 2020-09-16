@@ -10,10 +10,11 @@ let ceres = {};
     {
         async connectedCallback()
         {
-          //await ( await ( await importDefaultCSS(this)) fetch(src)).text();
+            let css = (obj.getAttribute('css')) ? getBoolean(obj.getAttribute('css')) : true;
+            if (css) await importSlideViewStylesheet();
 
             let src = this.getAttribute('src');
-            if (src) this.innerHTML =  await ( await ( await importDefaultCSS(this)) fetch(src)).text();
+            if (src) this.innerHTML =  await ( await fetch(src)).text();
 
             await initiateSlideView();
         }
@@ -359,12 +360,6 @@ let ceres = {};
     {
         const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, img.slide, #' + slideview.HTMLSlideViewElement);
         nodelist.forEach(node => { node.style.display = attribute; } );
-    }
-
-    function importDefaultCSS(obj)
-    {
-        let css = (obj.getAttribute('css')) ? getBoolean(obj.getAttribute('css')) : true;
-        if (css) importSlideViewStylesheet();
     }
 
     function errorHandler(str)
