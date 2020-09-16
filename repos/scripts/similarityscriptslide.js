@@ -107,7 +107,7 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        const el = document.getElementById('ceres-csv') ? document.getElementById('ceres-csv') : document.getElementsByTagName('ceres-csv')[0];
+                        const el = document.body.getElementById('ceres-csv') ? document.body.getElementById('ceres-csv') : document.body.getElementsByTagName('ceres-csv')[0];
                         const list = (el) ? el.innerHTML : null;
 
 alert('list: ' + list);
