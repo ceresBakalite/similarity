@@ -21,7 +21,7 @@ let ceres = {};
 
     })
 
-    slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
+    slideview.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
     const constants = {
@@ -163,7 +163,7 @@ let ceres = {};
             csv.slideContainer = document.getElementById(id);
 
             if (csv.attributes.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
-            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.openImageTab(this);', getURL(), getAccessibilityText())
+            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.tabImage(this);', getURL(), getAccessibilityText())
             if (csv.attributes.sub) composeElement('div', elements.subName, 'subtitle', csv.slideContainer, getSubtitle(), null, null, null);
         }
 
