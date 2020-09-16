@@ -10,10 +10,10 @@ let ceres = {};
     {
         async connectedCallback()
         {
-            await importDefaultCSS(this);
+          //await ( await ( await importDefaultCSS(this)) fetch(src)).text();
 
             let src = this.getAttribute('src');
-            if (src) this.innerHTML =  await ( await fetch(src)).text();
+            if (src) this.innerHTML =  await ( await ( await importDefaultCSS(this)) fetch(src)).text();
 
             await initiateSlideView();
         }
