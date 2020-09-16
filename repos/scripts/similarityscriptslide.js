@@ -10,18 +10,22 @@ let ceres = {};
     {
         async connectedCallback()
         {
-            let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
-            if (css) importSlideViewStylesheet();
-
-            let src = this.getAttribute('src');
-            if (src) this.innerHTML = await (await fetch(src)).text();
-
-            await this.renderComplete
-
-            initiateSlideView();
+            fetchAttributes(this)
+            .then(result => { initiateSlideView(); });
         }
 
     })
+
+    function fetchAttributes(obj)
+    {
+        let css = (obj.getAttribute('css')) ? getBoolean(obj.getAttribute('css')) : true;
+        if (css) importSlideViewStylesheet();
+
+        let src = obj.getAttribute('src');
+        if (src) obj.innerHTML = await (await fetch(src)).text();
+
+        alert('hello from fetchAttributes');
+    }
 
     slideview.openImageTab = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
