@@ -18,7 +18,7 @@ let ceres = {};
 
             await this.renderComplete;
 
-            document.getElementById(slideview.HTMLSlideViewElement).onload = initiateSlideView();
+            window.onload = initiateSlideView();
         }
 
     });
