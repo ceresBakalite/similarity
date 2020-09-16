@@ -14,7 +14,7 @@ let ceres = {};
             if (src) this.innerHTML = await ( await fetch(src)).text();
 
             await fetchAttributes(this)
-            .then(result => { initiateSlideView(); });
+            .then( initiateSlideView(); );
         }
 
     })
