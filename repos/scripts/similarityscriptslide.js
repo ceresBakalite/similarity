@@ -17,8 +17,6 @@ let ceres = {};
             if (css) importSlideViewStylesheet();
 
             await this.renderComplete;
-
-            //window.onload = initiateSlideView();
         }
 
     });
