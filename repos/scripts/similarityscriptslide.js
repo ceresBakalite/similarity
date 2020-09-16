@@ -111,9 +111,8 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        const list = (csv.progenitor.innerHTML) ? csv.progenitor.innerHTML : null;
-                        //const el = document.getElementById('ceres-csv') ? document.getElementById('ceres-csv') : document.getElementsByTagName('ceres-csv')[0];
-                        //const list = (el) ? el.innerHTML : null;
+                        const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+                        const list = (el) ? el.innerHTML : null;
 
 alert('list: ' + list);
                         logListProgress();
