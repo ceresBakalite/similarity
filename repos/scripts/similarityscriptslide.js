@@ -103,7 +103,7 @@ let ceres = {};
 
                     function getMarkdownList()
                     {
-                        return (csv.progenitor.innerContent) ? csv.progenitor.innerContent : null;
+                        return (csv.progenitor.innerHTML) ? csv.progenitor.innerHTML : null;
                     }
 
                     function getMarkupList()
