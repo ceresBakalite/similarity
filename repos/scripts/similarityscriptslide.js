@@ -399,6 +399,4 @@ let ceres = {};
         return str.replace(/, +$/g,'');
     }
 
-}
-
 })(ceres);
