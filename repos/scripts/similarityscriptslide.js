@@ -116,7 +116,7 @@ let ceres = {};
 
                         logListProgress();
 
-                        return list;
+                        return (list) ? list : null;
 
                         function logListProgress()
                         {
