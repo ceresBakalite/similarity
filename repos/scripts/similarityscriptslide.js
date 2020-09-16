@@ -16,9 +16,9 @@ let ceres = {};
             let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
             if (css) importSlideViewStylesheet();
 
-            await this.renderComplete.then(initiateSlideView());
-            
-        }
+            await this.renderComplete
+
+        }.then(initiateSlideView());
 
     })
 
