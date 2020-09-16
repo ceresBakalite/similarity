@@ -68,15 +68,11 @@ let ceres = {};
 
             function imageArray()
             {
-                const newline = '\n';
-
                 getAttributes();
 
                 let imageList = getImageList();
 
-                resource.attributes.ImageListMarkup = 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + imageList;
-
-                if (csv.attributes.trace) console.log(resource.attributes.ImageListMarkup);
+                //if (csv.attributes.trace) console.log(resource.attributes.ImageListMarkup);
 
                 return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
@@ -115,6 +111,8 @@ let ceres = {};
 
                     Object.freeze(csv.attributes);
 
+                    const newline = '\n';
+
                     resource.type.notify = 1;
                     resource.type.error = 99;
                     resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ' + getAttributeProperties();
@@ -122,6 +120,7 @@ let ceres = {};
                     resource.attributes.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
                     resource.attributes.LinkStylesheetCount = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment';
                     resource.attributes.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
+                    //resource.attributes.ImageListMarkup = 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + imageList;
                     resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML;
                     resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
                     resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
@@ -135,6 +134,7 @@ let ceres = {};
                         for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
                         return str.replace(/, +$/g,'');
                     }
+
                 }
 
             }
