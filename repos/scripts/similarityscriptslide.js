@@ -43,10 +43,9 @@ let ceres = {};
             this.LinkOnReadyState = 104,
             this.ProgenitorInnerHTML = 105,
             this.ImageListMarkup = 106,
-            this.ListFallback = 107,
-            this.NotFoundProgenitor = 108,
-            this.NotFoundListFallback = 109,
-            this.EmptyProgenitorSrc = 110
+            this.NotFoundProgenitor = 107,
+            this.NotFoundListFallback = 108,
+            this.EmptyProgenitorSrc = 109
         }
 
     }
@@ -109,7 +108,7 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ListFallback));
+                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.EmptyProgenitorSrc));
 
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.textContent : null;
