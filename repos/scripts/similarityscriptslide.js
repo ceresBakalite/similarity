@@ -108,7 +108,7 @@ let ceres = {};
                     function getMarkupList()
                     {
                         //const el = (csv.progenitor.innerHTML) ? csv.progenitor.innerHTML : null; document.getElementById('ceres-csv') ? document.getElementById('ceres-csv') : document.getElementsByTagName('ceres-csv')[0];
-                        const el = csv.progenitor.getElementById('ceres-csv') ? csv.progenitor.getElementById('ceres-csv') : csv.progenitor.getElementsByTagName('ceres-csv')[0];
+                        const el = document.getElementById('ceres-csv') ? document.getElementById('ceres-csv') : document.getElementsByTagName('ceres-csv')[0];
                         const list = (el) ? el.innerHTML : null;
 
 alert('list: ' + list);
