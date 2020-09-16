@@ -258,7 +258,7 @@ let ceres = {};
 
         onloadListener();
         addEventListener();
-        styleSheetsLengthListener();
+        //styleSheetsLengthListener();
         onReadyStateChangeListener();
 
         document.head.appendChild(link);
