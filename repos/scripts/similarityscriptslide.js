@@ -18,7 +18,7 @@ let ceres = {};
 
             await this.renderComplete;
 
-            window.onload = initiateSlideView();
+            //window.onload = initiateSlideView();
         }
 
     });
@@ -72,6 +72,18 @@ let ceres = {};
     }
 
     let csv = new slideviewer();
+
+    window.addEventListener('load', (event) => {
+        initiateSlideView();
+    });
+
+    document.addEventListener('readystatechange', (event) => {
+        initiateSlideView();
+    });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        initiateSlideView();
+    });
 
     function initiateSlideView()
     {
