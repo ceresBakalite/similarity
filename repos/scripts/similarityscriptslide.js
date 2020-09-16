@@ -45,7 +45,7 @@ let ceres = {};
             this.ImageListMarkup = 106,
             this.NotFoundProgenitor = 107,
             this.NotFoundListFallback = 108,
-            this.EmptyProgenitorSrc = 109
+            this.ListFallback = 109
         }
 
     }
@@ -108,7 +108,7 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.EmptyProgenitorSrc));
+                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ListFallback));
 
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.textContent : null;
@@ -416,8 +416,7 @@ let ceres = {};
                 [manifest.LinkOnReadyState]: 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event',
                 [manifest.ProgenitorInnerHTML]: 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML,
                 [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
-                [manifest.ListFallback]: 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
-                [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body',
+                [manifest.ListFallback]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
