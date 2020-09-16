@@ -45,9 +45,10 @@ let ceres = {};
             this.LinkOnReadyState = 104,
             this.ProgenitorInnerHTML = 105,
             this.ImageListMarkup = 106,
-            this.NotFoundProgenitor = 107,
-            this.NotFoundListFallback = 108,
-            this.EmptyProgenitorSrc = 109
+            this.ListFallback = 107,
+            this.NotFoundProgenitor = 108,
+            this.NotFoundListFallback = 109,
+            this.EmptyProgenitorSrc = 110
         }
 
     }
@@ -110,12 +111,26 @@ let ceres = {};
 
                     function getMarkupList()
                     {
-                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.EmptyProgenitorSrc));
-
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.innerHTML : null;
 
-                        return (!list) ? list : errorHandler(resources(constants.error, manifest.NotFoundListFallback));
+                        logListProgress();
+
+                        return list;
+
+                        function logListProgress()
+                        {
+                            const response = (list) ? 'logFound' : 'logNotFound';
+
+                            if (csv.attributes.trace) console.log(resources(constants.notify, manifest.EmptyProgenitorSrc));
+
+                            const lookup = {
+                                'logFound': function() { if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ListFallback)); },
+                                'logNotFound': function() { errorHandler(resources(constants.error, manifest.NotFoundListFallback)); },
+                            };
+
+                            lookup[response]();
+                        }
 
                     }
 
@@ -420,7 +435,7 @@ let ceres = {};
                 [manifest.ProgenitorInnerHTML]: 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML,
                 [manifest.ImageListMarkup]: 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + str,
                 [manifest.ListFallback]: 'Image list [' + slideview.HTMLImageListElement + ']: found on the second attempt in the element fallback location',
-                [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback <noscript> image list in the document body',
+                [manifest.EmptyProgenitorSrc]: 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching the fallback noscript image list content in the document body...',
                 'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' trace notification is unresponsive'
             };
 
