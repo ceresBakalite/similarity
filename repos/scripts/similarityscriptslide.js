@@ -16,7 +16,7 @@ let ceres = {};
             let src = this.getAttribute('src');
             if (src) this.innerHTML =  await ( await fetch(src)).text();
 
-            await initiateSlideView();
+            initiateSlideView();
         }
 
     })
