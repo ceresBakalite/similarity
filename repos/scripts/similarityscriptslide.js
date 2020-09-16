@@ -24,6 +24,18 @@ let ceres = {};
     slideview.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
+    class csvresource
+    {
+        constructor()
+        {
+            this.type = function() { return name; },
+            this.manifest = function() { return item; }
+        }
+
+    }
+
+    let resource = new csvresource();
+
     const constants = {
         'defaultCSS': 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
         'notify': 1, // console notification type
@@ -81,7 +93,7 @@ let ceres = {};
         {
             if (csv.progenitor) return imageArray();
 
-            return errorHandler(resources(constants.error, manifest.NotFoundProgenitor));
+            return errorHandler(resources(resource.type.error, manifest.NotFoundProgenitor));
 
             function imageArray()
             {
@@ -89,7 +101,7 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                if (csv.attributes.trace) console.log(resources(constants.notify, manifest.ImageListMarkup, imageList));
+                if (csv.attributes.trace) console.log(resources(resource.type.notify, manifest.ImageListMarkup, imageList));
 
                 return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
@@ -104,18 +116,20 @@ let ceres = {};
 
                     function getBodyContentList()
                     {
-                        if (csv.attributes.trace) console.log(resources(constants.notify, manifest.BodyContentList));
+                        if (csv.attributes.trace) console.log(resources(resource.type.notify, manifest.BodyContentList));
 
                         const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                         const list = (el) ? el.textContent : null;
 
-                        return (list) ? list : errorHandler(resources(constants.error, manifest.BodyContentListNotFound));
+                        return (list) ? list : errorHandler(resources(resource.type.error, manifest.BodyContentListNotFound));
                     }
 
                 }
 
                 function getAttributes()
                 {
+                    enableResource();
+
                     csv.progenitor.id = slideview.HTMLSlideViewElement;
 
                     csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
@@ -124,9 +138,15 @@ let ceres = {};
                     csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                     csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                    if (csv.attributes.trace) console.log(resources(constants.notify, manifest.CSVObjectAttributes));
+                    if (csv.attributes.trace) console.log(resources(resource.type.notify, manifest.CSVObjectAttributes));
 
                     Object.freeze(csv.attributes);
+
+                    function enableResources()
+                    {
+                        resource.type.notify = 1;
+                        resource.type.error = 99;
+                    }
                 }
 
             }
