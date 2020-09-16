@@ -95,9 +95,9 @@ let ceres = {};
 
                 function getImageList()
                 {
-                    return (csv.progenitor.getAttribute('src')) ? getCallbackRemoteList() : getBodyContentList();
+                    return (csv.progenitor.getAttribute('src')) ? getConnectedCallbackList() : getBodyContentList();
 
-                    function getCallbackRemoteList()
+                    function getConnectedCallbackList()
                     {
                         return (csv.progenitor.textContent) ? csv.progenitor.textContent : null;
                     }
