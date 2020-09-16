@@ -10,12 +10,12 @@ let ceres = {};
     {
         async connectedCallback()
         {
-            await asyncImportCSS(this);
+            await importDefaultCSS(this);
 
             let src = this.getAttribute('src');
             if (src) this.innerHTML =  await ( await fetch(src)).text();
 
-            await asyncInitiateSlideView();
+            await initiateSlideView();
         }
 
     })
@@ -69,7 +69,7 @@ let ceres = {};
 
     let csv = new slideviewer();
 
-    function asyncInitiateSlideView()
+    function initiateSlideView()
     {
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
         csv.imageArray = getImageArray();
@@ -361,7 +361,7 @@ let ceres = {};
         nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
-    function asyncImportCSS(obj)
+    function importDefaultCSS(obj)
     {
         let css = (obj.getAttribute('css')) ? getBoolean(obj.getAttribute('css')) : true;
         if (css) importSlideViewStylesheet();
