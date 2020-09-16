@@ -72,7 +72,9 @@ let ceres = {};
 
                 let imageList = getImageList();
 
-                if (csv.attributes.trace) console.log(resource.attributes.ImageListMarkup, imageList);
+                resource.attributes.ImageListMarkup = 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + imageList;
+
+                if (csv.attributes.trace) console.log(resource.attributes.ImageListMarkup);
 
                 return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
@@ -121,7 +123,6 @@ let ceres = {};
                     resource.attributes.LinkStylesheetCount = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment';
                     resource.attributes.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
                     resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + csv.progenitor.innerHTML;
-                    resource.attributes.ImageListMarkup = 'Image list markup [' + slideview.HTMLSlideViewElement + ']: ' + newline + imageList;
                     resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
                     resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
                     resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
