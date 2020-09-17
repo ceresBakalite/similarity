@@ -28,8 +28,8 @@ let ceres = {};
     {
         constructor()
         {
-            this.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
-            this.type = function() { return type; },
+            this.types = function() { return type; },
+            this.references = function() { return reference; }
             this.attributes = function() { return attribute; }
         }
 
@@ -99,8 +99,9 @@ let ceres = {};
 
                 const newline = '\n';
 
-                resource.type.notify = 1;
-                resource.type.error = 99;
+                resource.types.reference = 1;
+                resource.types.notify = 2;
+                resource.types.error = 99;
                 resource.attributes.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
                 resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
                 resource.attributes.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
@@ -113,7 +114,9 @@ let ceres = {};
                 resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
                 resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
                 resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
+                resource.references.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
 
+                Object.freeze(resource.references);
                 Object.freeze(resource.attributes);
 
                 csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
@@ -244,7 +247,7 @@ let ceres = {};
 
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = resource.defaultCSS;
+        link.href = resource.references.defaultCSS;
         link.as = 'style';
 
         onloadListener();
