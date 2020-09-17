@@ -104,7 +104,7 @@ let ceres = {};
 
                     resource.type.notify = 1;
                     resource.type.error = 99;
-                    resource.attributes.ProgenitorSource = (csv.progenitor.getAttribute('src') ? true : false;
+                    resource.attributes.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
                     resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
                     resource.attributes.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
                     resource.attributes.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
