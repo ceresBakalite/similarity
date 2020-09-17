@@ -34,6 +34,7 @@ body {
   border-collapse: collapse;
   width: 100%;
   height: 100%;
+  z-index: 50;
 }
 
 .section-frame-container {
