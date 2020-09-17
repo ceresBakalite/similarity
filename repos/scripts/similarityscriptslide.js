@@ -87,7 +87,7 @@ let ceres = {};
                     const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                     const list = (el) ? el.textContent : null;
 
-                    return (list) ? list : errorHandler(resource.attributes.BodyContentListNotFound);
+                    return (list) ? list : response(resource.types.error, resource.attributes.BodyContentListNotFound);
                 }
 
             }
