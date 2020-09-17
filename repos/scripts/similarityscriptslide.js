@@ -82,7 +82,7 @@ let ceres = {};
 
                 function getBodyContentList()
                 {
-                    traceinspect(resource.type.notify, resource.attribute.BodyContentList);
+                    inspect(resource.type.notify, resource.attribute.BodyContentList);
 
                     const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                     const list = (el) ? el.textContent : null;
