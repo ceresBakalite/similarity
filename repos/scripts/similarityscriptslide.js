@@ -61,17 +61,17 @@ let ceres = {};
 
         function getImageArray()
         {
-            if (!csv.progenitor) return errorHandler(resource.attributes.ProgenitorNotFound);
+            if (!csv.progenitor) return response(resource.types.error, resource.attributes.ProgenitorNotFound);
 
             let imageList = getImageList();
 
-            if (csv.attributes.trace) console.log(resource.attributes.ListContainerMarkup + imageList);
+            response(resource.types.notify, resource.attributes.ListContainerMarkup + imageList);
 
             return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
             function getImageList()
             {
-                if (!getSlideviewAttributes()) return errorHandler(resource.attributes.ListContainerNotFound);
+                if (!getSlideviewAttributes()) return response(resource.types.error, resource.attributes.ListContainerNotFound);
 
                 return (resource.attributes.ProgenitorSource) ? getConnectedCallbackList() : getBodyContentList();
 
@@ -82,7 +82,7 @@ let ceres = {};
 
                 function getBodyContentList()
                 {
-                    if (csv.attributes.trace) console.log(resource.attributes.BodyContentList);
+                    response(resource.types.notify, resource.attributes.BodyContentList);
 
                     const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                     const list = (el) ? el.textContent : null;
@@ -150,7 +150,7 @@ let ceres = {};
     {
         const lookup = {
             [resource.types.notify]: function() { if (csv.attributes.trace) console.log(attribute); },
-            [resource.types.error]: function() { errorHandler(attribute); },
+            [resource.types.error]: function() { return errorHandler(attribute); },
             'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' response notification is unresponsive'
         };
 
@@ -196,7 +196,7 @@ let ceres = {};
 
         setSlideViewDisplay('none');
 
-        if (csv.attributes.trace) console.log(resource.attributes.ProgenitorInnerHTML + csv.progenitor.innerHTML);
+        response(resource.types.notify, resource.attributes.ProgenitorInnerHTML + csv.progenitor.innerHTML);
 
         function getSlideViewPointerContainer()
         {
@@ -267,7 +267,7 @@ let ceres = {};
         {
             link.onload = function ()
             {
-                if (csv.attributes.trace) console.log(resource.attributes.LinkOnload);
+                response(resource.types.notify, resource.attributes.LinkOnload);
             }
 
         }
@@ -278,7 +278,7 @@ let ceres = {};
             {
                 link.addEventListener('load', function()
                 {
-                    if (csv.attributes.trace) console.log(resource.attributes.LinkAddEventListener);
+                    response(resource.types.notify, resource.attributes.LinkAddEventListener);
                 }, false);
 
             }
@@ -294,7 +294,7 @@ let ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    if (csv.attributes.trace) console.log(resource.attributes.LinkOnReadyState);
+                    response(resource.types.notify, resource.attributes.LinkOnReadyState);
                 }
 
             };
