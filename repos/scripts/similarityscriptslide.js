@@ -104,16 +104,16 @@ let ceres = {};
                 resource.attribute.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
                 resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
                 resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
-                resource.attribute.ListContainerMarkup = 'Image list markup ' + ((resource.attribute.ProgenitorSource) ? 'sourced from connectedCallback' : 'sourced from document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
+                resource.attribute.ListContainerMarkup = 'Image list markup ' + ((resource.attribute.ProgenitorSource) ? 'promised from connectedCallback' : 'sourced from document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
                 resource.attribute.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
                 resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
                 resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
                 resource.attribute.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
                 resource.attribute.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
                 resource.attribute.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
-                resource.attribute.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
+                resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
 
-                Object.freeze(resource.attributes);
+                Object.freeze(resource.attribute);
 
                 csv.attribute.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
                 csv.attribute.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
@@ -151,7 +151,7 @@ let ceres = {};
         const lookup = {
             [resource.type.notify]: function() { if (csv.attribute.trace) console.log(response); },
             [resource.type.error]: function() { errorHandler(response); },
-            'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' response notification is unresponsive'
+            'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' is unresponsive'
         };
 
         return lookup[type]() || lookup['default'];
