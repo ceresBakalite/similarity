@@ -154,7 +154,7 @@ let ceres = {};
             'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' response notification is unresponsive'
         };
 
-        return lookup[type]() || lookup['default'];
+        return lookup[type]() || lookup['default']();
     }
 
     function getSlideView()
