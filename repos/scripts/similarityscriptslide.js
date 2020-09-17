@@ -61,17 +61,17 @@ let ceres = {};
 
         function getImageArray()
         {
-            if (!csv.progenitor) return traceResponse(resource.type.error, resource.attribute.ProgenitorNotFound);
+            if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
 
             let imageList = getImageList();
 
-            traceResponse(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
+            inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
 
             return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
             function getImageList()
             {
-                if (!getSlideviewAttributes()) return traceResponse(resource.type.error, resource.attribute.ListContainerNotFound);
+                if (!getSlideviewAttributes()) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
                 return (resource.attribute.ProgenitorSource) ? getConnectedCallbackList() : getBodyContentList();
 
@@ -82,12 +82,12 @@ let ceres = {};
 
                 function getBodyContentList()
                 {
-                    tracetraceResponse(resource.type.notify, resource.attribute.BodyContentList);
+                    traceinspect(resource.type.notify, resource.attribute.BodyContentList);
 
                     const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                     const list = (el) ? el.textContent : null;
 
-                    return (list) ? list : traceResponse(resource.type.error, resource.attribute.BodyContentListNotFound);
+                    return (list) ? list : inspect(resource.type.error, resource.attribute.BodyContentListNotFound);
                 }
 
             }
@@ -123,7 +123,7 @@ let ceres = {};
 
                 Object.freeze(csv.attributes);
 
-                traceResponse(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
+                inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
 
                 return getListContainerConfirmation();
 
@@ -146,7 +146,7 @@ let ceres = {};
 
     }
 
-    function traceResponse(type, response)
+    function inspect(type, response)
     {
         const lookup = {
             [resource.type.notify]: function() { if (csv.attribute.trace) console.log(response); },
@@ -196,7 +196,7 @@ let ceres = {};
 
         setSlideViewDisplay('none');
 
-        traceResponse(resource.type.notify, resource.attribute.ProgenitorInnerHTML + csv.progenitor.innerHTML);
+        inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + csv.progenitor.innerHTML);
 
         function getSlideViewPointerContainer()
         {
@@ -267,7 +267,7 @@ let ceres = {};
         {
             link.onload = function ()
             {
-                traceResponse(resource.type.notify, resource.attribute.LinkOnload);
+                inspect(resource.type.notify, resource.attribute.LinkOnload);
             }
 
         }
@@ -278,7 +278,7 @@ let ceres = {};
             {
                 link.addEventListener('load', function()
                 {
-                    traceResponse(resource.type.notify, resource.attribute.LinkAddEventListener);
+                    inspect(resource.type.notify, resource.attribute.LinkAddEventListener);
                 }, false);
 
             }
@@ -294,7 +294,7 @@ let ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    traceResponse(resource.type.notify, resource.attribute.LinkOnReadyState);
+                    inspect(resource.type.notify, resource.attribute.LinkOnReadyState);
                 }
 
             };
