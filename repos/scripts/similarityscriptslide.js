@@ -29,7 +29,6 @@ let ceres = {};
         constructor()
         {
             this.types = function() { return type; },
-            this.references = function() { return reference; }
             this.attributes = function() { return attribute; }
         }
 
@@ -114,9 +113,8 @@ let ceres = {};
                 resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
                 resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
                 resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
-                resource.references.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
+                resource.attributes.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
 
-                Object.freeze(resource.references);
                 Object.freeze(resource.attributes);
 
                 csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
@@ -247,7 +245,7 @@ let ceres = {};
 
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = resource.references.defaultCSS;
+        link.href = resource.attributes.defaultCSS;
         link.as = 'style';
 
         onloadListener();
