@@ -62,15 +62,10 @@ let ceres = {};
 
         function getImageArray()
         {
-            if (csv.progenitor) return imageArray();
+            if (!csv.progenitor) return errorHandler(resource.attributes.NotFoundProgenitor);
 
-            // ERROR - RESOURCE NOT INITIALLISED
-            return errorHandler(resource.attributes.NotFoundProgenitor);
-
-            function imageArray()
+            if (getSlideviewAttributes())
             {
-                getAttributes();
-
                 let imageList = getImageList();
 
                 if (csv.attributes.trace) console.log(resource.attributes.ImageListMarkup + imageList);
@@ -98,45 +93,53 @@ let ceres = {};
 
                 }
 
-                function getAttributes()
+            }
+
+            function getSlideviewAttributes()
+            {
+                csv.progenitor.id = slideview.HTMLSlideViewElement;
+
+                const newline = '\n';
+
+                resource.type.notify = 1;
+                resource.type.error = 99;
+                resource.attributes.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
+                resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
+                resource.attributes.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
+                resource.attributes.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
+                resource.attributes.LinkStylesheetCount = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment';
+                resource.attributes.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
+                resource.attributes.ImageListMarkup = 'Image list markup ' + ((resource.attributes.ProgenitorSource) ? 'sourced from connectedCallback' : 'sourced from document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
+                resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
+                resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
+                resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
+                resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
+
+                Object.freeze(resource.attributes);
+
+                csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
+                csv.attributes.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
+                csv.attributes.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
+                csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
+                csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
+
+                if (csv.attributes.trace) console.log(resource.attributes.CSVObjectAttributes + getAttributeProperties());
+
+                Object.freeze(csv.attributes);
+
+                return (getImageListContainer()) ? true : false;
+
+                function getAttributeProperties()
                 {
-                    const newline = '\n';
+                    let str = '';
+                    for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
+                    return str.replace(/, +$/g,'');
+                }
 
-                    resource.type.notify = 1;
-                    resource.type.error = 99;
-                    resource.attributes.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
-                    resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
-                    resource.attributes.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
-                    resource.attributes.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
-                    resource.attributes.LinkStylesheetCount = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment';
-                    resource.attributes.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
-                    resource.attributes.ImageListMarkup = 'Image list markup ' + ((resource.attributes.ProgenitorSource) ? 'sourced from connectedCallback' : 'sourced from document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
-                    resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
-                    resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
-                    resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
-                    resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
-
-                    Object.freeze(resource.attributes);
-
-                    csv.progenitor.id = slideview.HTMLSlideViewElement;
-
-                    csv.attributes.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
-                    csv.attributes.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
-                    csv.attributes.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
-                    csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
-                    csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
-
-                    if (csv.attributes.trace) console.log(resource.attributes.CSVObjectAttributes + getAttributeProperties());
-
-                    Object.freeze(csv.attributes);
-
-                    function getAttributeProperties()
-                    {
-                        let str = '';
-                        for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
-                        return str.replace(/, +$/g,'');
-                    }
-
+                function getImageListContainer()
+                {
+                    const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+                    return (csv.progenitor.getAttribute('src') || el) ? true : false;
                 }
 
             }
