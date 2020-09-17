@@ -146,11 +146,11 @@ let ceres = {};
 
     }
 
-    function traceResponse(type, attribute)
+    function traceResponse(type, response)
     {
         const lookup = {
-            [resource.type.notify]: function() { if (csv.attribute.trace) console.log(attribute); },
-            [resource.type.error]: function() { return errorHandler(attribute); },
+            [resource.type.notify]: function() { if (csv.attribute.trace) console.log(response); },
+            [resource.type.error]: function() { errorHandler(response); },
             'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' response notification is unresponsive'
         };
 
