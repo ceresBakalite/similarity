@@ -72,8 +72,8 @@ let ceres = {};
 
             function getImageList()
             {
-                if (!getSlideviewAttributes()) errorHandler(resource.attributes.ListContainerNotFound);
-                
+                if (!getSlideviewAttributes()) return errorHandler(resource.attributes.ListContainerNotFound);
+
                 return (resource.attributes.ProgenitorSource) ? getConnectedCallbackList() : getBodyContentList();
 
                 function getConnectedCallbackList()
