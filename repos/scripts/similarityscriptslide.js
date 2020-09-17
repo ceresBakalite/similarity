@@ -148,6 +148,7 @@ let ceres = {};
 
     function response(type, attribute)
     {
+        alert('type: ' + type);
         const lookup = {
             [resource.types.notify]: function() { if (csv.attributes.trace) console.log(attribute); },
             [resource.types.error]: function() { errorHandler(attribute); },
