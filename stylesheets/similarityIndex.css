@@ -57,6 +57,7 @@ body {
 }
 
 .btn-group .button {
+  z-index: 50;  
   background-color: #5c685a;
   border: 1px solid gray;
   color: white;
