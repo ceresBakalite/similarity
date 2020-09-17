@@ -9,6 +9,21 @@ let ceres = {};
     slideview.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
+    window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
+    {
+        async connectedCallback()
+        {
+            let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
+            if (css) await ( await importSlideViewStylesheet() );
+
+            let src = this.getAttribute('src');
+            if (src) this.innerHTML =  await ( await fetch(src)).text();
+
+            initiateSlideView();
+        }
+
+    })
+
     class components
     {
         constructor()
@@ -20,25 +35,6 @@ let ceres = {};
     }
 
     let resource = new components();
-
-    window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
-    {
-        async connectedCallback()
-        {
-            resource.type.reference = 1;
-            resource.type.notify = 2;
-            resource.type.error = 99;
-
-            let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
-            if (css) await ( await importSlideViewStylesheet() );
-
-            let src = this.getAttribute('src');
-            if (src) this.innerHTML =  await ( await fetch(src)).text();
-
-            initiateSlideView();
-        }
-
-    })
 
     class slideviewer
     {
@@ -101,6 +97,10 @@ let ceres = {};
                 csv.progenitor.id = slideview.HTMLSlideViewElement;
 
                 const newline = '\n';
+
+                resource.type.reference = 1;
+                resource.type.notify = 2;
+                resource.type.error = 99;
 
                 resource.attribute.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
                 resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
@@ -248,10 +248,6 @@ let ceres = {};
 
     function importSlideViewStylesheet()
     {
-        resource.attribute.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
-        resource.attribute.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
-        resource.attribute.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
-
         const link = document.createElement('link');
 
         link.rel = 'stylesheet';
@@ -267,10 +263,7 @@ let ceres = {};
 
         function onloadListener()
         {
-            link.onload = function ()
-            {
-                inspect(resource.type.notify, resource.attribute.LinkOnload);
-            }
+            link.onload = function () {}
         }
 
         function addEventListener()
@@ -278,7 +271,6 @@ let ceres = {};
             if (link.addEventListener)
             {
                 link.addEventListener('load', function() {}, false);
-                inspect(resource.type.notify, resource.attribute.LinkAddEventListener);
             }
 
         }
@@ -292,7 +284,6 @@ let ceres = {};
                 if (state === 'loaded' || state === 'complete')
                 {
                     link.onreadystatechange = null;
-                    inspect(resource.type.notify, resource.attribute.LinkOnReadyState);
                 }
 
             };
