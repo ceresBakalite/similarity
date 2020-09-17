@@ -54,8 +54,6 @@ let ceres = {};
 
     function initiateSlideView()
     {
-        getSlideviewAttributes();
-
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
         csv.imageArray = getImageArray();
 
@@ -63,6 +61,8 @@ let ceres = {};
 
         function getImageArray()
         {
+            getSlideviewAttributes();
+
             if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
 
             csv.progenitor.id = slideview.HTMLSlideViewElement;
