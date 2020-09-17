@@ -48,6 +48,7 @@ body {
 .section-frame-container::after
 {
   height: 100%;
+  z-index: -1;
   /* overflow: hidden; */
 }
 
