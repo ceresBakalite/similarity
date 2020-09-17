@@ -64,33 +64,31 @@ let ceres = {};
         {
             if (!csv.progenitor) return errorHandler(resource.attributes.NotFoundProgenitor);
 
-            if (getSlideviewAttributes())
+            let imageList = getImageList();
+
+            if (csv.attributes.trace) console.log(resource.attributes.ImageListMarkup + imageList);
+
+            return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
+
+            function getImageList()
             {
-                let imageList = getImageList();
+                if (!getSlideviewAttributes()) errorHandler(resource.attributes.ListContainerNotFound);
+                
+                return (resource.attributes.ProgenitorSource) ? getConnectedCallbackList() : getBodyContentList();
 
-                if (csv.attributes.trace) console.log(resource.attributes.ImageListMarkup + imageList);
-
-                return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
-
-                function getImageList()
+                function getConnectedCallbackList()
                 {
-                    return (resource.attributes.ProgenitorSource) ? getConnectedCallbackList() : getBodyContentList();
+                    return (csv.progenitor.textContent) ? csv.progenitor.textContent : null;
+                }
 
-                    function getConnectedCallbackList()
-                    {
-                        return (csv.progenitor.textContent) ? csv.progenitor.textContent : null;
-                    }
+                function getBodyContentList()
+                {
+                    if (csv.attributes.trace) console.log(resource.attributes.BodyContentList);
 
-                    function getBodyContentList()
-                    {
-                        if (csv.attributes.trace) console.log(resource.attributes.BodyContentList);
+                    const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+                    const list = (el) ? el.textContent : null;
 
-                        const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
-                        const list = (el) ? el.textContent : null;
-
-                        return (list) ? list : errorHandler(resource.attributes.BodyContentListNotFound);
-                    }
-
+                    return (list) ? list : errorHandler(resource.attributes.BodyContentListNotFound);
                 }
 
             }
@@ -111,6 +109,7 @@ let ceres = {};
                 resource.attributes.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
                 resource.attributes.ImageListMarkup = 'Image list markup ' + ((resource.attributes.ProgenitorSource) ? 'sourced from connectedCallback' : 'sourced from document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
                 resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
+                resource.attributes.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
                 resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
                 resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
                 resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
@@ -127,7 +126,7 @@ let ceres = {};
 
                 Object.freeze(csv.attributes);
 
-                return (getImageListContainer()) ? true : false;
+                return getListContainerConfirmation();
 
                 function getAttributeProperties()
                 {
@@ -136,7 +135,7 @@ let ceres = {};
                     return str.replace(/, +$/g,'');
                 }
 
-                function getImageListContainer()
+                function getListContainerConfirmation()
                 {
                     const el = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
                     return (csv.progenitor.getAttribute('src') || el) ? true : false;
