@@ -151,7 +151,7 @@ let ceres = {};
         const lookup = {
             [resource.types.notify]: function() { if (csv.attributes.trace) console.log(attribute); },
             [resource.types.error]: function() { errorHandler(attribute); },
-            'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
+            'default': 'An unexpected error has occurred - ' + slideview.HTMLSlideViewElement + ' response notification is unresponsive'
         };
 
         return lookup[type] || lookup['default'];
