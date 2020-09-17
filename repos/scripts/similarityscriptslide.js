@@ -21,6 +21,7 @@ let ceres = {};
 
     })
 
+    slideview.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css'; // public attribute pointing to the default slideview stylesheet
     slideview.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
@@ -240,12 +241,11 @@ let ceres = {};
 
     function importSlideViewStylesheet()
     {
-        const defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         const link = document.createElement('link');
 
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = defaultCSS;
+        link.href = slideview.defaultCSS;
         link.as = 'style';
 
         onloadListener();
