@@ -14,7 +14,7 @@ let ceres = {};
         async connectedCallback()
         {
             getSlideviewAttributes();
-            
+
             let css = (this.getAttribute('css')) ? getBoolean(this.getAttribute('css')) : true;
             if (css) await ( await importSlideViewStylesheet() );
 
@@ -65,6 +65,8 @@ let ceres = {};
         {
             if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
 
+            csv.progenitor.id = slideview.HTMLSlideViewElement;
+
             let imageList = getImageList();
 
             inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
@@ -100,8 +102,6 @@ let ceres = {};
 
     function getSlideviewAttributes()
     {
-        csv.progenitor.id = slideview.HTMLSlideViewElement;
-
         const newline = '\n';
 
         resource.type.reference = 1;
