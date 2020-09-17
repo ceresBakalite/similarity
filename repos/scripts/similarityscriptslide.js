@@ -4,6 +4,10 @@ let ceres = {};
     'use strict';
 
     slideview.HTMLSlideViewElement = 'ceres-slideview'; // required public element name and id
+    slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
+    slideview.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css'; // public attribute pointing to the default slideview stylesheet
+    slideview.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
+    slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
     window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
@@ -19,11 +23,6 @@ let ceres = {};
         }
 
     })
-
-    slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
-    slideview.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css'; // public attribute pointing to the default slideview stylesheet
-    slideview.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
-    slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
     class components
     {
@@ -62,11 +61,11 @@ let ceres = {};
 
         function getImageArray()
         {
-            if (!csv.progenitor) return errorHandler(resource.attributes.NotFoundProgenitor);
+            if (!csv.progenitor) return errorHandler(resource.attributes.ProgenitorNotFound);
 
             let imageList = getImageList();
 
-            if (csv.attributes.trace) console.log(resource.attributes.ImageListMarkup + imageList);
+            if (csv.attributes.trace) console.log(resource.attributes.ListContainerMarkup + imageList);
 
             return (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
 
@@ -103,17 +102,16 @@ let ceres = {};
                 resource.types.notify = 2;
                 resource.types.error = 99;
                 resource.attributes.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
-                resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
+                resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
+                resource.attributes.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
+                resource.attributes.ListContainerMarkup = 'Image list markup ' + ((resource.attributes.ProgenitorSource) ? 'sourced from connectedCallback' : 'sourced from document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
+                resource.attributes.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
+                resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
+                resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
                 resource.attributes.LinkOnload = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onload listener';
                 resource.attributes.LinkAddEventListener = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: addEventListener';
-                resource.attributes.LinkStylesheetCount = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: styleSheets.length increment';
                 resource.attributes.LinkOnReadyState = 'Link default stylesheet insert [' + slideview.HTMLSlideViewElement + ']: onreadystatechange event';
-                resource.attributes.ImageListMarkup = 'Image list markup ' + ((resource.attributes.ProgenitorSource) ? 'sourced from connectedCallback' : 'sourced from document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
-                resource.attributes.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline;
-                resource.attributes.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
-                resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
-                resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
-                resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
+                resource.attributes.CSVObjectAttributes = 'The csv object attributes properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
 
                 Object.freeze(resource.attributes);
 
@@ -273,22 +271,6 @@ let ceres = {};
                 }, false);
 
             }
-
-        }
-
-        function styleSheetsLengthListener()
-        {
-            const cssnum = document.styleSheets.length;
-
-            const ti = setInterval(function()
-            {
-                if (document.styleSheets.length > cssnum)
-                {
-                    clearInterval(ti);
-                    if (csv.attributes.trace) console.log(resource.attributes.LinkStylesheetCount);
-                }
-
-            }, 10);
 
         }
 
