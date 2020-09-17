@@ -121,9 +121,9 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                responseAction(resource.types.notify, resource.attributes.CSVObjectAttributes + getAttributeProperties());
-
                 Object.freeze(csv.attributes);
+
+                response(resource.types.notify, resource.attributes.CSVObjectAttributes + getAttributeProperties());
 
                 return getListContainerConfirmation();
 
@@ -146,7 +146,7 @@ let ceres = {};
 
     }
 
-    function responseAction(type, attribute)
+    function response(type, attribute)
     {
         const lookup = {
             [resource.types.notify]: function() { if (csv.attributes.trace) console.log(attribute); },
