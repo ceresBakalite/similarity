@@ -113,7 +113,6 @@ let ceres = {};
                 resource.attributes.NotFoundProgenitor = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
                 resource.attributes.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
                 resource.attributes.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
-                resource.attributes.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css', // the default slideview stylesheet
 
                 Object.freeze(resource.attributes);
 
@@ -241,11 +240,12 @@ let ceres = {};
 
     function importSlideViewStylesheet()
     {
+        const defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css';
         const link = document.createElement('link');
 
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = resource.attributes.defaultCSS;
+        link.href = defaultCSS;
         link.as = 'style';
 
         onloadListener();
