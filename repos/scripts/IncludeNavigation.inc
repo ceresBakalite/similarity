@@ -1,4 +1,4 @@
-<div id="site-navigation-display" class="btn-group">
+<div id="site-navigation-display" style="z-index: 50" class="btn-group">
   <button id="slide" class="button" title="Slider screen views" onclick="getMarkupDocument('slide');">Views</button>
   <button id="shell" class="button" title="Command Line usage" onclick="getMarkupDocument('shell')">Shell</button>
   <button id="repos" class="button" title="Similarity version release notes" onclick="getMarkupDocument('repos')">Releases</button>
