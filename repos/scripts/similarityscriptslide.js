@@ -61,11 +61,16 @@ let ceres = {};
 
         function getImageArray()
         {
-            getSlideviewAttributes();
+            if (csv.progenitor)
+            {
+                csv.progenitor.id = slideview.HTMLSlideViewElement;
+                getSlideviewAttributes();
 
-            if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
+            } else {
 
-            csv.progenitor.id = slideview.HTMLSlideViewElement;
+                return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
+            }
+
             let imageList = getImageList();
 
             inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
