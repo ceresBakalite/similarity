@@ -121,7 +121,7 @@ let ceres = {};
                 csv.attribute.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                Object.freeze(csv.attributes);
+                Object.freeze(csv.attribute);
 
                 inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
 
@@ -130,7 +130,7 @@ let ceres = {};
                 function getAttributeProperties()
                 {
                     let str = '';
-                    for (let property in csv.attributes) str += property + ": " + csv.attributes[property] + ', ';
+                    for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
                     return str.replace(/, +$/g,'');
                 }
 
