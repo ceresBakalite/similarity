@@ -1,4 +1,4 @@
-<div id="site-header-display" style="z-index: 50" class="page-header section-header-background animate__animated animate__fadeInDown">
+<div id="site-header-display" class="page-header section-header-background animate__animated animate__fadeInDown">
   <h1 class="project-name project-name-textcolor">Similarity</h1>
   <h2 class="project-tagline">Seeking patterns of similarity between data strings</h2>
   <a target="_blank" href="https://github.com/ceresBakalite/similarity" class="btn">View on GitHub</a>
