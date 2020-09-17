@@ -48,6 +48,7 @@ body {
 .section-frame-container::after
 {
   height: 100%;
+  box-shadow: inset 0px 11px 8px -10px rgba(0,0,0,0.19);
   z-index: -1;
   /* overflow: hidden; */
 }
@@ -59,7 +60,6 @@ body {
 }
 
 .btn-group .button {
-  z-index: 50;
   background-color: #5c685a;
   border: 1px solid gray;
   color: white;
