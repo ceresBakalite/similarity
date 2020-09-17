@@ -121,7 +121,7 @@ let ceres = {};
                 csv.attributes.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
                 csv.attributes.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                if (csv.attributes.trace) console.log(resource.attributes.CSVObjectAttributes + getAttributeProperties());
+                responseAction(resource.types.notify, resource.attributes.CSVObjectAttributes + getAttributeProperties());
 
                 Object.freeze(csv.attributes);
 
@@ -144,6 +144,17 @@ let ceres = {};
 
         }
 
+    }
+
+    function responseAction(type, attribute)
+    {
+        const lookup = {
+            [resource.types.notify]: function() { if (csv.attributes.trace) console.log(attribute); },
+            [resource.types.error]: function() { errorHandler(attribute); },
+            'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
+        };
+
+        return lookup[type] || lookup['default'];
     }
 
     function getSlideView()
