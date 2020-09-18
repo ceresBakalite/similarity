@@ -76,9 +76,7 @@ let ceres = {};
 
         Object.freeze(resource.attribute);
 
-        if (getImageArray()) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
-
-        return true;
+        return getImageArray();
 
         function getProgenitor()
         {
@@ -112,14 +110,6 @@ let ceres = {};
             return (csv.callbacksource || csv.listElement) ? true : false;
         }
 
-        function getAttributeProperties()
-        {
-            let str = '';
-            for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
-
-            return str.replace(/, +$/g,'');
-        }
-
         function getImageArray()
         {
             let imageList = getImageList();
@@ -127,6 +117,8 @@ let ceres = {};
             inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
 
             csv.imageArray = (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
+
+            if (csv.imageArray) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
 
             return (csv.imageArray) ? true : false;
 
@@ -147,6 +139,14 @@ let ceres = {};
                     return (list) ? list : inspect(resource.type.error, resource.attribute.BodyContentListNotFound);
                 }
 
+            }
+
+            function getAttributeProperties()
+            {
+                let str = '';
+                for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
+
+                return str.replace(/, +$/g,'');
             }
 
         }
