@@ -1,4 +1,4 @@
-let currentdocument = null;
+let cd = null;
 
 window.customElements.define('include-directive', class extends HTMLElement
 {
@@ -20,13 +20,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (currentdocument != mu)
+    if (cd != mu)
     {
-        currentdocument = mu;
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
+        cd = mu;
     }
 
-    document.getElementById(currentdocument).blur();
+    document.getElementById(cd).blur();
 
     function getMarkupLocation()
     {
