@@ -75,6 +75,8 @@ let ceres = {};
             csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
         }
 
+        csv.attribute.listContainerConfirmation = getListContainerConfirmation();
+
         resource.type.reference = 1;
         resource.type.notify = 2;
         resource.type.error = 99;
@@ -90,7 +92,6 @@ let ceres = {};
 
         Object.freeze(resource.attribute);
 
-        csv.attribute.listContainerConfirmation = getListContainerConfirmation();
         csv.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
 
         Object.freeze(csv.attribute);
