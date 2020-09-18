@@ -81,13 +81,14 @@ let ceres = {};
         resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
         resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
         resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
+        resource.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
 
         Object.freeze(resource.attribute);
 
         if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
         if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
-        if (resource.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.AttributeProperties);
+        if (resource.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
 
         return true;
 
@@ -110,40 +111,38 @@ let ceres = {};
         function getAttributeProperties()
         {
             resource.attribute.listContainerConfirmation = (csv.callbacksource || csv.listElement) ? true : false;
-            resource.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
 
             let str = '';
             for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
 
             return str.replace(/, +$/g,'');
+        }
 
-            function getImageArrayConfirmation()
+        function getImageArrayConfirmation()
+        {
+            let imageList = getImageList();
+
+            inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
+
+            csv.imageArray = (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
+
+            return (csv.imageArray) ? true : false;
+
+            function getImageList()
             {
-                let imageList = getImageList();
+                return (csv.callbacksource) ? getConnectedCallbackList() : getBodyContentList();
 
-                inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
-
-                csv.imageArray = (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
-
-                return (csv.imageArray) ? true : false;
-
-                function getImageList()
+                function getConnectedCallbackList()
                 {
-                    return (csv.callbacksource) ? getConnectedCallbackList() : getBodyContentList();
+                    return (csv.progenitor.textContent) ? csv.progenitor.textContent : null;
+                }
 
-                    function getConnectedCallbackList()
-                    {
-                        return (csv.progenitor.textContent) ? csv.progenitor.textContent : null;
-                    }
+                function getBodyContentList()
+                {
+                    inspect(resource.type.notify, resource.attribute.BodyContentList);
 
-                    function getBodyContentList()
-                    {
-                        inspect(resource.type.notify, resource.attribute.BodyContentList);
-
-                        const list = (csv.listElement) ? csv.listElement.textContent : null;
-                        return (list) ? list : inspect(resource.type.error, resource.attribute.BodyContentListNotFound);
-                    }
-
+                    const list = (csv.listElement) ? csv.listElement.textContent : null;
+                    return (list) ? list : inspect(resource.type.error, resource.attribute.BodyContentListNotFound);
                 }
 
             }
