@@ -44,6 +44,7 @@ let ceres = {};
             this.imageArray = null,
             this.imageContainer = null,
             this.slideContainer = null,
+            this.HTMLImageContainer = null,
             this.attribute = function() { return attribute; },
             this.index = 1
         }
@@ -108,10 +109,10 @@ let ceres = {};
         function getListContainerConfirmation()
         {
             csv.progenitor.id = slideview.HTMLSlideViewElement;
-            csv.attribute.HTMLImageListElement = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+            csv.HTMLImageContainer = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
             csv.attribute.ConnectedCallback = csv.progenitor.getAttribute('src') ? true : false;
 
-            return (csv.attribute.ConnectedCallback || csv.attribute.HTMLImageListElement) ? true : false;
+            return (csv.attribute.ConnectedCallback || csv.attribute.HTMLImageContainer) ? true : false;
         }
 
         function getImageArrayConfirmation()
@@ -137,7 +138,7 @@ let ceres = {};
                 {
                     inspect(resource.type.notify, resource.attribute.BodyContentList);
 
-                    const list = (csv.attribute.HTMLImageListElement) ? csv.attribute.HTMLImageListElement.textContent : null;
+                    const list = (csv.HTMLImageContainer) ? csv.HTMLImageContainer.textContent : null;
                     return (list) ? list : inspect(resource.type.error, resource.attribute.BodyContentListNotFound);
                 }
 
