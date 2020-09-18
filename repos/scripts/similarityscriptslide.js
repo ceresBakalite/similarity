@@ -93,6 +93,8 @@ let ceres = {};
         if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
         if (!csv.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
+        inspect(resource.type.notify, resource.attribute.ListContainerMarkup + csv.imageArray);
+
         if (csv.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.AttributeProperties);
 
         return true;
