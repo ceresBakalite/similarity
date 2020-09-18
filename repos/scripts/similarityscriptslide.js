@@ -101,15 +101,17 @@ let ceres = {};
 
         function imageArrayToList()
         {
-            csv.imageArray.forEach(listNode);
+            let str = '';
+
+            return csv.imageArray.forEach(listNode);
 
             function listNode(node, index)
             {
               str += node + '<br>';
             }
 
-            return str;
         }
+        
         function getAttributeProperties()
         {
             csv.progenitor.id = slideview.HTMLSlideViewElement;
