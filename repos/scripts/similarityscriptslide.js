@@ -131,8 +131,6 @@ let ceres = {};
 
         csv.method.attributeProperties = getAttributeProperties();
         csv.method.listContainerConfirmation = getListContainerConfirmation();
-        csv.method.slideView = getSlideView();
-        csv.method.slide = getSlide();
 
         Object.freeze(csv.method);
 
@@ -199,7 +197,7 @@ let ceres = {};
         composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
         composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
-        if (csv.attribute.ptr) csv.method.getSlideViewPointerContainer();
+        if (csv.attribute.ptr) getSlideViewPointerContainer();
 
         setSlideViewDisplay('none');
 
@@ -353,8 +351,8 @@ let ceres = {};
 
         csv.progenitor.style.display = 'none';
 
-        csv.method.slideView;
-        csv.method.slide;
+        getSlideView();
+        getSlide();
 
         setTimeout(function() { setSlideViewDisplay('block'); }, renderdelay);
     }
