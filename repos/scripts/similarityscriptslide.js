@@ -67,11 +67,17 @@ let ceres = {};
 
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
 
-        if (csv.progenitor) getAttributePrecursors();
+        if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
+
+        getAttributePrecursors();
 
         resource.type.reference = 1;
         resource.type.notify = 2;
         resource.type.error = 99;
+
+        resource.attribute.listContainerConfirmation = (csv.callbacksource || csv.listElement) ? true : false;
+
+        if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
         resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
         resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
@@ -80,14 +86,12 @@ let ceres = {};
         resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
         resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
         resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
+
         resource.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
 
         Object.freeze(resource.attribute);
 
         if (resource.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
-
-        if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
-        if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
         return true;
 
@@ -109,8 +113,6 @@ let ceres = {};
 
         function getAttributeProperties()
         {
-            resource.attribute.listContainerConfirmation = (csv.callbacksource || csv.listElement) ? true : false;
-
             let str = '';
             for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
 
