@@ -23,10 +23,10 @@ function getMarkupDocument(mu)
     if (currentdocument != mu)
     {
         currentdocument = mu;
-
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-        document.getElementById(mu).blur();
     }
+
+    document.getElementById(mu).blur();
 
     function getMarkupLocation()
     {
