@@ -30,6 +30,7 @@ let ceres = {};
         {
             this.type = function() { return type; },
             this.attribute = function() { return attribute; }
+            this.method = function() { return method; }
         }
 
     }
@@ -72,7 +73,7 @@ let ceres = {};
 
             function getImageList()
             {
-                if (!resource.attribute.CSVListContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
+                if (!resource.method.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
                 return (resource.attribute.ProgenitorSource) ? getConnectedCallbackList() : getBodyContentList();
 
@@ -116,8 +117,8 @@ let ceres = {};
         resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
         resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
 
-        resource.attribute.CSVAttributeProperties = getAttributeProperties();
-        resource.attribute.CSVListContainerConfirmation = getListContainerConfirmation();
+        resource.method.attributeProperties = getAttributeProperties();
+        resource.method.listContainerConfirmation = getListContainerConfirmation();
 
         Object.freeze(resource.attribute);
 
@@ -129,7 +130,7 @@ let ceres = {};
 
         Object.freeze(csv.attribute);
 
-        inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.CSVAttributeProperties);
+        inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.method.attributeProperties);
 
         return true;
 
