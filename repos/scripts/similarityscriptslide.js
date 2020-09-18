@@ -75,8 +75,6 @@ let ceres = {};
             csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
         }
 
-        csv.attribute.listContainerConfirmation = getListContainerConfirmation();
-
         resource.type.reference = 1;
         resource.type.notify = 2;
         resource.type.error = 99;
@@ -92,10 +90,6 @@ let ceres = {};
 
         Object.freeze(resource.attribute);
 
-        csv.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
-
-        Object.freeze(csv.attribute);
-
         if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
         if (!csv.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
@@ -105,45 +99,47 @@ let ceres = {};
 
         function getAttributeProperties()
         {
-            let str = '';
-            for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
-            return str.replace(/, +$/g,'');
-        }
-
-        function getListContainerConfirmation()
-        {
             csv.progenitor.id = slideview.HTMLSlideViewElement;
             csv.HTMLImageContainer = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+
             csv.attribute.ConnectedCallback = csv.progenitor.getAttribute('src') ? true : false;
+            csv.attribute.listContainerConfirmation = (csv.attribute.ConnectedCallback || csv.attribute.HTMLImageContainer) ? true : false;
+            csv.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
 
-            return (csv.attribute.ConnectedCallback || csv.attribute.HTMLImageContainer) ? true : false;
-        }
+            Object.freeze(csv.attribute);
 
-        function getImageArrayConfirmation()
-        {
-            let imageList = getImageList();
+            let str = '';
+            for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
 
-            inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
+            return str.replace(/, +$/g,'');
 
-            csv.imageArray = (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
-
-            return (csv.imageArray) ? true : false;
-
-            function getImageList()
+            function getImageArrayConfirmation()
             {
-                return (csv.attribute.ConnectedCallback) ? getConnectedCallbackList() : getBodyContentList();
+                let imageList = getImageList();
 
-                function getConnectedCallbackList()
+                inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
+
+                csv.imageArray = (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
+
+                return (csv.imageArray) ? true : false;
+
+                function getImageList()
                 {
-                    return (csv.progenitor.textContent) ? csv.progenitor.textContent : null;
-                }
+                    return (csv.attribute.ConnectedCallback) ? getConnectedCallbackList() : getBodyContentList();
 
-                function getBodyContentList()
-                {
-                    inspect(resource.type.notify, resource.attribute.BodyContentList);
+                    function getConnectedCallbackList()
+                    {
+                        return (csv.progenitor.textContent) ? csv.progenitor.textContent : null;
+                    }
 
-                    const list = (csv.HTMLImageContainer) ? csv.HTMLImageContainer.textContent : null;
-                    return (list) ? list : inspect(resource.type.error, resource.attribute.BodyContentListNotFound);
+                    function getBodyContentList()
+                    {
+                        inspect(resource.type.notify, resource.attribute.BodyContentList);
+
+                        const list = (csv.HTMLImageContainer) ? csv.HTMLImageContainer.textContent : null;
+                        return (list) ? list : inspect(resource.type.error, resource.attribute.BodyContentListNotFound);
+                    }
+
                 }
 
             }
