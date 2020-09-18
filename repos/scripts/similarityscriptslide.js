@@ -93,26 +93,9 @@ let ceres = {};
         if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
         if (!csv.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
-        inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageArrayToList());
-
         if (csv.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.AttributeProperties);
 
         return true;
-
-        function imageArrayToList()
-        {
-            let str = '';
-
-            csv.imageArray.forEach(listNode);
-
-            return str;
-            
-            function listNode(node, index)
-            {
-              str += node + '\n';
-            }
-
-        }
 
         function getAttributeProperties()
         {
