@@ -45,8 +45,8 @@ let ceres = {};
             this.imageContainer = null,
             this.slideContainer = null,
             this.listElement = null,
-            this.callback = null,
             this.attribute = function() { return attribute; },
+            this.callback = false,
             this.activate = false;
             this.index = 1
         }
