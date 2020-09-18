@@ -40,6 +40,7 @@ let ceres = {};
     {
         constructor()
         {
+            this.activate = false;
             this.progenitor = null;
             this.imageArray = null,
             this.imageContainer = null,
@@ -55,9 +56,9 @@ let ceres = {};
 
     function initiateSlideView()
     {
-        csv.attribute.activate = getSlideviewAttributes();
+        csv.activate = getSlideviewAttributes();
 
-        if (csv.attribute.activate) activateSlideView();
+        if (csv.activate) activateSlideView();
     }
 
     function getSlideviewAttributes()
@@ -66,15 +67,15 @@ let ceres = {};
 
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
 
-        csv.attribute.listContainerConfirmation = getListContainerConfirmation();
-
         csv.attribute.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
         csv.attribute.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
         csv.attribute.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
         csv.attribute.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
         csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-        //Object.freeze(csv.attribute);
+        csv.attribute.listContainerConfirmation = getListContainerConfirmation();
+
+        Object.freeze(csv.attribute);
 
         resource.type.reference = 1;
         resource.type.notify = 2;
@@ -369,7 +370,7 @@ let ceres = {};
 
         if (csv.attribute.trace) alert(err);
 
-        return null;
+        return false;
     }
 
     function getBoolean(symbol)
