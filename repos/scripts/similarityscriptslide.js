@@ -47,7 +47,6 @@ let ceres = {};
             this.listElement = null,
             this.callback = null,
             this.attribute = function() { return attribute; },
-            this.response = function() { return response; },
             this.activate = false;
             this.index = 1
         }
