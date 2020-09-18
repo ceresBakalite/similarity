@@ -1,4 +1,4 @@
-let target = {id = null};
+let target = { id = null };
 
 window.customElements.define('include-directive', class extends HTMLElement
 {
