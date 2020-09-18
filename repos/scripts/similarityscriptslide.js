@@ -57,7 +57,6 @@ let ceres = {};
     function initiateSlideView()
     {
         csv.activate = getSlideviewAttributes();
-
         if (csv.activate) activateSlideView();
     }
 
@@ -75,7 +74,7 @@ let ceres = {};
             csv.attribute.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
             csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
         }
-        
+
         resource.type.reference = 1;
         resource.type.notify = 2;
         resource.type.error = 99;
@@ -96,10 +95,10 @@ let ceres = {};
 
         Object.freeze(csv.attribute);
 
-        inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.AttributeProperties);
-
         if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
         if (!csv.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
+
+        if (csv.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.AttributeProperties);
 
         return true;
 
