@@ -67,7 +67,31 @@ let ceres = {};
 
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
 
-        if (csv.progenitor)
+        if (csv.progenitor) getAttributePrecursors();
+
+        resource.type.reference = 1;
+        resource.type.notify = 2;
+        resource.type.error = 99;
+
+        resource.attribute.AttributeProperties = getAttributeProperties();
+        resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
+        resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
+        resource.attribute.ListContainerMarkup = 'Image list markup ' + ((csv.callbacksource) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
+        resource.attribute.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
+        resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
+        resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
+        resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
+
+        Object.freeze(resource.attribute);
+
+        if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
+        if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
+
+        if (resource.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.AttributeProperties);
+
+        return true;
+
+        function getAttributePrecursors()
         {
             csv.progenitor.id = slideview.HTMLSlideViewElement;
 
@@ -82,28 +106,6 @@ let ceres = {};
 
             Object.freeze(csv.attribute);
         }
-
-
-        resource.type.reference = 1;
-        resource.type.notify = 2;
-        resource.type.error = 99;
-
-        resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
-        resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
-        resource.attribute.ListContainerMarkup = 'Image list markup ' + ((csv.callbacksource) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
-        resource.attribute.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
-        resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
-        resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
-        resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
-
-        Object.freeze(resource.attribute);
-
-        if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
-        if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
-
-        if (resource.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
-
-        return true;
 
         function getAttributeProperties()
         {
