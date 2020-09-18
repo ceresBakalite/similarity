@@ -69,13 +69,11 @@ let ceres = {};
 
         if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
 
-        getAttributePrecursors();
-
         resource.type.reference = 1;
         resource.type.notify = 2;
         resource.type.error = 99;
 
-        resource.attribute.listContainerConfirmation = (csv.callbacksource || csv.listElement) ? true : false;
+        resource.attribute.listContainerConfirmation = getAttributePrecursors();
 
         if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
@@ -109,6 +107,8 @@ let ceres = {};
             csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
             Object.freeze(csv.attribute);
+
+            return (csv.callbacksource || csv.listElement) ? true : false;
         }
 
         function getAttributeProperties()
