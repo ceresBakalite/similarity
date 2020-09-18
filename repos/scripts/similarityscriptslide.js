@@ -117,9 +117,6 @@ let ceres = {};
         resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
         resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
 
-        csv.method.attributeProperties = getAttributeProperties();
-        csv.method.listContainerConfirmation = getListContainerConfirmation();
-
         Object.freeze(resource.attribute);
 
         csv.attribute.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
@@ -131,6 +128,13 @@ let ceres = {};
         Object.freeze(csv.attribute);
 
         inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + csv.method.attributeProperties);
+
+        csv.method.attributeProperties = getAttributeProperties();
+        csv.method.listContainerConfirmation = getListContainerConfirmation();
+        csv.method.slideView = getSlideView();
+        csv.method.slide = getSlide();
+
+        Object.freeze(csv.method);
 
         return true;
 
@@ -195,7 +199,7 @@ let ceres = {};
         composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
         composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
 
-        if (csv.attribute.ptr) getSlideViewPointerContainer();
+        if (csv.attribute.ptr) csv.method.getSlideViewPointerContainer();
 
         setSlideViewDisplay('none');
 
@@ -349,8 +353,8 @@ let ceres = {};
 
         csv.progenitor.style.display = 'none';
 
-        getSlideView();
-        getSlide();
+        csv.method.slideView;
+        csv.method.slide;
 
         setTimeout(function() { setSlideViewDisplay('block'); }, renderdelay);
     }
