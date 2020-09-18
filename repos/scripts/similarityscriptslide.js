@@ -72,7 +72,7 @@ let ceres = {};
 
             function getImageList()
             {
-                if (!getListContainerConfirmation()) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
+                if (!resource.attribute.CSVListContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
                 return (resource.attribute.ProgenitorSource) ? getConnectedCallbackList() : getBodyContentList();
 
@@ -93,50 +93,51 @@ let ceres = {};
 
             }
 
-            function getSlideviewAttributes()
-            {
-                csv.progenitor.id = slideview.HTMLSlideViewElement;
+        }
 
-                const newline = '\n';
+    }
 
-                resource.type.reference = 1;
-                resource.type.notify = 2;
-                resource.type.error = 99;
+    function getSlideviewAttributes()
+    {
+        csv.progenitor.id = slideview.HTMLSlideViewElement;
 
-                resource.attribute.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
-                resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
-                resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
-                resource.attribute.ListContainerMarkup = 'Image list markup ' + ((resource.attribute.ProgenitorSource) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
-                resource.attribute.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
-                resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
-                resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
-                resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
+        const newline = '\n';
 
-                resource.attribute.CSVAttributeProperties = getAttributeProperties();
+        resource.type.reference = 1;
+        resource.type.notify = 2;
+        resource.type.error = 99;
 
-                Object.freeze(resource.attribute);
+        resource.attribute.ProgenitorSource = csv.progenitor.getAttribute('src') ? true : false;
+        resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
+        resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
+        resource.attribute.ListContainerMarkup = 'Image list markup ' + ((resource.attribute.ProgenitorSource) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
+        resource.attribute.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
+        resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
+        resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
+        resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
 
-                csv.attribute.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
-                csv.attribute.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
-                csv.attribute.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
-                csv.attribute.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
-                csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
+        resource.attribute.CSVAttributeProperties = getAttributeProperties();
+        resource.attribute.CSVListContainerConfirmation = getListContainerConfirmation();
 
-                Object.freeze(csv.attribute);
+        Object.freeze(resource.attribute);
 
-                inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.CSVAttributeProperties);
+        csv.attribute.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
+        csv.attribute.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
+        csv.attribute.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
+        csv.attribute.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
+        csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
 
-                return true;
+        Object.freeze(csv.attribute);
 
-                function getAttributeProperties()
-                {
-                    let str = '';
-                    for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
-                    return str.replace(/, +$/g,'');
-                }
+        inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.CSVAttributeProperties);
 
-            }
+        return true;
 
+        function getAttributeProperties()
+        {
+            let str = '';
+            for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
+            return str.replace(/, +$/g,'');
         }
 
     }
