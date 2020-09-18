@@ -65,16 +65,14 @@ let ceres = {};
     {
         const newline = '\n';
 
-        csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
-
-        if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
-
         resource.type.reference = 1;
         resource.type.notify = 2;
         resource.type.error = 99;
 
-        resource.attribute.listContainerConfirmation = getAttributePrecursors();
+        csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
+        if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
 
+        resource.attribute.listContainerConfirmation = getAttributePrecursors();
         if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
         resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
