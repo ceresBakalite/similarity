@@ -40,13 +40,13 @@ let ceres = {};
     {
         constructor()
         {
-            this.activate = false;
             this.progenitor = null;
             this.imageArray = null,
             this.imageContainer = null,
             this.slideContainer = null,
             this.HTMLImageContainer = null,
             this.attribute = function() { return attribute; },
+            this.activate = false;
             this.index = 1
         }
 
