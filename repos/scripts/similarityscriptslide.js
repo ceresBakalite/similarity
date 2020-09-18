@@ -108,10 +108,10 @@ let ceres = {};
         function getListContainerConfirmation()
         {
             csv.progenitor.id = slideview.HTMLSlideViewElement;
-            csv.attribute.HTMLBodyContent = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+            csv.attribute.HTMLImageListElement = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
             csv.attribute.ConnectedCallback = csv.progenitor.getAttribute('src') ? true : false;
 
-            return (csv.attribute.ConnectedCallback || csv.attribute.HTMLBodyContent) ? true : false;
+            return (csv.attribute.ConnectedCallback || csv.attribute.HTMLImageListElement) ? true : false;
         }
 
         function getImageArrayConfirmation()
@@ -137,7 +137,7 @@ let ceres = {};
                 {
                     inspect(resource.type.notify, resource.attribute.BodyContentList);
 
-                    const list = (csv.attribute.HTMLBodyContent) ? csv.attribute.HTMLBodyContent.textContent : null;
+                    const list = (csv.attribute.HTMLImageListElement) ? csv.attribute.HTMLImageListElement.textContent : null;
                     return (list) ? list : inspect(resource.type.error, resource.attribute.BodyContentListNotFound);
                 }
 
