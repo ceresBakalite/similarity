@@ -75,8 +75,6 @@ let ceres = {};
 
         csv.attribute.listContainerConfirmation = getListContainerConfirmation();
 
-        Object.freeze(csv.attribute);
-
         resource.type.reference = 1;
         resource.type.notify = 2;
         resource.type.error = 99;
@@ -90,9 +88,10 @@ let ceres = {};
         resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
         resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
 
-        Object.freeze(resource.attribute);
-
         csv.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
+
+        Object.freeze(csv.attribute);
+        Object.freeze(resource.attribute);
 
         inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.AttributeProperties);
 
