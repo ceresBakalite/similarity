@@ -74,6 +74,7 @@ let ceres = {};
             csv.attribute.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
             csv.attribute.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
             csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
+            csv.callbacksource = csv.progenitor.getAttribute('src') ? true : false;
 
             Object.freeze(csv.attribute);
         }
@@ -84,7 +85,7 @@ let ceres = {};
 
         resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
         resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
-        resource.attribute.ListContainerMarkup = 'Image list markup ' + ((csv.callback) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
+        resource.attribute.ListContainerMarkup = 'Image list markup ' + ((csv.callbacksource) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
         resource.attribute.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
         resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
         resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
@@ -104,9 +105,8 @@ let ceres = {};
         {
             csv.progenitor.id = slideview.HTMLSlideViewElement;
             csv.listElement = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
-            csv.callback = csv.progenitor.getAttribute('src') ? true : false;
 
-            resource.attribute.listContainerConfirmation = (csv.callback || csv.listElement) ? true : false;
+            resource.attribute.listContainerConfirmation = (csv.callbacksource || csv.listElement) ? true : false;
             resource.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
 
             let str = '';
@@ -126,7 +126,7 @@ let ceres = {};
 
                 function getImageList()
                 {
-                    return (csv.callback) ? getConnectedCallbackList() : getBodyContentList();
+                    return (csv.callbacksource) ? getConnectedCallbackList() : getBodyContentList();
 
                     function getConnectedCallbackList()
                     {
