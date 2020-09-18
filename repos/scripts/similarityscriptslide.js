@@ -69,7 +69,7 @@ let ceres = {};
         if (!getAttributePrecursors()) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
         resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
-        resource.attribute.ListContainerMarkup = 'Image list markup ' + ((csv.callbacksource) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
+        resource.attribute.ListContainerMarkup = 'Image list markup ' + ((csv.callback) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
         resource.attribute.BodyContentList = 'The ' + slideview.HTMLSlideViewElement + ' src attribute url is unavailable. Searching for the fallback noscript image list content in the document body';
         resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
         resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
@@ -97,7 +97,7 @@ let ceres = {};
             csv.progenitor.id = slideview.HTMLSlideViewElement;
 
             csv.listElement = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
-            csv.callbacksource = csv.progenitor.getAttribute('src') ? true : false;
+            csv.callback = csv.progenitor.getAttribute('src') ? true : false;
 
             csv.attribute.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
             csv.attribute.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
@@ -107,7 +107,7 @@ let ceres = {};
 
             Object.freeze(csv.attribute);
 
-            return (csv.callbacksource || csv.listElement) ? true : false;
+            return (csv.callback || csv.listElement) ? true : false;
         }
 
         function getImageArray()
@@ -123,7 +123,7 @@ let ceres = {};
 
             function getImageList()
             {
-                return (csv.callbacksource) ? getConnectedCallbackList() : getBodyContentList();
+                return (csv.callback) ? getConnectedCallbackList() : getBodyContentList();
 
                 function getConnectedCallbackList()
                 {
