@@ -1,4 +1,4 @@
-let cd = null;
+let target = {id = null};
 
 window.customElements.define('include-directive', class extends HTMLElement
 {
@@ -20,13 +20,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (cd != mu)
+    if (target.id != mu)
     {
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-        cd = mu;
+        target.id = mu;
     }
 
-    document.getElementById(cd).blur();
+    document.getElementById(target.id).blur();
 
     function getMarkupLocation()
     {
