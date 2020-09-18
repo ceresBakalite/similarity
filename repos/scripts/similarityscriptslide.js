@@ -101,7 +101,7 @@ let ceres = {};
         function getAttributeProperties()
         {
             let str = '';
-            for (let property in csv.attribute) if (getBoolean(csv.attribute[property])) str += property + ": " + csv.attribute[property] + ', ';
+            for (let property in csv.attribute) str += property + ": " + csv.attribute[property] + ', ';
             return str.replace(/, +$/g,'');
         }
 
