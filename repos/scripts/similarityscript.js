@@ -1,3 +1,5 @@
+let currentdocument = null;
+
 window.customElements.define('include-directive', class extends HTMLElement
 {
     async connectedCallback()
@@ -18,7 +20,8 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
+
+    if (currentdocument != mu) document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     document.getElementById(mu).blur();
 
     function getMarkupLocation()
@@ -45,6 +48,8 @@ function onloadFrame(mu, ms)
 {
     if (isValidSource())
     {
+        currentdocument = mu;
+
         invokeScrollEventListener();
 
         const initialise = {
