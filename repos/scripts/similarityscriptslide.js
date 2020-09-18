@@ -103,8 +103,10 @@ let ceres = {};
         {
             let str = '';
 
-            return csv.imageArray.forEach(listNode);
+            csv.imageArray.forEach(listNode);
 
+            return str;
+            
             function listNode(node, index)
             {
               str += node + '\n';
