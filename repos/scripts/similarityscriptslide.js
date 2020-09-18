@@ -65,10 +65,8 @@ let ceres = {};
     {
         const newline = '\n';
 
-        if (!initialiseAttributes()) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
-
-        resource.attribute.listContainerConfirmation = getAttributePrecursors();
-        if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
+        if (!getProgenitor()) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
+        if (!getAttributePrecursors()) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
 
         resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
         resource.attribute.ListContainerMarkup = 'Image list markup ' + ((csv.callbacksource) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
@@ -84,7 +82,7 @@ let ceres = {};
 
         return true;
 
-        function initialiseAttributes()
+        function getProgenitor()
         {
             resource.type.reference = 1;
             resource.type.notify = 2;
