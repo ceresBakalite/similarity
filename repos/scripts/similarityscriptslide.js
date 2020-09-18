@@ -65,15 +65,7 @@ let ceres = {};
     {
         const newline = '\n';
 
-        resource.type.reference = 1;
-        resource.type.notify = 2;
-        resource.type.error = 99;
-
-        resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
-        resource.attribute.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
-
-        csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
-        if (!csv.progenitor) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
+        if (!initialiseAttributes()) return inspect(resource.type.error, resource.attribute.ProgenitorNotFound);
 
         resource.attribute.listContainerConfirmation = getAttributePrecursors();
         if (!resource.attribute.listContainerConfirmation) return inspect(resource.type.error, resource.attribute.ListContainerNotFound);
@@ -91,6 +83,20 @@ let ceres = {};
         if (resource.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
 
         return true;
+
+        function initialiseAttributes()
+        {
+            resource.type.reference = 1;
+            resource.type.notify = 2;
+            resource.type.error = 99;
+
+            resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
+            resource.attribute.ListContainerNotFound = 'Error: Unable to find either the connectedCallback ' + slideview.HTMLSlideViewElement + ' attribute source nor the fallback noscript image list container';
+
+            csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
+
+            return (csv.progenitor) ? true : false;
+        }
 
         function getAttributePrecursors()
         {
