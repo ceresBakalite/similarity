@@ -26,7 +26,7 @@ function getMarkupDocument(mu)
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     }
 
-    document.getElementById(mu).blur();
+    document.getElementById(currentdocument).blur();
 
     function getMarkupLocation()
     {
