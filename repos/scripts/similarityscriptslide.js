@@ -112,13 +112,13 @@ let ceres = {};
 
         function getImageArray()
         {
+            inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
+
             let imageList = getImageList();
 
-            inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
+            if (imageList) inspect(resource.type.notify, resource.attribute.ListContainerMarkup + imageList);
 
             csv.imageArray = (imageList) ? imageList.trim().replace(/\r\n|\r|\n/gi, ';').split(';') : null;
-
-            if (csv.imageArray) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
 
             return (csv.imageArray) ? true : false;
 
