@@ -20,9 +20,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
+    if (currentdocument != mu)
+    {
+        currentdocument = mu;
 
-    if (currentdocument != mu) document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-    document.getElementById(mu).blur();
+        document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
+        document.getElementById(mu).blur();
+    }
 
     function getMarkupLocation()
     {
@@ -48,8 +52,6 @@ function onloadFrame(mu, ms)
 {
     if (isValidSource())
     {
-        currentdocument = mu;
-
         invokeScrollEventListener();
 
         const initialise = {
