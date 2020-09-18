@@ -73,7 +73,6 @@ let ceres = {};
         resource.type.notify = 2;
         resource.type.error = 99;
 
-        resource.attribute.AttributeProperties = getAttributeProperties();
         resource.attribute.ProgenitorInnerHTML = 'Progenitor innerHTML [' + slideview.HTMLSlideViewElement + ']: ' + newline + newline;
         resource.attribute.ProgenitorNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' document element';
         resource.attribute.ListContainerMarkup = 'Image list markup ' + ((csv.callbacksource) ? 'delivered as promised by connectedCallback' : 'sourced from the document body') + ' [' + slideview.HTMLSlideViewElement + ']:' + newline;
