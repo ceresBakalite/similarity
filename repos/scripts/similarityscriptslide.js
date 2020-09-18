@@ -70,8 +70,9 @@ let ceres = {};
         if (csv.progenitor)
         {
             csv.progenitor.id = slideview.HTMLSlideViewElement;
-            csv.callbacksource = csv.progenitor.getAttribute('src') ? true : false;
+
             csv.listElement = document.getElementById(slideview.HTMLImageListElement) ? document.getElementById(slideview.HTMLImageListElement) : document.getElementsByTagName('noscript')[0];
+            csv.callbacksource = csv.progenitor.getAttribute('src') ? true : false;
 
             csv.attribute.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
             csv.attribute.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
