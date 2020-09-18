@@ -67,7 +67,6 @@ let ceres = {};
         csv.progenitor = (document.getElementById(slideview.HTMLSlideViewElement)) ? document.getElementById(slideview.HTMLSlideViewElement) : document.getElementsByTagName(slideview.HTMLSlideViewElement)[0];
 
         csv.attribute.listContainerConfirmation = getListContainerConfirmation();
-        csv.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
 
         csv.attribute.trace = (csv.progenitor.getAttribute('trace')) ? getBoolean(csv.progenitor.getAttribute('trace')) : false;
         csv.attribute.css = (csv.progenitor.getAttribute('css')) ? getBoolean(csv.progenitor.getAttribute('css')) : true;
@@ -91,6 +90,8 @@ let ceres = {};
         resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
 
         Object.freeze(resource.attribute);
+
+        csv.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
 
         inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + resource.attribute.AttributeProperties);
 
