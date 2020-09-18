@@ -74,6 +74,7 @@ let ceres = {};
             csv.attribute.ptr = (csv.progenitor.getAttribute('ptr')) ? getBoolean(csv.progenitor.getAttribute('ptr')) : true;
             csv.attribute.sur = (csv.progenitor.getAttribute('sur')) ? getBoolean(csv.progenitor.getAttribute('sur')) : true;
             csv.attribute.sub = (csv.progenitor.getAttribute('sub')) ? getBoolean(csv.progenitor.getAttribute('sub')) : true;
+
             csv.callbacksource = csv.progenitor.getAttribute('src') ? true : false;
 
             Object.freeze(csv.attribute);
