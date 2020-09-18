@@ -107,11 +107,11 @@ let ceres = {};
 
             function listNode(node, index)
             {
-              str += node + '<br>';
+              str += node + '\n';
             }
 
         }
-        
+
         function getAttributeProperties()
         {
             csv.progenitor.id = slideview.HTMLSlideViewElement;
