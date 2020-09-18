@@ -74,11 +74,9 @@ let ceres = {};
         resource.attribute.BodyContentListNotFound = 'Error: Unable to find the ' + slideview.HTMLSlideViewElement + ' fallback noscript image list when searching the document body';
         resource.attribute.CSVObjectAttributes = 'The csv object attribute properties after initialisation [' + slideview.HTMLSlideViewElement + ']: ';
 
-        resource.attribute.ImageArrayConfirmation = getImageArrayConfirmation();
-
         Object.freeze(resource.attribute);
 
-        if (resource.attribute.ImageArrayConfirmation) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
+        if (getImageArray()) inspect(resource.type.notify, resource.attribute.CSVObjectAttributes + getAttributeProperties());
 
         return true;
 
@@ -122,7 +120,7 @@ let ceres = {};
             return str.replace(/, +$/g,'');
         }
 
-        function getImageArrayConfirmation()
+        function getImageArray()
         {
             let imageList = getImageList();
 
