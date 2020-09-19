@@ -67,11 +67,11 @@ let similarity = {};
             invokeScrollEventListener();
 
             const initialise = {
-                'index': function() { asyncPullMarkdownRequest('index'); },
-                'shell': function() { asyncPullMarkdownRequest('shell'); },
-                'slide': function() { asyncPullMarkdownRequest('slide'); },
-                'repos': function() { asyncPullMarkdownRequest('repos'); },
-                'default': function() { asyncPullMarkdownRequest('index'); }
+                'index': function() { asyncPullMarkdownRequest('index-md'); },
+                'shell': function() { asyncPullMarkdownRequest('shell-md'); },
+                'slide': function() { asyncPullMarkdownRequest('slide-md'); },
+                'repos': function() { asyncPullMarkdownRequest('repos-md'); },
+                'default': function() { asyncPullMarkdownRequest('index-md'); }
             };
 
             initialise[markupId]() || initialise['default']();
