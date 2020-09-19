@@ -6,8 +6,8 @@ let similarity = {};
     let content = ['slide', 'index', 'shell', 'repos'];
     Object.freeze(content);
 
-    ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
-    ceres.onloadFrame = function(md) { initiateSimilarity(md); };  // public method reference
+    ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
+    ceres.onloadFrame = function(md) { onloadFrame(md); };  // public method reference
     ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
