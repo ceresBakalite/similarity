@@ -11,7 +11,11 @@ let similarity = {};
 
     });
 
-    let typeset = { markup: 'index', markdown: null };
+    let typeset =
+    {
+        markup: function() { return markup = 'index'; },
+        markdown: function() { return markdown = null; }
+    };
 
     ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
     ceres.onloadFrame = function(md) { initiateSimilarity(ceres.markdown = md); };  // public method reference
