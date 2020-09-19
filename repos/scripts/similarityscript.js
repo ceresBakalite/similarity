@@ -31,14 +31,10 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
-        if (document.getElementById(mu))
+        if (document.getElementById(mu) && (typeset.markup != mu))
         {
-            if (typeset.markup != mu)
-            {
-                typeset.markup = mu;
-                document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-            }
-
+            typeset.markup = mu;
+            document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
         document.getElementById(typeset.markup).blur();
