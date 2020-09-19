@@ -61,23 +61,21 @@ function onloadPrimary()
     ceres.id = getQueryString();
 }
 
-function onloadFrame()
+function onloadFrame(id)
 {
     if (isValidSource())
     {
         invokeScrollEventListener();
 
-alert('ceres.id: ' + ceres.id);
-
         const initialise = {
+            'index-md': function() { asyncPullMarkdownRequest('index-md'); },
+            'shell-md': function() { asyncPullMarkdownRequest('shell-md'); },
+            'repos-md': function() { asyncPullMarkdownRequest('repos-md'); },
             'slide': function() { initialiseSlideViewer(); },
-            'index': function() { asyncPullMarkdownRequest('index-md'); },
-            'shell': function() { asyncPullMarkdownRequest('shell-md'); },
-            'repos': function() { asyncPullMarkdownRequest('repos-md'); },
             'default': function() { asyncPullMarkdownRequest('index-md'); }
         };
 
-        initialise[ceres.id]() || initialise['default']();
+        initialise[id]() || initialise['default']();
     }
 
     function isValidSource()
