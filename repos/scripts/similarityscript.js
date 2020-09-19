@@ -115,13 +115,7 @@ function onloadFrame(id)
 
 function displayFooter()
 {
-    setTimeout(function()
-    {
-
-        // document.getElementById('site-footer-display').style.display = 'block';
-        document.getElementById('footer-content').style.display = 'block';
-
-    }, 1000);
+    setTimeout(function() { document.getElementById('footer-content').style.display = 'block'; }, 2000);
 }
 
 function adjustHeaderDisplay()
