@@ -14,7 +14,7 @@ let similarity = {};
     let typeset = { markup: 'index', markdown: null };
 
     ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
-    ceres.onloadFrame = function(md) { initiateSimilarity(typeset.markdown = md); };  // public method reference
+    ceres.onloadFrame = function(md) { getDocumentPrecursors(typeset.markdown = md); };  // public method reference
     ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
@@ -28,7 +28,14 @@ let similarity = {};
 
     }
 
-    let contents = new component();
+    let content = new component();
+
+    content.attribute.slide = 'slide';
+    content.attribute.index = 'index';
+    content.attribute.shell = 'shell';
+    content.attribute.repos = 'repos';
+
+    Object.freeze(content.attribute);
 
     function getQueryString()
     {
@@ -58,26 +65,24 @@ let similarity = {};
                 'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
             };
 
-            return lookup[mu] || lookup['default'];
+            return lookup[typeset.markup] || lookup['default'];
         }
 
     }
 
-    function initiateSimilarity()
+    function getContent()
+    {
+        for (let mode in content.attribute) str += property + ": " + csv.attribute[property] + ', ';
+
+    }
+
+    function getDocumentPrecursors()
     {
         if (isValidSource())
         {
             invokeScrollEventListener();
 
-            const initialise = {
-                'slide': function() { asyncPullMarkdownRequest(); },
-                'index': function() { asyncPullMarkdownRequest(); },
-                'shell': function() { asyncPullMarkdownRequest(); },
-                'repos': function() { asyncPullMarkdownRequest(); },
-                'default': function() { asyncPullMarkdownRequest('index'); }
-            };
-
-            initialise[typeset.markdown]() || initialise['default']();
+            return (content.attribute.includes(typeset.markdown)) ? asyncPullMarkdownRequest() : asyncPullMarkdownRequest('index');
         }
 
         function isValidSource()
