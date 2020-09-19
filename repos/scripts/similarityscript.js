@@ -29,16 +29,16 @@ let similarity = {};
         if (markupId) getMarkupDocument(markupId);
     }
 
-    function getMarkupDocument(markupId)
+    function getMarkupDocument(markupId, buttonId)
     {
-        // BUG - The markupId points only to the markdownId element
-        if (document.getElementById(markupId) && (current.markupId != markupId))
+        console.log('buttonId: ' + buttonId);
+        if (current.markupId != markupId)
         {
             current.markupId = markupId;
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
-        document.getElementById(current.markupId).blur();
+        if (document.getElementById(buttonId)) document.getElementById(buttonId).blur();
 
         function getMarkupLocation()
         {
@@ -60,8 +60,9 @@ let similarity = {};
         getQueryString();
     }
 
-    function onloadFrame(markupId)
+    function onloadFrame(markupId, bodyId)
     {
+        console.log('bodyId: ' + bodyId);
         if (isValidSource())
         {
             invokeScrollEventListener();
