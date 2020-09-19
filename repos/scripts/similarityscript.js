@@ -1,15 +1,4 @@
-class component
-{
-    constructor()
-    {
-        this.id = 'index',
-        this.type = function() { return type; },
-        this.attribute = function() { return attribute; }
-    }
-
-}
-
-let similarity = new component();
+let similarity = {id: 'index'};
 
 window.customElements.define('include-directive', class extends HTMLElement
 {
