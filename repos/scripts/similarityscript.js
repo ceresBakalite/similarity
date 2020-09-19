@@ -31,14 +31,15 @@ let similarity = {};
 
     function getMarkupDocument(markupId, el)
     {
-        console.log('buttonId: ' + el.getAttribute('id'));
+        let buttonId = ;
+
         if (current.markupId != markupId)
         {
             current.markupId = markupId;
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
-        if (document.getElementById(buttonId)) document.getElementById(buttonId).blur();
+        if (document.getElementById(el.getAttribute('id'))) document.getElementById(el.getAttribute('id')).blur();
 
         function getMarkupLocation()
         {
