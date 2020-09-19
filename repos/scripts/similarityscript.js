@@ -31,7 +31,7 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
-        typeset.markup = (document.getElementById(mu) && typeset.markup != mu) ? mu : typeset.markup;
+        if (document.getElementById(mu)) typeset.markup = (typeset.markup != mu) ? mu : typeset.markup;
 
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         document.getElementById(typeset.markup).blur();
