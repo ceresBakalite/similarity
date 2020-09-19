@@ -18,7 +18,7 @@ let similarity = {};
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
     ceres.onloadFrame = function(md) { onloadFrame(md); };  // public method reference
-    ceres.getMarkupDocument = function(mu) { if (typeset.markup != mu) getMarkupDocument(mu); };  // public method reference
+    ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
     function getQueryString()
@@ -31,7 +31,7 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
-        typeset.markup = (document.getElementById(mu)) ? mu : typeset.markup;
+        typeset.markup = (document.getElementById(mu) && typeset.markup != mu) ? mu : typeset.markup;
 
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         document.getElementById(typeset.markup).blur();
