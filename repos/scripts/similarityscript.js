@@ -1,4 +1,16 @@
-let similarity = {id: 'index'};
+let similarity = {pageindex: 'index'};
+
+class component
+{
+    constructor()
+    {
+        this.type = function() { return type; },
+        this.attribute = function() { return attribute; }
+    }
+
+}
+
+let contents = new component();
 
 window.customElements.define('include-directive', class extends HTMLElement
 {
@@ -22,13 +34,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (similarity.id != mu)
+    if (similarity.pageindex != mu)
     {
-        similarity.id = mu;
+        similarity.pageindex = mu;
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     }
 
-    if (document.getElementById(similarity.id)) document.getElementById(similarity.id).blur();
+    if (document.getElementById(similarity.pageindex)) document.getElementById(similarity.pageindex).blur();
 
     function getMarkupLocation()
     {
@@ -40,14 +52,14 @@ function getMarkupDocument(mu)
            'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
        };
 
-       return lookup[similarity.id] || lookup['default'];
+       return lookup[similarity.pageindex] || lookup['default'];
     }
 
 }
 
 function onloadPrimary()
 {
-    similarity.id = getQueryString();
+    similarity.pageindex = getQueryString();
 }
 
 function onloadFrame(md)
