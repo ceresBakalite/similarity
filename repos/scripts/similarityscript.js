@@ -94,12 +94,13 @@ function onloadFrame(id)
 
     function initialiseSlideViewer()
     {
-        setTimeout(function() { displayFooter(); }, 1000);
+        displayFooter();
     }
 
     function asyncPullMarkdownRequest(md)
     {
-        setTimeout(function() { displayFooter(); }, 1000);
+        displayFooter();
+
         setTimeout(function() { refreshMarkdown(); }, 4000);
 
         function refreshMarkdown()
@@ -114,8 +115,13 @@ function onloadFrame(id)
 
 function displayFooter()
 {
-    document.getElementById('site-footer-display').style.display = 'block';
-    document.getElementById('footer-content').style.display = 'block';
+    setTimeout(function()
+    {
+
+        // document.getElementById('site-footer-display').style.display = 'block';
+        document.getElementById('footer-content').style.display = 'block';
+
+    }, 1000);
 }
 
 function adjustHeaderDisplay()
