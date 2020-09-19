@@ -67,7 +67,7 @@ function onloadFrame()
     {
         invokeScrollEventListener();
 
-alert('window.top.ceres.id: ' + window.top.ceres.id);
+alert('ceres.id: ' + ceres.id);
 
         const initialise = {
             'slide': function() { initialiseSlideViewer(); },
@@ -77,7 +77,7 @@ alert('window.top.ceres.id: ' + window.top.ceres.id);
             'default': function() { asyncPullMarkdownRequest('index-md'); }
         };
 
-        initialise[window.top.ceres.id]() || initialise['default']();
+        initialise[ceres.id]() || initialise['default']();
     }
 
     function isValidSource()
