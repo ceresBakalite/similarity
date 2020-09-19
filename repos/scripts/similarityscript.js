@@ -11,14 +11,10 @@ let similarity = {};
 
     });
 
-    let typeset =
-    {
-        markup: function() { return markup = 'index'; },
-        markdown: function() { return markdown = null; }
-    };
+    let typeset = { markup: 'index', markdown: null };
 
     ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
-    ceres.onloadFrame = function(md) { initiateSimilarity(ceres.markdown = md); };  // public method reference
+    ceres.onloadFrame = function(md) { initiateSimilarity(typeset.markdown = md); };  // public method reference
     ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
