@@ -61,7 +61,7 @@ function onloadFrame()
             'shell': function() { asyncPullMarkdownRequest('shell-md'); },
             'slide': function() { initialiseSlideViewer(); },
             'repos': function() { asyncPullMarkdownRequest('repos-md'); },
-            'default': function() { setTimeout(function() { asyncPullMarkdownRequest('index-md'); }
+            'default': function() { asyncPullMarkdownRequest('index-md'); }
         };
 
         initialise[target.id]() || initialise['default']();
