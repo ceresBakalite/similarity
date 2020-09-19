@@ -1,13 +1,6 @@
 let similarity = {};
 (function(ceres)
 {
-    let typeset = { markupindex = 'index', markdownindex = null };
-
-    ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
-    ceres.onloadFrame = function(md) { initiateSimilarity(typeset.markdownindex = md); };  // public method reference
-    ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
-    ceres.resetPinState = function() { resetPinState(); };  // public method reference
-
     window.customElements.define('include-directive', class extends HTMLElement
     {
         async connectedCallback()
@@ -17,6 +10,13 @@ let similarity = {};
         }
 
     });
+
+    let typeset = { markupindex = 'index', markdownindex = null };
+
+    ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
+    ceres.onloadFrame = function(md) { initiateSimilarity(ceres.markdownindex = md); };  // public method reference
+    ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
+    ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
     class component
     {
