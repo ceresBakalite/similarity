@@ -1,8 +1,11 @@
 let similarity = {};
 (function(ceres)
 {
-    ceres.pageindex = 'index';
+    ceres.markupindex = 'index';
+    ceres.markdownindex = 'index';
 
+    ceres.onloadPrimary = function() { ceres.ceres.markupindex = getQueryString(); }; // public method reference
+    ceres.onloadFrame = function(md) { initiateSimilarity(ceres.markdownindex = md); };  // public method reference
 
 class component
 {
@@ -38,13 +41,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (ceres.pageindex != mu)
+    if (ceres.ceres.markupindex != mu)
     {
-        ceres.pageindex = mu;
+        ceres.ceres.markupindex = mu;
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     }
 
-    if (document.getElementById(ceres.pageindex)) document.getElementById(ceres.pageindex).blur();
+    if (document.getElementById(ceres.ceres.markupindex)) document.getElementById(ceres.ceres.markupindex).blur();
 
     function getMarkupLocation()
     {
@@ -56,27 +59,22 @@ function getMarkupDocument(mu)
            'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
        };
 
-       return lookup[ceres.pageindex] || lookup['default'];
+       return lookup[ceres.ceres.markupindex] || lookup['default'];
     }
 
 }
 
-function onloadPrimary()
-{
-    ceres.pageindex = getQueryString();
-}
-
-function onloadFrame(md)
+function initiateSimilarity()
 {
     if (isValidSource())
     {
         invokeScrollEventListener();
 
         const initialise = {
-            'slide': function() { asyncPullMarkdownRequest(md); },
-            'index': function() { asyncPullMarkdownRequest(md); },
-            'shell': function() { asyncPullMarkdownRequest(md); },
-            'repos': function() { asyncPullMarkdownRequest(md); },
+            'slide': function() { asyncPullMarkdownRequest(); },
+            'index': function() { asyncPullMarkdownRequest(); },
+            'shell': function() { asyncPullMarkdownRequest(); },
+            'repos': function() { asyncPullMarkdownRequest(); },
             'default': function() { asyncPullMarkdownRequest('index'); }
         };
 
@@ -87,7 +85,7 @@ function onloadFrame(md)
     {
         if (window.top.document.getElementById('ceresbakalite')) return true;
 
-        window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + md;
+        window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + ceres.markdownindex;
 
         return false;
     }
@@ -97,7 +95,7 @@ function onloadFrame(md)
         window.onscroll = function() { adjustHeaderDisplay(); };
     }
 
-    function asyncPullMarkdownRequest(md)
+    function asyncPullMarkdownRequest()
     {
         displayFooter();
 
@@ -105,7 +103,7 @@ function onloadFrame(md)
 
         function refreshMarkdown()
         {
-            let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
+            let el = (document.getElementById(ceres.markdownindex)) ? document.getElementById(ceres.markdownindex) : document.getElementsByTagName('zero-md')[0];
             if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
         }
 
