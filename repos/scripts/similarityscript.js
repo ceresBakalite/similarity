@@ -94,11 +94,12 @@ function onloadFrame(id)
 
     function initialiseSlideViewer()
     {
-        // nothing to do
+        setTimeout(function() { displayFooter(); }, 3000);
     }
 
     function asyncPullMarkdownRequest(md)
     {
+        setTimeout(function() { displayFooter(); }, 3000);
         setTimeout(function() { refreshMarkdown(); }, 3000);
 
         function refreshMarkdown()
@@ -109,6 +110,12 @@ function onloadFrame(id)
 
     }
 
+}
+
+function displayFooter()
+{
+    document.getElementById('site-footer-display').style.display = 'block';
+    document.getElementById('footer-content').style.display = 'block';
 }
 
 function adjustHeaderDisplay()
