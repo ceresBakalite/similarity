@@ -1,4 +1,8 @@
-let similarity = {pageindex: 'index'};
+let similarity = {};
+(function(ceres)
+{
+    ceres.pageindex: 'index';
+
 
 class component
 {
@@ -34,13 +38,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (similarity.pageindex != mu)
+    if (ceres.pageindex != mu)
     {
-        similarity.pageindex = mu;
+        ceres.pageindex = mu;
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     }
 
-    if (document.getElementById(similarity.pageindex)) document.getElementById(similarity.pageindex).blur();
+    if (document.getElementById(ceres.pageindex)) document.getElementById(ceres.pageindex).blur();
 
     function getMarkupLocation()
     {
@@ -52,14 +56,14 @@ function getMarkupDocument(mu)
            'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
        };
 
-       return lookup[similarity.pageindex] || lookup['default'];
+       return lookup[ceres.pageindex] || lookup['default'];
     }
 
 }
 
 function onloadPrimary()
 {
-    similarity.pageindex = getQueryString();
+    ceres.pageindex = getQueryString();
 }
 
 function onloadFrame(md)
@@ -199,3 +203,4 @@ function getCookie(cn)
 
     return null;
 }
+})(similarity);
