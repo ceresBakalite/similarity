@@ -1,11 +1,10 @@
 let similarity = {};
 (function(ceres)
 {
-    ceres.markupindex = 'index';
-    ceres.markdownindex = null;
+    let typeset = { markupindex = 'index', markdownindex = null };
 
     ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
-    ceres.onloadFrame = function(md) { initiateSimilarity(ceres.markdownindex = md); };  // public method reference
+    ceres.onloadFrame = function(md) { initiateSimilarity(typeset.markdownindex = md); };  // public method reference
     ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
@@ -41,13 +40,13 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
-        if (ceres.markupindex != mu)
+        if (typeset.markupindex != mu)
         {
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-            ceres.markupindex = mu;
+            typeset.markupindex = mu;
         }
 
-        document.getElementById(ceres.markupindex).blur();
+        document.getElementById(typeset.markupindex).blur();
 
         function getMarkupLocation()
         {
@@ -78,14 +77,14 @@ let similarity = {};
                 'default': function() { asyncPullMarkdownRequest('index'); }
             };
 
-            initialise[ceres.markdownindex]() || initialise['default']();
+            initialise[typeset.markdownindex]() || initialise['default']();
         }
 
         function isValidSource()
         {
             if (window.top.document.getElementById('ceresbakalite')) return true;
 
-            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + ceres.markdownindex;
+            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + typeset.markdownindex;
 
             return false;
         }
@@ -103,7 +102,7 @@ let similarity = {};
 
             function refreshMarkdown()
             {
-                let el = (document.getElementById(ceres.markdownindex)) ? document.getElementById(ceres.markdownindex) : document.getElementsByTagName('zero-md')[0];
+                let el = (document.getElementById(typeset.markdownindex)) ? document.getElementById(typeset.markdownindex) : document.getElementsByTagName('zero-md')[0];
                 if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
             }
 
