@@ -57,7 +57,7 @@ function getMarkupDocument(mu)
 
 function onloadPrimary()
 {
-    target.id = getQueryString();
+    ceres.id = getQueryString();
 }
 
 function onloadFrame()
@@ -65,6 +65,8 @@ function onloadFrame()
     if (isValidSource())
     {
         invokeScrollEventListener();
+
+alert('ceres.id: ' + ceres.id);
 
         const initialise = {
             'slide': function() { initialiseSlideViewer(); },
