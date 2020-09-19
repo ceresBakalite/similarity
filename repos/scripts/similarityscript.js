@@ -74,7 +74,7 @@ let similarity = {};
                 'default': function() { asyncPullMarkdownRequest('index'); }
             };
 
-            initialise[mu]() || initialise['default']();
+            initialise[markupId]() || initialise['default']();
         }
 
         function isValidSource()
