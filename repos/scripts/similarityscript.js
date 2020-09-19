@@ -106,7 +106,9 @@ let similarity = {};
 
             function refreshMarkdown()
             {
+                let str = '';
                 for (let property in content.attribute) str += property + ": " + content.attribute[property] + ', ';
+                console.log(str.replace(/, +$/g,''));
 
                 let md = (content.attribute.filter(node => (node.attribute === typeset.markdown))) ? typeset.markdown : 'index';
 
