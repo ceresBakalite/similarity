@@ -18,7 +18,7 @@ let similarity = {};
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
     ceres.onloadFrame = function(md) { onloadFrame(md); };  // public method reference
-    ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
+    ceres.getMarkupDocument = function(mu) { if (typeset.markup != mu) getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
     function getQueryString()
@@ -31,13 +31,10 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
-        if (typeset.markup != mu && document.getElementById(mu))
-        {
-            document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-            typeset.markup = mu;
-        }
+        typeset.markup = (document.getElementById(mu)) ? mu : typeset.markup;
 
-        if (document.getElementById(mu)) document.getElementById(mu).blur();
+        document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
+        document.getElementById(typeset.markup).blur();
 
         function getMarkupLocation()
         {
@@ -49,7 +46,7 @@ let similarity = {};
                 'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
             };
 
-            return lookup[mu] || lookup['default'];
+            return lookup[typeset.markup] || lookup['default'];
         }
 
     }
