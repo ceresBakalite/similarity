@@ -16,6 +16,8 @@ function getQueryString()
     const mu = urlParams.get('mu')
 
     if (mu) getMarkupDocument(mu);
+
+    return (mu) ? mu : 'index';
 }
 
 function getMarkupDocument(mu)
@@ -45,24 +47,24 @@ function getMarkupDocument(mu)
 
 function onloadPrimary()
 {
-    getQueryString();
+    target.id = getQueryString();
 }
 
-function onloadFrame(mu, ms)
+function onloadFrame()
 {
     if (isValidSource())
     {
         invokeScrollEventListener();
 
         const initialise = {
-            'index': function() { setTimeout(function() { asyncPullMarkdownRequest('index-md'); }, ms); },
-            'shell': function() { setTimeout(function() { asyncPullMarkdownRequest('shell-md'); }, ms); },
-            'slide': function() { setTimeout(function() { initialiseSlideViewer(); }, ms); },
-            'repos': function() { setTimeout(function() { asyncPullMarkdownRequest('repos-md'); }, ms); },
-            'default': function() { setTimeout(function() { asyncPullMarkdownRequest('index-md'); }, ms); }
+            'index': function() { asyncPullMarkdownRequest('index-md'); },
+            'shell': function() { asyncPullMarkdownRequest('shell-md'); },
+            'slide': function() { initialiseSlideViewer(); },
+            'repos': function() { asyncPullMarkdownRequest('repos-md'); },
+            'default': function() { setTimeout(function() { asyncPullMarkdownRequest('index-md'); }
         };
 
-        initialise[mu]() || initialise['default']();
+        initialise[target.id]() || initialise['default']();
     }
 
     function isValidSource()
@@ -79,21 +81,14 @@ function onloadFrame(mu, ms)
         window.onscroll = function() { adjustHeaderDisplay(); };
     }
 
-    function displayFooter()
-    {
-      document.getElementById('site-footer-display').style.display = 'block';
-      document.getElementById('footer-content').style.display = 'block';
-    }
-
     function initialiseSlideViewer()
     {
-        displayFooter();
+        // nothing to do
     }
 
     function asyncPullMarkdownRequest(md)
     {
-        displayFooter();
-        setTimeout(function() { refreshMarkdown(); }, 5000);
+        setTimeout(function() { refreshMarkdown(); }, 3000);
 
         function refreshMarkdown()
         {
