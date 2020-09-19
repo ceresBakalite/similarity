@@ -28,7 +28,7 @@ function getMarkupDocument(mu)
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     }
 
-    document.getElementById(similarity.id).blur();
+    if (similarity.id) document.getElementById(similarity.id).blur();
 
     function getMarkupLocation()
     {
