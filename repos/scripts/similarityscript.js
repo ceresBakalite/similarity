@@ -54,24 +54,6 @@ let similarity = {};
 
     }
 
-    function getContent()
-    {
-        if (isValidSource())
-        {
-            invokeScrollEventListener();
-
-            const initialise = {
-                'slide': function() { asyncPullMarkdownRequest(); },
-                'index': function() { asyncPullMarkdownRequest(); },
-                'shell': function() { asyncPullMarkdownRequest(); },
-                'repos': function() { asyncPullMarkdownRequest(); },
-                'default': function() { asyncPullMarkdownRequest('index'); }
-            };
-
-            initialise[typeset.markdown]() || initialise['default']();
-        }
-    }
-
     function getDocumentPrecursors()
     {
         if (isValidSource())
