@@ -78,7 +78,7 @@ function initiateSimilarity()
             'default': function() { asyncPullMarkdownRequest('index'); }
         };
 
-        initialise[md]() || initialise['default']();
+        initialise[ceres.markdownindex]() || initialise['default']();
     }
 
     function isValidSource()
