@@ -94,13 +94,13 @@ function onloadFrame(id)
 
     function initialiseSlideViewer()
     {
-        setTimeout(function() { displayFooter(); }, 3000);
+        setTimeout(function() { displayFooter(); }, 2000);
     }
 
     function asyncPullMarkdownRequest(md)
     {
-        setTimeout(function() { displayFooter(); }, 3000);
-        setTimeout(function() { refreshMarkdown(); }, 3000);
+        setTimeout(function() { displayFooter(); }, 2000);
+        setTimeout(function() { refreshMarkdown(); }, 4000);
 
         function refreshMarkdown()
         {
