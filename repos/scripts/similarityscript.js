@@ -31,6 +31,8 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
+        console.log('typeset.markup: ' typeset.markup + ' - mu: ' + mu);
+        
         if (document.getElementById(mu)) typeset.markup = (typeset.markup != mu) ? mu : typeset.markup;
 
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
