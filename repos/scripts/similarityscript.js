@@ -2,7 +2,8 @@ class component
 {
     constructor()
     {
-        this.id = function() { return id; },
+        this.id = 'index',
+        this.type = function() { return type; },
         this.attribute = function() { return attribute; }
     }
 
