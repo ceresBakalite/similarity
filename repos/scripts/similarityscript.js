@@ -24,8 +24,8 @@ function getMarkupDocument(mu)
 {
     if (similarity.id != mu)
     {
-        document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         similarity.id = mu;
+        document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     }
 
     document.getElementById(similarity.id).blur();
@@ -40,7 +40,7 @@ function getMarkupDocument(mu)
            'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
        };
 
-       return lookup[mu] || lookup['default'];
+       return lookup[similarity.id] || lookup['default'];
     }
 
 }
