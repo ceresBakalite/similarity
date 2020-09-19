@@ -24,7 +24,7 @@ let ceres = {};
 
     })
 
-    class components
+    class component
     {
         constructor()
         {
@@ -34,7 +34,7 @@ let ceres = {};
 
     }
 
-    let resource = new components();
+    let resource = new component();
 
     class slideviewer
     {
