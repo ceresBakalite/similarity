@@ -31,11 +31,12 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
-        console.log('typeset.markup: ' + typeset.markup + ' - mu: ' + mu);
+        if (document.getElementById(mu))
+        {
+            if (typeset.markup != mu) document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
+            typeset.markup = mu;
+        }
 
-        if (document.getElementById(mu)) typeset.markup = (typeset.markup != mu) ? mu : typeset.markup;
-
-        document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         document.getElementById(typeset.markup).blur();
 
         function getMarkupLocation()
