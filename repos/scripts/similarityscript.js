@@ -18,7 +18,7 @@ let similarity = {};
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
     ceres.onloadFrame = function(md) { onloadFrame(md); };  // public method reference
-    ceres.getMarkupDocument = function(mu, el) { getMarkupDocument(mu, el); };  // public method reference
+    ceres.getMarkupDocument = function(mu, el) { getMarkupDocument(mu, el.getAttribute('id')); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
     function getQueryString()
@@ -29,17 +29,15 @@ let similarity = {};
         if (markupId) getMarkupDocument(markupId);
     }
 
-    function getMarkupDocument(markupId, el)
+    function getMarkupDocument(markupId, id)
     {
-        let btnNavbar = el.getAttribute('id');
-
         if (current.markupId != markupId)
         {
             current.markupId = markupId;
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
-        if (document.getElementById(btnNavbar)) document.getElementById(btnNavbar).blur();
+        if (document.getElementById(id)) document.getElementById(id).blur();
 
         function getMarkupLocation()
         {
