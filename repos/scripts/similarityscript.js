@@ -1,7 +1,7 @@
 let similarity = {};
 (function(ceres)
 {
-    ceres.pageindex: 'index';
+    ceres.pageindex = 'index';
 
 
 class component
