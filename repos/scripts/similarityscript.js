@@ -17,8 +17,8 @@ let similarity = {};
     Object.freeze(content);
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
-    ceres.onloadFrame = function(md, el) { onloadFrame(md, el.getAttribute('id')); };  // public method reference
-    ceres.getMarkupDocument = function(mu, el) { getMarkupDocument(mu, el.getAttribute('id')); };  // public method reference
+    ceres.onloadFrame = function(md) { onloadFrame(md); };  // public method reference
+    ceres.getMarkupDocument = function(mu, el) { getMarkupDocument(mu, el); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
     function getQueryString()
@@ -29,9 +29,9 @@ let similarity = {};
         if (markupId) getMarkupDocument(markupId);
     }
 
-    function getMarkupDocument(markupId, id)
+    function getMarkupDocument(markupId, el)
     {
-        console.log('buttonId: ' + id);
+        console.log('buttonId: ' + el.getAttribute('id'));
         if (current.markupId != markupId)
         {
             current.markupId = markupId;
@@ -60,9 +60,8 @@ let similarity = {};
         getQueryString();
     }
 
-    function onloadFrame(markupId, id)
+    function onloadFrame(markupId)
     {
-        console.log('bodyId: ' + id);
         if (isValidSource())
         {
             invokeScrollEventListener();
