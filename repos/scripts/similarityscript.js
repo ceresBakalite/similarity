@@ -106,6 +106,8 @@ let similarity = {};
 
             function refreshMarkdown()
             {
+                for (let property in content.attribute) str += property + ": " + content.attribute[property] + ', ';
+
                 let md = (content.attribute.filter(node => (node.attribute === typeset.markdown))) ? typeset.markdown : 'index';
 
                 let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
