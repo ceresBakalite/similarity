@@ -37,7 +37,7 @@ let similarity = {};
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
-        if (document.getElementById(id)) document.getElementById(id).blur();
+        if (id) document.getElementById(id).blur();
 
         function getMarkupLocation()
         {
