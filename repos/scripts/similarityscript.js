@@ -2,7 +2,7 @@ let similarity = {};
 (function(ceres)
 {
     ceres.markupindex = 'index';
-    ceres.markdownindex = 'index';
+    ceres.markdownindex = null;
 
     ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
     ceres.onloadFrame = function(md) { initiateSimilarity(ceres.markdownindex = md); };  // public method reference
