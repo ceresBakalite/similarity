@@ -47,7 +47,7 @@ function getMarkupDocument(mu)
         ceres.markupindex = mu;
     }
 
-    if (document.getElementById(mu)) document.getElementById(mu).blur();
+    document.getElementById(ceres.markupindex).blur();
 
     function getMarkupLocation()
     {
