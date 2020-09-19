@@ -31,7 +31,7 @@ let similarity = {};
 
     function getMarkupDocument(markupId, el)
     {
-        let buttonId = ;
+        let btnNavbar = el.getAttribute('id');
 
         if (current.markupId != markupId)
         {
@@ -39,7 +39,7 @@ let similarity = {};
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
-        if (document.getElementById(el.getAttribute('id'))) document.getElementById(el.getAttribute('id')).blur();
+        if (document.getElementById(btnNavbar)) document.getElementById(btnNavbar).blur();
 
         function getMarkupLocation()
         {
