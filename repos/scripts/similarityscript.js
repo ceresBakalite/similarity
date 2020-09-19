@@ -50,7 +50,7 @@ function onloadPrimary()
     similarity.id = getQueryString();
 }
 
-function onloadFrame(id)
+function onloadFrame(mu)
 {
     if (isValidSource())
     {
@@ -64,7 +64,7 @@ function onloadFrame(id)
             'default': function() { asyncPullMarkdownRequest('index-md'); }
         };
 
-        initialise[id]() || initialise['default']();
+        initialise[mu]() || initialise['default']();
     }
 
     function isValidSource()
