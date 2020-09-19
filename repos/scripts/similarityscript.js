@@ -67,7 +67,7 @@ function onloadFrame()
     {
         invokeScrollEventListener();
 
-alert('ceres.id: ' + ceres.id);
+alert('ceres.id: ' + window.top.document.ceres.id);
 
         const initialise = {
             'slide': function() { initialiseSlideViewer(); },
