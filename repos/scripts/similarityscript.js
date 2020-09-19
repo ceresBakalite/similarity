@@ -9,6 +9,16 @@ let similarity = {};
     ceres.getMarkupDocument = function(mu) { ceres.markupindex = getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
+window.customElements.define('include-directive', class extends HTMLElement
+{
+    async connectedCallback()
+    {
+        let src = this.getAttribute('src');
+        this.innerHTML = await (await fetch(src)).text();
+    }
+
+});
+
 class component
 {
     constructor()
@@ -20,16 +30,6 @@ class component
 }
 
 let contents = new component();
-
-window.customElements.define('include-directive', class extends HTMLElement
-{
-    async connectedCallback()
-    {
-        let src = this.getAttribute('src');
-        this.innerHTML = await (await fetch(src)).text();
-    }
-
-});
 
 function getQueryString()
 {
@@ -44,7 +44,7 @@ function getMarkupDocument(mu)
     let reset = (ceres.markupindex != mu) ? true : false;
 
     if (reset) document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-    if (document.getElementById(ceres.markupindex)) document.getElementById(ceres.markupindex).blur();
+    if (document.getElementById(mu)) document.getElementById(ceres.markupindex).blur();
 
     return (reset) ? mu : ceres.markupindex;
 
@@ -58,7 +58,7 @@ function getMarkupDocument(mu)
            'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
        };
 
-       return lookup[ceres.markupindex] || lookup['default'];
+       return lookup[mu] || lookup['default'];
     }
 
 }
