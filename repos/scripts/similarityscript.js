@@ -13,7 +13,7 @@ let similarity = {};
 
     let typeset = { markup: 'index', markdown: null };
 
-    ceres.onloadPrimary = function(mu) { getQueryString(typeset.markup = mu); }; // public method reference
+    ceres.onloadPrimary = function(mu) { getQueryString(); }; // public method reference
     ceres.onloadFrame = function(md) { getDocumentPrecursors(typeset.markdown = md); };  // public method reference
     ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
@@ -51,12 +51,6 @@ let similarity = {};
 
             return lookup[typeset.markup] || lookup['default'];
         }
-
-    }
-
-    function getContent()
-    {
-        for (let mode in content.attribute) str += property + ": " + csv.attribute[property] + ', ';
 
     }
 
