@@ -50,28 +50,28 @@ function onloadPrimary()
     similarity.id = getQueryString();
 }
 
-function onloadFrame(mu)
+function onloadFrame(md)
 {
     if (isValidSource())
     {
         invokeScrollEventListener();
 
         const initialise = {
-            'slide-md': function() { asyncPullMarkdownRequest(id); },
-            'index-md': function() { asyncPullMarkdownRequest(id); },
-            'shell-md': function() { asyncPullMarkdownRequest(id); },
-            'repos-md': function() { asyncPullMarkdownRequest(id); },
+            'slide-md': function() { asyncPullMarkdownRequest(md); },
+            'index-md': function() { asyncPullMarkdownRequest(md); },
+            'shell-md': function() { asyncPullMarkdownRequest(md); },
+            'repos-md': function() { asyncPullMarkdownRequest(md); },
             'default': function() { asyncPullMarkdownRequest('index-md'); }
         };
 
-        initialise[mu]() || initialise['default']();
+        initialise[md]() || initialise['default']();
     }
 
     function isValidSource()
     {
         if (window.top.document.getElementById('ceresbakalite')) return true;
 
-        window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + mu;
+        window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + md;
 
         return false;
     }
