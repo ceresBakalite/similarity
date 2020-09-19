@@ -1,4 +1,4 @@
-let similarity = {id: 'index'};
+let similarity = {id: 'index', sim: this};
 
 window.customElements.define('include-directive', class extends HTMLElement
 {
