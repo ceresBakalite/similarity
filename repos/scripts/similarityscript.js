@@ -29,9 +29,9 @@ let similarity = {};
         if (markupId) getMarkupDocument(markupId);
     }
 
-    function getMarkupDocument(markupId, buttonId)
+    function getMarkupDocument(markupId, el)
     {
-        console.log('buttonId: ' + buttonId);
+        console.log('buttonId: ' + el.getAttribute('id'));
         if (current.markupId != markupId)
         {
             current.markupId = markupId;
@@ -60,9 +60,9 @@ let similarity = {};
         getQueryString();
     }
 
-    function onloadFrame(markupId, bodyId)
+    function onloadFrame(markupId, el)
     {
-        console.log('bodyId: ' + bodyId);
+        console.log('bodyId: ' + el.getAttribute('id'));
         if (isValidSource())
         {
             invokeScrollEventListener();
