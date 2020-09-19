@@ -1,10 +1,10 @@
 let similarity = {};
 (function(ceres)
 {
-    let typeset = { markup = 'index', markdown = null };
+    let typeset = { markupindex = 'index', markdownindex = null };
 
     ceres.onloadPrimary = function() { getQueryString(); }; // public method reference
-    ceres.onloadFrame = function(md) { initiateSimilarity(typeset.markdown = md); };  // public method reference
+    ceres.onloadFrame = function(md) { initiateSimilarity(typeset.markdownindex = md); };  // public method reference
     ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
@@ -40,13 +40,13 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
-        if (typeset.markup != mu)
+        if (typeset.markupindex != mu)
         {
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-            typeset.markup = mu;
+            typeset.markupindex = mu;
         }
 
-        document.getElementById(typeset.markup).blur();
+        document.getElementById(typeset.markupindex).blur();
 
         function getMarkupLocation()
         {
@@ -77,14 +77,14 @@ let similarity = {};
                 'default': function() { asyncPullMarkdownRequest('index'); }
             };
 
-            initialise[typeset.markdown]() || initialise['default']();
+            initialise[typeset.markdownindex]() || initialise['default']();
         }
 
         function isValidSource()
         {
             if (window.top.document.getElementById('ceresbakalite')) return true;
 
-            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + typeset.markdown;
+            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + typeset.markdownindex;
 
             return false;
         }
@@ -102,7 +102,7 @@ let similarity = {};
 
             function refreshMarkdown()
             {
-                let el = (document.getElementById(typeset.markdown)) ? document.getElementById(typeset.markdown) : document.getElementsByTagName('zero-md')[0];
+                let el = (document.getElementById(typeset.markdownindex)) ? document.getElementById(typeset.markdownindex) : document.getElementsByTagName('zero-md')[0];
                 if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
             }
 
