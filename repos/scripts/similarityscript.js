@@ -1,16 +1,6 @@
 let similarity = {};
 (function(ceres)
 {
-    let typeset = { markup: 'index', markdown: null };
-
-    let content = ['slide', 'index', 'shell', 'repos'];
-    Object.freeze(content);
-
-    ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
-    ceres.onloadFrame = function(md) { onloadFrame(md); };  // public method reference
-    ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
-    ceres.resetPinState = function() { resetPinState(); };  // public method reference
-
     window.customElements.define('include-directive', class extends HTMLElement
     {
         async connectedCallback()
@@ -20,6 +10,16 @@ let similarity = {};
         }
 
     });
+
+    let typeset = { markup: 'index', markdown: null };
+    let content = ['slide', 'index', 'shell', 'repos'];
+
+    Object.freeze(content);
+
+    ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
+    ceres.onloadFrame = function(md) { onloadFrame(md); };  // public method reference
+    ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
+    ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
     function getQueryString()
     {
@@ -31,8 +31,13 @@ let similarity = {};
 
     function getMarkupDocument(mu)
     {
-        document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-        document.getElementById(mu).blur();
+        if (typeset.markup != mu && document.getElementById(mu))
+        {
+            document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
+            typeset.markup = mu;
+        }
+
+        if (document.getElementById(typeset.markup)) document.getElementById(typeset.markup).blur();
 
         function getMarkupLocation()
         {
@@ -44,7 +49,7 @@ let similarity = {};
                 'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
             };
 
-            return lookup[mu] || lookup['default'];
+            return lookup[typeset.markup] || lookup['default'];
         }
 
     }
