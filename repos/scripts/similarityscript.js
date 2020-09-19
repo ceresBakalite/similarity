@@ -24,16 +24,17 @@ let similarity = {};
     function getQueryString()
     {
         const urlParams = new URLSearchParams(window.location.search);
-        const mu = urlParams.get('mu')
+        const markupId = urlParams.get('mu')
 
-        if (mu) getMarkupDocument(mu);
+        if (markupId) getMarkupDocument(markupId);
     }
 
-    function getMarkupDocument(mu)
+    function getMarkupDocument(markupId)
     {
-        if (document.getElementById(mu) && (typeset.markup != mu))
+        // BUG - The markupId points only to the markdownId element
+        if (document.getElementById(markupId) && (typeset.markup != markupId))
         {
-            typeset.markup = mu;
+            typeset.markup = markupId;
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
@@ -59,7 +60,7 @@ let similarity = {};
         getQueryString();
     }
 
-    function onloadFrame(mu, ms)
+    function onloadFrame(markupId)
     {
         if (isValidSource())
         {
@@ -80,7 +81,7 @@ let similarity = {};
         {
             if (window.top.document.getElementById('ceresbakalite')) return true;
 
-            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + mu;
+            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + markupId;
 
             return false;
         }
@@ -95,7 +96,7 @@ let similarity = {};
             setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
-        function asyncPullMarkdownRequest(md)
+        function asyncPullMarkdownRequest(markdownId)
         {
             displayFooter();
 
@@ -103,7 +104,7 @@ let similarity = {};
 
             function refreshMarkdown()
             {
-                let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
+                let el = (document.getElementById(markdownId)) ? document.getElementById(markdownId) : document.getElementsByTagName('zero-md')[0];
                 if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
             }
 
