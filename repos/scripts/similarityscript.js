@@ -37,7 +37,7 @@ let similarity = {};
             typeset.markup = mu;
         }
 
-        if (document.getElementById(typeset.markup)) document.getElementById(typeset.markup).blur();
+        if (document.getElementById(mu)) document.getElementById(mu).blur();
 
         function getMarkupLocation()
         {
@@ -49,7 +49,7 @@ let similarity = {};
                 'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
             };
 
-            return lookup[typeset.markup] || lookup['default'];
+            return lookup[mu] || lookup['default'];
         }
 
     }
