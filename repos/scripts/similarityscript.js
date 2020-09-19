@@ -9,7 +9,7 @@ class component
 
 }
 
-let ceres = new component();
+let similarity = new component();
 
 window.customElements.define('include-directive', class extends HTMLElement
 {
@@ -33,13 +33,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (ceres.id != mu)
+    if (similarity.id != mu)
     {
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-        ceres.id = mu;
+        similarity.id = mu;
     }
 
-    document.getElementById(ceres.id).blur();
+    document.getElementById(similarity.id).blur();
 
     function getMarkupLocation()
     {
@@ -58,7 +58,7 @@ function getMarkupDocument(mu)
 
 function onloadPrimary()
 {
-    ceres.id = getQueryString();
+    similarity.id = getQueryString();
 }
 
 function onloadFrame(id)
