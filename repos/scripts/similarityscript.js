@@ -6,7 +6,7 @@ let similarity = {};
 
     ceres.onloadPrimary = function() { ceres.markupindex = getQueryString(); }; // public method reference
     ceres.onloadFrame = function(md) { initiateSimilarity(ceres.markdownindex = md); };  // public method reference
-    ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
+    ceres.getMarkupDocument = function(mu) { ceres.markupindex = getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function(mu) { resetPinState(); };  // public method reference
 
 class component
@@ -43,13 +43,12 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (ceres.markupindex != mu)
-    {
-        ceres.markupindex = mu;
-        document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-    }
+    let reset = (ceres.markupindex != mu) ? true : false;
 
+    if (reset) document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
     if (document.getElementById(ceres.markupindex)) document.getElementById(ceres.markupindex).blur();
+
+    return (reset) ? mu : ceres.markupindex;
 
     function getMarkupLocation()
     {
