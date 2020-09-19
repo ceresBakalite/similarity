@@ -31,7 +31,7 @@ let similarity = {};
 
     function getMarkupDocument(markupId, id)
     {
-        console.log('buttonId: ' + id));
+        console.log('buttonId: ' + id);
         if (current.markupId != markupId)
         {
             current.markupId = markupId;
@@ -62,7 +62,7 @@ let similarity = {};
 
     function onloadFrame(markupId, id)
     {
-        console.log('bodyId: ' + id));
+        console.log('bodyId: ' + id);
         if (isValidSource())
         {
             invokeScrollEventListener();
