@@ -68,7 +68,7 @@ function onloadFrame(id)
         invokeScrollEventListener();
 
         const initialise = {
-            'slide': function() { initialiseSlideViewer(); },
+            'slide-md': function() { asyncPullMarkdownRequest(id); },
             'index-md': function() { asyncPullMarkdownRequest(id); },
             'shell-md': function() { asyncPullMarkdownRequest(id); },
             'repos-md': function() { asyncPullMarkdownRequest(id); },
@@ -90,11 +90,6 @@ function onloadFrame(id)
     function invokeScrollEventListener()
     {
         window.onscroll = function() { adjustHeaderDisplay(); };
-    }
-
-    function initialiseSlideViewer()
-    {
-        displayFooter();
     }
 
     function asyncPullMarkdownRequest(md)
