@@ -1,4 +1,14 @@
-let target = { id: null };
+class component
+{
+    constructor()
+    {
+        this.id = function() { return id; },
+        this.attribute = function() { return attribute; }
+    }
+
+}
+
+let ceres = new component();
 
 window.customElements.define('include-directive', class extends HTMLElement
 {
@@ -22,13 +32,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (target.id != mu)
+    if (ceres.id != mu)
     {
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-        target.id = mu;
+        ceres.id = mu;
     }
 
-    document.getElementById(target.id).blur();
+    document.getElementById(ceres.id).blur();
 
     function getMarkupLocation()
     {
@@ -57,14 +67,14 @@ function onloadFrame()
         invokeScrollEventListener();
 
         const initialise = {
+            'slide': function() { initialiseSlideViewer(); },
             'index': function() { asyncPullMarkdownRequest('index-md'); },
             'shell': function() { asyncPullMarkdownRequest('shell-md'); },
-            'slide': function() { initialiseSlideViewer(); },
             'repos': function() { asyncPullMarkdownRequest('repos-md'); },
             'default': function() { asyncPullMarkdownRequest('index-md'); }
         };
 
-        initialise[target.id]() || initialise['default']();
+        initialise[ceres.id]() || initialise['default']();
     }
 
     function isValidSource()
