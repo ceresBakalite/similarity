@@ -81,8 +81,7 @@ let similarity = {};
         if (isValidSource())
         {
             invokeScrollEventListener();
-
-            return (content.attribute.includes(typeset.markdown)) ? asyncPullMarkdownRequest() : asyncPullMarkdownRequest('index');
+            asyncPullMarkdownRequest();
         }
 
         function isValidSource()
@@ -107,7 +106,9 @@ let similarity = {};
 
             function refreshMarkdown()
             {
-                let el = (document.getElementById(typeset.markdown)) ? document.getElementById(typeset.markdown) : document.getElementsByTagName('zero-md')[0];
+                let md = (content.attribute.includes(typeset.markdown)) ? typeset.markdown : 'index';
+
+                let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
                 if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
             }
 
