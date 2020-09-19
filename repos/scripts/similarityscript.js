@@ -57,11 +57,11 @@ function onloadFrame(md)
         invokeScrollEventListener();
 
         const initialise = {
-            'slide-md': function() { asyncPullMarkdownRequest(md); },
-            'index-md': function() { asyncPullMarkdownRequest(md); },
-            'shell-md': function() { asyncPullMarkdownRequest(md); },
-            'repos-md': function() { asyncPullMarkdownRequest(md); },
-            'default': function() { asyncPullMarkdownRequest('index-md'); }
+            'slide': function() { asyncPullMarkdownRequest(md); },
+            'index': function() { asyncPullMarkdownRequest(md); },
+            'shell': function() { asyncPullMarkdownRequest(md); },
+            'repos': function() { asyncPullMarkdownRequest(md); },
+            'default': function() { asyncPullMarkdownRequest('index'); }
         };
 
         initialise[md]() || initialise['default']();
