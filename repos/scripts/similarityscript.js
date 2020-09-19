@@ -106,7 +106,7 @@ let similarity = {};
 
             function refreshMarkdown()
             {
-                let md = (content.attribute.includes(typeset.markdown)) ? typeset.markdown : 'index';
+                let md = (content.attribute.filter(node => (node.attribute === typeset.markdown))) ? typeset.markdown : 'index';
 
                 let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
                 if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
