@@ -68,10 +68,10 @@ function onloadFrame(id)
         invokeScrollEventListener();
 
         const initialise = {
-            'index-md': function() { asyncPullMarkdownRequest('index-md'); },
-            'shell-md': function() { asyncPullMarkdownRequest('shell-md'); },
-            'repos-md': function() { asyncPullMarkdownRequest('repos-md'); },
             'slide': function() { initialiseSlideViewer(); },
+            'index-md': function() { asyncPullMarkdownRequest(id); },
+            'shell-md': function() { asyncPullMarkdownRequest(id); },
+            'repos-md': function() { asyncPullMarkdownRequest(id); },
             'default': function() { asyncPullMarkdownRequest('index-md'); }
         };
 
