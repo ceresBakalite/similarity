@@ -41,13 +41,13 @@ function getQueryString()
 
 function getMarkupDocument(mu)
 {
-    if (ceres.markupindex != mu && document.getElementById(mu))
+    if (ceres.markupindex != mu)
     {
         document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
-        document.getElementById(mu).blur();
-
         ceres.markupindex = mu;
     }
+
+    if (document.getElementById(mu)) document.getElementById(mu).blur();
 
     function getMarkupLocation()
     {
