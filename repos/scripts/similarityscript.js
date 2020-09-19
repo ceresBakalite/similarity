@@ -11,7 +11,7 @@ let similarity = {};
 
     });
 
-    let documentType = { markupId: 'index', markdownId: null };
+    let current = { markupId: 'index', markdownId: null };
     let content = ['slide', 'index', 'shell', 'repos'];
 
     Object.freeze(content);
@@ -32,13 +32,13 @@ let similarity = {};
     function getMarkupDocument(markupId)
     {
         // BUG - The markupId points only to the markdownId element
-        if (document.getElementById(markupId) && (documentType.markupId != markupId))
+        if (document.getElementById(markupId) && (current.markupId != markupId))
         {
-            documentType.markupId = markupId;
+            current.markupId = markupId;
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
-        document.getElementById(documentType.markupId).blur();
+        document.getElementById(current.markupId).blur();
 
         function getMarkupLocation()
         {
@@ -50,7 +50,7 @@ let similarity = {};
                 'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
             };
 
-            return lookup[documentType.markupId] || lookup['default'];
+            return lookup[current.markupId] || lookup['default'];
         }
 
     }
