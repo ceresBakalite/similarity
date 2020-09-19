@@ -18,24 +18,8 @@ let similarity = {};
     ceres.getMarkupDocument = function(mu) { getMarkupDocument(mu); };  // public method reference
     ceres.resetPinState = function() { resetPinState(); };  // public method reference
 
-    class component
-    {
-        constructor()
-        {
-            this.type = function() { return type; },
-            this.attribute = function() { return attribute; }
-        }
-
-    }
-
-    let content = new component();
-
-    content.attribute.slide = 'slide';
-    content.attribute.index = 'index';
-    content.attribute.shell = 'shell';
-    content.attribute.repos = 'repos';
-
-    Object.freeze(content.attribute);
+    let content = ['slide', 'index', 'shell', 'repos'];
+    Object.freeze(content);
 
     function getQueryString()
     {
@@ -106,11 +90,7 @@ let similarity = {};
 
             function refreshMarkdown()
             {
-                let str = '';
-                for (let property in content.attribute) str += property + ": " + content.attribute[property] + ', ';
-                console.log(str.replace(/, +$/g,''));
-
-                let md = (content.attribute.filter(node => (node.attribute === typeset.markdown))) ? typeset.markdown : 'index';
+                let md = (content.includes(typeset.markdown)) ? typeset.markdown : 'index';
 
                 let el = (document.getElementById(md)) ? document.getElementById(md) : document.getElementsByTagName('zero-md')[0];
                 if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
