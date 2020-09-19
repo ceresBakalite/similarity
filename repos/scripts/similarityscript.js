@@ -6,6 +6,8 @@ let similarity = {};
 
     ceres.onloadPrimary = function() { ceres.markupindex = getQueryString(); }; // public method reference
     ceres.onloadFrame = function(md) { initiateSimilarity(ceres.markdownindex = md); };  // public method reference
+    ceres.loadFrame = function(mu) { getMarkupDocument(mu); };  // public method reference
+    ceres.resetPinState = function(mu) { resetPinState(); };  // public method reference
 
 class component
 {
