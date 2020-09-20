@@ -16,6 +16,7 @@ let similarity = {};
         constructor()
         {
             this.type = function() { return type; },
+            this.object = function() { return object; }
             this.attribute = function() { return attribute; }
         }
 
@@ -29,9 +30,9 @@ let similarity = {};
         resource.type.content = 2;
         resource.type.element = 3;
 
-        resource.content.attribute.markdown = [];
-        resource.element.attribute.markupId = 'index-mu';
-        resource.element.attribute.markdownId = null;
+        resource.object.markdown = [];
+        resource.attribute.markupId = 'index-mu';
+        resource.attribute.markdownId = null;
     }
 
     let current = { markupId: 'index', markdownId: null };
