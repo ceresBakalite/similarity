@@ -11,15 +11,39 @@ let similarity = {};
 
     });
 
-    let current = { markupId: 'index', markdownId: null };
-    let content = ['slide', 'index', 'shell', 'repos'];
+    class component
+    {
+        constructor()
+        {
+            this.type = function() { return type; },
+            this.attribute = function() { return attribute; }
+        }
 
-    Object.freeze(content);
+    }
+
+    let resource = new component();
+
+    function setResourcePrecursors()
+    {
+        resource.type.current = 1;
+        resource.type.content = 2;
+        resource.type.element = 3;
+
+        resource.attribute.pagenames = ['slide', 'index', 'shell', 'repos'];
+        resource.attribute.markupId = 'index-mu';
+        resource.attribute.markdownId = null;
+    }
+
+    Object.freeze(resource.attribute.pagenames);
+
+    let current = { markupId: 'index', markdownId: null };
+
+    setResourcePrecursors();
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
-    ceres.onloadFrame = function(md) { onloadFrame(md); };  // public method reference
-    ceres.getMarkupDocument = function(mu, el) { getMarkupDocument(mu, el.getAttribute('id')); };  // public method reference
-    ceres.resetPinState = function() { resetPinState(); };  // public method reference
+    ceres.onloadFrame = function(md) { onloadFrame(md + '-md'); };  // public method reference
+    ceres.getMarkupDocument = function(mu, el) { getMarkupDocument(mu + '-mu', el.getAttribute('id')); };  // public method reference
+    ceres.resetPinState = function(el) { resetPinState(el.getAttribute('id')); };  // public method reference
 
     function getQueryString()
     {
@@ -140,9 +164,9 @@ let similarity = {};
 
     }
 
-    function resetPinState()
+    function resetPinState(el)
     {
-        let el = document.getElementById('pin-navbar');
+        //let el = document.getElementById(el.getAttributeById('id'));
 
         if (el.getAttribute('state') == 'enabled')
         {
