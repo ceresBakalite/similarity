@@ -15,6 +15,7 @@ let similarity = {};
     {
         constructor()
         {
+            this.type = function() { return type; }
             this.object = function() { return object; }
             this.attribute = function() { return attribute; }
         }
@@ -92,17 +93,7 @@ let similarity = {};
         if (isValidSource())
         {
             invokeScrollEventListener();
-            getMarkdownElements();
-
-            const initialise = {
-                'index': function() { asyncPullMarkdownRequest('index-md'); },
-                'shell': function() { asyncPullMarkdownRequest('shell-md'); },
-                'slide': function() { asyncPullMarkdownRequest('slide-md'); },
-                'repos': function() { asyncPullMarkdownRequest('repos-md'); },
-                'default': function() { asyncPullMarkdownRequest('index-md'); }
-            };
-
-            initialise[markupId]() || initialise['default']();
+            asyncPullMarkdownRequest();
         }
 
         function isValidSource()
@@ -124,7 +115,7 @@ let similarity = {};
             setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
-        function asyncPullMarkdownRequest(markdownId)
+        function asyncPullMarkdownRequest()
         {
             displayFooter();
 
@@ -132,8 +123,8 @@ let similarity = {};
 
             function refreshMarkdown()
             {
-                let el = (document.getElementById(markdownId)) ? document.getElementById(markdownId) : document.getElementsByTagName('zero-md')[0];
-                if (el) el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
+                const nodelist = document.querySelectorAll('zero-md');
+                nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); } );
             }
 
         }
