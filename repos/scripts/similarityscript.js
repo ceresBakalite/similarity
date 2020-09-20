@@ -29,12 +29,10 @@ let similarity = {};
         resource.type.content = 2;
         resource.type.element = 3;
 
-        resource.attribute.pagenames = ['slide', 'index', 'shell', 'repos'];
-        resource.attribute.markupId = 'index-mu';
-        resource.attribute.markdownId = null;
+        resource.content.attribute.markdown = [];
+        resource.element.attribute.markupId = 'index-mu';
+        resource.element.attribute.markdownId = null;
     }
-
-    Object.freeze(resource.attribute.pagenames);
 
     let current = { markupId: 'index', markdownId: null };
 
