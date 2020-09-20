@@ -11,6 +11,11 @@ let similarity = {};
 
     });
 
+    ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
+    ceres.onloadFrame = function(id) { onloadFrame(id); };  // public method reference
+    ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
+    ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
+
     class component
     {
         constructor()
@@ -23,27 +28,7 @@ let similarity = {};
 
     let resource = new component();
 
-    function setResourcePrecursors()
-    {
-        resource.attribute.markupId = 'index';
-        resource.object.markupUrl = getLocationMap();
-    }
-
     setResourcePrecursors();
-
-    function getLocationMap()
-    {
-        let location = new Map()
-        location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
-        location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
-        location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
-        location.set('repos', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
-    }
-
-    ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
-    ceres.onloadFrame = function(id) { onloadFrame(id); };  // public method reference
-    ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
-    ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
     function getQueryString()
     {
@@ -124,6 +109,21 @@ let similarity = {};
 
         }
 
+    }
+
+    function setResourcePrecursors()
+    {
+        resource.attribute.markupId = 'index';
+        resource.object.markupUrl = getLocationMap();
+    }
+
+    function getLocationMap()
+    {
+        let location = new Map()
+        location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
+        location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
+        location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
+        location.set('repos', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
     }
 
     function adjustHeaderDisplay()
