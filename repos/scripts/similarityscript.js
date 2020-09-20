@@ -74,7 +74,7 @@ let similarity = {};
             el.setAttribute('state', 'disabled');
 
             let header = document.getElementById('site-header-display');
-            if (header.style.display != 'none') setTimeout(function() { header.style.display = 'none'; }, 250);
+            if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
 
         } else {
 
