@@ -41,8 +41,8 @@ let similarity = {};
     setResourcePrecursors();
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
-    ceres.onloadFrame = function(pagename) { onloadFrame(pagename + '-mu'); };  // public method reference
-    ceres.getMarkupDocument = function(pagename, el) { getMarkupDocument(pagename + '-mu', el); };  // public method reference
+    ceres.onloadFrame = function(pagename) { onloadFrame(pagename); };  // public method reference
+    ceres.getMarkupDocument = function(pagename, el) { getMarkupDocument(pagename, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
     function getQueryString()
@@ -66,10 +66,10 @@ let similarity = {};
         function getMarkupLocation()
         {
             const lookup = {
-                'index-mu': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
-                'shell-mu': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
-                'slide-mu': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
-                'repos-mu': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html',
+                'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
+                'shell': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
+                'slide': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
+                'repos': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html',
                 'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
             };
 
@@ -85,17 +85,15 @@ let similarity = {};
 
     function onloadFrame(markupId)
     {
-        // document.getElementsByTagName("BODY")[0].id;
-
         if (isValidSource())
         {
             invokeScrollEventListener();
 
             const initialise = {
-                'index-mu': function() { asyncPullMarkdownRequest('index-md'); },
-                'shell-mu': function() { asyncPullMarkdownRequest('shell-md'); },
-                'slide-mu': function() { asyncPullMarkdownRequest('slide-md'); },
-                'repos-mu': function() { asyncPullMarkdownRequest('repos-md'); },
+                'index': function() { asyncPullMarkdownRequest('index-md'); },
+                'shell': function() { asyncPullMarkdownRequest('shell-md'); },
+                'slide': function() { asyncPullMarkdownRequest('slide-md'); },
+                'repos': function() { asyncPullMarkdownRequest('repos-md'); },
                 'default': function() { asyncPullMarkdownRequest('index-md'); }
             };
 
