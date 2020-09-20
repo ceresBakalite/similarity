@@ -123,4 +123,4 @@ let similarityframe = {};
         return null;
     }
 
-})(frame);
+})(similarityframe);
