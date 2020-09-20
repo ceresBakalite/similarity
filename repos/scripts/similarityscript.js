@@ -53,7 +53,6 @@ let similarity = {};
 
     function onloadPrimary()
     {
-        invokeScrollEventListener();
         getQueryString();
     }
 
@@ -66,33 +65,6 @@ let similarity = {};
 
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
-    }
-
-    function adjustHeaderDisplay()
-    {
-        let el = window.top.document.getElementById('site-header-display');
-        let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
-        let trigger = 25;
-
-        if (pin == 'disabled')
-        {
-            if (el.style.display && window.scrollY > trigger)
-            {
-                if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
-
-            } else {
-
-                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
-
-            }
-
-        }
-
-        function setStyleDisplay(attribute)
-        {
-            el.style.display = attribute;
-        }
-
     }
 
     function resetPinState(el)
@@ -116,6 +88,7 @@ let similarity = {};
     {
         if (isValidSource())
         {
+            invokeScrollEventListener();
             asyncPullMarkdownRequest();
         }
 
@@ -150,6 +123,33 @@ let similarity = {};
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); } );
             }
 
+        }
+
+    }
+
+    function adjustHeaderDisplay()
+    {
+        let el = window.top.document.getElementById('site-header-display');
+        let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
+        let trigger = 25;
+
+        if (pin == 'disabled')
+        {
+            if (el.style.display && window.scrollY > trigger)
+            {
+                if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
+
+            } else {
+
+                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
+
+            }
+
+        }
+
+        function setStyleDisplay(attribute)
+        {
+            el.style.display = attribute;
         }
 
     }
