@@ -73,7 +73,7 @@ let similarity = {};
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
             el.setAttribute('state', 'disabled');
 
-            document.getElementById('frame-container').frame.adjustHeaderDisplay();
+            document.getElementById('frame-container').adjustHeaderDisplay();
 
         } else {
 
