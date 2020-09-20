@@ -73,9 +73,13 @@ let similarity = {};
     function getMarkdownElements()
     {
         resource.object.markdown = [];
-        
+
         const nodelist = document.querySelectorAll('zero-md');
-        nodelist.forEach(node => { resource.object.markdown.push(node); } );
+        //nodelist.forEach(node => { resource.object.markdown.push(node); } );
+        
+        nodelist.forEach(node => { console.log(node.id); } );
+
+
     }
 
     function onloadPrimary()
