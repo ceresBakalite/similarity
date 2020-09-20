@@ -42,7 +42,7 @@ let similarity = {};
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
     ceres.onloadFrame = function(pagename) { onloadFrame(pagename + '-mu'); };  // public method reference
-    ceres.getMarkupDocument = function(pagename, el) { getMarkupDocument(pagename + '-mu', el.getAttribute('id')); };  // public method reference
+    ceres.getMarkupDocument = function(pagename, el) { getMarkupDocument(pagename + '-mu', el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
     function getQueryString()
@@ -53,7 +53,7 @@ let similarity = {};
         if (markupId) getMarkupDocument(markupId);
     }
 
-    function getMarkupDocument(markupId, buttonId)
+    function getMarkupDocument(markupId, buttonElement)
     {
         if (current.markupId != markupId)
         {
@@ -61,7 +61,7 @@ let similarity = {};
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
-        if (buttonId) document.getElementById(buttonId).blur();
+        if (buttonElement) buttonElement.blur();
 
         function getMarkupLocation()
         {
