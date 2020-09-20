@@ -43,28 +43,12 @@ let similarity = {};
         if (resource.attribute.markupId != markupId)
         {
             resource.attribute.markupId = markupId;
-            document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
+            resource.attribute.markupUrl = (location.has(resource.attribute.markupId)) ? location.get(resource.attribute.markupId) : location.get('index');
+
+            document.getElementById('frame-container').setAttribute('src', resource.attribute.markupUrl);
         }
 
         if (buttonElement) buttonElement.blur();
-
-        resource.attribute.markupUrl = (location.has(resource.attribute.markupId)) ? location.get(resource.attribute.markupId) : location.get('index');
-
-        console.log('resource: ' + resource.attribute.markupUrl);
-
-        function getMarkupLocation()
-        {
-            const lookup = {
-                'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
-                'shell': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
-                'slide': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
-                'repos': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html',
-                'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
-            };
-
-            return lookup[resource.attribute.markupId] || lookup['default'];
-        }
-
     }
 
     function onloadPrimary()
