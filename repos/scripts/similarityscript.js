@@ -21,7 +21,7 @@ let similarity = {};
         constructor()
         {
             this.attribute = function() { return attribute; }
-            this.object = function() { return object; }
+            this.object = function(x) { return object; }
         }
 
     }
