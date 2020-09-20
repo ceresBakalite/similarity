@@ -29,7 +29,7 @@ let similarity = {};
         if (markupId) getMarkupDocument(markupId);
     }
 
-    function getMarkupDocument(markupId, id)
+    function getMarkupDocument(markupId, buttonId)
     {
         if (current.markupId != markupId)
         {
@@ -37,15 +37,15 @@ let similarity = {};
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
-        if (id) document.getElementById(id).blur();
+        if (buttonId) document.getElementById(buttonId).blur();
 
         function getMarkupLocation()
         {
             const lookup = {
-                'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
-                'shell': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
-                'slide': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
-                'repos': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html',
+                'index-mu': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
+                'shell-mu': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
+                'slide-mu': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
+                'repos-mu': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html',
                 'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
             };
 
@@ -61,15 +61,17 @@ let similarity = {};
 
     function onloadFrame(markupId)
     {
+        // document.getElementsByTagName("BODY")[0].id;
+
         if (isValidSource())
         {
             invokeScrollEventListener();
 
             const initialise = {
-                'index': function() { asyncPullMarkdownRequest('index-md'); },
-                'shell': function() { asyncPullMarkdownRequest('shell-md'); },
-                'slide': function() { asyncPullMarkdownRequest('slide-md'); },
-                'repos': function() { asyncPullMarkdownRequest('repos-md'); },
+                'index-mu': function() { asyncPullMarkdownRequest('index-md'); },
+                'shell-mu': function() { asyncPullMarkdownRequest('shell-md'); },
+                'slide-mu': function() { asyncPullMarkdownRequest('slide-md'); },
+                'repos-mu': function() { asyncPullMarkdownRequest('repos-md'); },
                 'default': function() { asyncPullMarkdownRequest('index-md'); }
             };
 
