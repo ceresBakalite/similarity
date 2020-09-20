@@ -21,7 +21,7 @@ let similarity = {};
         constructor()
         {
             this.attribute = function() { return attribute; }
-            this.object = function(x) { return object; }
+            this.object = function() { return object; }
         }
 
     }
@@ -29,6 +29,13 @@ let similarity = {};
     let resource = new component();
 
     setResourcePrecursors();
+
+    const location = new Map()
+
+    location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
+    location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
+    location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
+    location.set('repos', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
 
     function getQueryString()
     {
@@ -50,7 +57,7 @@ let similarity = {};
 
         function getMarkupLocation()
         {
-            console.log('index: ' + resource.object.markupUrl.get('index'));
+            console.log('index: ' + location.get('slide'));
 
             const lookup = {
                 'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
@@ -117,18 +124,6 @@ let similarity = {};
     {
         resource.attribute.markupId = 'index';
         resource.object.markupUrl = getLocationMap();
-    }
-
-    function getLocationMap()
-    {
-        const location = new Map()
-
-        location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
-        location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
-        location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
-        location.set('repos', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
-
-        return location;
     }
 
     function adjustHeaderDisplay()
