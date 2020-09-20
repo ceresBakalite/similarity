@@ -31,7 +31,7 @@ let similarity = {};
         resource.type.element = 3;
 
         resource.object.markdown = [];
-        resource.attribute.markupId = 'index-mu';
+        resource.attribute.markupId = 'index';
         resource.attribute.markdownId = null;
     }
 
@@ -54,9 +54,9 @@ let similarity = {};
 
     function getMarkupDocument(markupId, buttonElement)
     {
-        if (current.markupId != markupId)
+        if (resource.attribute.markupId != markupId)
         {
-            current.markupId = markupId;
+            resource.attribute.markupId = markupId;
             document.getElementById('frame-container').setAttribute('src', getMarkupLocation());
         }
 
@@ -72,7 +72,7 @@ let similarity = {};
                 'default': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html'
             };
 
-            return lookup[current.markupId] || lookup['default'];
+            return lookup[resource.attribute.markupId] || lookup['default'];
         }
 
     }
