@@ -1,4 +1,4 @@
-let frame = {};
+if (!frame) let frame = {};
 (function(ceres)
 {
     window.customElements.define('include-directive', class extends HTMLElement

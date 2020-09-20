@@ -1,4 +1,4 @@
-let ceres = {};
+if (!ceres) let ceres = {};
 (function(slideview)
 {
     'use strict';
