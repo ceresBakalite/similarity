@@ -50,7 +50,8 @@ let similarity = {};
 
         //resource.attribute.markupUrl = (location.has(resource.attribute.markupId)) ? location.get(resource.attribute.markupId) : location.get('index');
 
-        console.log('location: ' + resource.attribute.markupUrl);
+        console.log('resource: ' + resource.attribute.markupUrl);
+        console.log('location: ' + location.get(resource.attribute.markupId);
 
         function getMarkupLocation()
         {
@@ -117,10 +118,10 @@ let similarity = {};
 
     function setResourcePrecursors()
     {
-        location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
-        location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
-        location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
-        location.set('repos', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
+        location.set('index', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
+        location.set('shell', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
+        location.set('slide', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
+        location.set('repos', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
 
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
