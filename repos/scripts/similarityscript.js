@@ -16,8 +16,6 @@ let similarity = {};
     ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
-    const location = new Map()
-
     class component
     {
         constructor()
@@ -28,6 +26,7 @@ let similarity = {};
     }
 
     let resource = new component();
+    let location = new Map()
 
     setResourcePrecursors();
 
