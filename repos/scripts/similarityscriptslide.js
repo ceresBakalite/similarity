@@ -244,7 +244,7 @@ let ceres = {};
 
         function getSubtitle()
         {
-            return (csv.attribute.sub) ? getAccessibilityText() + '&nbsp' : null;
+            return (csv.attribute.sub) ? getAccessibilityText() + '&nbsp&nbsp&nbsp' : null;
         }
 
         function getAccessibilityText()
