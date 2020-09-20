@@ -72,7 +72,7 @@ let similarity = {};
         {
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
             el.setAttribute('state', 'disabled');
-            adjustHeaderDisplay();
+            frame.adjustHeaderDisplay();
 
         } else {
 

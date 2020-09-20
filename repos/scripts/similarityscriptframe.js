@@ -12,6 +12,7 @@ let frame = {};
     });
 
     ceres.onloadFrame = function(id) { onloadFrame(id); };  // public method reference
+    ceres.adjustHeaderDisplay = function() { adjustHeaderDisplay()(); }; // public method reference
 
     function onloadFrame(markupId)
     {
