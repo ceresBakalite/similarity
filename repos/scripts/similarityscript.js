@@ -123,6 +123,8 @@ let similarity = {};
         location.set('slide', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' } )
         location.set('repos', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' } )
 
+alert(location.get('slide'));
+
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
     }
