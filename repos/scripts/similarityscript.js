@@ -15,7 +15,6 @@ let similarity = {};
     {
         constructor()
         {
-            this.type = function() { return type; },
             this.object = function() { return object; }
             this.attribute = function() { return attribute; }
         }
@@ -26,16 +25,10 @@ let similarity = {};
 
     function setResourcePrecursors()
     {
-        resource.type.current = 1;
-        resource.type.content = 2;
-        resource.type.element = 3;
-
         resource.object.markdown = [];
         resource.attribute.markupId = 'index';
         resource.attribute.markdownId = null;
     }
-
-    let current = { markupId: 'index', markdownId: null };
 
     setResourcePrecursors();
 
@@ -77,6 +70,14 @@ let similarity = {};
 
     }
 
+    function getMarkdownElements()
+    {
+        resource.object.markdown = [];
+        
+        const nodelist = document.querySelectorAll('zero-md');
+        nodelist.forEach(node => { resource.object.markdown.push(node); } );
+    }
+
     function onloadPrimary()
     {
         getQueryString();
@@ -87,6 +88,7 @@ let similarity = {};
         if (isValidSource())
         {
             invokeScrollEventListener();
+            getMarkdownElements();
 
             const initialise = {
                 'index': function() { asyncPullMarkdownRequest('index-md'); },
