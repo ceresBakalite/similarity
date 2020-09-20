@@ -51,7 +51,7 @@ let similarity = {};
         //resource.attribute.markupUrl = (location.has(resource.attribute.markupId)) ? location.get(resource.attribute.markupId) : location.get('index');
 
         console.log('resource: ' + resource.attribute.markupUrl);
-        console.log('location: ' + location.get(resource.attribute.markupId);
+        console.log('location: ' + location.get(resource.attribute.markupId));
 
         function getMarkupLocation()
         {
