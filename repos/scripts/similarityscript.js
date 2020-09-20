@@ -41,8 +41,8 @@ let similarity = {};
     setResourcePrecursors();
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
-    ceres.onloadFrame = function(pagename) { onloadFrame(pagename); };  // public method reference
-    ceres.getMarkupDocument = function(pagename, el) { getMarkupDocument(pagename, el); };  // public method reference
+    ceres.onloadFrame = function(id) { onloadFrame(id); };  // public method reference
+    ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
     function getQueryString()
