@@ -118,10 +118,10 @@ let similarity = {};
 
     function setResourcePrecursors()
     {
-        location.set('index', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' } )
-        location.set('shell', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' } )
-        location.set('slide', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' } )
-        location.set('repos', { url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' } )
+        location.set('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
+        location.set('shell', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html');
+        location.set('slide', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html');
+        location.set('repos', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html');
 
         alert(location.get('slide'));
 
