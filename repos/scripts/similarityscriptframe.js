@@ -1,4 +1,4 @@
-let frame = {};
+let similarityframe = {};
 (function(ceres)
 {
     window.customElements.define('include-directive', class extends HTMLElement
@@ -11,7 +11,7 @@ let frame = {};
 
     });
 
-    ceres.onloadFrame = function(id) { onloadFrame(id); };  // public method reference
+    ceres.onload = function(id) { onloadFrame(id); };  // public method reference
 
     function onloadFrame(markupId)
     {
