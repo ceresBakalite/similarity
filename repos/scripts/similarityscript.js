@@ -15,9 +15,8 @@ let similarity = {};
     {
         constructor()
         {
-            this.type = function() { return type; }
-            this.object = function() { return object; }
             this.attribute = function() { return attribute; }
+            this.object = function() { return object; }
         }
 
     }
@@ -26,12 +25,20 @@ let similarity = {};
 
     function setResourcePrecursors()
     {
-        resource.object.markdown = [];
         resource.attribute.markupId = 'index';
-        resource.attribute.markdownId = null;
+        resource.object.markupUrl = getLocationMap();
     }
 
     setResourcePrecursors();
+
+    function getLocationMap()
+    {
+        let location = new Map()
+        location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
+        location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
+        location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
+        location.set('repos', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
+    }
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
     ceres.onloadFrame = function(id) { onloadFrame(id); };  // public method reference
@@ -68,18 +75,6 @@ let similarity = {};
 
             return lookup[resource.attribute.markupId] || lookup['default'];
         }
-
-    }
-
-    function getMarkdownElements()
-    {
-        resource.object.markdown = [];
-
-        const nodelist = document.querySelectorAll('zero-md');
-        //nodelist.forEach(node => { resource.object.markdown.push(node); } );
-
-        nodelist.forEach(node => { console.log(node.src); } );
-
 
     }
 
