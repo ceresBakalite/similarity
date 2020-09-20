@@ -76,8 +76,8 @@ let similarity = {};
 
         const nodelist = document.querySelectorAll('zero-md');
         //nodelist.forEach(node => { resource.object.markdown.push(node); } );
-        
-        nodelist.forEach(node => { console.log(node.id); } );
+
+        nodelist.forEach(node => { console.log(node.src); } );
 
 
     }
