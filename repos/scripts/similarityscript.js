@@ -50,6 +50,8 @@ let similarity = {};
 
         function getMarkupLocation()
         {
+            console.log('index: ' + resource.object.markupUrl.get('index'));
+
             const lookup = {
                 'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
                 'shell': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
@@ -119,7 +121,8 @@ let similarity = {};
 
     function getLocationMap()
     {
-        let location = new Map()
+        const location = new Map()
+
         location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
         location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
         location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
