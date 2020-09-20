@@ -53,50 +53,8 @@ let similarity = {};
 
     function onloadPrimary()
     {
+        invokeScrollEventListener();
         getQueryString();
-    }
-
-    function onloadFrame(markupId)
-    {
-        if (isValidSource())
-        {
-            invokeScrollEventListener();
-            asyncPullMarkdownRequest();
-        }
-
-        function isValidSource()
-        {
-            if (window.top.document.getElementById('ceresbakalite')) return true;
-
-            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + markupId;
-
-            return false;
-        }
-
-        function invokeScrollEventListener()
-        {
-            window.onscroll = function() { adjustHeaderDisplay(); };
-        }
-
-        function displayFooter()
-        {
-            setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
-        }
-
-        function asyncPullMarkdownRequest()
-        {
-            displayFooter();
-
-            setTimeout(function() { refreshMarkdown(); }, 4000);
-
-            function refreshMarkdown()
-            {
-                const nodelist = document.querySelectorAll('zero-md');
-                nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); } );
-            }
-
-        }
-
     }
 
     function setResourcePrecursors()
@@ -149,6 +107,48 @@ let similarity = {};
 
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
             el.setAttribute('state', 'enabled');
+
+        }
+
+    }
+
+    function onloadFrame(markupId)
+    {
+        if (isValidSource())
+        {
+            asyncPullMarkdownRequest();
+        }
+
+        function isValidSource()
+        {
+            if (window.top.document.getElementById('ceresbakalite')) return true;
+
+            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + markupId;
+
+            return false;
+        }
+
+        function invokeScrollEventListener()
+        {
+            window.onscroll = function() { adjustHeaderDisplay(); };
+        }
+
+        function displayFooter()
+        {
+            setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
+        }
+
+        function asyncPullMarkdownRequest()
+        {
+            displayFooter();
+
+            setTimeout(function() { refreshMarkdown(); }, 4000);
+
+            function refreshMarkdown()
+            {
+                const nodelist = document.querySelectorAll('zero-md');
+                nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); } );
+            }
 
         }
 
