@@ -41,8 +41,8 @@ let similarity = {};
     setResourcePrecursors();
 
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
-    ceres.onloadFrame = function(mu) { onloadFrame(mu + '-mu'); };  // public method reference
-    ceres.getMarkupDocument = function(mu, el) { getMarkupDocument(mu + '-mu', el.getAttribute('id')); };  // public method reference
+    ceres.onloadFrame = function(pagename) { onloadFrame(pagename + '-mu'); };  // public method reference
+    ceres.getMarkupDocument = function(pagename, el) { getMarkupDocument(pagename + '-mu', el.getAttribute('id')); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el.getAttribute('id')); };  // public method reference
 
     function getQueryString()
