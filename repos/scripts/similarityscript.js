@@ -16,6 +16,8 @@ let similarity = {};
     ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
+    const location = new Map()
+
     class component
     {
         constructor()
@@ -28,13 +30,6 @@ let similarity = {};
     let resource = new component();
 
     setResourcePrecursors();
-
-    const location = new Map()
-
-    location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
-    location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
-    location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
-    location.set('repos', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
 
     function getQueryString()
     {
@@ -54,12 +49,12 @@ let similarity = {};
 
         if (buttonElement) buttonElement.blur();
 
+        resource.attribute.markupUrl = (location.has(resource.attribute.markupId)) ? location.get(resource.attribute.markupId) : location.get('index');
+
+        console.log('location: ' + resource.attribute.markupUrl);
+
         function getMarkupLocation()
         {
-            resource.attribute.markupUrl = (location.has(markupId)) ? location.get(markupId) : location.get('index');
-
-            console.log('location: ' + resource.attribute.markupUrl);
-
             const lookup = {
                 'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
                 'shell': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html',
@@ -123,8 +118,13 @@ let similarity = {};
 
     function setResourcePrecursors()
     {
+        location.set('index', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html' });
+        location.set('shell', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html' });
+        location.set('slide', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html' });
+        location.set('repos', {url: 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html' });
+
         resource.attribute.markupId = 'index';
-        resource.object.markupUrl = getLocationMap();
+        resource.attribute.markupUrl = location.get(resource.attribute.markupId);
     }
 
     function adjustHeaderDisplay()
@@ -156,8 +156,6 @@ let similarity = {};
 
     function resetPinState(el)
     {
-        //let el = document.getElementById(el.getAttributeById('id'));
-
         if (el.getAttribute('state') == 'enabled')
         {
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
