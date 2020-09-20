@@ -48,10 +48,9 @@ let similarity = {};
 
         if (buttonElement) buttonElement.blur();
 
-        //resource.attribute.markupUrl = (location.has(resource.attribute.markupId)) ? location.get(resource.attribute.markupId) : location.get('index');
+        resource.attribute.markupUrl = (location.has(resource.attribute.markupId)) ? location.get(resource.attribute.markupId) : location.get('index');
 
         console.log('resource: ' + resource.attribute.markupUrl);
-        console.log('location: ' + location.has(resource.attribute.markupId) + ' - ' + location.get(resource.attribute.markupId).toString());
 
         function getMarkupLocation()
         {
