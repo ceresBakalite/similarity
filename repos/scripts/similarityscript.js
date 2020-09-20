@@ -21,7 +21,6 @@ let similarity = {};
         constructor()
         {
             this.attribute = function() { return attribute; }
-            this.object = function() { return object; }
         }
 
     }
@@ -57,7 +56,9 @@ let similarity = {};
 
         function getMarkupLocation()
         {
-            console.log('index: ' + location.get('slide'));
+            resource.attribute.markupUrl = (location.has(markupId)) ? location.get(markupId) : location.get('index');
+
+            console.log('location: ' + resource.attribute.markupUrl);
 
             const lookup = {
                 'index': 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
