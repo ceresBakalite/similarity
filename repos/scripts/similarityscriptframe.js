@@ -43,14 +43,9 @@ let similarityframe = {};
         function setOpenHrefOnTop()
         {
 
-            console.log('zero-md: ' + document.getElementById('zero-md') ? true : false);
+            let shadow = (document.querySelector('#shadow-root')) ? document.querySelector('#shadow-root') : null;
+            if (shadow) consol.log('shadow.mode: ' + shadow.mode);
 
-            if (document.querySelector('#shadow-root'))
-            {
-                let shadow = document.querySelector('#shadow-root');
-
-                if (shadow.mode) consol.log('shadow.mode: ' + shadow.mode);
-            }
             /*
 
             console.log('markdown-body: ' + getElementsByClassName('markdown-body')[0] ? true : false);
