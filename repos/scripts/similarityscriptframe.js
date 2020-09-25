@@ -44,6 +44,9 @@ let similarityframe = {};
         {
 
             console.log('zero-md: ' + document.getElementById('zero-md') ? true : false);
+
+            /*
+
             console.log('markdown-body: ' + getElementsByClassName('markdown-body')[0] ? true : false);
             console.log('div.markdown-body: ' + div.getElementsByClassName('markdown-body') ? true : false);
 
@@ -52,6 +55,7 @@ let similarityframe = {};
                 console.log('hello from me: ');
             });
 
+            */
         }
 
         function asyncPullMarkdownRequest()
