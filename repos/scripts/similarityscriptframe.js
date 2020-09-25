@@ -60,7 +60,7 @@ let similarityframe = {};
             {
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
-                setOpenHrefOnTop()
+                setOpenHrefOnTop();
             }
 
         }
