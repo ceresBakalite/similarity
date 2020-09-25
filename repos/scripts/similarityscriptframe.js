@@ -42,22 +42,25 @@ let similarityframe = {};
 
         function setOpenHrefOnTop()
         {
-            console.log('hello from me');
+            const nodelist = document.querySelectorAll('zero-md');
+            nodelist.forEach(el => {
+                console.log('hello from me');
+            });
+
         }
 
         function asyncPullMarkdownRequest()
         {
             displayFooter();
+            setOpenHrefOnTop();
 
             setTimeout(function() { refreshMarkdown(); }, 4000);
 
             function refreshMarkdown()
             {
                 const nodelist = document.querySelectorAll('zero-md');
-                nodelist.forEach(el => {
-                    el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
-                    el.onload = 'setOpenHrefOnTop();'
-                });
+                nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
+                setOpenHrefOnTop()
             }
 
         }
