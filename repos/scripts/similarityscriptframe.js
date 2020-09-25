@@ -43,11 +43,11 @@ let similarityframe = {};
         function setOpenHrefOnTop()
         {
 
-            let shadow = (document.querySelector('#shadow-root')) ? document.querySelector('#shadow-root') : null;
+            let shadow = (document.querySelector('#shadow-root (open)')) ? document.querySelector('#shadow-root (open)') : null;
 
             console.log(document.getElementById('index-md').shadowRoot);
-            
-            if (document.querySelector('#shadow-root').shadowRoot === root) {
+
+            if (document.querySelector('#shadow-root (open)').shadowRoot === root) {
                 console.log('shadowroot found');
             }
 
