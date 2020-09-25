@@ -40,8 +40,6 @@ let ceres = {};
     {
         constructor()
         {
-            super();
-
             this.progenitor = null;
             this.imageArray = null,
             this.imageContainer = null,
