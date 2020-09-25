@@ -40,6 +40,11 @@ let similarityframe = {};
             setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
+        function setOpenHrefOnTop()
+        {
+            alert('hello from me');
+        }
+
         function asyncPullMarkdownRequest()
         {
             displayFooter();
@@ -49,7 +54,10 @@ let similarityframe = {};
             function refreshMarkdown()
             {
                 const nodelist = document.querySelectorAll('zero-md');
-                nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); } );
+                nodelist.forEach(el => {
+                    el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
+                    el.onload = 'setOpenHrefOnTop();'
+                });
             }
 
         }
