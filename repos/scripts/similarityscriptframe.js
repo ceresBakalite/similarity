@@ -44,7 +44,7 @@ let similarityframe = {};
         {
             const nodelist = document.querySelectorAll('zero-md a');
             nodelist.forEach(el => {
-                console.log('hello from me: ' + el.href);
+                console.log('hello from me: ');
             });
 
         }
