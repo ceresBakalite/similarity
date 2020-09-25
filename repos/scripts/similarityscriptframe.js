@@ -42,16 +42,12 @@ let similarityframe = {};
 
         function setOpenHrefOnTop()
         {
-
-            let shadow = (document.querySelector('#shadow-root (open)')) ? document.querySelector('#shadow-root (open)') : null;
+            var el = document.querySelector(document.getElementById('index-md').shadowRoot);
+            //let shadow = (document.getElementById('index-md').shadowRoot) ? document.getElementById('index-md').shadowRoot : null;
 
             console.log(document.getElementById('index-md').shadowRoot);
 
-            if (document.querySelector('#shadow-root (open)').shadowRoot === root) {
-                console.log('shadowroot found');
-            }
-
-            if (shadow) console.log('shadow.mode: ' + shadow.mode);
+            if (el) console.log('shadow.mode: ' + el.mode);
 
             /*
 
