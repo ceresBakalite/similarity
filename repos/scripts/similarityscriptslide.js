@@ -28,8 +28,6 @@ let ceres = {};
     {
         constructor()
         {
-            super();
-
             this.type = function() { return type; },
             this.attribute = function() { return attribute; }
         }
