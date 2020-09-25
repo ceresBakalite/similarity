@@ -45,6 +45,12 @@ let similarityframe = {};
 
             console.log('zero-md: ' + document.getElementById('zero-md') ? true : false);
 
+            if (document.querySelector('#shadow-root'))
+            {
+                let shadow = document.querySelector('#shadow-root');
+
+                if (shadow.mode) consol.log('shadow.mode: ' + shadow.mode);
+            }
             /*
 
             console.log('markdown-body: ' + getElementsByClassName('markdown-body')[0] ? true : false);
