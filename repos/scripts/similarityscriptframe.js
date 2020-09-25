@@ -52,7 +52,8 @@ let similarityframe = {};
         function asyncPullMarkdownRequest()
         {
             displayFooter();
-            setOpenHrefOnTop();
+            setTimeout(function() { setOpenHrefOnTop(); }, 1000);
+
 
             setTimeout(function() { refreshMarkdown(); }, 4000);
 
@@ -60,7 +61,7 @@ let similarityframe = {};
             {
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
-                setOpenHrefOnTop();
+                setTimeout(function() { setOpenHrefOnTop(); }, 1000);
             }
 
         }
