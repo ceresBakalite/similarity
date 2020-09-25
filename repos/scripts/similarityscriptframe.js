@@ -44,6 +44,13 @@ let similarityframe = {};
         {
 
             let shadow = (document.querySelector('#shadow-root')) ? document.querySelector('#shadow-root') : null;
+
+            console.log(document.getElementById('index-md').shadowRoot);
+            
+            if (document.querySelector('#shadow-root').shadowRoot === root) {
+                console.log('shadowroot found');
+            }
+
             if (shadow) console.log('shadow.mode: ' + shadow.mode);
 
             /*
