@@ -42,7 +42,7 @@ let similarityframe = {};
 
         function setOpenHrefOnTop()
         {
-            alert('hello from me');
+            console.log('hello from me');
         }
 
         function asyncPullMarkdownRequest()
