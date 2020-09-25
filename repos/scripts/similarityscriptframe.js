@@ -42,7 +42,7 @@ let similarityframe = {};
 
         function setOpenHrefOnTop()
         {
-            const nodelist = document.querySelectorAll('zero-md a');
+            const nodelist = document.querySelectorAll('markdown-body a');
             nodelist.forEach(el => {
                 console.log('hello from me: ');
             });
