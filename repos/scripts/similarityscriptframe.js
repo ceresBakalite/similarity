@@ -43,9 +43,9 @@ let similarityframe = {};
         function setOpenHrefOnTop()
         {
 
-            console.log('zero-md: ' + document.getElementById('zero-md') ? true : false;
-            console.log('markdown-body: ' + getElementsByClassName('markdown-body')[0] ? true : false;
-            console.log('div.markdown-body: ' + div.getElementsByClassName('markdown-body') ? true : false;
+            console.log('zero-md: ' + document.getElementById('zero-md') ? true : false);
+            console.log('markdown-body: ' + getElementsByClassName('markdown-body')[0] ? true : false);
+            console.log('div.markdown-body: ' + div.getElementsByClassName('markdown-body') ? true : false);
 
             const nodelist = document.querySelectorAll('div.markdown-body a');
             nodelist.forEach(el => {
