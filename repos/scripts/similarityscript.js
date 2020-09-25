@@ -15,17 +15,18 @@ let similarity = {};
     ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
-    class component
+    class Component
     {
         constructor()
         {
+            super();
             this.attribute = function() { return attribute; }
         }
 
     }
 
-    let resource = new component();
-    let location = new Map()
+    let resource = new Component();
+    let location = new Map();
 
     setResourcePrecursors();
 

@@ -24,7 +24,7 @@ let ceres = {};
 
     })
 
-    class component
+    class Component
     {
         constructor()
         {
@@ -36,9 +36,9 @@ let ceres = {};
 
     }
 
-    let resource = new component();
+    let resource = new Component();
 
-    class slideviewer
+    class Slideviewer
     {
         constructor()
         {
@@ -57,7 +57,7 @@ let ceres = {};
 
     }
 
-    let csv = new slideviewer();
+    let csv = new Slideviewer();
 
     function initiateSlideView()
     {
