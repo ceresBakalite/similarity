@@ -19,7 +19,6 @@ let similarity = {};
     {
         constructor()
         {
-            super();
             this.attribute = function() { return attribute; }
         }
 
