@@ -28,6 +28,8 @@ let ceres = {};
     {
         constructor()
         {
+            super();
+
             this.type = function() { return type; },
             this.attribute = function() { return attribute; }
         }
@@ -40,6 +42,8 @@ let ceres = {};
     {
         constructor()
         {
+            super();
+
             this.progenitor = null;
             this.imageArray = null,
             this.imageContainer = null,
