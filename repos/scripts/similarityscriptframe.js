@@ -45,24 +45,18 @@ let similarityframe = {};
             if (document.getElementById('index-md').shadowRoot)
             {
 
-                document.querySelectorAll('zero-md')
-                .filter(node => node.shadowRoot)
-                .forEach(node => {
-                    console.log('shadow.mode: ' + node.mode);
-                });
-
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(node => {
 
                     let shadow = node.shadowRoot;
                     if (shadow) console.log('shadow.mode: ' + shadow.mode);
 
-                    let elementlist = document.getElementsByTagName('shadow.a');
-                    elementlist.forEach(el => {
+//                    let elementlist = document.getElementsByTagName('shadow.a');
+//                    elementlist.forEach(el => {
 
-                        console.log('shadow a el: ');
+//                        console.log('shadow a el: ');
 
-                    });
+//                    });
 
                 });
 
