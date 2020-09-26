@@ -50,7 +50,7 @@ let similarityframe = {};
                     let shadow = node.shadowRoot;
                     if (shadow) console.log('shadow.mode: ' + shadow.mode);
 
-                    let elementlist = shadow.document.getElementsByTagName('a');
+                    let elementlist = document.getElementsByTagName('shadow.a');
                     elementlist.forEach(el => {
 
                         console.log('shadow a el: ');
