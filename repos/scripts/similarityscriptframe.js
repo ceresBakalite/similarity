@@ -55,17 +55,16 @@ let similarityframe = {};
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => {
 
-                    alert(el.innerHTML);
-//                    el.shadowRoot;
-
+                    let shadow = el.shadowRoot;
+                    if (shadow) console.log('shadow.mode: ' + shadow.mode);
 //                    el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
 
                 });
 
 
 
-                let el = document.getElementById('index-md').shadowRoot;
-                if (el) console.log('shadow.mode: ' + el.mode);
+                //let el = document.getElementById('index-md').shadowRoot;
+                //if (el) console.log('shadow.mode: ' + el.mode);
             }
             /*
 
