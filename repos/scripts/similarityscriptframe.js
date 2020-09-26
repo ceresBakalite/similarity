@@ -46,7 +46,7 @@ let similarityframe = {};
             {
                 console.log(document.getElementById('index-md').shadowRoot);
 
-                var el = document.getElementsByTagName('zerp-md')[0].shadowRoot;
+                var el = document.getElementById('markdown-content').shadowRoot;
                 //document.querySelectorAll('zerp-md').shadowRoot;
                 //console.log(document.getElementById('index-md').shadowRoot);
 
