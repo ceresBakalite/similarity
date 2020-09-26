@@ -46,9 +46,11 @@ let similarityframe = {};
             {
                 console.log(document.getElementById('index-md').shadowRoot);
 
+                var el = document.querySelector('zerp-md').shadowRoot;
+                //document.querySelectorAll('zerp-md').shadowRoot;
                 //console.log(document.getElementById('index-md').shadowRoot);
 
-                var el = document.getElementById('index-md').shadowRoot;
+                //var el = document.getElementById('index-md').shadowRoot;
                 //let shadow = (document.getElementById('index-md').shadowRoot) ? document.getElementById('index-md').shadowRoot : null;
 
                 if (el) console.log('shadow.mode: ' + el.mode);
