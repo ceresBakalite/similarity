@@ -51,7 +51,7 @@ let similarityframe = {};
                     let shadow = node.shadowRoot;
                     if (shadow) console.log('shadow.mode: ' + shadow.mode);
 
-                    let list = document.querySelectorAll('div.markdown-body a');
+                    let list = document.querySelector('div.markdown-body');
                     list.forEach(el => {
                         console.log(el.textContent);
                     });
