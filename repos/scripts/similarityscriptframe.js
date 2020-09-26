@@ -44,6 +44,13 @@ let similarityframe = {};
         {
             if (document.getElementById('index-md').shadowRoot)
             {
+
+                document.getElementsByTagName('zero-md')
+                .filter(element => element.shadowRoot)
+                .forEach(element => {
+                    console.log('shadow.mode: ' + el.mode);
+                });
+
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(node => {
 
