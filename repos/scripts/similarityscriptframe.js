@@ -46,13 +46,13 @@ let similarityframe = {};
             {
                 console.log(document.getElementById('index-md').shadowRoot);
 
-                var el = document.getElementById('markdown-content').shadowRoot;
+                //var el = document.getElementById('markdown-content').shadowRoot;
                 //document.querySelectorAll('zerp-md').shadowRoot;
                 //console.log(document.getElementById('index-md').shadowRoot);
 
-                //var el = document.getElementById('index-md').shadowRoot;
                 //let shadow = (document.getElementById('index-md').shadowRoot) ? document.getElementById('index-md').shadowRoot : null;
 
+                var el = document.getElementById('index-md').shadowRoot;
                 if (el) console.log('shadow.mode: ' + el.mode);
             }
             /*
