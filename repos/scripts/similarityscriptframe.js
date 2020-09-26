@@ -45,10 +45,10 @@ let similarityframe = {};
             if (document.getElementById('index-md').shadowRoot)
             {
 
-                document.getElementsByTagName('zero-md')
-                .filter(element => element.shadowRoot)
-                .forEach(element => {
-                    console.log('shadow.mode: ' + el.mode);
+                document.querySelectorAll('zero-md')
+                .filter(node => node.shadowRoot)
+                .forEach(node => {
+                    console.log('shadow.mode: ' + node.mode);
                 });
 
                 const nodelist = document.querySelectorAll('zero-md');
