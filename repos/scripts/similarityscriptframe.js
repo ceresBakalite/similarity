@@ -50,7 +50,7 @@ let similarityframe = {};
 
                     let shadow = node.shadowRoot;
                     if (shadow) console.log('shadow.mode: ' + shadow.mode);
-                    console.log(this.getElementsByClassName('markdown-body').textContent);
+                    console.log(div.getElementsByClassName('markdown-body').textContent);
 
                 });
 
