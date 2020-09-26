@@ -60,8 +60,6 @@ let similarityframe = {};
 
                 });
 
-
-
                 //let el = document.getElementById('index-md').shadowRoot;
                 //if (el) console.log('shadow.mode: ' + el.mode);
             }
