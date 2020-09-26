@@ -44,20 +44,18 @@ let similarityframe = {};
         {
             if (document.getElementById('index-md').shadowRoot)
             {
-                console.log(document.getElementById('index-md').shadowRoot);
-
-                //var el = document.getElementById('markdown-content').shadowRoot;
-                //document.querySelectorAll('zerp-md').shadowRoot;
-                //console.log(document.getElementById('index-md').shadowRoot);
-
-                //let shadow = (document.getElementById('index-md').shadowRoot) ? document.getElementById('index-md').shadowRoot : null;
-
                 const nodelist = document.querySelectorAll('zero-md');
-                nodelist.forEach(el => {
+                nodelist.forEach(node => {
 
-                    let shadow = el.shadowRoot;
+                    let shadow = node.shadowRoot;
                     if (shadow) console.log('shadow.mode: ' + shadow.mode);
-//                    el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
+
+                    let elementlist = shadow.document.querySelectorAll('a');
+                    elementlist.forEach(el => {
+
+                        console.log('shadow a el: ');
+
+                    });
 
                 });
 
