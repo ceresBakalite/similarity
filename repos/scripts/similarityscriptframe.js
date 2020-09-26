@@ -42,13 +42,17 @@ let similarityframe = {};
 
         function setOpenHrefOnTop()
         {
-            console.log(document.getElementById('index-md').shadowRoot);
+            if (document.getElementById('index-md').shadowRoot)
+            {
+                console.log(document.getElementById('index-md').shadowRoot);
 
-            var el = document.querySelector(document.getElementById('index-md').shadowRoot);
-            //let shadow = (document.getElementById('index-md').shadowRoot) ? document.getElementById('index-md').shadowRoot : null;
+                //console.log(document.getElementById('index-md').shadowRoot);
 
-            if (el) console.log('shadow.mode: ' + el.mode);
+                var el = document.getElementById('index-md').shadowRoot;
+                //let shadow = (document.getElementById('index-md').shadowRoot) ? document.getElementById('index-md').shadowRoot : null;
 
+                if (el) console.log('shadow.mode: ' + el.mode);
+            }
             /*
 
             console.log('markdown-body: ' + getElementsByClassName('markdown-body')[0] ? true : false);
