@@ -52,7 +52,19 @@ let similarityframe = {};
 
                 //let shadow = (document.getElementById('index-md').shadowRoot) ? document.getElementById('index-md').shadowRoot : null;
 
-                var el = document.getElementById('index-md').shadowRoot;
+                const nodelist = document.querySelectorAll('zero-md');
+                nodelist.forEach(el => {
+
+                    alert(el.innerHTML);
+//                    el.shadowRoot;
+
+//                    el.setAttribute('src', el.getAttribute('src') + '?' + Date.now());
+
+                });
+
+
+
+                let el = document.getElementById('index-md').shadowRoot;
                 if (el) console.log('shadow.mode: ' + el.mode);
             }
             /*
