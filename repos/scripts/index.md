@@ -43,7 +43,7 @@ On that note. Updates are automatic, but if you do wish to download the product 
 <br>
 
 [read more]: https://github.com/jbtule
-[@jbtule]: https://ceresbakalite.github.io/similarity/
+[@jbtule]: https://gist.github.com/jbtule/4336842
 [@ceresbakalite]: https://github.com/ceresbakalite
 
 <style>
