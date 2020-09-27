@@ -40,7 +40,7 @@ let similarityframe = {};
             setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
-        function setMarkdownLinksToLoadOnTop()
+        function setMarkdownLinks()
         {
             const root = 'zero-md';
             const element = '.markdown-body';
@@ -53,14 +53,14 @@ let similarityframe = {};
         function asyncPullMarkdownRequest()
         {
             displayFooter();
-            setTimeout(function() { setMarkdownLinksToLoadOnTop(); }, 1000);
+            setTimeout(function() { setMarkdownLinks(); }, 1000);
             setTimeout(function() { refreshMarkdown(); }, 4000);
 
             function refreshMarkdown()
             {
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
-                setTimeout(function() { setMarkdownLinksToLoadOnTop(); }, 1000);
+                setTimeout(function() { setMarkdownLinks(); }, 1000);
             }
 
         }
