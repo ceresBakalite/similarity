@@ -45,7 +45,7 @@ let similarityframe = {};
             const root = 'zero-md';
             const element = '.markdown-body';
             //const regex = /<a /gi;
-            let regex = /<a (.*?)>gi;
+            let regex = /<a (.*?)>/gi;
             const replacement = '<a target="_top" ';
 
             replaceTest(root, element, regex, replacement)
@@ -85,10 +85,10 @@ let similarityframe = {};
                     let matchAll = Array.from(markdown.matchAll(regex));
 
                     let firstMatch = matchAll[0];
-                    alert( firstMatch[0] );  // <h1>
-                    alert( firstMatch[1] );  // h1
-                    alert( firstMatch.index );  // 0
-                    alert( firstMatch.input );  // <h1>Hello, world!</h1>
+                    console.log( firstMatch[0] );  // <h1>
+                    console.log( firstMatch[1] );  // h1
+                    console.log( firstMatch.index );  // 0
+                    console.log( firstMatch.input );  // <h1>Hello, world!</h1>
                 }
 
             });
