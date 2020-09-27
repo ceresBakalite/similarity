@@ -95,10 +95,12 @@ let similarityframe = {};
             if (el.style.display && window.scrollY > trigger)
             {
                 if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
+                setCookie('hd', true);
 
             } else {
 
                 if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
+                setCookie('hd', false);
 
             }
 
@@ -109,11 +111,6 @@ let similarityframe = {};
             el.style.display = attribute;
         }
 
-    }
-
-    function getRandomInteger(min = 10000, max = 1000000)
-    {
-        return Math.floor(Math.random() * (max - min) ) + min;
     }
 
     function setCookie(cn, cv, ex = 0)
