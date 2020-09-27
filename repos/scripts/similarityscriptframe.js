@@ -88,7 +88,6 @@ let similarityframe = {};
     {
         let el = window.top.document.getElementById('site-header-display');
         let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
-        let script = window.parent[similarity];
         let trigger = 25;
 
         if (pin == 'disabled')
@@ -96,12 +95,12 @@ let similarityframe = {};
             if (el.style.display && window.scrollY > trigger)
             {
                 if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
-                script.setCookie('hd', true);
+                window.parent.setCookie('hd', true);
 
             } else {
 
                 if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
-                script.setCookie('hd', false);
+                window.parent.setCookie('hd', false);
 
             }
 
