@@ -79,9 +79,6 @@ let similarityframe = {};
                 if (shadow)
                 {
                     let markdown = shadow.querySelector(element).innerHTML;
-
-                    console.log(markdown.matchAll(regex)); // [object RegExp String Iterator], not array, but an iterable
-
                     let matchAll = Array.from(markdown.matchAll(regex));
 
                     let firstMatch = matchAll[0];
