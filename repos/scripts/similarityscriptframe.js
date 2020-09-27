@@ -47,7 +47,7 @@ let similarityframe = {};
             const regex = /<a /gi;
             const replacement = '<a target="_top" ';
 
-            shadowRootReplaceElement(root, element, regex, replacement);
+            replaceShadowRootInnerHTML(root, element, regex, replacement);
         }
 
         function asyncPullMarkdownRequest()
@@ -65,7 +65,7 @@ let similarityframe = {};
 
         }
 
-        function shadowRootReplaceElement(root, element, regex, replacement)
+        function replaceShadowRootInnerHTML(root, element, regex, replacement)
         {
             const nodelist = document.querySelectorAll(root);
 
