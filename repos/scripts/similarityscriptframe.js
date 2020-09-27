@@ -95,12 +95,12 @@ let similarityframe = {};
             if (el.style.display && window.scrollY > trigger)
             {
                 if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
-                setCookie('hd', true);
+                window.parent.document.setCookie('hd', true);
 
             } else {
 
                 if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
-                setCookie('hd', false);
+                window.parent.document.setCookie('hd', false);
 
             }
 
@@ -114,39 +114,3 @@ let similarityframe = {};
     }
 
 })(similarityframe);
-
-function setCookie(cn, cv, ex = 0)
-{
-    if (cn && cv)
-    {
-        let dt = new Date();
-        dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
-        let expires = "expires=" + dt.toUTCString();
-
-        document.cookie = cn + "=" + cv + ";" + expires + ";path=/";
-    }
-
-}
-
-function getCookie(cn)
-{
-    console.log('here now');
-    if (cn)
-    {
-        let cp = cn + "=";
-        let dc = decodeURIComponent(document.cookie);
-        let ca = dc.split(';');
-
-        for(let i = 0; i < ca.length; i++)
-        {
-            let chr = ca[i];
-
-            while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
-
-            if (chr) return chr.substring(cn.length, c.length);
-        }
-
-    }
-
-    return null;
-}
