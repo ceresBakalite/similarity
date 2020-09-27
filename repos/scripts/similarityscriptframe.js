@@ -81,11 +81,12 @@ let similarityframe = {};
                     let markdown = shadow.querySelector(element).innerHTML;
                     let matchAll = Array.from(markdown.matchAll(regex));
 
-                    let firstMatch = matchAll[0];
-                    console.log( firstMatch[0] );  // <h1>
-                    console.log( firstMatch[1] );  // h1
-                    console.log( firstMatch.index );  // 0
-                    console.log( firstMatch.input );  // <h1>Hello, world!</h1>
+                    matchAll.forEach(item => {
+
+                        console.log( item );
+
+                    });
+
                 }
 
             });
