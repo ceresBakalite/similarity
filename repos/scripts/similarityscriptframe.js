@@ -94,20 +94,25 @@ let similarityframe = {};
         {
             if (el.style.display && window.scrollY > trigger)
             {
-                if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
-                window.parent.setCookie('hd', true);
+                if (el.style.display != 'none')
+                {
+                    setTimeout(function(){ setStyleDisplay('none'); }, 250);
+                    window.parent.setCookie('hd', 'true');
 
-                console.log(window.parent.getCookie('pin'));
-                console.log(window.parent.getCookie('hd'));
+                    console.log(window.parent.getCookie('pin'));
+                    console.log(window.parent.getCookie('hd'));
+                }
 
             } else {
 
-                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
-                window.parent.setCookie('hd', false);
+                if (el.style.display != 'block')
+                {
+                    setTimeout(function(){ setStyleDisplay('block'); }, 250);
+                    window.parent.setCookie('hd', 'false');
 
-                console.log(window.parent.getCookie('pin'));
-                console.log(window.parent.getCookie('hd'));
-
+                    console.log(window.parent.getCookie('pin'));
+                    console.log(window.parent.getCookie('hd'));
+                }
 
             }
 
