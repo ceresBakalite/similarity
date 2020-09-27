@@ -51,10 +51,12 @@ let similarityframe = {};
                     let shadow = node.shadowRoot;
                     if (shadow) console.log('shadow.mode: ' + shadow.mode);
 
-                    let list = shadow.document.querySelector('div.markdown-body');
-                    list.forEach(el => {
-                        console.log(el.textContent);
-                    });
+                    node.shadowRoot.querySelector('.markdown-body').innerHTML;
+
+//                    let list = shadow.document.querySelector('div.markdown-body');
+//                    list.forEach(el => {
+//                        console.log(el.textContent);
+//                    });
                 });
 
                 //let el = document.getElementById('index-md').shadowRoot;
