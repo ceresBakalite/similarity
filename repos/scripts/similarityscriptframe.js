@@ -130,6 +130,7 @@ function setCookie(cn, cv, ex = 0)
 
 function getCookie(cn)
 {
+    console.log('here now');
     if (cn)
     {
         let cp = cn + "=";
