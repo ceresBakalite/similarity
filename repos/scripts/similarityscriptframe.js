@@ -95,12 +95,12 @@ let similarityframe = {};
             if (el.style.display && window.scrollY > trigger)
             {
                 if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
-                window.parent.similarity.setCookie('hd', true);
+                similarity.window.parent.setCookie('hd', true);
 
             } else {
 
                 if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
-                window.parent.similarity.setCookie('hd', false);
+                window.parent.setCookie('hd', false);
 
             }
 
