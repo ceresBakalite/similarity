@@ -42,10 +42,18 @@ let similarityframe = {};
 
         function setOpenHrefOnTop()
         {
+            const newline = '\n';
             const nodelist = document.querySelectorAll('zero-md');
+
             nodelist.forEach(node => {
+
                 let shadow = node.shadowRoot;
-                if (shadow) console.log(shadow.querySelector('.markdown-body').textContent);
+                if (shadow)
+                {
+                    let markdown = shadow.querySelector('.markdown-body').textContent;
+                    console.log('markdown: ' + newline + markdown);
+                }
+
             });
 
         }
