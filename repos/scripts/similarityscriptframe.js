@@ -61,8 +61,6 @@ let similarityframe = {};
         {
             displayFooter();
             setTimeout(function() { setLinksToNewTab(); }, 1000);
-
-
             setTimeout(function() { refreshMarkdown(); }, 4000);
 
             function refreshMarkdown()
