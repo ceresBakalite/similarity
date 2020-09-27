@@ -50,8 +50,8 @@ let similarityframe = {};
                 let shadow = node.shadowRoot;
                 if (shadow)
                 {
-                    let markdown = shadow.querySelector('.markdown-body').textContent;
-                    console.log('markdown: ' + newline + markdown);
+                    let markdown = shadow.querySelector('.markdown-body').innerHTML;
+                    console.log('markdown: ' + newline + newline + markdown);
                 }
 
             });
