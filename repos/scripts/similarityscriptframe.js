@@ -53,14 +53,14 @@ let similarityframe = {};
         function asyncPullMarkdownRequest()
         {
             displayFooter();
-            setTimeout(function() { setLinksToNewTab(); }, 1000);
+            setTimeout(function() { setMarkdownLinksToLoadOnTop(); }, 1000);
             setTimeout(function() { refreshMarkdown(); }, 4000);
 
             function refreshMarkdown()
             {
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
-                setTimeout(function() { setLinksToNewTab(); }, 1000);
+                setTimeout(function() { setMarkdownLinksToLoadOnTop(); }, 1000);
             }
 
         }
