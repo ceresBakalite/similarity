@@ -40,21 +40,14 @@ let similarityframe = {};
             setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
-        function setLinksToNewTab()
+        function setMarkdownLinksToLoadOnTop()
         {
-            const nodelist = document.querySelectorAll('zero-md');
+            const root = 'zero-md';
+            const element = '.markdown-body';
+            const regex = /<a /gi;
+            const replacement = '<a target="_top" ';
 
-            nodelist.forEach(node => {
-
-                let shadow = node.shadowRoot;
-                if (shadow)
-                {
-                    let markdown = shadow.querySelector('.markdown-body').innerHTML;
-                    shadow.querySelector('.markdown-body').innerHTML = markdown.replace(/<a /gi, '<a target="_top" ');
-                }
-
-            });
-
+            shadowRootReplaceElement(root, element, regex, replacement);
         }
 
         function asyncPullMarkdownRequest()
@@ -69,6 +62,23 @@ let similarityframe = {};
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
                 setTimeout(function() { setLinksToNewTab(); }, 1000);
             }
+
+        }
+
+        function shadowRootReplaceElement(root, element, regex, replacement)
+        {
+            const nodelist = document.querySelectorAll(root);
+
+            nodelist.forEach(node => {
+
+                let shadow = node.shadowRoot;
+                if (shadow)
+                {
+                    let markdown = shadow.querySelector(element).innerHTML;
+                    shadow.querySelector(element).innerHTML = markdown.replace(regex, replacement);
+                }
+
+            });
 
         }
 
