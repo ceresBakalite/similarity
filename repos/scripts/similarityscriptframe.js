@@ -40,9 +40,8 @@ let similarityframe = {};
             setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
-        function setOpenHrefOnTop()
+        function setLinksToNewTab()
         {
-            const newline = '\n';
             const nodelist = document.querySelectorAll('zero-md');
 
             nodelist.forEach(node => {
@@ -51,9 +50,6 @@ let similarityframe = {};
                 if (shadow)
                 {
                     let markdown = shadow.querySelector('.markdown-body').innerHTML;
-
-                    //console.log('markdown: ' + newline + newline + markdown.replace(/<a /gi, '<a target="_blank" '));
-
                     shadow.querySelector('.markdown-body').innerHTML = markdown.replace(/<a /gi, '<a target="_blank" ');
                 }
 
@@ -64,7 +60,7 @@ let similarityframe = {};
         function asyncPullMarkdownRequest()
         {
             displayFooter();
-            setTimeout(function() { setOpenHrefOnTop(); }, 1000);
+            setTimeout(function() { setLinksToNewTab(); }, 1000);
 
 
             setTimeout(function() { refreshMarkdown(); }, 4000);
@@ -73,7 +69,7 @@ let similarityframe = {};
             {
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
-                setTimeout(function() { setOpenHrefOnTop(); }, 1000);
+                setTimeout(function() { setLinksToNewTab(); }, 1000);
             }
 
         }
