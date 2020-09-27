@@ -51,7 +51,9 @@ let similarityframe = {};
                     let shadow = node.shadowRoot;
                     if (shadow) console.log('shadow.mode: ' + shadow.mode);
 
-                    node.shadowRoot.querySelector('.markdown-body').innerHTML;
+                    console.log(shadow.textContent);
+
+                    console.log(shadow.querySelector('.markdown-body').innerHTML);
 
 //                    let list = shadow.document.querySelector('div.markdown-body');
 //                    list.forEach(el => {
@@ -59,20 +61,8 @@ let similarityframe = {};
 //                    });
                 });
 
-                //let el = document.getElementById('index-md').shadowRoot;
-                //if (el) console.log('shadow.mode: ' + el.mode);
             }
-            /*
 
-            console.log('markdown-body: ' + getElementsByClassName('markdown-body')[0] ? true : false);
-            console.log('div.markdown-body: ' + div.getElementsByClassName('markdown-body') ? true : false);
-
-            const nodelist = document.querySelectorAll('div.markdown-body a');
-            nodelist.forEach(el => {
-                console.log('hello from me: ');
-            });
-
-            */
         }
 
         function asyncPullMarkdownRequest()
