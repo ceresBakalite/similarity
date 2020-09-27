@@ -44,8 +44,7 @@ let similarityframe = {};
         {
             const root = 'zero-md';
             const element = '.markdown-body';
-            //const regex = /<a /gi;
-            const regex = /<a (.*?)>^(?!target)/gi;
+            const regex = /<a /gi;
             const replacement = '<a target="_top" ';
 
             replaceShadowRootInnerHTML(root, element, regex, replacement);
