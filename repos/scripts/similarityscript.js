@@ -15,7 +15,7 @@ let similarity = {};
     ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
     ceres.setCookie = function(cn, cv, ex) { setCookie(cn, cv, ex = 0); };  // public method reference
-    ceres.getCookie = function(cn) { resetPinState(cn); };  // public method reference
+    ceres.getCookie = function(cn) { getCookie(cn); };  // public method reference
 
     class Component
     {
