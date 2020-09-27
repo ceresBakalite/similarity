@@ -99,7 +99,7 @@ let similarityframe = {};
                     setTimeout(function(){ setStyleDisplay('none'); }, 250);
                     window.parent.setCookie('hd', 'true');
 
-                    console.log(window.parent.getCookie('pin'));
+                    console.log(window.parent.document.cookie);
                     console.log(window.parent.getCookie('hd'));
                 }
 
@@ -110,7 +110,7 @@ let similarityframe = {};
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
                     window.parent.setCookie('hd', 'false');
 
-                    console.log(window.parent.getCookie('pin'));
+                    console.log(window.parent.document.cookie);
                     console.log(window.parent.getCookie('hd'));
                 }
 
