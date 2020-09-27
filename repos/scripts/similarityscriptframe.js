@@ -44,10 +44,13 @@ let similarityframe = {};
         {
             const root = 'zero-md';
             const element = '.markdown-body';
-            const regex = /<a /gi;
+            //const regex = /<a /gi;
+            let regex = /<a (.*?)>gi;
             const replacement = '<a target="_top" ';
 
-            replaceShadowRootInnerHTML(root, element, regex, replacement);
+            replaceTest(root, element, regex, replacement)
+
+//            replaceShadowRootInnerHTML(root, element, regex, replacement);
         }
 
         function asyncPullMarkdownRequest()
@@ -62,6 +65,33 @@ let similarityframe = {};
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
                 setTimeout(function() { setMarkdownLinks(); }, 1000);
             }
+
+        }
+
+        function replaceTest(root, element, regex, replacement)
+        {
+
+            const nodelist = document.querySelectorAll(root);
+
+            nodelist.forEach(node => {
+
+                let shadow = node.shadowRoot;
+                if (shadow)
+                {
+                    let markdown = shadow.querySelector(element).innerHTML;
+
+                    console.log(markdown.matchAll(regex)); // [object RegExp String Iterator], not array, but an iterable
+
+                    let matchAll = Array.from(markdown.matchAll(regex));
+
+                    let firstMatch = matchAll[0];
+                    alert( firstMatch[0] );  // <h1>
+                    alert( firstMatch[1] );  // h1
+                    alert( firstMatch.index );  // 0
+                    alert( firstMatch.input );  // <h1>Hello, world!</h1>
+                }
+
+            });
 
         }
 
