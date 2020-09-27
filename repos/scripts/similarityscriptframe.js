@@ -42,20 +42,11 @@ let similarityframe = {};
 
         function setOpenHrefOnTop()
         {
-            if (document.getElementById('index-md').shadowRoot)
-            {
-
-                const nodelist = document.querySelectorAll('zero-md');
-                nodelist.forEach(node => {
-
-                    let shadow = node.shadowRoot;
-                    if (shadow) console.log('shadow.mode: ' + shadow.mode);
-
-                    console.log(shadow.querySelector('.markdown-body').textContent);
-
-                });
-
-            }
+            const nodelist = document.querySelectorAll('zero-md');
+            nodelist.forEach(node => {
+                let shadow = node.shadowRoot;
+                if (shadow) console.log(shadow.querySelector('.markdown-body').textContent);
+            });
 
         }
 
