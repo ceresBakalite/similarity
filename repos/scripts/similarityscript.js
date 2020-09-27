@@ -106,7 +106,6 @@ let similarity = {};
 
     function getCookie(cn)
     {
-        console.log('here now: ' + cn);
         if (cn)
         {
             let cp = cn + "=";
