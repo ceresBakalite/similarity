@@ -88,7 +88,7 @@ let similarityframe = {};
     {
         let el = window.top.document.getElementById('site-header-display');
         let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
-        let script = window.parent.similarity;
+        let script = window.parent[similarity];
         let trigger = 25;
 
         if (pin == 'disabled')
