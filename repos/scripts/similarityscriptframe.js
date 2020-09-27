@@ -52,9 +52,7 @@ let similarityframe = {};
                 {
                     let markdown = shadow.querySelector('.markdown-body').innerHTML;
 
-                    markdown.replace(/<a /gi, '<a target="_blank" ')
-
-                    console.log('markdown: ' + newline + newline + markdown);
+                    console.log('markdown: ' + newline + newline + markdown.replace(/<a /gi, '<a target="_blank" '));
                 }
 
             });
