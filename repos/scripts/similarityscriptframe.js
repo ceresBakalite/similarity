@@ -50,7 +50,7 @@ let similarityframe = {};
                 if (shadow)
                 {
                     let markdown = shadow.querySelector('.markdown-body').innerHTML;
-                    shadow.querySelector('.markdown-body').innerHTML = markdown.replace(/<a /gi, '<a target="_blank" ');
+                    shadow.querySelector('.markdown-body').innerHTML = markdown.replace(/<a /gi, '<a target="_top" ');
                 }
 
             });
