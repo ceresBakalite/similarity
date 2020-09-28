@@ -5,36 +5,36 @@ let cookies = {};
     ceres.get = function(name) { getCookie(name); }; // public method reference
     ceres.set = function(name, value, options = {}) { setCookie(name, value, options = {}); };  // public method reference
 
-function setCookie(name, value, options = {})
-{
-    //setCookie('user', 'John', {secure: true, 'max-age': 3600});
-
-    options = {
-        path: '/',
-    };
-
-    if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
-
-    let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
-
-    for (let optionKey in options)
+    function setCookie(name, value, options = {})
     {
-        updatedCookie += '; ' + optionKey;
-        let optionValue = options[optionKey];
-        if (optionValue !== true)
+        //setCookie('user', 'John', {secure: true, 'max-age': 3600});
+
+        options = {
+            path: '/',
+        };
+
+        if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
+
+        let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+
+        for (let optionKey in options)
         {
-            updatedCookie += '=' + optionValue;
+            updatedCookie += '; ' + optionKey;
+            let optionValue = options[optionKey];
+            if (optionValue !== true)
+            {
+                updatedCookie += '=' + optionValue;
+            }
+
         }
 
+        document.cookie = updatedCookie;
     }
 
-    document.cookie = updatedCookie;
-}
-
-function getCookie(name)
-{
-  let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
-}
+    function getCookie(name)
+    {
+        let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
 
 })(ceres);
