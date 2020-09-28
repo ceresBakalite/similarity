@@ -97,8 +97,7 @@ let similarityframe = {};
                 if (el.style.display != 'none')
                 {
                     setTimeout(function(){ setStyleDisplay('none'); }, 250);
-                    //window.parent.Cookies.set('hd', true);
-                    window.parent.setCookie('hd', true);
+                    window.parent.Cookies.set('hd', true);
                 }
 
             } else {
@@ -106,8 +105,7 @@ let similarityframe = {};
                 if (el.style.display != 'block')
                 {
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
-                    //window.parent.Cookies.set('hd', false);
-                    window.parent.setCookie('hd', false);
+                    window.parent.Cookies.set('hd', false);
                 }
 
             }
