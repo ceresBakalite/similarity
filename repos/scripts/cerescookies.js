@@ -1,3 +1,10 @@
+let cookies = {};
+(function(ceres)
+{
+
+    ceres.get = function(name) { getCookie(name); }; // public method reference
+    ceres.set = function(name, value, options = {}) { setCookie(name, value, options = {}); };  // public method reference
+
 function setCookie(name, value, options = {})
 {
     //setCookie('user', 'John', {secure: true, 'max-age': 3600});
@@ -29,3 +36,5 @@ function getCookie(name)
   let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
+
+})(ceres);
