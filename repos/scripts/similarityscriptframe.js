@@ -98,10 +98,6 @@ let similarityframe = {};
                 {
                     setTimeout(function(){ setStyleDisplay('none'); }, 250);
                     window.parent.Cookies.set('hd', true);
-                    //window.parent.setCookie('hd', 'true');
-
-                    //console.log(window.parent.document.cookie);
-                    //console.log(window.parent.getCookie('hd'));
                 }
 
             } else {
@@ -110,18 +106,11 @@ let similarityframe = {};
                 {
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
                     window.parent.Cookies.set('hd', false);
-                    //window.parent.setCookie('hd', 'false');
-
-                    //console.log(window.parent.document.cookie);
-                    //console.log(window.parent.getCookie('hd'));
                 }
 
             }
 
         }
-
-        console.log('hd: ' + window.parent.Cookies.get('hd'));
-        console.log('pin: ' + window.parent.Cookies.get('pin'));
 
         function setStyleDisplay(attribute)
         {
