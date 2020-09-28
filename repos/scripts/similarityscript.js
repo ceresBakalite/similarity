@@ -73,6 +73,7 @@ let similarity = {};
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
             el.setAttribute('state', 'disabled');
             window.parent.Cookies.set('pin', false);
+            window.parent.setCookie('pint', false, {'max-age': 36000});
 
             let header = document.getElementById('site-header-display');
             if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
@@ -82,10 +83,14 @@ let similarity = {};
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
             el.setAttribute('state', 'enabled');
             window.parent.Cookies.set('pin', true);
+            window.parent.setCookie('pint', true, {'max-age': 36000});
         }
 
         console.log(window.parent.Cookies.get('hd'));
+        console.log(window.parent.getCookie('hdt');
+
         console.log(window.parent.Cookies.get('pin'));
+        console.log(window.parent.getCookie('pint');
     }
 
 })(similarity);
