@@ -97,7 +97,7 @@ let similarityframe = {};
                 if (el.style.display != 'none')
                 {
                     setTimeout(function(){ setStyleDisplay('none'); }, 250);
-                    Cookies.set('hd', 'true');
+                    window.parent.Cookies.set('hd', 'true');
                     //window.parent.setCookie('hd', 'true');
 
                     //console.log(window.parent.document.cookie);
@@ -109,7 +109,7 @@ let similarityframe = {};
                 if (el.style.display != 'block')
                 {
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
-                    Cookies.set('hd', 'false');
+                    window.parent.Cookies.set('hd', 'false');
                     //window.parent.setCookie('hd', 'false');
 
                     //console.log(window.parent.document.cookie);
@@ -120,9 +120,9 @@ let similarityframe = {};
 
         }
 
-        console.log('hd: ' + Cookies.get('hd'));
-        console.log('pin: ' + Cookies.get('pin'));
-        console.log('all: ' + Cookies.get());
+        console.log('hd: ' + window.parent.Cookies.get('hd'));
+        console.log('pin: ' + window.parent.Cookies.get('pin'));
+        console.log('all: ' + window.parent.Cookies.get());
 
         function setStyleDisplay(attribute)
         {
