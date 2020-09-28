@@ -97,7 +97,8 @@ let similarityframe = {};
                 if (el.style.display != 'none')
                 {
                     setTimeout(function(){ setStyleDisplay('none'); }, 250);
-                    window.parent.setCookie('hd', true, {'max-age': 3600});
+                    //window.parent.setCookie('hd', true, {'max-age': 3600});
+                    window.parent.cookies.set('hd', true, {'max-age': 3600});
                 }
 
             } else {
@@ -105,7 +106,8 @@ let similarityframe = {};
                 if (el.style.display != 'block')
                 {
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
-                    window.parent.setCookie('hd', false, {'max-age': 3600});
+                    //window.parent.setCookie('hd', false, {'max-age': 3600});
+                    window.parent.cookies.set('hd', false, {'max-age': 3600});
                 }
 
             }
