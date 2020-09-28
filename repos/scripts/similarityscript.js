@@ -14,6 +14,7 @@ let similarity = {};
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
     ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
+    ceres.cookies = window.parent.Cookies;
 
     class Component
     {
@@ -72,7 +73,7 @@ let similarity = {};
         {
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
             el.setAttribute('state', 'disabled');
-            window.parent.Cookies.set('pin', false);
+            ceres.cookies.set('pin', false);
             //setCookie('pin', 'false');
 
             let header = document.getElementById('site-header-display');
@@ -82,7 +83,7 @@ let similarity = {};
 
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
             el.setAttribute('state', 'enabled');
-            window.parent.Cookies.set('pin', true);
+            ceres.cookies.set('pin', true);
             //setCookie('pin', 'true');
 
         }
