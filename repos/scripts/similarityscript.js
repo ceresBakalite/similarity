@@ -84,8 +84,8 @@ let similarity = {};
             window.parent.Cookies.set('pin', true);
         }
 
-        console.log(window.parent.getCookie('hd'));
-        console.log(window.parent.getCookie('pin'));
+        console.log(window.parent.Cookies.get('hd'));
+        console.log(window.parent.Cookies.get('pin'));
     }
 
 })(similarity);
