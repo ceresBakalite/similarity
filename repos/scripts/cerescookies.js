@@ -1,5 +1,5 @@
-function setCookie(name, value, options = {}) {
-
+function setCookie(name, value, options = {})
+{
     // Example of use:
     //setCookie('user', 'John', {secure: true, 'max-age': 3600});
 
@@ -27,26 +27,8 @@ function setCookie(name, value, options = {}) {
     document.cookie = updatedCookie;
 }
 
-function getCookie(cn)
+function getCookie(name) 
 {
-    if (cn)
-    {
-        let cp = cn + '=';
-        let dc = decodeURIComponent(document.cookie);
-        let ca = dc.split(';');
-
-        console.log(dc);
-
-        for(let i = 0; i < ca.length; i++)
-        {
-            let chr = ca[i];
-
-            while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
-
-            if (chr) return chr.substring(cn.length, c.length);
-        }
-
-    }
-
-    return null;
+  let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
 }
