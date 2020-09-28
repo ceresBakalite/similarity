@@ -1,17 +1,30 @@
-function setCookie(cn, cv, ex = 0)
-{
-    if (cn && cv)
+function setCookie(name, value, options = {}) {
+
+    // Example of use:
+    //setCookie('user', 'John', {secure: true, 'max-age': 3600});
+
+    options = {
+        path: '/',
+        // add other defaults here if necessary
+        //...options
+    };
+
+    if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
+
+    let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+    for (let optionKey in options)
     {
-        let dt = new Date();
-        dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
-        let expires = 'expires=' + dt.toUTCString();
-        let domain = 'domain=ceresbakalite.github.io/similarity';
+        updatedCookie += "; " + optionKey;
+        let optionValue = options[optionKey];
+        if (optionValue !== true)
+        {
+            updatedCookie += "=" + optionValue;
+        }
 
-console.log(cn + '=' + cv + ';' + domain + ';' + expires + ';path=/');
-
-        document.cookie = encodeURIComponent(cn) + '=' + encodeURIComponent(cv) + ';' + encodeURIComponent(domain) + ';' + expires + ';path=/';
     }
 
+    document.cookie = updatedCookie;
 }
 
 function getCookie(cn)
