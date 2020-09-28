@@ -1,3 +1,5 @@
+let cookies = window.parent.Cookies;
+
 let similarity = {};
 (function(ceres)
 {
@@ -14,7 +16,6 @@ let similarity = {};
     ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
     ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
-    ceres.cookies = window.parent.Cookies;
 
     class Component
     {
@@ -73,7 +74,7 @@ let similarity = {};
         {
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
             el.setAttribute('state', 'disabled');
-            ceres.cookies.set('pin', false);
+            cookies.set('pin', false);
             //setCookie('pin', 'false');
 
             let header = document.getElementById('site-header-display');
@@ -83,7 +84,7 @@ let similarity = {};
 
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
             el.setAttribute('state', 'enabled');
-            ceres.cookies.set('pin', true);
+            cookies.set('pin', true);
             //setCookie('pin', 'true');
 
         }
