@@ -97,10 +97,11 @@ let similarityframe = {};
                 if (el.style.display != 'none')
                 {
                     setTimeout(function(){ setStyleDisplay('none'); }, 250);
-                    window.parent.setCookie('hd', 'true');
+                    Cookies.set('hd', 'true');
+                    //window.parent.setCookie('hd', 'true');
 
-                    console.log(window.parent.document.cookie);
-                    console.log(window.parent.getCookie('hd'));
+                    //console.log(window.parent.document.cookie);
+                    //console.log(window.parent.getCookie('hd'));
                 }
 
             } else {
@@ -108,15 +109,20 @@ let similarityframe = {};
                 if (el.style.display != 'block')
                 {
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
-                    window.parent.setCookie('hd', 'false');
+                    Cookies.set('hd', 'false');
+                    //window.parent.setCookie('hd', 'false');
 
-                    console.log(window.parent.document.cookie);
-                    console.log(window.parent.getCookie('hd'));
+                    //console.log(window.parent.document.cookie);
+                    //console.log(window.parent.getCookie('hd'));
                 }
 
             }
 
         }
+
+        console.log('hd: ' + Cookies.get('hd'));
+        console.log('pin: ' + Cookies.get('pin'));
+        console.log('all: ' + Cookies.get());
 
         function setStyleDisplay(attribute)
         {
