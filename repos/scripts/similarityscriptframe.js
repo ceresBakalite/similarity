@@ -98,6 +98,7 @@ let similarityframe = {};
                 {
                     setTimeout(function(){ setStyleDisplay('none'); }, 250);
                     window.parent.Cookies.set('hd', true);
+                    window.parent.setCookie('hdt', true, {'max-age': 36000});
                 }
 
             } else {
@@ -106,6 +107,7 @@ let similarityframe = {};
                 {
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
                     window.parent.Cookies.set('hd', false);
+                    window.parent.setCookie('hdt', false, {'max-age': 36000});
                 }
 
             }
