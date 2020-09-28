@@ -120,9 +120,8 @@ let similarityframe = {};
 
         }
 
-        console.log('hd: ' + window.parent.Cookies.get('hd'));
-        console.log('pin: ' + window.parent.Cookies.get('pin'));
-        console.log('all: ' + window.parent.Cookies.get());
+        console.log('hd: ' + window.parent.cookies.get('hd'));
+        console.log('pin: ' + window.parent.cookies.get('pin'));
 
         function setStyleDisplay(attribute)
         {
