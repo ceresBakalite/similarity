@@ -1,10 +1,10 @@
 class Cookies {
 
-    constructor()
+    constructor(name, value, options = {})
     {
-        this.name;
-        this.value;
-        this.options = {};
+        this.name = name;
+        this.value = value;
+        this.options = options;
     }
 
     set()
