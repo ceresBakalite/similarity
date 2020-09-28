@@ -72,7 +72,8 @@ let similarity = {};
         {
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
             el.setAttribute('state', 'disabled');
-            window.parent.Cookies.set('pin', false);
+            //window.parent.Cookies.set('pin', false);
+            window.parent.setCookie('pin', false);
 
             let header = document.getElementById('site-header-display');
             if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
@@ -81,44 +82,10 @@ let similarity = {};
 
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
             el.setAttribute('state', 'enabled');
-            window.parent.Cookies.set('pin', true);
+            //window.parent.Cookies.set('pin', true);
+            window.parent.setCookie('pin', true);
         }
 
     }
 
 })(similarity);
-
-function setCookie(cn, cv, ex = 0)
-{
-    if (cn && cv)
-    {
-        let dt = new Date();
-        dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
-        let expires = "expires=" + dt.toUTCString();
-
-        document.cookie = cn + "=" + cv + ";" + expires + ";path=/";
-    }
-
-}
-
-function getCookie(cn)
-{
-    if (cn)
-    {
-        let cp = cn + "=";
-        let dc = decodeURIComponent(document.cookie);
-        let ca = dc.split(';');
-
-        for(let i = 0; i < ca.length; i++)
-        {
-            let chr = ca[i];
-
-            while (chr.charAt(0) == String.fromCharCode(32)) chr = chr.substring(1);
-
-            if (chr) return chr.substring(cn.length, c.length);
-        }
-
-    }
-
-    return null;
-}
