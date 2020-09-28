@@ -87,10 +87,10 @@ let similarity = {};
         }
 
         console.log(window.parent.Cookies.get('hd'));
-        console.log(window.parent.getCookie('hdt');
+        console.log(window.parent.getCookie('hdt'));
 
         console.log(window.parent.Cookies.get('pin'));
-        console.log(window.parent.getCookie('pint');
+        console.log(window.parent.getCookie('pint'));
     }
 
 })(similarity);
