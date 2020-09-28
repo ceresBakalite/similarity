@@ -1,5 +1,3 @@
-let cookies = new window.parent.Cookies();
-
 let similarity = {};
 (function(ceres)
 {
@@ -74,7 +72,7 @@ let similarity = {};
         {
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
             el.setAttribute('state', 'disabled');
-            cookies.set('pin', false);
+            window.parent.Cookies.set('pin', false);
             //setCookie('pin', 'false');
 
             let header = document.getElementById('site-header-display');
@@ -84,7 +82,7 @@ let similarity = {};
 
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
             el.setAttribute('state', 'enabled');
-            cookies.set('pin', true);
+            window.parent.Cookies.set('pin', true);
             //setCookie('pin', 'true');
 
         }
