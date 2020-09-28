@@ -4,9 +4,11 @@ function setCookie(cn, cv, ex = 0)
     {
         let dt = new Date();
         dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
-        let expires = "expires=" + dt.toUTCString();
+        let expires = 'expires=' + dt.toUTCString();
 
-        document.cookie = cn + "=" + cv + ";" + expires + ";path=/";
+console.log(cn + '=' + cv + ';' + expires + ';path=/');
+
+        document.cookie = cn + '=' + cv + ';' + expires + ';path=/';
     }
 
 }
@@ -15,9 +17,11 @@ function getCookie(cn)
 {
     if (cn)
     {
-        let cp = cn + "=";
+        let cp = cn + '=';
         let dc = decodeURIComponent(document.cookie);
         let ca = dc.split(';');
+
+        console.log(dc);
 
         for(let i = 0; i < ca.length; i++)
         {
