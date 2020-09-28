@@ -1,4 +1,4 @@
-let cookies = window.parent.Cookies;
+let cookies = new Cookies();
 
 let similarity = {};
 (function(ceres)
