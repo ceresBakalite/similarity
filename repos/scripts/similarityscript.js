@@ -86,6 +86,8 @@ let similarity = {};
             window.parent.setCookie('pin', true);
         }
 
+        console.log(window.parent.getCookie('hd'));
+        console.log(window.parent.getCookie('pin'));
     }
 
 })(similarity);
