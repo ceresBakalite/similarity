@@ -5,10 +5,11 @@ function setCookie(cn, cv, ex = 0)
         let dt = new Date();
         dt.setTime(dt.getTime() + (ex * 24 * 60 * 60 * 1000));
         let expires = 'expires=' + dt.toUTCString();
+        let domain = 'domain=ceresbakalite.github.io/similarity';
 
-console.log(cn + '=' + cv + ';' + expires + ';path=/');
+console.log(cn + '=' + cv + ';' + domain + ';' + expires + ';path=/');
 
-        document.cookie = cn + '=' + cv + ';' + expires + ';path=/';
+        document.cookie = encodeURIComponent(cn) + '=' + encodeURIComponent(cv) + ';' + encodeURIComponent(domain) + ';' + expires + ';path=/';
     }
 
 }
