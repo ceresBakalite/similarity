@@ -107,7 +107,7 @@ let similarityframe = {};
                 {
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
                     //window.parent.Cookies.set('hd', false);
-                    window.parent.setCookie('hd',, false);
+                    window.parent.setCookie('hd', false);
                 }
 
             }
