@@ -24,7 +24,7 @@ function getCookie(name)
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-var myApp = {};
+var cookies = {};
 (function() {
     var id = 0;
 
@@ -62,4 +62,4 @@ var myApp = {};
         document.cookie = updatedCookie;
     }
 
-}).apply(myApp);
+}).apply(cookies);
