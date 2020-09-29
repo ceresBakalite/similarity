@@ -61,12 +61,7 @@ let similarity = {};
             el.setAttribute('state', 'enabled');
 
             console.log('establish hd: ' + window.parent.getCookie('hd'));
-
-            if (window.parent.getCookie('hd'))
-            {
-                document.getElementById('site-header-display').style.display = 'none';
-            }
-
+            document.getElementById('site-header-display').style.display = (window.parent.getCookie('hd')) ? 'none' : 'block';
         }
 
     }
