@@ -52,14 +52,12 @@ let similarity = {};
 
     function establishHeaderAttributes()
     {
-        let el = document.getElementById('pin-navbar');
-        
-        if ((el.getAttribute('state') == 'disabled') && (window.parent.getCookie('pn'))) resetPinState(el);
-
         console.log('establish pin: ' + window.parent.getCookie('pn'));
 
         if (window.parent.getCookie('pn'))
         {
+            if (document.getElementById('pin-navbar').getAttribute('state') == 'disabled') resetPinState(el);
+
             if (window.parent.getCookie('hd'))
             {
                 let header = document.getElementById('site-header-display');
