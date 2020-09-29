@@ -95,7 +95,7 @@ let similarity = {};
 
     function setPinState(el, attribute)
     {
-        el.src = (attribute == 'enabled') ? 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png' : 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png';
+        el.src = (attribute === 'enabled') ? 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png' : 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png';
         el.setAttribute('state', attribute);
         window.parent.setCookie('pn', attribute, { 'max-age': 3600 });
     }
