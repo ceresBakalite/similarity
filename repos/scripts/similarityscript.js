@@ -86,6 +86,7 @@ let similarity = {};
         {
             setPinState(el, 'disabled');
 
+            console.log('window.parent.getCookie hd: ' + window.parent.getCookie('hd'));
             if (window.parent.getCookie('hd') != 'none' )
             {
                 let header = document.getElementById('site-header-display');
