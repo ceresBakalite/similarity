@@ -55,7 +55,7 @@ let similarity = {};
 
     function establishHeaderAttributes()
     {
-        if (cookies.get('hd') == 'none') setTimeout(function(){ document.getElementById('site-header-display').style.display = 'none'; }, 250);
+        if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
 
         resource.attribute.markupId = cookies.get('mi');
