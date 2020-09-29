@@ -12,11 +12,7 @@ function setCookie(name, value, options = {})
     {
         updatedCookie += '; ' + optionKey;
         let optionValue = options[optionKey];
-        if (optionValue !== true)
-        {
-            updatedCookie += '=' + optionValue;
-        }
-
+        if (optionValue !== true) updatedCookie += '=' + optionValue;
     }
 
     document.cookie = updatedCookie;
