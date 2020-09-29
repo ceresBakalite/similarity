@@ -83,13 +83,13 @@ let similarity = {};
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
             el.setAttribute('state', 'enabled');
             //window.parent.setCookie('pn', true, { 'max-age': 3600 });
-            window.parent.cookies.set('pn', true, { 'max-age': 3600 });
+            window.parent.cookies.setCookie('pn', true, { 'max-age': 3600 });
         }
 
         //console.log(window.parent.getCookie('hd'));
         //console.log(window.parent.getCookie('pn'));
-        console.log(window.parent.cookies.get('hd'));
-        console.log(window.parent.cookies.get('pn'));
+        console.log(window.parent.cookies.getCookie('hd'));
+        console.log(window.parent.cookies.getCookie('pn'));
     }
 
 })(similarity);
