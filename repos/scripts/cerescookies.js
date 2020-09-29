@@ -23,3 +23,25 @@ function getCookie(name)
   let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
+
+var myApp = {};
+(function() {
+    var id = 0;
+
+    this.next = function() {
+        return id++;
+    };
+
+    this.reset = function() {
+        id = 0;
+    }
+}).apply(myApp);
+
+/*
+window.console && console.log(
+    next(),
+    next(),
+    reset(),
+    next()
+) //0, 1, undefined, 0
+*/
