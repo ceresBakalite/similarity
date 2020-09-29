@@ -86,6 +86,8 @@ let similarityframe = {};
 
     function adjustHeaderDisplay()
     {
+        window.parent.setCookie('hd', 'block', {'max-age': 3600});
+
         let el = window.top.document.getElementById('site-header-display');
         let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
         let trigger = 25;
@@ -107,10 +109,6 @@ let similarityframe = {};
                 }
 
             }
-
-        } else {
-
-            window.parent.setCookie('hd', 'block', {'max-age': 3600});
 
         }
 
