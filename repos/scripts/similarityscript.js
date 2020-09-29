@@ -61,7 +61,6 @@ let similarity = {};
         if (cookies.get('pn') === 'enabled')
         {
             document.getElementById('site-header-display').style.display = cookies.get('hd');
-            setPinState(document.getElementById('pin-navbar'), 'enabled');
         }
 
         resource.attribute.markupId = cookies.get('mi');
