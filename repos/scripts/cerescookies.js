@@ -1,4 +1,4 @@
-let cookies = {};
+let test = {};
 (function(cookie)
 {
 
@@ -35,4 +35,4 @@ let cookies = {};
         return matches ? decodeURIComponent(matches[1]) : undefined;
     }
 
-})(cookies);
+})(test);
