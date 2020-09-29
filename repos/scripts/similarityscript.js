@@ -82,12 +82,15 @@ let similarity = {};
 
     function resetPinState(el)
     {
-        if (el.getAttribute('state') == 'enabled')
+        if (el.getAttribute('state') === 'enabled')
         {
             setPinState(el, 'disabled');
 
-            let header = document.getElementById('site-header-display');
-            if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
+            if (window.parent.getCookie('hd') != 'none' )
+            {
+                let header = document.getElementById('site-header-display');
+                if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
+            }
 
         } else {
 
