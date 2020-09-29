@@ -1,7 +1,5 @@
 function setCookie(name, value, options = {})
 {
-    //setCookie('user', 'John', {secure: true, 'max-age': 3600});
-
     options = {
         path: '/',
     };
