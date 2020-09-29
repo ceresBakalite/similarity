@@ -57,12 +57,11 @@ let similarity = {};
             if (window.parent.getCookie('hd'))
             {
                 let header = document.getElementById('site-header-display');
-                let pin = document.getElementById('pin-navbar');
-
                 header.style.display = 'none';
-                pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
-                pin.setAttribute('state', 'enabled');
+
+                resetPinState(document.getElementById('pin-navbar'));
             }
+
         }
 
     }
@@ -102,8 +101,8 @@ let similarity = {};
             window.parent.setCookie('pn', true, { 'max-age': 3600 });
         }
 
-        console.log(window.parent.getCookie('hd'));
-        console.log(window.parent.getCookie('pn'));
+        console.log('hd: ' + window.parent.getCookie('hd'));
+        console.log('pn: ' + window.parent.getCookie('pn'));
     }
 
 })(similarity);
