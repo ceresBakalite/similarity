@@ -108,6 +108,10 @@ let similarityframe = {};
 
             }
 
+        } else {
+
+            window.parent.setCookie('hd', 'block', {'max-age': 3600});
+
         }
 
         function setStyleDisplay(attribute)
