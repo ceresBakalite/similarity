@@ -56,13 +56,15 @@ let similarity = {};
 
         if (window.parent.getCookie('pn'))
         {
+            let el = document.getElementById('pin-navbar');
+
             if (document.getElementById('pin-navbar').getAttribute('state') == 'disabled') resetPinState(el);
 
             if (window.parent.getCookie('hd'))
             {
                 document.getElementById('site-header-display').style.display = 'none';
 
-                resetPinState(document.getElementById('pin-navbar'));
+                resetPinState(el);
             }
 
         }
