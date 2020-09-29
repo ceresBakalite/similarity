@@ -73,7 +73,7 @@ let similarity = {};
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
             el.setAttribute('state', 'disabled');
             //window.parent.setCookie('pn', false, { 'max-age': 3600 });
-            window.parent.cookies.set('pn', false, { 'max-age': 3600 });
+            window.parent.cookies.setCookie('pn', false, { 'max-age': 3600 });
 
             let header = document.getElementById('site-header-display');
             if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
