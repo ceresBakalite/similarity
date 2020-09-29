@@ -52,9 +52,6 @@ let similarity = {};
 
     function establishHeaderAttributes()
     {
-        console.log('el.style.display: ' + document.getElementById('site-header-display').style.display);
-        console.log('establish pin: ' + window.parent.getCookie('pn'));
-
         if (window.parent.getCookie('pn') === 'enabled')
         {
             let el = document.getElementById('pin-navbar');
@@ -102,8 +99,6 @@ let similarity = {};
             window.parent.setCookie('pn', 'enabled', { 'max-age': 3600 });
         }
 
-        console.log('hd: ' + window.parent.getCookie('hd'));
-        console.log('pn: ' + window.parent.getCookie('pn'));
     }
 
 })(similarity);
