@@ -2,8 +2,8 @@ let cookies = {};
 (function(ceres)
 {
 
-    ceres.get = function(name) { getCookie(name); }; // public method reference
-    ceres.set = function(name, value, options = {}) { setCookie(name, value, options = {}); };  // public method reference
+    ceres.getCookie = function(name) { getCookie(name); }; // public method reference
+    ceres.setCookie = function(name, value, options = {}) { setCookie(name, value, options = {}); };  // public method reference
 
     function setCookie(name, value, options = {})
     {
