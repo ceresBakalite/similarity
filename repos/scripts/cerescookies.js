@@ -1,4 +1,4 @@
-let test = {
+var test = {
 
     getCookie: function getCookie(name)
     {
