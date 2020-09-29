@@ -86,6 +86,8 @@ let similarity = {};
 
     function resetPinState(el)
     {
+        window.console && console.log( myApp.next(), myApp.next(), myApp.reset(), myApp.next());
+        
         if (el.getAttribute('state') === 'enabled')
         {
             setPinState(el, 'disabled');
