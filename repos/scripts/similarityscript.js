@@ -51,21 +51,21 @@ let similarity = {};
         if (buttonElement) buttonElement.blur();
 
         //window.parent.setCookie('mi', resource.attribute.markupId, { 'max-age': 3600 });
-        myApp.set('mi', resource.attribute.markupId, { 'max-age': 3600 });
+        cookies.set('mi', resource.attribute.markupId, { 'max-age': 3600 });
     }
 
     function establishHeaderAttributes()
     {
         //if (window.parent.getCookie('pn') === 'enabled')
-        if (myApp.get('pn') === 'enabled')
+        if (cookies.get('pn') === 'enabled')
         {
             //document.getElementById('site-header-display').style.display = window.parent.getCookie('hd');
-            document.getElementById('site-header-display').style.display = myApp.get('hd');
+            document.getElementById('site-header-display').style.display = cookies.get('hd');
             setPinState(document.getElementById('pin-navbar'), 'enabled');
         }
 
         //resource.attribute.markupId = window.parent.getCookie('mi');
-        resource.attribute.markupId = myApp.get('mi');
+        resource.attribute.markupId = cookies.get('mi');
     }
 
     function onloadPrimary()
@@ -90,9 +90,9 @@ let similarity = {};
 
     function resetPinState(el)
     {
-        window.console && console.log( myApp.next(), myApp.next(), myApp.reset(), myApp.next());
+        window.console && console.log( cookies.next(), cookies.next(), cookies.reset(), cookies.next());
 
-        window.console && console.log( myApp.get('pn'));
+        window.console && console.log( cookies.get('pn'));
 
         if (el.getAttribute('state') === 'enabled')
         {
@@ -103,7 +103,7 @@ let similarity = {};
             setPinState(el, 'enabled');
         }
 
-        if (myApp.get('hd') === 'none' )
+        if (cookies.get('hd') === 'none' )
         {
             setTimeout(function() { document.getElementById('site-header-display').style.display = 'none'; }, 250);
         }
@@ -115,7 +115,7 @@ let similarity = {};
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
         //window.parent.setCookie('pn', attribute, { 'max-age': 3600 });
-        myApp.set('pn', attribute, { 'max-age': 3600 });
+        cookies.set('pn', attribute, { 'max-age': 3600 });
     }
 
 })(similarity);
