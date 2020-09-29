@@ -56,7 +56,9 @@ let similarity = {};
 
         if (window.parent.getCookie('pn'))
         {
-            setPinState(document.getElementById('pin-navbar'), 'enabled');
+            let el = document.getElementById('pin-navbar');
+            el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
+            el.setAttribute('state', 'enabled');
 
             if (window.parent.getCookie('hd'))
             {
@@ -88,27 +90,22 @@ let similarity = {};
     {
         if (el.getAttribute('state') == 'enabled')
         {
-            setPinState(el, 'disabled');
+            el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
+            el.setAttribute('state', 'disabled');
+            window.parent.setCookie('pn', false, { 'max-age': 3600 });
 
             let header = document.getElementById('site-header-display');
             if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
 
         } else {
 
-            setPinState(el, 'enabled');
+            el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
+            el.setAttribute('state', 'enabled');
+            window.parent.setCookie('pn', true, { 'max-age': 3600 });
         }
 
         console.log('hd: ' + window.parent.getCookie('hd'));
         console.log('pn: ' + window.parent.getCookie('pn'));
     }
-
-    function setPinState(el, state)
-    {
-        el.src = (state == 'enabled') ? 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png' : 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png';
-        el.setAttribute('state', state);
-        window.parent.setCookie('pn', ((state == 'enabled') ? true : false), { 'max-age': 3600 });
-
-    }
-
 
 })(similarity);
