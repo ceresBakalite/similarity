@@ -60,8 +60,8 @@ let similarity = {};
                 let pin = document.getElementById('pin-navbar');
 
                 header.style.display = 'none';
-                pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
-                pin.setAttribute('state', 'disabled');
+                pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
+                pin.setAttribute('state', 'enabled');
             }
         }
         getQueryString();
