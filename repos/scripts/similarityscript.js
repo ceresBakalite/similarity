@@ -60,6 +60,8 @@ let similarity = {};
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
             el.setAttribute('state', 'enabled');
 
+            console.log('establish hd: ' + window.parent.getCookie('hd'));
+
             if (window.parent.getCookie('hd'))
             {
                 document.getElementById('site-header-display').style.display = 'none';
