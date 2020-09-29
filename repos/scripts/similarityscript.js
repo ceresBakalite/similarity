@@ -55,7 +55,7 @@ let similarity = {};
         console.log('el.style.display: ' + document.getElementById('site-header-display').style.display);
         console.log('establish pin: ' + window.parent.getCookie('pn'));
 
-        if (window.parent.getCookie('pn'))
+        if (window.parent.getCookie('pn') === 'true')
         {
             let el = document.getElementById('pin-navbar');
             el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
