@@ -98,7 +98,7 @@ let similarityframe = {};
                 {
                     setTimeout(function(){ setStyleDisplay('none'); }, 250);
                     //window.parent.setCookie('hd', true, {'max-age': 3600});
-                    window.parent.cookies.setCookie('hd', true, {'max-age': 3600});
+                    window.parent.cookies.setCookie('hd', true);
                 }
 
             } else {
@@ -107,7 +107,7 @@ let similarityframe = {};
                 {
                     setTimeout(function(){ setStyleDisplay('block'); }, 250);
                     //window.parent.setCookie('hd', false, {'max-age': 3600});
-                    window.parent.cookies.setCookie('hd', false, {'max-age': 3600});
+                    window.parent.cookies.setCookie('hd', false);
                 }
 
             }
