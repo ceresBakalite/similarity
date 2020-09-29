@@ -103,14 +103,12 @@ let similarityframe = {};
 
         } else {
 
-            //window.parent.setCookie('hd', 'block', {'max-age': 3600});
             window.parent.cookies.set('hd', 'block', {'max-age': 3600});
 
         }
 
         function setStyleDisplay(attribute)
         {
-            //window.parent.setCookie('hd', attribute, {'max-age': 3600});
             window.parent.cookies.set('hd', attribute, {'max-age': 3600});
             el.style.display = attribute;
         }
