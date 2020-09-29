@@ -82,9 +82,6 @@ let similarity = {};
 
         pinimage.set('enabled', 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png');
         pinimage.set('disabled', 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png');
-
-        pinimage.attribute.icon = 'enabled';
-        pinimage.attribute.iconUrl = pinimage.get(pinimage.attribute.icon);
     }
 
     function resetPinState(el)
