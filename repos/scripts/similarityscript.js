@@ -52,6 +52,8 @@ let similarity = {};
 
     function establishHeaderAttributes()
     {
+        console.log('establish pin: ' + window.parent.getCookie('pn'));
+        
         if (window.parent.getCookie('pn'))
         {
             if (window.parent.getCookie('hd'))
