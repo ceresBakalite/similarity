@@ -48,6 +48,8 @@ let similarity = {};
         }
 
         if (buttonElement) buttonElement.blur();
+
+        window.parent.setCookie('mi', resource.attribute.markupId, { 'max-age': 3600 });
     }
 
     function establishHeaderAttributes()
@@ -58,6 +60,7 @@ let similarity = {};
             setPinState(document.getElementById('pin-navbar'), 'enabled');
         }
 
+        resource.attribute.markupId = window.parent.getCookie('mi');
     }
 
     function onloadPrimary()
