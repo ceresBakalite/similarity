@@ -3,7 +3,7 @@ let cookies = {};
 {
 
     ceres.getCookie = function(name) { getCookie(name); }; // public method reference
-    ceres.setCookie = function(name, value, options = {}) { setCookie(name, value, options = {}); };  // public method reference
+    ceres.setCookie = function(name, value) { setCookie(name, value, options = {}); };  // public method reference
 
     function setCookie(name, value, options = {})
     {
