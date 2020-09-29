@@ -5,6 +5,8 @@ let similarity = {};
     {
         async connectedCallback()
         {
+            establishHeaderAttributes();
+
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
         }
@@ -50,7 +52,7 @@ let similarity = {};
         if (buttonElement) buttonElement.blur();
     }
 
-    function onloadPrimary()
+    function establishHeaderAttributes()
     {
         if (window.parent.getCookie('pn'))
         {
@@ -64,6 +66,11 @@ let similarity = {};
                 pin.setAttribute('state', 'enabled');
             }
         }
+
+    }
+
+    function onloadPrimary()
+    {
         getQueryString();
     }
 
