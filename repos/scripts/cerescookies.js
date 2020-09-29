@@ -36,12 +36,3 @@ var myApp = {};
         id = 0;
     }
 }).apply(myApp);
-
-/*
-window.console && console.log(
-    next(),
-    next(),
-    reset(),
-    next()
-) //0, 1, undefined, 0
-*/
