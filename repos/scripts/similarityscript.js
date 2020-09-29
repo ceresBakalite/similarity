@@ -55,7 +55,7 @@ let similarity = {};
         if (window.parent.getCookie('pn') === 'enabled')
         {
             document.getElementById('site-header-display').style.display = window.parent.getCookie('hd');
-            setPinState(el, 'enabled');
+            setPinState(document.getElementById('pin-navbar'), 'enabled');
         }
 
     }
