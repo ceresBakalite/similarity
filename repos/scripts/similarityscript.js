@@ -61,7 +61,7 @@ let similarity = {};
             el.setAttribute('state', 'enabled');
 
             console.log('establish hd: ' + window.parent.getCookie('hd'));
-            document.getElementById('site-header-display').style.display = (window.parent.getCookie('hd')) ? 'none' : 'block';
+            document.getElementById('site-header-display').style.display = (window.parent.getCookie('hd')) ? 'block' : 'none';
         }
 
     }
