@@ -5,8 +5,6 @@ let similarity = {};
     {
         async connectedCallback()
         {
-            establishHeaderAttributes();
-
             let src = this.getAttribute('src');
             this.innerHTML = await (await fetch(src)).text();
         }
@@ -71,6 +69,7 @@ let similarity = {};
 
     function onloadPrimary()
     {
+        establishHeaderAttributes();
         getQueryString();
     }
 
