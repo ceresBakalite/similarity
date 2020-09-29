@@ -26,6 +26,7 @@ let similarity = {};
 
     let resource = new Component();
     let location = new Map();
+    let pinimage = new Map();
 
     setResourcePrecursors();
 
@@ -78,6 +79,12 @@ let similarity = {};
 
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
+
+        pinimage.set('enabled', 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png');
+        pinimage.set('disabled', 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png');
+
+        pinimage.attribute.icon = 'enabled';
+        pinimage.attribute.iconUrl = pinimage.get(pinimage.attribute.icon);
     }
 
     function resetPinState(el)
@@ -93,15 +100,16 @@ let similarity = {};
 
         if (window.parent.getCookie('hd') === 'none' )
         {
-            let header = document.getElementById('site-header-display');
-            setTimeout(function() { header.style.display = 'none'; }, 250);
+            setTimeout(function() { document.getElementById('site-header-display').style.display = 'none'; }, 250);
         }
 
     }
 
     function setPinState(el, attribute)
     {
-        el.src = (attribute === 'enabled') ? 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png' : 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png';
+        //el.src = (attribute === 'enabled') ? 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png' : 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png';
+
+        el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
         window.parent.setCookie('pn', attribute, { 'max-age': 3600 });
     }
