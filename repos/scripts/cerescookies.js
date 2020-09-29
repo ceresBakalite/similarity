@@ -1,11 +1,12 @@
-let test = {};
-(function(cookie)
-{
+let test = {
 
-    cookie.getCookie = function(name) { getCookie(name); }; // public method reference
-    cookie.setCookie = function(name, value) { setCookie(name, value, options = {}); };  // public method reference
+    getCookie: function getCookie(name)
+    {
+        let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    },
 
-    function setCookie(name, value, options = {})
+    setCookie: function (name, value, options = {})
     {
         options = {
             path: '/',
@@ -29,10 +30,4 @@ let test = {};
         document.cookie = updatedCookie;
     }
 
-    function getCookie(name)
-    {
-        let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-        return matches ? decodeURIComponent(matches[1]) : undefined;
-    }
-
-})(test);
+}
