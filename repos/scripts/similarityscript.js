@@ -64,7 +64,7 @@ let similarity = {};
             {
                 document.getElementById('site-header-display').style.display = 'none';
 
-                resetPinState(el);
+                //resetPinState(el);
             }
 
         }
