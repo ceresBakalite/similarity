@@ -58,10 +58,10 @@ let similarity = {};
         console.log('establish pn: ' + cookies.get('pn'));
         console.log('establish hd: ' + cookies.get('hd'));
 
-        if (cookies.get('pn') === 'enabled')
-        {
+//        if (cookies.get('pn') === 'enabled')
+//        {
             document.getElementById('site-header-display').style.display = cookies.get('hd');
-        }
+//        }
 
         resource.attribute.markupId = cookies.get('mi');
     }
