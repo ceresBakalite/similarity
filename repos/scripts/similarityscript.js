@@ -57,8 +57,8 @@ let similarity = {};
         if (window.parent.getCookie('pn'))
         {
             let el = document.getElementById('pin-navbar');
-
-            if (document.getElementById('pin-navbar').getAttribute('state') == 'disabled') resetPinState(el);
+            el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
+            el.setAttribute('state', 'enabled');
 
             if (window.parent.getCookie('hd'))
             {
