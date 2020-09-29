@@ -52,7 +52,10 @@ let similarity = {};
 
     function onloadPrimary()
     {
-        if (window.parent.getCookie('pn')) console.log('do something');
+        if (window.parent.getCookie('pn'))
+        {
+            if (window.parent.getCookie('hd')) console.log('close the banner and pin it down');
+        }
         getQueryString();
     }
 
