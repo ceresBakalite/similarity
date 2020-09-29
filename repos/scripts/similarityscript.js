@@ -54,12 +54,8 @@ let similarity = {};
     {
         if (window.parent.getCookie('pn') === 'enabled')
         {
-            let el = document.getElementById('pin-navbar');
-            el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
-            el.setAttribute('state', 'enabled');
-
-            console.log('establish hd: ' + window.parent.getCookie('hd'));
             document.getElementById('site-header-display').style.display = window.parent.getCookie('hd');
+            setPinState(el, 'enabled');
         }
 
     }
@@ -85,20 +81,23 @@ let similarity = {};
     {
         if (el.getAttribute('state') == 'enabled')
         {
-            el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
-            el.setAttribute('state', 'disabled');
-            window.parent.setCookie('pn', 'disabled', { 'max-age': 3600 });
+            setPinState(el, 'disabled');
 
             let header = document.getElementById('site-header-display');
             if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
 
         } else {
 
-            el.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png";
-            el.setAttribute('state', 'enabled');
-            window.parent.setCookie('pn', 'enabled', { 'max-age': 3600 });
+            setPinState(el, 'enabled');
         }
 
+    }
+
+    function setPinState(el, attribute)
+    {
+        el.src = (attribute == 'enabled') ? 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png' : 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png' : ;
+        el.setAttribute('state', attribute);
+        window.parent.setCookie('pn', attribute, { 'max-age': 3600 });
     }
 
 })(similarity);
