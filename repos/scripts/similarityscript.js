@@ -52,6 +52,7 @@ let similarity = {};
 
     function onloadPrimary()
     {
+        if (window.parent.getCookie('pn')) console.log('do something');
         getQueryString();
     }
 
