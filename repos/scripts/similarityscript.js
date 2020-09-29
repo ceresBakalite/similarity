@@ -90,11 +90,11 @@ let similarity = {};
     {
         if (el.getAttribute('state') === 'enabled')
         {
-            setPinState(el, 'enabled');
+            setPinState(el, 'disabled');
 
         } else {
 
-            setPinState(el, 'disabled');
+            setPinState(el, 'enabled');
         }
 
         if (cookies.get('hd') === 'none' )
