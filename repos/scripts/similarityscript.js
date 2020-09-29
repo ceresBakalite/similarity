@@ -61,7 +61,7 @@ let similarity = {};
 //        if (cookies.get('pn') === 'enabled')
 //        {
             document.getElementById('site-header-display').style.display = cookies.get('hd');
-            if (cookies.get('pn') == 'enabled') setPinState(el, 'enabled');
+            if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
 //        }
 
         resource.attribute.markupId = cookies.get('mi');
