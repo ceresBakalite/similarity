@@ -60,8 +60,7 @@ let similarity = {};
 
             if (window.parent.getCookie('hd'))
             {
-                let header = document.getElementById('site-header-display');
-                header.style.display = 'none';
+                document.getElementById('site-header-display').style.display = 'none';
 
                 resetPinState(document.getElementById('pin-navbar'));
             }
