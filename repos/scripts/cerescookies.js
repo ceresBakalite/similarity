@@ -35,4 +35,4 @@ let cookies = {};
         return matches ? decodeURIComponent(matches[1]) : undefined;
     }
 
-})(ceres);
+})(cookies);
