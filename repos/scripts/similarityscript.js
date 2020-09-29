@@ -54,7 +54,15 @@ let similarity = {};
     {
         if (window.parent.getCookie('pn'))
         {
-            if (window.parent.getCookie('hd')) console.log('close the banner and pin it down');
+            if (window.parent.getCookie('hd'))
+            {
+                let header = document.getElementById('site-header-display');
+                let pin = document.getElementById('pin-navbar');
+
+                header.style.display = 'none';
+                pin.src = "https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png";
+                pin.setAttribute('state', 'disabled');
+            }
         }
         getQueryString();
     }
