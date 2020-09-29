@@ -52,7 +52,7 @@ let similarity = {};
 
     function establishHeaderAttributes()
     {
-        window.parent.setCookie('pn') = (el.getAttribute('state') == 'enabled') ? true : false;
+        resetPinState(document.getElementById('pin-navbar'));
 
         console.log('establish pin: ' + window.parent.getCookie('pn'));
 
