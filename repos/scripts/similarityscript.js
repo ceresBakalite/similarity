@@ -91,10 +91,10 @@ let similarity = {};
             setPinState(el, 'enabled');
         }
 
-        if (window.parent.getCookie('hd') != 'none' )
+        if (window.parent.getCookie('hd') === 'none' )
         {
             let header = document.getElementById('site-header-display');
-            if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
+            setTimeout(function() { header.style.display = 'none'; }, 250);
         }
 
     }
