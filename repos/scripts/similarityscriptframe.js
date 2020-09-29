@@ -101,10 +101,6 @@ let similarityframe = {};
                 if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
             }
 
-        } else {
-
-            window.parent.cookies.set('hd', 'block', {'max-age': 3600});
-
         }
 
         function setStyleDisplay(attribute)
