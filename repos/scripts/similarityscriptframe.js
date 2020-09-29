@@ -84,6 +84,12 @@ let similarityframe = {};
 
     }
 
+    function setStyleDisplay(el, attribute)
+    {
+        window.parent.cookies.set('hd', attribute, {'max-age': 3600});
+        el.style.display = attribute;
+    }
+
     function adjustHeaderDisplay()
     {
         let el = window.top.document.getElementById('site-header-display');
@@ -94,19 +100,13 @@ let similarityframe = {};
         {
             if (el.style.display && window.scrollY > trigger)
             {
-                if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
+                if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay(el, 'none'); }, 250);
 
             } else {
 
-                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
+                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay(el, 'block'); }, 250);
             }
 
-        }
-
-        function setStyleDisplay(attribute)
-        {
-            window.parent.cookies.set('hd', attribute, {'max-age': 3600});
-            el.style.display = attribute;
         }
 
     }
