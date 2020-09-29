@@ -110,7 +110,8 @@ let similarity = {};
     {
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
-        window.parent.setCookie('pn', attribute, { 'max-age': 3600 });
+        //window.parent.setCookie('pn', attribute, { 'max-age': 3600 });
+        myApp.set('pn', attribute, { 'max-age': 3600 });
     }
 
 })(similarity);
