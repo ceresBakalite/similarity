@@ -50,21 +50,17 @@ let similarity = {};
 
         if (buttonElement) buttonElement.blur();
 
-        //window.parent.setCookie('mi', resource.attribute.markupId, { 'max-age': 3600 });
         cookies.set('mi', resource.attribute.markupId, { 'max-age': 3600 });
     }
 
     function establishHeaderAttributes()
     {
-        //if (window.parent.getCookie('pn') === 'enabled')
         if (cookies.get('pn') === 'enabled')
         {
-            //document.getElementById('site-header-display').style.display = window.parent.getCookie('hd');
             document.getElementById('site-header-display').style.display = cookies.get('hd');
             setPinState(document.getElementById('pin-navbar'), 'enabled');
         }
 
-        //resource.attribute.markupId = window.parent.getCookie('mi');
         resource.attribute.markupId = cookies.get('mi');
     }
 
@@ -90,10 +86,6 @@ let similarity = {};
 
     function resetPinState(el)
     {
-        window.console && console.log( cookies.next(), cookies.next(), cookies.reset(), cookies.next());
-
-        window.console && console.log( cookies.get('pn'));
-
         if (el.getAttribute('state') === 'enabled')
         {
             setPinState(el, 'disabled');
@@ -114,7 +106,6 @@ let similarity = {};
     {
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
-        //window.parent.setCookie('pn', attribute, { 'max-age': 3600 });
         cookies.set('pn', attribute, { 'max-age': 3600 });
     }
 
