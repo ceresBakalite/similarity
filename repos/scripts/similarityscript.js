@@ -56,7 +56,7 @@ let similarity = {};
 
         if (window.parent.getCookie('pn'))
         {
-            setPinState(el, 'enabled');
+            setPinState(document.getElementById('pin-navbar'), 'enabled');
 
             if (window.parent.getCookie('hd'))
             {
