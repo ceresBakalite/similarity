@@ -1,4 +1,4 @@
-var cookies = {};
+let cookies = {};
 (function() {
 
     this.get = function (name)
