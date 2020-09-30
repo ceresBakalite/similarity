@@ -220,12 +220,14 @@ var ceres = {};
 
         function getSlideViewPointerContainer()
         {
-            shadowContent.appendChild(document.createElement('br'));
+            csv.progenitor.appendChild(document.createElement('br'));
+            //shadowContent.appendChild(document.createElement('br'));
 
             const pointerElement = document.createElement('div');
 
             pointerElement.id = slideview.HTMLSlideViewElement + '-pointer-container';
-            shadowContent.appendChild(pointerElement);
+            csv.progenitor.appendChild(pointerElement);
+            //shadowContent.appendChild(pointerElement);
 
             composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
 
@@ -237,7 +239,8 @@ var ceres = {};
                 composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
             }
 
-            shadowContent.appendChild(document.createElement('br'));
+            csv.progenitor.appendChild(document.createElement('br'));
+            //shadowContent.appendChild(document.createElement('br'));
 
             function getClickEventValue(indexItem)
             {
