@@ -165,15 +165,17 @@ var ceres = {};
 
     function getSlideView()
     {
-        //csv.progenitor.innerHTML = null;
+        csv.progenitor.innerHTML = null;
 
-
+        /*
         var shadowContent = document.createElement('div');
         shadowContent.id = slideview.HTMLSlideViewElement + '-shadowdom-container';
+        */
 
         csv.imageContainer = document.createElement('div');
         csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-        shadowContent.appendChild(csv.imageContainer);
+        csv.progenitor.appendChild(csv.imageContainer);
+        //shadowContent.appendChild(csv.imageContainer);
 
         composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
 
@@ -206,7 +208,7 @@ var ceres = {};
 
         setSlideViewDisplay('none');
 
-        csv.progenitor.appendChild(shadowContent);
+        //csv.progenitor.appendChild(shadowContent);
 
         inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + csv.progenitor.innerHTML);
 
