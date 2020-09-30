@@ -167,15 +167,14 @@ var ceres = {};
     {
         csv.progenitor.innerHTML = null;
 
-        /*
-        var shadowContent = document.createElement('div');
+        let shadowContent = document.createElement('div');
         shadowContent.id = slideview.HTMLSlideViewElement + '-shadowdom-container';
-        */
+        csv.progenitor.appendChild(shadowContent);
 
         csv.imageContainer = document.createElement('div');
         csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-        csv.progenitor.appendChild(csv.imageContainer);
-        //shadowContent.appendChild(csv.imageContainer);
+        //csv.progenitor.appendChild(csv.imageContainer);
+        shadowContent.appendChild(csv.imageContainer);
 
         composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
 
@@ -220,14 +219,14 @@ var ceres = {};
 
         function getSlideViewPointerContainer()
         {
-            csv.progenitor.appendChild(document.createElement('br'));
-            //shadowContent.appendChild(document.createElement('br'));
+            //csv.progenitor.appendChild(document.createElement('br'));
+            shadowContent.appendChild(document.createElement('br'));
 
             const pointerElement = document.createElement('div');
 
             pointerElement.id = slideview.HTMLSlideViewElement + '-pointer-container';
-            csv.progenitor.appendChild(pointerElement);
-            //shadowContent.appendChild(pointerElement);
+            //csv.progenitor.appendChild(pointerElement);
+            shadowContent.appendChild(pointerElement);
 
             composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
 
@@ -239,8 +238,8 @@ var ceres = {};
                 composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
             }
 
-            csv.progenitor.appendChild(document.createElement('br'));
-            //shadowContent.appendChild(document.createElement('br'));
+            //csv.progenitor.appendChild(document.createElement('br'));
+            shadowContent.appendChild(document.createElement('br'));
 
             function getClickEventValue(indexItem)
             {
