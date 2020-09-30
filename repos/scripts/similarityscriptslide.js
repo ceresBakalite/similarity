@@ -167,13 +167,9 @@ var ceres = {};
     {
         csv.progenitor.innerHTML = null;
 
-        const shadow = csv.progenitor;
-        const shadowRoot = shadow.attachShadow({mode: 'open'});
-        //shadowRoot.innerHTML = '<h1>Hello Shadow DOM</h1>'; // Could also use appendChild().
-
         csv.imageContainer = document.createElement('div');
         csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-        shadowRoot.appendChild(csv.imageContainer);
+        csv.progenitor.appendChild(csv.imageContainer);
 
         composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
 
@@ -206,16 +202,22 @@ var ceres = {};
 
         setSlideViewDisplay('none');
 
-        inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + shadowRoot.innerHTML);
+        inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + csv.progenitor.innerHTML);
+
+        /*
+        const shadow = csv.progenitor;
+        const shadowRoot = shadow.attachShadow({mode: 'open'});
+        shadowRoot.innerHTML = csv.progenitor.innerHTML; // Could also use appendChild().
+        */
 
         function getSlideViewPointerContainer()
         {
-            shadowRoot.appendChild(document.createElement('br'));
+            csv.progenitor.appendChild(document.createElement('br'));
 
             const pointerElement = document.createElement('div');
 
             pointerElement.id = slideview.HTMLSlideViewElement + '-pointer-container';
-            shadowRoot.appendChild(pointerElement);
+            csv.progenitor.appendChild(pointerElement);
 
             composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
 
@@ -227,7 +229,7 @@ var ceres = {};
                 composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
             }
 
-            shadowRoot.appendChild(document.createElement('br'));
+            csv.progenitor.appendChild(document.createElement('br'));
 
             function getClickEventValue(indexItem)
             {
