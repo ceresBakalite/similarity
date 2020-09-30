@@ -167,12 +167,14 @@ var ceres = {};
     {
         csv.progenitor.innerHTML = null;
 
+        /*
         let shadowContent = document.createElement('div');
         shadowContent.id = slideview.HTMLSlideViewElement + '-shadowdom-container';
-
+        */
+        
         csv.imageContainer = document.createElement('div');
         csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-        shadowContent.appendChild(csv.imageContainer);
+        csv.progenitor.appendChild(csv.imageContainer);
 
         composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
 
@@ -205,9 +207,7 @@ var ceres = {};
 
         setSlideViewDisplay('none');
 
-        inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + shadowContent.innerHTML);
-
-        csv.progenitor.appendChild(shadowContent);
+        inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + csv.progenitor.innerHTML);
 
         /*
         const shadow = csv.progenitor;
