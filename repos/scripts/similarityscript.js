@@ -83,7 +83,7 @@ var similarity = {};
 
     function resetPinState(el)
     {
-        if (el.getAttribute('state') === 'enabled')
+        if (el.getAttribute('state') == 'enabled')
         {
             let attribute = 'disabled';
 
@@ -100,17 +100,8 @@ var similarity = {};
     function setDisplayState(attribute)
     {
         let header = document.getElementById('site-header-display');
-
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
         cookies.set('hd', attribute, { 'max-age': 3600 });
-
-        /*
-                if (cookies.get('hd') === 'none' )
-                {
-                    setTimeout(function() { document.getElementById('site-header-display').style.display = 'none'; }, 250);
-                }
-        */
-
     }
 
     function setPinState(el, attribute)
