@@ -85,17 +85,31 @@ var similarity = {};
     {
         if (el.getAttribute('state') === 'enabled')
         {
-            setPinState(el, 'disabled');
+            let attribute = 'disabled';
+
+            setPinState(el, attribute);
+            setDisplayState(attribute);
 
         } else {
 
             setPinState(el, 'enabled');
         }
 
-        if (cookies.get('hd') === 'none' )
-        {
-            setTimeout(function() { document.getElementById('site-header-display').style.display = 'none'; }, 250);
-        }
+    }
+
+    function setDisplayState(attribute)
+    {
+        let header = document.getElementById('site-header-display');
+
+        if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
+        cookies.set('hd', attribute, { 'max-age': 3600 });
+
+        /*
+                if (cookies.get('hd') === 'none' )
+                {
+                    setTimeout(function() { document.getElementById('site-header-display').style.display = 'none'; }, 250);
+                }
+        */
 
     }
 
