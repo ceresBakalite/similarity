@@ -1,4 +1,4 @@
-let similarity = {};
+var similarity = {};
 (function(ceres)
 {
     window.customElements.define('include-directive', class extends HTMLElement
