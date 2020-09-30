@@ -165,7 +165,7 @@ var ceres = {};
 
     function getSlideView()
     {
-        csv.progenitor.innerHTML = null;
+        //csv.progenitor.innerHTML = null;
 
 
         var shadowContent = document.createElement('div');
