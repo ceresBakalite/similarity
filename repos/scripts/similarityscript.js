@@ -49,16 +49,12 @@ var similarity = {};
         }
 
         if (buttonElement) buttonElement.blur();
-
-        cookies.set('mi', resource.attribute.markupId, { 'max-age': 3600 });
     }
 
     function establishHeaderAttributes()
     {
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
-
-        resource.attribute.markupId = cookies.get('mi');
     }
 
     function onloadPrimary()
