@@ -3,8 +3,8 @@ var cookies = {};
 
     this.get = function (name)
     {
-      let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-      return matches ? decodeURIComponent(matches[1]) : undefined;
+      let match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+      return match ? decodeURIComponent(match[1]) : undefined;
     }
 
     this.set = function (name, value, options = {})
@@ -15,16 +15,16 @@ var cookies = {};
 
         if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
 
-        let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+        let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
-        for (let optionKey in options)
+        for (let item in options)
         {
-            updatedCookie += '; ' + optionKey;
-            let optionValue = options[optionKey];
-            if (optionValue !== true) updatedCookie += '=' + optionValue;
+            cookie += '; ' + item;
+            let option = options[item];
+            if (option !== true) cookie += '=' + option;
         }
 
-        document.cookie = updatedCookie;
+        document.cookie = cookie;
     }
 
 }).apply(cookies);
