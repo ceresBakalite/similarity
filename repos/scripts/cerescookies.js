@@ -20,9 +20,7 @@ var cookies = {};
         for (let item in options)
         {
             cookie += '; ' + item;
-            //let option = options[item];
-            //if (option) cookie += '=' + option;
-            cookie = (options[item]) ? cookie += '=' + options[item] : cookie;
+            if (options[item]) cookie += '=' + options[item];
         }
 
         document.cookie = cookie;
