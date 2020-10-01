@@ -195,7 +195,7 @@ var ceres = {};
 
             composeElement('div', id, 'slideview fade', csv.imageContainer, null, null, null, null);
 
-            csv.slideContainer = document.getElementById(id);
+            csv.slideContainer = shadow.getElementById(id);
 
             if (csv.attribute.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
             composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.tabImage(this);', getURL(), getAccessibilityText())
