@@ -371,7 +371,7 @@ var ceres = {};
 
     function setSlideViewDisplay(attribute)
     {
-        const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, img.slide, #' + slideview.HTMLSlideViewElement);
+        const nodelist = shadowRoot.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, img.slide, #' + slideview.HTMLSlideViewElement);
         nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
