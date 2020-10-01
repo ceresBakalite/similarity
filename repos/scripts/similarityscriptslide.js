@@ -55,9 +55,6 @@ var ceres = {};
 
     let csv = new Slideviewer();
 
-    var shadow = null;
-    var shadowRoot = null;
-
     function initiateSlideView()
     {
         csv.activate = getSlideviewAttributes();
@@ -168,16 +165,7 @@ var ceres = {};
 
     function getSlideView()
     {
-        let stylesheets = '<link rel="stylesheet" type="text/css" href="https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css" as="style">'
-            + '<link rel="stylesheet" type="text/css" href="https://ceresbakalite.github.io/similarity/stylesheets/github-light.css" media="screen">'
-            + '<link rel="stylesheet" type="text/css" href="https://ceresbakalite.github.io/similarity/stylesheets/normalize.css" media="screen">'
-            + '<link rel="stylesheet" type="text/css" href="https://ceresbakalite.github.io/similarity/stylesheets/stylesheet.css" media="screen">'
-            + '<link rel="stylesheet" type="text/css" href="https://ceresbakalite.github.io/similarity/stylesheets/similaritysheet.css" media="screen">';
-
-        csv.progenitor.innerHTML = stylesheets;
-
-        shadow = csv.progenitor;
-        shadowRoot = shadow.attachShadow({mode: 'open'});
+        csv.progenitor.innerHTML = null;
 
         csv.imageContainer = document.createElement('div');
         csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
@@ -212,13 +200,9 @@ var ceres = {};
 
         if (csv.attribute.ptr) getSlideViewPointerContainer();
 
-        //setSlideViewDisplay('none');
+        setSlideViewDisplay('none');
 
         inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + csv.progenitor.innerHTML);
-
-        shadowRoot.innerHTML = csv.progenitor.innerHTML; // Could also use appendChild().
-
-        csv.progenitor.innerHTML = null;
 
         function getSlideViewPointerContainer()
         {
@@ -318,8 +302,8 @@ var ceres = {};
 
     function getSlide(targetIndex)
     {
-        const slides = shadowRoot.querySelectorAll(".slideview");
-        const pointers = shadowRoot.querySelectorAll(".ptr");
+        const slides = document.querySelectorAll(".slideview");
+        const pointers = document.querySelectorAll(".ptr");
 
         csv.index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : csv.index;
 
@@ -366,7 +350,7 @@ var ceres = {};
     {
         const renderdelay = 500; // awaiting slideview css catchup
 
-        //csv.progenitor.style.display = 'none';
+        csv.progenitor.style.display = 'none';
 
         getSlideView();
         getSlide();
@@ -377,7 +361,7 @@ var ceres = {};
 
     function setSlideViewDisplay(attribute)
     {
-        const nodelist = shadowRoot.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, img.slide, #' + slideview.HTMLSlideViewElement);
+        const nodelist = document.querySelectorAll('a.prev, a.next, div.subtitle, div.surtitle, img.slide, #' + slideview.HTMLSlideViewElement);
         nodelist.forEach(node => { node.style.display = attribute; } );
     }
 
