@@ -19,13 +19,10 @@ var cookies = {};
 
         for (let item in options)
         {
-            cookie += '; ' + item;
-            let option = options[item];
-            if (option) cookie += '=' + option;
+            //cookie += '; ' + item;
             //if (options[item]) cookie += '=' + options[item];
+            cookie += '; ' + item + ((options[item]) ? '=' + options[item] : '');
         }
-
-console.log(cookie);
 
         document.cookie = cookie;
     }
