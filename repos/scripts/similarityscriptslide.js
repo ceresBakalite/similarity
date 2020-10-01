@@ -167,16 +167,9 @@ var ceres = {};
     {
         csv.progenitor.innerHTML = null;
 
-        let shadowContent = document.createElement('div');
-        shadowContent.id = slideview.HTMLSlideViewElement + '-shadowdom-container';
-        csv.progenitor.appendChild(shadowContent);
-
-        let shadow = shadowContent.attachShadow({mode: 'open'});
-
         csv.imageContainer = document.createElement('div');
         csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-        //csv.progenitor.appendChild(csv.imageContainer);
-        shadow.appendChild(csv.imageContainer);
+        csv.progenitor.appendChild(csv.imageContainer);
 
         composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
 
@@ -195,7 +188,7 @@ var ceres = {};
 
             composeElement('div', id, 'slideview fade', csv.imageContainer, null, null, null, null);
 
-            csv.slideContainer = shadow.getElementById(id);
+            csv.slideContainer = document.getElementById(id);
 
             if (csv.attribute.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
             composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.tabImage(this);', getURL(), getAccessibilityText())
@@ -209,26 +202,21 @@ var ceres = {};
 
         setSlideViewDisplay('none');
 
-        //csv.progenitor.appendChild(shadowContent);
-
         inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + csv.progenitor.innerHTML);
 
-        /*
+
         const shadow = csv.progenitor;
         const shadowRoot = shadow.attachShadow({mode: 'open'});
         shadowRoot.innerHTML = csv.progenitor.innerHTML; // Could also use appendChild().
-        */
-
+        
         function getSlideViewPointerContainer()
         {
-            //csv.progenitor.appendChild(document.createElement('br'));
-            shadow.appendChild(document.createElement('br'));
+            csv.progenitor.appendChild(document.createElement('br'));
 
             const pointerElement = document.createElement('div');
 
             pointerElement.id = slideview.HTMLSlideViewElement + '-pointer-container';
-            //csv.progenitor.appendChild(pointerElement);
-            shadow.appendChild(pointerElement);
+            csv.progenitor.appendChild(pointerElement);
 
             composeAttribute(pointerElement.id, 'class', 'slideview-pointer-container');
 
@@ -240,8 +228,7 @@ var ceres = {};
                 composeElement('span', svpname, 'ptr', pointerElement, null, getClickEventValue(qualifier), null, null);
             }
 
-            //csv.progenitor.appendChild(document.createElement('br'));
-            shadow.appendChild(document.createElement('br'));
+            csv.progenitor.appendChild(document.createElement('br'));
 
             function getClickEventValue(indexItem)
             {
