@@ -21,7 +21,7 @@ var cookies = {};
         {
             //cookie += '; ' + item;
             //if (options[item]) cookie += '=' + options[item];
-            cookie += '; ' + item + ((options[item]) ? '=' + options[item] : '');
+            cookie += '; ' + item + ((options[item]) ? '=' + options[item] : null);
         }
 
 console.log(cookie);
