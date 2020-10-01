@@ -23,6 +23,7 @@ var cookies = {};
             if (options[item]) cookie += '=' + options[item];
         }
 
+console.log(cookie);
         document.cookie = cookie;
     }
 
