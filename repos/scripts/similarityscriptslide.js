@@ -167,6 +167,9 @@ var ceres = {};
     {
         csv.progenitor.innerHTML = null;
 
+        const shadow = csv.progenitor;
+        const shadowRoot = shadow.attachShadow({mode: 'open'});
+
         csv.imageContainer = document.createElement('div');
         csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
         csv.progenitor.appendChild(csv.imageContainer);
@@ -204,11 +207,10 @@ var ceres = {};
 
         inspect(resource.type.notify, resource.attribute.ProgenitorInnerHTML + csv.progenitor.innerHTML);
 
-
-        const shadow = csv.progenitor;
-        const shadowRoot = shadow.attachShadow({mode: 'open'});
         shadowRoot.innerHTML = csv.progenitor.innerHTML; // Could also use appendChild().
-        
+
+        csv.progenitor.innerHTML = null;
+
         function getSlideViewPointerContainer()
         {
             csv.progenitor.appendChild(document.createElement('br'));
