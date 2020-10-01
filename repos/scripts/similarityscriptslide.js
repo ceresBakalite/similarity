@@ -165,7 +165,7 @@ var ceres = {};
 
     function getSlideView()
     {
-        csv.progenitor.innerHTML = null;
+        csv.progenitor.innerHTML = '<link rel="stylesheet" type="text/css" href="https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css" as="style">';
 
         const shadow = csv.progenitor;
         const shadowRoot = shadow.attachShadow({mode: 'open'});
