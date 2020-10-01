@@ -360,7 +360,7 @@ var ceres = {};
     {
         const renderdelay = 500; // awaiting slideview css catchup
 
-        csv.progenitor.style.display = 'none';
+        //csv.progenitor.style.display = 'none';
 
         getSlideView();
         getSlide();
