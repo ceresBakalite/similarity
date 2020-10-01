@@ -21,7 +21,7 @@ var cookies = {};
         {
             cookie += '; ' + item;
             let option = options[item];
-            if (option !== true) cookie += '=' + option;
+            if (option) cookie += '=' + option;
         }
 
         document.cookie = cookie;
