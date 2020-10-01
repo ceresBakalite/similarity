@@ -20,10 +20,13 @@ var cookies = {};
         for (let item in options)
         {
             cookie += '; ' + item;
-            if (options[item]) cookie += '=' + options[item];
+            let option = options[item];
+            if (option) cookie += '=' + option;
+            //if (options[item]) cookie += '=' + options[item];
         }
 
 console.log(cookie);
+
         document.cookie = cookie;
     }
 
