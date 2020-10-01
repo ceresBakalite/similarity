@@ -55,6 +55,9 @@ var ceres = {};
 
     let csv = new Slideviewer();
 
+    const shadow = null;
+    const shadowRoot = null;
+
     function initiateSlideView()
     {
         csv.activate = getSlideviewAttributes();
@@ -167,8 +170,8 @@ var ceres = {};
     {
         csv.progenitor.innerHTML = '<link rel="stylesheet" type="text/css" href="https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css" as="style">';
 
-        const shadow = csv.progenitor;
-        const shadowRoot = shadow.attachShadow({mode: 'open'});
+        shadow = csv.progenitor;
+        shadowRoot = shadow.attachShadow({mode: 'open'});
 
         csv.imageContainer = document.createElement('div');
         csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
@@ -309,8 +312,8 @@ var ceres = {};
 
     function getSlide(targetIndex)
     {
-        const slides = document.querySelectorAll(".slideview");
-        const pointers = document.querySelectorAll(".ptr");
+        const slides = shadowRoot.querySelectorAll(".slideview");
+        const pointers = shadowRoot.querySelectorAll(".ptr");
 
         csv.index = (targetIndex < 1) ? slides.length : (targetIndex > slides.length) ? 1 : csv.index;
 
