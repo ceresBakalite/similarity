@@ -12,7 +12,7 @@
  }
 
 .slideview {
-  display: none;
+  display: block;
   cursor: zoom-in;
 }
 
