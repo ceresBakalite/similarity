@@ -55,8 +55,8 @@ var ceres = {};
 
     let csv = new Slideviewer();
 
-    const shadow = null;
-    const shadowRoot = null;
+    var shadow = null;
+    var shadowRoot = null;
 
     function initiateSlideView()
     {
