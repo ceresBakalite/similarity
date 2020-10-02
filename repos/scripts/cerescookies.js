@@ -22,7 +22,7 @@ var cookies = {};
 
         for (let item in options)
         {
-            cookie += '; ' + item + ((options[item]) ? '=' + options[item] : null);
+            cookie += '; ' + item + ((typeof options[item] != null) ? '=' + options[item] : null);
         }
 
 console.log(cookie);
