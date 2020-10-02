@@ -21,7 +21,7 @@ var cookies = {};
 
         for (let item in options)
         {
-            cookie += '; ' + item + ((typeof options[item] != null) ? '=' + options[item] : '=' + null);
+            cookie += '; ' + item + '=' + ((typeof options[item] != null) ? options[item] : null);
         }
 
 console.log(cookie + ' - ' + options.length);
