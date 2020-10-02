@@ -9,7 +9,11 @@ var cookies = {};
 
     this.set = function (name, value, options = {})
     {
-        //console.log(options.length);
+        for (let item in options)
+        {
+            console.log('test: ' + item + '=' + options[item]);
+        }
+
 
         options = {
             path: '/',
