@@ -9,11 +9,10 @@ var cookies = {};
 
     this.set = function (name, value, options = {})
     {
-        if (!options.path) options.path = '/';
-
-        if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
-
         let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+
+        if (!options.path) options.path = '/';
+        if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
 
         for (let item in options)
         {
