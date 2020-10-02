@@ -14,10 +14,7 @@ var cookies = {};
             console.log('test: ' + item + '=' + options[item]);
         }
 
-
-        options += {
-            path: '/',
-        };
+        options.path = '/';
 
         if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
 
