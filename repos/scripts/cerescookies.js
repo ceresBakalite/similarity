@@ -15,7 +15,7 @@ var cookies = {};
         }
 
 
-        options = {
+        options += {
             path: '/',
         };
 
