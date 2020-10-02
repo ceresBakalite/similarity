@@ -9,6 +9,8 @@ var cookies = {};
 
     this.set = function (name, value, options = {})
     {
+        console.log(options.length);
+
         options = {
             path: '/',
         };
@@ -22,7 +24,7 @@ var cookies = {};
             cookie += '; ' + item + ((typeof options[item] != null) ? '=' + options[item] : '=' + null);
         }
 
-console.log(cookie);
+console.log(cookie + ' - ' + options.length);
 
         document.cookie = cookie;
     }
