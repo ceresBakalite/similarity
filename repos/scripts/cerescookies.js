@@ -11,9 +11,6 @@ var cookies = {};
     {
         options = {
             path: '/',
-            secure: false,
-            expires: 365,
-            'max-age': 3600
         };
 
         if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
