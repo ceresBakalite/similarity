@@ -19,6 +19,8 @@ var cookies = {};
             cookie += '; ' + item + '=' + ((typeof options[item] != null) ? options[item] : null);
         }
 
+console.log(cookie);
+
         document.cookie = cookie;
     }
 
