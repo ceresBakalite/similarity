@@ -1,4 +1,6 @@
-var test = {};
+export const name = 'modtest';
+
+export var test = {};
 (function() {
 
     this.sayhi = function (name)
