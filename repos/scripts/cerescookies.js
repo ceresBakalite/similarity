@@ -11,10 +11,6 @@ var cookies = {};
     {
         let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
-        var d = new Date();
-        d.setTime(d.getTime() + (3*24*60*60*1000));
-        options.expires = d.toUTCString();
-
         if (!options.path) options.path = '/';
         if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
 
@@ -22,8 +18,6 @@ var cookies = {};
         {
             cookie += '; ' + item + '=' + ((typeof options[item] != null) ? options[item] : null);
         }
-
-console.log(cookie);
 
         document.cookie = cookie;
     }
