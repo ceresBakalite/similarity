@@ -11,7 +11,7 @@ var similarity = {};
 
     });
 
-    ceres.onloadPrimary = function() { onloadPrimary(); }; // public method reference
+    ceres.onload = function() { onloadPrimary(); }; // public method reference
     ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
