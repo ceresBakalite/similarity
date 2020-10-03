@@ -1,4 +1,4 @@
-export var cookies = {};
+export var test = {};
 (function() {
 
     this.sayhi = function (name)
@@ -27,4 +27,4 @@ export var cookies = {};
         document.cookie = cookie;
     }
 
-}).apply(cookies);
+}).apply(test);
