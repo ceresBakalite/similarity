@@ -11,12 +11,12 @@ var cookies = {};
     {
         let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
-        if (!options.path) options.path = '/';
-        if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
-
         var d = new Date();
         d.setTime(d.getTime() + (3*24*60*60*1000));
-        options.expires = d.toUTCString();
+        options.expires = d;
+
+        if (!options.path) options.path = '/';
+        if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
 
         for (let item in options)
         {
