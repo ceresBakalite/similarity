@@ -1,4 +1,4 @@
-export var test = {};
+var test = {};
 (function() {
 
     this.sayhi = function (name)
