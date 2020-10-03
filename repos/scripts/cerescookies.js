@@ -3,8 +3,8 @@ var cookies = {};
 
     this.get = function (name)
     {
-      let match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-      return match ? decodeURIComponent(match[1]) : undefined;
+        let match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+        return match ? decodeURIComponent(match[1]) : undefined;
     }
 
     this.set = function (name, value, options = {})
