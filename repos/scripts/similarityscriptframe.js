@@ -105,7 +105,10 @@ var similarityframe = {};
 
         function setStyleDisplay(attribute)
         {
-            window.parent.cookies.set('hd', attribute, { 'max-age': 3600 });
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            
+            window.parent.cookies.set('hd', attribute, { 'max-age': 3600, expires: d });
             el.style.display = attribute;
         }
 
