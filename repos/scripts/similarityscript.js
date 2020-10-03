@@ -79,6 +79,8 @@ var similarity = {};
 
     function resetPinState(el)
     {
+        cookies.sayhi('Sandy');
+        
         if (el.getAttribute('state') == 'enabled')
         {
             setPinState(el, 'disabled');
