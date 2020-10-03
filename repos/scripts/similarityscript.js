@@ -81,10 +81,8 @@ var similarity = {};
     {
         if (el.getAttribute('state') == 'enabled')
         {
-            let attribute = 'disabled';
-
-            setPinState(el, attribute);
-            setDisplayState(attribute);
+            setPinState(el, 'disabled');
+            setDisplayState('block');
 
         } else {
 
