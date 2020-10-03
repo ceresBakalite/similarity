@@ -95,14 +95,14 @@ var similarity = {};
     {
         let header = document.getElementById('site-header-display');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
-        cookies.set('hd', attribute, { 'max-age': 3600 });
+        cookies.set('hd', attribute, { 'max-age': 7200 });
     }
 
     function setPinState(el, attribute)
     {
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
-        cookies.set('pn', attribute, { 'max-age': 3600 });
+        cookies.set('pn', attribute, { 'max-age': 7200 });
     }
 
 })(similarity);
