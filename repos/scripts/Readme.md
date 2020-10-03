@@ -1,1 +1,1 @@
-## Similarity web markup and scripts (Github pages)
+## Similarity web markup and scripts (GitHub pages)
