@@ -53,8 +53,10 @@ var similarity = {};
 
     function establishHeaderAttributes()
     {
+        setDisplayState(cookies.get('hd') ? cookies.get('hd') : 'block');
+
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
-        if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
+        setPinState(document.getElementById('pin-navbar'), cookies.get('pn') ? cookies.get('pn') : 'disabled');
     }
 
     function onloadPrimary()
