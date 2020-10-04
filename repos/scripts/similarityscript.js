@@ -70,6 +70,7 @@ var similarity = {};
 
     function onloadPrimary()
     {
+        getHeaderAttributes();
         getQueryString();
     }
 
@@ -85,8 +86,6 @@ var similarity = {};
 
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
-
-        getHeaderAttributes();
     }
 
     function resetPinState(el)
