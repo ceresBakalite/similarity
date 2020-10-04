@@ -53,16 +53,8 @@ var similarity = {};
 
     function getHeaderAttributes()
     {
-        /*
-        let attribute = document.getElementById('site-header-display').style.display;
-        let el = document.getElementById('pin-navbar');
-
-        if (cookies.get('hd') == 'none') attribute = 'none';
-        if (cookies.get('pn') == 'enabled') setPinState(el, 'enabled');
-
-        cookies.set('hd', attribute, { 'max-age': 7200 });
-        cookies.set('pn', el.getAttribute('state'), { 'max-age': 7200 });
-        */
+        if (typeof cookies.get('hd') == null) cookies.set('hd', 'block', { 'max-age': 7200 });
+        if (typeof cookies.get('pn') == null) cookies.set('pn', 'disabled', { 'max-age': 7200 });
 
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
