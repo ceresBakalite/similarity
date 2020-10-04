@@ -51,7 +51,7 @@ var similarity = {};
         if (buttonElement) buttonElement.blur();
     }
 
-    function establishHeaderAttributes()
+    function getHeaderAttributes()
     {
         /*
         let attribute = document.getElementById('site-header-display').style.display;
@@ -86,7 +86,7 @@ var similarity = {};
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
 
-        establishHeaderAttributes();
+        getHeaderAttributes();
     }
 
     function resetPinState(el)
