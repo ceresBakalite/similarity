@@ -1,7 +1,7 @@
 export var play = {};
 (function() {
 
-    this.sayhi = function (name)
+    this.sayHi = function (name)
     {
         return 'hi ' + name + '!';
     }
