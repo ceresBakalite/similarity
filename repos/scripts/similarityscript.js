@@ -1,6 +1,8 @@
 var similarity = {};
 (function(ceres)
 {
+    'use strict';
+
     window.customElements.define('include-directive', class extends HTMLElement
     {
         async connectedCallback()
@@ -53,8 +55,8 @@ var similarity = {};
 
     function getHeaderAttributes()
     {
-        if (typeof cookies.get('hd') == null) cookies.set('hd', 'block', { 'max-age': 7200 });
-        if (typeof cookies.get('pn') == null) cookies.set('pn', 'disabled', { 'max-age': 7200 });
+        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200 });
+        if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200 });
 
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
