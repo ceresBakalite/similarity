@@ -11,6 +11,6 @@ export var play = {};
         return 'hi ' + name + '!';
     }
 
-    export { sayHi, sayThat }
-
 }).apply(play);
+
+export { sayHi, sayThat }
