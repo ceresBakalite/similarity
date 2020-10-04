@@ -89,7 +89,7 @@ var similarity = {};
         if (el.getAttribute('state') == 'enabled')
         {
             setPinState(el, 'disabled');
-            setDisplayState('block');
+            resetDisplayState('block');
 
         } else {
 
@@ -98,7 +98,7 @@ var similarity = {};
 
     }
 
-    function setDisplayState(attribute)
+    function resetDisplayState(attribute)
     {
         let header = document.getElementById('site-header-display');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
