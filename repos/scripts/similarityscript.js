@@ -54,9 +54,9 @@ var similarity = {};
     function establishHeaderAttributes()
     {
         setDisplayState(cookies.get('hd') ? cookies.get('hd') : 'block');
+        setPinState(document.getElementById('pin-navbar'), cookies.get('pn') ? cookies.get('pn') : 'disabled');
 
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
-        setPinState(document.getElementById('pin-navbar'), cookies.get('pn') ? cookies.get('pn') : 'disabled');
     }
 
     function onloadPrimary()
