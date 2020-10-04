@@ -6,4 +6,9 @@ export var play = {};
         return 'hi ' + name + '!';
     }
 
+    function sayThat(name)
+    {
+        return 'hi ' + name + '!';
+    }
+
 }).apply(play);
