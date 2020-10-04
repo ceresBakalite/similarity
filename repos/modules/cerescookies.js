@@ -1,6 +1,4 @@
-export const name = 'modtest';
-
-export var test = {};
+var test = {};
 (function() {
 
     this.sayhi = function (name)
@@ -30,3 +28,5 @@ export var test = {};
     }
 
 }).apply(test);
+
+export default test;
