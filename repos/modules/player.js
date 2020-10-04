@@ -13,4 +13,4 @@ export var play = {};
 
 }).apply(play);
 
-export { sayHi, sayThat }
+export { play.sayHi, play.sayThat }
