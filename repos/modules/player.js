@@ -3,7 +3,7 @@ export var play = {};
 
     this.sayhi = function (name)
     {
-        return 'hi ' + name + '!');
+        return 'hi ' + name + '!';
     }
 
 }).apply(play);
