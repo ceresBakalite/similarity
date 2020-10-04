@@ -53,6 +53,7 @@ var similarity = {};
 
     function establishHeaderAttributes()
     {
+        /*
         let attribute = document.getElementById('site-header-display').style.display;
         let el = document.getElementById('pin-navbar');
 
@@ -61,6 +62,10 @@ var similarity = {};
 
         cookies.set('hd', attribute, { 'max-age': 7200 });
         cookies.set('pn', el.getAttribute('state'), { 'max-age': 7200 });
+        */
+        
+        if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
+        if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
     }
 
     function onloadPrimary()
