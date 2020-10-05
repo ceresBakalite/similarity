@@ -13,6 +13,7 @@ var play = {};
     this.set = function (name)
     {
         document.body.innerHTML = this.get(name);
+        console.log(this.get(name));
     }
 
     window.onload = this.set('sandy');
