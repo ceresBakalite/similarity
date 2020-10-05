@@ -15,10 +15,7 @@ var play = {};
         test = 'hi ' + name + '!';
     }
 
-    this.onload = function (name)
-    {
-        document.body.innerHTML = 'hi ' + name + '!';
-    }
+    window.onload = document.body.innerHTML = 'hi ' + name + '!';
 
 }).apply(play);
 
