@@ -1,16 +1,28 @@
 var play = {};
 (function() {
 
-    this.sayHi = function (name)
+    let test = null;
+
+    this.get = function (name)
     {
         return 'hi ' + name + '!';
     }
 
-    function sayThat(name)
+    this.set = function (name)
     {
-        return 'hi ' + name + '!';
+        test = 'hi ' + name + '!';
     }
 
 }).apply(play);
 
-export { play.sayHi, play.sayThat }
+function sayHi(name)
+{
+    return 'hi ' + name + '!';
+}
+
+function sayThat(name)
+{
+    return 'hi ' + name + '!';
+}
+
+export { sayHi, sayThat }
