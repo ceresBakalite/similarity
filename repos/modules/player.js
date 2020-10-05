@@ -1,4 +1,4 @@
-export var play = {};
+var play = {};
 (function() {
 
     this.sayHi = function (name)
