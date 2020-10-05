@@ -12,10 +12,10 @@ var play = {};
 
     this.set = function (name)
     {
-        test = 'hi ' + name + '!';
+        document.body.innerHTML = get(name));
     }
 
-    window.onload = document.body.innerHTML = 'hi ' + name + '!';
+    window.onload = set('sandy');
 
 }).apply(play);
 
