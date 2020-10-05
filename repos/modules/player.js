@@ -25,4 +25,4 @@ function sayThat(name)
     return 'hi ' + name + '!';
 }
 
-export { sayHi, sayThat }
+export { play }
