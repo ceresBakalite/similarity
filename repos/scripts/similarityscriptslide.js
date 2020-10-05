@@ -167,11 +167,13 @@ var ceres = {};
     {
         csv.progenitor.innerHTML = null;
 
-        csv.imageContainer = document.createElement('div');
-        csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
-        csv.progenitor.appendChild(csv.imageContainer);
+//        csv.imageContainer = document.createElement('div');
+//        csv.imageContainer.id = slideview.HTMLSlideViewElement + '-image-container';
+//        csv.progenitor.appendChild(csv.imageContainer);
 
-        composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
+        composeElement('div', slideview.HTMLSlideViewElement + '-image-container', 'slideview-image-container', csv.progenitor, null, null, null, null);
+
+//        composeAttribute(csv.imageContainer.id, 'class', 'slideview-image-container');
 
         for (let item = 0; item < csv.imageArray.length; item++)
         {
