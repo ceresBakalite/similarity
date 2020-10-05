@@ -1,5 +1,3 @@
-import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/modules/cerescookies.js';
-
 var similarity = {};
 (function(ceres)
 {
