@@ -1,3 +1,5 @@
+export { play }
+
 var play = {};
 (function() {
 
@@ -15,6 +17,7 @@ var play = {};
 
 }).apply(play);
 
+/*
 function sayHi(name)
 {
     return 'hi ' + name + '!';
@@ -25,4 +28,5 @@ function sayThat(name)
     return 'hi ' + name + '!';
 }
 
-export { play }
+export { sayHi, sayThat }
+*/
