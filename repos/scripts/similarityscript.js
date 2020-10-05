@@ -84,8 +84,6 @@ var similarity = {};
 
     function resetPinState(el)
     {
-        //test.sayhi('Sandy');
-
         if (el.getAttribute('state') == 'enabled')
         {
             setPinState(el, 'disabled');
