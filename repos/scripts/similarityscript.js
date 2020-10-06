@@ -55,11 +55,11 @@ var similarity = {};
 
     function getHeaderAttributes()
     {
-        if (!window.getCookie('hd')) window.setCookie('hd', 'block', { 'max-age': 7200 });
-        if (!window.getCookie('pn')) window.setCookie('pn', 'disabled', { 'max-age': 7200 });
+        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200 });
+        if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200 });
 
-        if (window.getCookie('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
-        if (window.getCookie('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
+        if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
+        if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
     }
 
     function onloadPrimary()
@@ -100,14 +100,14 @@ var similarity = {};
     {
         let header = document.getElementById('site-header-display');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
-        window.setCookie('hd', attribute, { 'max-age': 7200 });
+        cookies.set('hd', attribute, { 'max-age': 7200 });
     }
 
     function setPinState(el, attribute)
     {
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
-        window.setCookie('pn', attribute, { 'max-age': 7200 });
+        cookies.set('pn', attribute, { 'max-age': 7200 });
     }
 
 })(similarity);
