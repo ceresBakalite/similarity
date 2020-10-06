@@ -193,12 +193,12 @@ var ceres = {};
             csv.slideContainer = document.getElementById(id);
 
             if (csv.attribute.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
-            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'ceres.tabImage(this);', getURL(), getAccessibilityText())
+            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'window.ceres.tabImage(this);', getURL(), getAccessibilityText())
             if (csv.attribute.sub) composeElement('div', elements.subName, 'subtitle', csv.slideContainer, getSubtitle(), null, null, null);
         }
 
-        composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'ceres.getSlide(-1, true)', getURL(), null);
-        composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'ceres.getSlide(1, true)', getURL(), null);
+        composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'window.ceres.getSlide(-1, true)', getURL(), null);
+        composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'window.ceres.getSlide(1, true)', getURL(), null);
 
         if (csv.attribute.ptr) getSlideViewPointerContainer();
 
