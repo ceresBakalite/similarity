@@ -9,7 +9,7 @@ var ceres = {};
     slideview.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
-    window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
+    window.customElements.get(slideview.HTMLSlideViewElement) || window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -22,7 +22,7 @@ var ceres = {};
             initiateSlideView();
         }
 
-    })
+    });
 
     class Component
     {
