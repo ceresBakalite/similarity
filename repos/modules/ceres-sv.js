@@ -8,7 +8,7 @@ var ceres = {};
     window.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     window.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
-    slideview.HTMLSlideViewElement = 'ceres-slideview'; // required (light) public element name and id
+    slideview.HTMLSlideViewElement = 'ceres-sv'; // required (light) public element name and id
     slideview.HTMLImageListElement = 'ceres-csv'; // optional (light) public markup noscript tag id when using embedded image lists
     slideview.defaultCSS = 'https://ceresbakalite.github.io/similarity/repos/modules/ceres-sv.css'; // public attribute pointing to the default slideview stylesheet
 
