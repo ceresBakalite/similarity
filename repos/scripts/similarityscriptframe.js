@@ -105,7 +105,7 @@ var similarityframe = {};
 
         function setStyleDisplay(attribute)
         {
-            window.parent.cookies.set('hd', attribute, { 'max-age': 7200 });
+            window.parent.set('hd', attribute, { 'max-age': 7200 });
             el.style.display = attribute;
         }
 
