@@ -229,7 +229,7 @@ var ceres = {};
 
             function getClickEventValue(indexItem)
             {
-                return 'ceres.getSlide(' + indexItem + ')';
+                return 'window.getSlide(' + indexItem + ')';
             }
 
         }
