@@ -3,16 +3,16 @@ export { cookies }
 var cookies = {};
 (function() {
 
-    window.get = function(str) { getCookie(str); }; // public method reference
-    window.set = function(name, value, options) { setCookie(name, value, options); };  // public method reference
+    window.getCookie = function(str) { this.get(str); }; // public method reference
+    window.setCookie = function(name, value, options) { this.set(name, value, options); };  // public method reference
 
-    let getCookie = function (name)
+    this.get = function (name)
     {
         let match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
         return match ? decodeURIComponent(match[1]) : undefined;
     }
 
-    let setCookie = function (name, value, options = {})
+    this.set = function (name, value, options = {})
     {
         let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
