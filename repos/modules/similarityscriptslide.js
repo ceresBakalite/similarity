@@ -8,8 +8,8 @@ var ceres = {};
     slideview.HTMLSlideViewElement = 'ceres-slideview'; // required public element name and id
     slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
     slideview.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css'; // public attribute pointing to the default slideview stylesheet
-    window.slideview.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
-    window.slideview.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
+    window.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
+    window.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
 
     window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
@@ -193,12 +193,12 @@ var ceres = {};
             csv.slideContainer = document.getElementById(id);
 
             if (csv.attribute.sur) composeElement('div', elements.surName, 'surtitle', csv.slideContainer, getSurtitle(qualifier), null, null, null);
-            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'window.ceres.tabImage(this);', getURL(), getAccessibilityText())
+            composeElement('img', elements.imgName, 'slide', csv.slideContainer, null, 'window.tabImage(this);', getURL(), getAccessibilityText())
             if (csv.attribute.sub) composeElement('div', elements.subName, 'subtitle', csv.slideContainer, getSubtitle(), null, null, null);
         }
 
-        composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'window.ceres.getSlide(-1, true)', getURL(), null);
-        composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'window.ceres.getSlide(1, true)', getURL(), null);
+        composeElement('a', 'slideview-prev', 'prev', csv.imageContainer, '&#10094;', 'window.getSlide(-1, true)', getURL(), null);
+        composeElement('a', 'slideview-next', 'next', csv.imageContainer, '&#10095;', 'window.getSlide(1, true)', getURL(), null);
 
         if (csv.attribute.ptr) getSlideViewPointerContainer();
 
