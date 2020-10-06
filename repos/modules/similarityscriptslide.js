@@ -5,11 +5,12 @@ var ceres = {};
 {
     'use strict';
 
-    slideview.HTMLSlideViewElement = 'ceres-slideview'; // required public element name and id
-    slideview.HTMLImageListElement = 'ceres-csv'; // optional public markup noscript tag id when using embedded image lists
-    slideview.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css'; // public attribute pointing to the default slideview stylesheet
     window.tabImage = function(el) { window.open(el.getAttribute('src'), 'image'); }; // public method reference
     window.getSlide = function(target, calc) { getSlide(csv.index = (calc) ? csv.index += target : target); };  // public method reference
+
+    slideview.HTMLSlideViewElement = 'ceres'; // required (light) public element name and id
+    slideview.HTMLImageListElement = 'ceres-csv'; // optional (light) public markup noscript tag id when using embedded image lists
+    slideview.defaultCSS = 'https://ceresbakalite.github.io/similarity/stylesheets/similaritysheetslide.css'; // public attribute pointing to the default slideview stylesheet
 
     window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
