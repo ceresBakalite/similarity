@@ -12,7 +12,7 @@ var ceres = {};
     slideview.HTMLImageListElement = 'ceres-csv'; // optional (light) public markup noscript tag id when using embedded image lists
     slideview.defaultCSS = 'https://ceresbakalite.github.io/similarity/repos/modules/ceres-sv.css'; // public attribute pointing to the default slideview stylesheet
 
-    window.customElements.get(slideview.HTMLSlideViewElement) || customElements.define(slideview.HTMLSlideViewElement, class extends HTMLTheElement
+    window.customElements.get(slideview.HTMLSlideViewElement) || window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
 //    window.customElements.define(slideview.HTMLSlideViewElement, class extends HTMLElement
     {
         async connectedCallback()
