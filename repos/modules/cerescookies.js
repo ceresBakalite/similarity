@@ -3,8 +3,8 @@ export { cookies }
 var cookies = {};
 (function() {
 
-    window.getCookie = function(str) { this.get(str); }; // public method reference
-    window.setCookie = function(name, value, options) { this.set(name, value, options); };  // public method reference
+    window.getCookie = function(str) { get(str); }; // public method reference
+    window.setCookie = function(name, value, options) { set(name, value, options); };  // public method reference
 
     this.get = function (name)
     {
