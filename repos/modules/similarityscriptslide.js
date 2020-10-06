@@ -1,3 +1,5 @@
+export { ceres }
+
 var ceres = {};
 (function(slideview)
 {
