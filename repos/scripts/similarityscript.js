@@ -23,16 +23,15 @@ var similarity = {};
     {
         console.log("I like to eat " + food1 + " and " + food2 );
     }
-    function myFunc(callback, args)
+    function myFunc(callback, args, options = {})
     {
-        //do stuff
-        //...
-        //execute callback when finished
+        console.log(options.test1 + options.test2 + options.test3);
+
         callback.apply(this, args);
     }
 
     //alerts "I like to eat pickles and peanut butter"
-    myFunc(eat, ["pickles", "peanut butter"]);
+    myFunc(eat, ["pickles", "peanut butter"], {test1: 1, test2: 2, test3: 3} );
 
     class Component
     {
