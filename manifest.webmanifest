@@ -18,11 +18,5 @@
   "background_color": "#fff",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#11291f",
-  "shortcuts": [
-    {
-    },
-    {
-    }
-  ]
+  "theme_color": "#11291f"
 }
