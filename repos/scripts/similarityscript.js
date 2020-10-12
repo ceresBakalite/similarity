@@ -3,10 +3,6 @@ var similarity = {};
 {
     'use strict';
 
-    if ('caches' in window){
-     console.log('cache control is available');
-    }
-    
     ceres.includeDirective = 'include-directive';
 
     window.customElements.get(ceres.includeDirective) || window.customElements.define(ceres.includeDirective, class extends HTMLElement
