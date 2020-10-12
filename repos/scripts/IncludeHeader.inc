@@ -4,5 +4,4 @@
   <a href="https://github.com/ceresBakalite/similarity" class="btn">View on GitHub</a>
   <a target="_blank" rel="noreferrer" href="https://github.com/ceresBakalite/similarity/releases/tag/v1.3.5b" class="btn">Download Similarity</a>
   <a href="https://github.com/ceresbakalite"><img style="position: absolute; top: 0; right: 0; border: 0; width:149px; height: 149px;" srcset="https://ceresbakalite.github.io/similarity/images/GitHubForkMe_Right_Transparent.png 149w" src="https://ceresbakalite.github.io/similarity/images/GitHubForkMe_Right_Transparent.png" alt="Fork me on GitHub"></a>
-style="width:400px; height: 400px;"
 </div>
