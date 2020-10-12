@@ -89,7 +89,10 @@ body {
 }
 
 .pin-navbar {
-  width: 149px;   
-  height: 149px;
   cursor:pointer;
+}
+
+img.pin-navbar {
+  width: 149px;
+  height: 149px;
 }
