@@ -39,7 +39,7 @@ var similaritycache = {};
                 'https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png',
                 'https://ceresbakalite.github.io/similarity/images/GitHubSimilarityLogo.jpg',
                 'https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png',
-                'https://ceresbakalite.github.io/similarity/images/AppleTouchIcon.png'.
+                'https://ceresbakalite.github.io/similarity/images/AppleTouchIcon.png',
                 'https://ceresbakalite.github.io/similarity/images/NAVLampRing.png',
                 'https://ceresbakalite.github.io/similarity/images/NAVLampBulb.png'
               ]);
