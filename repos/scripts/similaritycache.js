@@ -5,7 +5,7 @@ var similaritycache = {};
 
     if ('caches' in window)
     {
-        self.addEventListener('install', function(event)
+        window.addEventListener('install', function(event)
         {
           event.waitUntil(
             caches.open('similarity-cache').then( function(cache)
@@ -49,7 +49,7 @@ var similaritycache = {};
 
         });
 
-        self.addEventListener('fetch', function(event)
+        window.addEventListener('fetch', function(event)
         {
           event.respondWith(caches.match(event.request).then(function(response)
           {
