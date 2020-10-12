@@ -3,5 +3,5 @@
   <button id="shell-navbar" class="button" title="Command Line usage" onclick="similarity.getMarkupDocument('shell', this)">Shell</button>
   <button id="repos-navbar" class="button" title="Similarity version release notes" onclick="similarity.getMarkupDocument('repos', this)">Releases</button>
   <button id="index-navbar" class="button" title="Similarity" onclick="similarity.getMarkupDocument('index', this)">Home</button>
-  <img id="pin-navbar" class="pin-navbar" title="Toggle pin status" state="disabled" onclick="similarity.resetPinState(this);" src="https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png">
+  <img id="pin-navbar" class="pin-navbar" title="Toggle pin status" state="disabled" onclick="similarity.resetPinState(this);" width="149px" height="149px" src="https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png">
 </div>
