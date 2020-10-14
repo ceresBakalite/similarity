@@ -8,6 +8,10 @@ var similarity = {};
 {
     'use strict';
 
+    ceres.onload = function() { onloadPrimary(); }; // public method reference
+    ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
+    ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
+
     let includeDirective = 'include-directive';
 
     window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
@@ -19,10 +23,6 @@ var similarity = {};
         }
 
     });
-
-    ceres.onload = function() { onloadPrimary(); }; // public method reference
-    ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
-    ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
     class Component
     {
