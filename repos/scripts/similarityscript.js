@@ -1,3 +1,5 @@
+export { similarity }
+
 import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
 
 var similarity = {};
@@ -114,4 +116,4 @@ var similarity = {};
         cookies.set('pn', attribute, { 'max-age': 7200 });
     }
 
-})(similarity);
+})(window);
