@@ -24,4 +24,4 @@ var cookies = {};
         document.cookie = cookie;
     }
 
-}).apply(cookies);
+}).call(cookies);
