@@ -1,13 +1,13 @@
 export { similarityframe }
 
 var similarityframe = {};
-(function()
+(function(iframe)
 {
     'use strict';
 
-    this.includeDirective = 'include-directive';
+    iframe.includeDirective = 'include-directive';
 
-    window.customElements.get(this.includeDirective) || window.customElements.define(this.includeDirective, class extends HTMLElement
+    window.customElements.get(iframe.includeDirective) || window.customElements.define(iframe.includeDirective, class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -17,7 +17,7 @@ var similarityframe = {};
 
     });
 
-    this.onload = function(id) { onloadFrame(id); };  // public method reference
+    iframe.onload = function(id) { onloadFrame(id); };  // public method reference
 
     function onloadFrame(markupId)
     {
@@ -117,4 +117,4 @@ var similarityframe = {};
 
     }
 
-}).call(similarityframe);
+})(window);
