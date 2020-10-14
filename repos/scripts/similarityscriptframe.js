@@ -119,4 +119,4 @@ var similarityframe = {};
 
     }
 
-}).call(similarityframe);
+})(similarityframe);
