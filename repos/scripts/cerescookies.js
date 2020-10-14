@@ -1,3 +1,5 @@
+export { cookies }
+
 var cookies = {};
 (function() {
 
