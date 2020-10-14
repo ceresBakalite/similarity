@@ -8,7 +8,7 @@ var similarity = {};
 {
     'use strict';
 
-    ceres.onload = function() { onloadPrimary(); }; // public method reference
+    this.onload = function() { onloadPrimary(); }; // public method reference
     ceres.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // public method reference
     ceres.getPinState = function(el) { resetPinState(el); };  // public method reference
 
