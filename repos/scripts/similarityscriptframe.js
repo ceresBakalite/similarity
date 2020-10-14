@@ -1,9 +1,9 @@
+var iframe = window.top.document.getElementById('frame-container');
+
 var similarityframe = {};
 (function(ceres)
 {
     'use strict';
-
-    var iframe = window.top.document.getElementById('frame-container');
 
     ceres.includeDirective = 'include-directive';
 
