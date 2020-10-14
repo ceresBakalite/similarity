@@ -1,5 +1,3 @@
-var iframe = document.getElementById('frame-container');
-
 var similarityframe = {};
 (function(ceres)
 {
@@ -43,7 +41,7 @@ var similarityframe = {};
 
         function displayFooter()
         {
-            setTimeout(function() {  iframe.document.getElementById('footer-content').style.display = 'block'; }, 2000);
+            setTimeout(function() {  frame.document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
         function setMarkdownLinks()
@@ -64,7 +62,7 @@ var similarityframe = {};
 
             function refreshMarkdown()
             {
-                const nodelist = iframe.document.querySelectorAll('zero-md');
+                const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
                 setTimeout(function() { setMarkdownLinks(); }, 1000);
             }
@@ -73,7 +71,7 @@ var similarityframe = {};
 
         function replaceShadowDomInnerHTML(root, element, regex, replacement)
         {
-            const nodelist = iframe.document.querySelectorAll(root);
+            const nodelist = document.querySelectorAll(root);
 
             nodelist.forEach(node => {
 
