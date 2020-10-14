@@ -4,13 +4,13 @@ import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/script
 import { similaritycache } from 'https://ceresbakalite.github.io/similarity/repos/scripts/similaritycache.js';
 
 var similarity = {};
-(function(ceres)
+(function()
 {
     'use strict';
 
-    ceres.onload = function() { onloadPrimary(); }; // public method reference
-    ceres.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
-    ceres.resetPinState = function(el) { resetPinState(el); };  // public method reference
+    this.onload = function() { onloadPrimary(); }; // public method reference
+    this.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
+    this.resetPinState = function(el) { resetPinState(el); };  // public method reference
 
     let includeDirective = 'include-directive';
 
@@ -117,4 +117,4 @@ var similarity = {};
         cookies.set('pn', attribute, { 'max-age': 7200 });
     }
 
-})(window);
+}).call(window);
