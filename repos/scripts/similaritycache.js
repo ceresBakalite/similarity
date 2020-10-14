@@ -1,3 +1,5 @@
+export { similaritycache } 
+
 var similaritycache = {};
 (function(cache)
 {
