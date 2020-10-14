@@ -1,13 +1,13 @@
 export { similarityframe }
 
 var similarityframe = {};
-(function(ceres)
+(function()
 {
     'use strict';
 
-    ceres.includeDirective = 'include-directive';
+    this.includeDirective = 'include-directive';
 
-    window.customElements.get(ceres.includeDirective) || window.customElements.define(ceres.includeDirective, class extends HTMLElement
+    window.customElements.get(this.includeDirective) || window.customElements.define(this.includeDirective, class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -17,7 +17,7 @@ var similarityframe = {};
 
     });
 
-    ceres.onload = function(id) { onloadFrame(id); };  // public method reference
+    this.onload = function(id) { onloadFrame(id); };  // public method reference
 
     function onloadFrame(markupId)
     {
@@ -117,4 +117,4 @@ var similarityframe = {};
 
     }
 
-})(similarityframe);
+}).call(similarityframe);
