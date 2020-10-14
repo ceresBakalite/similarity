@@ -1,4 +1,4 @@
-var iframe = window.top.document.getElementById('frame-container');
+var iframe = document.getElementById('frame-container');
 
 var similarityframe = {};
 (function(ceres)
