@@ -7,9 +7,9 @@ var similarityframe = {};
 {
     'use strict';
 
-    includeDirective = 'include-directive';
+    this.includeDirective = 'include-directive';
 
-    window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
+    window.customElements.get(this.includeDirective) || window.customElements.define(this.includeDirective, class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -19,7 +19,7 @@ var similarityframe = {};
 
     });
 
-    onload = function(id) { onloadFrame(id); };  // public method reference
+    this.onload = function(id) { onloadFrame(id); };  // public method reference
 
     function onloadFrame(markupId)
     {
