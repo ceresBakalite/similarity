@@ -1,5 +1,7 @@
 export { similarityframe }
 
+import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
+
 var similarityframe = {};
 (function(iframe)
 {
@@ -111,7 +113,7 @@ var similarityframe = {};
 
         function setStyleDisplay(attribute)
         {
-            window.parent.cookies.set('hd', attribute, { 'max-age': 7200 });
+            cookies.set('hd', attribute, { 'max-age': 7200 });
             el.style.display = attribute;
         }
 
