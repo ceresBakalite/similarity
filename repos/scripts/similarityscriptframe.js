@@ -3,11 +3,11 @@ export { similarityframe }
 import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
 
 var similarityframe = {};
-(function(ceres)
+(function()
 {
     'use strict';
 
-    ceres.onload = function(id) { onloadFrame(id); };  // public method reference
+    this.onload = function(id) { onloadFrame(id); };  // public method reference
 
     let includeDirective = 'include-directive';
 
@@ -119,4 +119,4 @@ var similarityframe = {};
 
     }
 
-})(window);
+}).call(similarityframe);
