@@ -8,9 +8,9 @@ var similarity = {};
 {
     'use strict';
 
-    ceres.includeDirective = 'include-directive';
+    let includeDirective = 'include-directive';
 
-    window.customElements.get(ceres.includeDirective) || window.customElements.define(ceres.includeDirective, class extends HTMLElement
+    window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
     {
         async connectedCallback()
         {
