@@ -3,13 +3,15 @@ export { similarityframe }
 import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
 
 var similarityframe = {};
-(function(iframe)
+(function(ceres)
 {
     'use strict';
 
-    iframe.includeDirective = 'include-directive';
+    let includeDirective = 'include-directive';
 
-    window.customElements.get(iframe.includeDirective) || window.customElements.define(iframe.includeDirective, class extends HTMLElement
+    ceres.onload = function(id) { onloadFrame(id); };  // public method reference
+
+    window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
     {
         async connectedCallback()
         {
@@ -18,8 +20,6 @@ var similarityframe = {};
         }
 
     });
-
-    iframe.onload = function(id) { onloadFrame(id); };  // public method reference
 
     function onloadFrame(markupId)
     {
