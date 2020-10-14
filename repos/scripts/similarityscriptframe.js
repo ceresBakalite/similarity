@@ -1,4 +1,4 @@
-export { similarityframe }
+export { similarityframe as ceres }
 
 import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
 
