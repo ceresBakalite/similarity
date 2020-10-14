@@ -1,4 +1,4 @@
-export { similaritycache } 
+export { similaritycache }
 
 var similaritycache = {};
 (function(cache)
@@ -42,7 +42,8 @@ var similaritycache = {};
                 'https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png',
                 'https://ceresbakalite.github.io/similarity/images/AppleTouchIcon.png',
                 'https://ceresbakalite.github.io/similarity/images/NAVLampRing.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVLampBulb.png'
+                'https://ceresbakalite.github.io/similarity/images/NAVLampBulb.png',
+                'https://ceresbakalite.github.io/similarity/images/NAVCogs.png'
               ]);
 
             })
