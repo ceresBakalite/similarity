@@ -3,6 +3,8 @@ var similarityframe = {};
 {
     'use strict';
 
+    let frame = document.getElementById('frame-container');
+
     ceres.includeDirective = 'include-directive';
 
     window.customElements.get(ceres.includeDirective) || window.customElements.define(ceres.includeDirective, class extends HTMLElement
@@ -41,7 +43,6 @@ var similarityframe = {};
 
         function displayFooter()
         {
-            let frame = document.getElementById('frame-container');
             setTimeout(function() {  frame.document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
@@ -63,7 +64,7 @@ var similarityframe = {};
 
             function refreshMarkdown()
             {
-                const nodelist = document.querySelectorAll('zero-md');
+                const nodelist = frame.document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
                 setTimeout(function() { setMarkdownLinks(); }, 1000);
             }
@@ -72,7 +73,7 @@ var similarityframe = {};
 
         function replaceShadowDomInnerHTML(root, element, regex, replacement)
         {
-            const nodelist = document.querySelectorAll(root);
+            const nodelist = frame.document.querySelectorAll(root);
 
             nodelist.forEach(node => {
 
