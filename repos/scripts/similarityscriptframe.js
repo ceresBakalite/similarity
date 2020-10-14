@@ -1,3 +1,5 @@
+export { similarityframe }
+
 var similarityframe = {};
 (function(ceres)
 {
