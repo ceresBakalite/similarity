@@ -117,4 +117,4 @@ var similarity = {};
         cookies.set('pn', attribute, { 'max-age': 7200 });
     }
 
-}).call(window);
+}).call(similarity);
