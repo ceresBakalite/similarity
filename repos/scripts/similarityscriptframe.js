@@ -41,7 +41,8 @@ var similarityframe = {};
 
         function displayFooter()
         {
-            setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
+            let frame = document.getElementById('frame-container');
+            setTimeout(function() {  frame.document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
         function setMarkdownLinks()
