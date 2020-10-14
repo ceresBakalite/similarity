@@ -7,9 +7,9 @@ var similarityframe = {};
 {
     'use strict';
 
-    let includeDirective = 'include-directive';
-
     ceres.onload = function(id) { onloadFrame(id); };  // public method reference
+
+    let includeDirective = 'include-directive';
 
     window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
     {
