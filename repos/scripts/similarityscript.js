@@ -9,8 +9,8 @@ var similarity = {};
     'use strict';
 
     this.onload = function() { onloadPrimary(); }; // public method reference
-    this.getMarkupDocument = function(id, el) { getMarkupDocument(id, el); };  // public method reference
-    this.resetPinState = function(el) { resetPinState(el); };  // public method reference
+    this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // public method reference
+    this.getPinState = function(el) { resetPinState(el); };  // public method reference
 
     let includeDirective = 'include-directive';
 
