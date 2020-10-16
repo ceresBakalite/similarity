@@ -39,6 +39,8 @@ var similaritycache = {};
                 'https://ceresbakalite.github.io/similarity/images/GitHubForkMe_Right_Transparent.png',
                 'https://ceresbakalite.github.io/similarity/images/NAVBridgeViewHeaderBackground.png',
                 'https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png',
+                'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png',
+                'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png',
                 'https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png',
                 'https://ceresbakalite.github.io/similarity/images/AppleTouchIcon.png',
                 'https://ceresbakalite.github.io/similarity/images/NAVLampRing.png',
