@@ -19,7 +19,8 @@ var similarity = {};
         async connectedCallback()
         {
             let src = this.getAttribute('src');
-            this.innerHTML = await (await fetch(src)).text();
+            //this.innerHTML = await (await fetch(src)).text();
+            this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
         }
 
     });
