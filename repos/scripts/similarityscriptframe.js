@@ -83,7 +83,6 @@ var similarityframe = {};
                 if (shadow)
                 {
                     let markdown = shadow.querySelector(element).innerHTML;
-                    //shadow.querySelector(element).innerHTML = markdown.replace(regex, replacement);
                     shadow.querySelector(element).insertAdjacentHTML('afterbegin', markdown.replace(regex, replacement));
                 }
 
