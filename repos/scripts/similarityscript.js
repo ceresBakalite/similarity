@@ -3,6 +3,9 @@ export { similarity }
 import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
 import { similaritycache } from 'https://ceresbakalite.github.io/similarity/repos/scripts/similaritycache.js';
 
+const frame = document.getElementById('frame-container');
+frame.contentWindow.postMessage('test', 'https://ceresbakalite.github.io/similarity');
+
 var similarity = {};
 (function()
 {
