@@ -2,6 +2,22 @@ export { similarityframe }
 
 import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
 
+window.addEventListener('message', event =>
+{
+    // IMPORTANT: check the origin of the data!
+    if (event.origin.startsWith('http://ceresb.com'))
+    {
+        // The data was sent from your site.
+        // Data sent with postMessage is stored in event.data:
+        console.log(event.data);
+    } else {
+        // The data was NOT sent from your site!
+        // Be careful! Do not use it. This else branch is
+        // here just for clarity, you usually shouldn't need it.
+        return;
+    }
+});
+
 var similarityframe = {};
 (function()
 {
