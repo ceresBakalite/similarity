@@ -5,7 +5,7 @@ import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/script
 window.addEventListener('message', event =>
 {
     // IMPORTANT: check the origin of the data!
-    if (event.origin.startsWith('http://ceresb.com'))
+    if (event.origin.startsWith('https://ceresbakalite.github.io'))
     {
         // The data was sent from your site.
         // Data sent with postMessage is stored in event.data:
