@@ -2,12 +2,12 @@ export { similarityframe }
 
 import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
 
-window.top.document.postMessage('test', 'http://ceresb.com');
+window.top.document.postMessage('test', 'https://ceresbakalite.github.io/similarity');
 
 window.addEventListener('message', event =>
 {
     // IMPORTANT: check the origin of the data!
-    if (event.origin.startsWith('https://ceresbakalite.github.io'))
+    if (event.origin.startsWith('http://ceresb.com'))
     {
         // The data was sent from your site.
         // Data sent with postMessage is stored in event.data:
