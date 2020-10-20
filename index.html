@@ -20,6 +20,23 @@
     <link rel="stylesheet" type="text/css" href="https://ceresbakalite.github.io/similarity/stylesheets/similarityIndex.css" media="screen">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" media="screen">
     <script type="module" src="https://ceresbakalite.github.io/similarity/repos/scripts/similarityscript.js"></script>
+    <script>
+        window.addEventListener('message', event =>
+        {
+            // IMPORTANT: check the origin of the data!
+            if (event.origin.startsWith('http://ceresb.com'))
+            {
+                // The data was sent from your site.
+                // Data sent with postMessage is stored in event.data:
+                console.log(event.data);
+            } else {
+                // The data was NOT sent from your site!
+                // Be careful! Do not use it. This else branch is
+                // here just for clarity, you usually shouldn't need it.
+                return;
+            }
+        });
+    </script>
   </head>
   <body onload="similarity.onload();">
 
