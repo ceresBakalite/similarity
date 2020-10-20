@@ -2,8 +2,7 @@ export { similarityframe }
 
 import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
 
-const frame = document.getElementById('frame-container');
-frame.contentWindow.postMessage('test', 'http://ceresb.com');
+window.top.document.postMessage('test', 'http://ceresb.com');
 
 window.addEventListener('message', event =>
 {
