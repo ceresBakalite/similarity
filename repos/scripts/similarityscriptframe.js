@@ -1,3 +1,11 @@
+window.addEventListener("message", function (e) {
+    // Security: Validate message origin
+    //if (event.origin !== myVerifiedOrigin) {
+    //    return;
+    //}
+    console.log(e.data);
+});
+
 export { similarityframe }
 
 import { cookies } from './cerescookies.js';
