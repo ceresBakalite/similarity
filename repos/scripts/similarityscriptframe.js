@@ -106,10 +106,8 @@ var similarityframe = {};
 
     function adjustHeaderDisplay()
     {
-        console.log('protean: ' + protean);
-
-        let el = window.top.document.getElementById('site-header-display');
-        let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
+        let el = parent.document.getElementById('site-header-display');
+        let pin = parent.document.getElementById('pin-navbar').getAttribute('state');
         let trigger = 25;
 
         if (pin == 'disabled')
