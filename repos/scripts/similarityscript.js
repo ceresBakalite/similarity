@@ -1,6 +1,6 @@
 export { similarity }
 
-import { cookies } from '/similarity/repos/scripts/cerescookies.js';
+import { cookies } from './cerescookies.js';
 import { similaritycache } from './similaritycache.js';
 
 var similarity = {};
