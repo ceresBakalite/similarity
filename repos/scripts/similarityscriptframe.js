@@ -33,7 +33,7 @@ var similarityframe = {};
         {
             if (window.top.document.getElementById('ceresbakalite')) return true;
 
-            window.location.href = 'https://ceresbakalite.github.io/similarity/?mu=' + markupId;
+            window.location.href = '/similarity/?mu=' + markupId;
 
             return false;
         }
