@@ -13,39 +13,39 @@ var similaritycache = {};
             caches.open('similarity-cache').then( function(cache)
             {
               return cache.addAll([
-                'https://ceresbakalite.github.io/similarity/index.html',
-                'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
-                'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
-                'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html',
-                'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html',
+                '../../index.html',
+                './SyncIndex.html',
+                './SyncRepos.html',
+                './SyncShell.html',
+                './SyncSlide.html',
                 'https://fonts.googleapis.com/css?family=Open+Sans:400,700',
                 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css',
                 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css',
-                'https://ceresbakalite.github.io/similarity/stylesheets/github-light.css',
-                'https://ceresbakalite.github.io/similarity/stylesheets/normalize.css',
-                'https://ceresbakalite.github.io/similarity/stylesheets/stylesheet.css',
-                'https://ceresbakalite.github.io/similarity/stylesheets/similarityIndex.css',
-                'https://ceresbakalite.github.io/similarity/repos/scripts/similarityscriptframe.js',
-                'https://ceresbakalite.github.io/similarity/repos/scripts/similarityscript.js',
-                'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js',
-                'https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews01.png',
-                'https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews02.png',
-                'https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews03.png',
-                'https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews04.png',
-                'https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews05.png',
-                'https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews06.png',
-                'https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews07.png',
-                'https://ceresbakalite.github.io/similarity/images/slide/NAVScreenViews08.png',
-                'https://ceresbakalite.github.io/similarity/images/GitHubForkMe_Right_Transparent.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVBridgeViewHeaderBackground.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVSimilarityLogoScripts.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVLampPeriscope.png',
-                'https://ceresbakalite.github.io/similarity/images/AppleTouchIcon.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVLampRing.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVLampBulb.png',
-                'https://ceresbakalite.github.io/similarity/images/NAVCogs.png'
+                '../../stylesheets/github-light.css',
+                '../../stylesheets/normalize.css',
+                '../../stylesheets/stylesheet.css',
+                '../../stylesheets/similarityIndex.css',
+                './similarityscriptframe.js',
+                './similarityscript.js',
+                './cerescookies.js',
+                '../../images/slide/NAVScreenViews01.png',
+                '../../images/slide/NAVScreenViews02.png',
+                '../../images/slide/NAVScreenViews03.png',
+                '../../images/slide/NAVScreenViews04.png',
+                '../../images/slide/NAVScreenViews05.png',
+                '../../images/slide/NAVScreenViews06.png',
+                '../../images/slide/NAVScreenViews07.png',
+                '../../images/slide/NAVScreenViews08.png',
+                '../../images/GitHubForkMe_Right_Transparent.png',
+                '../../images/NAVBridgeViewHeaderBackground.png',
+                '../../images/NAVSimilarityLogoScripts.png',
+                '../../images/NAVPinIconDisabled.png',
+                '../../images/NAVPinIconEnabled.png',
+                '../../images/NAVLampPeriscope.png',
+                '../../images/AppleTouchIcon.png',
+                '../../images/NAVLampRing.png',
+                '../../images/NAVLampBulb.png',
+                '../../images/NAVCogs.png'
               ]);
 
             })
@@ -83,7 +83,7 @@ var similaritycache = {};
               }).catch(function ()
               {
 
-                return caches.match('https://ceresbakalite.github.io/similarity/images/NAVCogs.png');
+                return caches.match('../../images/NAVCogs.png');
 
               });
             }

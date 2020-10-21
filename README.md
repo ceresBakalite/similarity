@@ -122,7 +122,7 @@ Runtime error logging
 [Journal of Biomedical Semantics]: https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-019-0216-2
 [The Levenshtein distance algorithm]: https://www.educative.io/edpresso/the-levenshtein-distance-algorithm
 [The Gestalt Approach]: https://en.wikipedia.org/wiki/Gestalt_Pattern_Matching
-[read more]: https://ceresbakalite.github.io/similarity/
+[read more]: ./
 [The Apache log4net library]: https://logging.apache.org/log4net/
 [v1.2.8.3b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.3b
 [v1.2.8.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.2b
