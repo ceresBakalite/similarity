@@ -1,9 +1,12 @@
 window.addEventListener("message", function (e) {
-    // Security: Validate message origin
-    //if (event.origin !== myVerifiedOrigin) {
+
+    var origin = 'https://ceresbakalite.github.io';
+
+    if (event.origin == origin) {
     //    return;
-    //}
+    }
     console.log(e.origin);
+    console.log(e.data);
 });
 
 export { similarityframe }
