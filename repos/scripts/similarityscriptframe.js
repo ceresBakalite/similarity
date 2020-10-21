@@ -12,8 +12,6 @@ window.addEventListener("message", function (e)
     }
 });
 
-console.log('protean: ' + protean);
-
 export { similarityframe }
 
 import { cookies } from './cerescookies.js';
@@ -110,6 +108,8 @@ var similarityframe = {};
 
     function adjustHeaderDisplay()
     {
+        console.log('protean: ' + protean);
+
         let el = window.top.document.getElementById('site-header-display');
         let pin = window.top.document.getElementById('pin-navbar').getAttribute('state');
         let trigger = 25;
