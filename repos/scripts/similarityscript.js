@@ -1,3 +1,6 @@
+let el = document.getElementById('frame-container');
+el.contentWindow.postMessage("ceresbakalite", frame-container.src);
+
 export { similarity }
 
 import { cookies } from './cerescookies.js';
