@@ -1,5 +1,5 @@
 ## Similarity Screen Views
-### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-shell" title="No readable content. Just a page logo" class="img-logo" align="right" src="./images/NAVSimilarityLogoStyle.png"></div>
+### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-shell" title="No readable content. Just a page logo" class="img-logo" align="right" src="../images/NAVSimilarityLogoStyle.png"></div>
 The following slider showcases a small number of screen views highlighting the Similarity client-side application GUI.
 
 There have been a number of requests to see a preview in this forum and as such have found a placeholder here.
