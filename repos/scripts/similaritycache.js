@@ -83,7 +83,7 @@ var similaritycache = {};
               }).catch(function ()
               {
 
-                return caches.match('../../images/NAVCogs.png');
+                return caches.match('./images/NAVCogs.png');
 
               });
             }
