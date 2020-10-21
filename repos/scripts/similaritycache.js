@@ -42,10 +42,10 @@ var similaritycache = {};
                 './images/AppleTouchIcon.png',
                 './images/NAVLampRing.png',
                 './images/NAVLampBulb.png',
-                './images/NAVCogs.png'
+                './images/NAVCogs.png',
                 'https://fonts.googleapis.com/css?family=Open+Sans:400,700',
                 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css',
-                'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css',
+                'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css'
               ]);
 
             })
