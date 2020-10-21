@@ -1,7 +1,7 @@
 export { similarity }
 
-import { cookies } from 'https://ceresbakalite.github.io/similarity/repos/scripts/cerescookies.js';
-import { similaritycache } from 'https://ceresbakalite.github.io/similarity/repos/scripts/similaritycache.js';
+import { cookies } from '/similarity/repos/scripts/cerescookies.js';
+import { similaritycache } from '/similarity/repos/scripts/similaritycache.js';
 
 var similarity = {};
 (function()
