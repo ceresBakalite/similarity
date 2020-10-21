@@ -3,7 +3,7 @@ window.addEventListener("message", function (e)
     var protean = false;
     let precursor = 'ceresbakalite';
 
-    if (precursor.search(event.origin);
+    if (precursor.search(event.origin)
     {
         protean = true;
         console.log(e.origin);
