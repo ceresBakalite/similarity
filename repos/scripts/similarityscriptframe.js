@@ -1,17 +1,3 @@
-var protean = false;
-
-window.addEventListener("message", function (e)
-{
-    let precursor = 'ceresbakalite';
-
-    if (e.data.search(e.origin))
-    {
-        protean = true;
-        console.log(e.origin);
-        console.log(e.data);
-    }
-});
-
 export { similarityframe }
 
 import { cookies } from './cerescookies.js';
@@ -20,6 +6,8 @@ var similarityframe = {};
 (function()
 {
     'use strict';
+
+    let protean = false;
 
     this.onload = function(id) { onloadFrame(id); };  // public method reference
 
@@ -54,6 +42,18 @@ var similarityframe = {};
 
         function invokeScrollEventListener()
         {
+            window.addEventListener("message", function (e)
+            {
+                let precursor = 'ceresbakalite';
+
+                if (e.data.search(e.origin))
+                {
+                    protean = true;
+                    console.log(e.origin);
+                    console.log(e.data);
+                }
+            });
+
             window.onscroll = function() { adjustHeaderDisplay(); };
         }
 
