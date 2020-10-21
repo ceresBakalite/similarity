@@ -7,8 +7,6 @@ var similarityframe = {};
 {
     'use strict';
 
-    let protean = false;
-
     this.onload = function(id) { onloadFrame(id); };  // public method reference
 
     let includeDirective = 'include-directive';
@@ -25,15 +23,26 @@ var similarityframe = {};
 
     function onloadFrame(markupId)
     {
-        if (isValidSource())
+        parent.postMessage("ceresbakalite", el.src);
+
+        window.addEventListener("message", function (e)
         {
-            invokeScrollEventListener();
-            asyncPullMarkdownRequest();
-        }
+            if (e.data.search(e.origin))
+            {
+                invokeScrollEventListener();
+                asyncPullMarkdownRequest();
+            }
+        });
+
+//        if (isValidSource())
+//        {
+//            invokeScrollEventListener();
+//            asyncPullMarkdownRequest();
+//        }
 
         function isValidSource()
         {
-            if (window.top.document.getElementById('ceresbakalite')) return true;
+            if (parent.document.getElementById('ceresbakalite')) return true;
 
             window.location.href = '/similarity/?mu=' + markupId;
 
@@ -42,18 +51,6 @@ var similarityframe = {};
 
         function invokeScrollEventListener()
         {
-            window.addEventListener("message", function (e)
-            {
-                let precursor = 'ceresbakalite';
-
-                if (e.data.search(e.origin))
-                {
-                    protean = true;
-                    console.log(e.origin);
-                    console.log(e.data);
-                }
-            });
-
             window.onscroll = function() { adjustHeaderDisplay(); };
         }
 
