@@ -23,18 +23,6 @@ var similarityframe = {};
 
     function onloadFrame(markupId)
     {
-/*
-        parent.postMessage("ceresbakalite", window.location);
-
-        window.addEventListener("message", function (e)
-        {
-            if (e.data.search(e.origin))
-            {
-                invokeScrollEventListener();
-                asyncPullMarkdownRequest();
-            }
-        });
-*/
         if (isValidSource())
         {
             invokeScrollEventListener();
