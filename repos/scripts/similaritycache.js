@@ -13,7 +13,7 @@ var similaritycache = {};
             caches.open('similarity-cache').then( function(cache)
             {
               return cache.addAll([
-                '../../index.html',
+                './index.html',
                 './SyncIndex.html',
                 './SyncRepos.html',
                 './SyncShell.html',
