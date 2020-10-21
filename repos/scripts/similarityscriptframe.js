@@ -3,7 +3,7 @@ window.addEventListener("message", function (e) {
     //if (event.origin !== myVerifiedOrigin) {
     //    return;
     //}
-    console.log(e.data);
+    console.log(e.origin);
 });
 
 export { similarityframe }
