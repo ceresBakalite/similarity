@@ -1,5 +1,14 @@
-let el = document.getElementById('frame-container');
-setTimeout(function() { el.contentWindow.postMessage("ceresbakalite", el.src); }, 1000);
+window.addEventListener("message", function (e)
+{
+    let precursor = 'ceresbakalite';
+
+    if (e.data.search(precursor))
+    {
+        let el = document.getElementById('frame-container');
+        el.contentWindow.postMessage(e.data, el.src);
+    }
+
+});
 
 export { similarity }
 
