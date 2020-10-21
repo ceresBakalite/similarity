@@ -1,15 +1,3 @@
-window.addEventListener("message", function (e)
-{
-    let precursor = 'ceresbakalite';
-
-    if (e.data.search(precursor))
-    {
-        let el = document.getElementById('frame-container');
-        el.contentWindow.postMessage(e.data, el.src);
-    }
-
-});
-
 export { similarity }
 
 import { cookies } from './cerescookies.js';
