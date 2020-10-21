@@ -1,5 +1,5 @@
 let el = document.getElementById('frame-container');
-el.contentWindow.postMessage("ceresbakalite", el.src);
+setTimeout(function() { el.contentWindow.postMessage("ceresbakalite", el.src); }, 1000);
 
 export { similarity }
 
