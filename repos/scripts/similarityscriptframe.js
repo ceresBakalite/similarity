@@ -1,6 +1,6 @@
 export { similarityframe }
 
-import { cookies } from './repos/scripts/cerescookies.js';
+import { cookies } from '/repos/scripts/cerescookies.js';
 
 var similarityframe = {};
 (function()
