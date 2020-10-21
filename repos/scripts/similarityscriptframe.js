@@ -1,13 +1,17 @@
-window.addEventListener("message", function (e) {
+window.addEventListener("message", function (e)
+{
+    var protean = false;
+    let precursor = 'ceresbakalite';
 
-    var origin = 'https://ceresbakalite.github.io';
-
-    if (event.origin == origin) {
-    //    return;
+    if (precursor.search(event.origin);
+    {
+        protean = true;
+        console.log(e.origin);
+        console.log(e.data);
     }
-    console.log(e.origin);
-    console.log(e.data);
 });
+
+console.log('protean: ' + protean);
 
 export { similarityframe }
 
