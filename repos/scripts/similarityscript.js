@@ -77,13 +77,13 @@ var similarity = {};
 
     function setResourcePrecursors()
     {
-        pinimage.set('enabled', 'https://ceresbakalite.github.io/similarity/images/NAVPinIconEnabled.png');
-        pinimage.set('disabled', 'https://ceresbakalite.github.io/similarity/images/NAVPinIconDisabled.png');
+        pinimage.set('enabled', '../../images/NAVPinIconEnabled.png');
+        pinimage.set('disabled', '../../images/NAVPinIconDisabled.png');
 
-        location.set('index', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncIndex.html');
-        location.set('shell', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncShell.html');
-        location.set('slide', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncSlide.html');
-        location.set('repos', 'https://ceresbakalite.github.io/similarity/repos/scripts/SyncRepos.html');
+        location.set('index', './SyncIndex.html');
+        location.set('shell', './SyncShell.html');
+        location.set('slide', './SyncSlide.html');
+        location.set('repos', './SyncRepos.html');
 
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
