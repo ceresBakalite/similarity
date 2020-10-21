@@ -23,6 +23,7 @@ var similarityframe = {};
 
     function onloadFrame(markupId)
     {
+/*
         parent.postMessage("ceresbakalite", window.location);
 
         window.addEventListener("message", function (e)
@@ -33,12 +34,12 @@ var similarityframe = {};
                 asyncPullMarkdownRequest();
             }
         });
-
-//        if (isValidSource())
-//        {
-//            invokeScrollEventListener();
-//            asyncPullMarkdownRequest();
-//        }
+*/
+        if (isValidSource())
+        {
+            invokeScrollEventListener();
+            asyncPullMarkdownRequest();
+        }
 
         function isValidSource()
         {
