@@ -23,7 +23,7 @@ var similarityframe = {};
 
     function onloadFrame(markupId)
     {
-        parent.postMessage("ceresbakalite", el.src);
+        parent.postMessage("ceresbakalite", window.location);
 
         window.addEventListener("message", function (e)
         {
