@@ -37,7 +37,7 @@ var similaritycache = {};
             {
                 cache.keys().then(function(cachedRequests)
                 {
-                    console.log(cachedRequests); // [Request, Request]
+                    console.log('exploreCache: ' + cachedRequests); // [Request, Request]
                 });
 
             });
@@ -51,7 +51,7 @@ var similaritycache = {};
 
             caches.keys().then(function(cacheKeys)
             {
-                console.log(cacheKeys); // eg: rsc.namedCache
+                console.log('listCache: ' + cacheKeys); // eg: rsc.namedCache
             });
 
         }
@@ -179,7 +179,7 @@ var similaritycache = {};
 
                         }).catch(function () {
 
-                            return caches.match('./images/NAVCogs.png');
+                            return caches.match('/images/NAVCogs.png');
 
                         });
 
