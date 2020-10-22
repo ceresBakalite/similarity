@@ -61,7 +61,7 @@ var similaritycache = {};
         {
             caches.delete(rsc.namedCache).then(function()
             {
-                console.log(rsc.namedCache + ' - Cache successfully deleted!');
+                console.log(rsc.namedCache + ' - Cache successfully deleted');
             });
 
         }
