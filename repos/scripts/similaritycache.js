@@ -76,7 +76,6 @@ var similaritycache = {};
                 if (response !== undefined)
                 {
 
-                    response.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
                     return response;
 
                 } else {
@@ -86,6 +85,7 @@ var similaritycache = {};
                         // response may be used only once
                         // we need to save clone to put one copy in cache
                         // and serve second one
+                        response.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
                         let responseClone = response.clone();
 
                         caches.open('similarity-cache').then(function (cache)
