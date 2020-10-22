@@ -77,13 +77,13 @@ var similarity = {};
     {
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
-        cookies.set('pn', attribute, { 'max-age': 7200 });
+        cookies.set('pn', attribute, { 'max-age': 7200, 'SameSite': 'None; Secure' });
     }
 
     let getHeaderAttributes = function()
     {
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'SameSite': 'None; Secure',  });
-        if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200 });
+        if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200, 'SameSite': 'None; Secure' });
 
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
