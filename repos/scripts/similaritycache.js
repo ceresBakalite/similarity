@@ -5,32 +5,60 @@ var similaritycache = {};
 {
     'use strict';
 
-    const namedCache = 'similarity-cache'; // manual override only
-    const deleteCache = true; // manual override only
-    const replaceCache = false; // manual override only
-    const installCache = false; // manual override only
+    let getObjectProperties = function(object, str = '')
+    {
+        for (let property in object) str += property + ': ' + object[property] + ', ';
+        return str.replace(/, +$/g,'');
+    }
+
+    let rsc = new class // resource
+    {
+        constructor()
+        {
+            this.attribute = function() { return attribute; },
+        }
+
+    }
+
+    rsc.attribute.namedCache = 'similarity-cache'; // manual override only
+    rsc.attribute.listCache = true; // manual override only
+    rsc.attribute.deleteCache = true; // manual override only
+    rsc.attribute.replaceCache = false; // manual override only
+    rsc.attribute.installCache = false; // manual override only
 
     if ('caches' in window)
     {
-        // delete cache by name
-        if (deleteCache)
+        // list existing cache names
+        if (rsc.attribute.listCache)
         {
-            caches.delete(namedCache).then(function()
+            console.log(getObjectProperties(rsc.attribute));
+
+            caches.keys().then(function(cacheKeys)
             {
-                console.log(namedCache + ' - Cache successfully deleted!');
+                console.log(cacheKeys); // ex: ["test-cache"]
+            });
+
+        }
+
+        // delete cache by name
+        if (rsc.attribute.deleteCache)
+        {
+            caches.delete(rsc.attribute.namedCache).then(function()
+            {
+                console.log(rsc.attribute.namedCache + ' - Cache successfully deleted!');
             });
 
         }
 
         // delete old versions of cache
-        if (replaceCache)
+        if (rsc.attribute.replaceCache)
         {
             caches.keys().then(function(cacheNames)
             {
                 return Promise.all(
                     cacheNames.map(function(cacheName)
                     {
-                        if(cacheName != namedCache)
+                        if(cacheName != rsc.attribute.namedCache)
                         {
                             return caches.delete(cacheName);
                         }
@@ -42,7 +70,7 @@ var similaritycache = {};
 
         }
 
-        if (installCache)
+        if (rsc.attribute.installCache)
         {
             window.addEventListener('install', function(e)
             {
