@@ -113,7 +113,7 @@ var similarityframe = {};
 
         function setStyleDisplay(attribute)
         {
-            cookies.set('hd', attribute, { 'max-age': 7200, 'SameSite': 'None; Secure' });
+            cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
             el.style.display = attribute;
         }
 
