@@ -21,12 +21,12 @@ var similarityframe = {};
 
     });
 
-    function onloadFrame(markupId)
+    function onloadFrame(markupId, refresh)
     {
         if (isValidSource())
         {
             invokeScrollEventListener();
-            asyncPullMarkdownRequest();
+            asyncPullMarkdownRequest(refresh);
         }
 
         function isValidSource()
@@ -58,11 +58,11 @@ var similarityframe = {};
             replaceShadowDomInnerHTML(root, element, regex, replacement);
         }
 
-        function asyncPullMarkdownRequest()
+        function asyncPullMarkdownRequest(refresh)
         {
             displayFooter();
             setTimeout(function() { setMarkdownLinks(); }, 1000);
-            setTimeout(function() { refreshMarkdown(); }, 4000);
+            if (refresh) setTimeout(function() { refreshMarkdown(); }, 4000);
 
             function refreshMarkdown()
             {
