@@ -39,15 +39,7 @@ var similarity = {};
 
     setResourcePrecursors();
 
-    function getQueryString()
-    {
-        const urlParams = new URLSearchParams(window.location.search);
-        const markupId = urlParams.get('mu')
-
-        if (markupId) getMarkupDocument(markupId);
-    }
-
-    function getMarkupDocument(markupId, buttonElement)
+    let getMarkupDocument = function (markupId, buttonElement)
     {
         if (resource.attribute.markupId != markupId)
         {
@@ -60,13 +52,49 @@ var similarity = {};
         if (buttonElement) buttonElement.blur();
     }
 
-    function getHeaderAttributes()
+    let resetPinState = function(el)
     {
-        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200 });
+        if (el.getAttribute('state') == 'enabled')
+        {
+            setPinState(el, 'disabled');
+            resetDisplayState('block');
+
+        } else {
+
+            setPinState(el, 'enabled');
+        }
+
+    }
+
+    let resetDisplayState = function(attribute)
+    {
+        let header = document.getElementById('site-header-display');
+        if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
+        cookies.set('hd', attribute, { 'max-age': 7200 });
+    }
+
+    let setPinState = function(el, attribute)
+    {
+        el.src = pinimage.get(attribute);
+        el.setAttribute('state', attribute);
+        cookies.set('pn', attribute, { 'max-age': 7200 });
+    }
+
+    let getHeaderAttributes = function()
+    {
+        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'SameSite': 'None' });
         if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200 });
 
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
+    }
+
+    let getQueryString = function()
+    {
+        const urlParams = new URLSearchParams(window.location.search);
+        const markupId = urlParams.get('mu')
+
+        if (markupId) getMarkupDocument(markupId);
     }
 
     function onloadPrimary()
@@ -87,34 +115,6 @@ var similarity = {};
 
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
-    }
-
-    function resetPinState(el)
-    {
-        if (el.getAttribute('state') == 'enabled')
-        {
-            setPinState(el, 'disabled');
-            resetDisplayState('block');
-
-        } else {
-
-            setPinState(el, 'enabled');
-        }
-
-    }
-
-    function resetDisplayState(attribute)
-    {
-        let header = document.getElementById('site-header-display');
-        if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
-        cookies.set('hd', attribute, { 'max-age': 7200 });
-    }
-
-    function setPinState(el, attribute)
-    {
-        el.src = pinimage.get(attribute);
-        el.setAttribute('state', attribute);
-        cookies.set('pn', attribute, { 'max-age': 7200 });
     }
 
 }).call(window);
