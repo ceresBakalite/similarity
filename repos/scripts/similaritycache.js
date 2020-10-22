@@ -11,28 +11,29 @@ var similaritycache = {};
         return str.replace(/, +$/g,'');
     }
 
-    let rsc = new class // resource
+    let rsc = new class // serviceworker resource
     {
         constructor()
         {
-            this.attribute = function() { return attribute; }
+            this.namedCache = 'similarity-cache'; // manual override only
+            this.worker = function() { return worker; }
         }
 
     }
 
-    rsc.attribute.namedCache = 'similarity-cache'; // manual override only
-    rsc.attribute.exploreCache = true; // manual override only
-    rsc.attribute.listCache = true; // manual override only
-    rsc.attribute.deleteCache = false; // manual override only
-    rsc.attribute.replaceCache = false; // manual override only
-    rsc.attribute.installCache = true; // manual override only
+    rsc.worker.installCache = true; // manual override only
+    rsc.worker.exploreCache = false; // manual override only
+    rsc.worker.listCache = false; // manual override only
+    rsc.worker.deleteCache = false; // manual override only
+    rsc.worker.replaceCache = false; // manual override only
+
 
     if ('caches' in window)
     {
         // view requests that have already been cached
-        if (rsc.attribute.exploreCache)
+        if (rsc.worker.exploreCache)
         {
-            caches.open(rsc.attribute.namedCache).then(function(cache)
+            caches.open(rsc.namedCache).then(function(cache)
             {
                 cache.keys().then(function(cachedRequests)
                 {
@@ -44,36 +45,36 @@ var similaritycache = {};
         }
 
         // list existing cache names
-        if (rsc.attribute.listCache)
+        if (rsc.worker.listCache)
         {
             console.log(getObjectProperties(rsc.attribute));
 
             caches.keys().then(function(cacheKeys)
             {
-                console.log(cacheKeys); // ex: rsc.attribute.namedCache
+                console.log(cacheKeys); // eg: rsc.namedCache
             });
 
         }
 
         // delete cache by name
-        if (rsc.attribute.deleteCache)
+        if (rsc.worker.deleteCache)
         {
-            caches.delete(rsc.attribute.namedCache).then(function()
+            caches.delete(rsc.namedCache).then(function()
             {
-                console.log(rsc.attribute.namedCache + ' - Cache successfully deleted!');
+                console.log(rsc.namedCache + ' - Cache successfully deleted!');
             });
 
         }
 
         // delete old versions of cache
-        if (rsc.attribute.replaceCache)
+        if (rsc.worker.replaceCache)
         {
             caches.keys().then(function(cacheNames)
             {
                 return Promise.all(
                     cacheNames.map(function(cacheName)
                     {
-                        if(cacheName != rsc.attribute.namedCache)
+                        if(cacheName != rsc.namedCache)
                         {
                             return caches.delete(cacheName);
                         }
@@ -85,12 +86,12 @@ var similaritycache = {};
 
         }
 
-        if (rsc.attribute.installCache)
+        if (rsc.worker.installCache)
         {
             window.addEventListener('install', function(e)
             {
                 e.waitUntil(
-                    caches.open(rsc.attribute.namedCache).then( function(cache)
+                    caches.open(rsc.namedCache).then( function(cache)
                     {
                         return cache.addAll([
                             './index.html',
@@ -167,7 +168,7 @@ var similaritycache = {};
                             // and serve second one
                             let responseClone = response.clone();
 
-                            caches.open(rsc.attribute.namedCache).then(function (cache)
+                            caches.open(rsc.namedCache).then(function (cache)
                             {
                                 responseClone.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
                                 cache.put(e.request, responseClone);
