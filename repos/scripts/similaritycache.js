@@ -21,13 +21,28 @@ var similaritycache = {};
     }
 
     rsc.attribute.namedCache = 'similarity-cache'; // manual override only
+    rsc.attribute.exploreCache = true; // manual override only
     rsc.attribute.listCache = true; // manual override only
-    rsc.attribute.deleteCache = true; // manual override only
+    rsc.attribute.deleteCache = false; // manual override only
     rsc.attribute.replaceCache = false; // manual override only
-    rsc.attribute.installCache = false; // manual override only
+    rsc.attribute.installCache = true; // manual override only
 
     if ('caches' in window)
     {
+        // view requests that have already been cached
+        if (rsc.attribute.exploreCache)
+        {
+            caches.open(rsc.attribute.namedCache).then(function(cache)
+            {
+                cache.keys().then(function(cachedRequests)
+                {
+                    console.log(cachedRequests); // [Request, Request]
+                });
+
+            });
+
+        }
+
         // list existing cache names
         if (rsc.attribute.listCache)
         {
@@ -35,7 +50,7 @@ var similaritycache = {};
 
             caches.keys().then(function(cacheKeys)
             {
-                console.log(cacheKeys); // ex: ["test-cache"]
+                console.log(cacheKeys); // ex: rsc.attribute.namedCache
             });
 
         }
