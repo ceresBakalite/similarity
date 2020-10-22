@@ -70,7 +70,7 @@ var similarity = {};
     {
         let header = document.getElementById('site-header-display');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
-        cookies.set('hd', attribute, { 'max-age': 7200, 'SameSite': 'None' });
+        cookies.set('hd', attribute, { 'max-age': 7200, 'SameSite': 'None; Secure' });
     }
 
     let setPinState = function(el, attribute)
@@ -82,7 +82,7 @@ var similarity = {};
 
     let getHeaderAttributes = function()
     {
-        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'SameSite': 'None' });
+        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'SameSite': 'None; Secure',  });
         if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200 });
 
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
