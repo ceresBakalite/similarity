@@ -5,12 +5,6 @@ var similaritycache = {};
 {
     'use strict';
 
-    // for all responses
-    app.use((req, res, next) => {
-      res.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
-      next();
-    });
-
     if ('caches' in window)
     {
         window.addEventListener('install', function(event)
@@ -66,6 +60,12 @@ var similaritycache = {};
                 'https://fonts.googleapis.com/css?family=Open+Sans:400,700',
                 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css'
               ]);
+
+              // for all responses
+              cache.use((req, res, next) => {
+                res.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
+                next();
+              });
 
             })
 
