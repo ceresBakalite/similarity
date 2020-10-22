@@ -75,7 +75,7 @@ var similaritycache = {};
             window.addEventListener('install', function(e)
             {
                 e.waitUntil(
-                    caches.open(cacheName).then( function(cache)
+                    caches.open(rsc.attribute.namedCache).then( function(cache)
                     {
                         return cache.addAll([
                             './index.html',
@@ -152,7 +152,7 @@ var similaritycache = {};
                             // and serve second one
                             let responseClone = response.clone();
 
-                            caches.open(cacheName).then(function (cache)
+                            caches.open(rsc.attribute.namedCache).then(function (cache)
                             {
                                 responseClone.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
                                 cache.put(e.request, responseClone);
