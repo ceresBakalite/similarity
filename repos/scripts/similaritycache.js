@@ -7,12 +7,6 @@ var similaritycache = {};
 
     if ('caches' in window)
     {
-        // for all responses
-        cache.use((req, res, next) => {
-          res.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
-          next();
-        });
-
         window.addEventListener('install', function(event)
         {
           event.waitUntil(
@@ -82,6 +76,7 @@ var similaritycache = {};
                 if (response !== undefined)
                 {
 
+                    response.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
                     return response;
 
                 } else {
