@@ -6,8 +6,8 @@ var similaritycache = {};
     'use strict';
 
     let cacheName = 'similarity-cache';
-    let deleteCache = true; // manual override only
-    let installCache = false; // manual override only
+    let deleteCache = false; // manual override only
+    let installCache = true; // manual override only
 
     if ('caches' in window)
     {
