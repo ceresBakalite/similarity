@@ -71,6 +71,8 @@ var similaritycache = {};
         {
             event.respondWith(caches.match(event.request).then(function(response)
             {
+                response.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
+
                 // caches.match() always resolves
                 // but in case of success response will have value
                 if (response !== undefined)
@@ -85,7 +87,6 @@ var similaritycache = {};
                         // response may be used only once
                         // we need to save clone to put one copy in cache
                         // and serve second one
-                        response.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
                         let responseClone = response.clone();
 
                         caches.open('similarity-cache').then(function (cache)
