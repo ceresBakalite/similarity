@@ -9,7 +9,8 @@ var similarityframe = {};
 
     this.onload = function(id) { onloadFrame(id); };  // public method reference
 
-    let includeDirective = 'include-directive';
+    const includeDirective = 'include-directive';
+    const refreshMarkdown = false;
 
     window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
     {
@@ -21,12 +22,12 @@ var similarityframe = {};
 
     });
 
-    function onloadFrame(markupId, refresh)
+    function onloadFrame(markupId)
     {
         if (isValidSource())
         {
             invokeScrollEventListener();
-            asyncPullMarkdownRequest(refresh);
+            asyncPullMarkdownRequest();
         }
 
         function isValidSource()
@@ -58,13 +59,13 @@ var similarityframe = {};
             replaceShadowDomInnerHTML(root, element, regex, replacement);
         }
 
-        function asyncPullMarkdownRequest(refresh)
+        function asyncPullMarkdownRequest()
         {
             displayFooter();
             setTimeout(function() { setMarkdownLinks(); }, 1000);
-            if (refresh) setTimeout(function() { refreshMarkdown(); }, 4000);
+            if (refreshMarkdown) setTimeout(function() { fetchMarkdown(); }, 4000);
 
-            function refreshMarkdown()
+            function fetchMarkdown()
             {
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
