@@ -70,7 +70,7 @@ var similarity = {};
     {
         let header = document.getElementById('site-header-display');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
-        cookies.set('hd', attribute, { 'max-age': 7200 });
+        cookies.set('hd', attribute, { 'max-age': 7200, 'SameSite': 'None' });
     }
 
     let setPinState = function(el, attribute)
