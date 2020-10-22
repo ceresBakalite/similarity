@@ -14,6 +14,7 @@ var cookies = {};
         let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
         if (!options.path) options.path = '/';
+        if (!options.samesite) options.samesite = 'lax';
         if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
 
         for (let item in options)
