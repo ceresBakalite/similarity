@@ -7,9 +7,9 @@ var similaritycache = {};
 
     if ('caches' in window)
     {
-        window.addEventListener('install', function(event)
+        window.addEventListener('install', function(e)
         {
-          event.waitUntil(
+          e.waitUntil(
             caches.open('similarity-cache').then( function(cache)
             {
               return cache.addAll([
@@ -67,12 +67,10 @@ var similaritycache = {};
 
         });
 
-        window.addEventListener('fetch', function(event)
+        window.addEventListener('fetch', function(e)
         {
-            event.respondWith(caches.match(event.request).then(function(response)
+            e.respondWith(caches.match(e.request).then(function(response)
             {
-                response.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
-
                 // caches.match() always resolves
                 // but in case of success response will have value
                 if (response !== undefined)
@@ -82,7 +80,7 @@ var similaritycache = {};
 
                 } else {
 
-                    return fetch(event.request).then(function (response)
+                    return fetch(e.request).then(function (response)
                     {
                         // response may be used only once
                         // we need to save clone to put one copy in cache
@@ -91,7 +89,8 @@ var similaritycache = {};
 
                         caches.open('similarity-cache').then(function (cache)
                         {
-                            cache.put(event.request, responseClone);
+                            responseClone.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
+                            cache.put(e.request, responseClone);
                         });
 
                         return response;
