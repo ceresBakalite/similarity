@@ -12,9 +12,9 @@ var similaritycache = {};
 
     if ('caches' in window)
     {
+        // delete cache by name
         if (deleteCache)
         {
-            // delete cache by name
             caches.delete(namedCache).then(function()
             {
                 console.log(namedCache + ' - Cache successfully deleted!');
@@ -22,9 +22,9 @@ var similaritycache = {};
 
         }
 
+        // delete old versions of cache
         if (replaceCache)
         {
-            // delete all versions of cache while retaining a cache by name
             caches.keys().then(function(cacheNames)
             {
                 return Promise.all(
