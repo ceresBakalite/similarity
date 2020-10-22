@@ -7,10 +7,10 @@ var similaritycache = {};
 
     // for all responses
     app.use((req, res, next) => {
-      res.set('Cache-Control', 'public, max-age 2592000');
+      res.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
       next();
     });
-    
+
     if ('caches' in window)
     {
         window.addEventListener('install', function(event)
