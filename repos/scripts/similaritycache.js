@@ -6,11 +6,10 @@ var similaritycache = {};
     'use strict';
 
     let cacheName = 'similarity-cache';
-    let deleteCache = false; // manual override only
+    let deleteCache = true; // manual override only
 
     if ('caches' in window)
     {
-
         if (deleteCache)
         {
             caches.keys().then(function(cacheNames)
