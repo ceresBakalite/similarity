@@ -5,20 +5,32 @@ var similaritycache = {};
 {
     'use strict';
 
-    let cacheName = 'similarity-cache';
-    let deleteCache = false; // manual override only
-    let installCache = true; // manual override only
+    const namedCache = 'similarity-cache'; // manual override only
+    const deleteCache = true; // manual override only
+    const replaceCache = false; // manual override only
+    const installCache = false; // manual override only
 
     if ('caches' in window)
     {
         if (deleteCache)
         {
+            // delete cache by name
+            caches.delete(namedCache).then(function()
+            {
+                console.log(namedCache + ' - Cache successfully deleted!');
+            });
+
+        }
+
+        if (replaceCache)
+        {
+            // delete all versions of cache while retaining a cache by name
             caches.keys().then(function(cacheNames)
             {
                 return Promise.all(
                     cacheNames.map(function(cacheName)
                     {
-                        if(cacheName != CACHE_NAME)
+                        if(cacheName != namedCache)
                         {
                             return caches.delete(cacheName);
                         }
