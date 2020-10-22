@@ -96,6 +96,8 @@ var similaritycache = {};
                         return cache.addAll([
                             '/index.html',
                             '/README.md',
+                            '/shell/README.md',
+                            '/repos/scripts/index.md',
                             '/repos/scripts/SyncIndex.html',
                             '/repos/scripts/SyncRepos.html',
                             '/repos/scripts/SyncShell.html',
@@ -103,7 +105,6 @@ var similaritycache = {};
                             '/repos/scripts/IncludeNavigation.inc',
                             '/repos/scripts/IncludeHeader.inc',
                             '/repos/scripts/IncludeFooter.inc',
-                            '/repos/scripts/index.md',
                             '/repos/scripts/similarityscriptframe.js',
                             '/repos/scripts/similaritycache.js',
                             '/repos/scripts/similarityscript.js',
