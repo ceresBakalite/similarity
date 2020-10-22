@@ -61,12 +61,6 @@ var similaritycache = {};
                 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css'
               ]);
 
-              // for all responses
-              cache.use((req, res, next) => {
-                res.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
-                next();
-              });
-
             })
 
           );
@@ -75,37 +69,45 @@ var similaritycache = {};
 
         window.addEventListener('fetch', function(event)
         {
-          event.respondWith(caches.match(event.request).then(function(response)
-          {
-            // caches.match() always resolves
-            // but in case of success response will have value
-            if (response !== undefined)
+
+            // for all responses
+            cache.use((req, res, next) => {
+              res.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
+              next();
+            });
+
+            event.respondWith(caches.match(event.request).then(function(response)
             {
-
-              return response;
-
-            } else {
-
-              return fetch(event.request).then(function (response) {
-                // response may be used only once
-                // we need to save clone to put one copy in cache
-                // and serve second one
-                let responseClone = response.clone();
-
-                caches.open('similarity-cache').then(function (cache)
+                // caches.match() always resolves
+                // but in case of success response will have value
+                if (response !== undefined)
                 {
-                  cache.put(event.request, responseClone);
-                });
 
-                return response;
+                    return response;
 
-              }).catch(function ()
-              {
+                } else {
 
-                return caches.match('./images/NAVCogs.png');
+                    return fetch(event.request).then(function (response)
+                    {
+                        // response may be used only once
+                        // we need to save clone to put one copy in cache
+                        // and serve second one
+                        let responseClone = response.clone();
 
-              });
-            }
+                        caches.open('similarity-cache').then(function (cache)
+                        {
+                            cache.put(event.request, responseClone);
+                        });
+
+                        return response;
+
+                    }).catch(function () {
+
+                        return caches.match('./images/NAVCogs.png');
+
+                    });
+
+                }
 
           }));
 
