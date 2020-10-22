@@ -7,6 +7,12 @@ var similaritycache = {};
 
     if ('caches' in window)
     {
+        // for all responses
+        cache.use((req, res, next) => {
+          res.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
+          next();
+        });
+
         window.addEventListener('install', function(event)
         {
           event.waitUntil(
@@ -69,13 +75,6 @@ var similaritycache = {};
 
         window.addEventListener('fetch', function(event)
         {
-
-            // for all responses
-            cache.use((req, res, next) => {
-              res.set('Cache-Control', 'public, max-age 2592000, s-maxage 43200');
-              next();
-            });
-
             event.respondWith(caches.match(event.request).then(function(response)
             {
                 // caches.match() always resolves
