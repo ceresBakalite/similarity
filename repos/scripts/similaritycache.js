@@ -15,7 +15,7 @@ var similaritycache = {};
     {
         constructor()
         {
-            this.attribute = function() { return attribute; },
+            this.attribute = function() { return attribute; }
         }
 
     }
