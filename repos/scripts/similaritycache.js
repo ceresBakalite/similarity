@@ -13,12 +13,18 @@ var similaritycache = {};
             caches.open('similarity-cache').then( function(cache)
             {
               return cache.addAll([
-                './index.html',
+                  './index.html',
+                  './README.md',
                 './repos/scripts/SyncIndex.html',
                 './repos/scripts/SyncRepos.html',
                 './repos/scripts/SyncShell.html',
                 './repos/scripts/SyncSlide.html',
+                './repos/scripts/IncludeNavigation.inc',
+                './repos/scripts/IncludeHeader.inc',
+                './repos/scripts/IncludeFooter.inc',
+                './repos/scripts/index.md',
                 './repos/scripts/similarityscriptframe.js',
+                './repos/scripts/similaritycache.js',
                 './repos/scripts/similarityscript.js',
                 './repos/scripts/cerescookies.js',
                 './stylesheets/stylesheets/github-light.css',
@@ -33,6 +39,7 @@ var similaritycache = {};
                 './images/slide/NAVScreenViews06.png',
                 './images/slide/NAVScreenViews07.png',
                 './images/slide/NAVScreenViews08.png',
+                './images/slide/README.md',
                 './images/GitHubForkMe_Right_Transparent.png',
                 './images/NAVBridgeViewHeaderBackground.png',
                 './images/NAVSimilarityLogoScripts.png',
