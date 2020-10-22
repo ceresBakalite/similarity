@@ -70,20 +70,20 @@ var similarity = {};
     {
         let header = document.getElementById('site-header-display');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
-        cookies.set('hd', attribute, { 'max-age': 7200, 'SameSite': 'None; Secure' });
+        cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
     }
 
     let setPinState = function(el, attribute)
     {
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
-        cookies.set('pn', attribute, { 'max-age': 7200, 'SameSite': 'None; Secure' });
+        cookies.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
     }
 
     let getHeaderAttributes = function()
     {
-        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'SameSite': 'None; Secure'  });
-        if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200, 'SameSite': 'None; Secure' });
+        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
+        if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200, 'samesite': 'None; Secure' });
 
         if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
