@@ -85,7 +85,9 @@ var similarity = {};
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
         if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200, 'samesite': 'None; Secure' });
 
-        if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
+        document.getElementById('site-header-display').style.display = (cookies.get('hd') == 'none') ? 'none' : 'block';
+
+        //if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
     }
 
