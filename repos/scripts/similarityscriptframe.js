@@ -7,7 +7,7 @@ var similarityframe = {};
 {
     'use strict';
 
-    this.onload = function(id) { onloadFrame(id); };  // public method reference
+    this.onload = function(id) { onloadFrame(id); };  // global scope method reference
 
     const includeDirective = 'include-directive';
     const refreshMarkdown = false;
