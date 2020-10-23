@@ -87,7 +87,6 @@ var similarity = {};
 
         document.getElementById('site-header-display').style.display = (cookies.get('hd') == 'none') ? 'none' : 'block';
 
-        //if (cookies.get('hd') == 'none') document.getElementById('site-header-display').style.display = 'none';
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
     }
 
