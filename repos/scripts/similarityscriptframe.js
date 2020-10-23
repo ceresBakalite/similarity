@@ -16,7 +16,7 @@ var similarityframe = {};
     {
         async connectedCallback()
         {
-            let src = this.getAttribute('src');
+            const src = this.getAttribute('src');
             this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
         }
 
@@ -24,13 +24,7 @@ var similarityframe = {};
 
     function onloadFrame(markupId)
     {
-        if (isValidSource())
-        {
-            invokeScrollEventListener();
-            asyncPullMarkdownRequest();
-        }
-
-        function isValidSource()
+        let isValidSource = function()
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
 
@@ -39,17 +33,17 @@ var similarityframe = {};
             return false;
         }
 
-        function invokeScrollEventListener()
+        let invokeScrollEventListener = function()
         {
             window.onscroll = function() { adjustHeaderDisplay(); };
         }
 
-        function displayFooter()
+        let displayFooter = function()
         {
             setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
-        function setMarkdownLinks()
+        let setMarkdownLinks = function()
         {
             const root = 'zero-md';
             const element = '.markdown-body';
@@ -59,28 +53,29 @@ var similarityframe = {};
             replaceShadowDomInnerHTML(root, element, regex, replacement);
         }
 
-        function asyncPullMarkdownRequest()
+        let asyncPullMarkdownRequest = function()
         {
-            displayFooter();
-            setTimeout(function() { setMarkdownLinks(); }, 1000);
-            if (refreshMarkdown) setTimeout(function() { fetchMarkdown(); }, 4000);
-
-            function fetchMarkdown()
+            let fetchMarkdown = function()
             {
                 const nodelist = document.querySelectorAll('zero-md');
                 nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
                 setTimeout(function() { setMarkdownLinks(); }, 1000);
             }
 
+            displayFooter();
+            setTimeout(function() { setMarkdownLinks(); }, 1000);
+
+            if (refreshMarkdown) setTimeout(function() { fetchMarkdown(); }, 4000);
         }
 
-        function replaceShadowDomInnerHTML(root, element, regex, replacement)
+        let replaceShadowDomInnerHTML = function(root, element, regex, replacement)
         {
             const nodelist = document.querySelectorAll(root);
 
             nodelist.forEach(node => {
 
                 let shadow = node.shadowRoot;
+
                 if (shadow)
                 {
                     let markdown = shadow.querySelector(element).innerHTML;
@@ -91,13 +86,25 @@ var similarityframe = {};
 
         }
 
+        if (isValidSource())
+        {
+            invokeScrollEventListener();
+            asyncPullMarkdownRequest();
+        }
+
     }
 
     function adjustHeaderDisplay()
     {
-        let el = parent.document.getElementById('site-header-display');
-        let pin = parent.document.getElementById('pin-navbar').getAttribute('state');
-        let trigger = 25;
+        let setStyleDisplay = function(attribute)
+        {
+            cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
+            el.style.display = attribute;
+        }
+
+        const el = parent.document.getElementById('site-header-display');
+        const pin = parent.document.getElementById('pin-navbar').getAttribute('state');
+        const trigger = 25;
 
         if (pin == 'disabled')
         {
@@ -110,12 +117,6 @@ var similarityframe = {};
                 if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
             }
 
-        }
-
-        function setStyleDisplay(attribute)
-        {
-            cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
-            el.style.display = attribute;
         }
 
     }
