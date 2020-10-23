@@ -8,9 +8,9 @@ var similarity = {};
 {
     'use strict';
 
-    this.onload = function() { onloadPrimary(); }; // public method reference
-    this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // public method reference
-    this.getPinState = function(el) { resetPinState(el); };  // public method reference
+    this.onload = function() { onloadPrimary(); }; // global scope method reference
+    this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
+    this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
     let includeDirective = 'include-directive';
 
