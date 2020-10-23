@@ -1,3 +1,14 @@
+/**
+ * @license
+ * cerescookies v1.0.0
+ *
+ * Minified using terser v5.3.5
+ * Original file: ceresbakalite/similarity/repos/scripts/cerescookies.js
+ *
+ * ceresBakalite/similarity is licensed under the MIT License - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2020 Alexander Munro
+*/
 export { cookies }
 
 var cookies = {};
