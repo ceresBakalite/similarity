@@ -18,7 +18,7 @@ var similarity = {};
     {
         async connectedCallback()
         {
-            let src = this.getAttribute('src');
+            const src = this.getAttribute('src');
             this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
         }
 
@@ -68,7 +68,7 @@ var similarity = {};
 
     let setDisplayState = function(attribute)
     {
-        let header = document.getElementById('site-header-display');
+        const header = document.getElementById('site-header-display');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
         cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
     }
