@@ -13,7 +13,7 @@ body {
 }
 
 .section-header-background {
-  background: url(../images/NAVBridgeViewHeaderBackground.png) no-repeat;
+  background: url(/images/NAVBridgeViewHeaderBackground.png) no-repeat;
   background-size: 100% 100%;
   background-color: #0e2b15;
   padding-right:45px;

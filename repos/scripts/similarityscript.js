@@ -105,13 +105,13 @@ var similarity = {};
 
     function setResourcePrecursors()
     {
-        pinimage.set('enabled', './images/NAVPinIconEnabled.png');
-        pinimage.set('disabled', './images/NAVPinIconDisabled.png');
+        pinimage.set('enabled', '/images/NAVPinIconEnabled.png');
+        pinimage.set('disabled', '/images/NAVPinIconDisabled.png');
 
-        location.set('index', './repos/scripts/SyncIndex.html');
-        location.set('shell', './repos/scripts/SyncShell.html');
-        location.set('slide', './repos/scripts/SyncSlide.html');
-        location.set('repos', './repos/scripts/SyncRepos.html');
+        location.set('index', '/repos/scripts/SyncIndex.html');
+        location.set('shell', '/repos/scripts/SyncShell.html');
+        location.set('slide', '/repos/scripts/SyncSlide.html');
+        location.set('repos', '/repos/scripts/SyncRepos.html');
 
         resource.attribute.markupId = 'index';
         resource.attribute.markupUrl = location.get(resource.attribute.markupId);
