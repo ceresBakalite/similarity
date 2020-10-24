@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { ceres, cookie }
+export { ceres, cookies }
 
 var ceres = {};
 (function()
@@ -193,7 +193,7 @@ var ceres = {};
 
 }).call(ceres);
 
-var cookie = {};
+var cookies = {};
 (function() {
 
     this.get = function (name)
@@ -218,4 +218,4 @@ var cookie = {};
         document.cookie = cookie;
     }
 
-}).call(cookie);
+}).call(cookies);
