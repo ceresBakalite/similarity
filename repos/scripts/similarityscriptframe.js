@@ -1,6 +1,5 @@
 export { similarityframe }
 
-//import { cookies } from '../mods/cerescookies.min.js';
 import { cookies} from '../mods/cereslibrary.min.js';
 import { ceres as csl} from '../mods/cereslibrary.min.js';
 
