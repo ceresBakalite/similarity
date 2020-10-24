@@ -168,7 +168,7 @@ var similaritycache = {};
                     // but in case of success response will have value
                     if (response !== undefined)
                     {
-
+                        response.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
                         return response;
 
                     } else {
