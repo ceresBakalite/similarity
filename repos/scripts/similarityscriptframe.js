@@ -1,6 +1,6 @@
 export { similarityframe }
 
-import { cookies} from '../mods/cereslibrary.min.js';
+import { cookie} from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
@@ -98,7 +98,7 @@ var similarityframe = {};
     {
         let setStyleDisplay = function(attribute)
         {
-            cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
+            cookie.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
             el.style.display = attribute;
         }
 

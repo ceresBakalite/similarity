@@ -1,6 +1,6 @@
 export { similarity }
 
-import { cookies} from '../mods/cereslibrary.min.js';
+import { cookie} from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
@@ -70,26 +70,26 @@ var similarity = {};
     {
         const header = document.getElementById('site-header-display');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
-        cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
+        cookie.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
     }
 
     let setPinState = function(el, attribute)
     {
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
-        cookies.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
+        cookie.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
     }
 
     let getHeaderAttributes = function()
     {
         const el = document.getElementById('site-header-display');
 
-        if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
-        if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200, 'samesite': 'None; Secure' });
+        if (!cookie.get('hd')) cookie.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
+        if (!cookie.get('pn')) cookie.set('pn', 'disabled', { 'max-age': 7200, 'samesite': 'None; Secure' });
 
-        if (el) el.style.display = (cookies.get('hd') == 'none') ? 'none' : 'block';
+        if (el) el.style.display = (cookie.get('hd') == 'none') ? 'none' : 'block';
 
-        if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
+        if (cookie.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
     }
 
     let getQueryString = function()
