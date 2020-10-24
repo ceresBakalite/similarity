@@ -82,10 +82,12 @@ var similarity = {};
 
     let getHeaderAttributes = function()
     {
+        const el = document.getElementById('site-header-display');
+
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
         if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200, 'samesite': 'None; Secure' });
 
-        document.getElementById('site-header-display').style.display = (cookies.get('hd') == 'none') ? 'none' : 'block';
+        if (el) el.style.display = (cookies.get('hd') == 'none') ? 'none' : 'block';
 
         if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
     }
