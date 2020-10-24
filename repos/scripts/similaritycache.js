@@ -164,11 +164,13 @@ var similaritycache = {};
             {
                 e.respondWith(caches.match(e.request).then(function(response)
                 {
+                    // setting max-age here appears to be unresponsive
+                    response.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
+
                     // caches.match() always resolves
                     // but in case of success response will have value
                     if (response !== undefined)
                     {
-                        response.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
                         return response;
 
                     } else {
@@ -180,9 +182,11 @@ var similaritycache = {};
                             // and serve second one
                             let responseClone = response.clone();
 
+                            // setting max-age here appears to be unresponsive
+                            responseClone.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
+
                             caches.open(rsc.namedCache).then(function (cache)
                             {
-                                responseClone.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
                                 cache.put(e.request, responseClone);
                             });
 
