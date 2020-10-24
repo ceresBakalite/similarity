@@ -8,22 +8,28 @@ https://github.com/terser/terser
 
 *recommended usage*
 
-        terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m
-        terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -c -m
+        1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m
+        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -c -m
 
 **Example 2**
 
 *with source map*
 
-        terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\mods',url='cereslibrary.min.js.map'"
-        terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -c -m --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\mods',url='similaritycache.min.js.map'"
+        1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\mods',url='cereslibrary.min.js.map'"
+        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -c -m --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\mods',url='similaritycache.min.js.map'"
 
 **Example 3**
 
 *alternatively...*
 
-        terser -c -m -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -- C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js
-        terser -c -m -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -- C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js
+        1. terser -c -m -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -- C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js
+        2. terser -c -m -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -- C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js
+
+**Example 4**
+
+*reserve specific words*
+
+        1. terser -c -m reserved=['get','set'] -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -- C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js
 
 <br>
 
@@ -37,7 +43,7 @@ https://github.com/jakubpawlowicz/clean-css-cli
 
 *recommended usage*
 
-        cleancss C:\Users\Sandy\Documents\GitHub\similarity\stylesheets\similaritysheet.css -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritysheet.css
+        1. cleancss C:\Users\Sandy\Documents\GitHub\similarity\stylesheets\similaritysheet.css -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritysheet.css
 
 <br>
 
