@@ -24,16 +24,7 @@ var similarity = {};
 
     });
 
-    class Component
-    {
-        constructor()
-        {
-            this.attribute = function() { return attribute; }
-        }
-
-    }
-
-    let resource = new Component();
+    let resource = function() { return attribute; }
     let location = new Map();
     let pinimage = new Map();
 
@@ -41,12 +32,12 @@ var similarity = {};
 
     let getMarkupDocument = function (markupId, buttonElement)
     {
-        if (resource.attribute.markupId != markupId)
+        if (resource.markupId != markupId)
         {
-            resource.attribute.markupId = markupId;
-            resource.attribute.markupUrl = (location.has(resource.attribute.markupId)) ? location.get(resource.attribute.markupId) : location.get('index');
+            resource.markupId = markupId;
+            resource.markupUrl = (location.has(resource.markupId)) ? location.get(resource.markupId) : location.get('index');
 
-            document.getElementById('frame-container').setAttribute('src', resource.attribute.markupUrl);
+            document.getElementById('frame-container').setAttribute('src', resource.markupUrl);
         }
 
         if (buttonElement) buttonElement.blur();
@@ -116,8 +107,8 @@ var similarity = {};
         location.set('slide', './repos/scripts/SyncSlide.html');
         location.set('repos', './repos/scripts/SyncRepos.html');
 
-        resource.attribute.markupId = 'index';
-        resource.attribute.markupUrl = location.get(resource.attribute.markupId);
+        resource.markupId = 'index';
+        resource.markupUrl = location.get(resource.markupId);
     }
 
 }).call(window);
