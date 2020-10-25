@@ -11,7 +11,7 @@
 */
 export { similaritycache }
 
-import { generic as gn, caching as ca } from '../mods/cereslibrary.min.js';
+import { generic, caching as ca } from '../mods/cereslibrary.min.js';
 
 var similaritycache = {};
 (function(cache)
@@ -95,8 +95,8 @@ var similaritycache = {};
         // delete cache by name
         if (action.deleteCache) ca.deleteCacheByName(action.namedCache);
 
-        // list the action  properties
-        if (action.listAction) gn.getObjectProperties(action);
+        // list the action properties
+        if (action.listAction) generic.getObjectProperties(action);
 
     }
 
