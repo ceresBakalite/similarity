@@ -302,11 +302,8 @@ var caching = {};
 
     }
 
-    this.listExistingCacheNames = function(obj)
+    this.listExistingCacheNames = function()
     {
-        for (let property in obj) str += property + ': ' + obj[property] + ', ';
-        console.log(str.replace(/, +$/g,''));
-
         caches.keys().then(function(cacheKeys)
         {
             console.log('listCache: ' + cacheKeys); // eg: namedCache

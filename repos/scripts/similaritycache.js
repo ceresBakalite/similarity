@@ -11,7 +11,7 @@
 */
 export { similaritycache }
 
-import { caching as ca} from '../mods/cereslibrary.min.js';
+import { caching as ca } from '../mods/cereslibrary.min.js';
 
 var similaritycache = {};
 (function(cache)
@@ -24,6 +24,7 @@ var similaritycache = {};
     action.installCache = true; // manual override only
     action.exploreCache = false; // manual override only
     action.listCache = false; // manual override only
+    action.listAction = true; // manual override only
     action.replaceCache = false; // manual override only
     action.deleteCache = false; // manual override only
 
@@ -86,13 +87,25 @@ var similaritycache = {};
         if (action.exploreCache) ca.viewCachedRequests(action.namedCache);
 
         // list existing cache names
-        if (action.listCache) ca.listExistingCacheNames(action);
+        if (action.listCache) ca.listExistingCacheNames();
 
         // delete old versions of cache
         if (action.replaceCache) ca.deleteOldCacheVersions(action.namedCache);
 
         // delete cache by name
         if (action.deleteCache) ca.deleteCacheByName(action.namedCache);
+
+        // list the action  properties
+        (async () => {
+
+            if (action.listAction)
+            {
+                const { generic } = await import('../mods/cereslibrary.min.js');
+                generic.getObjectProperties(action);
+            }
+
+        })();
+
     }
 
 })(similaritycache);
