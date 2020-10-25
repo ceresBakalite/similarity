@@ -18,17 +18,20 @@ var similaritycache = {};
 {
     'use strict';
 
-    let action = function() { return attribute; } // worker action
+    let action = function() { return attribute; }
 
-    action.namedCache = 'similarity-cache'; // manual override only
-    action.installCache = true; // manual override only
-    action.exploreCache = false; // manual override only
-    action.listCache = false; // manual override only
-    action.listAction = false; // manual override only
-    action.replaceCache = false; // manual override only
-    action.deleteCache = false; // manual override only
+    action.namedCache = 'similarity-cache';
+    action.installCache = true;
 
-    let urlArray = [
+    action.listCache = false;
+    action.listAction = false;
+    action.exploreCache = false;
+    action.replaceCache = false;
+    action.deleteCache = false;
+
+    Object.freeze(action);
+
+    const urlArray = [
         '/index.html',
         '/README.md',
         '/shell/README.md',
