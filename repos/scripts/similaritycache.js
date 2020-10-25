@@ -22,9 +22,9 @@ var similaritycache = {};
 
     action.namedCache = 'similarity-cache'; // manual override only
     action.installCache = true; // manual override only
-    action.exploreCache = true; // manual override only
-    action.listCache = true; // manual override only
-    action.replaceCache = true; // manual override only
+    action.exploreCache = false; // manual override only
+    action.listCache = false; // manual override only
+    action.replaceCache = false; // manual override only
     action.deleteCache = false; // manual override only
 
     let urlArray = [
