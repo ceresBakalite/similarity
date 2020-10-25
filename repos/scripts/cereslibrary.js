@@ -230,7 +230,7 @@ var cookies = {};
 }).call(cookies);
 
 var caching = {};
-(function() {
+(function(cache) {
 
     'use strict';
 
