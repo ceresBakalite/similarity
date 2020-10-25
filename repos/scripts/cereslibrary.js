@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { generic, touch, compose, cookies }
+export { generic, touch, compose, cookies, caching }
 
 var generic = {};
 (function()
@@ -228,3 +228,117 @@ var cookies = {};
     }
 
 }).call(cookies);
+
+var caching = {};
+(function() {
+
+    'use strict';
+
+    this.installCache = function(namedCache, urlArray)
+    {
+        window.addEventListener('install', function(e)
+        {
+            e.waitUntil(
+                caches.open(namedCache).then( function(cache)
+                {
+                    return cache.addAll(urlArray);
+
+                })
+
+            );
+
+        });
+
+        window.addEventListener('fetch', function(e)
+        {
+            e.respondWith(caches.match(e.request).then(function(response)
+            {
+                // caches.match() always resolves
+                // but in case of success response will have value
+                if (response !== undefined)
+                {
+                    return response;
+
+                } else {
+
+                    return fetch(e.request).then(function (response)
+                    {
+                        // response may be used only once
+                        // we need to save clone to put one copy in cache
+                        // and serve second one
+                        let responseClone = response.clone();
+
+                        caches.open(namedCache).then(function (cache)
+                        {
+                            cache.put(e.request, responseClone);
+                        });
+
+                        return response;
+
+                    }).catch(function () {
+
+                        return caches.match('/images/NAVCogs.png');
+
+                    });
+
+                }
+
+            }));
+
+        });
+
+    }
+
+    this.viewCachedRequests = function(namedCache)
+    {
+        caches.open(namedCache).then(function(cache)
+        {
+            cache.keys().then(function(cachedRequests)
+            {
+                console.log('exploreCache: ' + cachedRequests); // [Request, Request]
+            });
+
+        });
+
+    }
+
+    this.listExistingCacheNames = function(obj)
+    {
+        console.log(generic.getObjectProperties(obj));
+
+        caches.keys().then(function(cacheKeys)
+        {
+            console.log('listCache: ' + cacheKeys); // eg: namedCache
+        });
+
+    }
+
+    this.deleteCacheByName = function(namedCache)
+    {
+        caches.delete(namedCache).then(function()
+        {
+            console.log(namedCache + ' - Cache successfully deleted');
+        });
+
+    }
+
+    this.deleteOldCacheVersions = function(namedCache)
+    {
+        caches.keys().then(function(cacheNames)
+        {
+            return Promise.all(
+                cacheNames.map(function(cacheName)
+                {
+                    if(cacheName != namedCache)
+                    {
+                        return caches.delete(cacheName);
+                    }
+                })
+
+            );
+
+        });
+
+    }
+
+}).call(caching);
