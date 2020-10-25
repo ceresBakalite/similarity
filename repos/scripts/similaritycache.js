@@ -23,13 +23,13 @@ var similaritycache = {};
     }
 
     let namedCache = 'similarity-cache'; // manual override only
-    let worker = function() { return attribute; }
+    let wkr = function() { return attribute; } // cache worker
 
-    worker.installCache = true; // manual override only
-    worker.exploreCache = false; // manual override only
-    worker.listCache = false; // manual override only
-    worker.deleteCache = false; // manual override only
-    worker.replaceCache = false; // manual override only
+    wkr.installCache = true; // manual override only
+    wkr.exploreCache = false; // manual override only
+    wkr.listCache = false; // manual override only
+    wkr.deleteCache = false; // manual override only
+    wkr.replaceCache = false; // manual override only
 
     let viewCachedRequests = function()
     {
@@ -195,19 +195,19 @@ var similaritycache = {};
     if ('caches' in window)
     {
         // install cache
-        if (worker.installCache) installCache();
+        if (wkr.installCache) installCache();
 
         // view requests that have already been cached
-        if (worker.exploreCache) viewCachedRequests();
+        if (wkr.exploreCache) viewCachedRequests();
 
         // list existing cache names
-        if (worker.listCache) listExistingCacheNames();
+        if (wkr.listCache) listExistingCacheNames();
 
         // delete cache by name
-        if (worker.deleteCache) deleteCacheByName();
+        if (wkr.deleteCache) deleteCacheByName();
 
         // delete old versions of cache
-        if (worker.replaceCache) deleteOldCacheVersions();
+        if (wkr.replaceCache) deleteOldCacheVersions();
 
     }
 

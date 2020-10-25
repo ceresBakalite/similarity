@@ -17,7 +17,7 @@ var generic = {};
     'use strict';
 
     let protean = function() { return attribute; }
-    let resource = function() { return attribute; }
+    let rsc = function() { return attribute; } // local resource
     let sbl = new Map(); // local scope symbols
 
     setPrecursors();
@@ -53,7 +53,7 @@ var generic = {};
 
     this.inspect = function(diagnostic)
     {
-        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: this.constant.error, notification: resource.inspect });
+        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: this.constant.error, notification: rsc.inspect });
 
         const lookup = {
             [this.constant.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + this.constant.newline + this.constant.newline + diagnostic.reference); },
@@ -67,7 +67,7 @@ var generic = {};
 
     this.errorHandler = function(error)
     {
-        if (this.isEmptyOrNull(error)) return this.inspect({ type: this.constant.error, notification: resource.errorHandler });
+        if (this.isEmptyOrNull(error)) return this.inspect({ type: this.constant.error, notification: rsc.errorHandler });
 
         const err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
         console.log(err);
@@ -100,8 +100,8 @@ var generic = {};
 
         Object.freeze(protean);
 
-        resource.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
-        resource.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
+        rsc.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
+        rsc.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
 
         Object.freeze(resource);
     }
