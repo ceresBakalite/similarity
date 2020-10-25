@@ -253,8 +253,6 @@ var caching = {};
         {
             e.respondWith(caches.match(e.request).then(function(response)
             {
-                // caches.match() always resolves
-                // but in case of success response will have value
                 if (response !== undefined)
                 {
                     return response;
@@ -263,9 +261,6 @@ var caching = {};
 
                     return fetch(e.request).then(function (response)
                     {
-                        // response may be used only once
-                        // we need to save clone to put one copy in cache
-                        // and serve second one
                         let responseClone = response.clone();
 
                         caches.open(namedCache).then(function (cache)
