@@ -23,7 +23,7 @@ var similaritycache = {};
 
     action.installCache = true; // manual override only
     action.exploreCache = false; // manual override only
-    action.listCache = false; // manual override only
+    action.listCache = true; // manual override only
     action.deleteCache = false; // manual override only
     action.replaceCache = false; // manual override only
 
