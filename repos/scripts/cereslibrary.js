@@ -304,7 +304,8 @@ var caching = {};
 
     this.listExistingCacheNames = function(obj)
     {
-        console.log(generic.getObjectProperties(obj));
+        for (let property in obj) str += property + ': ' + obj[property] + ', ';
+        console.log(str.replace(/, +$/g,''));
 
         caches.keys().then(function(cacheKeys)
         {
