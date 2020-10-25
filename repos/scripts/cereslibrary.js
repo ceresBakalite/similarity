@@ -109,10 +109,12 @@ var generic = {};
         protean.isWindows = (navigator.appVersion.indexOf('Win') != -1);
         protean.newline = protean.isWindows ? '\r\n' : '\n';
 
+        Object.freeze(protean);
+
         resource.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
         resource.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
 
-        Object.freeze(rsc);
+        Object.freeze(resource);
     }
 
 }).call(generic);
