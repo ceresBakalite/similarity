@@ -103,7 +103,7 @@ var generic = {};
         rsc.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
         rsc.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
 
-        Object.freeze(resource);
+        Object.freeze(rsc);
     }
 
 }).call(generic);
