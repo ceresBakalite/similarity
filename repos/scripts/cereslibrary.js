@@ -118,6 +118,8 @@ var generic = {};
 var compose = {};
 (function() {
 
+    'use strict';
+
     this.composeElement = function(element)
     {
         const el = document.createElement(element.el);
@@ -177,6 +179,8 @@ var compose = {};
 var touch = {};
 (function() {
 
+    'use strict';
+
     this.setHorizontalSwipe = function(touch, callback, args)
     {
         const el = document.querySelector(touch.el);
@@ -205,6 +209,8 @@ var touch = {};
 
 var cookies = {};
 (function() {
+
+    'use strict';
 
     this.get = function (name)
     {
