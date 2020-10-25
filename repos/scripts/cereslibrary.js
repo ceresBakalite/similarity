@@ -16,21 +16,24 @@ var generic = {};
 {
     'use strict';
 
+/*
     let rsc = new class // local scope resources
     {
         constructor()
         {
-            this.protean = function() { return protean; },
+            this.protean = function() { return attribute; },
             this.attribute = function() { return attribute; }
         }
 
     }
-
+*/
+    let protean = function() { return attribute; }
+    let resource = function() { return attribute; }
     let sbl = new Map(); // local scope symbols
 
     setPrecursors();
 
-    this.constant = rsc.protean; // exposed local scope resources
+    this.constant = protean; // exposed local scope resources
 
     Object.freeze(this.constant);
 
@@ -61,7 +64,7 @@ var generic = {};
 
     this.inspect = function(diagnostic)
     {
-        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: this.constant.error, notification: rsc.attribute.inspect });
+        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: this.constant.error, notification: resource.inspect });
 
         const lookup = {
             [this.constant.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + this.constant.newline + this.constant.newline + diagnostic.reference); },
@@ -75,7 +78,7 @@ var generic = {};
 
     this.errorHandler = function(error)
     {
-        if (this.isEmptyOrNull(error)) return this.inspect({ type: this.constant.error, notification: rsc.attribute.errorHandler });
+        if (this.isEmptyOrNull(error)) return this.inspect({ type: this.constant.error, notification: resource.errorHandler });
 
         const err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
         console.log(err);
@@ -100,14 +103,14 @@ var generic = {};
         sbl.set('1', true);
         sbl.set('default', false);
 
-        rsc.protean.reference = 1;
-        rsc.protean.notify = 2;
-        rsc.protean.error = 99;
-        rsc.protean.isWindows = (navigator.appVersion.indexOf('Win') != -1);
-        rsc.protean.newline = rsc.protean.isWindows ? '\r\n' : '\n';
+        protean.reference = 1;
+        protean.notify = 2;
+        protean.error = 99;
+        protean.isWindows = (navigator.appVersion.indexOf('Win') != -1);
+        protean.newline = protean.isWindows ? '\r\n' : '\n';
 
-        rsc.attribute.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
-        rsc.attribute.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
+        resource.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
+        resource.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
 
         Object.freeze(rsc);
     }
