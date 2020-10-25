@@ -22,25 +22,18 @@ var similaritycache = {};
         return str.replace(/, +$/g,'');
     }
 
-    let rsc = new class // serviceworker resource
-    {
-        constructor()
-        {
-            this.namedCache = 'similarity-cache'; // manual override only
-            this.worker = function() { return worker; }
-        }
+    let namedCache = 'similarity-cache'; // manual override only
+    let worker = function() { return attribute; }
 
-    }
-
-    rsc.worker.installCache = true; // manual override only
-    rsc.worker.exploreCache = false; // manual override only
-    rsc.worker.listCache = false; // manual override only
-    rsc.worker.deleteCache = false; // manual override only
-    rsc.worker.replaceCache = false; // manual override only
+    worker.installCache = true; // manual override only
+    worker.exploreCache = false; // manual override only
+    worker.listCache = false; // manual override only
+    worker.deleteCache = false; // manual override only
+    worker.replaceCache = false; // manual override only
 
     let viewCachedRequests = function()
     {
-        caches.open(rsc.namedCache).then(function(cache)
+        caches.open(namedCache).then(function(cache)
         {
             cache.keys().then(function(cachedRequests)
             {
@@ -53,20 +46,20 @@ var similaritycache = {};
 
     let listExistingCacheNames = function()
     {
-        console.log(getObjectProperties(rsc.attribute));
+        console.log(getObjectProperties(worker));
 
         caches.keys().then(function(cacheKeys)
         {
-            console.log('listCache: ' + cacheKeys); // eg: rsc.namedCache
+            console.log('listCache: ' + cacheKeys); // eg: namedCache
         });
 
     }
 
     let deleteCacheByName = function()
     {
-        caches.delete(rsc.namedCache).then(function()
+        caches.delete(namedCache).then(function()
         {
-            console.log(rsc.namedCache + ' - Cache successfully deleted');
+            console.log(namedCache + ' - Cache successfully deleted');
         });
 
     }
@@ -78,7 +71,7 @@ var similaritycache = {};
             return Promise.all(
                 cacheNames.map(function(cacheName)
                 {
-                    if(cacheName != rsc.namedCache)
+                    if(cacheName != namedCache)
                     {
                         return caches.delete(cacheName);
                     }
@@ -95,7 +88,7 @@ var similaritycache = {};
         window.addEventListener('install', function(e)
         {
             e.waitUntil(
-                caches.open(rsc.namedCache).then( function(cache)
+                caches.open(namedCache).then( function(cache)
                 {
                     return cache.addAll([
                         '/index.html',
@@ -178,7 +171,7 @@ var similaritycache = {};
                         // setting max-age here appears to be unresponsive
                         responseClone.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
 
-                        caches.open(rsc.namedCache).then(function (cache)
+                        caches.open(namedCache).then(function (cache)
                         {
                             cache.put(e.request, responseClone);
                         });
@@ -202,19 +195,19 @@ var similaritycache = {};
     if ('caches' in window)
     {
         // install cache
-        if (rsc.worker.installCache) installCache();
+        if (worker.installCache) installCache();
 
         // view requests that have already been cached
-        if (rsc.worker.exploreCache) viewCachedRequests();
+        if (worker.exploreCache) viewCachedRequests();
 
         // list existing cache names
-        if (rsc.worker.listCache) listExistingCacheNames();
+        if (worker.listCache) listExistingCacheNames();
 
         // delete cache by name
-        if (rsc.worker.deleteCache) deleteCacheByName();
+        if (worker.deleteCache) deleteCacheByName();
 
         // delete old versions of cache
-        if (rsc.worker.replaceCache) deleteOldCacheVersions();
+        if (worker.replaceCache) deleteOldCacheVersions();
 
     }
 

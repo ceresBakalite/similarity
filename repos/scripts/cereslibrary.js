@@ -16,17 +16,6 @@ var generic = {};
 {
     'use strict';
 
-/*
-    let rsc = new class // local scope resources
-    {
-        constructor()
-        {
-            this.protean = function() { return attribute; },
-            this.attribute = function() { return attribute; }
-        }
-
-    }
-*/
     let protean = function() { return attribute; }
     let resource = function() { return attribute; }
     let sbl = new Map(); // local scope symbols
