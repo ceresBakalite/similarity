@@ -9,9 +9,9 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { ceres, cookies }
+export { resource, cookies }
 
-var ceres = {};
+var resource = {};
 (function()
 {
     'use strict';
@@ -191,7 +191,7 @@ var ceres = {};
         Object.freeze(rsc);
     }
 
-}).call(ceres);
+}).call(resource);
 
 var cookies = {};
 (function() {
