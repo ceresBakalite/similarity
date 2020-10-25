@@ -18,14 +18,14 @@ var similaritycache = {};
 {
     'use strict';
 
-    let namedCache = 'similarity-cache'; // manual override only
     let action = function() { return attribute; } // worker action
 
+    action.namedCache = 'similarity-cache'; // manual override only
     action.installCache = true; // manual override only
-    action.exploreCache = false; // manual override only
+    action.exploreCache = true; // manual override only
     action.listCache = true; // manual override only
+    action.replaceCache = true; // manual override only
     action.deleteCache = false; // manual override only
-    action.replaceCache = false; // manual override only
 
     let urlArray = [
         '/index.html',
@@ -80,20 +80,19 @@ var similaritycache = {};
     if ('caches' in window)
     {
         // install cache
-        if (action.installCache) ca.installCache(namedCache, urlArray);
+        if (action.installCache) ca.installCache(action.namedCache, urlArray);
 
         // view requests that have already been cached
-        if (action.exploreCache) ca.viewCachedRequests(namedCache);
+        if (action.exploreCache) ca.viewCachedRequests(action.namedCache);
 
         // list existing cache names
         if (action.listCache) ca.listExistingCacheNames(action);
 
-        // delete cache by name
-        if (action.deleteCache) ca.deleteCacheByName(namedCache);
-
         // delete old versions of cache
-        if (action.replaceCache) ca.deleteOldCacheVersions(namedCache);
+        if (action.replaceCache) ca.deleteOldCacheVersions(action.namedCache);
 
+        // delete cache by name
+        if (action.deleteCache) ca.deleteCacheByName(action.namedCache);
     }
 
 })(similaritycache);
