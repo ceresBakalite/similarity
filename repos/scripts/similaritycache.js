@@ -201,6 +201,9 @@ var similaritycache = {};
 
     if ('caches' in window)
     {
+        // install cache
+        if (rsc.worker.installCache) installCache();
+
         // view requests that have already been cached
         if (rsc.worker.exploreCache) viewCachedRequests();
 
@@ -212,9 +215,6 @@ var similaritycache = {};
 
         // delete old versions of cache
         if (rsc.worker.replaceCache) deleteOldCacheVersions();
-
-        // install cache
-        if (rsc.worker.installCache) installCache();
 
     }
 
