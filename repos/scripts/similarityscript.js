@@ -1,6 +1,6 @@
 export { similarity }
 
-import { cookies } from '../mods/cereslibrary.min.js';
+import { generic as gn, cookies } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
@@ -12,21 +12,20 @@ var similarity = {};
     this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
     this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
+    let rsc = function() { return attribute; }  // similarity local resource attributes
     let includeDirective = 'include-directive';
+    let location = new Map();
+    let pinimage = new Map();
 
     window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
     {
         async connectedCallback()
         {
-            const src = this.getAttribute('src');
-            this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
+            const src = this.getAttribute('src') || null;
+            if (rsc.callback = !gn.isEmptyOrNull(src)) this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
         }
 
     });
-
-    let rsc = function() { return attribute; }  // similarity local resource attributes
-    let location = new Map();
-    let pinimage = new Map();
 
     setResourcePrecursors();
 
@@ -35,7 +34,7 @@ var similarity = {};
         if (rsc.markupId != markupId)
         {
             rsc.markupId = markupId;
-            rsc.markupUrl = (location.has(rsc.markupId)) ? location.get(rsc.markupId) : location.get('index');
+            rsc.markupUrl = location.get(rsc.markupId) || location.get('index');
 
             document.getElementById('frame-container').setAttribute('src', rsc.markupUrl);
         }

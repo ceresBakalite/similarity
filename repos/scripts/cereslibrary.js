@@ -37,6 +37,7 @@ var generic = {};
         if (this.isString(obj)) return (obj.length === 0 || !obj.trim());
         if (Array.isArray(obj)) return (obj.length === 0);
         if (obj && obj.constructor === Object) return (Object.keys(obj).length === 0);
+
         return !obj;
     }
 
@@ -48,17 +49,17 @@ var generic = {};
 
         const token = attribute.trim().toLowerCase();
 
-        return sbl.has(token) ? sbl.get(token) : false;
+        return sbl.get(token) || false;
     }
 
     this.inspect = function(diagnostic)
     {
-        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: this.constant.error, notification: rsc.inspect });
+        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: protean.error, notification: rsc.inspect });
 
         const lookup = {
-            [this.constant.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + this.constant.newline + this.constant.newline + diagnostic.reference); },
-            [this.constant.notify]: function() { if (diagnostic.logtrace) console.log(diagnostic.notification); },
-            [this.constant.error]: function() { this.errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace } ); },
+            [protean.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + protean.newline + protean.newline + diagnostic.reference); },
+            [protean.notify]: function() { if (diagnostic.logtrace) console.log(diagnostic.notification); },
+            [protean.error]: function() { this.errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace } ); },
             'default': 'An unexpected error has occurred...'
         };
 
@@ -67,7 +68,7 @@ var generic = {};
 
     this.errorHandler = function(error)
     {
-        if (this.isEmptyOrNull(error)) return this.inspect({ type: this.constant.error, notification: rsc.errorHandler });
+        if (this.isEmptyOrNull(error)) return this.inspect({ type: protean.error, notification: rsc.errorHandler });
 
         const err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
         console.log(err);
@@ -205,13 +206,13 @@ var cookies = {};
 
     'use strict';
 
-    this.get = function (name)
+    this.get = function(name)
     {
         let match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
         return match ? decodeURIComponent(match[1]) : undefined;
     }
 
-    this.set = function (name, value, options = {})
+    this.set = function(name, value, options = {})
     {
         let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
@@ -234,7 +235,7 @@ var caching = {};
 
     'use strict';
 
-    this.installCache = function(namedCache, urlArray)
+    this.installCache = function(namedCache, urlArray, urlImage = '/images/NAVCogs.png')
     {
         window.addEventListener('install', function(e)
         {
@@ -272,7 +273,7 @@ var caching = {};
 
                     }).catch(function () {
 
-                        return caches.match('/images/NAVCogs.png');
+                        return caches.match(urlImage);
 
                     });
 
