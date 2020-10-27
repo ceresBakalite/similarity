@@ -52,6 +52,11 @@ var generic = {};
         return sbl.get(token) || false;
     }
 
+    this.removeDuplcates = function(obj, key)
+    {
+        return [...new Map (obj.map(x => [key(x), x])).values()]
+    }
+
     this.inspect = function(diagnostic)
     {
         if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: protean.error, notification: rsc.inspect });
