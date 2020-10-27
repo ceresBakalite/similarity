@@ -54,7 +54,7 @@ var generic = {};
 
     this.removeDuplcates = function(obj, key)
     {
-        return [...new Map (obj.map(node => [key(node), node])).values()]
+        return [...new Map (obj.map(node => [key(node), node])).values()];
     }
 
     this.inspect = function(diagnostic)
