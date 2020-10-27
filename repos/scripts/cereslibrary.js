@@ -221,7 +221,7 @@ var cookies = {};
 
     this.set = function(name, value, options = {})
     {
-        const cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+        let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
         if (!options.path) options.path = '/';
         if (!options.samesite) options.samesite = 'Lax; Secure';
