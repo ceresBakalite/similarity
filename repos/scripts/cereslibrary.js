@@ -69,7 +69,7 @@ var generic = {};
             [protean.default]: function() { this.errorHandler({ notification: resource.errordefault, alert: diagnostic.logtrace } ); }
         };
 
-        return lookup[diagnostic.type]() || lookup[protean.default]();
+        return lookup[diagnostic.type]() || lookup[protean.default];
     }
 
     this.errorHandler = function(error)
