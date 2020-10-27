@@ -41,13 +41,13 @@ var generic = {};
         return !obj;
     }
 
-    this.getBooleanAttribute = function(attribute)
+    this.getBooleanAttribute = function(attribute, locale = 'en')
     {
         if (attribute === true || attribute === false) return attribute;
         if (this.isEmptyOrNull(attribute)) return false;
         if (!this.isString(attribute)) return false;
 
-        const token = attribute.trim().toLowerCase();
+        const token = attribute.trim().toLocaleLowerCase(locale);
 
         return sbl.get(token) || false;
     }
