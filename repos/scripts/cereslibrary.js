@@ -16,9 +16,9 @@ var generic = {};
 {
     'use strict';
 
-    let protean = function() { return attribute; }
-    let rsc = function() { return attribute; } // local resource
-    let sbl = new Map(); // local scope symbols
+    const protean = function() { return attribute; }
+    const resource = function() { return attribute; } // local resource
+    const symbol = new Map(); // local scope symbols
 
     setPrecursors();
 
@@ -49,7 +49,7 @@ var generic = {};
 
         const token = attribute.trim().toLocaleLowerCase(locale);
 
-        return sbl.get(token) || false;
+        return symbol.get(token) || false;
     }
 
     this.removeDuplcates = function(obj, key, sort)
@@ -60,7 +60,7 @@ var generic = {};
 
     this.inspect = function(diagnostic)
     {
-        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: protean.error, notification: rsc.inspect });
+        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: protean.error, notification: resource.inspect });
 
         const lookup = {
             [protean.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + protean.newline + protean.newline + diagnostic.reference); },
@@ -74,7 +74,7 @@ var generic = {};
 
     this.errorHandler = function(error)
     {
-        if (this.isEmptyOrNull(error)) return this.inspect({ type: protean.error, notification: rsc.errorHandler });
+        if (this.isEmptyOrNull(error)) return this.inspect({ type: protean.error, notification: resource.errorHandler });
 
         const err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
         console.log(err);
@@ -92,11 +92,11 @@ var generic = {};
 
     function setPrecursors()
     {
-        sbl.set('true', true);
-        sbl.set('t', true);
-        sbl.set('yes', true);
-        sbl.set('y', true);
-        sbl.set('1', true);
+        symbol.set('true', true);
+        symbol.set('t', true);
+        symbol.set('yes', true);
+        symbol.set('y', true);
+        symbol.set('1', true);
 
         protean.reference = 1;
         protean.notify = 2;
@@ -107,11 +107,11 @@ var generic = {};
 
         Object.freeze(protean);
 
-        rsc.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
-        rsc.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
-        rsc.errordefault = 'An unexpected error has occurred. The inspection type was missing or invalid';
+        resource.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
+        resource.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
+        resource.errordefault = 'An unexpected error has occurred. The inspection type was missing or invalid';
 
-        Object.freeze(rsc);
+        Object.freeze(resource);
     }
 
 }).call(generic);
