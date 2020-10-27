@@ -215,13 +215,13 @@ var cookies = {};
 
     this.get = function(name)
     {
-        let match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+        const match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
         return match ? decodeURIComponent(match[1]) : undefined;
     }
 
     this.set = function(name, value, options = {})
     {
-        let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+        const cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
         if (!options.path) options.path = '/';
         if (!options.samesite) options.samesite = 'Lax; Secure';
@@ -246,15 +246,7 @@ var caching = {};
     {
         window.addEventListener('install', function(e)
         {
-            e.waitUntil(
-                caches.open(namedCache).then( function(cache)
-                {
-                    return cache.addAll(urlArray);
-
-                })
-
-            );
-
+            e.waitUntil(caches.open(namedCache).then(function(cache) { return cache.addAll(urlArray); }));
         });
 
         window.addEventListener('fetch', function(e)
@@ -271,10 +263,7 @@ var caching = {};
                     {
                         let responseClone = response.clone();
 
-                        caches.open(namedCache).then(function (cache)
-                        {
-                            cache.put(e.request, responseClone);
-                        });
+                        caches.open(namedCache).then(function (cache) { cache.put(e.request, responseClone); });
 
                         return response;
 
@@ -296,44 +285,30 @@ var caching = {};
     {
         caches.open(namedCache).then(function(cache)
         {
-            cache.keys().then(function(cachedRequests)
-            {
-                console.log('exploreCache: ' + cachedRequests); // [Request, Request]
-            });
-
+            cache.keys().then(function(cachedRequests) { console.log('exploreCache: ' + cachedRequests); });
         });
 
     }
 
     this.listExistingCacheNames = function()
     {
-        caches.keys().then(function(cacheKeys)
-        {
-            console.log('listCache: ' + cacheKeys); // eg: namedCache
-        });
-
+        caches.keys().then(function(cacheKeys) { console.log('listCache: ' + cacheKeys); });
     }
 
     this.deleteCacheByName = function(namedCache)
     {
-        caches.delete(namedCache).then(function()
-        {
-            console.log(namedCache + ' - Cache successfully deleted');
-        });
-
+        caches.delete(namedCache).then(function() { console.log(namedCache + ' - Cache successfully deleted'); });
     }
 
     this.deleteOldCacheVersions = function(namedCache)
     {
         caches.keys().then(function(cacheNames)
         {
-            return Promise.all(
+            return Promise.all
+            (
                 cacheNames.map(function(cacheName)
                 {
-                    if(cacheName != namedCache)
-                    {
-                        return caches.delete(cacheName);
-                    }
+                    if(cacheName != namedCache) { return caches.delete(cacheName); }
                 })
 
             );
