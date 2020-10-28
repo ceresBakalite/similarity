@@ -76,7 +76,7 @@ var similarity = {};
         header.set(type, value);
     }
 
-    getCache = function(type = 'Cache-Control')
+    let getCache = function(type = 'Cache-Control')
     {
         const header = new Headers();
         header.get(type);
