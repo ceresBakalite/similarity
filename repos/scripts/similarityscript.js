@@ -1,6 +1,6 @@
 export { similarity }
 
-import { generic as gn, cookies, caching } from '../mods/cereslibrary.min.js';
+import { generic as gn, cookies } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
@@ -70,34 +70,8 @@ var similarity = {};
         cookies.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
     }
 
-    let appendCache = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
-    {
-        const header = new Headers();
-        header.append('Cache-Control', 'public, max-age 604800, s-maxage 43200');
-    }
-
-    let setCache = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
-    {
-        const header = new Headers();
-        header.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
-    }
-
-    let getCache = function(type = 'Cache-Control')
-    {
-        const header = new Headers();
-        header.get('Cache-Control');
-    }
-
     let getHeaderAttributes = function()
     {
-        setCache();
-
-        console.log('get setCache: ' + getCache());
-
-        appendCache();
-
-        console.log('get appendCache: ' + getCache());
-
         const el = document.getElementById('site-header-display');
 
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
