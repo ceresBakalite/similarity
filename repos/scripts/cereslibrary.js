@@ -16,6 +16,7 @@ var generic = {};
 {
     'use strict';
 
+    const XXXX = 2;
     const protean = function() { return attribute; }
     const resource = function() { return attribute; } // local resource
     const symbol = new Map(); // local scope symbols
@@ -26,7 +27,6 @@ var generic = {};
 
     Object.freeze(this.constant);
 
-    this.XXXX = function() { return import.meta.url; }
     this.getImportMetaUrl = function() { return import.meta.url; }
     this.windowOpen = function(obj) { window.open(obj.element.getAttribute('src'), obj.type); }
     this.isString = function(obj) { return Object.prototype.toString.call(obj) == '[object String]'; }
