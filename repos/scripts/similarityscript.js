@@ -70,11 +70,23 @@ var similarity = {};
         cookies.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
     }
 
+    let setCache = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
+    {
+        const header = new Headers();
+        header.set(type, value);
+    }
+
+    getCache = function(type = 'Cache-Control')
+    {
+        const header = new Headers();
+        header.get(type);
+    }
+
     let getHeaderAttributes = function()
     {
-        caching.set();
+        setCache();
 
-        console.log('caching.get(): ' + caching.get());
+        console.log('getCache: ' + getCache());
 
         const el = document.getElementById('site-header-display');
 
