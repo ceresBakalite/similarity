@@ -65,7 +65,7 @@ var similarity = {};
 
     let setPinState = function(el, attribute)
     {
-        if (!el) return;
+        if (gn.isEmptyOrNull(el)) return;
 
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
