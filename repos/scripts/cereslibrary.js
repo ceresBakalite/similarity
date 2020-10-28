@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { generic, touch, compose, cookies, caching };
+export { generic, touch, compose, cookies, caching }
 
 var generic = {};
 (function()
