@@ -81,26 +81,22 @@ var similaritycache = {};
         'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css'
     ];
 
-    if ('caches' in window)
-    {
-        // install cache
-        if (action.installCache) ca.installCache(action.namedCache, urlArray);
+    // install cache
+    if (action.installCache) ca.installCache(action.namedCache, urlArray);
 
-        // view requests that have already been cached
-        if (action.exploreCache) ca.viewCachedRequests(action.namedCache);
+    // view requests that have already been cached
+    if (action.exploreCache) ca.viewCachedRequests(action.namedCache);
 
-        // list existing cache names
-        if (action.listCache) ca.listExistingCacheNames();
+    // list existing cache names
+    if (action.listCache) ca.listExistingCacheNames();
 
-        // delete old versions of cache
-        if (action.replaceCache) ca.deleteOldCacheVersions(action.namedCache);
+    // delete old versions of cache
+    if (action.replaceCache) ca.deleteOldCacheVersions(action.namedCache);
 
-        // delete cache by name
-        if (action.deleteCache) ca.deleteCacheByName(action.namedCache);
+    // delete cache by name
+    if (action.deleteCache) ca.deleteCacheByName(action.namedCache);
 
-        // list the action properties
-        if (action.listAction) console.log(gn.getObjectProperties(action));
-
-    }
+    // list the action properties
+    if (action.listAction) console.log(gn.getObjectProperties(action));
 
 })(similaritycache);

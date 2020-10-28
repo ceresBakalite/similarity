@@ -298,6 +298,8 @@ var caching = {};
 
     this.viewCachedRequests = function(namedCache)
     {
+        if (!'caches' in window) return;
+
         caches.open(namedCache).then(function(cache)
         {
             cache.keys().then(function(cachedRequests) { console.log('exploreCache: ' + cachedRequests); });
@@ -307,16 +309,22 @@ var caching = {};
 
     this.listExistingCacheNames = function()
     {
+        if (!'caches' in window) return;
+
         caches.keys().then(function(cacheKeys) { console.log('listCache: ' + cacheKeys); });
     }
 
     this.deleteCacheByName = function(namedCache)
     {
+        if (!'caches' in window) return;
+
         caches.delete(namedCache).then(function() { console.log(namedCache + ' - Cache successfully deleted'); });
     }
 
     this.deleteOldCacheVersions = function(namedCache)
     {
+        if (!'caches' in window) return;
+
         caches.keys().then(function(cacheNames)
         {
             return Promise.all
