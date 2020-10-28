@@ -74,6 +74,8 @@ var similarity = {};
     {
         caching.set();
 
+        console.log('caching.get(): ' + caching.get());
+
         const el = document.getElementById('site-header-display');
 
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
