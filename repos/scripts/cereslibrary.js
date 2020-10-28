@@ -16,7 +16,6 @@ var generic = {};
 {
     'use strict';
 
-    const XXXX = 2;
     const protean = function() { return attribute; }
     const resource = function() { return attribute; } // local resource
     const symbol = new Map(); // local scope symbols
