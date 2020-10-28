@@ -20,6 +20,7 @@ var similaritycache = {};
 
     let action = function() { return attribute; }
 
+    action.XXXX = 'similarity-cache';
     action.namedCache = 'similarity-cache';
     action.installCache = true;
 
