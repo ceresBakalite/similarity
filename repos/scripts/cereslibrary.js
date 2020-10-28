@@ -242,10 +242,10 @@ var caching = {};
 
     'use strict';
 
-    this.set = function(type = 'Cache-Control', str = 'public, max-age 604800, s-maxage 43200')
+    this.set = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
     {
         const header = new Headers();
-        header.set(type, str);
+        header.set(type, value);
     }
 
     this.get = function(type = 'Cache-Control')
