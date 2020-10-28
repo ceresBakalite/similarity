@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { generic, touch, compose, cookies, caching}
+export { generic, touch, compose, cookies, caching };
 
 var generic = {};
 (function()
@@ -242,13 +242,13 @@ var caching = {};
 
     'use strict';
 
-    this.setCache = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
+    this.set = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
     {
         const header = new Headers();
         header.set(type, value);
     }
 
-    this.getCache = function(type = 'Cache-Control')
+    this.get = function(type = 'Cache-Control')
     {
         const header = new Headers();
         header.get(type);
