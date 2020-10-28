@@ -26,6 +26,7 @@ var generic = {};
 
     Object.freeze(this.constant);
 
+    this.getImportMetaUrl = function() { return import.meta.url; }
     this.windowOpen = function(obj) { window.open(obj.element.getAttribute('src'), obj.type); }
     this.isString = function(obj) { return Object.prototype.toString.call(obj) == '[object String]'; }
     this.clearElement = function(el) { while (el.firstChild) el.removeChild(el.firstChild); }
