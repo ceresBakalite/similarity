@@ -65,6 +65,8 @@ var similarity = {};
 
     let setPinState = function(el, attribute)
     {
+        if (!el) return;
+
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
         cookies.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
