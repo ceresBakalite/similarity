@@ -11,7 +11,7 @@
 */
 export { similaritycache }
 
-import { generic as gn, caching as ca } from '../mods/cereslibrary.min.js';
+import { generic as gn, cache } from '../mods/cereslibrary.min.js';
 
 var similaritycache = {};
 (function(cache)
@@ -84,19 +84,19 @@ var similaritycache = {};
     if ('caches' in window)
     {
         // install cache
-        if (action.installCache) ca.installCache(action.namedCache, urlArray);
+        if (action.installCache) cache.installCache(action.namedCache, urlArray);
 
         // view requests that have already been cached
-        if (action.exploreCache) ca.viewCachedRequests(action.namedCache);
+        if (action.exploreCache) cache.viewCachedRequests(action.namedCache);
 
         // list existing cache names
-        if (action.listCache) ca.listExistingCacheNames();
+        if (action.listCache) cache.listExistingCacheNames();
 
         // delete old versions of cache
-        if (action.replaceCache) ca.deleteOldCacheVersions(action.namedCache);
+        if (action.replaceCache) cache.deleteOldCacheVersions(action.namedCache);
 
         // delete cache by name
-        if (action.deleteCache) ca.deleteCacheByName(action.namedCache);
+        if (action.deleteCache) cache.deleteCacheByName(action.namedCache);
 
         // list the action properties
         if (action.listAction) console.log(gn.getObjectProperties(action));
