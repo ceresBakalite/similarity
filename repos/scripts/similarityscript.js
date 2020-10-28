@@ -1,6 +1,6 @@
 export { similarity }
 
-import { generic as gn, cookies, caching as cache } from '../mods/cereslibrary.min.js';
+import { generic as gn, cookies, caching } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
@@ -72,7 +72,7 @@ var similarity = {};
 
     let getHeaderAttributes = function()
     {
-        cache.set();
+        caching.set();
 
         const el = document.getElementById('site-header-display');
 

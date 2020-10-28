@@ -1,6 +1,6 @@
 export { similarityframe }
 
-import { cookies, caching as cache } from '../mods/cereslibrary.min.js';
+import { cookies, caching } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
@@ -88,7 +88,7 @@ var similarityframe = {};
 
         if (isValidSource())
         {
-            cache.set();
+            caching.set();
 
             invokeScrollEventListener();
             asyncPullMarkdownRequest();
