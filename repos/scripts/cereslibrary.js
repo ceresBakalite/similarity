@@ -242,6 +242,18 @@ var caching = {};
 
     'use strict';
 
+    this.set = function(type = 'Cache-Control', str = 'public, max-age 604800, s-maxage 43200')
+    {
+        const header = new Headers();
+        header.set(type, str);
+    }
+
+    this.get = function(type = 'Cache-Control')
+    {
+        const header = new Headers();
+        header.get(type);
+    }
+
     this.installCache = function(namedCache, urlArray, urlImage = '/images/NAVCogs.png')
     {
         window.addEventListener('install', function(e)

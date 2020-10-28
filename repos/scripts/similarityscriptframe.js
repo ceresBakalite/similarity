@@ -88,6 +88,8 @@ var similarityframe = {};
 
         if (isValidSource())
         {
+            cache.set();
+
             invokeScrollEventListener();
             asyncPullMarkdownRequest();
         }
