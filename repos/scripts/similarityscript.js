@@ -70,6 +70,12 @@ var similarity = {};
         cookies.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
     }
 
+    let appendCache = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
+    {
+        const header = new Headers();
+        header.append(type, value);
+    }
+
     let setCache = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
     {
         const header = new Headers();
@@ -86,7 +92,11 @@ var similarity = {};
     {
         setCache();
 
-        console.log('getCache: ' + getCache());
+        console.log('get setCache: ' + getCache());
+
+        appendCache();
+
+        console.log('get appendCache: ' + getCache());
 
         const el = document.getElementById('site-header-display');
 
