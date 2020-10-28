@@ -73,19 +73,19 @@ var similarity = {};
     let appendCache = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
     {
         const header = new Headers();
-        header.append(type, value);
+        header.append('Cache-Control', 'public, max-age 604800, s-maxage 43200');
     }
 
     let setCache = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
     {
         const header = new Headers();
-        header.set(type, value);
+        header.set('Cache-Control', 'public, max-age 604800, s-maxage 43200');
     }
 
     let getCache = function(type = 'Cache-Control')
     {
         const header = new Headers();
-        header.get(type);
+        header.get('Cache-Control');
     }
 
     let getHeaderAttributes = function()
