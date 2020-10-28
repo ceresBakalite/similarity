@@ -72,12 +72,6 @@ var similarity = {};
 
     let getHeaderAttributes = function()
     {
-        var myHeaders = new Headers();
-
-        for (var value of myHeaders.values()) {
-            console.log(value);
-        }
-        
         const el = document.getElementById('site-header-display');
 
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
