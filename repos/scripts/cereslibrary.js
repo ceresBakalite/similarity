@@ -257,6 +257,8 @@ var caching = {};
 
     this.installCache = function(namedCache, urlArray, urlImage = '/images/NAVCogs.png')
     {
+        if (!'caches' in window) return;
+
         window.addEventListener('install', function(e)
         {
             e.waitUntil(caches.open(namedCache).then(function(cache) { return cache.addAll(urlArray); }));
