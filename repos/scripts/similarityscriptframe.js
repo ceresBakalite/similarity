@@ -9,21 +9,9 @@ var similarityframe = {};
 
     this.onload = function(id) { onloadFrame(id); };  // global scope method reference
 
-    //const includeDirective = 'include-directive';
     const refreshMarkdown = false;
 
     generic.include();
-/*
-    window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
-    {
-        async connectedCallback()
-        {
-            const src = this.getAttribute('src');
-            this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
-        }
-
-    });
-*/
 
     function onloadFrame(markupId)
     {
