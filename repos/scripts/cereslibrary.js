@@ -339,7 +339,7 @@ var include = {};
 {
     'use strict';
 
-    const el = 'include';
+    const el = 'include-directive';
 
     window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
     {
