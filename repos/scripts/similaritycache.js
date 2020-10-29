@@ -18,6 +18,8 @@ var similaritycache = {};
 {
     'use strict';
 
+    if (!ca.available) return gn.inspect({ type: gn.constant.error, notification: 'Cache is unavailable' });
+
     let action = function() { return attribute; }
 
     action.namedCache = 'similarity-cache';

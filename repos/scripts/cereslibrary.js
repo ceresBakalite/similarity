@@ -243,6 +243,8 @@ var caching = {};
 
     'use strict';
 
+    this.available = ('caches' in window);
+
     this.set = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
     {
         const header = new Headers();
@@ -257,8 +259,6 @@ var caching = {};
 
     this.installCache = function(namedCache, urlArray, urlImage = '/images/NAVCogs.png')
     {
-        if (!'caches' in window) return;
-
         window.addEventListener('install', function(e)
         {
             e.waitUntil(caches.open(namedCache).then(function(cache) { return cache.addAll(urlArray); }));
@@ -298,8 +298,6 @@ var caching = {};
 
     this.viewCachedRequests = function(namedCache)
     {
-        if (!'caches' in window) return;
-
         caches.open(namedCache).then(function(cache)
         {
             cache.keys().then(function(cachedRequests) { console.log('exploreCache: ' + cachedRequests); });
@@ -309,22 +307,16 @@ var caching = {};
 
     this.listExistingCacheNames = function()
     {
-        if (!'caches' in window) return;
-
         caches.keys().then(function(cacheKeys) { console.log('listCache: ' + cacheKeys); });
     }
 
     this.deleteCacheByName = function(namedCache)
     {
-        if (!'caches' in window) return;
-
         caches.delete(namedCache).then(function() { console.log(namedCache + ' - Cache successfully deleted'); });
     }
 
     this.deleteOldCacheVersions = function(namedCache)
     {
-        if (!'caches' in window) return;
-
         caches.keys().then(function(cacheNames)
         {
             return Promise.all
