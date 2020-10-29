@@ -337,8 +337,6 @@ var caching = {};
 var include = {};
 (function(el = 'include-directive')
 {
-    //'use strict';
-
     window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
     {
         async connectedCallback()
