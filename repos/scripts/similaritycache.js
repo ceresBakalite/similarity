@@ -18,7 +18,7 @@ var similaritycache = {};
 {
     'use strict';
 
-    if (!c.available) return g.inspect({ type: g.constant.error, notification: 'Cache is unavailable' });
+    if (!caching.available) return generic.inspect({ type: generic.constant.error, notification: 'Cache is unavailable' });
 
     let action = function() { return attribute; }
 
