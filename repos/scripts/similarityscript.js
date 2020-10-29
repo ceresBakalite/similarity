@@ -13,23 +13,11 @@ var similarity = {};
     this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
     let rsc = function() { return attribute; }  // similarity local resource attributes
-    //let includeDirective = 'include-directive';
     let location = new Map();
     let pinimage = new Map();
 
     generic.include();
 
-/*
-    window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
-    {
-        async connectedCallback()
-        {
-            const src = this.getAttribute('src') || null;
-            if (rsc.callback = !gn.isEmptyOrNull(src)) this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
-        }
-
-    });
-*/
     setResourcePrecursors();
 
     let getMarkupDocument = function (markupId, buttonElement)
