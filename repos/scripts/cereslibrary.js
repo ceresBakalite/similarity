@@ -339,18 +339,16 @@ var include = {};
 {
     'use strict';
 
-    this.directive = function(el = 'include-directive')
+    const el = 'include-directive';
+
+    window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
     {
-        window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
+        async connectedCallback()
         {
-            async connectedCallback()
-            {
-                const src = this.getAttribute('src');
-                this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
-            }
+            const src = this.getAttribute('src');
+            this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
+        }
 
-        });
-
-    }
+    });
 
 }).call(include);
