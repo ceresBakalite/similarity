@@ -1,6 +1,6 @@
 export { similarityframe };
 
-import { cookies } from '../mods/cereslibrary.min.js';
+import { generic, cookies } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
@@ -9,9 +9,11 @@ var similarityframe = {};
 
     this.onload = function(id) { onloadFrame(id); };  // global scope method reference
 
-    const includeDirective = 'include-directive';
+    //const includeDirective = 'include-directive';
     const refreshMarkdown = false;
 
+    generic.include();
+/*
     window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
     {
         async connectedCallback()
@@ -21,6 +23,7 @@ var similarityframe = {};
         }
 
     });
+*/
 
     function onloadFrame(markupId)
     {

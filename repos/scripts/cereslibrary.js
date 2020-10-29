@@ -31,6 +31,22 @@ var generic = {};
     this.clearElement = function(el) { while (el.firstChild) el.removeChild(el.firstChild); }
     this.getImportMetaUrl = function() { return import.meta.url; }
 
+    this.include = function(el = 'include-directive')
+    {
+        const refreshMarkdown = false;
+
+        window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
+        {
+            async connectedCallback()
+            {
+                const src = this.getAttribute('src');
+                this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
+            }
+
+        });
+
+    }
+
     this.isEmptyOrNull = function(obj)
     {
         if (obj === null || obj == 'undefined') return true;
