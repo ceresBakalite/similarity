@@ -335,8 +335,12 @@ var caching = {};
 }).call(caching);
 
 var include = {};
-(function(el = 'include-directive')
+(function()
 {
+    'use strict';
+
+    const el = 'include-directive';
+
     window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
     {
         async connectedCallback()
