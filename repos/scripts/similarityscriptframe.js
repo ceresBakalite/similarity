@@ -1,6 +1,6 @@
 export { similarityframe };
 
-import { generic, cookies } from '../mods/cereslibrary.min.js';
+import { generic, cookies, include } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
@@ -11,7 +11,7 @@ var similarityframe = {};
 
     const refreshMarkdown = false;
 
-    generic.include();
+    //generic.include();
 
     function onloadFrame(markupId)
     {

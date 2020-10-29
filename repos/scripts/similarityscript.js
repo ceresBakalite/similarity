@@ -1,6 +1,6 @@
 export { similarity };
 
-import { generic, cookies } from '../mods/cereslibrary.min.js';
+import { generic, cookies, include } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
@@ -16,7 +16,7 @@ var similarity = {};
     let location = new Map();
     let pinimage = new Map();
 
-    generic.include();
+    //generic.include();
 
     setResourcePrecursors();
 
