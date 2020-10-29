@@ -11,8 +11,6 @@ var similarityframe = {};
 
     const refreshMarkdown = false;
 
-    //generic.include();
-
     function onloadFrame(markupId)
     {
         let isValidSource = function()

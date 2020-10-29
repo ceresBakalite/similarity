@@ -16,8 +16,6 @@ var similarity = {};
     let location = new Map();
     let pinimage = new Map();
 
-    //generic.include();
-
     setResourcePrecursors();
 
     let getMarkupDocument = function (markupId, buttonElement)
