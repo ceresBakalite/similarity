@@ -335,11 +335,9 @@ var caching = {};
 }).call(caching);
 
 var include = {};
-(function()
+(function(el = 'include-directive')
 {
     'use strict';
-
-    const el = 'include-directive';
 
     window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
     {
