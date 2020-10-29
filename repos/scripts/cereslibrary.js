@@ -11,6 +11,10 @@
 */
 export { generic, touch, compose, cookies, caching, include }
 
+;(function ()
+{
+  'use strict'
+
 var generic = {};
 (function()
 {
@@ -333,6 +337,9 @@ var caching = {};
     }
 
 }).call(caching);
+
+}());
+
 
 var include = {};
 (function(el = 'include-directive')
