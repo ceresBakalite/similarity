@@ -335,22 +335,18 @@ var caching = {};
 }).call(caching);
 
 var include = {};
-(function()
+(function(el = 'include-directive')
 {
-    'use strict';
+    //'use strict';
 
-    return function include(el = 'include-directive')
+    window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
     {
-        window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
+        async connectedCallback()
         {
-            async connectedCallback()
-            {
-                const src = this.getAttribute('src');
-                this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
-            }
+            const src = this.getAttribute('src');
+            this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
+        }
 
-        });
-
-    }
+    });
 
 }).call(include);
