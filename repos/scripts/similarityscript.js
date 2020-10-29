@@ -1,12 +1,14 @@
 export { similarity };
 
-import { generic, cookies } from '../mods/cereslibrary.min.js';
+import { generic, cookies, include } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
 (function()
 {
     'use strict';
+
+    include.directive();
 
     this.onload = function() { onloadPrimary(); }; // global scope method reference
     this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference

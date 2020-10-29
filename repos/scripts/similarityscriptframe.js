@@ -1,11 +1,13 @@
 export { similarityframe };
 
-import { cookies } from '../mods/cereslibrary.min.js';
+import { cookies, include } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
 {
     'use strict';
+
+    include.directive();
 
     this.onload = function(id) { onloadFrame(id); };  // global scope method reference
 
