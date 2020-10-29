@@ -33,8 +33,6 @@ var generic = {};
 
     this.include = function(el = 'include-directive')
     {
-        const refreshMarkdown = false;
-
         window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
         {
             async connectedCallback()
