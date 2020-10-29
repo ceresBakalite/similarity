@@ -1,6 +1,6 @@
 export { similarity };
 
-import { generic as gn, cookies } from '../mods/cereslibrary.min.js';
+import { generic, cookies } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
@@ -13,10 +13,13 @@ var similarity = {};
     this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
     let rsc = function() { return attribute; }  // similarity local resource attributes
-    let includeDirective = 'include-directive';
+    //let includeDirective = 'include-directive';
     let location = new Map();
     let pinimage = new Map();
 
+    generic.include();
+
+/*
     window.customElements.get(includeDirective) || window.customElements.define(includeDirective, class extends HTMLElement
     {
         async connectedCallback()
@@ -26,7 +29,7 @@ var similarity = {};
         }
 
     });
-
+*/
     setResourcePrecursors();
 
     let getMarkupDocument = function (markupId, buttonElement)
@@ -65,7 +68,7 @@ var similarity = {};
 
     let setPinState = function(el, attribute)
     {
-        if (gn.isEmptyOrNull(el)) return;
+        if (generic.isEmptyOrNull(el)) return;
 
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
