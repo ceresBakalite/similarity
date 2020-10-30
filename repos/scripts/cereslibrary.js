@@ -9,7 +9,28 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { generic, touch, compose, cookies, caching, include }
+export { include, generic, cookies, compose, touch, caching  }
+
+var include = {};
+(function()
+{
+    'use strict';
+
+    this.directive = function(el = 'include-directive')
+    {
+        window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
+        {
+            async connectedCallback()
+            {
+                const src = this.getAttribute('src');
+                this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
+            }
+
+        });
+
+    }
+
+}).call(include);
 
 var generic = {};
 (function()
@@ -117,6 +138,35 @@ var generic = {};
 
 }).call(generic);
 
+var cookies = {};
+(function() {
+
+    'use strict';
+
+    this.get = function(name)
+    {
+        const match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+        return match ? decodeURIComponent(match[1]) : undefined;
+    }
+
+    this.set = function(name, value, options = {})
+    {
+        let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+
+        if (!options.path) options.path = '/';
+        if (!options.samesite) options.samesite = 'Strict; Secure';
+        if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
+
+        for (let item in options)
+        {
+            cookie += '; ' + item + '=' + ((typeof options[item] != null) ? options[item] : null);
+        }
+
+        document.cookie = cookie;
+    }
+
+}).call(cookies);
+
 var compose = {};
 (function() {
 
@@ -208,35 +258,6 @@ var touch = {};
     }
 
 }).call(touch);
-
-var cookies = {};
-(function() {
-
-    'use strict';
-
-    this.get = function(name)
-    {
-        const match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-        return match ? decodeURIComponent(match[1]) : undefined;
-    }
-
-    this.set = function(name, value, options = {})
-    {
-        let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
-
-        if (!options.path) options.path = '/';
-        if (!options.samesite) options.samesite = 'Strict; Secure';
-        if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
-
-        for (let item in options)
-        {
-            cookie += '; ' + item + '=' + ((typeof options[item] != null) ? options[item] : null);
-        }
-
-        document.cookie = cookie;
-    }
-
-}).call(cookies);
 
 var caching = {};
 (function(cache) {
@@ -333,24 +354,3 @@ var caching = {};
     }
 
 }).call(caching);
-
-var include = {};
-(function()
-{
-    'use strict';
-
-    this.directive = function(el = 'include-directive')
-    {
-        window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
-        {
-            async connectedCallback()
-            {
-                const src = this.getAttribute('src');
-                this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
-            }
-
-        });
-
-    }
-
-}).call(include);
