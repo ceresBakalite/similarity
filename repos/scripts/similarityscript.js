@@ -22,7 +22,6 @@ var similarity = {};
 
     let getMarkupDocument = function (markupId, buttonElement)
     {
-console.log('here now');
         if (rsc.markupId != markupId)
         {
             rsc.markupId = markupId;
@@ -80,8 +79,6 @@ console.log('here now');
     {
         const urlParams = new URLSearchParams(window.location.search);
         const markupId = urlParams.get('mu')
-
-        console.log('markupId: ' + markupId + ' import.meta.url: ' + import.meta.url);
 
         if (markupId) getMarkupDocument(markupId);
     }
