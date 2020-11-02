@@ -81,7 +81,7 @@ console.log('here now');
         const urlParams = new URLSearchParams(window.location.search);
         const markupId = urlParams.get('mu')
 
-        console.log('markupId: ' + markupId);
+        console.log('markupId: ' + markupId + ' import.meta.url: ' + import.meta.url);
 
         if (markupId) getMarkupDocument(markupId);
     }
