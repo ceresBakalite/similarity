@@ -9,7 +9,7 @@ var similarityframe = {};
 
     include.directive();
 
-    this.onload = function(id) { onloadFrame(id); };  // global scope method reference
+    this.onload = function(mu) { onloadFrame(mu); };  // global scope method reference
 
     const refreshMarkdown = false;
 
@@ -19,8 +19,7 @@ var similarityframe = {};
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
 
-            console.log('markupId: ' + markupId);
-            //window.location.href = '/similarity/?mu=' + markupId;
+            window.location.href = '/similarity/?mu=' + markupId;
 
             return false;
         }
