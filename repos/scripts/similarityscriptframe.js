@@ -1,6 +1,7 @@
 export { similarityframe };
 
-import { cookies, include } from '../mods/cereslibrary.min.js';
+//import { cookies, include } from '../mods/cereslibrary.min.js';
+import { cookies, include } from 'https://ceresbakalite.github.io/similarity/repos/mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
