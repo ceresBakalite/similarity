@@ -1,7 +1,10 @@
 export { similarity };
 
-import { generic, cookies, include } from '../mods/cereslibrary.min.js';
-import { similaritycache } from '../mods/similaritycache.min.js';
+//import { generic, cookies, include } from '../mods/cereslibrary.min.js';
+//import { similaritycache } from '../mods/similaritycache.min.js';
+
+import { generic, cookies, include } from 'https://ceresbakalite.github.io/similarity/repos/mods/cereslibrary.min.js';
+import { similaritycache } from 'https://ceresbakalite.github.io/similarity/repos/mods/similaritycache.min.js';
 
 var similarity = {};
 (function()
