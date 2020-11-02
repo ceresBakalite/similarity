@@ -1,7 +1,6 @@
 export { similarityframe };
 
-//import { cookies, include } from '../mods/cereslibrary.min.js';
-import { cookies, include } from 'https://ceresbakalite.github.io/similarity/repos/mods/cereslibrary.min.js';
+import { cookies, include } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
@@ -9,7 +8,7 @@ var similarityframe = {};
     'use strict';
 
     include.directive();
-
+    
     this.onload = function(id) { onloadFrame(id); };  // global scope method reference
 
     const refreshMarkdown = false;
