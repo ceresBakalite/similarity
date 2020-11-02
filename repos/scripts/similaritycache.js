@@ -11,7 +11,8 @@
 */
 export { similaritycache }
 
-import { generic, caching } from '../mods/cereslibrary.min.js';
+//import { generic, caching } from '../mods/cereslibrary.min.js';
+import { generic, caching } from 'https://ceresbakalite.github.io/similarity/repos/mods/cereslibrary.min.js';
 
 var similaritycache = {};
 (function(cache)
