@@ -20,7 +20,7 @@ var similarityframe = {};
             if (parent.document.getElementById('ceresbakalite')) return true;
 
             console.log('markupId: ' + markupId);
-            window.location.href = '/similarity/?mu=' + markupId;
+            //window.location.href = '/similarity/?mu=' + markupId;
 
             return false;
         }
