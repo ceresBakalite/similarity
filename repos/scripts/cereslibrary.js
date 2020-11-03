@@ -172,48 +172,26 @@ var compose = {};
 
     'use strict';
 
-    this.composeElement = function(element)
+    this.composeElement = function(el)
     {
-        const el = document.createElement(element.el);
+        const precursor = el.parent;
+        const node = document.createElement(el.node);
 
-        el.id = element.id;
-        element.parent.appendChild(el);
+        node.id = el.id;
 
-        if (element.classValue) this.composeAttribute({ id: el.id, type: 'class', value: element.classValue });
-        if (element.onClickEvent) this.composeAttribute({ id: el.id, type: 'onclick', value: element.onClickEvent });
-        if (element.url) this.composeAttribute({ id: el.id, type: 'src', value: element.url });
-        if (element.accessibility) this.composeAttribute({ id: el.id, type: 'alt', value: element.accessibility });
-        if (element.markup) document.getElementById(el.id).insertAdjacentHTML('afterbegin', element.markup);
-    }
+        if (el.className) node.setAttribute("class", el.className);
+        if (el.onClick) node.setAttribute("onclick", el.onClick);
+        if (el.src) node.setAttribute("src", el.src);
+        if (el.alt) node.setAttribute("alt", el.alt);
+        if (el.rel) node.setAttribute('rel', el.rel);
+        if (el.type) node.setAttribute('type', el.type);
+        if (el.href) node.setAttribute('href', el.href);
+        if (el.as) node.setAttribute('as', el.as);
+        if (el.crossorigin) node.setAttribute('crossorigin', el.crossorigin);
+        if (el.media) node.setAttribute('media', el.media);
+        if (el.markup) node.insertAdjacentHTML('afterbegin', el.markup);
 
-    this.composeAttribute = function(attribute)
-    {
-        const el = document.getElementById(attribute.id);
-
-        if (el)
-        {
-            const attributeNode = document.createAttribute(attribute.type);
-            attributeNode.value = attribute.value;
-
-            el.setAttributeNode(attributeNode);
-        }
-
-    }
-
-    this.composeLinkElement = function(attribute)
-    {
-        const link = document.createElement('link');
-
-        if (attribute.rel) link.rel = attribute.rel;
-        if (attribute.type) link.type = attribute.type;
-        if (attribute.href) link.href = attribute.href;
-        if (attribute.as) link.as = attribute.as;
-        if (attribute.crossorigin) link.crossorigin = attribute.crossorigin;
-        if (attribute.media) link.media = attribute.media;
-
-        link.addEventListener('load', function() {}, false);
-
-        document.head.appendChild(link);
+        precursor.appendChild(node);
     }
 
     this.composeElementId = function(str = null, range = 100)
