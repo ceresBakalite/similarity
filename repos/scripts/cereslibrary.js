@@ -213,20 +213,25 @@ var touch = {};
 
     this.setHorizontalSwipe = function(touch, callback, args)
     {
-        const el = document.querySelector(touch.el);
+        if (touch.host)
+        {
+            const shade = document.querySelector('#' + touch.host);
+            const shadow = shade.shadowRoot;
+        }
+
+        const el = touch.host ? shadow.querySelector(touch.selector) : document.querySelector(touch.selector);
 
         if (!touch.act) touch.act = 10;
 
         el.addEventListener('touchstart', e => { touch.start = e.changedTouches[0].screenX; }, { passive: true } );
-
         el.addEventListener('touchmove', e => { e.preventDefault(); }, { passive: true });
-
         el.addEventListener('touchend', e =>
         {
             touch.end = e.changedTouches[0].screenX;
 
             if (Math.abs(touch.start - touch.end) > touch.act)
             {
+                args.shadow = shadow;
                 args.action = (touch.start > touch.end);
                 callback.call(this, args);
             }
