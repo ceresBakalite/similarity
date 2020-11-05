@@ -213,15 +213,7 @@ var touch = {};
 
     this.setHorizontalSwipe = function(touch, callback, args)
     {
-        let targetDOM = document;
-
-        if (!generic.isEmptyOrNull(touch.host))
-        {
-            const shade = document.querySelector('#' + touch.host);
-            targetDOM = shade.shadowRoot;
-        }
-
-        const el = targetDOM.querySelector(touch.selector);
+        const el = document.querySelector(touch.selector);
 
         if (!touch.act) touch.act = 10;
 
