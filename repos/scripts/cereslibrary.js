@@ -96,7 +96,7 @@ var generic = {};
 
     this.errorHandler = function(error)
     {
-        //if (this.isEmptyOrNull(error)) return this.inspect({ type: protean.error, notification: resource.errorHandler });
+        if (this.isEmptyOrNull(error)) return this.inspect({ type: protean.error, notification: resource.errorHandler });
 
         const err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
         console.log(err);
@@ -215,7 +215,7 @@ var touch = {};
     {
         let targetDOM = document;
 
-        if (touch.host)
+        if (!generic.isEmptyOrNull(touch.host))
         {
             const shade = document.querySelector('#' + touch.host);
             targetDOM = shade.shadowRoot;
