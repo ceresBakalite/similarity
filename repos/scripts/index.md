@@ -1,4 +1,4 @@
-## Welcome to Similarity Pattern Matching <img class="img-pointer" src="../../images/NAVLampRing.png">
+## Welcome to Similarity Pattern Matching
 
 ### *Seeking patterns of similarity between data strings*<div id="logo-container"><img id="logo-default" title="No readable content. Just a page logo" class="img-logo" align="right" src="../../images/NAVSimilarityLogoScripts.png"></div>
 
@@ -32,7 +32,7 @@ Most definitely though, a shout out goes to Andrew Karno <i>maxime summus magist
 
 As a proof of concept exercise a principle focus has been to utilize Amazon Web Services (AWS RDS) as the SQL Server database repository, AWS EC2 S3 as the default update repository facilitating the automation of the latest release, and GitHub repositories holding all releases as the primary application place holder.
 ***
-### Support or Contact <img class="img-pointer" src="../../images/NAVLampHalf.png">
+### Support or Contact <img class="img-pointer" src="../../images/NAVLampRing.png">
 
 Similarity is free to use and is only a GitHub baby.
 
