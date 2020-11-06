@@ -16,7 +16,7 @@ var similarityframe = {};
 
     function onloadFrame()
     {
-        const markupId = document.document.getElementsByTagName('body')[0];
+        const markupId = document.getElementsByTagName('body')[0];
 
         console.log('markupId: ' + markupId.id);
 
