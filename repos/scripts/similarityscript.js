@@ -10,7 +10,7 @@ var similarity = {};
 
     include.directive();
 
-    this.onload = function() { onloadPrimary(); }; // global scope method reference
+    this.onload = function(node) { onloadPrimary(node); }; // global scope method reference
     this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
     this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
@@ -83,7 +83,7 @@ var similarity = {};
         if (markupId) getMarkupDocument(markupId);
     }
 
-    function onloadPrimary()
+    function onloadPrimary(node)
     {
         getHeaderAttributes();
         getQueryString();
