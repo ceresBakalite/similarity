@@ -27,6 +27,7 @@ var similarityframe = {};
         let invokeScrollEventListener = function()
         {
             window.onscroll = function() { adjustHeaderDisplay(); };
+            if (markupId == 'slide') document.body.opacity = 1;
         }
 
         let displayFooter = function()
@@ -79,8 +80,6 @@ var similarityframe = {};
 
         if (isValidSource())
         {
-            if (markupId == 'slide') document.body.opacity = 1;
-            
             invokeScrollEventListener();
             asyncPullMarkdownRequest();
         }
