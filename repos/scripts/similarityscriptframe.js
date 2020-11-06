@@ -22,7 +22,7 @@ var similarityframe = {};
         let isValidSource = function()
         {
             //if (parent.document.getElementById('ceresbakalite')) return true;
-            if (parent.document.querySelector('body.ceres > section.index') return true;
+            if (parent.document.querySelector('body.ceres > section.index')) return true;
 
             window.location.href = '/similarity/?sync=' + sync.className;
 
