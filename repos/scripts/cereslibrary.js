@@ -172,9 +172,15 @@ var compose = {};
 
     'use strict';
 
-    this.composeElement = function(el)
+    const mapNode = new Map();
+
+    mapNode.set('link', document.head);
+    mapNode.set('script', document.head);
+    mapNode.set('style', document.head);
+
+    this.composeElement = function(el, locale = 'en')
     {
-        const precursor = el.parent;
+        const precursor = mapNode.get(el.node.toLocaleLowerCase(locale)) || el.parent;
         const node = document.createElement(el.node);
 
         node.id = el.id;
