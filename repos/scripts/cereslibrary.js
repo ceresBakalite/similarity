@@ -213,7 +213,7 @@ var touch = {};
 
     this.setHorizontalSwipe = function(touch, callback, args)
     {
-        if (!touch.act) touch.act = 10;
+        if (!touch.act) touch.act = 80;
 
         touch.node.addEventListener('touchstart', e => { touch.start = e.changedTouches[0].screenX; }, { passive: true } );
         touch.node.addEventListener('touchmove', e => { e.preventDefault(); }, { passive: true });
