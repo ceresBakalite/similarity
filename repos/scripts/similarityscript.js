@@ -101,7 +101,7 @@ var similarity = {};
         location.set('slide', './repos/scripts/SyncSlide.html');
         location.set('repos', './repos/scripts/SyncRepos.html');
 
-        rsc.markupUrl = location.get('index');
+        rsc.markupUrl = location.get(markup.id);
     }
 
 }).call(window);
