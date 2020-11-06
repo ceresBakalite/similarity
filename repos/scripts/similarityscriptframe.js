@@ -9,14 +9,12 @@ var similarityframe = {};
 
     include.directive();
 
-    this.onFrameLoad = function(node) { console.log('node: ' + node.id); onloadFrame(node.id); };  // global scope method reference
+    this.onFrameLoad = function(node) { onloadFrame(node.id); };  // global scope method reference
 
     const refreshMarkdown = false;
 
     function onloadFrame(markupId)
     {
-        console.log('markupId 1: ' + markupId);
-
         let isValidSource = function()
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
@@ -32,6 +30,7 @@ var similarityframe = {};
 
             console.log('markupId: ' + markupId);
 
+/*
             if (markupId == 'slide')
             {
                 const el = document.querySelector('body');
@@ -39,6 +38,7 @@ var similarityframe = {};
 
                 console.log('style: ' + el + ' ' + el.style);
             }
+*/            
         }
 
         let displayFooter = function()
