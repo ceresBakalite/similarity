@@ -18,8 +18,6 @@ var similarityframe = {};
     {
         const markup = document.getElementsByTagName('body')[0];
 
-        console.log('markupId: ' + markup.id);
-
         let isValidSource = function()
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
