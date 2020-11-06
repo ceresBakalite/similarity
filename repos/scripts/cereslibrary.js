@@ -41,7 +41,7 @@ var generic = {};
     const resource = function() { return attribute; } // local resource
     const symbol = new Map(); // local scope symbols
 
-    setPrecursors();
+    initialise();
 
     this.constant = protean; // exposed local scope resources
 
@@ -112,7 +112,7 @@ var generic = {};
         return str.replace(/, +$/g,'');
     }
 
-    function setPrecursors()
+    function initialise()
     {
         symbol.set('true', true);
         symbol.set('t', true);
@@ -174,9 +174,7 @@ var compose = {};
 
     const mapNode = new Map();
 
-    mapNode.set('link', document.head);
-    mapNode.set('script', document.head);
-    mapNode.set('style', document.head);
+    initialise();
 
     this.composeElement = function(el, locale = 'en')
     {
@@ -200,7 +198,7 @@ var compose = {};
         precursor.appendChild(node);
     }
 
-    this.composeElementId = function(str = null, range = 100)
+    this.composeUniqueElementId = function(str = null, range = 100)
     {
         let elName = function() { return str + Math.floor(Math.random() * range) };
         let el = null;
@@ -208,6 +206,13 @@ var compose = {};
         while (document.getElementById(el = elName())) {};
 
         return el;
+    }
+
+    function initialise()
+    {
+        mapNode.set('link', document.head);
+        mapNode.set('script', document.head);
+        mapNode.set('style', document.head);
     }
 
 }).call(compose);
