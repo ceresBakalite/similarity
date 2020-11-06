@@ -16,13 +16,15 @@ var similarityframe = {};
 
     function onloadFrame()
     {
-        const body = document.querySelector('body');
+        const sync = document.querySelector('body');
+
+        console.log('sync.className: ' + sync.className);
 
         let isValidSource = function()
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
 
-            window.location.href = '/similarity/?mu=' + body.className;
+            window.location.href = '/similarity/?mu=' + sync.className;
 
             return false;
         }
