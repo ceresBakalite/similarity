@@ -9,7 +9,8 @@ var similarityframe = {};
 
     include.directive();
 
-    this.onFrameLoad = function(node) { onloadFrame(node.id); };  // global scope method reference
+    //this.onload = function(mu) { onloadFrame(mu); };  // global scope method reference
+    this.onload = function(node) { onloadFrame(node.id); };  // global scope method reference
 
     const refreshMarkdown = false;
 
@@ -29,7 +30,6 @@ var similarityframe = {};
             window.onscroll = function() { adjustHeaderDisplay(); };
 
             console.log('markupId: ' + markupId);
-
 /*
             if (markupId == 'slide')
             {
@@ -38,7 +38,7 @@ var similarityframe = {};
 
                 console.log('style: ' + el + ' ' + el.style);
             }
-*/            
+*/
         }
 
         let displayFooter = function()
