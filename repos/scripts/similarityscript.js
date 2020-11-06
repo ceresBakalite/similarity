@@ -85,7 +85,9 @@ var similarity = {};
 
     function onloadPrimary()
     {
-        const markup = document.getElementsByTagName('body')[0];
+        const sync = document.querySelector('body');
+
+        console.log('sync.className: ' + sync.className);
 
         getHeaderAttributes();
         getQueryString();
