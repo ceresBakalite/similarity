@@ -18,7 +18,7 @@ var similarity = {};
     let location = new Map();
     let pinimage = new Map();
 
-    setResourcePrecursors();
+    initialise();
 
     let getMarkupDocument = function (markupId, buttonElement)
     {
@@ -88,7 +88,7 @@ var similarity = {};
         getQueryString();
     }
 
-    function setResourcePrecursors()
+    function initialise()
     {
         pinimage.set('enabled', './images/NAVPinIconEnabled.png');
         pinimage.set('disabled', './images/NAVPinIconDisabled.png');
