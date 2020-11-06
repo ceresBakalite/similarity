@@ -10,7 +10,7 @@ var similarity = {};
 
     include.directive();
 
-    this.onload = function(node) { onloadPrimary(node); }; // global scope method reference
+    this.onload = function() { onloadPrimary(); }; // global scope method reference
     this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
     this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
@@ -80,11 +80,13 @@ var similarity = {};
         const urlParams = new URLSearchParams(window.location.search);
         const markupId = urlParams.get('mu')
 
-        if (markupId) getMarkupDocument(markupId);
+        if (markupId) getMarkupDocument(markupId) ;
     }
 
-    function onloadPrimary(node)
+    function onloadPrimary()
     {
+        const markup = document.getElementsByTagName('body')[0];
+
         getHeaderAttributes();
         getQueryString();
     }
@@ -99,8 +101,7 @@ var similarity = {};
         location.set('slide', './repos/scripts/SyncSlide.html');
         location.set('repos', './repos/scripts/SyncRepos.html');
 
-        rsc.markupId = 'index';
-        rsc.markupUrl = location.get(rsc.markupId);
+        rsc.markupUrl = location.get(markup.id) || location.get('index');
     }
 
 }).call(window);
