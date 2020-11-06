@@ -10,7 +10,7 @@ var similarity = {};
 
     include.directive();
 
-    this.onload = function() { onloadPrimary(); }; // global scope method reference
+    this.onload = function() { onloadFrame(); }; // global scope method reference
     this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
     this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
@@ -78,16 +78,14 @@ var similarity = {};
     let getQueryString = function()
     {
         const urlParams = new URLSearchParams(window.location.search);
-        const markupId = urlParams.get('mu')
+        const markupId = urlParams.get('sync')
 
         if (markupId) getMarkupDocument(markupId) ;
     }
 
-    function onloadPrimary()
+    function onloadFrame()
     {
         const sync = document.querySelector('body');
-
-        console.log('sync.className: ' + sync.className);
 
         getHeaderAttributes();
         getQueryString();
