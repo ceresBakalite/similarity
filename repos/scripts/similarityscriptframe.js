@@ -16,6 +16,10 @@ var similarityframe = {};
 
     function onloadFrame(markupId)
     {
+        const markupId = document.document.getElementsByTagName('body')[0];
+
+        console.log('markupId: ' + markupId.id);
+
         let isValidSource = function()
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
@@ -29,7 +33,6 @@ var similarityframe = {};
         {
             window.onscroll = function() { adjustHeaderDisplay(); };
 
-            console.log('markupId: ' + markupId);
 /*
             if (markupId == 'slide')
             {
