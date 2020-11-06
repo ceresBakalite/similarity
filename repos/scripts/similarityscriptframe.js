@@ -16,7 +16,7 @@ var similarityframe = {};
 
     function onloadFrame()
     {
-        const markup = document.getElementsByTagName('body')[0];
+        const markup = document.querySelector('body');
 
         let isValidSource = function()
         {
