@@ -17,13 +17,9 @@ var similarityframe = {};
     {
         const sync = document.querySelector('body');
 
-        console.log('sync.className: ' + sync.className);
-
         let isValidSource = function()
         {
-            //if (parent.document.getElementById('ceresbakalite')) return true;
             if (parent.document.querySelector('body.ceres > section.index')) return true;
-
             window.location.href = '/similarity/?sync=' + sync.className;
 
             return false;
@@ -37,7 +33,6 @@ var similarityframe = {};
         let displayFooter = function()
         {
             setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
-            //setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
         let setMarkdownLinks = function()
@@ -95,8 +90,6 @@ var similarityframe = {};
     {
         const header = parent.document.querySelector('div.page-header');
         const pin = parent.document.querySelector('img.pin-navbar').getAttribute('state');
-        //const el = parent.document.getElementById('site-header-display');
-        //const pin = parent.document.getElementById('pin-navbar').getAttribute('state');
         const trigger = 25;
 
         let setStyleDisplay = function(attribute)
