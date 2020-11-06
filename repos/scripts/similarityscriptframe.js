@@ -18,7 +18,7 @@ var similarityframe = {};
     {
         const markup = document.getElementsByTagName('body')[0];
 
-        console.log('markupId: ' + markupId.id);
+        console.log('markupId: ' + markup.id);
 
         let isValidSource = function()
         {
