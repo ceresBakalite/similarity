@@ -27,7 +27,7 @@ var similarity = {};
             rsc.markupId = markupId;
             rsc.markupUrl = location.get(rsc.markupId) || location.get('index');
 
-            document.getElementById('frame-container').setAttribute('src', rsc.markupUrl);
+            document.querySelector('iframe.frame-container').setAttribute('src', rsc.markupUrl);
         }
 
         if (buttonElement) buttonElement.blur();
@@ -49,7 +49,7 @@ var similarity = {};
 
     let setDisplayState = function(attribute)
     {
-        const header = document.getElementById('site-header-display');
+        const header = document.querySelector('div.page-header');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
         cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
     }
@@ -65,14 +65,14 @@ var similarity = {};
 
     let getHeaderAttributes = function()
     {
-        const el = document.getElementById('site-header-display');
+        const header = document.querySelector('div.page-header');
+        //const el = document.getElementById('site-header-display');
 
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
         if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200, 'samesite': 'None; Secure' });
 
-        if (el) el.style.display = (cookies.get('hd') == 'none') ? 'none' : 'block';
-
-        if (cookies.get('pn') == 'enabled') setPinState(document.getElementById('pin-navbar'), 'enabled');
+        if (header) header.style.display = (cookies.get('hd') == 'none') ? 'none' : 'block';
+        if (cookies.get('pn') == 'enabled') setPinState(document.querySelector('img.pin-navbar'), 'enabled');
     }
 
     let getQueryString = function()

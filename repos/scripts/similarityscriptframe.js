@@ -21,7 +21,8 @@ var similarityframe = {};
 
         let isValidSource = function()
         {
-            if (parent.document.getElementById('ceresbakalite')) return true;
+            //if (parent.document.getElementById('ceresbakalite')) return true;
+            if (parent.document.querySelector('body.ceres > section.index') return true;
 
             window.location.href = '/similarity/?sync=' + sync.className;
 
@@ -35,7 +36,8 @@ var similarityframe = {};
 
         let displayFooter = function()
         {
-            setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
+            setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
+            //setTimeout(function() {  document.getElementById('footer-content').style.display = 'block'; }, 2000);
         }
 
         let setMarkdownLinks = function()
@@ -97,19 +99,21 @@ var similarityframe = {};
             el.style.display = attribute;
         }
 
-        const el = parent.document.getElementById('site-header-display');
-        const pin = parent.document.getElementById('pin-navbar').getAttribute('state');
+        const header = parent.document.querySelector('div.page-header');
+        const pin = parent.document.querySelector('img.pin-navbar').getAttribute('state');
+        //const el = parent.document.getElementById('site-header-display');
+        //const pin = parent.document.getElementById('pin-navbar').getAttribute('state');
         const trigger = 25;
 
         if (pin == 'disabled')
         {
-            if (el.style.display && window.scrollY > trigger)
+            if (header.style.display && window.scrollY > trigger)
             {
-                if (el.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
+                if (header.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
 
             } else {
 
-                if (el.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
+                if (header.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
             }
 
         }
