@@ -32,6 +32,8 @@ var similarityframe = {};
             {
                 const el = document.querySelector('body');
                 el.setAttribute('style', 'opacity: 1');
+
+                console.log('style: ' + el + ' ' + el.style);
             }
         }
 
