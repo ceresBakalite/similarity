@@ -16,13 +16,13 @@ var similarityframe = {};
 
     function onloadFrame()
     {
-        const markup = document.querySelector('body');
+        const body = document.querySelector('body');
 
         let isValidSource = function()
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
 
-            window.location.href = '/similarity/?mu=' + markup.id;
+            window.location.href = '/similarity/?mu=' + body.className;
 
             return false;
         }
