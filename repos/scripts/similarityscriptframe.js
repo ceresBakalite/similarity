@@ -79,6 +79,8 @@ var similarityframe = {};
 
         if (isValidSource())
         {
+            if (markupId == 'slide') document.body.opacity = 1;
+            
             invokeScrollEventListener();
             asyncPullMarkdownRequest();
         }
