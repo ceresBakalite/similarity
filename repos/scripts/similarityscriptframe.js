@@ -9,7 +9,6 @@ var similarityframe = {};
 
     include.directive();
 
-    //this.onload = function(mu) { onloadFrame(mu); };  // global scope method reference
     this.onload = function() { onloadFrame(); };  // global scope method reference
 
     const refreshMarkdown = false;
@@ -24,7 +23,7 @@ var similarityframe = {};
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
 
-            window.location.href = '/similarity/?mu=' + sync.className;
+            window.location.href = '/similarity/?sync=' + sync.className;
 
             return false;
         }
@@ -32,16 +31,6 @@ var similarityframe = {};
         let invokeScrollEventListener = function()
         {
             window.onscroll = function() { adjustHeaderDisplay(); };
-
-/*
-            if (markupId == 'slide')
-            {
-                const el = document.querySelector('body');
-                el.setAttribute('style', 'opacity: 1');
-
-                console.log('style: ' + el + ' ' + el.style);
-            }
-*/
         }
 
         let displayFooter = function()
