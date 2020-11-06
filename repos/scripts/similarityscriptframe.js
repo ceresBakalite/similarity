@@ -27,7 +27,12 @@ var similarityframe = {};
         let invokeScrollEventListener = function()
         {
             window.onscroll = function() { adjustHeaderDisplay(); };
-            if (markupId == 'slide') document.body.style.opacity = 1;
+
+            if (markupId == 'slide')
+            {
+                const el = document.querySelector('body');
+                el.setAttribute('style', 'opacity: 1');
+            }
         }
 
         let displayFooter = function()
