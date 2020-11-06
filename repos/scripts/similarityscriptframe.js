@@ -15,6 +15,8 @@ var similarityframe = {};
 
     function onloadFrame(markupId)
     {
+        console.log('markupId 1: ' + markupId);
+
         let isValidSource = function()
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
