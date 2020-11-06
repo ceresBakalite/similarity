@@ -28,6 +28,8 @@ var similarityframe = {};
         {
             window.onscroll = function() { adjustHeaderDisplay(); };
 
+            console.log('markupId: ' + markupId);
+
             if (markupId == 'slide')
             {
                 const el = document.querySelector('body');
