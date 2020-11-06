@@ -93,17 +93,17 @@ var similarityframe = {};
 
     function adjustHeaderDisplay()
     {
-        let setStyleDisplay = function(attribute)
-        {
-            cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
-            el.style.display = attribute;
-        }
-
         const header = parent.document.querySelector('div.page-header');
         const pin = parent.document.querySelector('img.pin-navbar').getAttribute('state');
         //const el = parent.document.getElementById('site-header-display');
         //const pin = parent.document.getElementById('pin-navbar').getAttribute('state');
         const trigger = 25;
+
+        let setStyleDisplay = function(attribute)
+        {
+            cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
+            header.style.display = attribute;
+        }
 
         if (pin == 'disabled')
         {
