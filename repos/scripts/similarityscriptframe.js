@@ -14,7 +14,7 @@ var similarityframe = {};
 
     const refreshMarkdown = false;
 
-    function onloadFrame(markupId)
+    function onloadFrame()
     {
         const markupId = document.document.getElementsByTagName('body')[0];
 
