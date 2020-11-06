@@ -66,7 +66,6 @@ var similarity = {};
     let getHeaderAttributes = function()
     {
         const header = document.querySelector('div.page-header');
-        //const el = document.getElementById('site-header-display');
 
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
         if (!cookies.get('pn')) cookies.set('pn', 'disabled', { 'max-age': 7200, 'samesite': 'None; Secure' });
@@ -78,15 +77,13 @@ var similarity = {};
     let getQueryString = function()
     {
         const urlParams = new URLSearchParams(window.location.search);
-        const markupId = urlParams.get('sync')
+        const name = urlParams.get('sync')
 
-        if (markupId) getMarkupDocument(markupId) ;
+        if () getMarkupDocument(name) ;
     }
 
     function onloadFrame()
     {
-        const sync = document.querySelector('body');
-
         getHeaderAttributes();
         getQueryString();
     }
