@@ -9,7 +9,7 @@ var similarityframe = {};
 
     include.directive();
 
-    this.onload = function(mu) { onloadFrame(mu); };  // global scope method reference
+    this.onload = function(mu) { console.log('mu: ' + mu); onloadFrame(mu); };  // global scope method reference
 
     const refreshMarkdown = false;
 
