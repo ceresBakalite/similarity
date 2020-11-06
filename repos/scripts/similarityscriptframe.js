@@ -16,7 +16,7 @@ var similarityframe = {};
 
     function onloadFrame()
     {
-        const markupId = document.getElementsByTagName('body')[0];
+        const markup = document.getElementsByTagName('body')[0];
 
         console.log('markupId: ' + markupId.id);
 
@@ -24,7 +24,7 @@ var similarityframe = {};
         {
             if (parent.document.getElementById('ceresbakalite')) return true;
 
-            window.location.href = '/similarity/?mu=' + markupId;
+            window.location.href = '/similarity/?mu=' + markup.id;
 
             return false;
         }
