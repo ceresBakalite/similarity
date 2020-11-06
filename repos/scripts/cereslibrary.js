@@ -178,8 +178,8 @@ var compose = {};
 
     this.composeElement = function(el, locale = 'en')
     {
-        const precursor = mapNode.get(el.node.toLocaleLowerCase(locale)) || el.parent;
-        const node = document.createElement(el.node);
+        const precursor = mapNode.get(el.typeof.toLocaleLowerCase(locale)) || el.parent;
+        const node = document.createElement(el.typeof);
 
         node.id = el.id;
 
@@ -188,7 +188,6 @@ var compose = {};
         if (el.src) node.setAttribute("src", el.src);
         if (el.alt) node.setAttribute("alt", el.alt);
         if (el.rel) node.setAttribute('rel', el.rel);
-        if (el.type) node.setAttribute('type', el.type);
         if (el.href) node.setAttribute('href', el.href);
         if (el.as) node.setAttribute('as', el.as);
         if (el.crossorigin) node.setAttribute('crossorigin', el.crossorigin);
