@@ -9,6 +9,8 @@ var similarityframe = {};
 
     include.directive();
 
+    similarityframe.rsc = new Object(); // resource allocation
+
     initialise();
 
     this.onload = function() { onloadFrame(); };  // global scope method reference
@@ -57,8 +59,6 @@ var similarityframe = {};
 
     function initialise()
     {
-        var rsc = new Object(); // resource allocation
-
         rsc = {};
         (function() {
 
