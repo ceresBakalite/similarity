@@ -9,7 +9,7 @@ var similarityframe = {};
 
     include.directive();
 
-    similarityframe.rsc = new Object(); // resource allocation
+    this.rsc = new Object(); // resource allocation
 
     initialise();
 
