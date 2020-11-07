@@ -33,7 +33,7 @@ var include = {};
 }).call(include);
 
 var generic = {};
-(function(locale = 'en')
+(function()
 {
     'use strict';
 
@@ -63,7 +63,7 @@ var generic = {};
         return !obj;
     }
 
-    this.getBooleanAttribute = function(attribute)
+    this.getBooleanAttribute = function(attribute, locale = 'en')
     {
         if (attribute === true || attribute === false) return attribute;
         if (this.isEmptyOrNull(attribute)) return false;
@@ -169,7 +169,7 @@ var cookies = {};
 }).call(cookies);
 
 var compose = {};
-(function(locale = 'en') {
+(function() {
 
     'use strict';
 
@@ -177,7 +177,7 @@ var compose = {};
 
     initialise();
 
-    this.composeElement = function(el)
+    this.composeElement = function(el, locale = 'en')
     {
         const precursor = mapNode.get(el.typeof.toLocaleLowerCase(locale)) || el.parent;
         const node = document.createElement(el.typeof);
