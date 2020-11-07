@@ -9,7 +9,7 @@ var similarityframe = {};
 
     include.directive();
 
-    const rsc = new Object();
+    let rsc = new Object();
 
     initialise();
 
