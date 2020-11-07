@@ -3,7 +3,7 @@ export { similarityframe };
 import { include, cookies, compose } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
-(function(test)
+(function()
 {
     'use strict';
 
