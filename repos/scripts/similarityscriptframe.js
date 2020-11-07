@@ -9,35 +9,13 @@ var similarityframe = {};
 
     include.directive();
 
+    initialise();
+
     this.onload = function() { onloadFrame(); };  // global scope method reference
 
     function onloadFrame()
     {
         const sync = document.querySelector('body');
-
-        let isValidSource = function()
-        {
-            if (parent.document.querySelector('body.ceres > section.index')) return true;
-            window.location.href = '/similarity/?sync=' + sync.className;
-
-            return false;
-        }
-
-        let invokeScrollEventListener = function()
-        {
-            window.onscroll = function() { adjustHeaderDisplay(); };
-        }
-
-        let displayFooter = function()
-        {
-            setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
-        }
-
-        let asyncPullMarkdownRequest = function()
-        {
-            setTimeout(function() { compose.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
-            displayFooter();
-        }
 
         if (isValidSource())
         {
@@ -70,6 +48,34 @@ var similarityframe = {};
                 if (header.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
             }
 
+        }
+
+    }
+
+    function initialise()
+    {
+        let isValidSource = function()
+        {
+            if (parent.document.querySelector('body.ceres > section.index')) return true;
+            window.location.href = '/similarity/?sync=' + sync.className;
+
+            return false;
+        }
+
+        let invokeScrollEventListener = function()
+        {
+            window.onscroll = function() { adjustHeaderDisplay(); };
+        }
+
+        let displayFooter = function()
+        {
+            setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
+        }
+
+        let asyncPullMarkdownRequest = function()
+        {
+            setTimeout(function() { compose.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
+            displayFooter();
         }
 
     }
