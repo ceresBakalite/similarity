@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { include, generic, cookies, compose, touch, caching  }
+export { include, generic, cookies, compose, touch, caching }
 
 var include = {};
 (function()
@@ -33,7 +33,7 @@ var include = {};
 }).call(include);
 
 var generic = {};
-(function()
+(function(locale = 'en')
 {
     'use strict';
 
@@ -63,7 +63,7 @@ var generic = {};
         return !obj;
     }
 
-    this.getBooleanAttribute = function(attribute, locale = 'en')
+    this.getBooleanAttribute = function(attribute)
     {
         if (attribute === true || attribute === false) return attribute;
         if (this.isEmptyOrNull(attribute)) return false;
@@ -126,6 +126,7 @@ var generic = {};
         protean.error = 99;
         protean.isWindows = (navigator.appVersion.indexOf('Win') != -1);
         protean.newline = protean.isWindows ? '\r\n' : '\n';
+        protean.whitespace = /\s/g;
 
         Object.freeze(protean);
 
@@ -168,7 +169,7 @@ var cookies = {};
 }).call(cookies);
 
 var compose = {};
-(function() {
+(function(locale = 'en') {
 
     'use strict';
 
@@ -176,7 +177,7 @@ var compose = {};
 
     initialise();
 
-    this.composeElement = function(el, locale = 'en')
+    this.composeElement = function(el)
     {
         const precursor = mapNode.get(el.typeof.toLocaleLowerCase(locale)) || el.parent;
         const node = document.createElement(el.typeof);
