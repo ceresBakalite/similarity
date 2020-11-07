@@ -208,6 +208,29 @@ var compose = {};
         return el;
     }
 
+    this.setCORSMarkdownLinks = function(el)
+    {
+        // el.node = 'zero.md'
+
+        if (!el.regex) el.regex = /<a /gi;
+        if (!el.replacement) el.replacement = '<a target="_top" ';
+
+        el.node.forEach(node => {
+
+            // el.query = zero-md.markdown-body
+
+            let shadow = node.shadowRoot;
+
+            if (shadow)
+            {
+                let markdown = shadow.querySelector(el.query).innerHTML;
+                shadow.querySelector(element).innerHTML = markdown.replace(el.regex, el.replacement);
+            }
+
+        });
+
+    }
+
     function initialise()
     {
         mapNode.set('link', document.head);

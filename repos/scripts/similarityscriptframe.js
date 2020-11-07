@@ -1,6 +1,6 @@
 export { similarityframe };
 
-import { cookies, include } from '../mods/cereslibrary.min.js';
+import { include, cookies, compose } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
@@ -10,8 +10,6 @@ var similarityframe = {};
     include.directive();
 
     this.onload = function() { onloadFrame(); };  // global scope method reference
-
-    const refreshMarkdown = false;
 
     function onloadFrame()
     {
@@ -35,7 +33,7 @@ var similarityframe = {};
             setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
         }
 
-        let setMarkdownLinks = function()
+        let xxxresetMarkdownLinks = function()
         {
             const root = 'zero-md';
             const element = '.markdown-body';
@@ -47,20 +45,11 @@ var similarityframe = {};
 
         let asyncPullMarkdownRequest = function()
         {
-            let fetchMarkdown = function()
-            {
-                const nodelist = document.querySelectorAll('zero-md');
-                nodelist.forEach(el => { el.setAttribute('src', el.getAttribute('src') + '?' + Date.now()); });
-                setTimeout(function() { setMarkdownLinks(); }, 1000);
-            }
-
+            setTimeout(function() { compose.setCORSMarkdownLinks( { node: 'zero-md', query: 'zero-md.markdown-body' } ); }, 1000);
             displayFooter();
-            setTimeout(function() { setMarkdownLinks(); }, 1000);
-
-            if (refreshMarkdown) setTimeout(function() { fetchMarkdown(); }, 4000);
         }
 
-        let replaceShadowDomInnerHTML = function(root, element, regex, replacement)
+        let xxxreplaceShadowDomInnerHTML = function(root, element, regex, replacement)
         {
             const nodelist = document.querySelectorAll(root);
 
