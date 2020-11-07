@@ -7,9 +7,9 @@ var similarityframe = {};
 {
     'use strict';
 
-    const test = this;
-
     include.directive();
+
+    const ceres = this;
 
     initialise();
 
@@ -59,9 +59,7 @@ var similarityframe = {};
 
     function initialise()
     {
-        //test.rsc = new Object(); // resource allocation
-
-        test.rsc = {};
+        ceres.rsc = {};
         (function() {
 
             rsc.isValidSource = function()
