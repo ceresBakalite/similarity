@@ -9,7 +9,7 @@ var similarityframe = {};
 
     include.directive();
 
-    initialise();
+    this.initialise();
 
     this.onload = function() { onloadFrame(); };  // global scope method reference
 
@@ -57,7 +57,7 @@ var similarityframe = {};
 
     function initialise()
     {
-        this.rsc = {};
+        const rsc = {};
         (function() {
 
             rsc.isValidSource = function()
