@@ -60,7 +60,7 @@ var similarityframe = {};
                 if (shadow)
                 {
                     let markdown = shadow.querySelector(el.query).innerHTML;
-                    shadow.querySelector(element).innerHTML = markdown.replace(el.regex, el.replacement);
+                    shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replacement);
                 }
 
             });
