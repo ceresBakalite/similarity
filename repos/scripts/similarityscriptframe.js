@@ -33,62 +33,10 @@ var similarityframe = {};
             setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
         }
 
-        let xxxresetMarkdownLinks = function()
-        {
-            const root = 'zero-md';
-            const element = '.markdown-body';
-            const regex = /<a /gi;
-            const replacement = '<a target="_top" ';
-
-            replaceShadowDomInnerHTML(root, element, regex, replacement);
-        }
-
-        let setCORSMarkdownLinks = function(el)
-        {
-            // el.node = 'zero.md'
-            const nodelist = document.querySelectorAll(el.node);
-
-            if (!el.regex) el.regex = /<a /gi;
-            if (!el.replacement) el.replacement = '<a target="_top" ';
-
-            nodelist.forEach(node => {
-
-                // el.query = zero-md.markdown-body
-
-                let shadow = node.shadowRoot;
-
-                if (shadow)
-                {
-                    let markdown = shadow.querySelector(el.query).innerHTML;
-                    shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replacement);
-                }
-
-            });
-
-        }
-
         let asyncPullMarkdownRequest = function()
         {
-            setTimeout(function() { setCORSMarkdownLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
+            setTimeout(function() { compose.setCORSMarkdownLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
             displayFooter();
-        }
-
-        let xxxreplaceShadowDomInnerHTML = function(root, element, regex, replacement)
-        {
-            const nodelist = document.querySelectorAll(root);
-
-            nodelist.forEach(node => {
-
-                let shadow = node.shadowRoot;
-
-                if (shadow)
-                {
-                    let markdown = shadow.querySelector(element).innerHTML;
-                    shadow.querySelector(element).innerHTML = markdown.replace(regex, replacement);
-                }
-
-            });
-
         }
 
         if (isValidSource())
