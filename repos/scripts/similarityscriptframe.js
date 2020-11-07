@@ -46,11 +46,12 @@ var similarityframe = {};
         let setCORSMarkdownLinks = function(el)
         {
             // el.node = 'zero.md'
+            const nodelist = document.querySelectorAll(el.node);
 
             if (!el.regex) el.regex = /<a /gi;
             if (!el.replacement) el.replacement = '<a target="_top" ';
 
-            el.node.forEach(node => {
+            nodelist.forEach(node => {
 
                 // el.query = zero-md.markdown-body
 
