@@ -35,7 +35,7 @@ var similarityframe = {};
 
         let asyncPullMarkdownRequest = function()
         {
-            setTimeout(function() { compose.setCORSMarkdownLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
+            setTimeout(function() { compose.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
             displayFooter();
         }
 
