@@ -210,21 +210,19 @@ var compose = {};
 
     this.setCORSMarkdownLinks = function(el)
     {
-        // el.node = 'zero.md'
+        const nodelist = document.querySelectorAll(el.node);
 
         if (!el.regex) el.regex = /<a /gi;
         if (!el.replacement) el.replacement = '<a target="_top" ';
 
-        el.node.forEach(node => {
-
-            // el.query = zero-md.markdown-body
+        nodelist.forEach(node => {
 
             let shadow = node.shadowRoot;
 
             if (shadow)
             {
                 let markdown = shadow.querySelector(el.query).innerHTML;
-                shadow.querySelector(element).innerHTML = markdown.replace(el.regex, el.replacement);
+                shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replacement);
             }
 
         });
