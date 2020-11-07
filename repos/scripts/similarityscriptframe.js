@@ -9,7 +9,7 @@ var similarityframe = {};
 
     include.directive();
 
-    this.initialise();
+    initialise();
 
     this.onload = function() { onloadFrame(); };  // global scope method reference
 
