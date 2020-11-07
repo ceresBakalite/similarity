@@ -3,7 +3,7 @@ export { similarityframe };
 import { include, cookies, compose } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
-(function()
+(function(test)
 {
     'use strict';
 
@@ -57,7 +57,7 @@ var similarityframe = {};
 
     function initialise()
     {
-        this.rsc = new Object(); // resource allocation
+        test.rsc = new Object(); // resource allocation
 
         rsc = {};
         (function() {
