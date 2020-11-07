@@ -85,7 +85,7 @@ var similarityframe = {};
 
         })(); // end resource allocation
 
-
+        Object.freeze(rsc);
     }
 
 }).call(window);
