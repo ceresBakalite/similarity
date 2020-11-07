@@ -59,9 +59,9 @@ var similarityframe = {};
 
     function initialise()
     {
-        test.rsc = new Object(); // resource allocation
+        //test.rsc = new Object(); // resource allocation
 
-        rsc = {};
+        test.rsc = {};
         (function() {
 
             rsc.isValidSource = function()
