@@ -213,7 +213,7 @@ var compose = {};
         const nodelist = document.querySelectorAll(el.node); // shadowroot markdown node - ie zero-md or ceres-sv
 
         if (!el.regex) el.regex = /<a (?!target)/gmi;
-        if (!el.replacement) el.replacement = '<a target="_top" ';
+        if (!el.replace) el.replace = '<a target="_top" ';
 
         nodelist.forEach(node => {
 
@@ -222,7 +222,7 @@ var compose = {};
             if (shadow)
             {
                 let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
-                shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replacement);
+                shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
             }
 
         });
