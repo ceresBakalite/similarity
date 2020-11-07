@@ -14,13 +14,13 @@ var similarity = {};
     this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
     this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
-    let rsc = function() { return attribute; }  // similarity local resource attributes
-    let location = new Map();
-    let pinimage = new Map();
+    const rsc = new Object();
+    const location = new Map();
+    const pinimage = new Map();
 
     initialise();
 
-    let getMarkupDocument = function (markupId, buttonElement)
+    function getMarkupDocument(markupId, buttonElement)
     {
         if (rsc.markupId != markupId)
         {
@@ -33,7 +33,7 @@ var similarity = {};
         if (buttonElement) buttonElement.blur();
     }
 
-    let resetPinState = function(el)
+    function resetPinState(el)
     {
         if (el.getAttribute('state') == 'enabled')
         {
@@ -47,14 +47,14 @@ var similarity = {};
 
     }
 
-    let setDisplayState = function(attribute)
+    function setDisplayState(attribute)
     {
         const header = document.querySelector('div.page-header');
         if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
         cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
     }
 
-    let setPinState = function(el, attribute)
+    function setPinState(el, attribute)
     {
         if (generic.isEmptyOrNull(el)) return;
 
@@ -63,7 +63,7 @@ var similarity = {};
         cookies.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
     }
 
-    let getHeaderAttributes = function()
+    function getHeaderAttributes()
     {
         const header = document.querySelector('div.page-header');
 
@@ -74,7 +74,7 @@ var similarity = {};
         if (cookies.get('pn') == 'enabled') setPinState(document.querySelector('img.pin-navbar'), 'enabled');
     }
 
-    let getQueryString = function()
+    function getQueryString()
     {
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('sync')
