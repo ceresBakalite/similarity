@@ -9,6 +9,8 @@ var similarityframe = {};
 
     include.directive();
 
+    const ceres = this;
+
     initialise();
 
     this.onload = function() { onloadFrame(); };  // global scope method reference
@@ -57,7 +59,7 @@ var similarityframe = {};
 
     function initialise()
     {
-        const rsc = {};
+        ceres.rsc = {};
         (function() {
 
             rsc.isValidSource = function()
