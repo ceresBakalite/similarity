@@ -7,6 +7,8 @@ var similarityframe = {};
 {
     'use strict';
 
+    const test = this;
+
     include.directive();
 
     initialise();
