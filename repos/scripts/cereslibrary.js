@@ -212,7 +212,7 @@ var compose = {};
     {
         const nodelist = document.querySelectorAll(el.node); // shadowroot markdown node - ie zero-md or ceres-sv
 
-        if (!el.regex) el.regex = /<a (?!target)/gm;
+        if (!el.regex) el.regex = /<a (?!target)/gmi;
         if (!el.replacement) el.replacement = '<a target="_top" ';
 
         nodelist.forEach(node => {
