@@ -9,7 +9,7 @@ var similarityframe = {};
 
     include.directive();
 
-    let rsc = new Object();
+    let rsc = new Object(); // resource allocation
 
     initialise();
 
@@ -52,15 +52,15 @@ var similarityframe = {};
 
     }
 
+    function displayFooter()
+    {
+        setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
+    }
+
     function initialise()
     {
-        rsc = {}; // resource allocation
+        rsc = {};
         (function() {
-
-            let displayFooter = function()
-            {
-                setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
-            }
 
             rsc.isValidSource = function()
             {
