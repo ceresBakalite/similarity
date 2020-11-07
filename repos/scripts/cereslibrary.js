@@ -221,7 +221,7 @@ var compose = {};
 
             if (shadow)
             {
-                let markdown = shadow.querySelector(el.query).innerHTML;
+                let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
                 shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replacement);
             }
 
