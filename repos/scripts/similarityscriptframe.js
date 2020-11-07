@@ -69,7 +69,7 @@ var similarityframe = {};
 
         let asyncPullMarkdownRequest = function()
         {
-            setTimeout(function() { setCORSMarkdownLinks( { node: 'zero-md', query: 'zero-md.markdown-body' } ); }, 1000);
+            setTimeout(function() { setCORSMarkdownLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
             displayFooter();
         }
 
