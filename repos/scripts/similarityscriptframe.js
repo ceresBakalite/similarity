@@ -17,8 +17,6 @@ var similarityframe = {};
 
     function onloadFrame()
     {
-        const sync = document.querySelector('body');
-
         if (rsc.isValidSource())
         {
             rsc.invokeScrollEventListener();
@@ -66,6 +64,8 @@ var similarityframe = {};
 
             rsc.isValidSource = function()
             {
+                const sync = document.querySelector('body');
+
                 if (parent.document.querySelector('body.ceres > section.index')) return true;
                 window.location.href = '/similarity/?sync=' + sync.className;
 
