@@ -14,7 +14,7 @@ export { include, generic, cookies, compose, touch, caching }
 var include = {};
 (function()
 {
-    'use strict';
+    'use strict'; // for conformity - strict by default
 
     this.directive = function(el = 'include-directive')
     {
@@ -35,7 +35,7 @@ var include = {};
 var generic = {};
 (function()
 {
-    'use strict';
+    'use strict'; // for conformity - strict by default
 
     const protean = function() { return attribute; }
     const resource = function() { return attribute; } // local resource
@@ -142,7 +142,7 @@ var generic = {};
 var cookies = {};
 (function() {
 
-    'use strict';
+    'use strict'; // for conformity - strict by default
 
     this.get = function(name)
     {
@@ -171,7 +171,7 @@ var cookies = {};
 var compose = {};
 (function() {
 
-    'use strict';
+    'use strict'; // for conformity - strict by default
 
     const mapNode = new Map();
 
@@ -242,7 +242,7 @@ var compose = {};
 var touch = {};
 (function() {
 
-    'use strict';
+    'use strict'; // for conformity - strict by default
 
     this.setHorizontalSwipe = function(touch, callback, args)
     {
@@ -269,7 +269,7 @@ var touch = {};
 var caching = {};
 (function(cache) {
 
-    'use strict';
+    'use strict'; // for conformity - strict by default
 
     this.available = ('caches' in window);
 
