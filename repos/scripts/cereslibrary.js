@@ -23,7 +23,7 @@ var include = {};
             async connectedCallback()
             {
                 const src = this.getAttribute('src');
-                this.insertAdjacentHTML('afterbegin', await ( await fetch(src) ).text());
+                fetch(src).then(response => response.text()).then(str => { this.insertAdjacentHTML('afterbegin', str) });
             }
 
         });
