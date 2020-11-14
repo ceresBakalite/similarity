@@ -127,6 +127,7 @@ var generic = {};
         protean.isWindows = (navigator.appVersion.indexOf('Win') != -1);
         protean.newline = protean.isWindows ? '\r\n' : '\n';
         protean.whitespace = /\s/g;
+        protean.markup = /(<([^>]+)>)/ig;
 
         Object.freeze(protean);
 
