@@ -37,20 +37,40 @@ var generic = {};
 {
     'use strict'; // for conformity - strict by default
 
-    const protean = function() { return attribute; }
-    const resource = function() { return attribute; } // local resource
-    const symbol = new Map(); // local scope symbols
-
-    initialise();
-
-    this.constant = protean; // exposed local scope resources
-
-    Object.freeze(this.constant);
+    this.reference = 1;
+    this.notify = 2;
+    this.default = 98;
+    this.error = 99;
+    this.bool = ['true','1','yes','on','TRUE','YES','ON','Y','T','y','t'];
+    this.isWindows = (navigator.appVersion.indexOf('Win') != -1);
+    this.newline = this.isWindows ? '\r\n' : '\n';
+    this.whitespace = /\s/g;
+    this.markup = /(<([^>]+)>)/ig;
 
     this.windowOpen = function(obj) { window.open(obj.element.getAttribute('src'), obj.type); }
     this.isString = function(obj) { return Object.prototype.toString.call(obj) == '[object String]'; }
     this.clearElement = function(el) { while (el.firstChild) el.removeChild(el.firstChild); }
     this.getImportMetaUrl = function() { return import.meta.url; }
+
+    this.setHorizontalSwipe = function(touch, callback, args)
+    {
+        if (!touch.act) touch.act = 80;
+
+        touch.node.addEventListener('touchstart', e => { touch.start = e.changedTouches[0].screenX; }, { passive: true } );
+        touch.node.addEventListener('touchmove', e => { e.preventDefault(); }, { passive: true });
+        touch.node.addEventListener('touchend', e =>
+        {
+            touch.end = e.changedTouches[0].screenX;
+
+            if (Math.abs(touch.start - touch.end) > touch.act)
+            {
+                args.action = (touch.start > touch.end);
+                callback.call(this, args);
+            }
+
+        }, { passive: true });
+
+    }
 
     this.isEmptyOrNull = function(obj)
     {
@@ -63,79 +83,68 @@ var generic = {};
         return !obj;
     }
 
-    this.getBooleanAttribute = function(attribute, locale = 'en')
+    this.getBooleanAttribute = function(attribute)
     {
         if (attribute === true || attribute === false) return attribute;
-        if (this.isEmptyOrNull(attribute)) return false;
-        if (!this.isString(attribute)) return false;
+        if (this.isEmptyOrNull(attribute) || !this.isString(attribute)) return false;
 
-        const token = attribute.trim().toLocaleLowerCase(locale);
-
-        return symbol.get(token) || false;
+        return this.bool.includes(attribute.trim());
     }
 
-    this.removeDuplcates = function(obj, key, sort)
+    this.getUniqueElementId = function(str = null, range = 100)
     {
+        let elName = function() { return str + Math.floor(Math.random() * range) };
+        let el = null;
+
+        while (document.getElementById(el = elName())) {};
+
+        return el;
+    }
+
+    this.removeDuplcates = function(obj, sort)
+    {
+        const key = JSON.stringify;
         let ar = [...new Map (obj.map(node => [key(node), node])).values()];
+
         return sort ? ar.sort((a, b) => a - b) : ar;
     }
 
-    this.inspect = function(diagnostic)
+    this.htmlToText = function(html, regex)
     {
-        if (this.isEmptyOrNull(diagnostic)) return this.inspect({ type: protean.error, notification: resource.inspect });
+        if (this.isEmptyOrNull(html)) return;
+        if (regex) return html.replace(this.markup, '');
 
-        const lookup = {
-            [protean.notify]: function() { if (diagnostic.logtrace) console.log(diagnostic.notification); },
-            [protean.error]: function() { this.errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace } ); },
-            [protean.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + protean.newline + protean.newline + diagnostic.reference); },
-            [protean.default]: function() { this.errorHandler({ notification: resource.errordefault, alert: diagnostic.logtrace } ); }
-        };
+        let el = document.createElement("div");
+        el.innerHTML = html;
 
-        return lookup[diagnostic.type]() || lookup[protean.default];
+        return el.textContent || el.innerText;
     }
 
-    this.errorHandler = function(error)
+
+    this.inspect = function(diagnostic)
     {
-        if (this.isEmptyOrNull(error)) return this.inspect({ type: protean.error, notification: resource.errorHandler });
+        const errorHandler = function(error)
+        {
+            let err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
+            console.error(err);
 
-        const err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
-        console.log(err);
+            if (error.alert) alert(err);
+        }
 
-        if (error.alert) alert(err);
+        const lookup = {
+            [this.notify]: function() { if (diagnostic.logtrace) console.info(diagnostic.notification); },
+            [this.error]: function() { errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace } ); },
+            [this.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + this.newline + this.newline + diagnostic.reference); },
+            [this.default]: function() { errorHandler({ notification: errordefault, alert: diagnostic.logtrace } ); }
+        };
 
-        return false;
+        lookup[diagnostic.type]() || lookup[this.default];
     }
 
     this.getObjectProperties = function(object, str = '')
     {
         for (let property in object) str += property + ': ' + object[property] + ', ';
         return str.replace(/, +$/g,'');
-    }
-
-    function initialise()
-    {
-        symbol.set('true', true);
-        symbol.set('t', true);
-        symbol.set('yes', true);
-        symbol.set('y', true);
-        symbol.set('1', true);
-
-        protean.reference = 1;
-        protean.notify = 2;
-        protean.default = 98;
-        protean.error = 99;
-        protean.isWindows = (navigator.appVersion.indexOf('Win') != -1);
-        protean.newline = protean.isWindows ? '\r\n' : '\n';
-        protean.whitespace = /\s/g;
-        protean.markup = /(<([^>]+)>)/ig;
-
-        Object.freeze(protean);
-
-        resource.inspect = 'Error: An exception occurred in the inspect method.  The diagnostic argument was empty or null';
-        resource.errorhandler = 'Error: An exception occurred in the errorhandler method.  The error argument was empty or null';
-        resource.errordefault = 'An unexpected error has occurred. The inspection type was missing or invalid';
-
-        Object.freeze(resource);
     }
 
 }).call(generic);
