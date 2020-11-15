@@ -41,7 +41,8 @@ var generic = {};
     this.notify = 2;
     this.default = 98;
     this.error = 99;
-    this.bool = ['true','1','yes','on','TRUE','YES','ON','Y','T','y','t'];
+    this.nonWordChars = '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…';
+    this.strBoolean = ['true','1','yes','on','TRUE','YES','ON','Y','T','y','t'];
     this.isWindows = (navigator.appVersion.indexOf('Win') != -1);
     this.newline = this.isWindows ? '\r\n' : '\n';
     this.whitespace = /\s/g;
@@ -88,7 +89,7 @@ var generic = {};
         if (attribute === true || attribute === false) return attribute;
         if (this.isEmptyOrNull(attribute) || !this.isString(attribute)) return false;
 
-        return this.bool.includes(attribute.trim());
+        return this.strBoolean.includes(attribute.trim());
     }
 
     this.getUniqueElementId = function(str = null, range = 100)
