@@ -42,7 +42,7 @@ var generic = {};
     this.default = 98;
     this.error = 99;
     this.nonWordChars = '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…';
-    this.strBoolean = ['TRUE','1','YES','ON','ACTIVE','ENABLE','SUCCESS','ACCEPT','ALLOW','PERMIT','Y','T'];
+    this.strBoolean = ['TRUE','1','YES','ON','ACTIVE','ENABLE'];
     this.isWindows = (navigator.appVersion.indexOf('Win') != -1);
     this.newline = this.isWindows ? '\r\n' : '\n';
     this.whitespace = /\s/g;
@@ -115,7 +115,7 @@ var generic = {};
         if (this.isEmptyOrNull(html)) return;
         if (regex) return html.replace(this.markup, '');
 
-        let el = document.createElement("div");
+        let el = document.createElement('div');
         el.innerHTML = html;
 
         return el.textContent || el.innerText;
@@ -157,7 +157,7 @@ var cookies = {};
 
     this.get = function(name)
     {
-        const match = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+        const match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
         return match ? decodeURIComponent(match[1]) : undefined;
     }
 
@@ -195,10 +195,10 @@ var compose = {};
 
         node.id = el.id;
 
-        if (el.className) node.setAttribute("class", el.className);
-        if (el.onClick) node.setAttribute("onclick", el.onClick);
-        if (el.src) node.setAttribute("src", el.src);
-        if (el.alt) node.setAttribute("alt", el.alt);
+        if (el.className) node.setAttribute('class', el.className);
+        if (el.onClick) node.setAttribute('onclick', el.onClick);
+        if (el.src) node.setAttribute('src', el.src);
+        if (el.alt) node.setAttribute('alt', el.alt);
         if (el.rel) node.setAttribute('rel', el.rel);
         if (el.type) node.setAttribute('type', el.type);  // MDN - not depricated, recommended practice to omit
         if (el.href) node.setAttribute('href', el.href);
