@@ -39,11 +39,14 @@ var generic = {};
 
     this.reference = 1;
     this.notify = 2;
+    this.warn = 3;
     this.default = 98;
     this.error = 99;
-    this.nonWordChars = '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…';
-    this.strBoolean = ['TRUE','1','YES','ON','ACTIVE','ENABLE'];
+    this.bTrueArray = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
     this.isWindows = (navigator.appVersion.indexOf('Win') != -1);
+    this.nonWordChars = '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…';
+    this.bool = this.bTrueArray.toString().toUpperCase().split(',');
+    this.strBoolean = ['TRUE','1','YES','ON','ACTIVE','ENABLE'];
     this.newline = this.isWindows ? '\r\n' : '\n';
     this.whitespace = /\s/g;
     this.markup = /(<([^>]+)>)/ig;
@@ -89,7 +92,7 @@ var generic = {};
         if (attribute === true || attribute === false) return attribute;
         if (this.isEmptyOrNull(attribute) || !this.isString(attribute)) return false;
 
-        return this.strBoolean.includes(attribute.trim().toUpperCase());
+        return this.bool.includes(attribute.trim().toUpperCase());
     }
 
     this.getUniqueElementId = function(str = null, range = 100)
@@ -136,6 +139,7 @@ var generic = {};
             [this.notify]: function() { if (diagnostic.logtrace) console.info(diagnostic.notification); },
             [this.error]: function() { errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace } ); },
             [this.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + this.newline + this.newline + diagnostic.reference); },
+            [this.warn]: function() { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
             [this.default]: function() { errorHandler({ notification: errordefault, alert: diagnostic.logtrace } ); }
         };
 
