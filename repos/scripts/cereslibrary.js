@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { include, generic, cookies, compose, touch, store }
+export { include, generic, cookies, compose, touch, cachestore }
 
 const remark = {
     imageMarkup      : 'Image list markup ',
@@ -290,7 +290,7 @@ var touch = {};
 
 }).call(touch);
 
-var store = {};
+var cachestore = {};
 (function() {
 
     'use strict'; // for conformity - strict by default
@@ -347,4 +347,4 @@ var store = {};
 
     }
 
-}).call(store);
+}).call(cachestore);
