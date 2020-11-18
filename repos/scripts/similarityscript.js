@@ -1,6 +1,6 @@
 export { similarity };
 
-import { generic, cookies, include } from '../mods/cereslibrary.min.js';
+import { resource, cookies, include } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
@@ -56,7 +56,7 @@ var similarity = {};
 
     function setPinState(el, attribute)
     {
-        if (generic.isEmptyOrNull(el)) return;
+        if (resource.isEmptyOrNull(el)) return;
 
         el.src = pinimage.get(attribute);
         el.setAttribute('state', attribute);
