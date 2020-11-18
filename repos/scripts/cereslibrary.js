@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { include, resource, cookies, compose, touch, cache }
+export { include, resource, cookies, touch, cache }
 
 const remark = {
     imageMarkup      : 'Image list markup ',
