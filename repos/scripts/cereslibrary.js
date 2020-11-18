@@ -9,7 +9,15 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { include, generic, cookies, compose, touch, caching }
+export { include, generic, cookies, compose, touch, store }
+
+const remark = {
+    imageMarkup      : 'Image list markup ',
+    configAttributes : 'The element attributes ',
+    elementSearch    : 'There is no \'embed\' elementId available. Looking for the first occurance of a <template> or <noscript> tagname',
+    documentError   : 'Error: Unable to find the document element',
+    cacheWarning     : 'Warning: cache response status '
+};
 
 var include = {};
 (function()
@@ -282,7 +290,7 @@ var touch = {};
 
 }).call(touch);
 
-var caching = {};
+var store = {};
 (function() {
 
     'use strict'; // for conformity - strict by default
@@ -295,7 +303,7 @@ var caching = {};
         {
             fetch(url).then(response =>
             {
-                if (!response.ok) { rsc.inspect({ type: rsc.attrib.warn, notification: remark.cacheWarning + url, logtrace: cfg.attrib.trace }); }
+                if (!response.ok) { generic.inspect({ type: generic.attrib.warn, notification: remark.cacheWarning + url, logtrace: true }); }
                 return caches.open(cacheName).then(cache => { return cache.put(url, response); });
             });
 
@@ -339,4 +347,4 @@ var caching = {};
 
     }
 
-}).call(caching);
+}).call(store);

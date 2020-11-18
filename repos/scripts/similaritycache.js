@@ -11,20 +11,19 @@
 */
 export { similaritycache }
 
-import { generic, caching } from '../mods/cereslibrary.min.js';
+import { generic, store } from '../mods/cereslibrary.min.js';
 
 var similaritycache = {};
-(function(cache)
+(function()
 {
     'use strict';
 
-    if (!caching.available) return generic.inspect({ type: generic.error, notification: 'Cache is unavailable' });
+    if (!store.available) return generic.inspect({ type: generic.error, notification: 'Cache is unavailable' });
 
     let action = function() { return attribute; }
 
     action.namedCache = 'similarity-cache';
     action.installCache = true;
-
     action.listCache = false;
     action.listAction = false;
     action.exploreCache = false;
@@ -84,21 +83,21 @@ var similaritycache = {};
     ];
 
     // install cache
-    if (action.installCache) caching.installCache(action.namedCache, urlArray);
+    if (action.installCache) store.installCache(action.namedCache, urlArray);
 
     // view requests that have already been cached
-    if (action.exploreCache) caching.viewCachedRequests(action.namedCache);
+    if (action.exploreCache) store.viewCachedRequests(action.namedCache);
 
     // list existing cache names
-    if (action.listCache) caching.listExistingCacheNames();
+    if (action.listCache) store.listExistingCacheNames();
 
     // delete old versions of cache
-    if (action.replaceCache) caching.deleteOldCacheVersions(action.namedCache);
+    if (action.replaceCache) store.deleteOldCacheVersions(action.namedCache);
 
     // delete cache by name
-    if (action.deleteCache) caching.deleteCacheByName(action.namedCache);
+    if (action.deleteCache) store.deleteCacheByName(action.namedCache);
 
     // list the action properties
     if (action.listAction) console.log(generic.getObjectProperties(action));
 
-})(similaritycache);
+}).call(similaritycache);
