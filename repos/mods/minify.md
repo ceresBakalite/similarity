@@ -8,14 +8,18 @@ https://github.com/terser/terser
 
 *recommended usage*
 
-        1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m
-        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -c -m
+        1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m reserved=['export','import','include','generic','cookies','compose','touch','caching'] -f quote_style=1 --module
+
+        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js  -c -m reserved=['export','import','generic','similaritycache','cache','caching'] -f quote_style=1 --module
+
+
 
 **Example 2**
 
 *with source map*
 
         1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\mods',url='cereslibrary.min.js.map'"
+
         2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -c -m --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\mods',url='similaritycache.min.js.map'"
 
 **Example 3**
@@ -23,6 +27,7 @@ https://github.com/terser/terser
 *alternatively...*
 
         1. terser -c -m -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -- C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js
+
         2. terser -c -m -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -- C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js
 
 **Example 4**

@@ -37,24 +37,9 @@ var generic = {};
 {
     'use strict'; // for conformity - strict by default
 
-    this.reference = 1;
-    this.notify = 2;
-    this.warn = 3;
-    this.default = 98;
-    this.error = 99;
-    this.bTrueArray = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
-    this.isWindows = (navigator.appVersion.indexOf('Win') != -1);
-    this.nonWordChars = '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…';
-    this.bool = this.bTrueArray.toString().toUpperCase().split(',');
-    this.strBoolean = ['TRUE','1','YES','ON','ACTIVE','ENABLE'];
-    this.newline = this.isWindows ? '\r\n' : '\n';
-    this.whitespace = /\s/g;
-    this.markup = /(<([^>]+)>)/ig;
-
-    this.windowOpen = function(obj) { window.open(obj.element.getAttribute('src'), obj.type); }
+    this.srcOpen = function(obj) { window.open(obj.element.getAttribute('src'), obj.type); }
     this.isString = function(obj) { return Object.prototype.toString.call(obj) == '[object String]'; }
     this.clearElement = function(el) { while (el.firstChild) el.removeChild(el.firstChild); }
-    this.getImportMetaUrl = function() { return import.meta.url; }
 
     this.setHorizontalSwipe = function(touch, callback, args)
     {
@@ -87,22 +72,23 @@ var generic = {};
         return !obj;
     }
 
-    this.getBooleanAttribute = function(attribute)
+    this.getBooleanAttribute = function(obj)
     {
-        if (attribute === true || attribute === false) return attribute;
-        if (this.isEmptyOrNull(attribute) || !this.isString(attribute)) return false;
+        if (obj === true || obj === false) return atr;
+        if (this.isEmptyOrNull(obj) || !this.isString(obj)) return false;
 
-        return this.bool.includes(attribute.trim().toUpperCase());
+        return this.attrib.bool.includes(obj.trim().toUpperCase());
     }
 
-    this.getUniqueElementId = function(str = null, range = 100)
+    this.getUniqueElementId = function(args = {})
     {
-        let elName = function() { return str + Math.floor(Math.random() * range) };
-        let el = null;
+        if (!args.name) args.name = 'n';
+        if (!args.range) args.range = 100;
 
-        while (document.getElementById(el = elName())) {};
+        let elName = function() { return args.name + Math.floor(Math.random() * args.range) };
+        while (document.getElementById(args.el = elName())) {};
 
-        return el;
+        return args.el;
     }
 
     this.removeDuplcates = function(obj, sort)
@@ -113,17 +99,15 @@ var generic = {};
         return sort ? ar.sort((a, b) => a - b) : ar;
     }
 
-    this.htmlToText = function(html, regex)
+    this.parseText = function(text, regex)
     {
-        if (this.isEmptyOrNull(html)) return;
-        if (regex) return html.replace(this.markup, '');
+        if (this.isEmptyOrNull(text)) return;
 
-        let el = document.createElement('div');
-        el.innerHTML = html;
+        if (regex || text.includes('</template>')) return text.replace(this.attrib.markup, '');
 
-        return el.textContent || el.innerText;
+        let doc = new DOMParser().parseFromString(text, 'text/html');
+        return doc.body.textContent || doc.body.innerText;
     }
-
 
     this.inspect = function(diagnostic)
     {
@@ -136,20 +120,38 @@ var generic = {};
         }
 
         const lookup = {
-            [this.notify]: function() { if (diagnostic.logtrace) console.info(diagnostic.notification); },
-            [this.error]: function() { errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace } ); },
-            [this.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + this.newline + this.newline + diagnostic.reference); },
-            [this.warn]: function() { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
-            [this.default]: function() { errorHandler({ notification: errordefault, alert: diagnostic.logtrace } ); }
+            [this.attrib.notify]: function() { if (diagnostic.logtrace) console.info(diagnostic.notification); },
+            [this.attrib.warn]: function() { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
+            [this.attrib.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + this.attrib.newline + this.attrib.newline + diagnostic.reference); },
+            [this.attrib.error]: function() { errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace }); },
+            [this.attrib.default]: function() { errorHandler({ notification: 'Unhandled exception' }); }
         };
 
-        lookup[diagnostic.type]() || lookup[this.default];
+        lookup[diagnostic.type]() || lookup[this.attrib.default];
     }
 
-    this.getObjectProperties = function(object, str = '')
+    this.getObjectProperties = function(string = {}, str = '')
     {
-        for (let property in object) str += property + ': ' + object[property] + ', ';
+        for (let literal in string) str += literal + ': ' + string[literal] + ', ';
         return str.replace(/, +$/g,'');
+    }
+
+    this.attrib =
+    {
+        reference   : 1,
+        notify      : 2,
+        warn        : 3,
+        default     : 98,
+        error       : 99,
+        bArray      : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
+        isWindows   : (navigator.appVersion.indexOf('Win') != -1),
+        nonWordChars: '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…',
+        whitespace  : /\s/g,
+        markup      : /(<([^>]+)>)/ig,
+
+        get newline() { return this.isWindows ? '\r\n' : '\n'; },
+        get bool() { return this.bArray.toString().toUpperCase().split(','); },
+        get metaUrl() { return import.meta.url; }
     }
 
 }).call(generic);
@@ -192,13 +194,12 @@ var compose = {};
 
     initialise();
 
-    this.composeElement = function(el, locale = 'en')
+    this.composeElement = function(el)
     {
-        const precursor = mapNode.get(el.typeof.toLocaleLowerCase(locale)) || el.parent;
-        const node = document.createElement(el.typeof);
+        const precursor = el.parent;
+        const node = document.createElement(el.type);
 
-        node.id = el.id;
-
+        if (el.id) node.setAttribute('id', el.id);
         if (el.className) node.setAttribute('class', el.className);
         if (el.onClick) node.setAttribute('onclick', el.onClick);
         if (el.src) node.setAttribute('src', el.src);
@@ -282,66 +283,29 @@ var touch = {};
 }).call(touch);
 
 var caching = {};
-(function(cache) {
+(function() {
 
     'use strict'; // for conformity - strict by default
 
     this.available = ('caches' in window);
 
-    this.set = function(type = 'Cache-Control', value = 'public, max-age 604800, s-maxage 43200')
+    this.installCache = function(cacheName, urlArray)
     {
-        const header = new Headers();
-        header.set(type, value);
-    }
-
-    this.get = function(type = 'Cache-Control')
-    {
-        const header = new Headers();
-        header.get(type);
-    }
-
-    this.installCache = function(namedCache, urlArray, urlImage = '/images/NAVCogs.png')
-    {
-        window.addEventListener('install', function(e)
+        urlArray.forEach(url =>
         {
-            e.waitUntil(caches.open(namedCache).then(function(cache) { return cache.addAll(urlArray); }));
-        });
-
-        window.addEventListener('fetch', function(e)
-        {
-            e.respondWith(caches.match(e.request).then(function(response)
+            fetch(url).then(response =>
             {
-                if (response !== undefined)
-                {
-                    return response;
-
-                } else {
-
-                    return fetch(e.request).then(function (response)
-                    {
-                        let responseClone = response.clone();
-
-                        caches.open(namedCache).then(function (cache) { cache.put(e.request, responseClone); });
-
-                        return response;
-
-                    }).catch(function () {
-
-                        return caches.match(urlImage);
-
-                    });
-
-                }
-
-            }));
+                if (!response.ok) { rsc.inspect({ type: rsc.attrib.warn, notification: remark.cacheWarning + url, logtrace: cfg.attrib.trace }); }
+                return caches.open(cacheName).then(cache => { return cache.put(url, response); });
+            });
 
         });
 
     }
 
-    this.viewCachedRequests = function(namedCache)
+    this.viewCachedRequests = function(cacheName)
     {
-        caches.open(namedCache).then(function(cache)
+        caches.open(cacheName).then(function(cache)
         {
             cache.keys().then(function(cachedRequests) { console.log('exploreCache: ' + cachedRequests); });
         });
@@ -353,12 +317,12 @@ var caching = {};
         caches.keys().then(function(cacheKeys) { console.log('listCache: ' + cacheKeys); });
     }
 
-    this.deleteCacheByName = function(namedCache)
+    this.deleteCacheByName = function(cacheName)
     {
-        caches.delete(namedCache).then(function() { console.log(namedCache + ' - Cache successfully deleted'); });
+        caches.delete(cacheName).then(function() { console.log(cacheName + ' - Cache successfully deleted'); });
     }
 
-    this.deleteOldCacheVersions = function(namedCache)
+    this.deleteOldCacheVersions = function(cacheName)
     {
         caches.keys().then(function(cacheNames)
         {
@@ -366,7 +330,7 @@ var caching = {};
             (
                 cacheNames.map(function(cacheName)
                 {
-                    if(cacheName != namedCache) { return caches.delete(cacheName); }
+                    if(cacheName != cacheName) { return caches.delete(cacheName); }
                 })
 
             );
