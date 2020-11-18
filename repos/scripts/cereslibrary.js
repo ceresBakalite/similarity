@@ -2,7 +2,7 @@
  * @license
  * cereslibrary v1.0.0
  *
- * Minified using terser v5.3.5
+ * Minified using terser v5.4.0
  * Original file: ceresbakalite/similarity/repos/scripts/cereslibrary.js
  *
  * ceresBakalite/similarity is licensed under the MIT License - http://opensource.org/licenses/MIT
