@@ -11,14 +11,14 @@
 */
 export { similaritycache }
 
-import { generic, cache } from '../mods/cereslibrary.min.js';
+import { resource, cache } from '../mods/cereslibrary.min.js';
 
 var similaritycache = {};
 (function()
 {
     'use strict';
 
-    if (!cache.available) return generic.inspect({ type: generic.error, notification: 'Cache is unavailable' });
+    if (!cache.available) return resource.inspect({ type: resource.error, notification: 'Cache is unavailable' });
 
     let action = function() { return attribute; }
 
@@ -97,6 +97,6 @@ var similaritycache = {};
     if (action.deleteCache) cache.deleteCacheByName(action.namedCache);
 
     // list the action properties
-    if (action.listAction) console.log(generic.getObjectProperties(action));
+    if (action.listAction) console.log(resource.getObjectProperties(action));
 
 }).call(similaritycache);
