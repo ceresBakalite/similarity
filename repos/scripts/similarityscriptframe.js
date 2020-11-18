@@ -1,6 +1,6 @@
 export { similarityframe };
 
-import { include, cookies, compose } from '../mods/cereslibrary.min.js';
+import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function()
@@ -79,7 +79,7 @@ var similarityframe = {};
 
             rsc.asyncPullMarkdownRequest = function()
             {
-                setTimeout(function() { compose.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
+                setTimeout(function() { resource.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
                 displayFooter();
             }
 
