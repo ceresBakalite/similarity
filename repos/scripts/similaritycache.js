@@ -44,7 +44,7 @@ var similaritycache = {};
         './repos/scripts/IncludeNavigation.inc',
         './repos/scripts/IncludeHeader.inc',
         './repos/scripts/IncludeFooter.inc',
-        './repos/scripts..scriptframe.js',
+        './repos/scripts/similarityscriptframe.js',
         './repos/scripts/similarityscript.js',
         './repos/mods/similaritycache.min.js',
         './repos/mods/cereslibrary.min.js',
