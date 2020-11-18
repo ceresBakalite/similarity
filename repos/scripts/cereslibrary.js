@@ -15,7 +15,7 @@ const remark = {
     imageMarkup      : 'Image list markup ',
     configAttributes : 'The element attributes ',
     elementSearch    : 'There is no \'embed\' elementId available. Looking for the first occurance of a <template> or <noscript> tagname',
-    documentError   : 'Error: Unable to find the document element',
+    documentError    : 'Error: Unable to find the document element',
     cacheWarning     : 'Warning: cache response status '
 };
 
@@ -128,11 +128,11 @@ var resource = {};
         }
 
         const lookup = {
-            [this.attrib.notify]: function() { if (diagnostic.logtrace) console.info(diagnostic.notification); },
-            [this.attrib.warn]: function() { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
-            [this.attrib.reference]: function() { if (diagnostic.logtrace) console.log('Reference: ' + this.attrib.newline + this.attrib.newline + diagnostic.reference); },
-            [this.attrib.error]: function() { errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace }); },
-            [this.attrib.default]: function() { errorHandler({ notification: 'Unhandled exception' }); }
+            [this.attrib.notify]    : function() { if (diagnostic.logtrace) console.info(diagnostic.notification); },
+            [this.attrib.warn]      : function() { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
+            [this.attrib.reference] : function() { if (diagnostic.logtrace) console.log('Reference: ' + this.attrib.newline + this.attrib.newline + diagnostic.reference); },
+            [this.attrib.error]     : function() { errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace }); },
+            [this.attrib.default]   : function() { errorHandler({ notification: 'Unhandled exception' }); }
         };
 
         lookup[diagnostic.type]() || lookup[this.attrib.default];
@@ -158,7 +158,7 @@ var resource = {};
         markup      : /(<([^>]+)>)/ig,
 
         get newline() { return this.isWindows ? '\r\n' : '\n'; },
-        get bool() { return this.bArray.toString().toUpperCase().split(','); },
+        get bool() { return this.bArray.map(item => { return item.toUpperCase(); }) },
         get metaUrl() { return import.meta.url; }
     }
 
@@ -198,15 +198,14 @@ var compose = {};
 
     'use strict'; // for conformity - strict by default
 
-    const mapNode = new Map();
-
-    initialise();
-
     this.composeElement = function(el)
     {
-        const precursor = el.parent;
+        const precursor = this.attrib.tag.includes(el.type.trim().toUpperCase()) ? document.head : el.parent;
         const node = document.createElement(el.type);
 
+        el.forEach((item, i) => { if (item[i]) node.setAttribute(item, item[i]); });
+
+/*
         if (el.id) node.setAttribute('id', el.id);
         if (el.className) node.setAttribute('class', el.className);
         if (el.onClick) node.setAttribute('onclick', el.onClick);
@@ -219,7 +218,7 @@ var compose = {};
         if (el.crossorigin) node.setAttribute('crossorigin', el.crossorigin);
         if (el.media) node.setAttribute('media', el.media);
         if (el.markup) node.insertAdjacentHTML('afterbegin', el.markup);
-
+*/
         precursor.appendChild(node);
     }
 
@@ -254,11 +253,10 @@ var compose = {};
 
     }
 
-    function initialise()
+    this.attrib =
     {
-        mapNode.set('link', document.head);
-        mapNode.set('script', document.head);
-        mapNode.set('style', document.head);
+        tagName: ['link', 'script', 'style' ],
+        get tag() { return this.tagName.map(item => { return item.toUpperCase(); }) }
     }
 
 }).call(compose);
