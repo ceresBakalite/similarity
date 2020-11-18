@@ -49,6 +49,36 @@ var resource = {};
     this.isString = function(obj) { return Object.prototype.toString.call(obj) == '[object String]'; }
     this.clearElement = function(el) { while (el.firstChild) el.removeChild(el.firstChild); }
 
+    this.composeElement = function(el)
+    {
+        const precursor = this.attrib.tag.includes(el.type.trim().toUpperCase()) ? document.head : el.parent;
+        const node = document.createElement(el.type);
+
+        el.forEach((item, i) => { if (!this.isEmptyOrNull(item[i])) node.setAttribute(item, item[i]); });
+        precursor.appendChild(node);
+    }
+
+    this.composeCORSLinks = function(el)
+    {
+        const nodelist = document.querySelectorAll(el.node); // shadowroot markdown node - ie zero-md or ceres-sv
+
+        if (!el.regex) el.regex = /<a (?!target)/gmi;
+        if (!el.replace) el.replace = '<a target="_top" ';
+
+        nodelist.forEach(node => {
+
+            let shadow = node.shadowRoot;
+
+            if (shadow)
+            {
+                let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
+                shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
+            }
+
+        });
+
+    }
+
     this.setHorizontalSwipe = function(touch, callback, args)
     {
         if (!touch.act) touch.act = 80;
@@ -152,6 +182,7 @@ var resource = {};
         default     : 98,
         error       : 99,
         bArray      : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
+        tagName     : ['link', 'script', 'style' ],
         isWindows   : (navigator.appVersion.indexOf('Win') != -1),
         nonWordChars: '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…',
         whitespace  : /\s/g,
@@ -159,6 +190,7 @@ var resource = {};
 
         get newline() { return this.isWindows ? '\r\n' : '\n'; },
         get bool() { return this.bArray.map(item => { return item.toUpperCase(); }) },
+        get tag() { return this.tagName.map(item => { return item.toUpperCase(); }) },
         get metaUrl() { return import.meta.url; }
     }
 
@@ -192,74 +224,6 @@ var cookies = {};
     }
 
 }).call(cookies);
-
-var compose = {};
-(function() {
-
-    'use strict'; // for conformity - strict by default
-
-    this.composeElement = function(el)
-    {
-        const precursor = this.attrib.tag.includes(el.type.trim().toUpperCase()) ? document.head : el.parent;
-        const node = document.createElement(el.type);
-
-        el.forEach((item, i) => { if (item[i]) node.setAttribute(item, item[i]); });
-
-/*
-        if (el.id) node.setAttribute('id', el.id);
-        if (el.className) node.setAttribute('class', el.className);
-        if (el.onClick) node.setAttribute('onclick', el.onClick);
-        if (el.src) node.setAttribute('src', el.src);
-        if (el.alt) node.setAttribute('alt', el.alt);
-        if (el.rel) node.setAttribute('rel', el.rel);
-        if (el.type) node.setAttribute('type', el.type);  // MDN - not depricated, recommended practice to omit
-        if (el.href) node.setAttribute('href', el.href);
-        if (el.as) node.setAttribute('as', el.as);
-        if (el.crossorigin) node.setAttribute('crossorigin', el.crossorigin);
-        if (el.media) node.setAttribute('media', el.media);
-        if (el.markup) node.insertAdjacentHTML('afterbegin', el.markup);
-*/
-        precursor.appendChild(node);
-    }
-
-    this.composeUniqueElementId = function(str = null, range = 100)
-    {
-        let elName = function() { return str + Math.floor(Math.random() * range) };
-        let el = null;
-
-        while (document.getElementById(el = elName())) {};
-
-        return el;
-    }
-
-    this.composeCORSLinks = function(el)
-    {
-        const nodelist = document.querySelectorAll(el.node); // shadowroot markdown node - ie zero-md or ceres-sv
-
-        if (!el.regex) el.regex = /<a (?!target)/gmi;
-        if (!el.replace) el.replace = '<a target="_top" ';
-
-        nodelist.forEach(node => {
-
-            let shadow = node.shadowRoot;
-
-            if (shadow)
-            {
-                let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
-                shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
-            }
-
-        });
-
-    }
-
-    this.attrib =
-    {
-        tagName: ['link', 'script', 'style' ],
-        get tag() { return this.tagName.map(item => { return item.toUpperCase(); }) }
-    }
-
-}).call(compose);
 
 var touch = {};
 (function() {
@@ -301,7 +265,7 @@ var cache = {};
         {
             fetch(url).then(response =>
             {
-                if (!response.ok) { resource.inspect({ type: resource.attrib.warn, notification: remark.cacheWarning + '[' + response.status + '] - ' + url, logtrace: true }); }
+                if (!response.ok) { console.warn(remark.cacheWarning + '[' + response.status + '] - ' + url); }
                 return caches.open(cacheName).then(cache => { return cache.put(url, response); });
             });
 
