@@ -46,7 +46,7 @@ var similaritycache = {};
         './repos/scripts/IncludeFooter.inc',
         './repos/scripts/similarityscriptframe.js',
         './repos/scripts/similarityscript.js',
-        './repos/mods/similaritycache.min.js',
+        '../repos/mods/similaritycache.min.js',
         './repos/mods/cereslibrary.min.js',
         './stylesheets/github-light.css',
         './stylesheets/normalize.css',
