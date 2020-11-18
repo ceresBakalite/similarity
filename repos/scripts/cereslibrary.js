@@ -303,7 +303,7 @@ var cache = {};
         {
             fetch(url).then(response =>
             {
-                if (!response.ok) { resource.inspect({ type: resource.attrib.warn, notification: remark.cacheWarning + url, logtrace: true }); }
+                if (!response.ok) { resource.inspect({ type: resource.attrib.warn, notification: remark.cacheWarning + '[' + response.status + '] - ' + url, logtrace: true }); }
                 return caches.open(cacheName).then(cache => { return cache.put(url, response); });
             });
 
