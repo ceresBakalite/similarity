@@ -48,10 +48,10 @@ var similaritycache = {};
         '/similarity/repos/scripts/similarityscript.js',
         '/similarity/repos/mods/similaritycache.min.js',
         '/similarity/repos/mods/cereslibrary.min.js',
-        '/similarity/stylesheets/stylesheets/github-light.css',
-        '/similarity/stylesheets/stylesheets/normalize.css',
-        '/similarity/stylesheets/stylesheets/stylesheet.css',
-        '/similarity/stylesheets/stylesheets/similarityIndex.css',
+        '/similarity/stylesheets/github-light.css',
+        '/similarity/stylesheets/normalize.css',
+        '/similarity/stylesheets/stylesheet.css',
+        '/similarity/stylesheets/similarityIndex.css',
         '/similarity/images/slide/NAVScreenViews01.png',
         '/similarity/images/slide/NAVScreenViews02.png',
         '/similarity/images/slide/NAVScreenViews03.png',
@@ -77,7 +77,6 @@ var similaritycache = {};
         '/similarity/images/NAVCreate.png',
         '/similarity/images/NAVCogs.png',
         'https://ceresbakalite.github.io/ceres-sv/prod/ceres-sv.min.js',
-        'https://ceresbakalite.github.io/ceres-sv/prod/ceres-sv.lib.min.js',
         'https://fonts.googleapis.com/css?family=Open+Sans:400,700',
         'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css'
     ];
