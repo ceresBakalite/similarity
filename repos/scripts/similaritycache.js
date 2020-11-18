@@ -33,9 +33,9 @@ var similaritycache = {};
     Object.freeze(action);
 
     const urlArray = [
-        '/similarity/index.html',
-        '/similarity/README.md',
-        '/similarity/shell/README.md',
+        '../index.html',
+        '../README.md',
+        '../shell/README.md',
         '/similarity/repos/scripts/index.md',
         '/similarity/repos/scripts/SyncIndex.html',
         '/similarity/repos/scripts/SyncRepos.html',
