@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { include, generic, cookies, compose, touch, cachestore }
+export { include, resource, cookies, compose, touch, cache }
 
 const remark = {
     imageMarkup      : 'Image list markup ',
@@ -40,7 +40,7 @@ var include = {};
 
 }).call(include);
 
-var generic = {};
+var resource = {};
 (function()
 {
     'use strict'; // for conformity - strict by default
@@ -162,7 +162,7 @@ var generic = {};
         get metaUrl() { return import.meta.url; }
     }
 
-}).call(generic);
+}).call(resource);
 
 var cookies = {};
 (function() {
@@ -290,7 +290,7 @@ var touch = {};
 
 }).call(touch);
 
-var cachestore = {};
+var cache = {};
 (function() {
 
     'use strict'; // for conformity - strict by default
@@ -303,7 +303,7 @@ var cachestore = {};
         {
             fetch(url).then(response =>
             {
-                if (!response.ok) { generic.inspect({ type: generic.attrib.warn, notification: remark.cacheWarning + url, logtrace: true }); }
+                if (!response.ok) { resource.inspect({ type: resource.attrib.warn, notification: remark.cacheWarning + url, logtrace: true }); }
                 return caches.open(cacheName).then(cache => { return cache.put(url, response); });
             });
 
@@ -347,4 +347,4 @@ var cachestore = {};
 
     }
 
-}).call(cachestore);
+}).call(cache);
