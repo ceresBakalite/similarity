@@ -49,12 +49,14 @@ var resource = {};
     this.isString = function(obj) { return Object.prototype.toString.call(obj) == '[object String]'; }
     this.clearElement = function(el) { while (el.firstChild) el.removeChild(el.firstChild); }
 
-    this.composeElement = function(el)
+    this.composeElement = function(el, attribute)
     {
         const precursor = this.attrib.tag.includes(el.type.trim().toUpperCase()) ? document.head : el.parent;
         const node = document.createElement(el.type);
 
-        el.forEach((item, i) => { if (!this.isEmptyOrNull(item[i])) node.setAttribute(item, item[i]); });
+        Object.entries(attribute).forEach(([key, value]) => { node.setAttribute(key, value); });
+        if (el.markup) node.insertAdjacentHTML('afterbegin', el.markup);
+
         precursor.appendChild(node);
     }
 
