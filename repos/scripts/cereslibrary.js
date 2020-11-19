@@ -191,8 +191,8 @@ var resource = {};
         markup      : /(<([^>]+)>)/ig,
 
         get newline() { return this.isWindows ? '\r\n' : '\n'; },
-        get bool() { return this.bArray.map(item => { return item.toUpperCase(); }) },
-        get tag() { return this.tagName.map(item => { return item.toUpperCase(); }) },
+        get bool() { return this.bArray.map(item => { return item.trim().toUpperCase(); }) },
+        get tag() { return this.tagName.map(item => { return item.trim().toUpperCase(); }) },
         get metaUrl() { return import.meta.url; }
     }
 
