@@ -51,7 +51,9 @@ var resource = {};
 
     this.composeElement = function(el, attribute)
     {
-        const precursor = this.attrib.tag.includes(el.type.trim().toUpperCase()) ? document.head : el.parent;
+        if (!el.type) return;
+
+        const precursor = this.attrib.tag.includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
         const node = document.createElement(el.type);
 
         Object.entries(attribute).forEach(([key, value]) => { node.setAttribute(key, value); });
