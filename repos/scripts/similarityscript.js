@@ -98,6 +98,8 @@ var similarity = {};
         location.set('slide', './repos/scripts/SyncSlide.html');
         location.set('repos', './repos/scripts/SyncRepos.html');
 
+        location.set('test', './repos/scripts/SyncTest.html');
+
         rsc.markupUrl = location.get('index');
     }
 
