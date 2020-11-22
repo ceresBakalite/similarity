@@ -79,11 +79,7 @@ var similarity = {};
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('sync')
 
-        if (name)
-        {
-console.log('sync found');
-            getMarkupDocument(name) ;
-        }
+        if (name) getMarkupDocument(name);
     }
 
     function onloadFrame()
