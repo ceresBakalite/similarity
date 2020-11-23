@@ -9,29 +9,27 @@ var similarityframe = {};
 
     include.directive();
 
-    const ceres = this;
-
     initialise();
 
     this.onload = function() { onloadFrame(); };  // global scope method reference
 
     function onloadFrame()
     {
-        if (rsc.isValidSource())
+        if (frm.isValidSource())
         {
-            rsc.invokeScrollEventListener();
-            rsc.asyncPullMarkdownRequest();
-            rsc.displaySlideviewContent();
+            frm.invokeScrollEventListener();
+            frm.asyncPullMarkdownRequest();
+            frm.displaySlideviewContent();
         }
 
     }
 
     function initialise()
     {
-        ceres.rsc = {};
+        const frm = {};
         (function() {
 
-            rsc.adjustHeaderDisplay = function()
+            this.adjustHeaderDisplay = function()
             {
                 const header = parent.document.querySelector('div.page-header');
                 const pin = parent.document.querySelector('img.pin-navbar').getAttribute('state');
@@ -58,7 +56,7 @@ var similarityframe = {};
 
             }
 
-            rsc.isValidSource = function()
+            this.isValidSource = function()
             {
                 const sync = document.querySelector('body');
 
@@ -68,27 +66,25 @@ var similarityframe = {};
                 return false;
             }
 
-            rsc.invokeScrollEventListener = function()
+            this.invokeScrollEventListener = function()
             {
-                window.onscroll = function() { adjustHeaderDisplay(); };
+                window.onscroll = function() { this.adjustHeaderDisplay(); };
             }
 
-            rsc.asyncPullMarkdownRequest = function()
+            this.asyncPullMarkdownRequest = function()
             {
                 setTimeout(function() { resource.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
                 setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
             }
 
-            rsc.displaySlideviewContent = function()
+            this.displaySlideviewContent = function()
             {
                 let csv = document.querySelectorAll('div.slideview-content');
-                console.log('test');
                 csv.forEach((el) => { el.className = 'slideview-content'; });
             }
 
-        })(); // end resource allocation
+        }).call(frm); // end resource allocation
 
-        Object.freeze(rsc);
     }
 
 }).call(window);
