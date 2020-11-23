@@ -81,15 +81,9 @@ var similarityframe = {};
 
             rsc.displaySlideviewContent = function()
             {
-                let el = document.querySelector('slideview-content none');
-
-                console.log('working');
-
-                if (el)
-                {
-                    console.log('here now');
-                    el.className = 'slideview-content'
-                }
+                let csv = document.querySelectorAll('div.slideview-content');
+                console.log('test');
+                csv.forEach((el) => { el.className = 'slideview-content'; });
             }
 
         })(); // end resource allocation
