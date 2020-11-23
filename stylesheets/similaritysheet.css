@@ -9,6 +9,16 @@ body {
   scrollbar-width: none;
 }
 
+.view {
+    display: block;
+    contain: content;
+}
+
+.none {
+    display: none;
+    contain: content;
+}
+
 .hr-line-paleblue {
   height:2px;
   border-width:0;
