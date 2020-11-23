@@ -7,6 +7,8 @@ var similarityframe = {};
 {
     'use strict';
 
+    const frm = {};
+
     include.directive();
 
     initialise();
@@ -26,7 +28,6 @@ var similarityframe = {};
 
     function initialise()
     {
-        const frm = {};
         (function() {
 
             this.adjustHeaderDisplay = function()
