@@ -7,10 +7,9 @@ var similarityframe = {};
 {
     'use strict';
 
-    const frm = {};
-
     include.directive();
 
+    const frm = {};
     initialise();
 
     this.onload = function() { onloadFrame(); };  // global scope method reference
