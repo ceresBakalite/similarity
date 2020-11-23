@@ -68,7 +68,7 @@ var similarityframe = {};
 
             this.invokeScrollEventListener = function()
             {
-                window.onscroll = function() { this.adjustHeaderDisplay(); };
+                window.onscroll = function() { frm.adjustHeaderDisplay(); };
             }
 
             this.asyncPullMarkdownRequest = function()
