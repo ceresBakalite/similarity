@@ -12,9 +12,6 @@
 export { include, resource, cookies, touch, cache }
 
 const remark = {
-    imageMarkup      : 'Image list markup ',
-    configAttributes : 'The element attributes ',
-    elementSearch    : 'There is no \'embed\' elementId available. Looking for the first occurance of a <template> or <noscript> tagname',
     documentError    : 'Error: Unable to find the document element',
     cacheWarning     : 'Warning: cache response status '
 };
@@ -22,8 +19,6 @@ const remark = {
 var include = {};
 (function()
 {
-    'use strict'; // for conformity - strict by default
-
     this.directive = function(el = 'include-directive')
     {
         window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
@@ -43,11 +38,11 @@ var include = {};
 var resource = {};
 (function()
 {
-    'use strict'; // for conformity - strict by default
-
     this.srcOpen = function(obj) { window.open(obj.element.getAttribute('src'), obj.type); }
     this.isString = function(obj) { return Object.prototype.toString.call(obj) == '[object String]'; }
     this.clearElement = function(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+    this.fileName = function(path) { return path.substring(path.lastIndexOf('/')+1, path.length); }
+    this.fileType = function(path, type) { return path.substring(path.lastIndexOf('.'), path.length).toUpperCase() === type.toUpperCase(); }
 
     this.composeElement = function(el, attribute)
     {
@@ -83,27 +78,7 @@ var resource = {};
 
     }
 
-    this.setHorizontalSwipe = function(touch, callback, args)
-    {
-        if (!touch.act) touch.act = 80;
-
-        touch.node.addEventListener('touchstart', e => { touch.start = e.changedTouches[0].screenX; }, { passive: true } );
-        touch.node.addEventListener('touchmove', e => { e.preventDefault(); }, { passive: true });
-        touch.node.addEventListener('touchend', e =>
-        {
-            touch.end = e.changedTouches[0].screenX;
-
-            if (Math.abs(touch.start - touch.end) > touch.act)
-            {
-                args.action = (touch.start > touch.end);
-                callback.call(this, args);
-            }
-
-        }, { passive: true });
-
-    }
-
-    this.isEmptyOrNull = function(obj)
+    this.ignore = function(obj)
     {
         if (obj === null || obj == 'undefined') return true;
 
@@ -117,20 +92,20 @@ var resource = {};
     this.getBooleanAttribute = function(obj)
     {
         if (obj === true || obj === false) return atr;
-        if (this.isEmptyOrNull(obj) || !this.isString(obj)) return false;
+        if (this.ignore(obj) || !this.isString(obj)) return false;
 
         return this.attrib.bool.includes(obj.trim().toUpperCase());
     }
 
-    this.getUniqueElementId = function(args = {})
+    this.getUniqueId = function(obj)
     {
-        if (!args.name) args.name = 'n';
-        if (!args.range) args.range = 100;
+        if (!obj.name) obj.name = 'n';
+        if (!obj.range) obj.range = 100;
 
-        let elName = function() { return args.name + Math.floor(Math.random() * args.range) };
-        while (document.getElementById(args.el = elName())) {};
+        let elName = function() { return obj.name + Math.floor(Math.random() * obj.range) };
+        while (document.getElementById(obj.el = elName())) {};
 
-        return args.el;
+        return obj.el;
     }
 
     this.removeDuplcates = function(obj, sort)
@@ -141,13 +116,13 @@ var resource = {};
         return sort ? ar.sort((a, b) => a - b) : ar;
     }
 
-    this.parseText = function(text, regex)
+    this.parseText = function(obj)
     {
-        if (this.isEmptyOrNull(text)) return;
+        if (this.ignore(obj.text)) return;
 
-        if (regex || text.includes('</template>')) return text.replace(this.attrib.markup, '');
+        if (obj.regex || obj.text.includes('</template>')) return obj.text.replace(this.attrib.markup, '');
 
-        let doc = new DOMParser().parseFromString(text, 'text/html');
+        let doc = new DOMParser().parseFromString(obj.text, 'text/html');
         return doc.body.textContent || doc.body.innerText;
     }
 
@@ -180,31 +155,30 @@ var resource = {};
 
     this.attrib =
     {
-        reference   : 1,
-        notify      : 2,
-        warn        : 3,
-        default     : 98,
-        error       : 99,
-        bArray      : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
-        tagName     : ['link', 'script', 'style' ],
-        isWindows   : (navigator.appVersion.indexOf('Win') != -1),
-        nonWordChars: '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…',
-        whitespace  : /\s/g,
-        markup      : /(<([^>]+)>)/ig,
+        reference    : 1,
+        notify       : 2,
+        warn         : 3,
+        default      : 98,
+        error        : 99,
+        bArray       : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
+        pArray       : ['color', 'font', 'padding', 'top', 'bottom'],
+        tArray       : ['link', 'script', 'style'],
+        isWindows    : (navigator.appVersion.indexOf('Win') != -1),
+        nonWordChars : '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…',
+        whitespace   : /\s/g,
+        markup       : /(<([^>]+)>)/ig,
 
         get newline() { return this.isWindows ? '\r\n' : '\n'; },
         get bool() { return this.bArray.map(item => { return item.trim().toUpperCase(); }) },
-        get tag() { return this.tagName.map(item => { return item.trim().toUpperCase(); }) },
+        get tagName() { return this.tArray.map(item => { return item.trim().toUpperCase(); }) },
         get metaUrl() { return import.meta.url; }
     }
 
 }).call(resource);
 
 var cookies = {};
-(function() {
-
-    'use strict'; // for conformity - strict by default
-
+(function()
+{
     this.get = function(name)
     {
         const match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
@@ -230,15 +204,13 @@ var cookies = {};
 }).call(cookies);
 
 var touch = {};
-(function() {
-
-    'use strict'; // for conformity - strict by default
-
-    this.setHorizontalSwipe = function(touch, callback, args)
+(function()
+{
+    this.setSwipe = function(touch, callback, args) // horizontal swipe
     {
         if (!touch.act) touch.act = 80;
 
-        touch.node.addEventListener('touchstart', e => { touch.start = e.changedTouches[0].screenX; }, { passive: true } );
+        touch.node.addEventListener('touchstart', e => { touch.start = e.changedTouches[0].screenX; }, { passive: true });
         touch.node.addEventListener('touchmove', e => { e.preventDefault(); }, { passive: true });
         touch.node.addEventListener('touchend', e =>
         {
@@ -257,10 +229,8 @@ var touch = {};
 }).call(touch);
 
 var cache = {};
-(function() {
-
-    'use strict'; // for conformity - strict by default
-
+(function()
+{
     this.available = ('caches' in window);
 
     this.installCache = function(cacheName, urlArray)
