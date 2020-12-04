@@ -164,7 +164,6 @@ var resource = {};
         pArray       : ['color', 'font', 'padding', 'top', 'bottom'],
         tArray       : ['link', 'script', 'style'],
         isWindows    : (navigator.appVersion.indexOf('Win') != -1),
-        nonWordChars : '/\()"\':,.;<>~!@#$%^&*|+=[]{}`?-…',
         whitespace   : /\s/g,
         markup       : /(<([^>]+)>)/ig,
 
