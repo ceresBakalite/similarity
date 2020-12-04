@@ -2,7 +2,7 @@
  * @license
  * similaritycache v1.0.0
  *
- * Minified using terser v5.4.0
+ * Minified using terser v5.5.1
  * Original file: gh ./repos/scripts/similaritycache.js
  *
  * ceresBakalite/similarity is licensed under the MIT License - http://opensource.org/licenses/MIT
