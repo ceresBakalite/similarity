@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { include, resource, cookies, touch, cache }
+export { include, resource, debug, cookies, touch, cache }
 
 const remark = {
     documentError    : 'Error: Unable to find the document element',
@@ -150,6 +150,26 @@ var resource = {};
         return doc.body.textContent || doc.body.innerText;
     }
 
+    this.attrib =
+    {
+        bArray       : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
+        pArray       : ['color', 'font', 'padding', 'top', 'bottom'],
+        tArray       : ['link', 'script', 'style'],
+        isWindows    : (navigator.appVersion.indexOf('Win') != -1),
+        whitespace   : /\s/g,
+        markup       : /(<([^>]+)>)/ig,
+
+        get newline() { return this.isWindows ? '\r\n' : '\n'; },
+        get bool() { return this.bArray.map(item => { return item.trim().toUpperCase(); }) },
+        get tagName() { return this.tArray.map(item => { return item.trim().toUpperCase(); }) },
+        get metaUrl() { return import.meta.url; }
+    }
+
+}).call(resource);
+
+var debug = {};
+(function()
+{
     this.inspect = function(diagnostic)
     {
         const errorHandler = function(error)
@@ -184,20 +204,12 @@ var resource = {};
         warn         : 3,
         default      : 98,
         error        : 99,
-        bArray       : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
-        pArray       : ['color', 'font', 'padding', 'top', 'bottom'],
-        tArray       : ['link', 'script', 'style'],
         isWindows    : (navigator.appVersion.indexOf('Win') != -1),
-        whitespace   : /\s/g,
-        markup       : /(<([^>]+)>)/ig,
 
         get newline() { return this.isWindows ? '\r\n' : '\n'; },
-        get bool() { return this.bArray.map(item => { return item.trim().toUpperCase(); }) },
-        get tagName() { return this.tArray.map(item => { return item.trim().toUpperCase(); }) },
-        get metaUrl() { return import.meta.url; }
     }
 
-}).call(resource);
+}).call(debug);
 
 var cookies = {};
 (function()
