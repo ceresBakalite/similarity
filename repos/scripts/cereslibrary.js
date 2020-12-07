@@ -108,30 +108,6 @@ var resource = {};
         return obj.el;
     }
 
-    this.getCurrentDateTime = function(obj = {})
-    {
-        const newDate = new Date();
-        const defaultDate = this.ignore(obj);
-
-        if (defaultDate) return newDate;
-
-        const getOffset = function(value) { return (value < 10) ? '0' : ''; }
-
-        Date.prototype.today = function () {
-            return getOffset(this.getDate()) + this.getDate() + '/' + getOffset(this.getMonth()+1) + (this.getMonth() + 1) + '/' + this.getFullYear();
-        }
-
-        Date.prototype.timeNow = function () {
-            let time = getOffset(this.getHours()) + this.getHours() + ':' + getOffset(this.getMinutes()) + this.getMinutes() + ':' + getOffset(this.getSeconds()) + this.getSeconds();
-            return (obj.ms) ? time + '.' + getOffset(this.getUTCMilliseconds()) + this.getUTCMilliseconds() : time;
-        }
-
-        let date = (obj.date) ? newDate.today() + ' ' : '';
-        date = (obj.time) ? date + newDate.timeNow() : '';
-
-        return date.trim();
-    }
-
     this.removeDuplcates = function(obj, sort)
     {
         const key = JSON.stringify;
@@ -195,6 +171,30 @@ var debug = {};
     {
         for (let literal in string) str += literal + ': ' + string[literal] + ', ';
         return str.replace(/, +$/g,'');
+    }
+
+    this.getCurrentDateTime = function(obj = {})
+    {
+        const newDate = new Date();
+        const defaultDate = this.ignore(obj);
+
+        if (defaultDate) return newDate;
+
+        const getOffset = function(value) { return (value < 10) ? '0' : ''; }
+
+        Date.prototype.today = function () {
+            return getOffset(this.getDate()) + this.getDate() + '/' + getOffset(this.getMonth()+1) + (this.getMonth() + 1) + '/' + this.getFullYear();
+        }
+
+        Date.prototype.timeNow = function () {
+            let time = getOffset(this.getHours()) + this.getHours() + ':' + getOffset(this.getMinutes()) + this.getMinutes() + ':' + getOffset(this.getSeconds()) + this.getSeconds();
+            return (obj.ms) ? time + '.' + getOffset(this.getUTCMilliseconds()) + this.getUTCMilliseconds() : time;
+        }
+
+        let date = (obj.date) ? newDate.today() + ' ' : '';
+        date = (obj.time) ? date + newDate.timeNow() : '';
+
+        return date.trim();
     }
 
     this.attrib =
