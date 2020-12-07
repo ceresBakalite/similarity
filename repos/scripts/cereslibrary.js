@@ -115,15 +115,15 @@ var resource = {};
 
         if (defaultDate) return newDate;
 
-        // For todays date;
+        const getOffset = function(value) { return (value < 10) ? '0' : ''; }
+
         Date.prototype.today = function () {
-            return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
+            return getOffset(this.getDate()) + this.getDate() + '/' + getOffset(this.getMonth()+1) + (this.getMonth() + 1) + '/' + this.getFullYear();
         }
 
-        // For the time now
         Date.prototype.timeNow = function () {
-            let time = ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
-            return (obj.ms) ? time + "." + ((this.getUTCMilliseconds() < 10)?"0":"") + this.getUTCMilliseconds() : time;
+            let time = getOffset(this.getHours()) + this.getHours() + ':' + getOffset(this.getMinutes()) + this.getMinutes() + ':' + getOffset(this.getSeconds()) + this.getSeconds();
+            return (obj.ms) ? time + '.' + getOffset(this.getUTCMilliseconds()) + this.getUTCMilliseconds() : time;
         }
 
         let date = (obj.date) ? newDate.today() + ' ' : '';
