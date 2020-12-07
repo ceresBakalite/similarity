@@ -108,6 +108,30 @@ var resource = {};
         return obj.el;
     }
 
+    this.getCurrentDateTime = function(obj = {})
+    {
+        const newDate = new Date();
+        const defaultDate = this.ignore(obj);
+
+        if (defaultDate) return newDate;
+
+        // For todays date;
+        Date.prototype.today = function () {
+            return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
+        }
+
+        // For the time now
+        Date.prototype.timeNow = function () {
+            let time = ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
+            return (obj.ms) ? time + "." + ((this.getUTCMilliseconds() < 10)?"0":"") + this.getUTCMilliseconds() : time;
+        }
+
+        let date = (obj.date) ? newDate.today() + ' ' : '';
+        date = (obj.time) ? date + newDate.timeNow() : '';
+
+        return date.trim();
+    }
+
     this.removeDuplcates = function(obj, sort)
     {
         const key = JSON.stringify;
