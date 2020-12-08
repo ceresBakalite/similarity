@@ -126,6 +126,52 @@ var resource = {};
         return doc.body.textContent || doc.body.innerText;
     }
 
+    // noddy regex csv parser - better than most, worse than some
+    this.parseCSV = function(text, symbol = {})
+    {
+        if (!symbol.comma) symbol.comma = '&comma;'; // \x2c etc
+
+        const textArray = text.split('\n');
+        const newArray = new Array(textArray.length);
+        const endSymbol = '_&grp';
+        const regex = /"[^]*?",|"[^]*?"$/gm;
+        const re = new RegExp(endSymbol + '\s*?$', 'g');
+
+        const parseGroup = function(group)
+        {
+            let newGroup = String(group).replace(/"\s*?$|"\s*?,\s*?$/, '').replace(/^\s*?"/, ''); // remove leading quotes and trailing quotes and commas
+            newGroup = newGroup.replace(/""/g, '"'); // replace double quotes with a single quote
+            return newGroup.replace(/,/g, symbol.comma) + endSymbol; // replace remaining commas with symbols
+        }
+
+        const parseRow = function(row)
+        {
+            let newRow = row.replace(re, ''); // replace the end symbol if it appears at the end of a row
+            newRow = newRow.replaceAll(endSymbol, ', '); // replace any remaining end symbols with comma seperators
+            return newRow.replace(/(?<!\s)[,](?!\s)/g, ', ');  // cleanup
+        }
+
+        let i = 0;
+
+        textArray.forEach((row) =>
+        {
+            let newRow = String(row);
+            let groups = [...newRow.matchAll(regex)]; // get character groups in need of parsing
+
+            let j = i++;
+
+            groups.forEach((group) =>
+            {
+                let newGroup = parseGroup(group);
+                newRow = newRow.replace(group, newGroup);
+            });
+
+            newArray.push(parseRow(newRow));
+        });
+
+        return newArray.join('\n');
+    }
+
     this.attrib =
     {
         bArray       : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
