@@ -129,7 +129,7 @@ var resource = {};
     // noddy regex csv parser - better than most, worse than some
     this.parseCSV = function(text, symbol = {})
     {
-        if (!symbol.comma) symbol.comma = '&comma;'; // \x2c etc
+        if (!symbol.seperator) symbol.seperator = '&comma;'; // &#x2c; &#44; etc
 
         const textArray = text.split('\n');
         const newArray = new Array(textArray.length);
@@ -139,15 +139,15 @@ var resource = {};
 
         const parseGroup = function(group)
         {
-            let newGroup = String(group).replace(/"\s*?$|"\s*?,\s*?$/, '').replace(/^\s*?"/, ''); // remove leading quotes and trailing quotes and commas
+            let newGroup = String(group).replace(/"\s*?$|"\s*?,\s*?$/, '').replace(/^\s*?"/, ''); // remove leading quotes and trailing quotes and seperators
             newGroup = newGroup.replace(/""/g, '"'); // replace double quotes with a single quote
-            return newGroup.replace(/,/g, symbol.comma) + endSymbol; // replace remaining commas with symbols
+            return newGroup.replace(/,/g, symbol.seperator) + endSymbol; // replace remaining seperators with a seperator symbol
         }
 
         const parseRow = function(row)
         {
             let newRow = row.replace(re, ''); // replace the end symbol if it appears at the end of a row
-            newRow = newRow.replaceAll(endSymbol, ', '); // replace any remaining end symbols with comma seperators
+            newRow = newRow.replaceAll(endSymbol, ', '); // replace any remaining end symbols with seperator symbols
             return newRow.replace(/(?<!\s)[,](?!\s)/g, ', ');  // cleanup
         }
 
