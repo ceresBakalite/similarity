@@ -129,7 +129,7 @@ var resource = {};
     // noddy regex csv parser - better than most, worse than some
     this.parseCSV = function(text, symbol = {})
     {
-        if (!symbol.separator) symbol.separator = '_&c;'; // &comma; &#x2c; &#44; etc
+        if (!symbol.separator) symbol.separator = '_&c'; // &comma; &#x2c; &#44; etc
 
         const textArray = text.split('\n'); // this assumes incorrectly that line breaks only occur at the end of rows
         const newArray = new Array(textArray.length);
