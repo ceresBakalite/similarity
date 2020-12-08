@@ -133,7 +133,7 @@ var resource = {};
 
         const textArray = text.split('\n');
         const newArray = new Array(textArray.length);
-        const endSymbol = '_&grp';
+        const endSymbol = '_&grp;';
         const regex = /"[^]*?",|"[^]*?"$/gm;
         const re = new RegExp(endSymbol + '\s*?$', 'g');
 
