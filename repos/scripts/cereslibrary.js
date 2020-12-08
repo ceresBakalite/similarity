@@ -139,16 +139,16 @@ var resource = {};
 
         const parseGroup = function(group)
         {
-            let newGroup = String(group).replace(/"\s*?$|"\s*?,\s*?$/, '').replace(/^\s*?"/, ''); // remove leading quotes and trailing quotes and seperators
+            let newGroup = String(group).replace(/"\s*?$|"\s*?,\s*?$/, '').replace(/^\s*?"/, ''); // remove leading quotes and trailing quotes and commas
             newGroup = newGroup.replace(/""/g, '"'); // replace double quotes with a single quote
-            return newGroup.replace(/,/g, symbol.seperator) + endSymbol; // replace remaining seperators with a seperator symbol
+            return newGroup.replace(/,/g, symbol.seperator) + endSymbol; // replace remaining commas with a seperator symbol
         }
 
         const parseRow = function(row)
         {
             let newRow = row.replace(re, ''); // replace the end symbol if it appears at the end of a row
-            newRow = newRow.replaceAll(endSymbol, ', '); // replace any remaining end symbols with seperator symbols
-            return newRow.replace(/(?<!\s)[,](?!\s)/g, ', ');  // cleanup
+            newRow = newRow.replaceAll(endSymbol, ', '); // replace any remaining end symbols with commas
+            return newRow.replace(/(?<!\s)[,](?!\s)/g, ', '); // tidy
         }
 
         let i = 0;
