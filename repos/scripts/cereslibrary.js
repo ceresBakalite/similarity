@@ -160,6 +160,7 @@ var resource = {};
         const composeJSON = function()
         {
             const nodeName = function(i) { return symbol.nodes[i] ? '"' + symbol.nodes[i] + '": ' : '"node' + i+1 + '": '; }
+            const re = /,\s*?$/; // match trailing comma whitespace
 
             let str = '';
 
@@ -176,12 +177,12 @@ var resource = {};
 
                     });
 
-                    str = str.replace(/,\s*?$/, '') + ' },\n'
+                    str = str.replace(re, '') + ' },\n'
                 }
 
             });
 
-            return '[' + str.replace(/,\s*?$/, '') + ']';
+            return '[' + str.replace(re, '') + ']';
         }
 
         const objectType = function()
