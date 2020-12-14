@@ -108,6 +108,11 @@ var resource = {};
         return obj.el;
     }
 
+    this.regexEscape = function(str)
+    {
+        return str.replace(/([.*+?^$|(){}\[\]])/gm, '\\$1');
+    }
+
     this.removeDuplcates = function(obj, sort)
     {
         const key = JSON.stringify;
@@ -126,39 +131,68 @@ var resource = {};
         return doc.body.textContent || doc.body.innerText;
     }
 
-    // noddy regex csv parser - better than most, worse than some
+    // noddy regex csv parser
     this.parseCSV = function(text, symbol = {})
     {
-        if (!symbol.separator) symbol.separator = '_&c'; // &comma; &#x2c; &#44; etc
-
         const textArray = text.split('\n'); // this assumes incorrectly that line breaks only occur at the end of rows
         const newArray = new Array(textArray.length);
+        const commaCodes = /,|&comma;|&#x2c;|&#44;|U+0002C/g;
+        const commaSymbol = '_&c';
         const endSymbol = '_&grp;';
-        const regex = /"[^]*?",|"[^]*?"$/gm;
-        const re = new RegExp(endSymbol + '\s*?$', 'g');
+        const regex = /"[^]*?",|"[^]*?"$/gm; // match character groups in need of parsing
+        const re = new RegExp(endSymbol + '\s*?$', 'g'); // match end symbols only at the end of a row
 
         const parseGroup = function(group)
         {
             let newGroup = String(group).replace(/"\s*?$|"\s*?,\s*?$/, '').replace(/^\s*?"/, ''); // remove leading quotes and trailing quotes and commas
-            newGroup = newGroup.replace(/""/g, '"'); // replace double quotes with a single quote
-            return newGroup.replace(/,/g, symbol.separator) + endSymbol; // replace remaining commas with a separator symbol
+            newGroup = newGroup.replace(/""/g, '"'); // replace two ajoining double quotes with one double quote
+            return newGroup.replace(commaCodes, commaSymbol) + endSymbol; // replace remaining commas with a separator symbol
         }
 
         const parseRow = function(row)
         {
-            let newRow = row.replace(re, ''); // remove the end symbol if it appears at the end of a row
-            newRow = newRow.replaceAll(endSymbol, ', '); // replace any remaining end symbols with commas
-            return newRow.replace(/(?<!\s)[,](?!\s)/g, ', '); // tidy
+            let newRow = row.replace(re, ''); // remove end symbols at the end of a row
+            newRow = newRow.replaceAll(endSymbol, ', '); // replace any remaining end symbols inside character groups with a comma value separator
+            return newRow.replace(/(?!\s)[,](?!\s)/g, ', '); // tidy
         }
 
-        let i = 0;
+        // construct a JSON object from the CSV construct
+        const composeJSON = function()
+        {
+            const nodeName = function(i) { return symbol.nodes[i] ? '"' + symbol.nodes[i] + '": ' : '"node' + i+1 + '": '; }
+
+            let str = '';
+
+            newArray.forEach((row) => {
+
+                if (!rsc.ignore(row))
+                {
+                    str += '{ ';
+                    let rowArray = row.split(',');
+
+                    rowArray.forEach((value, i) => {
+
+                        str += nodeName(i) + '"' + value.trim().replace(/"/g, '\\"') + '", ';
+
+                    });
+
+                    str = str.replace(/,\s*?$/, '') + ' },\n'
+                }
+
+            });
+
+            return '[' + str.replace(/,\s*?$/, '') + ']';
+        }
+
+        const objectType = function()
+        {
+            return (symbol.json || symbol.nodes) ? composeJSON() : newArray.join('\n');
+        }
 
         textArray.forEach((row) =>
         {
             let newRow = String(row);
             let groups = [...newRow.matchAll(regex)]; // get character groups in need of parsing
-
-            let j = i++;
 
             groups.forEach((group) =>
             {
@@ -169,7 +203,7 @@ var resource = {};
             newArray.push(parseRow(newRow));
         });
 
-        return newArray.join('\n');
+        return objectType();
     }
 
     this.attrib =
