@@ -10,7 +10,11 @@ https://github.com/terser/terser
 
         1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m reserved=['export','import','include','resource','cookies','compose','touch','cache'] -f quote_style=1 --module
 
-        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js  -c -m reserved=['export','import','resource','similaritycache','cache'] -f quote_style=1 --module
+        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similarityscript.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similarityscript.min.js -c -m reserved=['export','import','include','resource','cookies','compose','touch','cache'] -f quote_style=1 --module
+
+        3. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similarityscriptframe.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similarityscriptframe.min.js -c -m reserved=['export','import','include','resource','cookies','compose','touch','cache'] -f quote_style=1 --module
+
+        4. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js  -c -m reserved=['export','import','resource','similaritycache','cache'] -f quote_style=1 --module
 
 
 
