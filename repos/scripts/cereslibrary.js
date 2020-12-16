@@ -134,8 +134,8 @@ var resource = {};
     {
         const textArray = text.split('\n'); // this assumes incorrectly that line breaks only occur at the end of rows
         const newArray = new Array(textArray.length);
-        const commaCodes = /,|&comma;|&#x2c;|&#44;|U+0002C/g;
-        const commaSymbol = '_&c';
+        const commaCodes = (symbol.commaCodes || /,|&comma;|&#x2c;|&#44;|U+0002C/g);
+        const commaSymbol = (symbol.commaSymbol || '_&c');
         const endSymbol = '_&grp;';
         const regex = /"[^]*?",|"[^]*?"$/gm; // match character groups in need of parsing
         const re = new RegExp(endSymbol + '\s*?$', 'g'); // match end symbols only at the end of a row
