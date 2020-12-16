@@ -48,7 +48,7 @@ var resource = {};
     {
         if (!el.type) return;
 
-        const precursor = this.attrib.tag.includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
+        const precursor = ['LINK', 'SCRIPT', 'STYLE'].includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
         const node = document.createElement(el.type);
 
         Object.entries(attribute).forEach(([key, value]) => { node.setAttribute(key, value); });
@@ -121,14 +121,12 @@ var resource = {};
         return sort ? ar.sort((a, b) => a - b) : ar;
     }
 
-    this.parseText = function(obj)
+    this.sanitizeText = function(text, type = 'text/html')
     {
-        if (this.ignore(obj.text)) return;
+        if (this.ignore(text)) return;
 
-        if (obj.regex || obj.text.includes('</template>')) return obj.text.replace(this.attrib.markup, '');
-
-        let doc = new DOMParser().parseFromString(obj.text, 'text/html');
-        return doc.body.textContent || doc.body.innerText;
+        const doc = new DOMParser().parseFromString(text, type);
+        return doc.body.textContent;
     }
 
     // noddy regex csv parser
@@ -210,15 +208,12 @@ var resource = {};
     this.attrib =
     {
         bArray       : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
-        pArray       : ['color', 'font', 'padding', 'top', 'bottom'],
-        tArray       : ['link', 'script', 'style'],
         isWindows    : (navigator.appVersion.indexOf('Win') != -1),
         whitespace   : /\s/g,
         markup       : /(<([^>]+)>)/ig,
 
         get newline() { return this.isWindows ? '\r\n' : '\n'; },
         get bool() { return this.bArray.map(item => { return item.trim().toUpperCase(); }) },
-        get tagName() { return this.tArray.map(item => { return item.trim().toUpperCase(); }) },
         get metaUrl() { return import.meta.url; }
     }
 
