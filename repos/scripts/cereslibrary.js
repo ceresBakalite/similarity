@@ -342,8 +342,6 @@ var touch = {};
 var cache = {};
 (function()
 {
-    this.available = ('caches' in window);
-
     this.installCache = function(cacheName, urlArray)
     {
         urlArray.forEach(url =>
