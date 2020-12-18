@@ -13,13 +13,13 @@ export { similaritycache }
 
 import { resource, cache } from '../mods/cereslibrary.min.js';
 
-var similaritycache = (test = 'this is a test') => {};
-(function()
-{
+var similaritycache = {};
+((test = 'this is a test') => {
+
     if (!window.hasOwnProperty('caches')) return resource.inspect({ type: resource.error, notification: 'Cache is unavailable' });
 
     console.log('hello from cache: ' + test);
-    
+
     const action = {};
 
     action.namedCache = 'similarity-cache';
