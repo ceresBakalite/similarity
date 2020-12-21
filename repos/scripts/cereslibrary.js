@@ -342,11 +342,11 @@ var cache = {};
 
     this.viewCachedRequests = cacheName => {
 
-        caches.open(cacheName).then(cache => { cache.keys().then(function(cachedRequests) { console.log('exploreCache: ' + cachedRequests); }); });
+        caches.open(cacheName).then(cache => { cache.keys().then(cachedRequests => { console.log('exploreCache: ' + cachedRequests); }); });
 
     }
 
-    this.listExistingCacheNames = () => { caches.keys().then(function(cacheKeys) { console.log('listCache: ' + cacheKeys); }); }
+    this.listExistingCacheNames = () => { caches.keys().then(cacheKeys => { console.log('listCache: ' + cacheKeys); }); }
 
     this.deleteCacheByName = cacheName => { caches.delete(cacheName).then(() => { console.log(cacheName + ' - Cache successfully deleted'); }); }
 
@@ -356,10 +356,7 @@ var cache = {};
 
             return Promise.all (
 
-                cacheNames.map(function(cacheName)
-                {
-                    if(cacheName != cacheName) { return caches.delete(cacheName); }
-                })
+                cacheNames.map(cacheName => { if (cacheName != cacheName) { return caches.delete(cacheName); } })
 
             );
 

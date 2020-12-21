@@ -63,7 +63,7 @@ var similarityframe = {};
                 return false;
             }
 
-            this.invokeScrollEventListener = () => { window.onscroll = function() { rsc.adjustHeaderDisplay(); }; }
+            this.invokeScrollEventListener = () => { window.onscroll = () => { rsc.adjustHeaderDisplay(); }; }
 
             this.asyncPullMarkdownRequest = () => {
 
