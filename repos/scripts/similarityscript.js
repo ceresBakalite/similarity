@@ -9,14 +9,13 @@ var similarity = {};
     include.directive();
 
     const rsc = {};
-
-    initialise();
+    rscMethods();
 
     this.onload = () => { rsc.onloadFrame(); }; // global scope method reference
     this.getMarkup = function(id, el) { rsc.getMarkupDocument(id, el); };  // global scope method reference
     this.getPinState = function(el) { rsc.resetPinState(el); };  // global scope method reference
 
-    function initialise() {
+    function rscMethods() {
 
         (function() { // methods belonging to the resource object
 
@@ -76,7 +75,7 @@ var similarity = {};
             }
 
             this.setPinState = (el, attribute) =>  {
-            
+
                 if (resource.ignore(el)) return;
 
                 el.src = pinimage.get(attribute);
