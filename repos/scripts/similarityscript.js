@@ -42,12 +42,12 @@ var similarity = {};
 
             this.getMarkupDocument = (markupId, buttonElement) => {
 
-                if (rsc.markupId != markupId)
+                if (this.markupId != markupId)
                 {
-                    rsc.markupId = markupId;
-                    rsc.markupUrl = location.get(rsc.markupId) || location.get('index');
+                    this.markupId = markupId;
+                    this.markupUrl = location.get(this.markupId) || location.get('index');
 
-                    document.querySelector('iframe.frame-container').setAttribute('src', rsc.markupUrl);
+                    document.querySelector('iframe.frame-container').setAttribute('src', this.markupUrl);
                 }
 
                 if (buttonElement) buttonElement.blur();
