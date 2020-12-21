@@ -14,7 +14,7 @@ var similarity = {};
 
     initialise();
 
-    const getMarkupDocument = (markupId, buttonElement) => {
+    function getMarkupDocument(markupId, buttonElement) {
 
         if (rsc.markupId != markupId) {
 
