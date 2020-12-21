@@ -3,18 +3,19 @@ export { similarityframe };
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
-(function() {
+(function()
+{
+    'use strict';
 
     include.directive();
 
     const frm = {};
-
     initialise();
 
-    this.onload = () => { onloadFrame(); };  // global scope method reference
+    this.onload = function() { onloadFrame(); };  // global scope method reference
 
-    const onloadFrame = () => {
-
+    function onloadFrame()
+    {
         if (frm.isValidSource())
         {
             frm.invokeScrollEventListener();
@@ -24,18 +25,18 @@ var similarityframe = {};
 
     }
 
-    const initialise = () => {
-
+    function initialise()
+    {
         (function() {
 
-            this.adjustHeaderDisplay = () => {
-
+            this.adjustHeaderDisplay = function()
+            {
                 const header = parent.document.querySelector('div.page-header');
                 const pin = parent.document.querySelector('img.pin-navbar').getAttribute('state');
                 const trigger = 25;
 
-                const setStyleDisplay = attribute => {
-
+                const setStyleDisplay = function(attribute)
+                {
                     cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
                     header.style.display = attribute;
                 }
@@ -44,19 +45,19 @@ var similarityframe = {};
                 {
                     if (header.style.display && window.scrollY > trigger)
                     {
-                        if (header.style.display != 'none') setTimeout(() => { setStyleDisplay('none'); }, 250);
+                        if (header.style.display != 'none') setTimeout(function(){ setStyleDisplay('none'); }, 250);
 
                     } else {
 
-                        if (header.style.display != 'block') setTimeout(() => { setStyleDisplay('block'); }, 250);
+                        if (header.style.display != 'block') setTimeout(function(){ setStyleDisplay('block'); }, 250);
                     }
 
                 }
 
             }
 
-            this.isValidSource = () => {
-
+            this.isValidSource = function()
+            {
                 const sync = document.querySelector('body');
 
                 if (parent.document.querySelector('body.ceres > section.index')) return true;
@@ -65,17 +66,20 @@ var similarityframe = {};
                 return false;
             }
 
-            this.invokeScrollEventListener = () => { window.onscroll = function() { frm.adjustHeaderDisplay(); }; }
-
-            this.asyncPullMarkdownRequest = () => {
-
-                setTimeout(() => { resource.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
-                setTimeout(() => { document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
+            this.invokeScrollEventListener = function()
+            {
+                window.onscroll = function() { frm.adjustHeaderDisplay(); };
             }
 
-            this.displaySlideviewContent = () => {
+            this.asyncPullMarkdownRequest = function()
+            {
+                setTimeout(function() { resource.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
+                setTimeout(function() {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
+            }
 
-                const csv = document.querySelectorAll('div.slideview-content');
+            this.displaySlideviewContent = function()
+            {
+                let csv = document.querySelectorAll('div.slideview-content');
                 csv.forEach((el) => { el.className = 'slideview-content'; });
             }
 

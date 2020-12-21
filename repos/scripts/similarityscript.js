@@ -4,9 +4,15 @@ import { resource, cookies, include } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
-(function() {
+(function()
+{
+    'use strict';
 
     include.directive();
+
+    this.onload = function() { onloadFrame(); }; // global scope method reference
+    this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
+    this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
     const rsc = new Object();
     const location = new Map();
@@ -14,10 +20,10 @@ var similarity = {};
 
     initialise();
 
-    function getMarkupDocument(markupId, buttonElement) {
-
-        if (rsc.markupId != markupId) {
-
+    function getMarkupDocument(markupId, buttonElement)
+    {
+        if (rsc.markupId != markupId)
+        {
             rsc.markupId = markupId;
             rsc.markupUrl = location.get(rsc.markupId) || location.get('index');
 
@@ -27,8 +33,8 @@ var similarity = {};
         if (buttonElement) buttonElement.blur();
     }
 
-    const resetPinState = el => {
-
+    function resetPinState(el)
+    {
         if (el.getAttribute('state') == 'enabled')
         {
             setPinState(el, 'disabled');
@@ -41,16 +47,15 @@ var similarity = {};
 
     }
 
-    const setDisplayState = attribute => {
-
+    function setDisplayState(attribute)
+    {
         const header = document.querySelector('div.page-header');
-
-        if (header.style.display != 'block') setTimeout(() => { header.style.display = 'block'; }, 250);
+        if (header.style.display != 'block') setTimeout(function() { header.style.display = 'block'; }, 250);
         cookies.set('hd', attribute, { 'max-age': 7200, 'samesite': 'None; Secure' });
     }
 
-    const setPinState = (el, attribute) => {
-
+    function setPinState(el, attribute)
+    {
         if (resource.ignore(el)) return;
 
         el.src = pinimage.get(attribute);
@@ -58,8 +63,8 @@ var similarity = {};
         cookies.set('pn', attribute, { 'max-Age': 7200, 'samesite': 'None; Secure' });
     }
 
-    const getHeaderAttributes = () => {
-
+    function getHeaderAttributes()
+    {
         const header = document.querySelector('div.page-header');
 
         if (!cookies.get('hd')) cookies.set('hd', 'block', { 'max-age': 7200, 'samesite': 'None; Secure'  });
@@ -69,22 +74,22 @@ var similarity = {};
         if (cookies.get('pn') == 'enabled') setPinState(document.querySelector('img.pin-navbar'), 'enabled');
     }
 
-    const getQueryString = () => {
-
+    function getQueryString()
+    {
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('sync')
 
         if (name) getMarkupDocument(name);
     }
 
-    const onloadFrame = () => {
-
+    function onloadFrame()
+    {
         getHeaderAttributes();
         getQueryString();
     }
 
-    const initialise = () => {
-
+    function initialise()
+    {
         pinimage.set('enabled', './images/NAVPinIconEnabled.png');
         pinimage.set('disabled', './images/NAVPinIconDisabled.png');
 
@@ -97,9 +102,5 @@ var similarity = {};
 
         rsc.markupUrl = location.get('index');
     }
-
-    this.onload = () => { onloadFrame(); }; // global scope method reference
-    this.getMarkup = (id, el) => { getMarkupDocument(id, el); };  // global scope method reference
-    this.getPinState = el => { resetPinState(el); };  // global scope method reference
 
 }).call(window);
