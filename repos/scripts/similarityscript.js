@@ -17,35 +17,8 @@ var similarity = {};
     initialise();
 
     this.onload = () => { rsc.onloadFrame(); }; // global scope method reference
-    this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
-    this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
-
-    function getMarkupDocument(markupId, buttonElement)
-    {
-        if (rsc.markupId != markupId)
-        {
-            rsc.markupId = markupId;
-            rsc.markupUrl = location.get(rsc.markupId) || location.get('index');
-
-            document.querySelector('iframe.frame-container').setAttribute('src', rsc.markupUrl);
-        }
-
-        if (buttonElement) buttonElement.blur();
-    }
-
-    function resetPinState(el)
-    {
-        if (el.getAttribute('state') == 'enabled')
-        {
-            setPinState(el, 'disabled');
-            setDisplayState('block');
-
-        } else {
-
-            setPinState(el, 'enabled');
-        }
-
-    }
+    this.getMarkup = function(id, el) { rsc.getMarkupDocument(id, el); };  // global scope method reference
+    this.getPinState = function(el) { rsc.resetPinState(el); };  // global scope method reference
 
     function setDisplayState(attribute)
     {
@@ -102,6 +75,33 @@ var similarity = {};
 
                 getHeaderAttributes();
                 getQueryString();
+            }
+
+            this.getMarkupDocument = (markupId, buttonElement) => {
+
+                if (rsc.markupId != markupId)
+                {
+                    rsc.markupId = markupId;
+                    rsc.markupUrl = location.get(rsc.markupId) || location.get('index');
+
+                    document.querySelector('iframe.frame-container').setAttribute('src', rsc.markupUrl);
+                }
+
+                if (buttonElement) buttonElement.blur();
+            }
+
+            this.resetPinState = el =>  {
+
+                if (el.getAttribute('state') == 'enabled')
+                {
+                    setPinState(el, 'disabled');
+                    setDisplayState('block');
+
+                } else {
+
+                    setPinState(el, 'enabled');
+                }
+
             }
 
         }).call(rsc); // end resource namespace
