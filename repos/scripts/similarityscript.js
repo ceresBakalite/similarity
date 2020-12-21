@@ -8,10 +8,6 @@ var similarity = {};
 
     include.directive();
 
-    this.onload = function() { onloadFrame(); }; // global scope method reference
-    this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
-    this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
-
     const rsc = new Object();
     const location = new Map();
     const pinimage = new Map();
@@ -101,5 +97,9 @@ var similarity = {};
 
         rsc.markupUrl = location.get('index');
     }
+
+    this.onload = () => { onloadFrame(); }; // global scope method reference
+    this.getMarkup = (id, el) => { getMarkupDocument(id, el); };  // global scope method reference
+    this.getPinState = el => { resetPinState(el); };  // global scope method reference
 
 }).call(window);
