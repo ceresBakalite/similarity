@@ -12,8 +12,8 @@ var similarity = {};
     rscMethods();
 
     this.onload = () => { rsc.onloadFrame(); }; // global scope method reference
-    this.getMarkup = function(id, el) { rsc.getMarkupDocument(id, el); };  // global scope method reference
-    this.getPinState = function(el) { rsc.resetPinState(el); };  // global scope method reference
+    this.getMarkup = (id, el) => { rsc.getMarkupDocument(id, el); };  // global scope method reference
+    this.getPinState = el => { rsc.resetPinState(el); };  // global scope method reference
 
     function rscMethods() {
 
