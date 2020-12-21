@@ -10,15 +10,15 @@ var similarity = {};
 
     include.directive();
 
-    this.onload = function() { onloadFrame(); }; // global scope method reference
-    this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
-    this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
-
-    const rsc = new Object();
+    const rsc = {};
     const location = new Map();
     const pinimage = new Map();
 
     initialise();
+
+    this.onload = () => { rsc.onloadFrame(); }; // global scope method reference
+    this.getMarkup = function(id, el) { getMarkupDocument(id, el); };  // global scope method reference
+    this.getPinState = function(el) { resetPinState(el); };  // global scope method reference
 
     function getMarkupDocument(markupId, buttonElement)
     {
@@ -82,25 +82,30 @@ var similarity = {};
         if (name) getMarkupDocument(name);
     }
 
-    function onloadFrame()
-    {
-        getHeaderAttributes();
-        getQueryString();
-    }
+    function initialise() {
 
-    function initialise()
-    {
-        pinimage.set('enabled', './images/NAVPinIconEnabled.png');
-        pinimage.set('disabled', './images/NAVPinIconDisabled.png');
+        (function() { // methods belonging to the resource object
 
-        location.set('index', './repos/scripts/SyncIndex.html');
-        location.set('shell', './repos/scripts/SyncShell.html');
-        location.set('slide', './repos/scripts/SyncSlide.html');
-        location.set('repos', './repos/scripts/SyncRepos.html');
+            pinimage.set('enabled', './images/NAVPinIconEnabled.png');
+            pinimage.set('disabled', './images/NAVPinIconDisabled.png');
 
-        location.set('test', './repos/scripts/SyncTest.html');
+            location.set('index', './repos/scripts/SyncIndex.html');
+            location.set('shell', './repos/scripts/SyncShell.html');
+            location.set('slide', './repos/scripts/SyncSlide.html');
+            location.set('repos', './repos/scripts/SyncRepos.html');
 
-        rsc.markupUrl = location.get('index');
+            location.set('test', './repos/scripts/SyncTest.html');
+
+            this.markupUrl = location.get('index');
+
+            this.onloadFrame = () => {
+
+                getHeaderAttributes();
+                getQueryString();
+            }
+
+        }).call(rsc); // end resource namespace
+
     }
 
 }).call(window);
