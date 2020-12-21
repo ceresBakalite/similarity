@@ -17,10 +17,10 @@ const remark = {
 };
 
 var include = {};
-(function()
-{
-    this.directive = function(el = 'include-directive')
-    {
+(function() {
+
+    this.directive = (el = 'include-directive') => {
+
         window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
         {
             async connectedCallback()
@@ -36,29 +36,37 @@ var include = {};
 }).call(include);
 
 var resource = {};
-(function()
-{
-    this.srcOpen = function(obj) { window.open(obj.element.getAttribute('src'), obj.type); }
-    this.isString = function(obj) { return Object.prototype.toString.call(obj) == '[object String]'; }
-    this.clearElement = function(el) { while (el.firstChild) el.removeChild(el.firstChild); }
-    this.fileName = function(path) { return path.substring(path.lastIndexOf('/')+1, path.length); }
-    this.fileType = function(path, type) { return path.substring(path.lastIndexOf('.'), path.length).toUpperCase() === type.toUpperCase(); }
+(function() {
 
-    this.composeElement = function(el, attribute)
-    {
-        if (!el.type) return;
+    this.isWindows    = navigator.appVersion.indexOf('Win') != -1;
+    this.whitespace   = /\s/g,
+    this.markup       = /(<([^>]+)>)/ig,
+    this.commaCodes   = /,|&comma;|&#x2c;|&#44;|U+0002C/g;
+    this.commaSymbol  = '_&c';
+    this.newline      = this.isWindows ? '\r\n' : '\n';
+    this.bArray       = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
+    this.bool         = this.bArray.map(item => { return item.trim().toUpperCase(); });
+    this.srcOpen      = obj => window.open(obj.element.getAttribute('src'), obj.type);
+    this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
+    this.clearElement = el => { while (el.firstChild) el.removeChild(el.firstChild); }
+    this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
+    this.fileType     = (path, type) => path.substring(path.lastIndexOf('.')+1, path.length).toUpperCase() === type.toUpperCase();
+
+    this.composeElement = (el, atr) => {
+
+        if (this.ignore(el.type)) return;
 
         const precursor = ['LINK', 'SCRIPT', 'STYLE'].includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
         const node = document.createElement(el.type);
 
-        Object.entries(attribute).forEach(([key, value]) => { node.setAttribute(key, value); });
+        Object.entries(atr).forEach(([key, value]) => { node.setAttribute(key, value); });
         if (el.markup) node.insertAdjacentHTML('afterbegin', el.markup);
 
         precursor.appendChild(node);
     }
 
-    this.composeCORSLinks = function(el)
-    {
+    this.composeCORSLinks = (el) => {
+
         const nodelist = document.querySelectorAll(el.node); // shadowroot markdown node - ie zero-md or ceres-sv
 
         if (!el.regex) el.regex = /<a (?!target)/gmi;
@@ -68,8 +76,8 @@ var resource = {};
 
             let shadow = node.shadowRoot;
 
-            if (shadow)
-            {
+            if (shadow) {
+
                 let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
                 shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
             }
@@ -78,8 +86,8 @@ var resource = {};
 
     }
 
-    this.ignore = function(obj)
-    {
+    this.ignore = obj => {
+
         if (obj === null || obj == 'undefined') return true;
 
         if (this.isString(obj)) return (obj.length === 0 || !obj.trim());
@@ -89,92 +97,89 @@ var resource = {};
         return !obj;
     }
 
-    this.getBooleanAttribute = function(obj)
-    {
+    this.getBoolean = obj => {
+
         if (obj === true || obj === false) return atr;
         if (this.ignore(obj) || !this.isString(obj)) return false;
 
-        return this.attrib.bool.includes(obj.trim().toUpperCase());
+        return this.bool.includes(obj.trim().toUpperCase());
     }
 
-    this.getUniqueId = function(obj)
-    {
+    this.getUniqueId = obj => {
+
         if (!obj.name) obj.name = 'n';
         if (!obj.range) obj.range = 100;
 
-        let elName = function() { return obj.name + Math.floor(Math.random() * obj.range) };
+        const elName = () => obj.name + Math.floor(Math.random() * obj.range);
         while (document.getElementById(obj.el = elName())) {};
 
         return obj.el;
     }
 
-    this.regexEscape = function(str)
-    {
+    this.regexEscape = (str) => {
+
         return str.replace(/([.*+?^$|(){}\[\]])/gm, '\\$1');
     }
 
-    this.removeDuplcates = function(obj, sort)
-    {
+    this.removeDuplcates = (obj, sort) => {
+
         const key = JSON.stringify;
-        let ar = [...new Map (obj.map(node => [key(node), node])).values()];
+        const ar = [...new Map (obj.map(node => [key(node), node])).values()];
 
         return sort ? ar.sort((a, b) => a - b) : ar;
     }
 
-    this.sanitizeText = function(text, type = 'text/html')
-    {
-        if (this.ignore(text)) return;
+    this.softSanitize = (text, type = 'text/html') => {
 
-        const doc = new DOMParser().parseFromString(text, type);
-        return doc.body.textContent;
+        return this.ignore(text) ? null : new DOMParser()
+            .parseFromString(text, type).documentElement.textContent
+            .replace(/</g, '&lt;');
     }
 
-    // noddy regex csv parser
-    this.parseCSV = function(text, symbol = {})
-    {
-        const textArray = text.split('\n'); // this assumes incorrectly that line breaks only occur at the end of rows
-        const newArray = new Array(textArray.length);
-        const commaCodes = (symbol.commaCodes || /,|&comma;|&#x2c;|&#44;|U+0002C/g);
-        const commaSymbol = (symbol.commaSymbol || '_&c');
-        const endSymbol = '_&grp;';
-        const regex = /"[^]*?",|"[^]*?"$/gm; // match character groups in need of parsing
-        const re = new RegExp(endSymbol + '\s*?$', 'g'); // match end symbols only at the end of a row
+    // noddy regex comma separated value parser
+    this.parseCSV = (text, symbol = {}) => {
 
-        const parseGroup = function(group)
-        {
-            let newGroup = String(group).replace(/"\s*?$|"\s*?,\s*?$/, '').replace(/^\s*?"/, ''); // remove leading quotes and trailing quotes and commas
+        const textArray = text.split('\n'); // this assumes incorrectly that line breaks only occur at the end of rows
+        const newArray  = new Array(textArray.length);
+        const endSymbol = '_&grp;';
+        const endRow    = new RegExp(endSymbol + '\s*?$', 'g'); // match end symbols at the end of a row
+        const regex     = /"[^]*?",|"[^]*?"$/gm; // match character groups in need of parsing
+
+        const parseGroup = group => {
+
+            let newGroup = String(group)  // remove leading quotes and trailing quotes and commas
+                .replace(/"\s*?$|"\s*?,\s*?$/, '')
+                .replace(/^\s*?"/, '');
+
             newGroup = newGroup.replace(/""/g, '"'); // replace two ajoining double quotes with one double quote
-            return newGroup.replace(commaCodes, commaSymbol) + endSymbol; // replace remaining commas with a separator symbol
+
+            return newGroup.replace(this.commaCodes, this.commaSymbol) + endSymbol; // replace any remaining comma entities with a separator symbol
         }
 
-        const parseRow = function(row)
-        {
-            let newRow = row.replace(re, ''); // remove end symbols at the end of a row
+        const parseRow = row => {
+
+            let newRow = row.replace(endRow, ''); // remove end symbols at the end of a row
             newRow = newRow.replaceAll(endSymbol, ', '); // replace any remaining end symbols inside character groups with a comma value separator
+
             return newRow.replace(/(?!\s)[,](?!\s)/g, ', '); // tidy
         }
 
         // construct a JSON object from the CSV construct
-        const composeJSON = function()
-        {
-            const nodeName = function(i) { return symbol.nodes[i] ? '"' + symbol.nodes[i] + '": ' : '"node' + i+1 + '": '; }
+        const composeJSON = () => {
+
+            const nodeName = i => symbol.nodes[i] ? '"' + symbol.nodes[i] + '": ' : '"node' + i+1 + '": ';
             const re = /,\s*?$/; // match trailing comma whitespace
 
             let str = '';
 
-            newArray.forEach((row) => {
+            newArray.forEach(row => {
 
-                if (!rsc.ignore(row))
-                {
+                if (!rsc.ignore(row)) {
+
                     str += '{ ';
                     let rowArray = row.split(',');
 
-                    rowArray.forEach((value, i) => {
-
-                        str += nodeName(i) + '"' + value.trim().replace(/"/g, '\\"') + '", ';
-
-                    });
-
+                    rowArray.forEach((value, i) => { str += nodeName(i) + '"' + value.trim().replace(/"/g, '\\"') + '", '; });
                     str = str.replace(re, '') + ' },\n'
                 }
 
@@ -183,18 +188,15 @@ var resource = {};
             return '[' + str.replace(re, '') + ']';
         }
 
-        const objectType = function()
-        {
-            return (symbol.json || symbol.nodes) ? composeJSON() : newArray.join('\n');
-        }
+        const objectType = () => (symbol.json || symbol.nodes) ? composeJSON() : newArray.join('\n');
 
-        textArray.forEach((row) =>
-        {
+        textArray.forEach(row => {
+
             let newRow = String(row);
             let groups = [...newRow.matchAll(regex)]; // get character groups in need of parsing
 
-            groups.forEach((group) =>
-            {
+            groups.forEach(group => {
+
                 let newGroup = parseGroup(group);
                 newRow = newRow.replace(group, newGroup);
             });
@@ -205,52 +207,49 @@ var resource = {};
         return objectType();
     }
 
-    this.attrib =
-    {
-        bArray       : ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'],
-        isWindows    : (navigator.appVersion.indexOf('Win') != -1),
-        whitespace   : /\s/g,
-        markup       : /(<([^>]+)>)/ig,
-
-        get newline() { return this.isWindows ? '\r\n' : '\n'; },
-        get bool() { return this.bArray.map(item => { return item.trim().toUpperCase(); }) },
-        get metaUrl() { return import.meta.url; }
-    }
-
 }).call(resource);
 
 var debug = {};
-(function()
-{
-    this.inspect = function(diagnostic)
-    {
-        const errorHandler = function(error)
-        {
-            let err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
+(function() {
+
+    this.reference = 1;
+    this.notify    = 2;
+    this.warn      = 3;
+    this.default   = 98;
+    this.error     = 99;
+    this.isWindows =   navigator.appVersion.indexOf('Win') != -1;
+    this.newline   =  this.isWindows ? '\r\n' : '\n';
+
+    this.inspect = diagnostic => {
+
+        const errorHandler = error => {
+
+            const err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
             console.error(err);
 
             if (error.alert) alert(err);
         }
 
         const lookup = {
-            [this.attrib.notify]    : function() { if (diagnostic.logtrace) console.info(diagnostic.notification); },
-            [this.attrib.warn]      : function() { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
-            [this.attrib.reference] : function() { if (diagnostic.logtrace) console.log('Reference: ' + this.attrib.newline + this.attrib.newline + diagnostic.reference); },
-            [this.attrib.error]     : function() { errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace }); },
-            [this.attrib.default]   : function() { errorHandler({ notification: 'Unhandled exception' }); }
+
+            [this.notify]    : () => { if (diagnostic.logtrace) console.info(diagnostic.notification); },
+            [this.warn]      : () => { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
+            [this.reference] : () => { if (diagnostic.logtrace) console.log('Reference: ' + this.newline + this.newline + diagnostic.reference); },
+            [this.error]     : () => errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace }),
+            [this.default]   : () => errorHandler({ notification: 'Unhandled exception' })
         };
 
-        lookup[diagnostic.type]() || lookup[this.attrib.default];
+        lookup[diagnostic.type]() || lookup[this.default];
     }
 
-    this.getObjectProperties = function(string = {}, str = '')
-    {
+    this.getProperties = (string = {}, str = '') => {
+
         for (let literal in string) str += literal + ': ' + string[literal] + ', ';
         return str.replace(/, +$/g,'');
     }
 
-    this.getCurrentDateTime = function(obj = {})
-    {
+    this.getCurrentDateTime = (obj = {}) => {
+
         const newDate = new Date();
         const defaultDate = this.ignore(obj);
 
@@ -258,56 +257,40 @@ var debug = {};
 
         const getOffset = function(value) { return (value < 10) ? '0' : ''; }
 
-        Date.prototype.today = function () {
-            return getOffset(this.getDate()) + this.getDate() + '/' + getOffset(this.getMonth()+1) + (this.getMonth() + 1) + '/' + this.getFullYear();
-        }
+        Date.prototype.today = () => { return getOffset(this.getDate()) + this.getDate() + '/' + getOffset(this.getMonth()+1) + (this.getMonth() + 1) + '/' + this.getFullYear(); }
 
-        Date.prototype.timeNow = function () {
+        Date.prototype.timeNow = () => {
+
             let time = getOffset(this.getHours()) + this.getHours() + ':' + getOffset(this.getMinutes()) + this.getMinutes() + ':' + getOffset(this.getSeconds()) + this.getSeconds();
             return (obj.ms) ? time + '.' + getOffset(this.getUTCMilliseconds()) + this.getUTCMilliseconds() : time;
         }
 
-        let date = (obj.date) ? newDate.today() + ' ' : '';
-        date = (obj.time) ? date + newDate.timeNow() : '';
+        let date = obj.date ? newDate.today() + ' ' : '';
+        date = obj.time ? date + newDate.timeNow() : '';
 
         return date.trim();
-    }
-
-    this.attrib =
-    {
-        reference    : 1,
-        notify       : 2,
-        warn         : 3,
-        default      : 98,
-        error        : 99,
-        isWindows    : (navigator.appVersion.indexOf('Win') != -1),
-
-        get newline() { return this.isWindows ? '\r\n' : '\n'; },
     }
 
 }).call(debug);
 
 var cookies = {};
-(function()
-{
-    this.get = function(name)
-    {
+(function() {
+
+    this.get = name => {
+
         const match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
         return match ? decodeURIComponent(match[1]) : undefined;
     }
 
-    this.set = function(name, value, options = {})
-    {
+    this.set = (name, value, options = {}) => {
+
         let cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
         if (!options.path) options.path = '/';
         if (!options.samesite) options.samesite = 'Strict; Secure';
-        if (options.expires instanceof Date) { options.expires = options.expires.toUTCString(); }
+        if (options.expires instanceof Date) options.expires = options.expires.toUTCString();
 
-        for (let item in options)
-        {
-            cookie += '; ' + item + '=' + ((typeof options[item] != null) ? options[item] : null);
-        }
+        for (let item in options) { cookie += '; ' + item + '=' + ((typeof options[item] != null) ? options[item] : null); }
 
         document.cookie = cookie;
     }
@@ -315,10 +298,10 @@ var cookies = {};
 }).call(cookies);
 
 var touch = {};
-(function()
-{
-    this.setSwipe = function(touch, callback, args) // horizontal swipe
-    {
+(function() {
+
+    this.setSwipe = (touch, callback, args) => { // horizontal swipe
+
         if (!touch.act) touch.act = 80;
 
         touch.node.addEventListener('touchstart', e => { touch.start = e.changedTouches[0].screenX; }, { passive: true });
@@ -327,8 +310,8 @@ var touch = {};
         {
             touch.end = e.changedTouches[0].screenX;
 
-            if (Math.abs(touch.start - touch.end) > touch.act)
-            {
+            if (Math.abs(touch.start - touch.end) > touch.act) {
+
                 args.action = (touch.start > touch.end);
                 callback.call(this, args);
             }
@@ -340,47 +323,39 @@ var touch = {};
 }).call(touch);
 
 var cache = {};
-(function()
-{
-    this.installCache = function(cacheName, urlArray)
-    {
-        urlArray.forEach(url =>
-        {
-            fetch(url).then(response =>
-            {
-                if (!response.ok) { console.warn(remark.cacheWarning + '[' + response.status + '] - ' + url); }
+(function() {
+
+    this.installCache = (cacheName, urlArray) => {
+
+        urlArray.forEach(url => {
+
+            fetch(url).then(response => {
+
+                if (!response.ok) console.warn(remark.cacheWarning + '[' + response.status + '] - ' + url);
                 return caches.open(cacheName).then(cache => { return cache.put(url, response); });
+
             });
 
         });
 
     }
 
-    this.viewCachedRequests = function(cacheName)
-    {
-        caches.open(cacheName).then(function(cache)
-        {
-            cache.keys().then(function(cachedRequests) { console.log('exploreCache: ' + cachedRequests); });
-        });
+    this.viewCachedRequests = cacheName => {
+
+        caches.open(cacheName).then(cache => { cache.keys().then(function(cachedRequests) { console.log('exploreCache: ' + cachedRequests); }); });
 
     }
 
-    this.listExistingCacheNames = function()
-    {
-        caches.keys().then(function(cacheKeys) { console.log('listCache: ' + cacheKeys); });
-    }
+    this.listExistingCacheNames = () => { caches.keys().then(function(cacheKeys) { console.log('listCache: ' + cacheKeys); }); }
 
-    this.deleteCacheByName = function(cacheName)
-    {
-        caches.delete(cacheName).then(function() { console.log(cacheName + ' - Cache successfully deleted'); });
-    }
+    this.deleteCacheByName = cacheName => { caches.delete(cacheName).then(() => { console.log(cacheName + ' - Cache successfully deleted'); }); }
 
-    this.deleteOldCacheVersions = function(cacheName)
-    {
-        caches.keys().then(function(cacheNames)
-        {
-            return Promise.all
-            (
+    this.deleteOldCacheVersions = cacheName =>  {
+
+        caches.keys().then(cacheNames => {
+
+            return Promise.all (
+
                 cacheNames.map(function(cacheName)
                 {
                     if(cacheName != cacheName) { return caches.delete(cacheName); }
