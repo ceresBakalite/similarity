@@ -40,7 +40,9 @@ var resource = {};
     this.commaSymbol  = '_&c';
     this.newline      = this.isWindows ? '\r\n' : '\n';
     this.bArray       = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
+    this.elHead       = ['link', 'script', 'style'];
     this.bool         = this.bArray.map(item => { return item.trim().toUpperCase(); });
+    this.elArray      = this.elHead.map(item => { return item.trim().toUpperCase(); });
     this.srcOpen      = obj => window.open(obj.element.getAttribute('src'), obj.type);
     this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
     this.clearElement = el => { while (el.firstChild) el.removeChild(el.firstChild); }
@@ -51,7 +53,7 @@ var resource = {};
 
         if (this.ignore(el.type)) return;
 
-        const precursor = ['LINK', 'SCRIPT', 'STYLE'].includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
+        const precursor = this.elArray.includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
         const node = document.createElement(el.type);
 
         Object.entries(atr).forEach(([key, value]) => { node.setAttribute(key, value); });
