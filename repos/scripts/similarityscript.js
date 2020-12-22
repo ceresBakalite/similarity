@@ -4,8 +4,8 @@ import { resource, cookies, include } from '../mods/cereslibrary.min.js';
 import { similaritycache } from '../mods/similaritycache.min.js';
 
 var similarity = {};
-(function()
-{
+(() => {
+    
     include.directive();
 
     const rsc = {};
