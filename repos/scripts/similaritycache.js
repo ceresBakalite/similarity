@@ -14,21 +14,13 @@ export { similaritycache }
 import { resource, cache } from '../mods/cereslibrary.min.js';
 
 var similaritycache = {};
-((text = 'this is a test') => {
+( (action = { installCache: true }) => {
 
     if (!window.hasOwnProperty('caches')) return resource.inspect({ type: resource.error, notification: 'Cache is unavailable' });
 
-    console.log('hello from cache: ' + text);
+    if (!action.namedCache) action.namedCache = 'similarity-cache';
 
-    const action = {};
-
-    action.namedCache = 'similarity-cache';
-    action.installCache = true;
-    action.listCache = false;
-    action.listAction = false;
-    action.exploreCache = false;
-    action.replaceCache = false;
-    action.deleteCache = false;
+    console.log('installCache: ' + action.installCache + ' - deleteCache: ' + action.deleteCache);
 
     Object.freeze(action);
 
