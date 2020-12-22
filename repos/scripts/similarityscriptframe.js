@@ -4,13 +4,13 @@ import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
 (function() {
-    
+
     include.directive();
 
     const rsc = {};
     rscMethods();
 
-    this.onload = () => { rsc.onloadFrame(); };  // global scope method reference
+    this.onload = () => { rsc.onloadFrame(); }  // global scope method reference
 
     function rscMethods()
     {
