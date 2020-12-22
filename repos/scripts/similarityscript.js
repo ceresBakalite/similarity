@@ -11,7 +11,7 @@ var similarity = {};
     const rsc = {};
     rscMethods();
 
-    this.onload = () => rsc.onloadFrame(); // global scope method reference
+    this.onload = rsc.onloadFrame(); // global scope method reference
     this.getMarkup = (id, el) => rsc.getMarkupDocument(id, el);  // global scope method reference
     this.getPinState = el => rsc.resetPinState(el);  // global scope method reference
 
