@@ -11,11 +11,6 @@
 */
 export { include, resource, debug, cookies, touch, cache }
 
-const remark = {
-    documentError    : 'Error: Unable to find the document element',
-    cacheWarning     : 'Warning: cache response status '
-};
-
 var include = {};
 (function() {
 
@@ -224,7 +219,7 @@ var debug = {};
 
         const errorHandler = error => {
 
-            const err = error.notification + ' [ DateTime: ' + new Date().toLocaleString() + ' ]';
+            const err = error.notification + ' [ DateTime: ' + this.getCurrentDateTime({ ms: true }) + ' ]';
             console.error(err);
 
             if (error.alert) alert(err);
@@ -251,7 +246,7 @@ var debug = {};
     this.getCurrentDateTime = (obj = {}) => {
 
         const newDate = new Date();
-        const defaultDate = this.ignore(obj);
+        const defaultDate = resource.ignore(obj);
 
         if (defaultDate) return newDate;
 
@@ -331,7 +326,7 @@ var cache = {};
 
             fetch(url).then(response => {
 
-                if (!response.ok) console.warn(remark.cacheWarning + '[' + response.status + '] - ' + url);
+                if (!response.ok) console.warn('Warning: cache response status [' + response.status + '] - ' + url);
                 return caches.open(cacheName).then(cache => { return cache.put(url, response); });
 
             });
