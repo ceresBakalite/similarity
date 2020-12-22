@@ -3,8 +3,8 @@ export { similarityframe };
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
 var similarityframe = {};
-(() => {
-
+(function() {
+    
     include.directive();
 
     const rsc = {};
