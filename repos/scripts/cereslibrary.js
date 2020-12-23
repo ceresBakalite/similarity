@@ -40,7 +40,7 @@ var resource = {};
     this.commaSymbol  = '_&c';
     this.newline      = this.isWindows ? '\r\n' : '\n';
     this.bArray       = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
-    this.elArray       = ['link', 'script', 'style'];
+    this.elArray      = ['link', 'script', 'style'];
     this.bool         = this.bArray.map(item => { return item.trim().toUpperCase(); });
     this.docHead      = this.elArray.map(item => { return item.trim().toUpperCase(); });
     this.srcOpen      = obj => window.open(obj.element.getAttribute('src'), obj.type);
