@@ -2,6 +2,7 @@ export { similarityframe };
 
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
+/*
 globalThis.test = {}; // ceres slideview global (actual or proxy) object namespace
 (() => {
 
@@ -11,7 +12,12 @@ globalThis.test = {}; // ceres slideview global (actual or proxy) object namespa
     }
 
 })();
+*/
 
+function testCall() {
+
+    console.log('hello from testCall');
+}
 
 var similarityframe = {};
 (function() {
