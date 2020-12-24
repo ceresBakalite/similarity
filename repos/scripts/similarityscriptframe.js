@@ -5,8 +5,8 @@ import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 globalThis.test = {}; // ceres slideview global (actual or proxy) object namespace
 (() => {
 
-    this.testCall = () => {
-    
+    test.testCall = () => {
+
         console.log('hello from testCall');
     }
 
