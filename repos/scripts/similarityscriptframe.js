@@ -11,10 +11,16 @@ var similarityframe = {};
     rscMethods();
 
     this.onload = () => { rsc.onloadFrame(); }  // global scope method reference
+    this.test =  () => { rsc.testCall(); }  // global scope method reference
 
     function rscMethods()
     {
         (function() {
+
+            this.testCall = () => {
+
+                console.log('hello from testCall');
+            }
 
             this.onloadFrame = () => {
                 if (this.isValidSource())
