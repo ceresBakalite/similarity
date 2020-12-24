@@ -2,6 +2,11 @@ export { similarityframe };
 
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
+function testCall() {
+
+    console.log('hello from testCall');
+}
+
 var similarityframe = {};
 (function() {
 
@@ -16,11 +21,6 @@ var similarityframe = {};
     function rscMethods()
     {
         (function() {
-
-            this.testCall = () => {
-
-                console.log('hello from testCall');
-            }
 
             this.onloadFrame = () => {
                 if (this.isValidSource())
