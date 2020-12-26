@@ -72,15 +72,8 @@ var resource = {};
         nodelist.forEach(node => {
 
             let shadow = node.shadowRoot;  // a root node of the DOM subtree
-
-            if (shadow) {
-
-                let shard = shadow.querySelector(el.query);  // a node within the root node of the DOM subtree
-                shard.innerHTML.replace(el.regex, el.replace);
-
-                //this.clearElement(shard);
-                //shard.insertAdjacentHTML('afterbegin', markup);
-            }
+            if (shadow) { shadow.querySelector(el.query).innerText.replace(el.regex, el.replace); }
+            //if (shadow) { shadow.querySelector(el.query).innerHTML.replace(el.regex, el.replace); }
 
         });
 
