@@ -22,7 +22,7 @@ var include = {};
             {
                 const src = this.getAttribute('src');
                 fetch(src).then(response => response.text()).then(str => { this.insertAdjacentHTML('afterbegin', str) });
-            }
+            };
 
         });
 
@@ -34,8 +34,8 @@ var resource = {};
 (function() {
 
     this.isWindows    = navigator.appVersion.indexOf('Win') != -1;
-    this.whitespace   = /\s/g,
-    this.markup       = /(<([^>]+)>)/ig,
+    this.whitespace   = /\s/g;
+    this.markup       = /(<([^>]+)>)/ig;
     this.commaCodes   = /,|&comma;|&#x2c;|&#44;|U+0002C/g;
     this.commaSymbol  = '_&c';
     this.newline      = this.isWindows ? '\r\n' : '\n';
@@ -80,7 +80,7 @@ var resource = {};
 
                 this.clearElement(shard);
                 shard.insertAdjacentHTML('afterbegin', markup.replace(el.regex, el.replace));
-            }
+            };
 
         });
 
@@ -181,7 +181,7 @@ var resource = {};
 
                     rowArray.forEach((value, i) => { str += nodeName(i) + '"' + value.trim().replace(/"/g, '\\"') + '", '; });
                     str = str.replace(re, '') + ' },\n';
-                }
+                };
 
             });
 
@@ -217,8 +217,8 @@ var debug = {};
     this.warn      = 3;
     this.default   = 98;
     this.error     = 99;
-    this.isWindows =   navigator.appVersion.indexOf('Win') != -1;
-    this.newline   =  this.isWindows ? '\r\n' : '\n';
+    this.isWindows = navigator.appVersion.indexOf('Win') != -1;
+    this.newline   = this.isWindows ? '\r\n' : '\n';
 
     this.inspect = diagnostic => {
 
@@ -255,7 +255,7 @@ var debug = {};
 
         if (defaultDate) return newDate;
 
-        const getOffset = function(value) { return (value < 10) ? '0' : ''; }
+        const getOffset = value => { return (value < 10) ? '0' : ''; }
 
         Date.prototype.today = () => { return getOffset(this.getDate()) + this.getDate() + '/' + getOffset(this.getMonth()+1) + (this.getMonth() + 1) + '/' + this.getFullYear(); }
 
