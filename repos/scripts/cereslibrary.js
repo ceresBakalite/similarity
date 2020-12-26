@@ -43,7 +43,7 @@ var resource = {};
     this.elArray      = ['link', 'script', 'style'];
     this.bool         = this.bArray.map(item => { return item.trim().toUpperCase(); });
     this.docHead      = this.elArray.map(item => { return item.trim().toUpperCase(); });
-    this.srcOpen      = obj => window.open(obj.element.getAttribute('src'), obj.type);
+    this.srcOpen      = obj => globalThis.open(obj.element.getAttribute('src'), obj.type);
     this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
     this.clearElement = el => { while (el.firstChild) el.removeChild(el.firstChild); }
     this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);

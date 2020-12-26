@@ -45,7 +45,7 @@ var similarityframe = {};
 
                 if (pin == 'disabled')
                 {
-                    if (header.style.display && window.scrollY > trigger)
+                    if (header.style.display && globalThis.scrollY > trigger)
                     {
                         if (header.style.display != 'none') setTimeout(() => { setStyleDisplay('none'); }, 250);
 
@@ -68,7 +68,7 @@ var similarityframe = {};
                 return false;
             }
 
-            this.invokeScrollEventListener = () => { window.onscroll = () => { rsc.adjustHeaderDisplay(); }; }
+            this.invokeScrollEventListener = () => { globalThis.onscroll = () => { rsc.adjustHeaderDisplay(); }; }
 
             this.asyncPullMarkdownRequest = () => {
 
