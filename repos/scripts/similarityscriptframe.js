@@ -14,7 +14,7 @@ globalThis.test = {}; // ceres slideview global (actual or proxy) object namespa
 })();
 */
 
-window.document.testCall = (el) => {
+globalThis.testCall = (el) => {
 
     console.log('hello 1 from testCall: ' + el.src);
 }
@@ -28,7 +28,6 @@ var similarityframe = {};
     rscMethods();
 
     this.onload = () => { rsc.onloadFrame(); }  // global scope method reference
-    this.test =  () => { rsc.testCall(); }  // global scope method reference
 
     function rscMethods()
     {
