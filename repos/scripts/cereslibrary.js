@@ -75,8 +75,9 @@ var resource = {};
 
             if (shadow) {
 
-                let markdown = shadow.querySelector(el.query).textContent; // the content we wish to alter
-                shadow.querySelector(el.query).textContent = markdown.replace(el.regex, el.replace);
+                let shade = shadow.querySelector(el.query);
+                let markdown = shade.textContent; // the content we wish to alter
+                shade.textContent = markdown.replace(el.regex, el.replace);
                 //let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
                 //shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
             }
