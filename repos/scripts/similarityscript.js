@@ -48,7 +48,7 @@ var similarity = {};
                     this.markupUrl = location.get(this.markupId) || location.get('index');
 
                     document.querySelector('iframe.frame-container').setAttribute('src', this.markupUrl);
-                }
+                };
 
                 if (buttonElement) buttonElement.blur();
             }
@@ -63,7 +63,7 @@ var similarity = {};
                 } else {
 
                     this.setPinState(el, 'enabled');
-                }
+                };
 
             }
 
