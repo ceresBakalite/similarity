@@ -96,7 +96,7 @@ var similarity = {};
 
             this.getQueryString = () =>  {
 
-                const urlParams = new URLSearchParams(window.location.search);
+                const urlParams = new URLSearchParams(globalThis.location.search);
                 const name = urlParams.get('sync')
 
                 if (name) this.getMarkupDocument(name);

@@ -63,7 +63,7 @@ var similarityframe = {};
                 const sync = document.querySelector('body');
 
                 if (parent.document.querySelector('body.ceres > section.index')) return true;
-                window.location.href = '/similarity/?sync=' + sync.className;
+                globalThis.location.href = '/similarity/?sync=' + sync.className;
 
                 return false;
             }

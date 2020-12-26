@@ -16,7 +16,7 @@ var include = {};
 
     this.directive = (el = 'include-directive') => {
 
-        window.customElements.get(el) || window.customElements.define(el, class extends HTMLElement
+        globalThis.customElements.get(el) || globalThis.customElements.define(el, class extends HTMLElement
         {
             async connectedCallback()
             {
