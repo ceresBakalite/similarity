@@ -76,10 +76,10 @@ var resource = {};
             if (shadow) {
 
                 let shard = shadow.querySelector(el.query);
-                let markdown = shard.innerHTML; // the html content we wish to alter
+                let markup = shard.innerHTML; // the html content we wish to alter
 
                 this.clearElement(shard);
-                shard.insertAdjacentHTML('afterbegin', markdown.replace(el.regex, el.replace));
+                shard.insertAdjacentHTML('afterbegin', markup.replace(el.regex, el.replace));
             }
 
         });
