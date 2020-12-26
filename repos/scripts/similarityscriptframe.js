@@ -7,8 +7,8 @@ globalThis.testCall = (el) => {
     console.log('hello 1 from testCall: ' + el.src);
 }
 
-var similarityframe = {};
-(function() {
+globalThis.similarityframe = {};
+(() => {
 
     include.directive();
 
@@ -86,4 +86,4 @@ var similarityframe = {};
 
     }
 
-}).call(window);
+})();
