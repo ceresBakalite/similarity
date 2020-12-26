@@ -76,7 +76,7 @@ var resource = {};
             if (shadow) {
 
                 let shard = shadow.querySelector(el.query);
-                let markdown = shard.nodeValue; // the html content we wish to alter
+                let markdown = shard.firstChild.nodeValue; // the html content we wish to alter
 
                 this.clearElement(shard);
                 shard.insertAdjacentHTML('afterbegin', markdown.replace(el.regex, el.replace));
