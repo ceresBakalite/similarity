@@ -22,12 +22,13 @@ var similarityframe = {};
         (function() {
 
             this.onloadFrame = () => {
+
                 if (this.isValidSource())
                 {
                     this.invokeScrollEventListener();
                     this.asyncPullMarkdownRequest();
                     this.displaySlideviewContent();
-                }
+                };
 
             }
 
@@ -52,9 +53,9 @@ var similarityframe = {};
                     } else {
 
                         if (header.style.display != 'block') setTimeout(() => { setStyleDisplay('block'); }, 250);
-                    }
+                    };
 
-                }
+                };
 
             }
 
