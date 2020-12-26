@@ -1,4 +1,4 @@
-export { similarityframe };
+export { similarityframe, test };
 
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
