@@ -2,7 +2,7 @@ export { similarityframe };
 
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
-var testCall = (el) => {
+globalThis.testCall = (el) => {
 
     console.log('hello 1 from testCall: ' + el.src);
 }
