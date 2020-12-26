@@ -75,11 +75,8 @@ var resource = {};
 
             if (shadow) {
 
-                let shade = shadow.querySelector(el.query);
-                let markdown = shade.innerHTML; // the content we wish to alter
-                shade.innerHTML = markdown.replace(el.regex, el.replace);
-                //let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
-                //shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
+                let shard = shadow.querySelector(el.query);
+                shard.innerHTML = shard.innerHTML.replace(el.regex, el.replace);
             }
 
         });
