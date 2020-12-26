@@ -75,24 +75,11 @@ var resource = {};
 
             if (shadow) {
 
-                //let shadow = node.shadowRoot;  // a root node of the DOM subtree
-                //if (shadow) { shadow.querySelector(el.query).innerHTML.replace(el.regex, el.replace); } // a shard of the root node of the DOM subtree
-
-                /*
                 let shard = shadow.querySelector(el.query);
                 let markdown = shard.innerHTML; // the content we wish to alter
 
                 this.clearElement(shard);
                 shard.insertAdjacentHTML('afterbegin', markdown.replace(el.regex, el.replace));
-                */
-
-                let shard = shadow.querySelector(el.query);
-                let markup = new DOMParser().parseFromString(shard.innerText.replace(el.regex, el.replace), 'text/html').documentElement.innerHTML;
-
-                this.clearElement(shard);
-                shard.insertAdjacentHTML('afterbegin', markup);
-
-                //shadow.querySelector(el.query).innerText = markdown.replace(el.regex, el.replace);
             }
 
         });
