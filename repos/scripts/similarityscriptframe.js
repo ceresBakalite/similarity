@@ -3,7 +3,7 @@ export { similarityframe, test };
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
 
-globalThis.test = {}; // ceres slideview global (actual or proxy) object namespace
+var test = {}; // ceres slideview global (actual or proxy) object namespace
 (function() {
 
     this.get = () => {
