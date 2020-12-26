@@ -77,9 +77,10 @@ var resource = {};
 
                 let shade = shadow.querySelector(el.query);
 
-                let markdown = shade.value;
+                let markdown = new XMLSerializer().serializeToString(shade);
+
                 //let markdown = shade.innerHTML; // the content we wish to alter
-                shade.textContent = markdown.replace(el.regex, el.replace);
+                shade.replaceWith(markdown.replace(el.regex, el.replace));
                 //let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
                 //shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
             }
