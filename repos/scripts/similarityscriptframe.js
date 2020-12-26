@@ -1,22 +1,11 @@
-export { similarityframe, test };
+export { similarityframe };
 
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
+globalThis.testCall = (el) => {
 
-globalThis.test = {}; // ceres slideview global (actual or proxy) object namespace
-(function() {
-
-    this.get = () => {
-
-        console.log('hello 1 from test namespace: ' + el.src);
-    }
-
-}).call(globalThis.test);
-
-//globalThis.testCall = (el) => {
-
-//    console.log('hello 1 from testCall: ' + el.src);
-//}
+    console.log('hello 1 from testCall: ' + el.src);
+}
 
 var similarityframe = {};
 (function() {
