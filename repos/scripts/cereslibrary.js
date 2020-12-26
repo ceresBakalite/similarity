@@ -76,7 +76,7 @@ var resource = {};
             if (shadow) {
 
                 let shard = shadow.querySelector(el.query);
-                shard.innerHTML = shard.innerHTML.replace(el.regex, el.replace);
+                shard.replaceWith(shard.innerHTML.replace(el.regex, el.replace));
             }
 
         });
