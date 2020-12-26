@@ -86,4 +86,4 @@ var similarityframe = {};
 
     }
 
-}).call(globalThis);
+}).call(similarityframe);

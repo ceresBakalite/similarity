@@ -106,4 +106,4 @@ var similarity = {};
 
     }
 
-}).call(window);
+}).call(globalThis);
