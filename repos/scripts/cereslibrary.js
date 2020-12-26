@@ -76,12 +76,10 @@ var resource = {};
             if (shadow) {
 
                 let shard = shadow.querySelector(el.query);  // a node within the root node of the DOM subtree
-                let content = shard.innerHTML.replace(el.regex, el.replace);
+                let content = shard.value.replace(el.regex, el.replace);
 
                 this.clearElement(shard);
                 shard.insertAdjacentHTML('afterbegin', content);
-
-                //shard.innerHTML = shard.innerHTML.replace(el.regex, el.replace);
             }
 
         });
