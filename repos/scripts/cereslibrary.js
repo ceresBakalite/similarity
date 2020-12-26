@@ -79,7 +79,7 @@ var resource = {};
                 //if (shadow) { shadow.querySelector(el.query).innerHTML.replace(el.regex, el.replace); } // a shard of the root node of the DOM subtree
 
                 let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
-                shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
+                shadow.querySelector(el.query).innerText = markdown.replace(el.regex, el.replace);
             }
 
         });
