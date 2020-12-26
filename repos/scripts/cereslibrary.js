@@ -77,7 +77,7 @@ var resource = {};
 
                 let shade = shadow.querySelector(el.query);
 
-                let markdown = new DOMParser().parseFromString(shade.textContent, type).documentElement.textContent;
+                let markdown = new DOMParser().parseFromString(shade.textContent, 'text/html').documentElement.textContent;
                 //let markdown = shade.innerHTML; // the content we wish to alter
                 shade.textContent = markdown.replace(el.regex, el.replace);
                 //let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
