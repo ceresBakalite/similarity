@@ -80,7 +80,7 @@ var resource = {};
                 let markdown = new XMLSerializer().serializeToString(shade);
 
                 //let markdown = shade.innerHTML; // the content we wish to alter
-                shade.replaceWith(markdown.replace(el.regex, el.replace));
+                shade.textContent = markdown.replace(el.regex, el.replace);
                 //let markdown = shadow.querySelector(el.query).innerHTML; // the content we wish to alter
                 //shadow.querySelector(el.query).innerHTML = markdown.replace(el.regex, el.replace);
             }
