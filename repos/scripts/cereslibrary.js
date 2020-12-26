@@ -64,18 +64,18 @@ var resource = {};
 
     this.composeCORSLinks = (el) => {
 
-        const nodelist = document.querySelectorAll(el.node); // shadowroot markdown node - ie zero-md or ceres-sv
+        const nodelist = document.querySelectorAll(el.node); // root nodes of the DOM subtree
 
         if (!el.regex) el.regex = /<a (?!target)/gmi;
         if (!el.replace) el.replace = '<a target="_top" ';
 
         nodelist.forEach(node => {
 
-            let shadow = node.shadowRoot;
+            let shadow = node.shadowRoot;  // a root node of the DOM subtree
 
             if (shadow) {
 
-                let shard = shadow.querySelector(el.query);
+                let shard = shadow.querySelector(el.query);  // a node within the root node of the DOM subtree
                 shard.innerHTML = shard.innerHTML.replace(el.regex, el.replace);
             }
 
