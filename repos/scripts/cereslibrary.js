@@ -87,7 +87,7 @@ var resource = {};
                 */
 
                 let shard = shadow.querySelector(el.query);
-                let markup = new DOMParser().parseFromString(shard.innerText.replace(el.regex, el.replace), 'text/html').documentElement.body;
+                let markup = new DOMParser().parseFromString(shard.innerText.replace(el.regex, el.replace), 'text/html').documentElement.innerHTML;
 
                 this.clearElement(shard);
                 shard.insertAdjacentHTML('afterbegin', markup);
