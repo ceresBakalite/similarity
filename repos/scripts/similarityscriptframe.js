@@ -11,7 +11,7 @@ globalThis.test = {}; // ceres slideview global (actual or proxy) object namespa
         console.log('hello 1 from test namespace: ' + el.src);
     }
 
-})();
+}).call(test);
 
 //globalThis.testCall = (el) => {
 
