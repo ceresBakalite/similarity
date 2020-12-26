@@ -8,7 +8,7 @@ globalThis.testCall = (el) => {
 }
 
 var similarityframe = {};
-(() => {
+(function() {
 
     include.directive();
 
