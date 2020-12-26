@@ -14,7 +14,7 @@ globalThis.test = {}; // ceres slideview global (actual or proxy) object namespa
 })();
 */
 
-window.document.testCall = (el) => {
+const testCall = (el) => {
 
     console.log('hello from testCall: ' + el.src);
 }
