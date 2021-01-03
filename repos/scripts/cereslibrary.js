@@ -64,19 +64,19 @@ var resource = {};
 
     this.composeCORSLinks = (el) => {
 
-        const nodelist = document.querySelectorAll(el.node); // shadowroot markdown node - ie zero-md or ceres-sv
+        const nodelist = document.querySelectorAll(el.node); // shadowroot instance collection
 
         if (!el.regex) el.regex = /<a (?!target)/gmi;
         if (!el.replace) el.replace = '<a target="_top" ';
 
         nodelist.forEach(node => {
 
-            let shadow = node.shadowRoot;
+            let shadow = node.shadowRoot; // a shadowroot node of the DOM subtree
 
             if (shadow) {
 
                 let shard = shadow.querySelector(el.query);
-                let markup = shard.innerHTML; // the html content we wish to alter
+                let markup = shard.innerHTML; // the shadowdom html content we wish to alter
 
                 this.clearElement(shard);
                 shard.insertAdjacentHTML('afterbegin', markup.replace(el.regex, el.replace));
