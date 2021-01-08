@@ -6,10 +6,10 @@ import { similaritycache } from '../mods/similaritycache.min.js';
 var similarity = {};
 (function() {
 
-    include.directive();
+    include.directive(); // HTML namespace include scripts
 
-    const rsc = {};
-    rscMethods();
+    const rsc = {}; // resource namespace
+    rscMethods(); // resource methods
 
     this.onload = () => { rsc.onloadFrame(); } // global scope method reference
     this.getMarkup = (id, el) => { rsc.getMarkupDocument(id, el); }  // global scope method reference

@@ -10,16 +10,16 @@ globalThis.testCall = (el) => {
 var similarityframe = {};
 (function() {
 
-    include.directive();
+    include.directive(); // HTML namespace include scripts
 
-    const rsc = {};
-    rscMethods();
+    const rsc = {}; // resource namespace
+    rscMethods(); // resource methods
 
-    this.onload = () => { rsc.onloadFrame(); }  // global scope method reference
+    this.onload = () => { rsc.onloadFrame(); } // global scope method reference
 
     function rscMethods()
     {
-        (function() {
+        (function() {  // methods belonging to the resource object
 
             this.onloadFrame = () => {
 
