@@ -76,7 +76,7 @@ var resource = {};
             if (shadow) {
 
                 let shard = shadow.querySelector(el.query);
-                let markup = this.softSanitize(shard.innerHTML); // the shadowdom html content we wish to alter
+                let markup = shard.innerHTML; // the shadowdom html content we wish to alter
 
                 this.clearElement(shard);
                 shard.insertAdjacentHTML('afterbegin', markup.replace(el.regex, el.replace));
