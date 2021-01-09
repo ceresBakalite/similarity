@@ -11,7 +11,7 @@
 */
 export { include, resource, debug, cookies, touch, cache }
 
-var include = {};
+var include = {};  // fetch HTML namespace include scripts
 (function() {
 
     this.directive = (el = 'include-directive') => {
@@ -133,6 +133,29 @@ var resource = {};
             .replace(/</g, '&lt;');
     }
 
+    this.getCurrentDateTime = (obj = {}) => {
+
+        const newDate = new Date();
+        const defaultDate = resource.ignore(obj);
+
+        if (defaultDate) return newDate;
+
+        const getOffset = value => { return (value < 10) ? '0' : ''; }
+
+        Date.prototype.today = () => { return getOffset(this.getDate()) + this.getDate() + '/' + getOffset(this.getMonth()+1) + (this.getMonth() + 1) + '/' + this.getFullYear(); }
+
+        Date.prototype.timeNow = () => {
+
+            let time = getOffset(this.getHours()) + this.getHours() + ':' + getOffset(this.getMinutes()) + this.getMinutes() + ':' + getOffset(this.getSeconds()) + this.getSeconds();
+            return (obj.ms) ? time + '.' + getOffset(this.getUTCMilliseconds()) + this.getUTCMilliseconds() : time;
+        }
+
+        let date = obj.date ? newDate.today() + ' ' : '';
+        date = obj.time ? date + newDate.timeNow() : '';
+
+        return date.trim();
+    }
+
     // noddy regex comma separated value parser
     this.parseCSV = (text, symbol = {}) => {
 
@@ -227,7 +250,7 @@ var debug = {};
 
         const errorHandler = error => {
 
-            const err = error.notification + ' [ DateTime: ' + this.getCurrentDateTime({ ms: true }) + ' ]';
+            const err = error.notification + ' [ DateTime: ' + resource.getCurrentDateTime({ ms: true }) + ' ]';
             console.error(err);
 
             if (error.alert) alert(err);
@@ -249,29 +272,6 @@ var debug = {};
 
         for (let literal in string) str += literal + ': ' + string[literal] + ', ';
         return str.replace(/, +$/g,'');
-    }
-
-    this.getCurrentDateTime = (obj = {}) => {
-
-        const newDate = new Date();
-        const defaultDate = resource.ignore(obj);
-
-        if (defaultDate) return newDate;
-
-        const getOffset = value => { return (value < 10) ? '0' : ''; }
-
-        Date.prototype.today = () => { return getOffset(this.getDate()) + this.getDate() + '/' + getOffset(this.getMonth()+1) + (this.getMonth() + 1) + '/' + this.getFullYear(); }
-
-        Date.prototype.timeNow = () => {
-
-            let time = getOffset(this.getHours()) + this.getHours() + ':' + getOffset(this.getMinutes()) + this.getMinutes() + ':' + getOffset(this.getSeconds()) + this.getSeconds();
-            return (obj.ms) ? time + '.' + getOffset(this.getUTCMilliseconds()) + this.getUTCMilliseconds() : time;
-        }
-
-        let date = obj.date ? newDate.today() + ' ' : '';
-        date = obj.time ? date + newDate.timeNow() : '';
-
-        return date.trim();
     }
 
 }).call(debug);

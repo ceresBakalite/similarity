@@ -6,7 +6,7 @@ import { similaritycache } from '../mods/similaritycache.min.js';
 var similarity = {};
 (function() {
 
-    include.directive(); // HTML namespace include scripts
+    include.directive(); // fetch HTML namespace include scripts
 
     const rsc = {}; // resource namespace
     rscMethods(); // resource methods
