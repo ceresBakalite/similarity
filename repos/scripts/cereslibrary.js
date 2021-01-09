@@ -62,7 +62,7 @@ var resource = {};
         precursor.appendChild(node);
     }
 
-    this.composeCORSLinks = (el) => {
+    this.shadowCORSLinks = (el) => {
 
         const nodelist = document.querySelectorAll(el.node); // shadowroot instance collection
 

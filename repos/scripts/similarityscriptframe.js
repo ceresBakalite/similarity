@@ -73,7 +73,7 @@ var similarityframe = {};
 
             this.asyncPullMarkdownRequest = () => {
 
-                setTimeout(() => { resource.composeCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
+                setTimeout(() => { resource.shadowCORSLinks( { node: 'zero-md', query: 'div.markdown-body' } ); }, 1000);
                 setTimeout(() => {  document.querySelector('div.footer-content').style.display = 'block'; }, 2000);
             }
 
