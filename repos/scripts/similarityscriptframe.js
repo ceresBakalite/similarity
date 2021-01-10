@@ -2,7 +2,7 @@ export { similarityframe };
 
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
-globalThis.testCall = (el) => {
+var testCall = (el) => {
 
     console.log('Hello from the shadowdom: ' + el.src);
     resource.srcOpen({ element: el, type: 'image' });
