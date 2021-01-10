@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-//export { similaritycache }
+export { similaritycache }
 
 import { resource, cache } from '../mods/cereslibrary.min.js';
 
