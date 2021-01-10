@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { include, resource, debug, cookies, swipe, cache }
+//export { include, resource, debug, cookies, swipe, cache }
 
 var include = {};  // fetch HTML namespace include scripts
 (function() {
