@@ -4,7 +4,7 @@ import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
 globalThis.testCall = (el) => {
 
-    console.log('hello 1 from testCall: ' + el.src);
+    console.log('hello from the shadowdom testCall(this) - ' + el.src);
     resource.srcOpen({ element: el, type: 'image' });
 }
 
