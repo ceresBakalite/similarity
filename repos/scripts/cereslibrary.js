@@ -44,6 +44,7 @@ var resource = {};
     this.srcOpen      = obj => globalThis.open(obj.element.getAttribute('src'), obj.type);
     this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
     this.clearElement = el => { while (el.firstChild) el.removeChild(el.firstChild); }
+    this.elementName  = el => el.nodeName.toLocaleLowerCase();
     this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
     this.fileType     = (path, type) => path.substring(path.lastIndexOf('.')+1, path.length).toUpperCase() === type.toUpperCase();
     this.bool         = this.bArray.map(item => { return item.trim().toUpperCase(); });
