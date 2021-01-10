@@ -41,7 +41,7 @@ var resource = {};
     this.bArray       = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
     this.elArray      = ['link', 'script', 'style'];
 
-    this.srcOpen      = obj => globalThis.open(obj.element.getAttribute('src'), obj.type = 'image');
+    this.srcOpen      = obj => globalThis.open(obj.element.getAttribute('src'), obj.type);
     this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
     this.clearElement = el => { while (el.firstChild) el.removeChild(el.firstChild); }
     this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
