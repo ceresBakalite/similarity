@@ -1,8 +1,8 @@
-export { similarityframe, testCall };
+export { similarityframe };
 
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
-var testCall = (el) => {
+globalThis.testCall = (el) => {
 
     console.log('Hello from the shadowdom: ' + el.src);
     resource.srcOpen({ element: el, type: 'image' });
