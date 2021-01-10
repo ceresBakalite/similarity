@@ -37,7 +37,7 @@ var resource = {};
     this.markup       = /(<([^>]+)>)/ig;
     this.commaCodes   = /,|&comma;|&#x2c;|&#44;|U+0002C/g;
     this.commaSymbol  = '_&c';
-    this.newline      = this.isWindows ? '\r\n' : '\n';
+    this.newline      = resource.isWindows ? '\r\n' : '\n';
     this.bArray       = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
     this.elArray      = ['link', 'script', 'style'];
 
@@ -46,14 +46,14 @@ var resource = {};
     this.clearElement = el => { while (el.firstChild) el.removeChild(el.firstChild); }
     this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
     this.fileType     = (path, type) => path.substring(path.lastIndexOf('.')+1, path.length).toUpperCase() === type.toUpperCase();
-    this.bool         = this.bArray.map(item => { return item.trim().toUpperCase(); });
-    this.docHead      = this.elArray.map(item => { return item.trim().toUpperCase(); });
+    this.bool         = resource.bArray.map(item => { return item.trim().toUpperCase(); });
+    this.docHead      = resource.elArray.map(item => { return item.trim().toUpperCase(); });
 
     this.composeElement = (el, atr) => {
 
-        if (this.ignore(el.type)) return;
+        if (resource.ignore(el.type)) return;
 
-        const precursor = this.docHead.includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
+        const precursor = resource.docHead.includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
         const node = document.createElement(el.type);
 
         Object.entries(atr).forEach(([key, value]) => { node.setAttribute(key, value); });
@@ -78,7 +78,7 @@ var resource = {};
                 let shard = shadow.querySelector(el.query);
                 let markup = shard.innerHTML; // the shadowdom html content we wish to alter
 
-                this.clearElement(shard);
+                resource.clearElement(shard);
                 shard.insertAdjacentHTML('afterbegin', markup.replace(el.regex, el.replace));
             };
 
@@ -89,7 +89,7 @@ var resource = {};
     this.ignore = obj => {
 
         return (obj === null || obj == 'undefined') ? true
-            : this.isString(obj) ? (obj.length === 0 || !obj.trim())
+            : resource.isString(obj) ? (obj.length === 0 || !obj.trim())
             : Array.isArray(obj) ? (obj.length === 0)
             : (obj && obj.constructor === Object) ? Object.keys(obj).length === 0
             : !obj;
@@ -98,8 +98,8 @@ var resource = {};
     this.getBoolean = obj => {
 
         return (obj === true || obj === false) ? obj
-            : (this.ignore(obj) || !this.isString(obj)) ? false
-            : this.bool.includes(obj.trim().toUpperCase());
+            : (resource.ignore(obj) || !resource.isString(obj)) ? false
+            : resource.bool.includes(obj.trim().toUpperCase());
     }
 
     this.getUniqueId = obj => {
@@ -180,7 +180,7 @@ var resource = {};
 
             newGroup = newGroup.replace(reE, '"'); // replace two ajoining double quotes with one double quote
 
-            return newGroup.replace(this.commaCodes, this.commaSymbol) + endSymbol; // replace any remaining comma entities with a separator symbol
+            return newGroup.replace(resource.commaCodes, resource.commaSymbol) + endSymbol; // replace any remaining comma entities with a separator symbol
         }
 
         const parseRow = row => {
@@ -244,7 +244,7 @@ var debug = {};
     this.default   = 98;
     this.error     = 99;
     this.isWindows = navigator.appVersion.indexOf('Win') != -1;
-    this.newline   = this.isWindows ? '\r\n' : '\n';
+    this.newline   = debug.isWindows ? '\r\n' : '\n';
 
     this.inspect = diagnostic => {
 
@@ -258,14 +258,14 @@ var debug = {};
 
         const lookup = {
 
-            [this.notify]    : () => { if (diagnostic.logtrace) console.info(diagnostic.notification); },
-            [this.warn]      : () => { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
-            [this.reference] : () => { if (diagnostic.logtrace) console.log('Reference: ' + this.newline + this.newline + diagnostic.reference); },
-            [this.error]     : () => errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace }),
-            [this.default]   : () => errorHandler({ notification: 'Unhandled exception' })
+            [debug.notify]    : () => { if (diagnostic.logtrace) console.info(diagnostic.notification); },
+            [debug.warn]      : () => { if (diagnostic.logtrace) console.warn(diagnostic.notification); },
+            [debug.reference] : () => { if (diagnostic.logtrace) console.log('Reference: ' + debug.newline + debug.newline + diagnostic.reference); },
+            [debug.error]     : () => errorHandler({ notification: diagnostic.notification, alert: diagnostic.logtrace }),
+            [debug.default]   : () => errorHandler({ notification: 'Unhandled exception' })
         };
 
-        lookup[diagnostic.type]() || lookup[this.default];
+        lookup[diagnostic.type]() || lookup[debug.default];
     }
 
     this.getProperties = (string = {}, str = '') => {
