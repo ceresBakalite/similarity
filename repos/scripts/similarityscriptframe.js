@@ -5,6 +5,7 @@ import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 globalThis.testCall = (el) => {
 
     console.log('hello 1 from testCall: ' + el.src);
+    resource.srcOpen(el);
 }
 
 var similarityframe = {};
