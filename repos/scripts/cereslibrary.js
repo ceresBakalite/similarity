@@ -82,8 +82,6 @@ var resource = {};
 
         }, {});
 
-        const onVisibilityChange = () => { document.hidden ? node.pause() : node.play() };
-
         const source = document.createElement('source');
         source.setAttribute('src', src);
         source.setAttribute('type', type);
@@ -91,7 +89,6 @@ var resource = {};
         node.appendChild(source);
 
         observer.observe(node);
-        node.addEventListener("visibilitychange", onVisibilityChange);
     }
 
     this.shadowCORSLinks = (el) => {
