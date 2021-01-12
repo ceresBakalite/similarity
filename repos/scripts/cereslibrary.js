@@ -45,22 +45,53 @@ var resource = {};
     this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
     this.clearElement = el => { while (el.firstChild) el.removeChild(el.firstChild); }
     this.elementName  = el => el.nodeName.toLocaleLowerCase();
-    this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
     this.fileType     = (path, type) => path.substring(path.lastIndexOf('.')+1, path.length).toUpperCase() === type.toUpperCase();
+    this.mediaType    = path => { return this.media.get(this.fileExt(path).toLowerCase()); }
+    this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
+    this.fileExt      = path => path.substring(path.lastIndexOf('.')+1, path.length);
     this.bool         = this.bArray.map(item => { return item.trim().toUpperCase(); });
     this.docHead      = this.elArray.map(item => { return item.trim().toUpperCase(); });
 
+    this.media = new Map();
+    this.media.set('mp4', 'video/mp4');
+    this.media.set('m4v', 'video/m4v');
+    this.media.set('ogg', 'video/ogg');
+    this.media.set('ogv', 'video/ogg');
+    this.media.set('webm', 'video/webm');
+
     this.composeElement = (el, atr) => {
 
-        if (this.ignore(el.type)) return;
+        if (this.ignore(el.nodeType)) return;
 
-        const precursor = this.docHead.includes(el.type.trim().toUpperCase()) ? document.head : (el.parent || document.body);
-        const node = document.createElement(el.type);
+        const precursor = this.docHead.includes(el.nodeType.trim().toUpperCase()) ? document.head : (el.parent || document.body);
+        const node = document.createElement(el.nodeType);
 
-        Object.entries(atr).forEach(([key, value]) => { node.setAttribute(key, value); });
+        Object.entries(atr).forEach(([key, value]) => { if (value) node.setAttribute(key, value); });
+
         if (el.markup) node.insertAdjacentHTML('afterbegin', el.markup);
+        if (el.nodeType === 'video') this.composeVideo(node, el.src, el.type);
 
         precursor.appendChild(node);
+    }
+
+    this.composeVideo = (node, src, type) => {
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => { !entry.isIntersecting ? node.pause() : node.play() } );
+
+        }, {});
+
+        const onVisibilityChange = () => { document.hidden ? node.pause() : node.play() };
+
+        const source = document.createElement('source');
+        source.setAttribute('src', src);
+        source.setAttribute('type', type);
+
+        node.appendChild(source);
+
+        observer.observe(node);
+        node.addEventListener("visibilitychange", onVisibilityChange);
     }
 
     this.shadowCORSLinks = (el) => {
