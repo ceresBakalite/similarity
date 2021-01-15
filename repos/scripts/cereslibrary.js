@@ -40,17 +40,34 @@ var resource = {};
     this.newline      = this.isWindows ? '\r\n' : '\n';
     this.bArray       = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
     this.elArray      = ['link', 'script', 'style'];
-
-    this.srcOpen      = obj => globalThis.open(obj.element.getAttribute('src'), obj.type);
-    this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
-    this.clearElement = el => { while (el.firstChild) el.removeChild(el.firstChild); }
-    this.elementName  = el => el.nodeName.toLocaleLowerCase();
-    this.fileType     = (path, type) => path.substring(path.lastIndexOf('.')+1, path.length).toUpperCase() === type.toUpperCase();
-    this.mediaType    = path => { return this.media.get(this.fileExt(path).toLowerCase()); }
-    this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
-    this.fileExt      = path => path.substring(path.lastIndexOf('.')+1, path.length);
     this.bool         = this.bArray.map(item => { return item.trim().toUpperCase(); });
     this.docHead      = this.elArray.map(item => { return item.trim().toUpperCase(); });
+
+    this.fileType     = (path, type) => this.fileExt(path).toUpperCase() === type.toUpperCase();
+    this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
+    this.fileExt      = path => path.substring(path.lastIndexOf('.')+1, path.length);
+    this.mediaType    = path => this.media.get(this.fileExt(path).toLowerCase());
+    this.isVideo      = path => this.media.has(this.fileExt(path).toLowerCase());
+    this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
+    this.srcOpen      = obj => globalThis.open(obj.element.getAttribute('src'), obj.type);
+    this.elementName  = node => node.nodeName.toLocaleLowerCase();
+    this.clearElement = node => { while (node.firstChild) node.removeChild(node.firstChild); }
+
+    this.softSanitize = (text, type = 'text/html') => this.ignore(text) ? null : new DOMParser()
+        .parseFromString(text, type).documentElement.textContent
+        .replace(/</g, '&lt;');
+
+    this.ignore = obj => (obj === null || obj == 'undefined') ? true
+        : this.isString(obj) ? (obj.length === 0 || !obj.trim())
+        : Array.isArray(obj) ? (obj.length === 0)
+        : (obj && obj.constructor === Object) ? Object.keys(obj).length === 0
+        : !obj;
+
+    this.getBoolean = obj => (obj === true || obj === false) ? obj
+        : (this.ignore(obj) || !this.isString(obj)) ? false
+        : this.bool.includes(obj.trim().toUpperCase());
+
+    this.regexEscape = str => str.replace(/([.*+?^$|(){}\[\]])/gm, '\\$1');
 
     this.media = new Map();
     this.media.set('mp4', 'video/mp4');
@@ -76,9 +93,9 @@ var resource = {};
 
     this.composeVideo = (node, src, type) => {
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(entries => { // play when visible
 
-            entries.forEach(entry => { !entry.isIntersecting ? node.pause() : node.play() } );
+            entries.forEach(entry => { entry.isIntersecting ? node.play() : node.pause() });
 
         }, {});
 
@@ -115,22 +132,6 @@ var resource = {};
 
     }
 
-    this.ignore = obj => {
-
-        return (obj === null || obj == 'undefined') ? true
-            : this.isString(obj) ? (obj.length === 0 || !obj.trim())
-            : Array.isArray(obj) ? (obj.length === 0)
-            : (obj && obj.constructor === Object) ? Object.keys(obj).length === 0
-            : !obj;
-    }
-
-    this.getBoolean = obj => {
-
-        return (obj === true || obj === false) ? obj
-            : (this.ignore(obj) || !this.isString(obj)) ? false
-            : this.bool.includes(obj.trim().toUpperCase());
-    }
-
     this.getUniqueId = obj => {
 
         if (!obj.name) obj.name = 'n';
@@ -142,24 +143,12 @@ var resource = {};
         return obj.el;
     }
 
-    this.regexEscape = (str) => {
-
-        return str.replace(/([.*+?^$|(){}\[\]])/gm, '\\$1');
-    }
-
     this.removeDuplcates = (obj, sort) => {
 
         const key = JSON.stringify;
         const ar = [...new Map (obj.map(node => [key(node), node])).values()];
 
         return sort ? ar.sort((a, b) => a - b) : ar;
-    }
-
-    this.softSanitize = (text, type = 'text/html') => {
-
-        return this.ignore(text) ? null : new DOMParser()
-            .parseFromString(text, type).documentElement.textContent
-            .replace(/</g, '&lt;');
     }
 
     this.getCurrentDateTime = (obj = {}) => {
