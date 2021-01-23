@@ -198,7 +198,7 @@ var resource = {};
 
             newGroup = newGroup.replace(reE, '"'); // replace two ajoining double quotes with one double quote
 
-            return newGroup.replace(this.commaCodes, this.commaSymbol) + endSymbol; // replace any remaining comma entities with a separator symbol
+            return newGroup.replace(symbol.commaCodes, symbol.commaSymbol) + endSymbol; // replace any remaining comma codes with a separator symbol
         }
 
         const parseRow = row => {
