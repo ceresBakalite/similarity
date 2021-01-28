@@ -1,0 +1,22 @@
+<svg fill="none" width="100%" height="400" xmlns="http://www.w3.org/2000/svg">
+	<foreignObject width="100%" height="100%">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .img-pointer {
+        max-width: 100%;
+        vertical-align:bottom;
+        float:left;
+        margin: 0px 15px 0px 0px;
+      }
+
+      .img-logo {
+        width: 35%;
+        opacity: 0.999;
+        margin: 15px 0px 15px 0px;
+        position: relative;
+        z-index: -1;
+      }
+      </style>
+		</div>
+	</foreignObject>
+</svg>
