@@ -132,6 +132,8 @@ Runtime error logging
 [v1.3.5b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.3.5b
 [Command Line]: https://github.com/ceresBakalite/similarity/tree/master/shell
 
+<div align="center"><img src="/stylesheets/similarity.svg" width="100%" height="100%" alt="css source"></div>
+
 <style>
 .img-pointer {
   max-width: 100%;
