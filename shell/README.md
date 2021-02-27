@@ -1,5 +1,5 @@
 ## Command Line Usage
-### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-shell" title="No readable content. Just a page logo" class="img-logo" align="right" src="../images/NAVSimilarityLogoRepos.png"></div>
+### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-shell" title="No readable content. Just a page logo" class="img-logo" align="right" src="../../images/NAVSimilarityLogoRepos.png"></div>
 The following notes summarise calling the Similarity application from the command line and applying arguments to invoke a variety of options available in the GUI. There have been a number of common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
 ***
 
