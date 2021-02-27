@@ -1,5 +1,5 @@
 ## Welcome to Similarity Pattern Matching
-### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-default" title="No readable content. Just a page logo" class="img-logo" align="right" src="../images/NAVSimilarityLogoShell.png"></div>
+### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-default" title="No readable content. Just a page logo" class="img-logo" align="right" src="../../images/NAVSimilarityLogoShell.png"></div>
 Similarity estimates the similarities or dissimilarities between things. It compares any group of characters with any other group of characters and estimates the percentage similarity between one or more items. [read more][]
 ***
 
@@ -133,3 +133,20 @@ Runtime error logging
 [Command Line]: https://github.com/ceresBakalite/similarity/tree/master/shell
 
 <div align="center"><img src="/stylesheets/similarity.svg" width="1" height="1" alt="css source"></div>
+
+<style>
+.img-pointer {
+  max-width: 100%;
+  vertical-align:bottom;
+  float:left;
+  margin: 0px 15px 0px 0px;
+}
+
+.img-logo {
+  width: 35%;
+  opacity: 0.999;
+  margin: 15px 0px 15px 0px;
+  position: relative;
+  z-index: -1;
+}
+</style>
