@@ -1,5 +1,5 @@
 ## Command Line Usage
-### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-shell" title="No readable content. Just a page logo" class="img-logo" align="right" src="../../images/NAVSimilarityLogoRepos.png"></div>
+### *Seeking patterns of similarity between data strings* <div id="logo-container"><img id="logo-shell" title="No readable content. Just a page logo" class="img-logo" align="right" src="../images/NAVSimilarityLogoRepos.png"></div>
 The following notes summarise calling the Similarity application from the command line and applying arguments to invoke a variety of options available in the GUI. There have been a number of common questions asked by users which deserve, and indeed have now found, a more permanent placeholder here.
 ***
 
@@ -89,3 +89,20 @@ In the mean time, Similarity enables command line usage, one comparison pair at 
 
 [v1.2.8.2b notes]: https://github.com/ceresBakalite/similarity/releases/tag/v1.2.8.2b
 [Shell (computing)]: https://en.wikipedia.org/wiki/Shell_(computing)
+
+<style>
+.img-pointer {
+  max-width: 100%;
+  vertical-align:bottom;
+  float:left;
+  margin: 0px 15px 0px 0px;
+}
+
+.img-logo {
+  width: 35%;
+  opacity: 0.999;
+  margin: 15px 0px 15px 0px;
+  position: relative;
+  z-index: -1;
+}
+</style>
