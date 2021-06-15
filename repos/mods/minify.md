@@ -8,21 +8,25 @@ https://github.com/terser/terser
 
 *recommended usage*
 
-        1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts',url='cereslibrary.min.js.map'"
+        1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module
 
-        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similarityscript.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similarityscript.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module --source-map "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts',url='similarityscript.min.js.map'"
+        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similarityscript.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similarityscript.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module
 
-        3. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similarityscriptframe.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similarityscriptframe.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module --source-map "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts',url='similarityscriptframe.min.js.map'"
+        3. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similarityscriptframe.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similarityscriptframe.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module
 
-        4. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js  -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module --source-map "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts',url='similaritycache.min.js.map'"
+        4. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js  -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module
 
 **Example 2**
 
 *with source map*
 
-        1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\mods',url='cereslibrary.min.js.map'"
+        1. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\cereslibrary.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\cereslibrary.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts',url='https://ceresbakalite.github.io/similarity/repos/mods/cereslibrary.min.js.map'"
 
-        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js -c -m --source-map  "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\mods',url='similaritycache.min.js.map'"
+        2. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similarityscript.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similarityscript.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module --source-map "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts',url='https://ceresbakalite.github.io/similarity/repos/mods/similarityscript.min.js.map'"
+
+        3. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similarityscriptframe.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similarityscriptframe.min.js -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module --source-map "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts',url='https://ceresbakalite.github.io/similarity/repos/mods/similarityscriptframe.min.js.map'"
+
+        4. terser C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts\similaritycache.js -o C:\Users\Sandy\Documents\GitHub\similarity\repos\mods\similaritycache.min.js  -c -m reserved=['export','import','include','resource','cookies','compose','swipe','debug','similarity','similaritycache','similarityframe','cache'] -f quote_style=1 --module --source-map "root='C:\Users\Sandy\Documents\GitHub\similarity\repos\scripts',url='https://ceresbakalite.github.io/similarity/repos/mods/similaritycache.min.js.map'"
 
 **Example 3**
 
