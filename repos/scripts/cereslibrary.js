@@ -9,9 +9,9 @@
  *
  * Copyright (c) 2020 Alexander Munro
 */
-export { include, resource, debug, cookies, swipe, cache }
+export { ceresIncludeDirective as include, ceresResourceMethods as resource, ceresErrorHandler as debug, ceresCookieHandler as cookies, ceresHorizontalSwipe as swipe, ceresCacheMethods as cache }
 
-var include = {};  // fetch HTML namespace include scripts
+var ceresIncludeDirective = {};  // fetch HTML namespace include scripts
 (function() {
 
     this.directive = (el = 'include-directive') => {
@@ -27,31 +27,31 @@ var include = {};  // fetch HTML namespace include scripts
 
     }
 
-}).call(include);
+}).call(ceresIncludeDirective);
 
-var resource = {};
+var ceresResourceMethods = {};
 (function() {
 
-    this.isWindows    = navigator.appVersion.indexOf('Win') != -1;
-    this.whitespace   = /\s/g;
-    this.markup       = /(<([^>]+)>)/ig;
-    this.commaCodes   = /,|&comma;|&#x2c;|&#44;|U+0002C/g;
-    this.commaSymbol  = '_&c';
-    this.newline      = this.isWindows ? '\r\n' : '\n';
-    this.bArray       = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
-    this.elArray      = ['link', 'script', 'style'];
-    this.bool         = this.bArray.map(item => item.trim().toUpperCase() );
-    this.docHead      = this.elArray.map(item => item.trim().toUpperCase() );
+    this.isWindows   = navigator.appVersion.indexOf('Win') != -1;
+    this.bArray      = ['true', '1', 'enable', 'confirm', 'grant', 'active', 'on', 'yes'];
+    this.elArray     = ['link', 'script', 'style'];
+    this.commaCodes  = /,|&comma;|&#x2c;|&#44;|U+0002C/g;
+    this.commaSymbol = '_&c';
+    this.whitespace  = /\s/g;
+    this.markup      = /(<([^>]+)>)/ig;
+    this.newline     = this.isWindows ? '\r\n' : '\n';
+    this.docHead     = this.elArray.map(item => item.trim().toUpperCase() );
+    this.bool        = this.bArray.map(item => item.trim().toUpperCase() );
 
-    this.fileType     = (path, type) => this.fileExt(path).toUpperCase() === type.toUpperCase();
-    this.fileName     = path => path.substring(path.lastIndexOf('/')+1, path.length);
-    this.fileExt      = path => path.substring(path.lastIndexOf('.')+1, path.length);
-    this.mediaType    = path => this.media.get(this.fileExt(path).toLowerCase());
-    this.isVideo      = path => this.media.has(this.fileExt(path).toLowerCase());
-    this.isString     = obj => Object.prototype.toString.call(obj) == '[object String]';
-    this.srcOpen      = obj => globalThis.open(obj.element.getAttribute('src'), obj.type);
-    this.elementName  = node => node.nodeName.toLocaleLowerCase();
-    this.clearElement = node => { while (node.firstChild) node.removeChild(node.firstChild); }
+    this.fileType  = (path, type) => this.fileExt(path).toUpperCase() === type.toUpperCase();
+    this.fileName  = path => path.substring(path.lastIndexOf('/')+1, path.length);
+    this.fileExt   = path => path.substring(path.lastIndexOf('.')+1, path.length);
+    this.mediaType = path => this.media.get(this.fileExt(path).toLowerCase());
+    this.isVideo   = path => this.media.has(this.fileExt(path).toLowerCase());
+    this.isString  = obj => Object.prototype.toString.call(obj) == '[object String]';
+    this.srcOpen   = obj => globalThis.open(obj.element.getAttribute('src'), obj.type);
+    this.nodeType  = node => node.nodeName.toLocaleLowerCase();
+    this.clearNode = node => { while (node.firstChild) node.removeChild(node.firstChild); }
 
     this.softSanitize = (text, type = 'text/html') => this.ignore(text) ? null : new DOMParser()
         .parseFromString(text, type).documentElement.textContent
@@ -124,7 +124,7 @@ var resource = {};
                 let shard = shadow.querySelector(el.query);
                 let markup = shard.innerHTML; // the shadowdom html content we wish to alter
 
-                this.clearElement(shard);
+                this.clearNode(shard);
                 shard.insertAdjacentHTML('afterbegin', markup.replace(el.regex, el.replace));
             };
 
@@ -251,9 +251,9 @@ var resource = {};
         return objectType();
     }
 
-}).call(resource);
+}).call(ceresResourceMethods);
 
-var debug = {};
+var ceresErrorHandler = {};
 (function() {
 
     this.reference = 1;
@@ -292,9 +292,9 @@ var debug = {};
         return str.replace(/, +$/g,'');
     }
 
-}).call(debug);
+}).call(ceresErrorHandler);
 
-var cookies = {};
+var ceresCookieHandler = {};
 (function() {
 
     this.get = name => {
@@ -316,9 +316,9 @@ var cookies = {};
         document.cookie = cookie;
     }
 
-}).call(cookies);
+}).call(ceresCookieHandler);
 
-var swipe = {};
+var ceresHorizontalSwipe = {};
 (function() {
 
     this.setSwipe = (touch, callback, args) => { // horizontal swipe
@@ -341,9 +341,9 @@ var swipe = {};
 
     }
 
-}).call(swipe);
+}).call(ceresHorizontalSwipe);
 
-var cache = {};
+var ceresCacheMethods = {};
 (function() {
 
     this.viewCachedRequests = cacheName => { caches.open(cacheName).then(cache => { cache.keys().then(cachedRequests => { console.log('exploreCache: ' + cachedRequests); }); }); }
@@ -367,4 +367,4 @@ var cache = {};
     }
 
 
-}).call(cache);
+}).call(ceresCacheMethods);
