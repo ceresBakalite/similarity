@@ -1,5 +1,3 @@
-export { similarityframe };
-
 import { include, cookies, resource } from '../mods/cereslibrary.min.js';
 
 globalThis.testCall = (el) => {
